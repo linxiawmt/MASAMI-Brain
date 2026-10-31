@@ -1637,33 +1637,70 @@
 本章没有正式的模型代码，配套 notebook 用 PyTorch/numpy 把每个概念做成了可运行的演示；学习目标是建立全书框架，后面的每一章都会回头引用这里的结构。</p>
 </blockquote>
 <h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
-<pre class="mermaid"><code>mindmap
-  root((计算机视觉))
-    视觉系统
-      传感设备 眼
-      解释设备 脑
-    六大应用
-      分类 CNN
-      检测 YOLO SSD
-      风格迁移
-      GAN 生成
-      人脸识别
-      以图搜图
-    CV 流水线
-      输入
-      预处理
-      特征提取
-      ML 模型
-    图像表示
-      灰度 F 二维
-      RGB 三维 HWC
-    预处理
-      灰度化决策
-      统一尺寸
-      数据增强
-    特征
-      手工 HOG SIFT
-      自动 端到端</code></pre>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">计算机视觉</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">视觉系统</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">传感设备（眼）</span>
+          <span class="brleaf">解释设备（脑）</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">六大应用</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">图像分类 → CNN</span>
+          <span class="brleaf">目标检测 → YOLO / SSD</span>
+          <span class="brleaf">风格迁移</span>
+          <span class="brleaf">GAN 图像生成</span>
+          <span class="brleaf">人脸识别</span>
+          <span class="brleaf">以图搜图</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">CV 流水线</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">① 输入</span>
+          <span class="brleaf">② 预处理</span>
+          <span class="brleaf">③ 特征提取</span>
+          <span class="brleaf">④ ML 模型</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">图像表示</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">灰度 F(x,y) ∈ [0,255]</span>
+          <span class="brleaf">RGB (H, W, 3)</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">预处理</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">灰度化决策</span>
+          <span class="brleaf">统一尺寸</span>
+          <span class="brleaf">数据增强</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">特征</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">手工 HOG / SIFT + SVM</span>
+          <span class="brleaf">自动提特征 + 分类，端到端</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h2 id="11-视觉系统眼--脑">1.1 视觉系统：眼 + 脑<a class="headerlink" href="#11-视觉系统眼--脑" title="Permanent link">#</a></h2>
 <p>**计算机视觉（Computer Vision, CV）**研究的是 AI 系统的视觉感知问题。任何 AI 系统的核心都是两件事：<strong>感知（Perceive）环境 + 基于感知采取行动</strong>。对人类来说，视觉只是感知的一种通道——我们同时靠听觉、嗅觉、触觉理解世界；AI 系统同理，构建什么应用，就选最能捕获环境的感知通道。而 CV 关注的视觉部分，定义是：<strong>通过图像和视频感知并理解世界，为环境构建物理模型，让 AI 系统能据此做出合适的行动</strong>。</p>
 <p>关键词是 <strong>Visual Perception（视觉感知）</strong> 里的"感知"。以自动驾驶为例，视觉感知意味着：理解周围物体及其细节——行人、需要保持居中的车道——并检测交通标志、读懂标志含义。<strong>我们要的不是"拍到"环境的画面，而是"看懂"环境。</strong></p>
