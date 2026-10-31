@@ -1,10 +1,10 @@
-// 首页画廊灯箱：点击卡片看大图，点击任意处 / Esc 关闭
+// 首页画廊灯箱 + Wallhaven 唯美壁纸轮换 + 首页全页壁纸底
 (function () {
   function setup() {
     if (document.querySelector(".lb")) return;
-    const imgs = document.querySelectorAll(".g-strip .g-card img");
 
-    // 灯箱
+    // ---- 灯箱 ----
+    const imgs = document.querySelectorAll(".g-strip .g-card img");
     if (imgs.length) {
       const lb = document.createElement("div");
       lb.className = "lb";
@@ -24,18 +24,41 @@
       });
     }
 
-    // 主页：Wallhaven 壁纸轮换 + 全页壁纸底
-    const heroBgs = document.querySelectorAll(".hero .hero-bg");
-    if (heroBgs.length) {
+    // ---- 主页：唯美壁纸轮换（Wallhaven 高分精选）----
+    const hero = document.querySelector(".hero");
+    if (hero) {
       document.body.classList.add("is-home");
+      const POOL = [
+        "images/wallhaven/a1.jpg",
+        "images/wallhaven/a2.jpg",
+        "images/wallhaven/a3.jpg",
+        "images/wallhaven/a4.jpg",
+        "images/wallhaven/a5.jpg",
+        "images/wallhaven/a6.jpg",
+        "images/wallhaven/a7.jpg",
+      ];
+      const layers = [...hero.querySelectorAll(".hero-bg")];
+      const dotsBox = hero.querySelector(".hero-dots");
+      const dots = POOL.map(function (_, i) {
+        const d = document.createElement("span");
+        d.className = "dot" + (i === 0 ? " on" : "");
+        dotsBox.appendChild(d);
+        return d;
+      });
       let cur = 0;
-      heroBgs[0].classList.add("on");
-      if (heroBgs.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        setInterval(function () {
-          heroBgs[cur].classList.remove("on");
-          cur = (cur + 1) % heroBgs.length;
-          heroBgs[cur].classList.add("on");
-        }, 9000);
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function show(i) {
+        if (i === cur) return;
+        const nxt = layers.find(function (l) { return !l.classList.contains("on"); });
+        const pre = new Image();
+        pre.src = POOL[i];                       // 先预加载，避免切换闪空
+        nxt.style.backgroundImage = "url('" + POOL[i] + "')";
+        layers.forEach(function (l) { l.classList.toggle("on", l === nxt); });
+        dots.forEach(function (d, j) { d.classList.toggle("on", j === i); });
+        cur = i;
+      }
+      if (!reduce && POOL.length > 1) {
+        setInterval(function () { show((cur + 1) % POOL.length); }, 9000);
       }
     }
   }

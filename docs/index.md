@@ -4,9 +4,9 @@ hide:
 ---
 
 <div class="hero" role="img" aria-label="banner">
-  <div class="hero-bg" style="background-image:url('images/haibara/wp1.jpg')"></div>
-  <div class="hero-bg" style="background-image:url('images/haibara/wp2.jpg')"></div>
-  <div class="hero-bg" style="background-image:url('images/haibara/wp3.jpg')"></div>
+  <div class="hero-bg on" style="background-image:url('images/wallhaven/a1.jpg')"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
 </div>
 
 <div class="g-wrap">

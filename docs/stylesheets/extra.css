@@ -116,46 +116,69 @@ body,
   opacity: 1;
   animation: kb 9s ease-out forwards;
 }
-.hero::after {                                 /* 压暗 + 底部融入页面 */
+.hero::after {                                 /* 轻压暗 + 底部融入页面（温柔风：遮罩很浅） */
   content: "";
   position: absolute; inset: 0;
   z-index: 2;
   background: linear-gradient(180deg,
-      rgba(20, 26, 58, 0.18) 0%,
-      rgba(20, 26, 58, 0.05) 45%,
+      rgba(30, 34, 66, 0.10) 0%,
+      rgba(30, 34, 66, 0.04) 45%,
       var(--md-default-bg-color) 100%);
   pointer-events: none;
 }
 @keyframes kb {
   from { transform: scale(1); }
-  to   { transform: scale(1.07); }
+  to   { transform: scale(1.06); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg.on { animation: none; }
 }
+.hero-dots {
+  position: absolute;
+  bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px;
+  z-index: 3;
+}
+.hero-dots .dot {
+  width: 7px; height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+.hero-dots .dot.on {
+  width: 24px;
+  background: rgba(255, 255, 255, 0.95);
+}
 
 /* ===== 主页全页壁纸底（仅首页生效，body.is-home 由 JS 添加）===== */
 body.is-home {
-  background: #0d1226;
+  background: #f7f2f5;
 }
 body.is-home::before {
   content: "";
   position: fixed; inset: -20px;
   z-index: -2;
-  background: url("../../images/haibara/wp1_bg.jpg") center / cover no-repeat;
-  filter: brightness(0.85);
+  background: url("../../images/wallhaven/soft_bg.jpg") center / cover no-repeat;
 }
 body.is-home::after {
   content: "";
   position: fixed; inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(8, 10, 24, 0.42), rgba(8, 10, 24, 0.62));
+  background: linear-gradient(180deg, rgba(255, 246, 250, 0.55), rgba(244, 240, 250, 0.66));
+}
+[data-md-color-scheme="slate"] body.is-home {
+  background: #12141f;
+}
+[data-md-color-scheme="slate"] body.is-home::after {
+  background: linear-gradient(180deg, rgba(8, 10, 24, 0.55), rgba(8, 10, 24, 0.72));
 }
 body.is-home .md-content__inner {
-  background: color-mix(in srgb, var(--md-default-bg-color) 88%, transparent);
+  background: color-mix(in srgb, var(--md-default-bg-color) 86%, transparent);
   border-radius: 12px;
   padding-inline: 1.4rem 1.6rem;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 30px rgba(70, 50, 90, 0.18);
 }
 [data-md-color-scheme="slate"] body.is-home .md-content__inner {
   background: color-mix(in srgb, var(--md-default-bg-color) 82%, transparent);
