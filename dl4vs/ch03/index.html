@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#第3章-卷积神经网络" class="md-skip">
+        <a href="#第-3-章-卷积神经网络" class="md-skip">
           跳转至
         </a>
       
@@ -502,6 +502,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -518,6 +536,591 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-用-MLP-做图像分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 用 MLP 做图像分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 用 MLP 做图像分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-输入层先展平" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 输入层：先展平
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-隐藏层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 隐藏层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-输出层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 输出层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-组装与第一次参数量对账669706" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 组装与第一次参数量对账：669,706
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-MLP-的两大缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.5 MLP 的两大缺陷
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.5 MLP 的两大缺陷">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#缺陷一空间特征丢失" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷一：空间特征丢失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#缺陷二全连接层的参数爆炸" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷二：全连接层的参数爆炸
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-CNN-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 CNN 架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 CNN 架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-大局观" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 大局观
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-细看特征提取" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 细看特征提取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-细看分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 细看分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-CNN-的基本组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 CNN 的基本组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 CNN 的基本组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-卷积层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 卷积层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.1 卷积层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么是卷积" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是卷积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卷积运算--矩阵版加权求和" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卷积运算 = 矩阵版加权求和
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#滤波器如何通向学特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        滤波器如何通向"学特征"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卷积层的五个超参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卷积层的五个超参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-池化层下采样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 池化层（下采样）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.2 池化层（下采样）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Max-pooling-与-Average-pooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Max pooling 与 Average pooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#为什么要池化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要池化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-全连接层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 全连接层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-用-CNN-做图像分类MNIST-实战" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 用 CNN 做图像分类（MNIST 实战）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 用 CNN 做图像分类（MNIST 实战）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-搭建模型架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 搭建模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-参数量对账220234" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 参数量对账：220,234
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-加-Dropout-层防过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 加 Dropout 层防过拟合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 加 Dropout 层防过拟合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-什么是过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 什么是过拟合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-什么是-Dropout-层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 什么是 Dropout 层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-为什么需要-Dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 为什么需要 Dropout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-Dropout-放在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 Dropout 放在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-彩色图上的卷积3D-图像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 彩色图上的卷积（3D 图像）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 彩色图上的卷积（3D 图像）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-彩色图上怎么做卷积" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 彩色图上怎么做卷积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-计算复杂度怎么办" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 计算复杂度怎么办
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-项目彩色图像分类CIFAR-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 项目：彩色图像分类（CIFAR-10）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 项目：彩色图像分类（CIFAR-10）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Step-1加载数据集" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1：加载数据集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-2图像预处理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2：图像预处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-3定义模型架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3：定义模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-4compile-模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4：compile 模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-5训练模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5：训练模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-6加载最优权重" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6：加载最优权重
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-7评估模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7：评估模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -747,6 +1350,580 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-用-MLP-做图像分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 用 MLP 做图像分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 用 MLP 做图像分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-输入层先展平" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 输入层：先展平
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-隐藏层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 隐藏层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-输出层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 输出层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-组装与第一次参数量对账669706" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 组装与第一次参数量对账：669,706
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-MLP-的两大缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.5 MLP 的两大缺陷
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.5 MLP 的两大缺陷">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#缺陷一空间特征丢失" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷一：空间特征丢失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#缺陷二全连接层的参数爆炸" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷二：全连接层的参数爆炸
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-CNN-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 CNN 架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 CNN 架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-大局观" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 大局观
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-细看特征提取" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 细看特征提取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-细看分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 细看分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-CNN-的基本组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 CNN 的基本组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 CNN 的基本组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-卷积层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 卷积层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.1 卷积层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么是卷积" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是卷积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卷积运算--矩阵版加权求和" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卷积运算 = 矩阵版加权求和
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#滤波器如何通向学特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        滤波器如何通向"学特征"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卷积层的五个超参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卷积层的五个超参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-池化层下采样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 池化层（下采样）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.2 池化层（下采样）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Max-pooling-与-Average-pooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Max pooling 与 Average pooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#为什么要池化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要池化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-全连接层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 全连接层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-用-CNN-做图像分类MNIST-实战" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 用 CNN 做图像分类（MNIST 实战）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 用 CNN 做图像分类（MNIST 实战）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-搭建模型架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 搭建模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-参数量对账220234" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 参数量对账：220,234
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-加-Dropout-层防过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 加 Dropout 层防过拟合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 加 Dropout 层防过拟合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-什么是过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 什么是过拟合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-什么是-Dropout-层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 什么是 Dropout 层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-为什么需要-Dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 为什么需要 Dropout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-Dropout-放在哪" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 Dropout 放在哪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-彩色图上的卷积3D-图像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 彩色图上的卷积（3D 图像）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 彩色图上的卷积（3D 图像）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-彩色图上怎么做卷积" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 彩色图上怎么做卷积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-计算复杂度怎么办" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 计算复杂度怎么办
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-项目彩色图像分类CIFAR-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 项目：彩色图像分类（CIFAR-10）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 项目：彩色图像分类（CIFAR-10）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Step-1加载数据集" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1：加载数据集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-2图像预处理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2：图像预处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-3定义模型架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3：定义模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-4compile-模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4：compile 模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-5训练模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5：训练模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-6加载最优权重" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6：加载最优权重
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Step-7评估模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7：评估模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -765,10 +1942,1289 @@
   
 
 
-<h1 id="第3章-卷积神经网络">第3章 卷积神经网络<a class="headerlink" href="#第3章-卷积神经网络" title="Permanent link">#</a></h1>
+<h1 id="第-3-章-卷积神经网络">第 3 章 卷积神经网络<a class="headerlink" href="#第-3-章-卷积神经网络" title="Permanent link">#</a></h1>
 <blockquote>
-<p>本章笔记整理中，即将按新模板重写。</p>
+<p><strong>本章解决</strong>：MLP 处理图像为什么不行（3.1）、CNN 靠什么行——卷积/池化/全连接三大组件（3.2–3.3）、以及两个完整实战（3.4 MNIST、3.7 CIFAR-10）。
+<strong>承上启下</strong>：第 2 章的神经元、权重、激活函数、梯度下降全部沿用，只是把"全连接层"换成了"卷积层"来提特征；本章的调参直觉在第 4 章升级成系统的性能诊断，第 5 章再给你一套现成的经典架构（AlexNet、ResNet……）。</p>
 </blockquote>
+<p>与 MLP 相比，CNN 只换了"特征提取"这一环，其余四件事完全一样：</p>
+<table>
+<thead>
+<tr>
+<th>相同点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>架构</td>
+<td>都是神经元逐层堆叠，只是 CNN 多了卷积层与池化层这两种结构</td>
+</tr>
+<tr>
+<td>权重与偏置</td>
+<td>都是随机初始化、靠训练学习；区别是 MLP 权重是向量形式，卷积层权重以<strong>卷积核/滤波器</strong>的形式存在</td>
+</tr>
+<tr>
+<td>超参数</td>
+<td>误差函数、激活函数、优化器的选法与第 2 章相同，本章新增几个 CNN 特有超参</td>
+</tr>
+<tr>
+<td>训练</td>
+<td>前向得预测 → 与真标签算损失 <span class="arithmatex">\((y-\hat{y})\)</span> → 梯度下降反向传播更新权重，一模一样</td>
+</tr>
+</tbody>
+</table>
+<h2 id="30-本章导图">3.0 本章导图<a class="headerlink" href="#30-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">卷积神经网络</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">为什么不用 MLP</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">展平丢空间特征（正方形实验）</span>
+          <span class="brleaf">全连接参数爆炸（669,706 → 10 亿级）</span>
+          <span class="brleaf">MNIST 96% vs CNN 99%</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">CNN 架构</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">卷积层提特征 → 特征图</span>
+          <span class="brleaf">池化层降维</span>
+          <span class="brleaf">全连接层分类</span>
+          <span class="brleaf">层层加深：图案中的图案</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">卷积层</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">核 = 可学习权重</span>
+          <span class="brleaf">感受野 × 感受野滑动</span>
+          <span class="brleaf">四超参：filters / kernel / stride / padding</span>
+          <span class="brleaf">输出尺寸 O=(W−K+2P)/S+1</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">池化层</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">max / average / 全局平均 GAP</span>
+          <span class="brleaf">缩宽高、不改深度、0 参数</span>
+          <span class="brleaf">抗小平移、省算力</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">全连接 + Dropout</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">展平特征管 → 分类</span>
+          <span class="brleaf">过拟合 vs 欠拟合</span>
+          <span class="brleaf">Dropout 随机丢神经元 ≈ 集成</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">彩色图 3D 卷积</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">核变 3D：3×3×3 = 27 权重</span>
+          <span class="brleaf">逐通道卷积求和 + 偏置</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">两个实战</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">MNIST CNN：220,234 参数</span>
+          <span class="brleaf">CIFAR-10 小 AlexNet：528,054 参数 ~70%</span>
+          <span class="brleaf">盯 val_loss：震荡/不降/过拟合三症状</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="31-用-MLP-做图像分类">3.1 用 MLP 做图像分类<a class="headerlink" href="#31-用-MLP-做图像分类" title="Permanent link">#</a></h2>
+<p>先复习第 2 章的 MLP（多层感知机）架构：神经元逐层堆叠、由权重连接组成，分为<strong>输入层、一个或多个隐藏层、输出层</strong>（图 3.1）。本节用它解一个真实问题：MNIST 手写数字分类，0~9 共 10 类——顺便看看它为什么撑不起图像任务。</p>
+<figure>
+  <img src="../images/ch03/fig-3-1.png" width="520" class="lq-img" />
+  <figcaption>图 3.1 MLP 架构：输入层、隐藏层、输出层由权重连接（截自原书）</figcaption>
+</figure>
+
+<h3 id="311-输入层先展平">3.1.1 输入层：先展平<a class="headerlink" href="#311-输入层先展平" title="Permanent link">#</a></h3>
+<p>计算机眼里的图像是一个数字矩阵：<span class="arithmatex">\(28\times28\)</span> 的图就是 <span class="arithmatex">\(28\times28\)</span> 的矩阵，像素值 <span class="arithmatex">\(0\sim255\)</span>（0 黑、255 白、中间灰度）。数字 3 在计算机眼里就是 784 个数（图 3.2）。</p>
+<figure>
+  <img src="../images/ch03/fig-3-2.png" width="600" class="lq-img" />
+  <figcaption>图 3.2 计算机看到的 3：28×28 = 784 个像素值（截自原书）</figcaption>
+</figure>
+
+<p>问题来了：<strong>MLP 只接受一维向量输入，维度 <span class="arithmatex">\((1,n)\)</span></strong>，吃不下 <span class="arithmatex">\((x,y)\)</span> 的二维矩阵。所以必须先把图像"压扁"成一条长向量，这叫 <strong>Image Flattening（图像展平）</strong>：<span class="arithmatex">\(28\times28\)</span> 展成 <span class="arithmatex">\((1, 784)\)</span>，输入向量按行拼接：</p>
+<div class="arithmatex">\[ x = [row_1, row_2, \dots, row_{28}] \]</div>
+<p>输入层因此有 784 个节点 <span class="arithmatex">\(x_1, x_2, \dots, x_{784}\)</span>。Keras 里一个 <code>Flatten</code> 层搞定（它就是输入层，必须传入输入图像的形状）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书 3.1.1 节（Keras 原文）=====</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flatten</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)))</span>   <span class="c1"># 28×28 矩阵 → (1, 784) 向量</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：可视化输入向量（4×4 小例）</p>
+<p>把 <span class="arithmatex">\(4\times4\)</span> 的小矩阵按行展平成 <span class="arithmatex">\((1,16)\)</span> 向量，一行代码的事。若黑=0、白=255，则：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 书 3.1.1 节侧栏（numpy 演示）=====</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">])</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">flat</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>      <span class="c1"># (4,4) → (1,16)，逐行拼接</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">flat</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># [[0, 255, 255, 255, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0]]</span>
+</code></pre></div>
+</div>
+<h3 id="312-隐藏层">3.1.2 隐藏层<a class="headerlink" href="#312-隐藏层" title="Permanent link">#</a></h3>
+<p>隐藏层可以有一层或多层、每层任意多神经元——<strong>设计这些层就是神经网络工程师的本职</strong>。本例随意设计成两个隐藏层、各 512 个节点，别忘了每个隐藏层接 <strong>ReLU</strong> 激活函数：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 3.1.2 节（Keras 原文）=====</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="313-输出层">3.1.3 输出层<a class="headerlink" href="#313-输出层" title="Permanent link">#</a></h3>
+<p>输出层很直接：<strong>分类问题的输出节点数 = 类别数</strong>。10 个数字就是 10 个节点，接 <strong>softmax</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 3.1.3 节（Keras 原文）=====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：激活函数怎么选</p>
+<p>没有万能答案，但有强经验法则：<strong>隐藏层绝大多数情况用 ReLU；类别互斥的多分类输出层用 softmax</strong>——它输出图像属于每一类的概率。</p>
+</div>
+<h3 id="314-组装与第一次参数量对账669706">3.1.4 组装与第一次参数量对账：669,706<a class="headerlink" href="#314-组装与第一次参数量对账669706" title="Permanent link">#</a></h3>
+<p>拼起来就是一个 <span class="arithmatex">\(784 \to 512 \to 512 \to 10\)</span> 的 MLP（图 3.3）：</p>
+<figure>
+  <img src="../images/ch03/fig-3-3.png" width="640" class="lq-img" />
+  <figcaption>图 3.3 组装好的 MLP：784 输入、两层 512、10 输出（截自原书）</figcaption>
+</figure>
+
+<p>PyTorch 等价实现（参数量对账写进注释）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 3.1.4 节：Keras 版 → PyTorch 等价 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>                      <span class="c1"># (28,28) → 784，本层参数 0</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>  <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>   <span class="c1"># 784×512 + 512 = 401,920</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>  <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>   <span class="c1"># 512×512 + 512 = 262,656</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>                <span class="c1"># 512×10  + 10  = 5,130</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">)</span>                                      <span class="c1"># 合计 669,706，与书图 3.4 完全一致</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Keras→PyTorch 差异①：softmax 的位置。</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Keras 把 activation='softmax' 写进 Dense；PyTorch 惯例是网络输出原始分数（logits），</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># 训练时用 nn.CrossEntropyLoss（内部已含 softmax，见 3.7 节），推理时再手动 softmax 取概率。</span>
+</code></pre></div>
+<p><code>model.summary()</code> 打印的 <strong>Param #</strong> 列就是每层要训练的参数（权重）个数，逐层对账：</p>
+<ol>
+<li>Flatten 层 = <strong>0</strong>：只负责展平，还没有权重；</li>
+<li>第 1 个 Dense = <span class="arithmatex">\(784\times512 + 512 =\)</span> <strong>401,920</strong>（权重 + 每个输出节点 1 个偏置）；</li>
+<li>第 2 个 Dense = <span class="arithmatex">\(512\times512 + 512 =\)</span> <strong>262,656</strong>；</li>
+<li>第 3 个 Dense = <span class="arithmatex">\(512\times10 + 10 =\)</span> <strong>5,130</strong>；</li>
+<li>合计 = 401,920 + 262,656 + 5,130 = <strong>669,706</strong>。</li>
+</ol>
+<figure>
+  <img src="../images/ch03/fig-3-4.png" width="560" class="lq-img" />
+  <figcaption>图 3.4 model.summary()：669,706 个参数（截自原书）</figcaption>
+</figure>
+
+<p>这么小的网络就有 66.9 万个参数要学——再加层、加节点或换大图，这个数会失控。这是 MLP 的第一大问题，下一小节展开。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：MLP vs CNN 的真实差距</p>
+<p>单看 MNIST，MLP 其实能到 <strong>~96%</strong>（CNN ~99%），差距不大——因为 MNIST 太"干净"：尺寸统一、数字居中、纯灰度。换成 CIFAR-10 这种稍复杂的数据集（本章 3.7 节会做），MLP 只有 <strong>30~40%</strong> 准确率；真实世界的杂乱数据上，差距更大。<strong>MNIST 是特例，不是常态。</strong></p>
+</div>
+<h3 id="315-MLP-的两大缺陷">3.1.5 MLP 的两大缺陷<a class="headerlink" href="#315-MLP-的两大缺陷" title="Permanent link">#</a></h3>
+<h4 id="缺陷一空间特征丢失">缺陷一：空间特征丢失<a class="headerlink" href="#缺陷一空间特征丢失" title="Permanent link">#</a></h4>
+<p>展平把 2D 图像压成 1D 向量的瞬间，<strong>所有二维结构信息全扔了</strong>。把输入当一串毫无结构的数字，对 1D 信号也许没问题；但 2D 图像里"相邻像素强相关"这件事，MLP 一无所知——它在找模式时不会把像素值彼此关联起来。CNN 则直接吃原始矩阵，天然理解"离得近的像素关系更紧"。</p>
+<p>作者用一个极简实验说明后果：教网络认"正方形"（黑底白方块，图 3.5）。展平后输入是 16 维向量：</p>
+<div class="arithmatex">\[ \text{Input vector} = [1, 1, 0, 0, \ 1, 1, 0, 0, \ 0, 0, 0, 0, \ 0, 0, 0, 0] \]</div>
+<p>训练完成后，网络学会的是"<strong>当 <span class="arithmatex">\(x_1, x_2, x_5, x_6\)</span> 点火时是正方形</strong>"——它记住的是输入节点的编号，不是"正方形"这个形状。换一张正方形出现在别处的图（图 3.6），网络直接不认识。想让它全图都认得？那就得把每个位置的正方形都喂一遍——对复杂问题完全不可扩展。认猫同理：我们希望网络学会"耳朵、鼻子、眼睛"这些<strong>特征本身</strong>，而不是它们在某张图里的绝对位置（图 3.7）。</p>
+<table>
+<tr>
+<td><img src="../images/ch03/fig-3-5.png" /></td>
+<td><img src="../images/ch03/fig-3-6.png" /></td>
+</tr>
+</table>
+<p><em>图 3.5 黑底白方块 · 图 3.6 正方形挪了位置，MLP 就不认识了（截自原书）</em></p>
+<figure>
+  <img src="../images/ch03/fig-3-7.png" width="560" class="lq-img" />
+  <figcaption>图 3.7 CNN 逐层学特征：浅层学边缘曲线，深层学耳朵鼻子眼睛（截自原书）</figcaption>
+</figure>
+
+<h4 id="缺陷二全连接层的参数爆炸">缺陷二：全连接层的参数爆炸<a class="headerlink" href="#缺陷二全连接层的参数爆炸" title="Permanent link">#</a></h4>
+<p>MLP 的层是<strong>全连接（Fully Connected, FC）<strong>的：一层每个节点连到前一层和后一层的</strong>所有</strong>节点，于是每个神经元都要为前一层的每个神经元配一个权重。MNIST 的 <span class="arithmatex">\(28\times28\)</span> 小图还扛得住；换成 <span class="arithmatex">\(1000\times1000\)</span> 的图像：100 万像素 → 第一隐藏层的<strong>每个</strong>节点就有 100 万个参数；若第一层有 1000 个神经元，仅第一层就是 <strong>10 亿参数</strong>。几十上百层堆起来不可想象——不 scale。</p>
+<p>CNN 的对策：<strong>局部连接（Locally Connected）</strong>。每个节点只连前一层的<strong>一小块</strong>像素（图 3.8 右，这些小块叫<strong>滑动窗口 Sliding Windows</strong>），参数量骤减。</p>
+<figure>
+  <img src="../images/ch03/fig-3-8.png" width="640" class="lq-img" />
+  <figcaption>图 3.8 全连接（左）vs 局部连接（右）：后者只看一小块滑动窗口（截自原书）</figcaption>
+</figure>
+
+<p><strong>小结</strong>：展平丢信息 + 全连接不 scale ⇒ 我们需要一种"不丢二维信息地处理图像"的新架构——卷积神经网络登场。注意：全连接层的问题出在<strong>提特征</strong>这一步，它的<strong>分类</strong>能力没问题，所以 CNN 的设计是"卷积提特征 + 全连接做分类"，各留其长。</p>
+<h2 id="32-CNN-架构">3.2 CNN 架构<a class="headerlink" href="#32-CNN-架构" title="Permanent link">#</a></h2>
+<p>CNN 逐层提越来越复杂的特征：第一层卷积学基础特征（边缘、线条），下一层学稍复杂的（圆形、方形），再下一层学更复杂的（人脸部件、车轮、猫胡须）……训练机制与神经网络完全相同：权重随机初始化、激活函数、算误差 <span class="arithmatex">\((y-\hat{y})\)</span>、反向传播更新——<strong>唯一区别是用卷积层替换全连接层来做特征学习</strong>。</p>
+<h3 id="321-大局观">3.2.1 大局观<a class="headerlink" href="#321-大局观" title="Permanent link">#</a></h3>
+<p>回忆第 1 章的四步流水线（输入 → 预处理 → 特征提取 → ML 模型）：深度学习之前，人们手工提特征再喂给 SVM 之类的分类器；有了神经网络，第 3、4 步可以合并成一个端到端可训练的网络（MLP 或 CNN）。</p>
+<p>3.1 节的结论是：全连接层"分类"没问题、"提特征"不行。那就<strong>保留能干的，换掉不行的</strong>——特征提取换成局部连接的卷积层，分类仍用全连接层。CNN 高层架构（图 3.10）：</p>
+<ul>
+<li>输入层；</li>
+<li><strong>卷积层</strong>：特征提取；</li>
+<li><strong>全连接层</strong>：分类；</li>
+<li>输出预测。</li>
+</ul>
+<figure>
+  <img src="../images/ch03/fig-3-10.png" width="660" class="lq-img" />
+  <figcaption>图 3.10 CNN 大局：特征提取（卷积层）+ 分类（全连接层）+ 预测（截自原书）</figcaption>
+</figure>
+
+<p>跟着图 3.10 走一遍（任务：区分数字 3 和 7，输出层两个节点）：</p>
+<ol>
+<li>原始图像直接喂给卷积层；</li>
+<li>图像流过卷积层，检测模式、提取<strong>特征图（Feature Maps）</strong>；注意两个趋势：<strong>每过一层图像尺寸变小、特征图数量（深度）变多</strong>，直到特征提取末端只剩一条"由小特征组成的长数组"。概念上，这就是网络在把原图表示成越来越抽象的特征；</li>
+<li>特征图展平成向量，喂给全连接层做分类；</li>
+<li>输出层点亮代表预测类别的节点（3 或 7）。</li>
+</ol>
+<blockquote>
+<p><strong>DEFINITION</strong>：在 CNN 里，<strong>Feature Map（特征图）<strong>是"一个滤波器作用于上一层后的输出"。之所以叫 map，是因为它标记了</strong>某种特征在图中的出现位置</strong>——CNN 找直线、边缘乃至更复杂的物体，找到就在特征图上"打卡"。每个特征图只负责一件事：这张找直线，那张找曲线。</p>
+</blockquote>
+<h3 id="322-细看特征提取">3.2.2 细看特征提取<a class="headerlink" href="#322-细看特征提取" title="Permanent link">#</a></h3>
+<p>可以把特征提取想象成<strong>把大图打碎成小特征块、堆成一摞</strong>（图 3.11）：数字 3 深度为 1，被打碎成 4 个含 3 的独特特征的小图后深度就是 4。图像越流越深、越流越小。</p>
+<p>注意这只是帮助可视化的比喻——CNN 并不真的剪纸片，它提取的是<strong>能把这个物体与其他训练样本区分开的、有意义的特征</strong>，并堆成特征数组。</p>
+<figure>
+  <img src="../images/ch03/fig-3-11.png" width="360" class="lq-img" />
+  <figcaption>图 3.11 一张 3 被拆成 4 张特征小图：深度 1 → 4（截自原书）</figcaption>
+</figure>
+
+<h3 id="323-细看分类">3.2.3 细看分类<a class="headerlink" href="#323-细看分类" title="Permanent link">#</a></h3>
+<p>特征提取完成后，全连接层（一个普通 MLP）盯着特征向量逐个判断："第一个特征像条边——可能是 3、7 或者丑版 2；第二个特征有弧线，肯定不是 7……"直到有信心喊出"这是 3"。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：CNN 如何学模式</p>
+<p>别以为 CNN 一步登天从图像直接跳到特征向量——这通常发生在几十上百层里，<strong>每过一个隐藏层前进一步</strong>：第一层学线条边缘等基础特征，第二层把线条拼成可辨认的形状（角点、圆），更深层学出手、眼睛、耳朵等复杂形状。以人脸为例的简化版：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>输入图像
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>+ 第 1 层  ⇒ 图案（patterns）
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>+ 第 2 层  ⇒ 图案中的图案
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>+ 第 3 层  ⇒ 图案中的图案中的图案
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>... 以此类推
+</code></pre></div>
+<p>低级特征（边）重叠组成中级特征（部件），中级特征重叠组成高级特征（整脸）。这个"图案套图案"的概念在第 5 章讨论高级架构时会反复用到。</p>
+</div>
+<h2 id="33-CNN-的基本组件">3.3 CNN 的基本组件<a class="headerlink" href="#33-CNN-的基本组件" title="Permanent link">#</a></h2>
+<p>几乎所有卷积网络都由三种层组成（图 3.12）：<strong>卷积层（CONV）、池化层（POOL）、全连接层（FC）</strong>。文字表示法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>CNN 架构: INPUT ⇒ CONV ⇒ RELU ⇒ POOL ⇒ CONV ⇒ RELU ⇒ POOL ⇒ FC ⇒ SOFTMAX
+</code></pre></div>
+<p>注意 ReLU 和 softmax 并不是独立层——它们是前一层的激活函数，单独写出来是为了标明设计者选了哪种激活。上面的写法对应"两个卷积层 + 一个全连接层"，卷积层管特征学习，全连接层管分类，数量随意加。</p>
+<figure>
+  <img src="../images/ch03/fig-3-12.png" width="660" class="lq-img" />
+  <figcaption>图 3.12 CNN 基本组件：28×28 输入 → 5×5 卷积 → 池化 → 再卷积 → 再池化 → 展平 → 全连接 → softmax（截自原书）</figcaption>
+</figure>
+
+<h3 id="331-卷积层">3.3.1 卷积层<a class="headerlink" href="#331-卷积层" title="Permanent link">#</a></h3>
+<p>卷积层是 CNN 的核心构件，像一扇<strong>特征发现窗口</strong>逐像素滑过图像，提取能标识物体的有意义特征。</p>
+<h4 id="什么是卷积">什么是卷积<a class="headerlink" href="#什么是卷积" title="Permanent link">#</a></h4>
+<p>数学上，<strong>卷积（Convolution）<strong>是"两个函数生成第三个修改过的函数"。在 CNN 语境：第一个函数是输入图像，第二个是</strong>卷积滤波器（滤波器/kernel 卷积核）</strong>，运算结果是一张像素值全新修改过的图。放大看（图 3.13）：滤波器滑过原图，把图切成一个个小块分别处理，拼出修改后的图——特征图。</p>
+<figure>
+  <img src="../images/ch03/fig-3-13.png" width="560" class="lq-img" />
+  <figcaption>图 3.13 3×3 卷积核滑过输入图像，当前覆盖区域叫感受野，算出的值写入目标像素（截自原书）</figcaption>
+</figure>
+
+<p>关于卷积核的三件事实：</p>
+<ul>
+<li>中间那个小矩阵（如 <span class="arithmatex">\(3\times3\)</span>）就是<strong>卷积滤波器</strong>，也叫<strong>核（Kernel）</strong>；</li>
+<li>核逐像素滑过原图做数学运算，得到下一层"卷过之后"的图的值；</li>
+<li>核覆盖的那块图像区域叫<strong>感受野（Receptive Field）</strong>（图 3.14）。</li>
+</ul>
+<p>**核的值是什么？**就是权重——随机初始化、由网络训练学出来。你不用手工设计它。</p>
+<p>图 3.13 的算例（感受野左上角 <span class="arithmatex">\(\begin{bmatrix}3&amp;0&amp;1\\2&amp;2&amp;2\\2&amp;4&amp;2\end{bmatrix}\)</span> 配对应位置的核元素）：</p>
+<div class="arithmatex">\[ (-1\times3) + (0\times0) + (1\times1) + (-2\times2) + (0\times6) + (2\times2) + (-1\times2) + (0\times4) + (1\times1) = -3 \]</div>
+<h4 id="卷积运算--矩阵版加权求和">卷积运算 = 矩阵版加权求和<a class="headerlink" href="#卷积运算--矩阵版加权求和" title="Permanent link">#</a></h4>
+<p>这套数学在第 2 章见过——MLP 的加权求和：</p>
+<div class="arithmatex">\[ \text{weighted sum} = x_1 \cdot w_1 + x_2 \cdot w_2 + \dots + x_n \cdot w_n + b \]</div>
+<p>CNN 只是把神经元和权重排成了矩阵形状：<strong>感受野的每个像素与核的对应像素相乘、全部加起来</strong>，得到新图（特征图）中心像素的值（图 3.15）。原书算例：</p>
+<div class="arithmatex">\[ (93\times-1) + (139\times0) + (101\times1) + (26\times-2) + (252\times0) + (196\times2) + (135\times-1) + (240\times0) + (48\times1) \]</div>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：图 3.15 的 243 应为 261</p>
+<p>按上图数字实算：<span class="arithmatex">\(-93 + 101 - 52 + 392 - 135 + 48 = 261\)</span>。原书标注 <strong>243</strong>，与实算差 18，属排版错误；运算过程本身没错。本笔记按实算 261 修正。</p>
+</div>
+<figure>
+  <img src="../images/ch03/fig-3-15.png" width="600" class="lq-img" />
+  <figcaption>图 3.15 感受野 × 核逐元素相乘再求和 → 新图中心像素值（图中 243 按实算应为 261）（截自原书）</figcaption>
+</figure>
+
+<p>核滑遍全图，每次都做一遍这样的乘加——产出的新图就叫<strong>特征图（Feature Map）<strong>或</strong>激活图（Activation Map）</strong>。</p>
+<h4 id="滤波器如何通向学特征">滤波器如何通向"学特征"<a class="headerlink" href="#滤波器如何通向学特征" title="Permanent link">#</a></h4>
+<p>回到根本目标：提取特征。图像处理里，滤波器本就用来滤掉不要的信息或放大某类特征——比如这个<strong>边缘检测核</strong>：</p>
+<div class="arithmatex">\[ K = \begin{bmatrix} 0 &amp; -1 &amp; 0 \\ -1 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{bmatrix} \]</div>
+<p>它与输入 <span class="arithmatex">\(F(x,y)\)</span> 卷积，生成的特征图会放大边缘。书中的算例：输入块 <span class="arithmatex">\(\begin{bmatrix}120&amp;140&amp;120\\225&amp;220&amp;205\\225&amp;250&amp;230\end{bmatrix}\)</span>，</p>
+<div class="arithmatex">\[ 0\times120 + (-1)\times140 + 0\times120 + (-1)\times225 + 4\times220 + (-1)\times205 + 0\times225 + (-1)\times250 + 0\times230 = 60 \]</div>
+<p>输出 60 &gt; 0——检测到了一个小边缘。不同滤波器检测不同特征：水平边、垂直边、角点……这些滤波器放进卷积层，就产生我们前面说的逐层特征学习：先学边缘直线，后学复杂特征。</p>
+<h4 id="卷积层的五个超参数">卷积层的五个超参数<a class="headerlink" href="#卷积层的五个超参数" title="Permanent link">#</a></h4>
+<p>一行 Keras 代码就能建一个卷积层，它有五个主要参数：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 3.3.1 节：Keras 原文 =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv2D</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="s1">'1'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== PyTorch 等价 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Keras→PyTorch 差异②：padding='same'。</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># 'same' 的含义是"输出尺寸=输入尺寸"。奇数核（3×3）时 PyTorch 写 padding=1 即可；</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># 但偶数核（2×2）时 Keras 靠"不对称补零"（上/左补 0 圈、下/右补 1 圈）实现，</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># PyTorch 的 padding 只能对称补零，没有直接对偶——须先 F.pad 再卷积（3.7 节项目实操）。</span>
+</code></pre></div>
+<p>五个参数里 ReLU 已在第 2 章讲过（隐藏层推荐），剩下四个控制输出体积的尺寸与深度：</p>
+<ul>
+<li><strong>Filters（滤波器数量）</strong>：本层卷积核的个数，决定输出深度；</li>
+<li><strong>Kernel size（核尺寸）</strong>：滤波器矩阵的大小，常见 <span class="arithmatex">\(2\times2, 3\times3, 5\times5\)</span>；</li>
+<li><strong>Stride（步幅）</strong>：核每次滑几个像素；</li>
+<li><strong>Padding（补零）</strong>：图像边缘补几圈 0。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">侧栏：调参焦虑缓解剂</p>
+<p>深度学习既是科学也是艺术。作为 DL 工程师，你大部分时间不是在造算法，而是在<strong>搭架构、设置/实验/调超参</strong>。好消息是这活没想象中难——本书会一路给出好的超参起点，并帮你建立"看结果、定该拧哪个旋钮"的直觉。</p>
+</div>
+<p><strong>Filters = 隐藏层宽度。</strong> 回忆 MLP：隐藏层有 <span class="arithmatex">\(n\)</span> 个神经元（隐藏单元）。CNN 里卷积层就是隐藏层，<strong>增加核的个数 = 增加隐藏单元数</strong>：一个 <span class="arithmatex">\(3\times3\)</span> 的核 = 9 个隐藏单元；再来一个 = 18 个；再加 = 27 个……核越多网络越复杂、能检测的模式越复杂，和 MLP 加神经元一个道理。每个卷积层有若干滤波器，<strong>每层滤波器的个数决定下一层的深度</strong>——因为每个滤波器产出一张自己的特征图。</p>
+<p><strong>Kernel size。</strong> 核几乎都是方的，范围从最小 <span class="arithmatex">\(2\times2\)</span> 到最大 <span class="arithmatex">\(5\times5\)</span>。直觉：<strong>小核抓精细细节，大核会漏掉微小细节</strong>。理论上核越大"网络越深、学得越好"，但计算复杂度更高、还可能过拟合；更大的核不推荐——丢细节。</p>
+<p><strong>Strides。</strong> 步幅 = 滑动步长。S=1 逐像素滑，输出尺寸与输入"大致相同"；S=2 隔像素跳，输出"大致减半"；S≥3 实践中罕见。"大致"取决于 padding 怎么处理边缘（见下面的公式）。</p>
+<p><strong>Padding。</strong> 常叫 <strong>Zero Padding（零填充）</strong>：在图像四周补零（图 3.19，Padding=2 即补两圈）。最常见用途是<strong>保持空间尺寸不变</strong>（输入输出同宽高），这样堆更深的网络时宽高不会被一路卷没。</p>
+<figure>
+  <img src="../images/ch03/fig-3-19.png" width="480" class="lq-img" />
+  <figcaption>图 3.19 Padding=2：图像四周补两圈 0（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">侧栏：stride 与 padding 的总目标</p>
+<p>两者合起来只干一件事：<strong>要么保住图像全部重要细节传给下一层（stride=1 + padding=same）；要么主动忽略一些空间信息，换计算上的便宜</strong>。别忘了后面还有池化层专职降尺寸——stride/padding 是你在"全保留"和"省算力"之间打的第一个方向盘。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：卷积输出尺寸公式</p>
+<p>stride/padding 对输出尺寸的影响可以精确计算（原书只给"大致"说法，公式补充如下）：</p>
+<div class="arithmatex">\[ O = \frac{W - K + 2P}{S} + 1 \]</div>
+<p>其中 <span class="arithmatex">\(W\)</span> = 输入宽（高同理单独算）、<span class="arithmatex">\(K\)</span> = 核尺寸、<span class="arithmatex">\(P\)</span> = 补零圈数、<span class="arithmatex">\(S\)</span> = 步幅；<strong>除不尽时向下取整</strong>。三个算例：</p>
+<ul>
+<li><strong>图 3.12 的网络</strong>：<span class="arithmatex">\(28\times28\)</span> 输入、<span class="arithmatex">\(5\times5\)</span> 核、无 padding、S=1：<span class="arithmatex">\(O=(28-5)/1+1=24\)</span> → 卷积层 24×24；<span class="arithmatex">\(2\times2\)</span> 池化 <span class="arithmatex">\(O=(24-2)/2+1=12\)</span> → 12×12；再卷 <span class="arithmatex">\((12-5)/1+1=8\)</span>；再池 <span class="arithmatex">\((8-2)/2+1=4\)</span>——与图 3.12 标注的 24→12→8→4 完全一致。</li>
+<li><strong>3.4 节 MNIST CNN</strong>：<span class="arithmatex">\(3\times3\)</span> 核 + padding=1（same）、S=1：<span class="arithmatex">\(O=(28-3+2)/1+1=28\)</span>，尺寸不变；池化 <span class="arithmatex">\((28-2)/2+1=14\)</span>。</li>
+<li><strong>步幅 2 的取整</strong>：<span class="arithmatex">\(28\times28\)</span>、<span class="arithmatex">\(3\times3\)</span> 核、无 padding、S=2：<span class="arithmatex">\((28-3)/2+1=13.5 \to 13\)</span>——余数直接扔掉，设计网络时要提前把尺寸线算好。</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：权值共享为什么把参数量打下来</p>
+<p>全连接 <span class="arithmatex">\(1000\times1000\)</span> 的图 + 1000 个隐藏神经元 = 10 亿参数；而一个 <span class="arithmatex">\(3\times3\)</span> 卷积核只有 <span class="arithmatex">\(9+1\)</span> 个参数，<strong>滑动扫过全图，同一套权重在所有位置复用</strong>——这就是<strong>权值共享（Weight Sharing）</strong>。3.4 节会看到：MNIST CNN 的第一层用 320 个参数就提取了 32 种特征（MLP 同位置要 40 万）。共享还有个副产品：同一特征在图里<strong>挪到任何位置</strong>都能被同一个核检测到——正好治好 3.1.5 节"正方形挪位置就不认识"的病。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：感受野层层长大</p>
+<p>第一层 <span class="arithmatex">\(3\times3\)</span> 核的感受野是 <span class="arithmatex">\(3\times3\)</span>；第二层输出的每个像素看的是第一层输出的 <span class="arithmatex">\(3\times3\)</span> 区域，对应原图 <span class="arithmatex">\(5\times5\)</span>……每叠一层 <span class="arithmatex">\(3\times3\)</span> 卷积，感受野 +2。所以深层网络<strong>不需要大核也能看到大范围上下文</strong>；且两层 <span class="arithmatex">\(3\times3\)</span>（18 个权重）比一层 <span class="arithmatex">\(5\times5\)</span>（25 个权重）参数更少、还多过一次非线性变换——这是现代 CNN 全用小核堆叠的核心原因。</p>
+</div>
+<h3 id="332-池化层下采样">3.3.2 池化层（下采样）<a class="headerlink" href="#332-池化层下采样" title="Permanent link">#</a></h3>
+<p>卷积层越堆越多，深度（特征图数量）随之暴涨，要优化的参数也暴涨——**池化层（Pooling Layer）**就是来刹车的：它用汇总统计函数（最大值、平均值）<strong>下采样（Subsampling）<strong>输入，缩减传给下一层的参数量。惯例是</strong>每 1~2 个卷积层后面跟一个池化层</strong>（图 3.20）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>INPUT ⇒ CONV ⇒ POOL ⇒ CONV ⇒ POOL
+</code></pre></div>
+<h4 id="Max-pooling-与-Average-pooling">Max pooling 与 Average pooling<a class="headerlink" href="#Max-pooling-与-Average-pooling" title="Permanent link">#</a></h4>
+<p>两大主流：**Max Pooling（最大池化）**与 <strong>Average Pooling（平均池化）</strong>。</p>
+<p><strong>Max pooling</strong>：与卷积核类似，也是一个固定尺寸、固定步幅的窗口滑过图像——但窗口<strong>没有权重、没有任何值</strong>，只做一件事：选窗口内的<strong>最大像素值</strong>传下去，其余忽略（图 3.21：<span class="arithmatex">\(2\times2\)</span> 窗口、步幅 2，把 <span class="arithmatex">\(4\times4\)</span> 特征图缩成 <span class="arithmatex">\(2\times2\)</span>）：</p>
+<div class="arithmatex">\[
+\begin{bmatrix} 1&amp;9&amp;6&amp;4 \\ 5&amp;4&amp;7&amp;8 \\ 5&amp;1&amp;2&amp;9 \\ 6&amp;7&amp;6&amp;0 \end{bmatrix}
+\Rightarrow
+\begin{bmatrix} 9&amp;8 \\ 7&amp;9 \end{bmatrix}
+\]</div>
+<figure>
+  <img src="../images/ch03/fig-3-21.png" width="640" class="lq-img" />
+  <figcaption>图 3.21 2×2 池化窗、步幅 2：4×4 → 2×2（截自原书）</figcaption>
+</figure>
+
+<p>对上一层<strong>每一张</strong>特征图都做一遍——所以<strong>池化缩宽高、保深度</strong>：卷积层有 3 张特征图，池化层输出还是 3 张（更小的）特征图。</p>
+<p><strong>Global Average Pooling（GAP，全局平均池化）<strong>是更极端的降维：不设窗口和步幅，直接</strong>对整张特征图的所有像素求平均</strong>（<span class="arithmatex">\(4\times4\)</span> 图 → 1 个数，书例 <span class="arithmatex">\(\frac{1+9+6+4+5+4+7+8+5+1+2+9+6+7+6+0}{16}=5\)</span>）。它把每个 <span class="arithmatex">\(H\times W\)</span> 特征图压成 <span class="arithmatex">\(1\times1\)</span>，于是整个 3D 数组变成一个向量——天然衔接全连接层。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 3.3.2 节回顾：Keras 原文 → PyTorch 等价 =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Keras: model.add(MaxPooling2D(pool_size=(2, 2), strides=2))</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 最大池化</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">avg</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>             <span class="c1"># 平均池化</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">gap</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                 <span class="c1"># 全局平均池化：任意 H×W → 1×1</span>
+</code></pre></div>
+<h4 id="为什么要池化">为什么要池化<a class="headerlink" href="#为什么要池化" title="Permanent link">#</a></h4>
+<p>复杂项目里 CNN 有几十上百个卷积层、每层几十上百个核，核里全是待学参数——不刹车会失控。池化层<strong>保住重要特征传下去的同时缩小图像尺寸</strong>，作者给的比喻：<strong>池化层就是图像压缩程序</strong>——降分辨率，留关键特征。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么池化能抗小平移</p>
+<p>max pooling 每个窗口只留最强响应：目标平移一两个像素，最强的激活通常还落在同一个窗口里，输出几乎不变——这就是"对小平移大致不变"的来源，也是第 1 章"统一尺寸/物体任意位置出现也能识别"的机制级解释。代价：<strong>精确位置信息被抹掉</strong>（本来就是"压缩程序"）。另外池化<strong>没有任何可学参数</strong>，是免费的降参手段。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：池化 vs stride/padding——两派之争</p>
+<p>池化和 stride 的主目的都是降参数、省训练开销。有人不喜欢池化：论文 <em>"Striving for Simplicity: The All Convolutional Net"</em>（Springenberg, Dosovitskiy, Brox, Riedmiller, arXiv:1412.6806）主张干脆去掉池化层，用带大步幅的卷积层替代降尺寸；在 GAN（第 10 章）等生成模型里，弃用池化也被发现更好。看起来未来架构会少用甚至不用池化，但目前它仍是从一层到下一层的标准下采样手段。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：GAP 在现代架构里的角色</p>
+<p>GAP 把每张特征图压成一个数：零参数、天然抗过拟合，还允许网络直接处理任意尺寸输入。ResNet 这类现代架构用"GAP + 一层 softmax 全连接"取代"Flatten + 巨型全连接"，动机就是砍掉 Flatten 处的参数大头——见下一节的参数对账：220,234 个参数里 200,768 个（91%）堆在第一个全连接层。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：逐层可视化——卷积加深度，池化缩尺寸</p>
+<p>设输入 <span class="arithmatex">\(28\times28\)</span>（MNIST）：CONV_1 用 4 个核（stride 1、padding same）→ 输出 <span class="arithmatex">\(28\times28\times4\)</span>，宽高不变深度变 4；CONV_2 同参数但 12 个核 → <span class="arithmatex">\(28\times28\times12\)</span>；池化后 → <span class="arithmatex">\(14\times14\times12\)</span>，深度不变宽高减半。<strong>卷积层通常保宽高、加深度；池化层保深度、缩宽高</strong>——反复堆叠，直到图像变成"一条由小特征组成的长管子"。</p>
+</div>
+<h3 id="333-全连接层">3.3.3 全连接层<a class="headerlink" href="#333-全连接层" title="Permanent link">#</a></h3>
+<p>卷积 + 池化把所有特征提好、装进"长管子"之后，就轮到分类——这正是第 2 章 MLP 的老本行。当年 MLP 的毛病是"提特征要先展平、丢信息"；现在特征已经提好了，<strong>展平一个特征向量对 MLP 来说毫无压力</strong>。</p>
+<p>全连接层的三件套（图 3.26）：</p>
+<ul>
+<li><strong>展平输入向量</strong>：把特征管展平成 <span class="arithmatex">\((1,n)\)</span>。例：<span class="arithmatex">\(5\times5\times40\)</span> 的特征管 → <span class="arithmatex">\((1, 1000)\)</span>；</li>
+<li><strong>隐藏层</strong>：一层或多层全连接，每层若干神经元；</li>
+<li><strong>输出层</strong>：节点数 = 类别数；多于两类的分类问题用 softmax（10 个数字 → 10 个节点，输出 <span class="arithmatex">\(P_0 \dots P_9\)</span>）。</li>
+</ul>
+<figure>
+  <img src="../images/ch03/fig-3-26.png" width="520" class="lq-img" />
+  <figcaption>图 3.26 特征管 (5×5×40) 展平成 (1,1000) → FC 层 → softmax 出 10 类概率（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">侧栏：名词统一声明</p>
+<p><strong>MLP、全连接层（fully connected）、Dense 层，有时还有 feedforward（前馈）</strong>，说的都是同一个东西——第 2 章那个普通神经网络架构，可互换使用。</p>
+</div>
+<h2 id="34-用-CNN-做图像分类MNIST-实战">3.4 用 CNN 做图像分类（MNIST 实战）<a class="headerlink" href="#34-用-CNN-做图像分类MNIST-实战" title="Permanent link">#</a></h2>
+<p>三个组件都齐了，搭一个真正的 CNN。数据集还是 MNIST——深度学习的"Hello World"。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE：库不重要，概念重要</p>
+<p>无论用哪个 DL 库，流程都一样：先在脑子里/纸上设计架构，再逐层堆叠、设参数。Keras、MXNet（以及 TensorFlow、PyTorch 等）各有优劣，概念相通。本书正文以 Keras 为主，本笔记同步给 PyTorch 等价实现。</p>
+</div>
+<h3 id="341-搭建模型架构">3.4.1 搭建模型架构<a class="headerlink" href="#341-搭建模型架构" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 3.4.1 节：Keras 原文 =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>   <span class="c1"># CONV_1</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>                       <span class="c1"># POOL_1</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>                            <span class="c1"># CONV_2</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>                       <span class="c1"># POOL_2</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>                                            <span class="c1"># Flatten</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>                         <span class="c1"># FC_1</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>                      <span class="c1"># FC_2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== PyTorch 等价（3×3 为奇数核：padding=1 恰是 Keras 'same' 的对偶）=====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>  <span class="c1"># (32,28,28)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>                                                  <span class="c1"># (32,14,14)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> <span class="c1"># (64,14,14)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>                                                  <span class="c1"># (64,7,7)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>                                                     <span class="c1"># 3136</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3136</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>                                   <span class="c1"># 64</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>                                                <span class="c1"># 10（logits）</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">)</span>
+</code></pre></div>
+<p>读 summary 的四条通则：</p>
+<ul>
+<li><code>input_shape</code> 只需在<strong>第一层</strong>给——后面每层的输入就是上一层的输出，模型自己知道；</li>
+<li>每个卷积/池化层的输出都是 3D 张量 <code>(None, height, width, channels)</code>：height/width 是图像此处的尺寸，channels 是深度（特征图数）；第一个 <code>None</code> 是 batch 维度，Keras 设为"任意 batch_size"；</li>
+<li>越深越<strong>小</strong>（宽高收缩）、越深越<strong>厚</strong>（深度增加）；</li>
+<li>总参数 <strong>220,234</strong>，对比之前 MLP 的 669,706——砍掉近三分之二。</li>
+</ul>
+<figure>
+  <img src="../images/ch03/fig-3-27.png" width="600" class="lq-img" />
+  <figcaption>图 3.27 MNIST CNN 的 model.summary()：220,234 参数（截自原书）</figcaption>
+</figure>
+
+<p>逐行走一遍 shape：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>输入</th>
+<th>输出</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONV_1（32 核 3×3, same）</td>
+<td><span class="arithmatex">\(28\times28\times1\)</span></td>
+<td><span class="arithmatex">\(28\times28\times32\)</span></td>
+<td>stride 1 + same 保尺寸；深度 32 = 32 个滤波器各产一张特征图</td>
+</tr>
+<tr>
+<td>POOL_1（2×2）</td>
+<td><span class="arithmatex">\(28\times28\times32\)</span></td>
+<td><span class="arithmatex">\(14\times14\times32\)</span></td>
+<td>尺寸减半，深度不变</td>
+</tr>
+<tr>
+<td>CONV_2（64 核 3×3, same）</td>
+<td><span class="arithmatex">\(14\times14\times32\)</span></td>
+<td><span class="arithmatex">\(14\times14\times64\)</span></td>
+<td>同上，深度 64</td>
+</tr>
+<tr>
+<td>POOL_2（2×2）</td>
+<td><span class="arithmatex">\(14\times14\times64\)</span></td>
+<td><span class="arithmatex">\(7\times7\times64\)</span></td>
+<td>尺寸减半，深度不变</td>
+</tr>
+<tr>
+<td>Flatten</td>
+<td><span class="arithmatex">\(7\times7\times64\)</span></td>
+<td><span class="arithmatex">\((1, 3136)\)</span></td>
+<td><span class="arithmatex">\(7\times7\times64=3136\)</span></td>
+</tr>
+<tr>
+<td>Dense_1（64）</td>
+<td>3136</td>
+<td>64</td>
+<td>全连接</td>
+</tr>
+<tr>
+<td>Dense_2（10）</td>
+<td>64</td>
+<td>10</td>
+<td>10 类，softmax</td>
+</tr>
+</tbody>
+</table>
+<h3 id="342-参数量对账220234">3.4.2 参数量对账：220,234<a class="headerlink" href="#342-参数量对账220234" title="Permanent link">#</a></h3>
+<p><strong>参数（Parameters）= 权重</strong>，就是网络在梯度下降 + 反向传播里不断更新的东西。MLP 里全连接，参数 = 两层神经元数相乘；CNN 的参数算法不一样，但有公式：</p>
+<div class="arithmatex">\[ \text{number of params} = \text{filters} \times \text{kernel size} \times \text{depth}_{\text{prev}} + \text{filters} \]</div>
+<p>（最后一项是每个滤波器一个偏置。）以 CONV_2 为例，前一层深度是 32：</p>
+<div class="arithmatex">\[ \text{Params} = 64 \times 3 \times 3 \times 32 + 64 = 18{,}496 \]</div>
+<p>写进 PyTorch 注释的完整对账（与图 3.27 的 Param # 列逐行一致）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># CONV_1: 32×(3×3×1) + 32 = 320</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># POOL_1 / POOL_2 / Flatten: 0（池化与展平不加参数）</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># CONV_2: 64×(3×3×32) + 64 = 18,496</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># FC_1:   3136×64 + 64     = 200,768</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># FC_2:   64×10 + 10       = 650</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># 合计:   320 + 18,496 + 200,768 + 650 = 220,234</span>
+</code></pre></div>
+<p><strong>可训练与非可训练参数</strong>：summary 里的 trainable params 是训练中要优化的权重，本例全部 220,234 个都可训练。后面的章节会用到<strong>预训练网络 + 冻结（freeze）部分层</strong>（迁移学习，第 6 章），那时 non-trainable 就不再为 0。这个数字还能在训练前帮你估算显存与空间开销。</p>
+<h2 id="35-加-Dropout-层防过拟合">3.5 加 Dropout 层防过拟合<a class="headerlink" href="#35-加-Dropout-层防过拟合" title="Permanent link">#</a></h2>
+<p>三大件（卷积、池化、全连接）之外，还有一类"附加层"专门防过拟合。</p>
+<h3 id="351-什么是过拟合">3.5.1 什么是过拟合<a class="headerlink" href="#351-什么是过拟合" title="Permanent link">#</a></h3>
+<p>ML 表现差的主因就两种：<strong>欠拟合（Underfitting）<strong>与</strong>过拟合（Overfitting）</strong>。</p>
+<ul>
+<li><strong>欠拟合</strong>：模型太简单，连训练数据都拟合不了（例：用单个感知机分非线性数据）；</li>
+<li><strong>过拟合</strong>：模型把训练数据<strong>背下来了</strong>而不是学了特征——训练集误差极低，对没见过的新样本一塌糊涂：训练集表现很好、测试集表现很差（图 3.30）。</li>
+</ul>
+<p>我们要的是"刚刚好"。手段之一就是下面的 Dropout 层。</p>
+<figure>
+  <img src="../images/ch03/fig-3-30.png" width="640" class="lq-img" />
+  <figcaption>图 3.30 欠拟合（左）/ 刚刚好（中）/ 过拟合（右）（截自原书）</figcaption>
+</figure>
+
+<h3 id="352-什么是-Dropout-层">3.5.2 什么是 Dropout 层<a class="headerlink" href="#352-什么是-Dropout-层" title="Permanent link">#</a></h3>
+<p><strong>Dropout</strong> 按比例"关掉"一层的部分神经元，比例是可调超参。"关掉"指这些神经元不参与本次前向与反向传播。看似自残，实则必要：训练中某些节点会<strong>独大</strong>（权重过大、主导训练）或犯大错，Dropout 强制全队均衡——每个节点都为同一目标出力，谁也不许太强或太弱，网络因此更有韧性（图 3.31）。</p>
+<figure>
+  <img src="../images/ch03/fig-3-31.png" width="660" class="lq-img" />
+  <figcaption>图 3.31 Dropout：随机关掉一层中一定比例的神经元（截自原书）</figcaption>
+</figure>
+
+<h3 id="353-为什么需要-Dropout">3.5.3 为什么需要 Dropout<a class="headerlink" href="#353-为什么需要-Dropout" title="Permanent link">#</a></h3>
+<p>神经元在训练中会发展出<strong>相互依赖（codependency）</strong>：某个/某几个特征被偏爱、权重集中到少数通路上，导致对训练数据的过拟合。随机关掉一部分节点，逼着其余节点<strong>不依赖任何单个特征</strong>地学模式——因为任何特征随时可能被丢——权重于是摊到所有特征上，更多神经元得到充分训练。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：Dropout 为什么等价于集成学习（Ensemble）</p>
+<p>书中给的视角：集成学习先分别训练一堆弱分类器，测试时把所有成员的响应<strong>取平均</strong>——各成员学到数据的不同侧面、犯不同的错，合起来更强、更不易过拟合。Dropout 每次丢弃都是一次"随机瘦身"，整个训练过程相当于在训练<strong>海量个共享权重的子网络</strong>，测试时全部神经元上线、按保留概率缩放输出，近似对所有子网取平均。原论文：Srivastava et al., <em>Dropout: A Simple Way to Prevent Neural Networks from Overfitting</em>, JMLR 2014。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：直觉——绑住一只手练二头肌</p>
+<p>双手举杠铃时，壮的那只手会偷偷多出力，越练越壮、弱的那只越没训练。Dropout 就是"混着练"：先绑右臂只练左臂，再绑左臂只练右臂，如此轮换——一段时间后两只手臂均衡发展。训练神经网络同理：某部分权重过大、垄断训练时，Dropout 关掉一批神经元让其余的训练，下个 epoch 再换一批。</p>
+</div>
+<h3 id="354-Dropout-放在哪">3.5.4 Dropout 放在哪<a class="headerlink" href="#354-Dropout-放在哪" title="Permanent link">#</a></h3>
+<p>标准 CNN = 卷积/池化交替 + 末端全连接。防过拟合的标准做法：<strong>在展平之后、全连接层之间</strong>插几个 Dropout 层：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>CNN 架构: ... ⇒ CONV ⇒ POOL ⇒ Flatten ⇒ DO ⇒ FC ⇒ DO ⇒ FC
+</code></pre></div>
+<p>为什么只放这里？<strong>Dropout 在全连接层里效果好是公认的；它在卷积/池化层里的效果研究得还不充分</strong>。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># ===== 书 3.5.4 节：Keras 原文 =====</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))</span>               <span class="c1"># 丢 30%</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>               <span class="c1"># 丢 50%</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== PyTorch 等价（接 3.4.1 的模型，加两处 Dropout）=====</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">model_do</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span>                  <span class="c1"># DO：30% 神经元被随机关闭</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3136</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>   <span class="c1"># FC_1</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>                  <span class="c1"># DO：50%</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>                <span class="c1"># FC_2（输出 logits，训练配 CrossEntropyLoss）</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="p">)</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="c1"># 注意：PyTorch 的 nn.Dropout 只在 model.train() 时生效，model.eval() 自动关闭；</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c1"># Keras 语义相同（只在训练期起作用）。</span>
+</code></pre></div>
+<p><code>rate</code> 是"丢弃的输入单元比例"：rate=0.3 → 该层 30% 的神经元随机关闭、其余 70% 训练；下个批次重新随机选。因为是完全随机，有的神经元被关得次数多、有的几乎从不被关——没关系，次数多了平均下来大家待遇相近。rate 本身也是要调的超参。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书小瑕疵：'in each epoch' 的说法</p>
+<p>书中说"30% 的神经元将在每个 epoch 被随机丢弃"。更准确的说法是<strong>每个训练批次（batch）的每次前向传播</strong>都重新随机采样——粒度是 batch 不是 epoch，Keras/PyTorch 实现均如此。</p>
+</div>
+<h2 id="36-彩色图上的卷积3D-图像">3.6 彩色图上的卷积（3D 图像）<a class="headerlink" href="#36-彩色图上的卷积3D-图像" title="Permanent link">#</a></h2>
+<p>第 1 章说过：灰度图在计算机里是 2D 像素值矩阵；<strong>彩色图是 3D 矩阵</strong> <span class="arithmatex">\(H\times W\times D\)</span>——RGB 图深度为 3（红绿蓝各一通道），<span class="arithmatex">\(28\times28\)</span> 彩图就是 <span class="arithmatex">\(28\times28\times3\)</span>：三个 2D 矩阵叠成一摞，叠加起来才是完整彩色图（图 3.33）。</p>
+<blockquote>
+<p><strong>NOTE（一般化表述）</strong>：图像一律表示为 3D 数组 <span class="arithmatex">\(height \times width \times depth\)</span>——灰度图 depth=1，彩色图 depth=3。</p>
+</blockquote>
+<h3 id="361-彩色图上怎么做卷积">3.6.1 彩色图上怎么做卷积<a class="headerlink" href="#361-彩色图上怎么做卷积" title="Permanent link">#</a></h3>
+<p>还是老三样：滑核、乘加、产特征图——只是<strong>核本身也变 3D 了</strong>：每个颜色通道对应核的一层（图 3.34）。</p>
+<figure>
+  <img src="../images/ch03/fig-3-33.png" width="620" class="lq-img" />
+  <figcaption>图 3.33 彩色图 = R/G/B 三个强度矩阵的堆叠，F(0,0)=[11,102,35]（截自原书）</figcaption>
+</figure>
+
+<p>具体步骤（图 3.35）：</p>
+<ol>
+<li>三个颜色通道各有自己的对应滤波器层（<span class="arithmatex">\(w_0[:,:,0]\)</span> 红、<span class="arithmatex">\(w_0[:,:,1]\)</span> 绿、<span class="arithmatex">\(w_0[:,:,2]\)</span> 蓝）；</li>
+<li>每层滤波器在自己的通道上滑动、逐元素相乘再求和，各得一个数（书例：红 = 0、绿 = 1、蓝 = -1）；</li>
+<li>三个数<strong>加总</strong>得到特征图上一个节点的值——<strong>别忘了加偏置</strong>（书例 +1）：<span class="arithmatex">\(0 + 1 + (-1) + 1 = 1\)</span>；</li>
+<li>按步幅滑过（一次 1 像素或更多），重复直到填满整张特征图。</li>
+</ol>
+<figure>
+  <img src="../images/ch03/fig-3-35.png" width="520" class="lq-img" />
+  <figcaption>图 3.35 3D 卷积：三个通道各自卷积 → 求和 → 加偏置 → 输出一个像素（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">图 3.35 / 3.37 的隐含步幅</p>
+<p>图中输入体积是补零后的 <span class="arithmatex">\(7\times7\times3\)</span>、核 <span class="arithmatex">\(3\times3\times3\)</span>、输出 <span class="arithmatex">\(3\times3\times2\)</span>——用输出尺寸公式实算 <span class="arithmatex">\((7-3)/2+1=3\)</span>，说明图按 <strong>stride=2</strong> 画的；若按 stride=1 会得 <span class="arithmatex">\(5\times5\)</span>。原书未在图上标注 stride，读图别困惑。</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># ===== 书 3.6 节：彩色图卷积（PyTorch）=====</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">conv_rgb</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># 一个滤波器的权重 = 3×3×3 = 27 个 + 1 个偏置</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># 本层参数 = 16×27 + 16 = 448（对比灰度输入：16×(3×3×1) + 16 = 160）</span>
+</code></pre></div>
+<h3 id="362-计算复杂度怎么办">3.6.2 计算复杂度怎么办<a class="headerlink" href="#362-计算复杂度怎么办" title="Permanent link">#</a></h3>
+<p>参数量跟着涨：灰度图一个 <span class="arithmatex">\(3\times3\)</span> 核 9 个参数；彩色图每个核是 <span class="arithmatex">\(3\times3\times3=27\)</span> 个参数，网络要优化的参数更多、内存占用更大。</p>
+<p>彩色图信息更多，既带来计算开销，也对某些任务<strong>真的有用</strong>——取舍权在你：</p>
+<ul>
+<li>很多物体靠明暗模式就能认出来，颜色可有可无（原书图 3.36：街景里自行车、云、行人的形状全靠明暗定义）——此时转灰度省钱省内存；</li>
+<li>有些任务颜色是关键证据：<strong>皮肤癌检测依赖皮肤红色（红疹）</strong>；</li>
+<li>作者给的判断法：<strong>如果人类靠颜色更容易识别，算法大概也需要彩色</strong>。</li>
+</ul>
+<p>和灰度图一样：<strong>加多少个滤波器，就产多少张特征图</strong>。图 3.37 中 <span class="arithmatex">\(7\times7\times3\)</span> 的输入配 2 个 <span class="arithmatex">\(3\times3\times3\)</span> 滤波器，输出深度就是 2（<span class="arithmatex">\(3\times3\times2\)</span>）。</p>
+<figure>
+  <img src="../images/ch03/fig-3-37.png" width="520" class="lq-img" />
+  <figcaption>图 3.37 两个 3×3×3 滤波器 + 两个偏置 → 输出体积 (3×3×2)（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">侧栏：关于 CNN 架构的重要收尾忠告</p>
+<p>强烈建议<strong>多看现成架构</strong>——早就有人把东西拆拆装装、试出了什么好使。实际工作中（除非做研究），<strong>先拿一个与你的问题相似的现成架构，再在你的数据上调</strong>。第 4 章讲如何诊断网络性能并给调参策略；第 5 章讲最流行的 CNN 架构。本节要带走的两点：①概念上懂 CNN 怎么搭；②层多 → 神经元多 → 学习能力强，但<strong>计算成本随之而来</strong>——按训练数据的规模与复杂度选层，简单任务未必需要很多层。</p>
+</div>
+<h2 id="37-项目彩色图像分类CIFAR-10">3.7 项目：彩色图像分类（CIFAR-10）<a class="headerlink" href="#37-项目彩色图像分类CIFAR-10" title="Permanent link">#</a></h2>
+<p>端到端实战：训练 CNN 分类 <strong>CIFAR-10</strong> 数据集——CV 领域的经典目标识别数据集，是 <em>80 Million Tiny Images</em>（Torralba, Fergus, Freeman, IEEE TPAMI 2008）的子集：<strong>60,000 张 <span class="arithmatex">\(32\times32\)</span> 彩色图、10 类、每类 6,000 张</strong>。</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Step 1&lt;br/&gt;加载数据集"] --&gt; B["Step 2&lt;br/&gt;预处理：/255 · one-hot · 切分"]
+    B --&gt; C["Step 3&lt;br/&gt;定义模型架构"]
+    C --&gt; D["Step 4&lt;br/&gt;compile：损失 + 优化器 + 指标"]
+    D --&gt; E["Step 5&lt;br/&gt;训练（盯 val_loss）"]
+    E --&gt; F["Step 6&lt;br/&gt;加载最优权重"]
+    F --&gt; G["Step 7&lt;br/&gt;评估测试集"]</code></pre>
+<h3 id="Step-1加载数据集">Step 1：加载数据集<a class="headerlink" href="#Step-1加载数据集" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># ===== 书 3.7 节 Step 1（Keras 原文）=====</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">keras</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">cifar10</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">cifar10</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">36</span><span class="p">):</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># ===== PyTorch 等价 =====</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torchvision</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">T</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>   <span class="c1"># 顺带完成 /255：[0,255] → [0,1]</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">trainval</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="s1">'./data'</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">test_set</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="s1">'./data'</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="Step-2图像预处理">Step 2：图像预处理<a class="headerlink" href="#Step-2图像预处理" title="Permanent link">#</a></h3>
+<p>按数据集与问题做清理，让数据"配上"学习模型。先记一条梯度下降的硬规矩（图 3.38）：</p>
+<blockquote>
+<p><strong>TIP</strong>：用梯度下降时，<strong>所有特征必须尺度相近</strong>，否则收敛要慢得多。特征同尺度时等高线是匀称的碗（左）；一个特征远小于另一个时是拉长的碗（右），下降路径来回震荡。</p>
+</blockquote>
+<figure>
+  <img src="../images/ch03/fig-3-38.png" width="420" class="lq-img" />
+  <figcaption>图 3.38 特征缩放前后：匀称的碗 vs 拉长的碗（截自原书）</figcaption>
+</figure>
+
+<p><strong>① 重缩放图像</strong>：像素除以 255，压进 <span class="arithmatex">\([0,1]\)</span>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># ===== 书 3.7 节 Step 2（Keras 原文）=====</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">x_test</span>  <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+</code></pre></div>
+<p><strong>② 准备标签（one-hot 编码）</strong>：图像已变成数字矩阵，标签还是文本（10 类：airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck）。**One-hot Encoding（独热编码）**把类别变量变成数字形式：</p>
+<table>
+<thead>
+<tr>
+<th>图像</th>
+<th>标签</th>
+<th>→</th>
+<th>airplane</th>
+<th>bird</th>
+<th>cat</th>
+<th>deer</th>
+<th>dog</th>
+<th>frog</th>
+<th>horse</th>
+<th>ship</th>
+<th>truck</th>
+<th>automobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image_1</td>
+<td>dog</td>
+<td>→</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>image_2</td>
+<td>automobile</td>
+<td>→</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>image_3</td>
+<td>airplane</td>
+<td>→</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># ===== 书 3.7 节 Step 2（Keras 原文）=====</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">np_utils</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">y_train</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">y_test</span>  <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span>  <span class="n">num_classes</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：标签矩阵</p>
+<p>one-hot 把 <span class="arithmatex">\((1\times n)\)</span> 的标签向量变成 <span class="arithmatex">\((n\times10)\)</span> 的标签矩阵：1,000 张图的标签矩阵就是 <span class="arithmatex">\(1000\times10\)</span>。所以下一步定义网络时，输出 softmax 层要 10 个节点，每个节点输出一类的概率。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">PyTorch 差异③：标签不需要 one-hot</p>
+<p><code>nn.CrossEntropyLoss</code> 直接吃 <strong>0~9 的类别索引</strong>，内部完成 log-softmax + NLL，所以 PyTorch 版跳过 <code>to_categorical</code>；预测结果若要概率再手动 <code>softmax</code>。（one-hot 的知识仍然要懂——很多数据管线仍用它。）</p>
+</div>
+<p><strong>③ 切分训练/验证集</strong>：除了 train/test，还要从训练数据里再切一块验证集（图 3.39）。三块数据各司其职：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training</strong> 训练集</td>
+<td>训练模型</td>
+</tr>
+<tr>
+<td><strong>Validation</strong> 验证集</td>
+<td>调超参时提供<strong>无偏</strong>的拟合评估；一旦验证集的表现被纳入模型配置，这个评估就逐渐"不再无偏"</td>
+</tr>
+<tr>
+<td><strong>Test</strong> 测试集</td>
+<td>对最终模型提供<strong>无偏</strong>评估</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="../images/ch03/fig-3-39.png" width="460" class="lq-img" />
+  <figcaption>图 3.39 训练 / 验证 / 测试三切分（截自原书）</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># ===== 书 3.7 节 Step 2（Keras 原文）：前 5000 张作验证集 =====</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_valid</span><span class="p">)</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="mi">5000</span><span class="p">:],</span> <span class="n">x_train</span><span class="p">[:</span><span class="mi">5000</span><span class="p">]</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">5000</span><span class="p">:],</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">5000</span><span class="p">]</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># 结果：45,000 train / 5,000 valid / 10,000 test</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1"># ===== PyTorch 等价 =====</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">random_split</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">train_set</span><span class="p">,</span> <span class="n">valid_set</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span><span class="n">trainval</span><span class="p">,</span> <span class="p">[</span><span class="mi">45000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">])</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="n">valid_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">valid_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="Step-3定义模型架构">Step 3：定义模型架构<a class="headerlink" href="#Step-3定义模型架构" title="Permanent link">#</a></h3>
+<p>DL 项目的基本套路：把实现"数据蒸馏"的简单层堆在一起（卷积、池化、全连接 + 激活函数）。<strong>架构怎么定？</strong></p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：如何决定网络架构</p>
+<p>作者的建议：读流行架构（<strong>AlexNet、ResNet、Inception</strong>——第 5 章详述），提炼设计决策背后的关键想法，再动手玩自己的项目，培养直觉。四条实用守则：</p>
+<ul>
+<li>层越多（至少理论上）学得越好，但<strong>计算/内存成本上涨 + 过拟合风险</strong>；</li>
+<li>图像流过网络：<strong>深度增加、宽高收缩</strong>，逐层进行；</li>
+<li>经验起点：<strong>2~3 层 <span class="arithmatex">\(3\times3\)</span> 卷积 + <span class="arithmatex">\(2\times2\)</span> 池化</strong>，反复堆到图像变成合理尺寸（如 <span class="arithmatex">\(4\times4\)</span> 或 <span class="arithmatex">\(5\times5\)</span>），再接几层全连接做分类；</li>
+<li><strong>别重造轮子</strong>：查文献里别人用什么超参，选一个已被验证有效的架构当起点，再微调到自己的场景。</li>
+</ul>
+</div>
+<p>本书选择：缩小版的 <strong>AlexNet</strong>（图 3.40，5 个卷积/池化层 + 3 个全连接层——2012 年 ImageNet 竞赛冠军，第 5 章详解）：</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：AlexNet 夺冠年份</p>
+<p>原书正文写 AlexNet "won the ImageNet challenges in <strong>2011</strong>"——实为 <strong>ILSVRC 2012</strong>（Top-5 错误率 15.3%，比第二名低了约 10 个百分点），第 5 章详述。</p>
+</div>
+<figure>
+  <img src="../images/ch03/fig-3-40.png" width="660" class="lq-img" />
+  <figcaption>图 3.40 AlexNet 架构（截自原书）</figcaption>
+</figure>
+
+<p>我们的缩小版堆 3 个卷积层 + 2 个全连接层（图 3.41）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>CNN: INPUT ⇒ CONV_1 ⇒ POOL_1 ⇒ CONV_2 ⇒ POOL_2 ⇒ CONV_3 ⇒ POOL_3 ⇒ DO ⇒ FC ⇒ DO ⇒ FC(softmax)
+</code></pre></div>
+<figure>
+  <img src="../images/ch03/fig-3-41.png" width="640" class="lq-img" />
+  <figcaption>图 3.41 小 AlexNet：三卷积 + 三池化 + 两全连接，左为特征提取器右为分类器（截自原书）</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># ===== 书 3.7 节 Step 3：Keras 原文 =====</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>   <span class="c1"># CONV_1</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>                            <span class="c1"># POOL_1</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>                            <span class="c1"># CONV_2</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>                            <span class="c1"># POOL_2</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">,</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>                            <span class="c1"># CONV_3</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>                            <span class="c1"># POOL_3</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>                                         <span class="c1"># DO（卷积块后）</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>                                            <span class="c1"># Flatten</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>                        <span class="c1"># FC_1</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">))</span>                                         <span class="c1"># DO（全连接之间）</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>                      <span class="c1"># FC_2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># ===== PyTorch 等价：小 AlexNet（含 Keras 'same' 偶数核的手工补零）=====</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">SmallAlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="sd">"""Keras 的 kernel_size=2 + padding='same' 靠不对称补零（下/右各 1 圈）实现；</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="sd">    PyTorch 的 padding 只能对称，故用 F.pad(x, (0,1,0,1)) 手工复刻，</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="sd">    才能保住书中的尺寸线 32 → 32 → 16 → 16 → 8 → 8 → 4。"""</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 16×(2×2×3) + 16 = 208</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 32×(2×2×16) + 32 = 2,080</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 64×(2×2×32) + 64 = 8,256</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span>   <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>        <span class="c1"># 1024×500 + 500 = 512,500</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span>   <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>                <span class="c1"># 500×10 + 10 = 5,010</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">drop1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>    <span class="nd">@staticmethod</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">same_pad</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                     <span class="c1"># 复刻 Keras 'same'（偶数核）的下/右补零</span>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a>
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">same_pad</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (16,32,32)→(16,16,16)</span>
+<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">same_pad</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (32,16,16)→(32,8,8)</span>
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">same_pad</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (64,8,8)→(64,4,4)</span>
+<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                                    <span class="c1"># → 1024 = 4×4×64</span>
+<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop2</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># 输出 logits（softmax 并入 CrossEntropyLoss）</span>
+<a id="__codelineno-25-31" name="__codelineno-25-31" href="#__codelineno-25-31"></a>
+<a id="__codelineno-25-32" name="__codelineno-25-32" href="#__codelineno-25-32"></a><span class="n">model</span> <span class="o">=</span> <span class="n">SmallAlexNet</span><span class="p">()</span>
+<a id="__codelineno-25-33" name="__codelineno-25-33" href="#__codelineno-25-33"></a><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>   <span class="c1"># 528,054，与书图 3.42 一致</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch03/fig-3-42.png" width="560" class="lq-img" />
+  <figcaption>图 3.42 小 AlexNet 的 model.summary()：528,054 参数（截自原书）</figcaption>
+</figure>
+
+<p>对账（与图 3.42 的 Param # 列一致）：CONV_1 = 16×(2×2×3)+16 = <strong>208</strong>；POOL 全 0；CONV_2 = 32×(2×2×16)+32 = <strong>2,080</strong>；CONV_3 = 64×(2×2×32)+64 = <strong>8,256</strong>；Dropout/Flatten 全 0；FC_1 = 1024×500+500 = <strong>512,500</strong>；FC_2 = 500×10+10 = <strong>5,010</strong>；合计 <strong>528,054</strong>。注意形状变化：<span class="arithmatex">\(32\times32\times3 \to 32\times32\times16 \to 16\times16\times16 \to 16\times16\times32 \to 8\times8\times32 \to 8\times8\times64 \to 4\times4\times64 \to\)</span> 展平 1024。</p>
+<h3 id="Step-4compile-模型">Step 4：compile 模型<a class="headerlink" href="#Step-4compile-模型" title="Permanent link">#</a></h3>
+<p>训练前再定三个超参数：</p>
+<table>
+<thead>
+<tr>
+<th>超参数</th>
+<th>作用</th>
+<th>书中取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Loss function</strong> 损失函数</td>
+<td>网络在训练数据上衡量自身表现的尺子</td>
+<td><code>categorical_crossentropy</code></td>
+</tr>
+<tr>
+<td><strong>Optimizer</strong> 优化器</td>
+<td>更新参数以压低损失值的机制（第 2 章讲过的随机梯度下降家族）</td>
+<td><code>rmsprop</code></td>
+</tr>
+<tr>
+<td><strong>Metrics</strong> 指标</td>
+<td>训练/测试过程中监控的指标</td>
+<td><code>accuracy</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># ===== 书 3.7 节 Step 4（Keras 原文）=====</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">'rmsprop'</span><span class="p">,</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># ===== PyTorch 等价 =====</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>                       <span class="c1"># 含 softmax 的多分类交叉熵</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>     <span class="c1"># rmsprop</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># 指标（accuracy）在验证/评估循环里手算，见 Step 5/7。</span>
+</code></pre></div>
+<h3 id="Step-5训练模型">Step 5：训练模型<a class="headerlink" href="#Step-5训练模型" title="Permanent link">#</a></h3>
+<p>Keras 用 <code>model.fit()</code> 一行开训，配 <code>ModelCheckpoint</code> 回调：<strong>每轮只在 val_loss 创新低时保存权重</strong>（<code>save_best_only=True</code>）—— epochs=100、batch_size=32：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># ===== 书 3.7 节 Step 5（Keras 原文）=====</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelCheckpoint</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">'model.weights.best.hdf5'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>                               <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>                 <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">],</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>                 <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># ===== PyTorch 等价：手写训练循环 + "只在提升时存权重" =====</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">best_val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>                       <span class="c1"># epochs=100</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>                <span class="c1"># batch_size=32，shuffle=True</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">),</span> <span class="n">yb</span><span class="p">)</span>        <span class="c1"># CrossEntropyLoss（softmax 已并入）</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>                               <span class="c1"># 关闭 Dropout</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>        <span class="n">vl</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">criterion</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">),</span> <span class="n">yb</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">yb</span><span class="p">)</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>                 <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">valid_loader</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_set</span><span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>    <span class="k">if</span> <span class="n">vl</span> <span class="o">&lt;</span> <span class="n">best_val</span><span class="p">:</span>                          <span class="c1"># 复刻 ModelCheckpoint(save_best_only=True)</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>        <span class="n">best_val</span> <span class="o">=</span> <span class="n">vl</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">'model.best.pt'</span><span class="p">)</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">: val_loss=</span><span class="si">{</span><span class="n">vl</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</code></pre></div>
+<p>训练日志（图 3.43）是最重要的"仪表盘"，看几个关键点：</p>
+<ul>
+<li><code>loss/acc</code> 是<strong>训练集</strong>的误差与准确率；<code>val_loss/val_acc</code> 是<strong>验证集</strong>的。理想状态：val_loss 一路降、val_acc 一路升——说明网络每轮都在真学；</li>
+<li>第 1~6 轮 val_loss 持续改善（1.3582 → 1.2224 → 1.1210 → 1.1072 → 0.9738 → 0.9550），每轮都存下"迄今最优"权重；</li>
+<li><strong>第 7 轮 val_loss 从 0.9445 飙到 1.1300——没改善，不保存</strong>。此刻停训并加载第 6 轮权重，就是目前最好的模型；</li>
+<li>第 8 轮又改善（0.9178）继续存；第 9 轮没改善……若 12 轮后停训，加载到的是<strong>第 10 轮</strong>的权重（val_loss=0.9157、val_acc=0.6936），可预期测试准确率接近 69%。</li>
+</ul>
+<figure>
+  <img src="../images/ch03/fig-3-43.png" width="640" class="lq-img" />
+  <figcaption>图 3.43 训练日志前 13 轮：看 val_loss 决定存不存权重（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书日志排版瑕疵</p>
+<p>图 3.43 首行 "Train on 45000 amples" 缺了字母（应为 samples），是原书截图排版问题，不影响内容。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：盯住这些常见现象（3 种症状 → 3 个药方）</p>
+<p><pre class="mermaid"><code>flowchart TD
+    A["看训练日志"] --&gt; B{"val_loss 上蹿下跳？&lt;br/&gt;0.8 → 0.9 → 0.7 → 1.0"}
+    B -- 是 --&gt; C["学习率太大，下不了误差山&lt;br/&gt;→ 调低学习率，训练更久"]
+    A --&gt; D{"val_loss 一直不降？"}
+    D -- 是 --&gt; E["模型太简单，欠拟合&lt;br/&gt;→ 加隐藏层/加复杂度"]
+    A --&gt; F{"loss 在降但 val_loss 不降了？"}
+    F -- 是 --&gt; G["开始过拟合训练集&lt;br/&gt;→ 上 Dropout 等防过拟合手段（第 4 章还有更多）"]</code></pre>
+大学习率的下降路径大步跨越、来回震荡；小学习率步子小、稳步下山。</p>
+</div>
+<h3 id="Step-6加载最优权重">Step 6：加载最优权重<a class="headerlink" href="#Step-6加载最优权重" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># ===== 书 3.7 节 Step 6 =====</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># Keras: model.load_weights('model.weights.best.hdf5')</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'model.best.pt'</span><span class="p">))</span>   <span class="c1"># PyTorch 等价</span>
+</code></pre></div>
+<h3 id="Step-7评估模型">Step 7：评估模型<a class="headerlink" href="#Step-7评估模型" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># ===== 书 3.7 节 Step 7 =====</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># Keras:</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="c1"># score = model.evaluate(x_test, y_test, verbose=0)</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># print('\n', 'Test accuracy:', score[1])</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="c1"># ===== PyTorch 等价 =====</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>    <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">yb</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'Test accuracy:'</span><span class="p">,</span> <span class="n">correct</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_set</span><span class="p">))</span>     <span class="c1"># 约 0.70</span>
+</code></pre></div>
+<p>测试准确率约 <strong>70%</strong>——不算差，但大有提升空间：试着加卷积层、池化层改架构。第 4 章专讲如何搭项目与调超参，章末我们会回到这个项目，把准确率提到 <strong>90% 以上</strong>。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>别用 MLP 啃原始图像</strong>：展平先丢空间信息，全连接再炸参数（10 亿级）；"MNIST 上 MLP 也有 96%"是干净数据的特例，CIFAR-10 上只有 30~40%。</li>
+<li><strong>参数大头几乎总在 Flatten 后的第一个全连接层</strong>：MNIST CNN 的 220,234 里有 200,768（91%）在 Dense_1——降参先动全连接（换 GAP 或减节点）。</li>
+<li><strong>卷积保深度、池化缩宽高，别搞反</strong>：filters 数决定下一层深度；池化永远不改变深度。</li>
+<li><strong>输出尺寸公式除不尽要向下取整</strong>：(28−3)/2+1=13.5→13；stride=2 的网络要提前算好尺寸线，否则 Flatten 时对不上。</li>
+<li><strong>偶数核没有 PyTorch 版 'same'</strong>：Keras 的 2×2 + same 是不对称补零；PyTorch 要 <code>F.pad(x,(0,1,0,1))</code> 手工复刻，直接 <code>padding=1</code> 会得到另一条尺寸线。</li>
+<li><strong>PyTorch 别再接 Softmax 层</strong>：<code>CrossEntropyLoss</code> 已含 log-softmax，输出层再叠一个 softmax = 双重压缩，梯度变差训练变慢。</li>
+<li><strong>Dropout 只放在全连接层之间</strong>（Flatten 之后），卷积/池化层里效果研究尚不充分；记得 <code>model.eval()</code> 关闭它再做验证/测试。</li>
+<li><strong>看日志下药，别乱调</strong>：val_loss 震荡 → 降学习率；不降 → 欠拟合加层；loss 降而 val_loss 不降 → 过拟合上 Dropout。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>MLP 啃图像两大缺陷：<strong>展平丢空间特征</strong> + <strong>全连接参数爆炸</strong>（669,706 起，大图到 10 亿级）。</li>
+<li>CNN = <strong>卷积层提特征 + 池化层降维 + 全连接层分类</strong>；训练机制（前向、损失、反向传播）与 MLP 完全相同。</li>
+<li>卷积 = 感受野与核<strong>逐元素相乘再求和</strong>（+偏置）；核的值就是权重，随机初始化、训练学出；每个核产出一张特征图。</li>
+<li>输出尺寸公式 <span class="arithmatex">\(O=(W-K+2P)/S+1\)</span>（向下取整）；stride 1 + same 保尺寸，stride 2 近乎减半。</li>
+<li>filters 数 = 下一层深度 = 特征图张数；一个 <span class="arithmatex">\(3\times3\)</span> 核 = 9 个隐藏单元；核常见 <span class="arithmatex">\(2\times2\sim5\times5\)</span>，小核抓细节。</li>
+<li>池化：max/average，窗口无权重，缩宽高保深度；GAP 整图求平均把 3D 数组压成向量；池化抗小平移、零参数。</li>
+<li>参数量公式：<span class="arithmatex">\(\text{filters} \times K \times K \times \text{depth}_{prev} + \text{filters}\)</span>；池化与 Flatten 层参数为 0。</li>
+<li>Dropout：训练时按 rate 随机关神经元，打散共依赖、近似集成学习；放 Flatten 之后的 FC 层之间。</li>
+<li>彩色图卷积：核变 3D（<span class="arithmatex">\(3\times3\times3=27\)</span> 权重），逐通道卷积求和 + 偏置；颜色是不是关键特征由任务决定（肉眼测试）。</li>
+<li>MNIST CNN（220,234 参数）vs MLP（669,706）：参数砍 &#8532;、准确率 99% vs 96%；CIFAR-10 小 AlexNet（528,054 参数）~70%，第 4 章调到 90%+。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convolution</td>
+<td>卷积</td>
+<td>两个函数（图像 × 核）生成第三个函数（特征图）的运算</td>
+</tr>
+<tr>
+<td>Kernel / Filter</td>
+<td>卷积核 / 滤波器</td>
+<td>滑过图像的权重小矩阵，网络要学的就是它</td>
+</tr>
+<tr>
+<td>Feature Map / Activation Map</td>
+<td>特征图 / 激活图</td>
+<td>一个滤波器作用后的输出，标记某特征出现的位置</td>
+</tr>
+<tr>
+<td>Receptive Field</td>
+<td>感受野</td>
+<td>核当前覆盖、参与卷积的那块图像区域</td>
+</tr>
+<tr>
+<td>Convolutional Layer (CONV)</td>
+<td>卷积层</td>
+<td>特征发现窗口，CNN 的核心构件</td>
+</tr>
+<tr>
+<td>Pooling Layer (POOL)</td>
+<td>池化层</td>
+<td>用 max/average 下采样，缩尺寸保深度、零参数</td>
+</tr>
+<tr>
+<td>Max / Average Pooling</td>
+<td>最大 / 平均池化</td>
+<td>窗口取最大值 / 平均值传下去</td>
+</tr>
+<tr>
+<td>Global Average Pooling (GAP)</td>
+<td>全局平均池化</td>
+<td>整张特征图求平均：H×W×D → 1×1×D 向量</td>
+</tr>
+<tr>
+<td>Stride</td>
+<td>步幅</td>
+<td>核每次滑动的像素数；2 以上输出近乎减半</td>
+</tr>
+<tr>
+<td>Padding (Zero Padding)</td>
+<td>（零）填充</td>
+<td>图像四周补 0，保持输出与输入同尺寸</td>
+</tr>
+<tr>
+<td>Sliding Window</td>
+<td>滑动窗口</td>
+<td>局部连接中每个节点看到的前一层小块</td>
+</tr>
+<tr>
+<td>Locally Connected</td>
+<td>局部连接</td>
+<td>节点只连前一层的子集，省参数</td>
+</tr>
+<tr>
+<td>Flatten</td>
+<td>展平层</td>
+<td>多维矩阵/特征管 → 一维向量，不加参数</td>
+</tr>
+<tr>
+<td>Fully Connected / Dense / MLP</td>
+<td>全连接 / Dense / MLP</td>
+<td>同一种普通神经网络层的不同叫法</td>
+</tr>
+<tr>
+<td>Weight Sharing</td>
+<td>权值共享</td>
+<td>同一套核权重在图像所有位置复用（拓展概念）</td>
+</tr>
+<tr>
+<td>Dropout</td>
+<td>丢弃法</td>
+<td>训练时随机关掉 rate 比例神经元防过拟合</td>
+</tr>
+<tr>
+<td>Overfitting / Underfitting</td>
+<td>过拟合 / 欠拟合</td>
+<td>背题不会举一反三 / 太简单连训练集都学不会</td>
+</tr>
+<tr>
+<td>One-hot Encoding</td>
+<td>独热编码</td>
+<td>类别标签 → 0/1 向量（PyTorch 的 CrossEntropyLoss 可省略）</td>
+</tr>
+<tr>
+<td>Validation Set</td>
+<td>验证集</td>
+<td>调超参用的"无偏"评估数据（与测试集分工）</td>
+</tr>
+<tr>
+<td>ModelCheckpoint</td>
+<td>模型检查点</td>
+<td>只在 val_loss 创新低时保存最优权重的回调</td>
+</tr>
+<tr>
+<td>Categorical Crossentropy</td>
+<td>类别交叉熵</td>
+<td>多分类损失；PyTorch 里由 CrossEntropyLoss 兼任 softmax</td>
+</tr>
+<tr>
+<td>Epoch / Batch Size</td>
+<td>轮 / 批大小</td>
+<td>全训练集过一遍 / 每次前向的样本数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
+<details class="note">
+<summary>原书小节 → 笔记位置</summary>
+<table>
+<thead>
+<tr>
+<th>原书</th>
+<th>笔记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>章首（本章路线 + MLP/CNN 四个相同点）</td>
+<td>导语表 + 3.0 导图</td>
+</tr>
+<tr>
+<td>3.1.1 输入层 + 侧栏"可视化输入向量"</td>
+<td>§3.1.1（numpy 演示）</td>
+</tr>
+<tr>
+<td>3.1.2 隐藏层 + 侧栏"选激活函数"</td>
+<td>§3.1.2–3.1.3</td>
+</tr>
+<tr>
+<td>3.1.3 输出层</td>
+<td>§3.1.3</td>
+</tr>
+<tr>
+<td>3.1.4 组装 + 参数对账 669,706 + 侧栏"MLPs vs. CNNs"</td>
+<td>§3.1.4</td>
+</tr>
+<tr>
+<td>3.1.5 两大缺陷（空间特征丢失 / 全连接）+ 图 3.5–3.8</td>
+<td>§3.1.5</td>
+</tr>
+<tr>
+<td>3.2.1 大局观 + DEFINITION 特征图</td>
+<td>§3.2.1</td>
+</tr>
+<tr>
+<td>3.2.2 细看特征提取</td>
+<td>§3.2.2</td>
+</tr>
+<tr>
+<td>3.2.3 细看分类 + 侧栏"CNN 如何学模式"</td>
+<td>§3.2.3</td>
+</tr>
+<tr>
+<td>3.3 三组件总览 + 文字表示法</td>
+<td>§3.3 引言</td>
+</tr>
+<tr>
+<td>3.3.1 卷积层（卷积运算/感受野/边缘核/四超参）+ 侧栏"调参"</td>
+<td>§3.3.1（公式与权值共享为拓展）</td>
+</tr>
+<tr>
+<td>3.3.2 池化层（max/avg/GAP）+ 侧栏"池化 vs stride/padding" + 回顾 + 逐层可视化侧栏</td>
+<td>§3.3.2</td>
+</tr>
+<tr>
+<td>3.3.3 全连接层 + 侧栏"名词统一"</td>
+<td>§3.3.3</td>
+</tr>
+<tr>
+<td>3.4.1 搭架构 + 图 3.27 逐行解读</td>
+<td>§3.4.1</td>
+</tr>
+<tr>
+<td>3.4.2 参数公式 220,234 + 可训练/非可训练</td>
+<td>§3.4.2</td>
+</tr>
+<tr>
+<td>3.5.1–3.5.4 过拟合与 Dropout + 侧栏"二头肌直觉"</td>
+<td>§3.5</td>
+</tr>
+<tr>
+<td>3.6.1 彩色图 3D 卷积 + 图 3.33–3.35</td>
+<td>§3.6.1</td>
+</tr>
+<tr>
+<td>3.6.2 计算复杂度 + 图 3.36–3.37 + 收尾忠告侧栏</td>
+<td>§3.6.2</td>
+</tr>
+<tr>
+<td>3.7 项目 Step 1–7（含图 3.38–3.43、标签矩阵侧栏、架构决策侧栏、训练现象侧栏）</td>
+<td>§3.7 各 Step</td>
+</tr>
+<tr>
+<td>章末 Summary（6 条）</td>
+<td>§速览（无重复摘抄）</td>
+</tr>
+</tbody>
+</table>
+</details>
 
 
 

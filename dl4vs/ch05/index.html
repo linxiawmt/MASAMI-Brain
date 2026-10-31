@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#第5章-经典CNN架构演进" class="md-skip">
+        <a href="#第-5-章-经典-CNN-架构演进" class="md-skip">
           跳转至
         </a>
       
@@ -558,6 +558,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -574,6 +592,501 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#50-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#51-CNN-设计模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 CNN 设计模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 CNN 设计模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-1特征提取--分类两段式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 1：特征提取 + 分类两段式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2深度增加维度减小" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 2：深度增加，维度减小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-3全连接层的单元数恒定或递减" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 3：全连接层的单元数恒定或递减
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-LeNet-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 LeNet-5
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 LeNet-5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-LeNet-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 LeNet 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-LeNet-5-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 LeNet-5 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#524-MNIST-上的成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 MNIST 上的成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-AlexNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 AlexNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 AlexNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-AlexNet-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1 AlexNet 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-AlexNet-的创新点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2 AlexNet 的创新点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-AlexNet-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.3 AlexNet 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#534-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.4 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#535-AlexNet-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.5 AlexNet 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-VGGNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 VGGNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 VGGNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-创新点统一组件--小核堆叠" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.1 创新点：统一组件 + 小核堆叠
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-VGGNet-的各配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.2 VGGNet 的各配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#543-VGG16-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.3 VGG16 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#544-学习超参与成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.4 学习超参与成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-Inception-与-GoogLeNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Inception 与 GoogLeNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 Inception 与 GoogLeNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-创新点核尺寸别选了全都要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 创新点：核尺寸别选了，全都要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-Inception-模块naive-版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 Inception 模块：naive 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-Inception-模块带降维的版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 Inception 模块：带降维的版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#554-Inception-架构与-GoogLeNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.4 Inception 架构与 GoogLeNet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#555-GoogLeNet-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.5 GoogLeNet 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#556-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.6 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#557-Inception-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.7 Inception 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-ResNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 ResNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 ResNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-创新点skip-connection-解锁超深" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.1 创新点：skip connection 解锁"超深"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-残差块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.2 残差块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-ResNet50-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.3 ResNet50 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.4 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#565-ResNet-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.5 ResNet 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-五大架构演进总览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 五大架构演进总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -747,6 +1260,490 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#50-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#51-CNN-设计模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 CNN 设计模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 CNN 设计模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-1特征提取--分类两段式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 1：特征提取 + 分类两段式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2深度增加维度减小" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 2：深度增加，维度减小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-3全连接层的单元数恒定或递减" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 3：全连接层的单元数恒定或递减
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-LeNet-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 LeNet-5
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 LeNet-5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-LeNet-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 LeNet 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-LeNet-5-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 LeNet-5 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#524-MNIST-上的成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 MNIST 上的成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-AlexNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 AlexNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 AlexNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-AlexNet-架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1 AlexNet 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-AlexNet-的创新点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2 AlexNet 的创新点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-AlexNet-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.3 AlexNet 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#534-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.4 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#535-AlexNet-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.5 AlexNet 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-VGGNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 VGGNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 VGGNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-创新点统一组件--小核堆叠" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.1 创新点：统一组件 + 小核堆叠
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-VGGNet-的各配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.2 VGGNet 的各配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#543-VGG16-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.3 VGG16 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#544-学习超参与成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.4 学习超参与成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-Inception-与-GoogLeNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Inception 与 GoogLeNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 Inception 与 GoogLeNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-创新点核尺寸别选了全都要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 创新点：核尺寸别选了，全都要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-Inception-模块naive-版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 Inception 模块：naive 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-Inception-模块带降维的版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 Inception 模块：带降维的版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#554-Inception-架构与-GoogLeNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.4 Inception 架构与 GoogLeNet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#555-GoogLeNet-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.5 GoogLeNet 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#556-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.6 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#557-Inception-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.7 Inception 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-ResNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 ResNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 ResNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-创新点skip-connection-解锁超深" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.1 创新点：skip connection 解锁"超深"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-残差块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.2 残差块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-ResNet50-实现PyTorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.3 ResNet50 实现（PyTorch）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-学习超参" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.4 学习超参
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#565-ResNet-成绩" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.5 ResNet 成绩
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-五大架构演进总览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 五大架构演进总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -765,10 +1762,1458 @@
   
 
 
-<h1 id="第5章-经典CNN架构演进">第5章 经典CNN架构演进<a class="headerlink" href="#第5章-经典CNN架构演进" title="Permanent link">#</a></h1>
+<h1 id="第-5-章-经典-CNN-架构演进">第 5 章 经典 CNN 架构演进<a class="headerlink" href="#第-5-章-经典-CNN-架构演进" title="Permanent link">#</a></h1>
 <blockquote>
-<p>本章笔记整理中，即将按新模板重写。</p>
+<p><strong>本章解决</strong>：卷积、池化、全连接这些积木（第 3 章）该怎么拼成一个能打的网络？答案是抄作业——逐个拆解 LeNet-5、AlexNet、VGGNet、Inception/GoogLeNet、ResNet 五个划时代架构，看每代设计者解决了上一代的什么短板。
+主线一条：<strong>更深、更准、更省</strong>。第 4 章的超参调优技巧在本章全部落地：每个网络都按原论文配置了优化器、学习率、正则化。
+读完本章，你应当具备的能力是<strong>读论文 → 复现架构</strong>——这是全书作者最想交给你的技能。</p>
 </blockquote>
+<h2 id="50-本章导图">5.0 本章导图<a class="headerlink" href="#50-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">经典 CNN 架构演进</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">设计模式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">特征提取(conv) + 分类(FC)</span>
+          <span class="brleaf">深度↑ 维度↓</span>
+          <span class="brleaf">FC 单元恒定或递减</span>
+          <span class="brleaf">深度按权重层数称呼</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">LeNet-5 · 1998</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">5 权重层 · 61,706 参数</span>
+          <span class="brleaf">tanh + 平均池化</span>
+          <span class="brleaf">MNIST &gt;99%</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">AlexNet · 2012</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">ReLU 治梯度消失</span>
+          <span class="brleaf">Dropout 0.5 + 数据增强</span>
+          <span class="brleaf">LRN（今用 BN）· 双 GPU</span>
+          <span class="brleaf">6000 万参数 · top-5 15.3%</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">VGGNet · 2014</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">统一 3×3 conv + 2×2 pool</span>
+          <span class="brleaf">小核堆叠：27C² vs 49C²</span>
+          <span class="brleaf">VGG16 1.38 亿 · VGG19 1.44 亿</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Inception · GoogLeNet 2014</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">核尺寸：全都要（多尺度并行）</span>
+          <span class="brleaf">1×1 降维层（bottleneck）</span>
+          <span class="brleaf">9 个模块 2+5+2 · 22 层</span>
+          <span class="brleaf">约 1300 万参数 · top-5 6.67%</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">ResNet · 2015</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">skip connection 直通梯度</span>
+          <span class="brleaf">残差块 relu(f(x)+x)</span>
+          <span class="brleaf">bottleneck 1×1 代替池化</span>
+          <span class="brleaf">50/101/152 层 · top-5 3.57%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="51-CNN-设计模式">5.1 CNN 设计模式<a class="headerlink" href="#51-CNN-设计模式" title="Permanent link">#</a></h2>
+<p>第 3、4 章把零件凑齐了：卷积层、池化层、全连接层，加上正则化、数据增强、Dropout、超参调优。本章看它们如何组装——近年来大量 CV 研究其实都在回答"<strong>怎么把这些基础积木拼成有效的 CNN</strong>"。培养直觉最好的办法是读别人的架构（就像大多数人靠读别人的代码学会写代码）。</p>
+<p>作者给每个架构固定讲五件事：<strong>创新点</strong>（解决了什么问题）、<strong>架构</strong>、<strong>代码实现</strong>、<strong>学习超参</strong>（按原论文配置）、<strong>性能</strong>（MNIST / ImageNet 成绩）。三个学习目标：</p>
+<ol>
+<li>理解各架构的结构与超参——简单/中等复杂度问题用 AlexNet、VGGNet 就够，超复杂问题再上 Inception、ResNet；</li>
+<li>理解每个架构的创新点与动机——<strong>每一代网络都是为了解决上一代的具体短板</strong>，读完这五个就有能力读懂新出的网络；</li>
+<li>理解 CNN 的演进脉络与设计者的思考过程——积累"什么可行、什么会出问题"的直觉。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">作者最想传递的技能：读论文</p>
+<p>逐篇啃论文、抓住核心思想、动手实现——作者认为这是每个 DL 从业者的必备技能，也是本书想留下的最大资产：三四年后的最新技术今天没人能教你，能带走的是"自己去读、自己去实现"的能力。建议动手前先读原论文（链接在各节脚注），第 1 部分的知识足够你读懂 pioneers 的原文。</p>
+</div>
+<p>动手抄架构之前，先记住三条反复出现的设计模式：</p>
+<h3 id="模式-1特征提取--分类两段式">模式 1：特征提取 + 分类两段式<a class="headerlink" href="#模式-1特征提取--分类两段式" title="Permanent link">#</a></h3>
+<p>卷积网络几乎总由两部分组成：<strong>特征提取</strong>——一串卷积层；<strong>分类</strong>——一串全连接层。从 LeNet、AlexNet 到近几年的 Inception、ResNet，无一例外（图 5.1）。</p>
+<figure>
+  <img src="../images/ch05/fig-5-1.png" width="640" class="lq-img" />
+  <figcaption>图 5.1 ConvNet 的通用骨架：卷积堆叠提特征，全连接做分类（截自原书）</figcaption>
+</figure>
+
+<h3 id="模式-2深度增加维度减小">模式 2：深度增加，维度减小<a class="headerlink" href="#模式-2深度增加维度减小" title="Permanent link">#</a></h3>
+<p>每一层的输入都是一张"图"。要泛化地看：每张图是 <strong>H × W × 深度</strong> 的 3D 体。输入层深度 = 颜色通道（灰度 1、RGB 3）；越往深处走，"深度"变成<strong>特征图（feature maps）的数量</strong>——它代表前层提取出的特征种类。所以你会看到一条铁律（图 5.2）：</p>
+<ul>
+<li><strong>深度（通道数）随层数增加</strong>：224×224×3 → 55×55×96 → 27×27×256 → 13×13×384……</li>
+<li><strong>空间尺寸随层数减小</strong>：224 → 55 → 27 → 13……</li>
+</ul>
+<figure>
+  <img src="../images/ch05/fig-5-2.png" width="640" class="lq-img" />
+  <figcaption>图 5.2 越深通道越多、空间越小（截自原书）</figcaption>
+</figure>
+
+<h3 id="模式-3全连接层的单元数恒定或递减">模式 3：全连接层的单元数恒定或递减<a class="headerlink" href="#模式-3全连接层的单元数恒定或递减" title="Permanent link">#</a></h3>
+<p>这条不算严格规律，但很实用：一个网络里所有全连接层的隐藏单元数，要么逐层相同、要么逐层递减，<strong>几乎见不到逐层递增的</strong>。研究表明 FC 单元数保持恒定不影响效果——设计网络时可以少做一个选择题：选一个数，套用到所有 FC 层（AlexNet 的 FC6 = FC7 = 4096 就是典型）。</p>
+<p>这些架构成名多半因为它们在 ImageNet 竞赛上成绩好。ImageNet 是一个百万级图像基准，DL/CV 研究者用它对比算法（详见 5.3 节侧栏）。</p>
+<div class="admonition info">
+<p class="admonition-title">本章代码片段不可直接运行</p>
+<p>书中代码按原论文规格实现结构，目标是教你"读论文 → 写实现"；完整可运行代码在书的官网与 GitHub 仓库（moelgendy/deep_learning_for_vision_systems）。下文全部改为 PyTorch 等价实现，层数/通道/核大小/超参与书一致，参数量已逐一跑模型对账。</p>
+</div>
+<h2 id="52-LeNet-5">5.2 LeNet-5<a class="headerlink" href="#52-LeNet-5" title="Permanent link">#</a></h2>
+<p>1998 年 Lecun 等人提出 LeNet-5——CNN 的开山之作。组件你在第 3 章全见过（当年它们可是新发明）：<strong>5 个权重层</strong> = 3 个卷积层 + 2 个全连接层，名字里的"-5"就是指权重层数。</p>
+<div class="admonition note">
+<p class="admonition-title">定义：权重层（Weight Layer）</p>
+<p>卷积层与全连接层叫<strong>权重层</strong>——它们带可训练权重；池化层没有任何权重，不算数。描述网络深度时通用的约定是数权重层：比如 AlexNet 称为 8 层深（5 conv + 3 FC）。只关心权重层的原因：它们才反映模型的<strong>计算复杂度</strong>。</p>
+</div>
+<h3 id="521-LeNet-架构">5.2.1 LeNet 架构<a class="headerlink" href="#521-LeNet-架构" title="Permanent link">#</a></h3>
+<p>原书的架构串：</p>
+<div class="arithmatex">\[\text{INPUT} \Rightarrow \text{C1} \Rightarrow \text{TANH} \Rightarrow \text{S2} \Rightarrow \text{C3} \Rightarrow \text{TANH} \Rightarrow \text{S4} \Rightarrow \text{C5} \Rightarrow \text{TANH} \Rightarrow \text{FC6} \Rightarrow \text{SOFTMAX}\]</div>
+<p>C = 卷积层，S = 次采样（池化）层，FC = 全连接层。注意 LeCun 团队用的是 <strong>tanh</strong> 而不是今天的 ReLU——1998 年 ReLU 还没进 DL 的视野，隐藏层流行 tanh 或 sigmoid。</p>
+<table>
+<tr>
+<td><img src="../images/ch05/fig-5-3.png" /></td>
+<td><img src="../images/ch05/fig-5-4.png" /></td>
+</tr>
+</table>
+<p><em>图 5.3 LeNet-5 原始架构 · 图 5.4 现代画法的 LeNet-5：5×5 卷积 + 平均池化 + 三层 FC（120/84/10）（截自原书）</em></p>
+<h3 id="522-LeNet-5-实现PyTorch">5.2.2 LeNet-5 实现（PyTorch）<a class="headerlink" href="#522-LeNet-5-实现PyTorch" title="Permanent link">#</a></h3>
+<p>读原论文第 6–8 页，抄下四组规格：</p>
+<table>
+<thead>
+<tr>
+<th>设计项</th>
+<th>原论文规格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>各卷积层滤波器数</td>
+<td>C1 = 6，C3 = 16，C5 = 120</td>
+</tr>
+<tr>
+<td>卷积核大小</td>
+<td>一律 5×5</td>
+</tr>
+<tr>
+<td>池化层</td>
+<td>每个 conv 后接 2×2、stride 2 的<strong>平均池化</strong>（当年还没有 max pooling）</td>
+</tr>
+<tr>
+<td>激活函数</td>
+<td>隐藏层 tanh（对称函数被认为比 sigmoid 收敛更快）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书 5.2.2 节 =====</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">LeNet5</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="sd">"""书图 5.4：C1(6) → S2 → C3(16) → S4 → C5(120) → FC6(84) → 输出(10)"""</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">),</span>   <span class="c1"># C1: 28×28×1 → 28×28×6（对应 Keras padding='same'）</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>                                        <span class="c1"># 1998 年还没有 ReLU</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>            <span class="c1"># S2: → 14×14×6（书用平均池化，不是最大池化）</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>                  <span class="c1"># C3: → 10×10×16（Keras padding='valid'）</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>            <span class="c1"># S4: → 5×5×16</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>                <span class="c1"># C5: → 1×1×120</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>                                     <span class="c1"># 1×1×120 → 120</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">),</span>                               <span class="c1"># FC6</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>                       <span class="c1"># FC7 输出层</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LeNet5</span><span class="p">()</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>      <span class="c1"># 61,706</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">拓展：softmax 去哪了？</p>
+<p>Keras 版最后一层写 <code>Dense(10, activation='softmax')</code>；PyTorch 惯例是网络输出 logits（不加 softmax），训练时用 <code>nn.CrossEntropyLoss</code>——它内部已包含 log-softmax + 负对数似然，数值上比"先 softmax 再取 log"稳定得多。推理要概率时再手动 <code>torch.softmax(out, dim=1)</code>。本章之后所有网络同理。</p>
+</div>
+<p>对账：C1 参数 (5×5×1+1)×6 = 156；C3 = (5×5×6+1)×16 = 2,416；C5 = (5×5×16+1)×120 = 48,120；FC6 = 120×84+84 = 10,164；输出 = 84×10+10 = 850。合计 <strong>61,706</strong>——与原书 Keras summary（图 5.5）一模一样。按今天的标准这只是个小网络；后面 AlexNet 直接放大一千倍。</p>
+<div class="admonition note">
+<p class="admonition-title">读原论文的建议（作者经验）</p>
+<p>LeNet 论文比本章其他论文难读。核心内容在论文第 2 节（架构与学习细节）；第 3 节是一堆有趣的实验和结果；后面大篇幅讲 graph transformer network，今天已不常用，可跳过。推荐的阅读顺序：<strong>先 AlexNet（5.3），再 VGGNet（5.4），最后回头读 LeNet</strong>——读完现代的再看经典，事半功倍。</p>
+</div>
+<h3 id="523-学习超参">5.2.3 学习超参<a class="headerlink" href="#523-学习超参" title="Permanent link">#</a></h3>
+<p>LeCun 团队用<strong>分段衰减</strong>的学习率：前 2 个 epoch 用 0.0005，接着 3 个用 0.0002，再 4 个用 0.00005，之后 0.00001；SGD 优化，共训 20 epochs，batch 32。Keras 用 <code>LearningRateScheduler</code> 回调；PyTorch 用 <code>LambdaLR</code> 等价实现：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 书 5.2.3 节 =====</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>   <span class="c1"># 基准 lr</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">lr_lambda</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="sd">"""原书调度：前 2 个 epoch 5e-4 → 3~5 取 2e-4 → 6~9 取 5e-5 → 之后 1e-5。</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">    注意：Keras 回调传入的 epoch 从 0 计数，书中代码 `epoch &lt;= 2`</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sd">    实际覆盖前 3 个 epoch——抄调度函数时留意这个 off-by-one。"""</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">if</span> <span class="n">epoch</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>   <span class="k">return</span> <span class="mf">1.0</span>             <span class="c1"># lr = 5e-4</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="k">elif</span> <span class="n">epoch</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="mf">2e-4</span> <span class="o">/</span> <span class="mf">5e-4</span>     <span class="c1"># lr = 2e-4</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">elif</span> <span class="n">epoch</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">:</span> <span class="k">return</span> <span class="mf">5e-5</span> <span class="o">/</span> <span class="mf">5e-4</span>     <span class="c1"># lr = 5e-5</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="k">else</span><span class="p">:</span>            <span class="k">return</span> <span class="mf">1e-5</span> <span class="o">/</span> <span class="mf">5e-4</span>     <span class="c1"># lr = 1e-5</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">LambdaLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_lambda</span><span class="o">=</span><span class="n">lr_lambda</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>            <span class="c1"># softmax 并入损失（见上文拓展）</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># 训练循环（20 epochs，batch_size=32）：每个 epoch 结束调 scheduler.step()</span>
+</code></pre></div>
+<h3 id="524-MNIST-上的成绩">5.2.4 MNIST 上的成绩<a class="headerlink" href="#524-MNIST-上的成绩" title="Permanent link">#</a></h3>
+<p>MNIST 上训练 LeNet-5，准确率 <strong>99% 以上</strong>。作者留了个实验：把隐藏层激活换成 ReLU 再跑一遍，观察性能差异（tanh → ReLU 的提速效果在 5.3 节展开）。</p>
+<h2 id="53-AlexNet">5.3 AlexNet<a class="headerlink" href="#53-AlexNet" title="Permanent link">#</a></h2>
+<p>LeNet 在 MNIST 上很强，但 MNIST 太简单：灰度单通道、只有 10 类。AlexNet 的动机就是<strong>造一个更深的网络去学更复杂的函数</strong>——它 2012 年赢得 ILSVRC 图像分类竞赛冠军，在 120 万张高分辨率图像、1000 类的 ImageNet 上训练。它是第一个真正意义上的"深度"网络，让 CV 社区从此认真对待卷积网络。</p>
+<p>LeNet 和 AlexNet 结构同源：卷积 + 池化堆叠提特征，FC + softmax 收尾。差距在体量：<strong>61,000 参数 → 约 6,000 万参数、65 万个神经元</strong>——更大的学习容量，才啃得动复杂特征。</p>
+<div class="admonition info">
+<p class="admonition-title">侧栏：ImageNet 与 ILSVRC</p>
+<p><strong>ImageNet</strong>（image-net.org）：为视觉识别研究而生的大型图像库，按 WordNet 词表把图像标注进约 <strong>22,000 个类别</strong>；图片从网络收集、由人工用 Amazon Mechanical Turk 打标，目前已超 <strong>1,400 万张</strong>。数据按 <strong>synset</strong>（同义词组）组织，目标是每个 synset 1,000+ 张图。
+<strong>ILSVRC</strong>（ImageNet Large Scale Visual Recognition Challenge）：ImageNet 主办的年度竞赛，比拼分类、检测、场景标注算法。本章就用 ILSVRC 成绩当作各架构的对比基准。</p>
+</div>
+<figure>
+  <img src="../images/ch05/fig-5-6.png" width="640" class="lq-img" />
+  <figcaption>图 5.6 AlexNet：5 个卷积层 + 3 个全连接层，1000 类输出（截自原书）</figcaption>
+</figure>
+
+<h3 id="531-AlexNet-架构">5.3.1 AlexNet 架构<a class="headerlink" href="#531-AlexNet-架构" title="Permanent link">#</a></h3>
+<p>积木与 LeNet 相同，规格不同：11×11、5×5、3×3 三种卷积核；最大池化降采样；Dropout 防过拟合；隐藏层全部 ReLU（LeNet 是 tanh），输出层 softmax。文字串：</p>
+<div class="arithmatex">\[\text{INPUT} \Rightarrow \text{CONV1} \Rightarrow \text{POOL2} \Rightarrow \text{CONV3} \Rightarrow \text{POOL4} \Rightarrow \text{CONV5} \Rightarrow \text{CONV6} \Rightarrow \text{CONV7} \Rightarrow \text{POOL8} \Rightarrow \text{FC9} \Rightarrow \text{FC10} \Rightarrow \text{SOFTMAX}\]</div>
+<p>（原书把末项印作 "SOFTMAX7"，是编号笔误，实为第 11 层的 softmax。）</p>
+<div class="admonition warning">
+<p class="admonition-title">224 还是 227？</p>
+<p>AlexNet 原论文写输入 224×224×3，但只有 <strong>227×227×3</strong> 才能让尺寸算得通：<span class="arithmatex">\((227-11)/4+1=55\)</span>。作者判断这是论文的排版笔误——复现时请用 227。</p>
+</div>
+<p>逐层尺寸（对照图 5.7，记住这套手算，复现论文时用得上）：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>配置</th>
+<th>输出尺寸</th>
+<th>计算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONV1</td>
+<td>11×11, stride 4, 96 核</td>
+<td>55×55×96</td>
+<td>(227−11)/4+1 = 55</td>
+</tr>
+<tr>
+<td>Pool</td>
+<td>3×3, stride 2</td>
+<td>27×27×96</td>
+<td>(55−3)/2+1 = 27</td>
+</tr>
+<tr>
+<td>CONV2</td>
+<td>5×5, pad 2, 256 核</td>
+<td>27×27×256</td>
+<td>(27+2×2−5)/1+1 = 27</td>
+</tr>
+<tr>
+<td>Pool</td>
+<td>3×3, stride 2</td>
+<td>13×13×256</td>
+<td>(27−3)/2+1 = 13</td>
+</tr>
+<tr>
+<td>CONV3</td>
+<td>3×3, pad 1, 384 核</td>
+<td>13×13×384</td>
+<td>(13+2×1−3)/1+1 = 13</td>
+</tr>
+<tr>
+<td>CONV4</td>
+<td>3×3, pad 1, 384 核</td>
+<td>13×13×384</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>CONV5</td>
+<td>3×3, pad 1, 256 核</td>
+<td>13×13×256</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Pool</td>
+<td>3×3, stride 2</td>
+<td>6×6×256</td>
+<td>(13−3)/2+1 = 6</td>
+</tr>
+<tr>
+<td>Flatten</td>
+<td>—</td>
+<td>9,216</td>
+<td>6×6×256</td>
+</tr>
+<tr>
+<td>FC6 / FC7</td>
+<td>4,096 神经元</td>
+<td>—</td>
+<td>模式 3：两个 FC 同宽</td>
+</tr>
+<tr>
+<td>Softmax</td>
+<td>1,000 神经元</td>
+<td>—</td>
+<td>1000 类</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="../images/ch05/fig-5-7.png" width="700" class="lq-img" />
+  <figcaption>图 5.7 AlexNet 8 个权重层的手算尺寸账（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">这些超参是怎么定出来的？</p>
+<p>核大小、深度、stride、池化位置——全靠大量试错。思路不变：多堆权重层提升容量，中间插池化控制尺寸（第 2 章）。精确调参正是 CNN 设计的痛点之一；下一节的 VGGNet 用"统一配置"缓解了它。</p>
+</div>
+<h3 id="532-AlexNet-的创新点">5.3.2 AlexNet 的创新点<a class="headerlink" href="#532-AlexNet-的创新点" title="Permanent link">#</a></h3>
+<p>AlexNet 之前，DL 只在语音识别等少数领域起步；AlexNet 让 CV 社区相信 DL 真的行。它的创新点你在前几章都见过，这里快速过一遍：</p>
+<p><strong>① ReLU 激活函数。</strong> 用 ReLU 替代 tanh/sigmoid，训练快得多。原因：sigmoid 在饱和区导数极小，权重更新几乎消失——<strong>梯度消失（vanishing gradient）问题</strong>。ReLU 定义 <span class="arithmatex">\(f(x)=\max(0,x)\)</span>，第 2 章讲过细节。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：梯度消失问题</p>
+<p>sigmoid 把大输入空间压进 (0,1)（tanh 是 (−1,1)），输入大幅变化只引起输出的微小变化，导数因此变得极小。反向传播时梯度要逐层连乘权重矩阵，小于 1 的因子连乘 → 指数级衰减到 0，浅层学不到东西，网络性能饱和甚至退化。反过来梯度也可能指数级增大——<strong>梯度爆炸（exploding gradients）</strong>。这个问题在本章 5.6 节 ResNet 处还会回来，那才是它的正面决战。</p>
+</div>
+<figure>
+  <img src="../images/ch05/fig-5-vanish.png" width="560" class="lq-img" />
+  <figcaption>sigmoid 及其导数：导数最大仅 0.25，|x|>4 后趋近 0——深层连乘后梯度形同归零（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：ReLU 为什么快——把账算到底</p>
+<p>对比两边的梯度上界：sigmoid 导数 <span class="arithmatex">\(\sigma'(x)=\sigma(x)(1-\sigma(x))\le 0.25\)</span>，且在饱和区（|x|&gt;4）趋近 0；n 层连乘最好情况衰减 <span class="arithmatex">\(0.25^n\)</span>，坏情况直接归零。ReLU 在正区导数<strong>恒等于 1</strong>，n 层连乘不缩水，梯度原样到达浅层；负区导数为 0 反而带来稀疏性。AlexNet 论文的实测：同样配置下 ReLU 版把训练错误率降到 25% 所需的 epoch 数约为 tanh 版的 <strong>&#8537;</strong>。代价是 ReLU 无上界、输出分布可能漂移——BN（第 4 章）正是它的好搭档。</p>
+</div>
+<p><strong>② Dropout 层。</strong> 被 Dropout 的神经元前向不参与、反向不更新。这意味着每喂一次输入，网络等于<strong>采样了一个不同的子架构，但所有子架构共享同一套权重</strong>。神经元无法依赖特定同伴，被迫学出与任意随机子集都能协作的稳健特征。Krizhevsky 在两个 FC 层用了 <strong>p = 0.5</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：Dropout 为什么等价于免费集成</p>
+<p>训练时每个 mini-batch 采样一个子网络，成千上万个子网络各自学一点，但权重共享让它们互相"借脑"；测试时关闭 Dropout、激活按比例缩放，相当于<strong>把所有子网络的预测平均</strong>——这就是书说"采样不同架构、共享权重"的集成（ensemble）视角。所以 Dropout 0.5 时常把 FC 层放宽一倍来补偿容量（AlexNet 的 4096 也有此考量）。</p>
+</div>
+<p><strong>③ 数据增强。</strong> 用<strong>保持标签的变换</strong>（旋转、翻转、缩放等）人工扩充训练集，第 4 章详解过。</p>
+<p><strong>④ 局部响应归一化（LRN）。</strong> 与第 4 章的批归一化（BN）不同，LRN 靠"邻通道竞争"加速收敛。<strong>如今 BN 已全面替代 LRN</strong>——书里的实现也直接用 BN。</p>
+<p><strong>⑤ 权重正则化。</strong> Krizhevsky 用 weight decay = 0.0005，即第 4 章的 <strong>L2 正则</strong>。过拟合压不住时可以调大 λ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Keras 写法（原书）：model.add(Conv2D(32, (3,3), kernel_regularizer=l2(λ)))</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># PyTorch 等价：optimizer = torch.optim.SGD(..., weight_decay=λ)</span>
+</code></pre></div>
+<p><strong>⑥ 双 GPU 训练。</strong> 当年的 GTX 580 只有 3 GB 显存，装不下 120 万训练样本，团队把网络拆到两块 GPU 上分头算、按需通信（论文里网络画成两条管道就是这个原因）。今天你不需要复刻这套细节——分布式训练已有成熟得多的方案。</p>
+<h3 id="533-AlexNet-实现PyTorch">5.3.3 AlexNet 实现（PyTorch）<a class="headerlink" href="#533-AlexNet-实现PyTorch" title="Permanent link">#</a></h3>
+<p>读原论文第 4 页的架构描述。8 个权重层（5 conv + 3 FC），末层 1000 类 softmax；书的 Keras 实现给每个卷积层后加了 BN、所有隐藏层用 ReLU：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 5.3.3 节 =====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">AlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="sd">"""8 个权重层：5 conv + 3 FC；输入 227×227×3（论文写 224 是笔误）"""</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            <span class="c1"># 第 1 层 CONV1：11×11 大核、stride 4；书版 conv 后接 BN 替代原论文 LRN</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>      <span class="c1"># → 55×55×96</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>           <span class="c1"># → 27×27×96（overlapping pool）</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">96</span><span class="p">),</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="c1"># 第 2 层 CONV2：5×5，same padding；Keras 版此层起带 l2(0.0005) 正则</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>    <span class="c1"># → 27×27×256</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>           <span class="c1"># → 13×13×256</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="c1"># 第 3 层 CONV3：AlexNet 作者在 conv3 之后没有加池化</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>   <span class="c1"># → 13×13×384</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">384</span><span class="p">),</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="c1"># 第 4 层 CONV4（与第 3 层同构）</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">384</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>   <span class="c1"># → 13×13×384</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">384</span><span class="p">),</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>            <span class="c1"># 第 5 层 CONV5</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">384</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>   <span class="c1"># → 13×13×256</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>           <span class="c1"># → 6×6×256</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="p">)</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>                                    <span class="c1"># 6×6×256 = 9,216</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">9216</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>                           <span class="c1"># FC6</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>                           <span class="c1"># FC7（与 FC6 同宽，设计模式 3）</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>                    <span class="c1"># FC8 → 1000 类 logits</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>        <span class="p">)</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="n">model</span> <span class="o">=</span> <span class="n">AlexNet</span><span class="p">()</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>     <span class="c1"># 62,381,096</span>
+</code></pre></div>
+<p>对账：可训练参数 <strong>62,381,096</strong>（Keras summary 的 Total 62,383,848 还包含 5 个 BN 层共 2,752 个不可训练的均值/方差统计量）；FC 三层就占约 5,860 万——大头永远在全连接。</p>
+<h3 id="534-学习超参">5.3.4 学习超参<a class="headerlink" href="#534-学习超参" title="Permanent link">#</a></h3>
+<p>AlexNet 训了 <strong>90 epochs，在两块 GTX 580 上跑了 6 天</strong>。初始 lr = 0.01、momentum = 0.9，验证误差不再改善时 lr 除以 10（Keras 代码用 <code>factor=np.sqrt(0.1)</code> 实现"降为 √0.1 倍"）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 5.3.4 节 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Keras 的 kernel_regularizer=l2(0.0005) 只惩罚该层卷积核；</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># PyTorch 等价做法是把 L2 交给优化器：weight_decay=5e-4</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># （注意差异：PyTorch 会对优化器内全部参数（含 bias/BN）施加衰减）</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Keras: ReduceLROnPlateau(monitor='val_loss', factor=np.sqrt(0.1))</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">#        验证损失停滞时 lr × 0.1^0.5 ≈ ×0.316；书中未设 patience（用 Keras 默认值）</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                                                       <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>      <span class="c1"># categorical_crossentropy 的等价物</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># 训练 90 epochs、batch_size=128；每个 epoch 调 scheduler.step(val_loss)</span>
+</code></pre></div>
+<h3 id="535-AlexNet-成绩">5.3.5 AlexNet 成绩<a class="headerlink" href="#535-AlexNet-成绩" title="Permanent link">#</a></h3>
+<p>2012 年 ILSVRC 上 <strong>top-5 错误率 15.3%</strong>，碾压第二名的 26.2%（传统分类器方法）。这一跳让 CV 社区看到了卷积网络的潜力，直接催生了后面几代架构。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：top-1 / top-5 错误率是什么</p>
+<p><strong>top-1</strong>：正确类别没拿到最高分的比例；<strong>top-5</strong>：正确类别没进前五猜测的比例。例：100 类问题喂一张猫图，输出 Cat 70%、Dog 20%、Horse 5%、Motorcycle 4%、Car 0.6%、Plane 0.4%——若真实标签是 Cat，本题 top-1 答对；若真实标签是 Horse，top-1 错、但进了 top-5。统计 100 张图里漏掉真标签的次数即错误率。
+理想是永远 top-1 正确，但 top-5 能更全面地衡量"错的时候离正确答案有多近"——1000 类问题里随机猜 top-1 命中率只有 0.1%，top-5 也才 0.5%，15.3% 的成绩含金量极高。</p>
+</div>
+<h2 id="54-VGGNet">5.4 VGGNet<a class="headerlink" href="#54-VGGNet" title="Permanent link">#</a></h2>
+<p>VGGNet 2014 年出自牛津大学 Visual Geometry Group（名字由来），组件与 LeNet/AlexNet 完全同款——区别只是<strong>更深</strong>（更多 conv、pool、dense）。它又名 <strong>VGG16</strong>：16 个权重层 = 13 conv + 3 FC。成名点不是新零件，而是<strong>统一架构带来的易懂好抄</strong>。</p>
+<h3 id="541-创新点统一组件--小核堆叠">5.4.1 创新点：统一组件 + 小核堆叠<a class="headerlink" href="#541-创新点统一组件--小核堆叠" title="Permanent link">#</a></h3>
+<p>AlexNet 的痛点：每层核大小、padding、stride 都要单独试错。VGG 的答案是<strong>一刀切</strong>：</p>
+<ul>
+<li>所有卷积层：<strong>3×3 核、stride 1、same padding</strong>；</li>
+<li>所有池化层：<strong>2×2 池、stride 2</strong>。</li>
+</ul>
+<p>为什么改用小核？Simonyan 和 Zisserman 的理由：同样大的感受野下，<strong>多个小核堆叠优于一个大核</strong>——堆叠增加了非线性层数（更多 ReLU），决策函数更有区分度；同时参数更少、成本更低。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：感受野（Receptive Field）</p>
+<p>感受野 = 输出所依赖的输入图像区域（第 3 章）。两个 3×3 卷积（中间不插池化）的等效感受野是 <strong>5×5</strong>；三个连起来是 <strong>7×7</strong>。小核堆叠 = 用更少的参数买同样大的"视野"，还白赚两层非线性。</p>
+</div>
+<p>把参数账摆出来：C 通道下，三层 3×3 卷积的权重数是 <span class="arithmatex">\(3\times(3^2C^2)=27C^2\)</span>；一个 7×7 卷积要 <span class="arithmatex">\(7^2C^2=49C^2\)</span>——<strong>多出 81%</strong>。更深反而更省。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：3×3 由此成为默认核</p>
+<p>VGG 之后，3×3 逐步成了全行业的默认卷积核：Inception 的 3×3 分支、ResNet 的 bottleneck 中层全是 3×3；连 Inception 的 5×5 分支后来也在实践中被两个 3×3 级联替换。今天读到的任何现代网络几乎找不到 11×11 这样的大核——这笔 27C² 对 49C² 的账就是起点。</p>
+</div>
+<p>架构组织方式：若干 3×3 卷积堆成一个块，块尾接 2×2 池化；卷积块序列之后接传统分类器（FC + softmax），见图 5.8。</p>
+<figure>
+  <img src="../images/ch05/fig-5-8.png" width="700" class="lq-img" />
+  <figcaption>图 5.8 VGG16：5 个卷积块（通道 64→128→256→512→512）+ 3 层 FC（截自原书）</figcaption>
+</figure>
+
+<h3 id="542-VGGNet-的各配置">5.4.2 VGGNet 的各配置<a class="headerlink" href="#542-VGGNet-的各配置" title="Permanent link">#</a></h3>
+<p>Simonyan 和 Zisserman 给出 A、A-LRN、B、C、D、E 六种配置（图 5.9），全部同一设计模板，只是每块卷积层数不同。<strong>D = VGG16、E = VGG19</strong> 最常用（名字来自权重层数）。每个块 = 一串 3×3 卷积 + 块尾 2×2 池化。</p>
+<figure>
+  <img src="../images/ch05/fig-5-9.png" width="620" class="lq-img" />
+  <figcaption>图 5.9 VGG 六种配置：从 11 层的 A 到 19 层的 E，D/E 即 VGG16/VGG19（截自原书）</figcaption>
+</figure>
+
+<p>各配置参数量（原书表 5.1，单位：百万）：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>A</th>
+<th>A-LRN</th>
+<th>B</th>
+<th>C</th>
+<th>D (VGG16)</th>
+<th>E (VGG19)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数量</td>
+<td>133</td>
+<td>133</td>
+<td>134</td>
+<td>134</td>
+<td><strong>138</strong></td>
+<td><strong>144</strong></td>
+</tr>
+</tbody>
+</table>
+<p>VGG16 更常用：性能几乎追平 VGG19，参数却少一截。</p>
+<h3 id="543-VGG16-实现PyTorch">5.4.3 VGG16 实现（PyTorch）<a class="headerlink" href="#543-VGG16-实现PyTorch" title="Permanent link">#</a></h3>
+<p>防过拟合的正则（原论文规格）：L2 正则 weight decay <span class="arithmatex">\(5\times10^{-4}\)</span>（书实现里为省篇幅未加，下面超参代码补上）、前两个 FC 层后 Dropout 0.5。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== 书 5.4.3 节 =====</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">VGG</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="sd">"""配置 D（VGG16）：每块卷积数 (2,2,3,3,3)；配置 E（VGG19）= (2,2,4,4,4)"""</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_convs</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">]</span>          <span class="c1"># 5 个块的通道数（图 5.9）</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">layers</span><span class="p">,</span> <span class="n">in_ch</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">3</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">block_convs</span><span class="p">,</span> <span class="n">channels</span><span class="p">):</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>                        <span class="c1"># n 个 3×3 卷积：stride 1 + same padding</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                <span class="n">layers</span> <span class="o">+=</span> <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>                           <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>                <span class="n">in_ch</span> <span class="o">=</span> <span class="n">ch</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>            <span class="n">layers</span> <span class="o">+=</span> <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>   <span class="c1"># 块尾统一 2×2 池化</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>                             <span class="c1"># 224/2⁵ = 7 → 7×7×512 = 25,088</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">25088</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>                   <span class="c1"># FC-4096</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>                          <span class="c1"># 前 2 个 FC 后 Dropout</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="p">)</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="n">vgg16</span> <span class="o">=</span> <span class="n">VGG</span><span class="p">()</span>                                      <span class="c1"># 配置 D：16 权重层</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="n">vgg19</span> <span class="o">=</span> <span class="n">VGG</span><span class="p">(</span><span class="n">block_convs</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>           <span class="c1"># 配置 E：第 3/4/5 块各加一层卷积</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">vgg16</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># 138,357,544</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">vgg19</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># 143,667,240</span>
+</code></pre></div>
+<p>两个数字都与原书一致：<strong>138,357,544 / 143,667,240</strong>。</p>
+<h3 id="544-学习超参与成绩">5.4.4 学习超参与成绩<a class="headerlink" href="#544-学习超参与成绩" title="Permanent link">#</a></h3>
+<p>训练流程照搬 AlexNet：mini-batch GD + momentum 0.9，初始 lr 0.01，验证集准确率停滞时 ÷10。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 5.4.3 节（超参） =====</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">vgg16</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                            <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>             <span class="c1"># 论文的 L2：5×10⁻⁴</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'max'</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</code></pre></div>
+<p>成绩：VGG16 在 ImageNet 上 top-5 错误率 <strong>8.1%</strong>（AlexNet 是 15.3%），VGG19 更进一步到约 <strong>7.4%</strong>。值得一记的细节：尽管参数更多、网络更深，VGG 反而<strong>需要更少的 epoch 就收敛</strong>——深度 + 小卷积核带来了隐式正则化。</p>
+<h2 id="55-Inception-与-GoogLeNet">5.5 Inception 与 GoogLeNet<a class="headerlink" href="#55-Inception-与-GoogLeNet" title="Permanent link">#</a></h2>
+<p>2014 年 Google 团队发表 "Going Deeper with Convolutions"，Inception 网络问世。它的目标写进了论文标题：<strong>网络更深的同时，把网络内部的计算资源用得更省</strong>。其中一个具体形态叫 <strong>GoogLeNet</strong>，作为该团队的 ILSVRC 2014 参赛作品：<strong>22 层深</strong>（超过 VGG），参数却只有 VGG 的约 1/12（约 1.38 亿 → 约 1300 万），成绩还显著更好。积木仍学自经典网络（AlexNet/VGG），新零件叫 <strong>Inception 模块（inception module）</strong>。</p>
+<h3 id="551-创新点核尺寸别选了全都要">5.5.1 创新点：核尺寸别选了，全都要<a class="headerlink" href="#551-创新点核尺寸别选了全都要" title="Permanent link">#</a></h3>
+<p>设计前几代网络时，每层都要做两道选择题：</p>
+<ul>
+<li><strong>卷积核多大？</strong> 1×1、3×3、5×5，甚至 11×11（AlexNet）。小核抓细节，大核会漏掉细小特征（第 3 章）——每一层都得试。</li>
+<li><strong>池化层放哪？</strong> AlexNet 每一两个 conv 就池化一次；VGG 随网络加深改为每两、三、四个 conv 池化一次。全靠实验摸。</li>
+</ul>
+<p>Inception 的回答相当豪横：<strong>别选了，全都放进同一个模块里并行跑</strong>。于是架构从"层叠层"变成"<strong>模块叠模块</strong>"（图 5.10）：Inception 网络开头是一个卷积层 + 池化层，中间堆 inception 模块和池化层，末尾还是常规的全连接分类器。</p>
+<figure>
+  <img src="../images/ch05/fig-5-10.png" width="560" class="lq-img" />
+  <figcaption>图 5.10 经典 CNN（层叠层） vs Inception 网络（模块叠模块）（截自原书）</figcaption>
+</figure>
+
+<h3 id="552-Inception-模块naive-版本">5.5.2 Inception 模块：naive 版本<a class="headerlink" href="#552-Inception-模块naive-版本" title="Permanent link">#</a></h3>
+<p>Inception 模块 = 四层并行组合：</p>
+<ol>
+<li>1×1 卷积层</li>
+<li>3×3 卷积层</li>
+<li>5×5 卷积层</li>
+<li>3×3 最大池化层</li>
+</ol>
+<p>四路输出在<strong>通道维拼接</strong>成一个体，作为下一级的输入。跟着书上的例子走一遍，设输入是 32×32×200：</p>
+<table>
+<thead>
+<tr>
+<th>分支</th>
+<th>配置</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1×1 卷积</td>
+<td>64 核，padding = same</td>
+<td>32×32×64</td>
+</tr>
+<tr>
+<td>3×3 卷积</td>
+<td>128 核，padding = same</td>
+<td>32×32×128</td>
+</tr>
+<tr>
+<td>5×5 卷积</td>
+<td>32 核，padding = same</td>
+<td>32×32×32</td>
+</tr>
+<tr>
+<td>3×3 max pool</td>
+<td>padding = same，stride 1</td>
+<td>32×32×<strong>200</strong>（池化不改通道）</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="../images/ch05/fig-5-11.png" width="620" class="lq-img" />
+  <figcaption>图 5.11 naive Inception 模块：四路并行，输出深度拼接（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书笔误（勘误①）</p>
+<p>原书说四个输出拼成 32×32×<strong>256</strong>。但池化分支不改变通道数——输入 200 通道进来，3×3 max pool（same、stride 1）出去还是 200 通道。正确的拼接深度是 <span class="arithmatex">\(64+128+32+200=\textbf{424}\)</span>，不是 256。（图 5.11 里池化分支标的 32×32×32 同样不对，应为 32×32×200。）</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">为什么用 padding = same</p>
+<p>Keras 的 <code>padding='same'</code> 让输出与输入等宽等高。四条分支必须<strong>等宽等高</strong>才能在深度维对齐拼接——这也是 Inception 模块里所有 conv 用 same、池化用 stride 1 的原因：拼接时直接把各分支深度加起来即可。</p>
+</div>
+<h3 id="553-Inception-模块带降维的版本">5.5.3 Inception 模块：带降维的版本<a class="headerlink" href="#553-Inception-模块带降维的版本" title="Permanent link">#</a></h3>
+<p>naive 版有个大问题：<strong>大核太贵</strong>。算一算上面例子里 5×5 分支的乘法量：输入 32×32×200，接 32 个 5×5×32 的核，</p>
+<div class="arithmatex">\[(32\times32\times200)\times(5\times5\times32)=163{,}840{,}000\approx 1.6\ \text{亿次乘法}\]</div>
+<p>现代计算机跑得动，但确实贵。救星是<strong>降维层（dimensionality reduction layer）——1×1 卷积</strong>：在大核（3×3、5×5）之前先插一个 1×1 卷积把<strong>深度压小</strong>，乘法量跟着崩塌。</p>
+<figure>
+  <img src="../images/ch05/fig-5-12.png" width="620" class="lq-img" />
+  <figcaption>图 5.12 1×1 降维层把 1.6 亿乘法压到约 1/10（截自原书）</figcaption>
+</figure>
+
+<p>还是那个例子：输入 32×32×200，先过 16 核的 1×1 卷积压成 32×32×16，再上 5×5 卷积。输出还是 32×32×32（与不加降维层时相同），但成本变成两段：</p>
+<div class="arithmatex">\[\underbrace{(32\times32\times200)\times(1\times1\times16)}_{3.2\ \text{百万}}+\underbrace{(32\times32\times16)\times(5\times5\times32)}_{13.1\ \text{百万}}=16.3\ \text{百万}\]</div>
+<p><strong>1.63 亿 → 1630 万，整整省 90%。</strong></p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：1×1 卷积层</p>
+<p>1×1 卷积<strong>保持空间尺寸（H、W）不变，只改通道数（深度）</strong>：<span class="arithmatex">\(6\times6\times32\)</span> 的输入乘以 <span class="arithmatex">\(1\times1\times\#\text{filters}\)</span> 的核，输出 <span class="arithmatex">\(6\times6\times\#\text{filters}\)</span>。因为它把网络收窄再放开、形似瓶子的瓶颈，也叫<strong>瓶颈层（bottleneck layer）</strong>；又因为它专门压维度，叫 reduce layer。</p>
+</div>
+<figure>
+  <img src="../images/ch05/fig-5-x1.png" width="460" class="lq-img" />
+  <figcaption>1×1 卷积：空间不动，深度自选（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch05/fig-5-bottleneck.png" width="420" class="lq-img" />
+  <figcaption>瓶颈层：收窄 → 放开，故得此名（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：1×1 卷积为什么这么划算</p>
+<p>两笔账。<strong>乘法账</strong>（书上的）：5×5 卷积的乘法数 = 输出元素数 × 每个输出元素的乘法量 = <span class="arithmatex">\(HW\,C_{out}\times(5\times5\,C_{in})\)</span>，与 <span class="arithmatex">\(C_{in}\)</span> 成正比——先用 1×1 把 <span class="arithmatex">\(C_{in}\)</span> 从 200 压到 16，乘法直接 ÷12.5。<strong>参数账</strong>同理：权重数从 <span class="arithmatex">\(5\times5\times200\times C_{out}\)</span> 降到 <span class="arithmatex">\(1\times1\times200\times16+5\times5\times16\times C_{out}\)</span>。
+那压扁了不怕丢信息吗？Szegedy 等人的实验结论（书里原话）：<strong>只要降得适度，大幅压缩表示尺寸也不伤性能</strong>。直觉是 1×1 相当于对每个像素位置做一次跨通道的"信息重组"，通道之间的相关性往往远高于压后的通道数，压掉的是冗余不是信号。这个思想 5.6 节的 ResNet bottleneck 会原样再用一次。</p>
+</div>
+<p>现在把降维版模块拼出来（图 5.13）：保留四路拼接的骨架，在 <strong>3×3 和 5×5 之前</strong>各加一个 1×1 reduce 层；<strong>max pool 之后也要补一个 1×1</strong>——因为池化层不降深度，不补的话拼接深度会失控。书里给出的设计动机：先在多个尺度上分别处理视觉信息再聚合，下一级就能同时从不同尺度抽象特征；降维让每级可以放心加大单元数，而不会让后级计算量爆炸。</p>
+<figure>
+  <img src="../images/ch05/fig-5-13.png" width="620" class="lq-img" />
+  <figcaption>图 5.13 带降维的 Inception 模块：三处 1×1（3×3 前、5×5 前、池化后）（截自原书）</figcaption>
+</figure>
+
+<p><strong>小结</strong>：不想纠结核尺寸、不想决定池化位置？Inception 让你全都要——这是 naive 版；大核太贵，就在 3×&#8535;×5 前与池化后插 1×1 reduce 层——这是降维版。</p>
+<h3 id="554-Inception-架构与-GoogLeNet">5.5.4 Inception 架构与 GoogLeNet<a class="headerlink" href="#554-Inception-架构与-GoogLeNet" title="Permanent link">#</a></h3>
+<p>用降维版模块堆网络：模块叠模块，中间隔 3×3 池化层降采样（图 5.14），想多深就堆多少。原论文团队造的特定形态就是 <strong>GoogLeNet</strong>（ILSVRC 2014 参赛网络）：<strong>共 9 个 inception 模块</strong>，每隔几个块插一个 max pool 控制尺寸。</p>
+<figure>
+  <img src="../images/ch05/fig-5-15.png" width="300" class="lq-img" />
+  <figcaption>图 5.15 GoogLeNet 三段式：Part A 经典堆叠开场，Part B 九个模块 + 3×3 池化，Part C 分类器（截自原书）</figcaption>
+</figure>
+
+<p>为方便实现，书把 GoogLeNet 拆成三部分：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Part A</strong></td>
+<td>与 LeNet/AlexNet 同款：一串卷积 + 池化</td>
+</tr>
+<tr>
+<td><strong>Part B</strong></td>
+<td>9 个 inception 模块，按 <strong>2 + 池化 + 5 + 池化 + 2</strong> 分组（即 3a,3b → pool → 4a…4e → pool → 5a,5b）</td>
+</tr>
+<tr>
+<td><strong>Part C</strong></td>
+<td>分类器：全连接 + softmax</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误（勘误②）</p>
+<p>原书正文把 Part B 写成"两个模块 + 池化 + <strong>五个</strong>模块 + 池化 + <strong>五个</strong>模块"（2+5+5=12 个）。但 GoogLeNet 一共只有 9 个 inception 模块，正确分组是 <strong>2+5+2</strong>——书里自己的代码（3a,3b / 4a–4e / 5a,5b）和图 5.15 都是 2+5+2。</p>
+</div>
+<h3 id="555-GoogLeNet-实现PyTorch">5.5.5 GoogLeNet 实现（PyTorch）<a class="headerlink" href="#555-GoogLeNet-实现PyTorch" title="Permanent link">#</a></h3>
+<p>每个 inception 模块四条路线（对照图 5.16）：① 1×1 卷积；② 1×1 → 3×3；③ 1×1 → 5×5；④ 3×3 池化 → 1×1。各路线滤波器数从原论文的配置表（图 5.17）抄：</p>
+<figure>
+  <img src="../images/ch05/fig-5-17.png" width="700" class="lq-img" />
+  <figcaption>图 5.17 原论文的 GoogLeNet 全配置表：每行一个模块，#3×3 reduce / #5×5 reduce 就是 1×1 降维核数（截自原书）</figcaption>
+</figure>
+
+<p>整理成表（原书表 5.2 只列了 3a/3b，这里补全 9 个模块）：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>#1×1</th>
+<th>#3×3 reduce</th>
+<th>#3×3</th>
+<th>#5×5 reduce</th>
+<th>#5×5</th>
+<th>pool proj</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inception (3a)</td>
+<td>64</td>
+<td>96</td>
+<td>128</td>
+<td>16</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>inception (3b)</td>
+<td>128</td>
+<td>128</td>
+<td>192</td>
+<td>32</td>
+<td>96</td>
+<td>64</td>
+</tr>
+<tr>
+<td>inception (4a)</td>
+<td>192</td>
+<td>96</td>
+<td>208</td>
+<td>16</td>
+<td>48</td>
+<td>64</td>
+</tr>
+<tr>
+<td>inception (4b)</td>
+<td>160</td>
+<td>112</td>
+<td>224</td>
+<td>24</td>
+<td>64</td>
+<td>64</td>
+</tr>
+<tr>
+<td>inception (4c)</td>
+<td>128</td>
+<td>128</td>
+<td>256</td>
+<td>24</td>
+<td>64</td>
+<td>64</td>
+</tr>
+<tr>
+<td>inception (4d)</td>
+<td>112</td>
+<td>144</td>
+<td>288</td>
+<td>32</td>
+<td>64</td>
+<td>64</td>
+</tr>
+<tr>
+<td>inception (4e)</td>
+<td>256</td>
+<td>160</td>
+<td>320</td>
+<td>32</td>
+<td>128</td>
+<td>128</td>
+</tr>
+<tr>
+<td>inception (5a)</td>
+<td>256</td>
+<td>160</td>
+<td>320</td>
+<td>32</td>
+<td>128</td>
+<td>128</td>
+</tr>
+<tr>
+<td>inception (5b)</td>
+<td>384</td>
+<td>192</td>
+<td>384</td>
+<td>48</td>
+<td>128</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 5.5.5 节 =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">InceptionModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="sd">"""四条路线并行 → 通道维拼接（Keras 在 axis=3 拼接，PyTorch 通道在 dim=1）"""</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_ch</span><span class="p">,</span> <span class="n">f1x1</span><span class="p">,</span> <span class="n">f3x3_red</span><span class="p">,</span> <span class="n">f3x3</span><span class="p">,</span> <span class="n">f5x5_red</span><span class="p">,</span> <span class="n">f5x5</span><span class="p">,</span> <span class="n">f_pool</span><span class="p">):</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="c1"># 路线①：1×1 直连</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">route1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f1x1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="c1"># 路线②：1×1 降维 → 3×3</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">route2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f3x3_red</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>                                    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f3x3_red</span><span class="p">,</span> <span class="n">f3x3</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="c1"># 路线③：1×1 降维 → 5×5</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">route3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f5x5_red</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>                                    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f5x5_red</span><span class="p">,</span> <span class="n">f5x5</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="c1"># 路线④：3×3 池化（不降深度）→ 1×1 补一刀</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">route4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>                                    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f_pool</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">route1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">route2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                          <span class="bp">self</span><span class="o">.</span><span class="n">route3</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">route4</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 5.5.5 节：GoogLeNet 主体 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">GoogLeNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="c1"># ---- Part A：7×7/2 → 3×3池 → 1×1(64) → 3×3(192) → 3×3池 ----</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="c1"># 原论文此处用 LocalRespNorm，书实现换成了 BatchNorm（LRN 已被 BN 取代）</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">partA</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>  <span class="c1"># 224 → 112</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>                 <span class="c1"># 112 → 56</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">192</span><span class="p">),</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>                 <span class="c1"># 56 → 28</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        <span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        <span class="c1"># ---- Part B：2 + 5 + 2 共 9 个 inception 模块（勘误②：不是 2+5+5）----</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc3a</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span>  <span class="mi">64</span><span class="p">,</span>  <span class="mi">96</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">32</span><span class="p">,</span>  <span class="mi">32</span><span class="p">)</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc3b</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span>  <span class="mi">96</span><span class="p">,</span>  <span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># 28 → 14</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc4a</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span>  <span class="mi">96</span><span class="p">,</span> <span class="mi">208</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">48</span><span class="p">,</span>  <span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc4b</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>  <span class="mi">64</span><span class="p">,</span>  <span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc4c</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>  <span class="mi">64</span><span class="p">,</span>  <span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc4d</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span>  <span class="mi">64</span><span class="p">,</span>  <span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc4e</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">528</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># 14 → 7</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc5a</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">832</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">inc5b</span> <span class="o">=</span> <span class="n">InceptionModule</span><span class="p">(</span><span class="mi">832</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>        <span class="c1"># ---- Part C：分类器 ----</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">partC</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>          <span class="c1"># 7×7×1024 → 1×1×1024（全局平均池化）</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">),</span>                  <span class="c1"># dropout 40%</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>     <span class="c1"># 原书 Keras 码写 Dense(10)（CIFAR）；ImageNet 用 1000</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>        <span class="p">)</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partA</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc3b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc3a</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc4e</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc4d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc4c</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc4b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc4a</span><span class="p">(</span><span class="n">x</span><span class="p">))))))</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inc5b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inc5a</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partC</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="n">model</span> <span class="o">=</span> <span class="n">GoogLeNet</span><span class="p">()</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># 6,999,064</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">拓展：参数到底是 700 万还是 1300 万？</p>
+<p>上面按书结构实现的主干网络是 <strong>6,999,064</strong> 个参数。原论文的完整版还带<strong>两个辅助分类器</strong>（auxiliary classifiers，分别挂在 4a、4d 之后，用于中途注入梯度、缓解深网训练难），加上它们总数约 <strong>1,300 万</strong>——书里"参数减少 12 倍（1.38 亿 → 约 1300 万）"取的就是含辅助分类器的口径（torchvision 的 googlenet 即 13,005,084）。本书实现没做辅助分支，无需纠结。</p>
+</div>
+<p>Part C 的细节：Szegedy 等人实验发现加一层 7×7 平均池化能让 top-1 准确率再涨约 <strong>0.6%</strong>，再接 40% 的 Dropout 防过拟合。图 5.18 是 Part A 的结构图（7×7 conv → 3×3 pool → 1×1 conv → 3×3 conv → 3×3 pool）：</p>
+<figure>
+  <img src="../images/ch05/fig-5-18.png" width="240" class="lq-img" />
+  <figcaption>图 5.18 GoogLeNet 的 Part A（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书笔误（小）</p>
+<p>书中 Part A 代码注释写 "# input layer with size = 24 × 24 × 3"，而下一行是 <code>Input(shape=(224, 224, 3))</code>——应为 224，注释笔误。</p>
+</div>
+<h3 id="556-学习超参">5.5.6 学习超参<a class="headerlink" href="#556-学习超参" title="Permanent link">#</a></h3>
+<p>SGD + momentum 0.9（不用 Nesterov）；固定学习率衰减：<strong>每 8 个 epoch 乘 0.96</strong>（即衰减 4%）。书给的示例配置：初始 lr 0.01、batch 256、25 epochs。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 书 5.5.6 节 =====</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Keras: lrate = 0.01 * 0.96^floor((1+epoch)/8)，epoch 从 0 计</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">LambdaLR</span><span class="p">(</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_lambda</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">:</span> <span class="mf">0.96</span> <span class="o">**</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">epoch</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">))</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># 训练 25 epochs、batch_size=256（书示例；每个 epoch 调 scheduler.step()）</span>
+</code></pre></div>
+<h3 id="557-Inception-成绩">5.5.7 Inception 成绩<a class="headerlink" href="#557-Inception-成绩" title="Permanent link">#</a></h3>
+<p>GoogLeNet 是 <strong>ILSVRC 2014 冠军</strong>，top-5 错误率 <strong>6.67%</strong>——离人类水平已经很近，远好于 AlexNet 和 VGGNet。</p>
+<h2 id="56-ResNet">5.6 ResNet<a class="headerlink" href="#56-ResNet" title="Permanent link">#</a></h2>
+<p><strong>残差网络（Residual Neural Network, ResNet）</strong>，2015 年微软研究院出品。两大法宝：带 <strong>skip connection</strong> 的残差模块 + 隐藏层重度 BatchNorm。这套组合拳让他们训出了 <strong>50、101、152 层</strong>的极深网络——计算复杂度却比 19 层的 VGGNet 还低。ResNet 拿下 <strong>ILSVRC 2015</strong> 冠军，top-5 错误率 <strong>3.57%</strong>，超过此前所有 ConvNet。</p>
+<h3 id="561-创新点skip-connection-解锁超深">5.6.1 创新点：skip connection 解锁"超深"<a class="headerlink" href="#561-创新点skip-connection-解锁超深" title="Permanent link">#</a></h3>
+<p>回看演进线：LeNet → AlexNet → VGG → Inception，规律是<strong>越深、容量越大、提特征越强</strong>——深网能表达复杂函数，从低层边缘到高层的复杂特征都能学到。那能不能一路加深到 50、100、150 层？</p>
+<p>第 4 章说过：层数太多容易过拟合。但这不是主要障碍——Dropout、L2、BatchNorm 都治得住。真正卡住加深的是另一个现象：<strong>梯度消失</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：梯度消失与梯度爆炸</p>
+<p>极深网络里，更新权重的信号传到浅层时已经非常微弱。回顾第 2 章的梯度下降：误差梯度从最后一层逐层往回传，<strong>每经过一层就要乘一次该层的权重矩阵</strong>——小于 1 的因子连乘，梯度指数级缩水到 0，浅层学不动，网络性能饱和甚至快速退化（vanishing gradient）。反过来梯度也可能指数级膨胀，爆出巨大的数值（exploding gradients）。</p>
+</div>
+<p>He 等人的解法很优雅：给梯度开一条<strong>直通车</strong>。<strong>跳跃连接（skip connection）<strong>把前面层的信息直接送到后面层，为梯度提供一条绕过中间层的捷径路径。另一个重要收益：skip connection 让模型可以学出</strong>恒等函数（identity function）</strong>——就算新增的卷积层什么都没学到，输出至少等于输入，<strong>新层再差也不会拖累前一层</strong>（图 5.19），深度从此"只赚不亏"。</p>
+<figure>
+  <img src="../images/ch05/fig-5-19.png" width="520" class="lq-img" />
+  <figcaption>图 5.19 左：普通串叠；右：加一条 skip connection，把输入 x 也送到后面（截自原书）</figcaption>
+</figure>
+
+<p>细节看图 5.20：捷径箭头指向的是<strong>第二个卷积层的末尾</strong>——两条路径在<strong>该层 ReLU 之前</strong>相加。x 走捷径，主路算出 <span class="arithmatex">\(f(x)\)</span>，相加后一起过激活：</p>
+<div class="arithmatex">\[\text{output} = \text{relu}\big(f(x) + x\big)\]</div>
+<figure>
+  <img src="../images/ch05/fig-5-20.png" width="640" class="lq-img" />
+  <figcaption>图 5.20 主路 f(x) + 捷径 x，相加后再过 ReLU（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：残差连接为什么治梯度消失——一行求导</p>
+<p>把块输出写成 <span class="arithmatex">\(y=f(x)+x\)</span>，反向传播时 <span class="arithmatex">\(\dfrac{\partial y}{\partial x}=\dfrac{\partial f}{\partial x}+1\)</span>。关键在那个 <strong>"+1"</strong>：无论 <span class="arithmatex">\(f\)</span> 的导数多小，梯度里永远有一份"1"原封不动地流回浅层——连乘链条上每过一块就补一个 1，梯度不再指数衰减（对照图 5.20 的捷径箭头）。同理，恒等项让"最优解 = 恒等映射"变得触手可及：多余层只要把 <span class="arithmatex">\(f\)</span> 推向 0 就无害，这就是 152 层训得动的数学根基。</p>
+</div>
+<p>代码上 skip connection 一目了然（原书 Keras 片段）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 5.6.1 节（Keras 原书片段，结构演示）=====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># X_shortcut = X                                                # 存下输入 x，留作捷径</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># X = Conv2D(filters=F1, kernel_size=(3,3), strides=(1,1))(X)   # 主路：CONV</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># X = Activation('relu')(X)                                     #      + ReLU</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># X = Conv2D(filters=F1, kernel_size=(3,3), strides=(1,1))(X)   #      + CONV</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># X = Add()([X, X_shortcut])                                    # 两路相加</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># X = Activation('relu')(X)                                     # relu(f(x)+x)</span>
+</code></pre></div>
+<p>skip connection + 卷积层的组合叫<strong>残差块（residual block）</strong>。与 Inception 一样，ResNet 也是"积木叠积木"：开头卷积 + 池化，中间残差块堆叠（想多深堆多少），末尾 FC + softmax（图 5.21）。</p>
+<figure>
+  <img src="../images/ch05/fig-5-21.png" width="560" class="lq-img" />
+  <figcaption>图 5.21 三代骨架对比：经典串叠 / Inception 模块堆叠 / 残差块堆叠（截自原书）</figcaption>
+</figure>
+
+<h3 id="562-残差块">5.6.2 残差块<a class="headerlink" href="#562-残差块" title="Permanent link">#</a></h3>
+<p>残差模块两条分支：</p>
+<ul>
+<li><strong>捷径路径（shortcut path）</strong>：把输入原样连到加法处（图 5.22）；</li>
+<li><strong>主路（main path）</strong>：一串卷积 + 激活，共 <strong>3 个卷积层</strong>，每个卷积后接 BatchNorm（防过拟合、加速训练）。架构：<span class="arithmatex">\([\text{CONV} \Rightarrow \text{BN} \Rightarrow \text{ReLU}]\times3\)</span>。</li>
+</ul>
+<figure>
+  <img src="../images/ch05/fig-5-22.png" width="700" class="lq-img" />
+  <figcaption>图 5.22 残差块：主路三个 CONV+BN，相加后统一过 ReLU（截自原书）</figcaption>
+</figure>
+
+<p>两个细节：</p>
+<ol>
+<li><strong>块内没有池化层。</strong> He 等人改用<strong>瓶颈 1×1 卷积</strong>控制尺寸（和 Inception 同思路）：每个残差块以 1×1 卷积开场压输入、3×3 卷积干正事、再以 1×1 卷积收尾控输出。这个配置叫<strong>瓶颈残差块（bottleneck residual block）</strong>。</li>
+<li><strong>shortcut 何时要改造？</strong> 块与块堆叠时尺寸会变，而矩阵相加要求两路形状一致。解法：给捷径也接一个瓶颈层（1×1 卷积 + BN）再相加——这叫 <strong>reduce shortcut</strong>（图 5.23）。</li>
+</ol>
+<figure>
+  <img src="../images/ch05/fig-5-23.png" width="700" class="lq-img" />
+  <figcaption>图 5.23 reduce shortcut：捷径上加 1×1 conv + BN，尺寸对齐才能相加（截自原书）</figcaption>
+</figure>
+
+<p><strong>残差块小结</strong>：主路 = 1×1 → 3×3 → 1×1（各带 BN，前两层后有 ReLU）；捷径两种做法——regular shortcut（原样直连）与 reduce shortcut（中途加 1×1 conv + BN）。实现 ResNet 时两种都会用到。书用 <code>bottleneck_residual_block</code> 函数封装，<code>reduce=True</code> 走 reduce shortcut（另传主路中层核大小 <code>f</code>、滤波器列表 <code>[F1, F2, F3]</code>、stride <code>s</code>）。PyTorch 版：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 5.6.2 节 =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BottleneckBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">"""主路 [1×1 → 3×3 → 1×1]（各带 BN）+ shortcut；</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="sd">    reduce=True 时主路第一层与捷径都用 stride=s 降采样（reduce shortcut）"""</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_ch</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f3</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        <span class="c1"># 主路第 1 层（1×1）：reduce 时 stride=s，与捷径同步降采样</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">s</span> <span class="k">if</span> <span class="n">reduce</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span>   <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="c1"># 主路第 2 层（3×3，same padding）</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>                               <span class="n">padding</span><span class="o">=</span><span class="n">kernel_size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span>   <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>        <span class="c1"># 主路第 3 层（1×1，输出通道 f3）——BN 之后不再 ReLU，等相加后再过</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">f3</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn3</span>   <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>        <span class="c1"># 捷径：reduce 时加 1×1 conv + BN 对齐尺寸；否则原样直连</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        <span class="k">if</span> <span class="n">reduce</span><span class="p">:</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>                <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f3</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">s</span><span class="p">),</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>                <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">f3</span><span class="p">))</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>        <span class="n">shortcut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 捷径 = x（或 1×1+BN 后的 x）</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>    <span class="c1"># 主路第 1 层</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)))</span>  <span class="c1"># 主路第 2 层</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>             <span class="c1"># 主路第 3 层（无 ReLU）</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">shortcut</span><span class="p">)</span>            <span class="c1"># relu(f(x)+x)：先加再激活</span>
+</code></pre></div>
+<h3 id="563-ResNet50-实现PyTorch">5.6.3 ResNet50 实现（PyTorch）<a class="headerlink" href="#563-ResNet50-实现PyTorch" title="Permanent link">#</a></h3>
+<p>残差块就绪，叠出完整 ResNet。这里实现 <strong>ResNet50</strong>（50 个权重层，"50"由此得名）；照图 5.24 的表可同法造 18/34/101/152 层版本（18/34 层用普通 3×3 块，50 层以上用瓶颈块）。</p>
+<figure>
+  <img src="../images/ch05/fig-5-24.png" width="700" class="lq-img" />
+  <figcaption>图 5.24 原论文的 ResNet 变体表：conv2_x~conv5_x 的块数决定 18/34/50/101/152（截自原书）</figcaption>
+</figure>
+
+<p>50 层的账：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>内容</th>
+<th>卷积层数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stage 1</td>
+<td>7×7 卷积</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Stage 2</td>
+<td>3 个残差块 × [1×1+3×3+1×1]</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Stage 3</td>
+<td>4 个残差块</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Stage 4</td>
+<td>6 个残差块</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Stage 5</td>
+<td>3 个残差块</td>
+<td>9</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>全连接 softmax</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td></td>
+<td><strong>50</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">实现约定</p>
+<p>每个阶段的<strong>第一个</strong>残差块用 reduce shortcut（降空间尺寸），其余块用 regular shortcut——对应函数里 <code>reduce=True</code>。</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 5.6.3 节 =====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ResNet50</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="c1"># Stage 1：7×7/2 卷积 + BN + ReLU + 3×3/2 最大池化</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stem</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPooling2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">stage</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="c1"># 阶段首块：reduce shortcut 降采样（stride=s）</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>            <span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">BottleneckBlock</span><span class="p">(</span><span class="n">in_ch</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)]</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>            <span class="c1"># 其余块：regular shortcut</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>            <span class="n">blocks</span> <span class="o">+=</span> <span class="p">[</span><span class="n">BottleneckBlock</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>            <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">blocks</span><span class="p">)</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage2</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span>   <span class="mi">64</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># 3 块 = 9 层</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage3</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span>  <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 4 块 = 12 层</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage4</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span>  <span class="mi">256</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 6 块 = 18 层</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage5</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 3 块 = 9 层</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>        <span class="c1"># AVGPOOL：原书 Keras 码写 AveragePooling2D((1,1))，对 7×7 输入毫无降维作用</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="c1"># （勘误③）；按原论文应使用全局平均池化：</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>   <span class="c1"># FC + softmax（softmax 并入损失）</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage5</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage4</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage2</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      <span class="c1"># 7×7×2048 → 1×1×2048</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="n">model</span> <span class="o">=</span> <span class="n">ResNet50</span><span class="p">()</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># 25,583,592</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误（勘误③）：AveragePooling2D((1,1))</p>
+<p>原书 AVGPOOL 写的是 <code>AveragePooling2D((1,1))</code>——1×1 池化窗口等于把每个数字原样复制，7×7 输入出去还是 7×7，起不到降维作用。原论文用的是 <strong>global average pooling</strong>（整张特征图取平均，7×7×2048 → 1×1×2048），PyTorch 对应 <code>nn.AdaptiveAvgPool2d(1)</code>。</p>
+</div>
+<p>对账：<strong>25,583,592</strong> 个可训练参数（与原书 Keras 实现一致，conv 带偏置；若按 torchvision 惯例在 BN 前省略 conv 偏置则为 25,557,032）。复杂度同样惊人地低：图 5.24 底部的 FLOPs 行显示 ResNet50 只需 3.8×10⁹ 次运算；书里明确说 50/101/152 层的 ResNet"复杂度比 19 层的 VGGNet 还低"——<strong>更深反而更便宜</strong>，这就是瓶颈设计的威力。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：更深曾先饱和，ResNet 为何能继续加深</p>
+<p>第 4 章的视角：更深 → 容量更大 → 更容易过拟合，但正则化能治。真正的墙是<strong>退化（degradation）</strong>：训练深度加深后，<strong>训练误差</strong>反而回升——这不是过拟合（过拟合是训练误差低、验证误差高），而是优化变难：普通深网里浅层学恒等映射都很费劲。ResNet 的两个设计正对此症：① 捷径让"学恒等"零成本（<span class="arithmatex">\(f\to 0\)</span> 即可），加深不再有下限风险；② 恒等项给梯度留常数通路，很深的网络也能正常反向传播。于是 50/101/152 层全线训练成功且持续变好——深度第一次成为"可自由消费"的资源。</p>
+</div>
+<h3 id="564-学习超参">5.6.4 学习超参<a class="headerlink" href="#564-学习超参" title="Permanent link">#</a></h3>
+<p>He et al. 沿用 AlexNet 式的训练法：mini-batch GD + momentum 0.9；初始 lr 0.1，验证误差停滞时 ÷10；L2 正则 weight decay 0.0001（书实现里为简洁未加）；每个卷积后、激活前接 BN 加速训练。训练 200 epochs、batch 256。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 5.6.4 节 =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                            <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>             <span class="c1"># 论文的 L2（书代码省略，此处补上）</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Keras: ReduceLROnPlateau(monitor='val_loss', factor=np.sqrt(0.1),</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">#                          patience=5, min_lr=0.5e-6)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_lr</span><span class="o">=</span><span class="mf">5e-7</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># 训练 200 epochs、batch_size=256</span>
+</code></pre></div>
+<h3 id="565-ResNet-成绩">5.6.5 ResNet 成绩<a class="headerlink" href="#565-ResNet-成绩" title="Permanent link">#</a></h3>
+<p>ResNet-152 拿下 <strong>ILSVRC 2015</strong> 分类冠军：单模型 top-5 错误率 <strong>4.49%</strong>，模型集成后 <strong>3.57%</strong>——大幅领先 GoogLeNet 的 6.67%。它还顺手拿下了当年多个检测与定位赛事的第一（第 7 章再会）。更重要的遗产：<strong>残差块打开了高效训练数百层网络的大门</strong>，此后"残差"成了所有极深网络（含 Transformer）的标配组件。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：善用开源实现</p>
+<p>实战建议：这些网络因为学习率衰减等调参细节非常"娇气"，照论文复现很难完全对上——DL 研究者复现别人的工作也费劲。好在大多数研究者会把代码开源：GitHub 搜网络名，能找到各框架的实现；找到原作者的实现可以直接起飞。当然，像本章这样从零重写一遍也是极好的练习。</p>
+</div>
+<h2 id="57-五大架构演进总览">5.7 五大架构演进总览<a class="headerlink" href="#57-五大架构演进总览" title="Permanent link">#</a></h2>
+<p>把五代网络串成一条决策链——每一环都在解决上一环暴露的短板：</p>
+<pre class="mermaid"><code>flowchart LR
+    A["LeNet-5 · 1998&lt;br/&gt;5 层 · 6.1万参数"] --&gt;|"MNIST 太简单&lt;br/&gt;想去啃真实大图"| B["AlexNet · 2012&lt;br/&gt;ReLU · Dropout · 增强"]
+    B --&gt;|"每层超参全靠试错"| C["VGGNet · 2014&lt;br/&gt;统一 3×3 + 2×2"]
+    C --&gt;|"参数爆炸 · 大核太贵"| D["GoogLeNet · 2014&lt;br/&gt;Inception 并行 + 1×1 降维"]
+    D --&gt;|"还想更深？梯度传不动"| E["ResNet · 2015&lt;br/&gt;残差块 + skip connection"]</code></pre>
+<p>一张表收拢全部关键数字：</p>
+<table>
+<thead>
+<tr>
+<th>架构</th>
+<th>年份</th>
+<th>深度（权重层）</th>
+<th>核心创新</th>
+<th>参数量</th>
+<th>ILSVRC 成绩（top-5 错误率）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LeNet-5</strong></td>
+<td>1998</td>
+<td>5（3 conv + 2 FC）</td>
+<td>首个完整 CNN 范式；tanh + 平均池化</td>
+<td>61,706</td>
+<td>（MNIST &gt;99%，非 ILSVRC）</td>
+</tr>
+<tr>
+<td><strong>AlexNet</strong></td>
+<td>2012</td>
+<td>8（5 conv + 3 FC）</td>
+<td>ReLU、Dropout 0.5、数据增强、LRN、双 GPU</td>
+<td>≈6,200 万</td>
+<td>2012 冠军 <strong>15.3%</strong>（第二名 26.2%）</td>
+</tr>
+<tr>
+<td><strong>VGGNet</strong></td>
+<td>2014</td>
+<td>16 / 19</td>
+<td>统一 3×3 conv + 2×2 pool；小核堆叠替代大核</td>
+<td>1.38 亿 / 1.44 亿</td>
+<td><strong>8.1% / 7.4%</strong></td>
+</tr>
+<tr>
+<td><strong>GoogLeNet</strong></td>
+<td>2014</td>
+<td>22</td>
+<td>Inception 模块（多尺度并行）+ 1×1 降维</td>
+<td>≈1,300 万</td>
+<td>2014 冠军 <strong>6.67%</strong></td>
+</tr>
+<tr>
+<td><strong>ResNet</strong></td>
+<td>2015</td>
+<td>50 / 101 / 152</td>
+<td>残差块 + skip connection；重度 BN；bottleneck</td>
+<td>≈2,560 万（50 层）</td>
+<td>2015 冠军 <strong>3.57%</strong>（集成）/ 4.49%（单模型）</td>
+</tr>
+</tbody>
+</table>
+<p>训练配置也值得并排看一眼（各节已给出 PyTorch 等价代码）：</p>
+<table>
+<thead>
+<tr>
+<th>网络</th>
+<th>优化器</th>
+<th>初始 lr</th>
+<th>调度</th>
+<th>batch</th>
+<th>epochs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LeNet-5</td>
+<td>SGD</td>
+<td>5e-4</td>
+<td>分段衰减（&#8532;/4 个 epoch 各降一档）</td>
+<td>32</td>
+<td>20</td>
+</tr>
+<tr>
+<td>AlexNet</td>
+<td>SGD, momentum 0.9</td>
+<td>0.01</td>
+<td>验证损失停滞 ×√0.1</td>
+<td>128</td>
+<td>90</td>
+</tr>
+<tr>
+<td>VGGNet</td>
+<td>GD, momentum 0.9</td>
+<td>0.01</td>
+<td>验证准确率停滞 ÷10</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GoogLeNet</td>
+<td>SGD, momentum 0.9</td>
+<td>0.01</td>
+<td>每 8 epoch ×0.96</td>
+<td>256</td>
+<td>25（示例）</td>
+</tr>
+<tr>
+<td>ResNet</td>
+<td>SGD, momentum 0.9</td>
+<td>0.1</td>
+<td>验证损失停滞 ×√0.1（patience 5）</td>
+<td>256</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>一条隐藏主线：<strong>分类器部分（FC + softmax）五年几乎没动</strong>，进化的全部火力都集中在特征提取器的组织方式上——串叠 → 统一串叠 → 模块堆叠 → 带捷径的模块堆叠。记住这条线，第 6 章的迁移学习（直接拿这些架构当预训练特征提取器）就顺理成章了。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>AlexNet 输入是 227×227×3，不是 224</strong>：论文写 224，但 <span class="arithmatex">\((227-11)/4+1=55\)</span> 才算得通；复现用 227。</li>
+<li><strong>naive Inception 拼接深度别漏算池化分支</strong>：池化不改通道，输入 200 通道时拼接是 64+128+32+<strong>200</strong> = 424（书误写 256）。</li>
+<li><strong>池化层不降深度</strong>：想让 Inception 拼接深度可控，池化后必须补 1×1；想让网络变窄，靠的也是 1×1 而不是池化。</li>
+<li><strong>残差块相加发生在最后的 ReLU 之前</strong>：主路第三层只有 CONV+BN，没有 ReLU；先 <span class="arithmatex">\(f(x)+x\)</span> 再统一激活。</li>
+<li><strong>块间尺寸变了必须用 reduce shortcut</strong>：矩阵相加要求形状一致；捷径上的 1×1 conv + BN 负责对齐尺寸与步长。</li>
+<li><strong>AveragePooling2D((1,1)) 不是全局平均池化</strong>：1×1 窗口对 7×7 毫无作用；用 <code>nn.AdaptiveAvgPool2d(1)</code>。</li>
+<li><strong>Keras 的 l2 正则 ≠ PyTorch weight_decay</strong>：前者只罚该层卷积核，后者罚优化器里全部参数（含 bias/BN）；对账参数量、复现精度时留意。</li>
+<li><strong>Keras 回调的 epoch 从 0 计数</strong>：抄学习率调度函数时核对边界（"前 2 个 epoch"到底是 epoch&lt;2 还是 ≤2）。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>三条设计模式：<strong>特征提取（conv）+ 分类（FC）</strong> 两段式；<strong>深度增加、空间维度减小</strong>；FC 单元数恒定或递减。</li>
+<li>网络深度按<strong>权重层</strong>（conv + FC）称呼：LeNet-5、AlexNet-8、VGG16/19、GoogLeNet-22、ResNet-50/101/152。</li>
+<li>LeNet-5：tanh + 5×5 卷积 + 平均池化，61,706 参数，MNIST &gt;99%。</li>
+<li>AlexNet 三板斧：ReLU 治梯度消失、Dropout 0.5 + 数据增强治过拟合；另有 LRN（今被 BN 取代）与双 GPU 训练；top-5 15.3% vs 第二名 26.2%。</li>
+<li>VGG 的统一美学：全 3×3（stride 1, same）+ 全 2×2 池化（stride 2）；两个 3×3 ≈ 5×5 感受野、三层 ≈ 7×7，27C² 对 49C² 省 81% 参数；138M / 144M。</li>
+<li>Inception 的豪横：核尺寸与池化位置别选了，<strong>四路并行、深度拼接</strong>；1×1 reduce 层把 5×5 分支的 1.63 亿乘法砍到 1,630 万。</li>
+<li>GoogLeNet 三段式：Part A 经典开场 + Part B 九个模块（2+5+2）+ Part C 分类器；约 1,300 万参数拿 6.67%。</li>
+<li>ResNet 残差块：主路 [1×1→3×3→1×1] 各带 BN，捷径 x 直连，<span class="arithmatex">\(\text{relu}(f(x)+x)\)</span>；恒等项给梯度留了一条常数通道。</li>
+<li>ResNet50 = 1 + 9 + 12 + 18 + 9 + 1 = 50 权重层；每阶段首块用 reduce shortcut；全局平均池化收尾；2,558 万参数拿下 3.57%。</li>
+<li>演进主线：特征提取器的组织方式从串叠 → 统一串叠 → 模块堆叠 → 残差堆叠；分类器五年没变；top-5 错误率 15.3% → 8.1% → 6.67% → 3.57%。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weight Layer</td>
+<td>权重层</td>
+<td>带可训练权重的层（conv/FC），网络深度的计数单位</td>
+</tr>
+<tr>
+<td>Design Pattern</td>
+<td>设计模式</td>
+<td>CNN 反复出现的结构套路（两段式、深而窄等）</td>
+</tr>
+<tr>
+<td>Receptive Field</td>
+<td>感受野</td>
+<td>输出所依赖的输入区域；两个 3×3 ≈ 一个 5×5</td>
+</tr>
+<tr>
+<td>Vanishing / Exploding Gradients</td>
+<td>梯度消失 / 爆炸</td>
+<td>梯度逐层连乘指数缩小 / 放大，深网训练受阻</td>
+</tr>
+<tr>
+<td>ReLU</td>
+<td>修正线性单元</td>
+<td><span class="arithmatex">\(f(x)=\max(0,x)\)</span>，正区导数恒 1，训练快</td>
+</tr>
+<tr>
+<td>Dropout</td>
+<td>随机失活</td>
+<td>训练时按概率暂时删神经元，等价于隐式集成</td>
+</tr>
+<tr>
+<td>Data Augmentation</td>
+<td>数据增强</td>
+<td>保标签变换扩充数据（旋转/翻转/缩放）</td>
+</tr>
+<tr>
+<td>Local Response Normalization (LRN)</td>
+<td>局部响应归一化</td>
+<td>AlexNet 时代的跨通道归一化，已被 BN 取代</td>
+</tr>
+<tr>
+<td>Batch Normalization (BN)</td>
+<td>批归一化</td>
+<td>按 mini-batch 统计量归一化，深网标配</td>
+</tr>
+<tr>
+<td>Weight Decay / L2</td>
+<td>权重衰减</td>
+<td>L2 正则；Keras 写 kernel_regularizer，PyTorch 写 weight_decay</td>
+</tr>
+<tr>
+<td>Top-1 / Top-5 Error</td>
+<td>Top-1 / Top-5 错误率</td>
+<td>正确类未得最高分 / 未进前五的比例</td>
+</tr>
+<tr>
+<td>ILSVRC</td>
+<td>ImageNet 大规模视觉识别挑战赛</td>
+<td>各架构对榜的年度竞赛</td>
+</tr>
+<tr>
+<td>Inception Module</td>
+<td>Inception 模块</td>
+<td>1×1 / 3×3 / 5×5 / 池化四路并行再拼接</td>
+</tr>
+<tr>
+<td>Depth Concatenation</td>
+<td>深度拼接</td>
+<td>沿通道维拼接多分支输出</td>
+</tr>
+<tr>
+<td>Reduce Layer / Bottleneck</td>
+<td>降维层 / 瓶颈层</td>
+<td>1×1 卷积压通道，省算力省参数</td>
+</tr>
+<tr>
+<td>Skip Connection</td>
+<td>跳跃连接</td>
+<td>给梯度开捷径：把输入直接加到块输出上</td>
+</tr>
+<tr>
+<td>Residual Block</td>
+<td>残差块</td>
+<td>主路 + 捷径，输出 relu(f(x)+x)</td>
+</tr>
+<tr>
+<td>Regular / Reduce Shortcut</td>
+<td>常规 / 降维捷径</td>
+<td>捷径直连 vs 加 1×1+BN 对齐尺寸</td>
+</tr>
+<tr>
+<td>Global Average Pooling</td>
+<td>全局平均池化</td>
+<td>整张特征图取平均，H×W×C → 1×1×C</td>
+</tr>
+<tr>
+<td>Auxiliary Classifier</td>
+<td>辅助分类器</td>
+<td>GoogLeNet 中途的分支头，注入梯度（13M 口径的来源）</td>
+</tr>
+<tr>
+<td>Nesterov Momentum</td>
+<td>Nesterov 动量</td>
+<td>先按动量试探再算梯度的 SGD 变体</td>
+</tr>
+<tr>
+<td>Bottleneck Residual Block</td>
+<td>瓶颈残差块</td>
+<td>1×1→3×3→1×1 主路的残差块，ResNet50 起用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
+<details class="note">
+<summary>原书小节 → 笔记位置</summary>
+<table>
+<thead>
+<tr>
+<th>原书</th>
+<th>笔记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>章首（本章路线 / 三目标 / 读论文 TIP / 代码不可运行 NOTE）</td>
+<td>导语 + §5.1</td>
+</tr>
+<tr>
+<td>5.1（模式 1–3）</td>
+<td>§5.1（图 5.1、5.2）</td>
+</tr>
+<tr>
+<td>5.2.1–5.2.2（LeNet 架构 + 实现 + 读论文建议 + 图 5.5 summary）</td>
+<td>§5.2（图 5.&#8535;.4，61,706 对账）</td>
+</tr>
+<tr>
+<td>5.2.3–5.2.4（学习率调度 + MNIST 成绩）</td>
+<td>§5.2.3–5.2.4</td>
+</tr>
+<tr>
+<td>5.3 开篇 + ImageNet 侧栏</td>
+<td>§5.3</td>
+</tr>
+<tr>
+<td>5.3.1（架构 + 224/227 NOTE + 逐层尺寸 + 图 5.6/5.7）</td>
+<td>§5.3.1</td>
+</tr>
+<tr>
+<td>5.3.2（ReLU + 梯度消失侧栏 / Dropout / 增强 / LRN / 权重正则 / 多 GPU）</td>
+<td>§5.3.2（图 fig-5-vanish）</td>
+</tr>
+<tr>
+<td>5.3.3–5.3.4（实现 62,381,096 + 超参）</td>
+<td>§5.3.3–5.3.4</td>
+</tr>
+<tr>
+<td>5.3.5（15.3% vs 26.2% + top-1/top-5 侧栏）</td>
+<td>§5.3.5</td>
+</tr>
+<tr>
+<td>5.4.1（统一组件 + 3×3 论证 + 感受野侧栏）</td>
+<td>§5.4.1（图 5.8）</td>
+</tr>
+<tr>
+<td>5.4.2（配置 A–E + 表 5.1 + 图 5.9）</td>
+<td>§5.4.2（重排表）</td>
+</tr>
+<tr>
+<td>5.4.3–5.4.4（VGG16/19 实现 + 超参 + 成绩）</td>
+<td>§5.4.3–5.4.4</td>
+</tr>
+<tr>
+<td>5.5.1–5.5.2（全都要 + naive 模块例题 + same padding NOTE）</td>
+<td>§5.5.1–5.5.2（图 5.10/5.11，勘误①）</td>
+</tr>
+<tr>
+<td>5.5.3（成本计算 + 1×1 侧栏 + 降维版模块 + 图 5.12/5.13）</td>
+<td>§5.5.3</td>
+</tr>
+<tr>
+<td>5.5.4（堆叠 + GoogLeNet 三部分 + "2+5+5"笔误 + 图 5.14/5.15）</td>
+<td>§5.5.4（勘误②）</td>
+</tr>
+<tr>
+<td>5.5.5（inception_module + Part A/B/C + 表 5.2 + 图 5.16/5.17/5.18）</td>
+<td>§5.5.5（补全 9 模块配置表）</td>
+</tr>
+<tr>
+<td>5.5.6–5.5.7（超参 + 6.67%）</td>
+<td>§5.5.6–5.5.7</td>
+</tr>
+<tr>
+<td>5.6.1（更深不强？/ 消失爆炸侧栏 / skip connection / Keras 片段 / 图 5.19/5.20）</td>
+<td>§5.6.1</td>
+</tr>
+<tr>
+<td>5.6.2（残差块 / bottleneck / reduce shortcut + 函数实现 + 图 5.21/5.22/5.23）</td>
+<td>§5.6.2</td>
+</tr>
+<tr>
+<td>5.6.3（ResNet50 + 50 层账 + AveragePooling 笔误 + 图 5.24）</td>
+<td>§5.6.3（勘误③）</td>
+</tr>
+<tr>
+<td>5.6.4–5.6.5（超参 + 成绩 + 开源实现侧栏）</td>
+<td>§5.6.4–5.6.5</td>
+</tr>
+<tr>
+<td>章末 Summary（6 条）</td>
+<td>§速览（无重复摘抄）</td>
+</tr>
+</tbody>
+</table>
+</details>
 
 
 
