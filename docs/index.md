@@ -3,7 +3,11 @@ hide:
   - toc
 ---
 
-<div class="hero" style="background-image:url('images/haibara/hero.jpg')" role="img" aria-label="banner"></div>
+<div class="hero" role="img" aria-label="banner">
+  <div class="hero-bg" style="background-image:url('images/haibara/wp1.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('images/haibara/wp2.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('images/haibara/wp3.jpg')"></div>
+</div>
 
 <div class="g-wrap">
   <div class="g-strip">
