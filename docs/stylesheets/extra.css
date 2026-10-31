@@ -30,3 +30,66 @@ body,
   font-size: 0.72rem;
   margin-top: -0.4em;
 }
+
+/* ===== 花括号知识树（章首导图）===== */
+.brtree {
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 8px 4px;
+}
+.brtree .brrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.brtree .brkids {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.brtree .brace {
+  align-self: stretch;      /* 花括号高度 = 子项总高，自动伸缩 */
+  min-width: 13px;
+  position: relative;
+}
+.brtree .brace::before,
+.brtree .brace::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 9px;
+  border: 0 solid var(--md-default-fg-color--light);
+}
+.brtree .brace::before {   /* 上半弧 */
+  top: 0; bottom: 50%;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  border-top-right-radius: 14px;
+}
+.brtree .brace::after {    /* 下半弧 */
+  top: 50%; bottom: 0;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-bottom-right-radius: 14px;
+}
+.brtree .brlabel {
+  white-space: nowrap;
+  padding: 4px 12px;
+  border-radius: 5px;
+  background: rgba(21, 101, 192, 0.12);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.brtree .brlabel.root {
+  font-size: 0.95rem;
+  background: rgba(21, 101, 192, 0.22);
+}
+.brtree .brleaf {
+  white-space: nowrap;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 999px;
+  background: var(--md-default-bg-color);
+}
