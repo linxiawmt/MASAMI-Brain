@@ -71,11 +71,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#项目" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -271,7 +266,7 @@
               
                 
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -319,24 +314,6 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首页
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -353,45 +330,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#项目" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#如何使用" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        如何使用
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -793,36 +731,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#项目" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        项目
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#如何使用" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        如何使用
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -845,47 +753,28 @@
 
   <h1>首页</h1>
 
-<div class="hero" role="img" aria-label="banner">
-  <div class="hero-bg on" style="background-image:url('images/wallhaven/a1.jpg')"></div>
-  <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
-</div>
-
-<div class="g-wrap">
-  <div class="g-strip">
-    <figure class="g-card"><img src="images/haibara/g1.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g2.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g3.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g4.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g5.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g6.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g7.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g8.jpg" alt="" loading="lazy"></figure>
+<div class="glass home-hero">
+  <div class="home-kicker">STUDY · NOTES · GROWING</div>
+  <div class="home-title">MASAMI 的外置大脑</div>
+  <div class="home-sub">深度学习 · 计算机视觉 · 学习笔记</div>
+  <div class="home-btns">
+    <a class="gbtn" href="dl4vs/">进入第一个项目</a>
+    <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub 仓库</a>
   </div>
 </div>
 
-<h2 id="项目">项目<a class="headerlink" href="#项目" title="Permanent link">#</a></h2>
-<div class="grid cards">
-<ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg></span> <strong>深度学习视觉系统</strong></p>
-<hr />
-<p>《Deep Learning for Vision Systems》（Mohamed Elgendy, Manning 2020）全书 10 章精读笔记：
-神经网络基础 → CNN → 调参方法论 → 经典架构 → 迁移学习 → 目标检测 → GAN → 风格迁移 → 视觉嵌入。</p>
-<p><a href="dl4vs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入项目</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg></span> 更多项目（建设中）</p>
-<hr />
-<p>后续计划：动手学深度学习（李沐）读书笔记、论文精读等。</p>
-</li>
-</ul>
+<div class="home-cols">
+  <div class="glass home-card">
+    <div class="hc-title">PROJECTS</div>
+    <div class="hc-item"><a href="dl4vs/">深度学习视觉系统 —— 《Deep Learning for Vision Systems》全书 10 章精读笔记</a></div>
+    <div class="hc-item muted">筹备中：动手学深度学习（李沐）笔记 · 论文精读</div>
+  </div>
+  <div class="glass home-card">
+    <div class="hc-title">HOW TO USE</div>
+    <div class="hc-item">每章两件套：网页精读笔记 + PyTorch 代码实战 notebook</div>
+    <div class="hc-item">右上角搜索全文 · 深浅色随心切</div>
+  </div>
 </div>
-<h2 id="如何使用">如何使用<a class="headerlink" href="#如何使用" title="Permanent link">#</a></h2>
-<ul>
-<li>每章笔记配一份<strong>代码实战 notebook</strong>（PyTorch 实现，含逐行中文注释），先读笔记建立框架，再跑代码验证。</li>
-<li>页面右上角搜索支持全文检索；右上角可切换深色/浅色模式。</li>
-</ul>
 
 
 
