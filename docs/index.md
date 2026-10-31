@@ -1,49 +1,28 @@
 ---
 hide:
   - toc
+  - navigation
 ---
 
-<div class="hero" role="img" aria-label="banner">
-  <div class="hero-bg on" style="background-image:url('images/wallhaven/a1.jpg')"></div>
-  <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
-</div>
-
-<div class="g-wrap">
-  <div class="g-strip">
-    <figure class="g-card"><img src="images/haibara/g1.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g2.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g3.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g4.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g5.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g6.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g7.jpg" alt="" loading="lazy"></figure>
-    <figure class="g-card"><img src="images/haibara/g8.jpg" alt="" loading="lazy"></figure>
+<div class="glass home-hero">
+  <div class="home-kicker">STUDY · NOTES · GROWING</div>
+  <div class="home-title">MASAMI 的外置大脑</div>
+  <div class="home-sub">深度学习 · 计算机视觉 · 学习笔记</div>
+  <div class="home-btns">
+    <a class="gbtn" href="dl4vs/">进入第一个项目</a>
+    <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub 仓库</a>
   </div>
 </div>
 
-## 项目
-
-<div class="grid cards" markdown>
-
--   :material-book-open-variant:{ .lg .middle } **深度学习视觉系统**
-
-    ---
-
-    《Deep Learning for Vision Systems》（Mohamed Elgendy, Manning 2020）全书 10 章精读笔记：
-    神经网络基础 → CNN → 调参方法论 → 经典架构 → 迁移学习 → 目标检测 → GAN → 风格迁移 → 视觉嵌入。
-
-    [:octicons-arrow-right-24: 进入项目](dl4vs/index.md)
-
--   :material-clock-outline:{ .lg .middle } 更多项目（建设中）
-
-    ---
-
-    后续计划：动手学深度学习（李沐）读书笔记、论文精读等。
-
+<div class="home-cols">
+  <div class="glass home-card">
+    <div class="hc-title">PROJECTS</div>
+    <div class="hc-item"><a href="dl4vs/">深度学习视觉系统 —— 《Deep Learning for Vision Systems》全书 10 章精读笔记</a></div>
+    <div class="hc-item muted">筹备中：动手学深度学习（李沐）笔记 · 论文精读</div>
+  </div>
+  <div class="glass home-card">
+    <div class="hc-title">HOW TO USE</div>
+    <div class="hc-item">每章两件套：网页精读笔记 + PyTorch 代码实战 notebook</div>
+    <div class="hc-item">右上角搜索全文 · 深浅色随心切</div>
+  </div>
 </div>
-
-## 如何使用
-
-- 每章笔记配一份**代码实战 notebook**（PyTorch 实现，含逐行中文注释），先读笔记建立框架，再跑代码验证。
-- 页面右上角搜索支持全文检索；右上角可切换深色/浅色模式。
