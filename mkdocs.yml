@@ -1,0 +1,95 @@
+site_name: 我的学习笔记
+site_description: 个人学习笔记站：深度学习、计算机视觉等
+site_url: ""
+repo_url: ""
+
+theme:
+  name: material
+  language: zh
+  font: false                 # 不加载 Google Fonts（国内访问慢），用系统字体栈
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      slugify: !!python/name:pymdownx.slugs._uslugify
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - 首页: index.md
+  - 深度学习视觉系统:
+      - dl4vs/index.md
+      - 第1章 欢迎来到计算机视觉: dl4vs/ch01.md
+      - 第2章 深度学习与神经网络: dl4vs/ch02.md
+      - 第3章 卷积神经网络: dl4vs/ch03.md
+      - 第4章 项目构建与超参数调优: dl4vs/ch04.md
+      - 第5章 经典CNN架构演进: dl4vs/ch05.md
+      - 第6章 迁移学习: dl4vs/ch06.md
+      - 第7章 目标检测从R-CNN到YOLO: dl4vs/ch07.md
+      - 第8章 生成对抗网络GAN: dl4vs/ch08.md
+      - 第9章 DeepDream与神经风格迁移: dl4vs/ch09.md
+      - 第10章 视觉嵌入: dl4vs/ch10.md
