@@ -94,41 +94,71 @@ body,
   background: var(--md-default-bg-color);
 }
 
-/* ===== 主页 Hero 横幅 ===== */
+/* ===== 主页 Hero 横幅（Wallhaven 壁纸轮换）===== */
 .hero {
   position: relative;
   margin: -0.8rem calc(50% - 50vw) 1.6rem;   /* 全出血到视口边缘 */
   height: clamp(300px, 40vw, 500px);
-  background-size: cover;
-  background-position: center 38%;
   overflow: hidden;
   border-radius: 0;
 }
 @media (min-width: 1220px) {
   .hero { border-radius: 0 0 14px 14px; }
 }
-.hero::before {                                /* 慢速 Ken Burns */
-  content: "";
+.hero-bg {
   position: absolute; inset: -3%;
-  background-image: inherit;
   background-size: cover;
-  background-position: center 38%;
-  animation: kb 22s ease-out forwards;
+  background-position: center 40%;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.hero-bg.on {
+  opacity: 1;
+  animation: kb 9s ease-out forwards;
 }
 .hero::after {                                 /* 压暗 + 底部融入页面 */
   content: "";
   position: absolute; inset: 0;
+  z-index: 2;
   background: linear-gradient(180deg,
       rgba(20, 26, 58, 0.18) 0%,
       rgba(20, 26, 58, 0.05) 45%,
       var(--md-default-bg-color) 100%);
+  pointer-events: none;
 }
 @keyframes kb {
   from { transform: scale(1); }
   to   { transform: scale(1.07); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
+  .hero-bg.on { animation: none; }
+}
+
+/* ===== 主页全页壁纸底（仅首页生效，body.is-home 由 JS 添加）===== */
+body.is-home {
+  background: #0d1226;
+}
+body.is-home::before {
+  content: "";
+  position: fixed; inset: -20px;
+  z-index: -2;
+  background: url("../../images/haibara/wp1_bg.jpg") center / cover no-repeat;
+  filter: brightness(0.85);
+}
+body.is-home::after {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 10, 24, 0.42), rgba(8, 10, 24, 0.62));
+}
+body.is-home .md-content__inner {
+  background: color-mix(in srgb, var(--md-default-bg-color) 88%, transparent);
+  border-radius: 12px;
+  padding-inline: 1.4rem 1.6rem;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+}
+[data-md-color-scheme="slate"] body.is-home .md-content__inner {
+  background: color-mix(in srgb, var(--md-default-bg-color) 82%, transparent);
 }
 
 /* ===== 首页画廊（scroll-snap 卡片条）===== */
