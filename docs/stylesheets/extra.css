@@ -93,3 +93,102 @@ body,
   border-radius: 999px;
   background: var(--md-default-bg-color);
 }
+
+/* ===== 主页 Hero 横幅 ===== */
+.hero {
+  position: relative;
+  margin: -0.8rem calc(50% - 50vw) 1.6rem;   /* 全出血到视口边缘 */
+  height: clamp(300px, 40vw, 500px);
+  background-size: cover;
+  background-position: center 38%;
+  overflow: hidden;
+  border-radius: 0;
+}
+@media (min-width: 1220px) {
+  .hero { border-radius: 0 0 14px 14px; }
+}
+.hero::before {                                /* 慢速 Ken Burns */
+  content: "";
+  position: absolute; inset: -3%;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center 38%;
+  animation: kb 22s ease-out forwards;
+}
+.hero::after {                                 /* 压暗 + 底部融入页面 */
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+      rgba(20, 26, 58, 0.18) 0%,
+      rgba(20, 26, 58, 0.05) 45%,
+      var(--md-default-bg-color) 100%);
+}
+@keyframes kb {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+}
+
+/* ===== 首页画廊（scroll-snap 卡片条）===== */
+.g-wrap {
+  margin: 0 calc(50% - 50vw) 1.2rem;         /* 与 hero 同宽出血 */
+  padding-inline: max(0.8rem, calc(50vw - 50% + 0px));
+}
+.g-strip {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 6px 4px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+}
+.g-strip::-webkit-scrollbar { height: 7px; }
+.g-strip::-webkit-scrollbar-thumb {
+  background: var(--md-default-fg-color--lighter);
+  border-radius: 999px;
+}
+.g-card {
+  flex: 0 0 clamp(180px, 21vw, 248px);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1.2),
+              box-shadow 0.35s ease;
+  cursor: zoom-in;
+}
+.g-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  transition: transform 0.5s ease;
+}
+.g-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+}
+.g-card:hover img { transform: scale(1.06); }
+
+/* ===== 灯箱 ===== */
+.lb {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 9999;
+  background: rgba(9, 11, 24, 0.86);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+.lb.open { display: flex; animation: lbfade 0.25s ease; }
+.lb img {
+  max-width: 92vw; max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  animation: lbpop 0.28s cubic-bezier(0.2, 0.8, 0.3, 1.1);
+}
+@keyframes lbfade { from { opacity: 0; } }
+@keyframes lbpop { from { transform: scale(0.94); opacity: 0; } }

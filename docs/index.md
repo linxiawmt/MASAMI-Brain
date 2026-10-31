@@ -1,12 +1,22 @@
 ---
-icon: material/home
 hide:
   - toc
 ---
 
-# 我的学习笔记
+<div class="hero" style="background-image:url('images/haibara/hero.jpg')" role="img" aria-label="banner"></div>
 
-记录系统学习过程中的笔记：以**概念、公式、代码**为核心，配原书插图与思维导图，少说废话。
+<div class="g-wrap">
+  <div class="g-strip">
+    <figure class="g-card"><img src="images/haibara/g1.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g2.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g3.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g4.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g5.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g6.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g7.jpg" alt="" loading="lazy"></figure>
+    <figure class="g-card"><img src="images/haibara/g8.jpg" alt="" loading="lazy"></figure>
+  </div>
+</div>
 
 ## 项目
 
