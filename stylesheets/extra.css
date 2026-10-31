@@ -60,17 +60,17 @@ body,
   width: 9px;
   border: 0 solid var(--md-default-fg-color--light);
 }
-.brtree .brace::before {   /* 上半弧 */
+.brtree .brace::before {   /* 上半弧：凸朝标签、开口朝子项 */
   top: 0; bottom: 50%;
-  border-right-width: 2px;
+  border-left-width: 2px;
   border-top-width: 2px;
-  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
 }
 .brtree .brace::after {    /* 下半弧 */
   top: 50%; bottom: 0;
-  border-right-width: 2px;
+  border-left-width: 2px;
   border-bottom-width: 2px;
-  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 14px;
 }
 .brtree .brlabel {
   white-space: nowrap;
