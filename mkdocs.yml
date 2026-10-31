@@ -7,6 +7,7 @@ repo_name: linxiawmt/MASAMI-Brain
 theme:
   name: material
   language: zh
+  copyright: 页面装饰插画来自网络，仅作学习装饰用途，版权归原作者所有
   font: false                 # 不加载 Google Fonts（国内访问慢），用系统字体栈
   features:
     - navigation.tabs
