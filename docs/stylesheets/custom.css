@@ -5,7 +5,7 @@
   inset: 0;
   z-index: -2;
   background-size: cover;
-  background-position: center 32%;
+  background-position: 100% 28%;
   background-repeat: no-repeat;
 }
 /* 系统中文字体栈（不依赖外部字体 CDN） */
@@ -155,9 +155,9 @@ body.is-home .md-typeset > h1:first-child {
 
 /* 玻璃卡 */
 .glass {
-  background: rgba(18, 20, 40, 0.34);
-  backdrop-filter: blur(5px) saturate(1.25);
-  -webkit-backdrop-filter: blur(5px) saturate(1.25);
+  background: rgba(18, 20, 40, 0.26);
+  backdrop-filter: blur(3.5px) saturate(1.2);
+  -webkit-backdrop-filter: blur(3.5px) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 18px;
   box-shadow: 0 14px 46px rgba(0, 0, 0, 0.34);
@@ -165,7 +165,7 @@ body.is-home .md-typeset > h1:first-child {
 }
 
 /* 主卡 */
-.home-hero { padding: 2.4rem 2.6rem; margin-bottom: 18px; max-width: 720px; }
+.home-hero { padding: 2.4rem 2.6rem; margin: 0 0 18px auto; max-width: 720px; }
 @media (max-width: 900px) { .home-hero { max-width: none; } }
 .home-kicker {
   letter-spacing: 0.4em;
@@ -219,6 +219,7 @@ body.is-home .md-typeset a.gbtn { color: #fff !important; }
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   max-width: 720px;
+  margin-left: auto;
 }
 @media (max-width: 900px) { .home-cols { max-width: none; } }
 @media (max-width: 720px) {
