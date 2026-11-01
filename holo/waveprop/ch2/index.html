@@ -2279,7 +2279,7 @@ g\left[(n'-1-N)\,\delta\right] &amp; \text{for } n' = \tfrac{N}{2}+1,\, \tfrac{N
 \]</div>
 <p>也就是：前半段按 <span class="arithmatex">\(x = 0, \delta, \ldots\)</span> 排，后半段接 <span class="arithmatex">\(x = -\tfrac{N}{2}\delta, \ldots, -\delta\)</span>。图 2.1 画的就是这个操作：高斯的峰值（<span class="arithmatex">\(x=0\)</span> 的样本）跑到第 1 号，正半边按升序排完，负半边接着排。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-1.png" width="760" />
+  <img src="../../../images/holo/waveprop/fig-2-1.png" width="760" />
   <figcaption>图 2.1 空域样本的重排：左图是按坐标排列的高斯采样，右图是重排后的数组——循环移位让原点落在第一个元素（截自原书）</figcaption>
 </figure>
 
@@ -2371,7 +2371,7 @@ g_{n'} = \frac{1}{N\delta} \sum_{m'=1}^{N} G_{m'}\, e^{i2\pi(m'-1)(n'-1)/N},
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">g_ft_cont</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="o">*</span><span class="n">f_cont</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">;</span>
 </code></pre></div>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-2.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-2.png" width="900" />
   <figcaption>图 2.2 高斯函数与其定标正确的 DFT：(a) 空域采样，(b) 幅值与解析 FT 对比，(c) 相位（截自原书）</figcaption>
 </figure>
 
@@ -2393,7 +2393,7 @@ g_{n'} = \frac{1}{N\delta} \sum_{m'=1}^{N} G_{m'}\, e^{i2\pi(m'-1)(n'-1)/N},
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">g_ft_cont</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">x0</span><span class="o">*</span><span class="n">f_cont</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="o">*</span><span class="n">f_cont</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">;</span>
 </code></pre></div>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-3.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-3.png" width="900" />
   <figcaption>图 2.3 平移高斯的 DFT：(c) 相位是一条斜率 \(=-2\pi x_0\) 的直线——这就是"空域平移 ⇔ 频域线性相位"（截自原书）</figcaption>
 </figure>
 
@@ -2685,13 +2685,13 @@ g(x) = \cos(2\pi f_0 x)
 \]</div>
 <p>频率 <span class="arithmatex">\(f_0\)</span>、周期 <span class="arithmatex">\(T = 1/f_0\)</span>，需要的间隔是 <span class="arithmatex">\(\delta_c = 1/(2f_0)\)</span>。图 2.4 里 <span class="arithmatex">\(f_0 = 6\ \mathrm{m}^{-1}\)</span> 的信号按 <span class="arithmatex">\(\delta_0 = 1/12\ \mathrm{m}\)</span> 采样——每个峰、每个谷恰好采到一点。只给你这些黑叉，你能认出信号吗？其实 <span class="arithmatex">\(\cos(4\pi f_0x)\)</span>（两倍频）也能产生同样的样本；但<strong>没有任何比 <span class="arithmatex">\(f_0\)</span> 更低的频率</strong>能产生它们。所以只要告诉你"这些样本满足奈奎斯特判据"，信号就唯一了。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-4.png" width="560" />
+  <img src="../../../images/holo/waveprop/fig-2-4.png" width="560" />
   <figcaption>图 2.4 正确采样的余弦信号（\(f_0=6\ \mathrm{m}^{-1}\)，\(\delta=1/12\) m）：不存在更低的频率能产生这些样本（截自原书）</figcaption>
 </figure>
 
 <p>反例见图 2.5：<span class="arithmatex">\(f_1 = 6\ \mathrm{m}^{-1}\)</span> 的信号按 <span class="arithmatex">\(\delta = 1/8\)</span> m 采样（需要 <span class="arithmatex">\(1/12\)</span>，太粗了），结果与 <span class="arithmatex">\(f_2 = 2\ \mathrm{m}^{-1}\)</span> 信号的采样值<strong>完全相同</strong>；另一组 <span class="arithmatex">\(f_1 = 8\ \mathrm{m}^{-1}\)</span>、<span class="arithmatex">\(\delta = 1/6\)</span> m 也折返到 <span class="arithmatex">\(2\ \mathrm{m}^{-1}\)</span>。欠采样的高频条纹伪装成低频——这就是<strong>混叠（aliasing）</strong>。工程 2 验证了第一组的确逐点相同（最大差 <span class="arithmatex">\(4\times10^{-15}\)</span>）：<span class="arithmatex">\(8 - 6 = 2\)</span>，折叠公式见下方拓展。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-5.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-5.png" width="900" />
   <figcaption>图 2.5 欠采样造成的混叠：两组参数下，高频信号（实线）与低频信号（虚线）的样本完全一致（截自原书）</figcaption>
 </figure>
 
@@ -2751,7 +2751,7 @@ g(x)\,\frac{1}{\delta}\,\mathrm{comb}\!\left(\frac{x}{\delta}\right)\mathrm{rect
 \]</div>
 <p>空域以 <span class="arithmatex">\(L\)</span> 为周期<strong>虚拟</strong>复制——"虚拟"是因为那些区域根本没有样本（图 2.6(g)(i)）。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-6.png" width="640" />
+  <img src="../../../images/holo/waveprop/fig-2-6.png" width="640" />
   <figcaption>图 2.6 从解析 FT 到 DFT 的图形化推导（\(g=e^{-a|x|}\)，\(a=10\)，\(\delta=0.0375\) m，\(L=0.6\) m）：(a)(b) 原始对，(c)(d) 采样→混叠，(e)(f) 截断→波纹，(g)(h) 频域采样→空域周期化，(i)(j) 最终 DFT 对（截自原书）</figcaption>
 </figure>
 
@@ -2801,17 +2801,17 @@ g(x)\,\frac{1}{\delta}\,\mathrm{comb}\!\left(\frac{x}{\delta}\right)\mathrm{rect
 <p>想用 DFT 逼近已知的连续 <span class="arithmatex">\(G(f_x)\)</span>，实际算出的是 <span class="arithmatex">\(\hat{G}(f_x)\)</span>——一个采样过、起波纹、混叠过的版本。失真可以压小，一般不能归零：<strong>加大 <span class="arithmatex">\(L\)</span> 压波纹，减小 <span class="arithmatex">\(\delta\)</span> 压混叠</strong>。但注意 <span class="arithmatex">\(\delta = L/N\)</span>——两个愿望抢同一个 <span class="arithmatex">\(N\)</span>。</p>
 <p>原书用三张图演示各种取舍（仍用 <span class="arithmatex">\(e^{-10|x|}\)</span> 那对信号）：</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-7.png" width="600" />
+  <img src="../../../images/holo/waveprop/fig-2-7.png" width="600" />
   <figcaption>图 2.7 与图 2.6 同款但网格加大（\(\delta\) 翻倍、\(N\) 不变）：\(L\,\mathrm{sinc}(Lf_x)\) 变窄 → 波纹减小；但 \(\mathrm{comb}(\delta f_x)\) 间隔减半 → 混叠加重（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-8.png" width="600" />
+  <img src="../../../images/holo/waveprop/fig-2-8.png" width="600" />
   <figcaption>图 2.8 加样本（\(N\) 翻倍、\(\delta\) 减半、\(L\) 不变）：副本间隔拉开 → 混叠减轻；\(L\) 没变 → 波纹原样（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-9.png" width="600" />
+  <img src="../../../images/holo/waveprop/fig-2-9.png" width="600" />
   <figcaption>图 2.9 双管齐下（\(\delta\) 减半且 \(L\) 加倍，\(N\) 变为 4 倍）：混叠与波纹同时下降——代价是内存与计算量（截自原书）</figcaption>
 </figure>
 
@@ -2869,7 +2869,7 @@ g(x)\,\frac{1}{\delta}\,\mathrm{comb}\!\left(\frac{x}{\delta}\right)\mathrm{rect
 </table>
 <p>数字把原书的三句话钉死了：A 策略波纹降 20 倍但混叠涨 4 倍；B 策略混叠降 5 倍但波纹纹丝不动；C 策略两个都降、总误差从 <span class="arithmatex">\(3.9\times10^{-2}\)</span> 压到 <span class="arithmatex">\(5.2\times10^{-3}\)</span>（7.5 倍），代价是 <span class="arithmatex">\(N\)</span> 变 4 倍。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-10.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-10.png" width="900" />
   <figcaption>图 2.10（自绘仿真）四条策略的频谱链条复现：左列为 1/δ 放大标度下的解析谱（灰虚线）、加混叠（蓝点线）、再加波纹（黑实线）——A 行看得见隔壁副本、B 行看得见峰旁波纹、C 行干净；右列为最终 DFT 样本 vs 解析谱</figcaption>
 </figure>
 
@@ -3203,7 +3203,7 @@ G(f_x) = \frac{1}{a}\,\mathrm{rect}\!\left(\frac{f_x}{a}\right).
 \]</div>
 <p>原书取 <span class="arithmatex">\(\delta = 0.85/a\)</span>（留 15% 余量，让频率网格比谱宽一点）、<span class="arithmatex">\(N=32\)</span>，结果见图 2.10（笔记编号 fig-2-11）。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-11.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-11.png" width="900" />
   <figcaption>图 2.11（原书图 2.10）sinc 信号（\(a=1.1\)，\(\delta=0.85/a\)，\(N=32\)）的 DFT：(a) 幅值有轻微波纹——空域网格没装下信号的整个尾巴；(b) 相位在频带边缘跳变（截自原书）</figcaption>
 </figure>
 
@@ -3232,7 +3232,7 @@ f_{e2} = a\left(\frac{2}{\pi}\right)^{1/2},
 \tag{2.25}
 \]</div>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-12.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-12.png" width="900" />
   <figcaption>图 2.12（原书图 2.11）按 1/e² 电平定 \(\delta_{e2}\) 的高斯 DFT（\(a=1\)）：最左样本明显高出连续谱——右侧没采到的谱尾折回来了（截自原书）</figcaption>
 </figure>
 
@@ -3249,7 +3249,7 @@ f_{x,p} = \left[-\frac{a^2}{\pi}\ln p\right]^{1/2}.
 \]</div>
 <p>例如 <span class="arithmatex">\(f_{x,0.01} = 2.1\,a/\pi^{1/2}\)</span>、<span class="arithmatex">\(f_{x,0.001} = 2.6\,a/\pi^{1/2}\)</span>。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-13.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-13.png" width="900" />
   <figcaption>图 2.13（原书图 2.12）按 p=0.01 电平定 \(\delta\) 的高斯 DFT（\(a=1\)）：混叠分量只剩峰值的 1%，幅值图上已看不见（截自原书）</figcaption>
 </figure>
 
@@ -3262,7 +3262,7 @@ g(x) = \exp\!\left[-\pi(ax)^2\right]\exp\!\left[i\pi(bx)^2\right].
 \]</div>
 <p>这正是高斯光束传播时的样子（振幅高斯 + 波前曲率），也是三个案例里最一般的。二次相位让信号随 <span class="arithmatex">\(|x|\)</span> 增大振荡得越来越快（图 2.14/原书图 2.13），但高斯包络把它压住——信号仍然"接近"限带。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-14.png" width="560" />
+  <img src="../../../images/holo/waveprop/fig-2-14.png" width="560" />
   <figcaption>图 2.14（原书图 2.13）二次相位高斯（\(a=0.25\)，\(b=0.57\)）的实部与虚部：包络内快速振荡（截自原书）</figcaption>
 </figure>
 
@@ -3273,7 +3273,7 @@ G(f_x) = \frac{1}{\sqrt{a^2 - ib^2}}\,\exp\!\left[-\pi\frac{f_x^2}{a^2 - ib^2}\r
 \]</div>
 <p>二次相位的代价：<strong>频带变宽</strong>。图 2.15/原书图 2.14 固定 <span class="arithmatex">\(a=0.33\)</span>、取 <span class="arithmatex">\(b = 0.75, 1.5, 2.5\)</span>——<span class="arithmatex">\(b\)</span> 越大谱越宽。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-15.png" width="640" />
+  <img src="../../../images/holo/waveprop/fig-2-15.png" width="640" />
   <figcaption>图 2.15（原书图 2.14）二次相位高斯的谱幅值随曲率参数 \(b\) 增宽：\(b=0.75\to2.5\) 时带宽从约 2 m⁻¹ 拉到约 23 m⁻¹（截自原书）</figcaption>
 </figure>
 
@@ -3288,7 +3288,7 @@ f_{x,p} = \left[-\frac{a^2 + b^4/a^2}{\pi}\,\ln p\right]^{1/2}.
 \]</div>
 <p>式 (2.31) 定量确认 <span class="arithmatex">\(f_{x,p}\)</span> 随 <span class="arithmatex">\(b\)</span> 增大（<span class="arithmatex">\((2.26)(2.27)\)</span> 就是 <span class="arithmatex">\(b=0\)</span> 的特例）。原书的数值例子：<span class="arithmatex">\(a=0.25\)</span>、<span class="arithmatex">\(b=0.57\)</span>，采样 <span class="arithmatex">\(\delta = 0.25\)</span> m、只用了 40 个样本，谱幅值吻合得很好、相位在频带边缘略差——若系统采样率只有约 <span class="arithmatex">\(1.7\ \mathrm{m}^{-1}\)</span> 这就够了，需要更高频精度就换 <span class="arithmatex">\(p=0.001\)</span> 重算。</p>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-16.png" width="900" />
+  <img src="../../../images/holo/waveprop/fig-2-16.png" width="900" />
   <figcaption>图 2.16（原书图 2.15）二次相位高斯（\(a=0.25\)，\(b=0.57\)）的 DFT vs 解析：幅值吻合，相位在频带边缘略有偏差（截自原书）</figcaption>
 </figure>
 
@@ -3667,7 +3667,7 @@ g(x,y) = \mathrm{rect}\!\left(\frac{x}{D}\right)\mathrm{rect}\!\left(\frac{y}{D}
 G(f_x,f_y) = D^2\,\mathrm{sinc}(Df_x)\,\mathrm{sinc}(Df_y).
 \]</div>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-17.png" width="1000" />
+  <img src="../../../images/holo/waveprop/fig-2-17.png" width="1000" />
   <figcaption>图 2.17（自绘仿真）方孔（\(D=0.5\) m，\(L=4\) m，\(N=128\)）的二维 DFT：左为孔径，中为 \(|G|\) 的 dB 图（sinc×sinc 主瓣 + 十字臂），右为 \(f_y=0\) 剖面与解析式的对比（最大偏差 \(3.1\times10^{-3}\)，相对峰值）</figcaption>
 </figure>
 
@@ -3965,7 +3965,7 @@ G(f_x,f_y) = D^2\,\mathrm{sinc}(Df_x)\,\mathrm{sinc}(Df_y).
 </tbody>
 </table>
 <figure>
-  <img src="../../images/holo/waveprop/fig-2-18.png" width="1000" />
+  <img src="../../../images/holo/waveprop/fig-2-18.png" width="1000" />
   <figcaption>图 2.18（自绘仿真）习题 1–5 的 DFT vs 解析 FT（左列 \(a=1\)，右列 \(a=10\)）：每个工况的 \(\delta\)、\(N\) 与误差标在标题里——\(a\) 变大十倍，网格按同比例缩放，结果逐位不变</figcaption>
 </figure>
 
