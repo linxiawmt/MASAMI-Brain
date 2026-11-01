@@ -4,6 +4,8 @@ hide:
   - navigation
 ---
 
+<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jpg')"></div>
+
 <div class="glass home-hero">
   <div class="home-kicker">STUDY · NOTES · GROWING</div>
   <div class="home-title">MASAMI 的外置大脑</div>

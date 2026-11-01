@@ -1,3 +1,13 @@
+
+/* 首页固定背景层（内联 style 提供图片，绕开 CSS 缓存） */
+.home-bg-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center 32%;
+  background-repeat: no-repeat;
+}
 /* 系统中文字体栈（不依赖外部字体 CDN） */
 body,
 .md-typeset {
