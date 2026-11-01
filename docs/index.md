@@ -4,11 +4,8 @@ hide:
   - navigation
 ---
 
-<video class="home-bg-fixed" autoplay loop muted playsinline preload="auto"
-       poster="images/bg/ellen-poster.jpg">
-  <source src="images/bg/ellen-loop.mp4" type="video/mp4">
-  <source src="images/bg/ellen-loop.webm" type="video/webm">
-</video>
+<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jpg')"></div>
+<div class="home-bg-glow"></div>
 
 <div class="glass home-hero">
   <div class="home-kicker">STUDY · NOTES · GROWING</div>
