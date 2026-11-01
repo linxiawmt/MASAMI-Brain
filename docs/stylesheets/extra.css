@@ -215,3 +215,24 @@ body.is-home .md-content__inner {
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.85rem;
 }
+
+/* ===== 阅读体验微调 ===== */
+.md-typeset .tabbed-set > input + label {
+  border-radius: 8px 8px 0 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.md-typeset .tabbed-content {
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+.md-typeset pre {
+  border-radius: 10px;
+}
+.md-typeset code {
+  border-radius: 6px;
+}
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 10px;
+  overflow: hidden;
+}
