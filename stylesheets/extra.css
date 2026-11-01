@@ -102,7 +102,7 @@ body.is-home::before {
   content: "";
   position: fixed; inset: 0;
   z-index: -2;
-  background: url("../../images/bg/ellen.jpg") center 32% / cover no-repeat;
+  background: url("../images/bg/ellen.jpg") center 32% / cover no-repeat;
 }
 body.is-home::after {
   content: "";
