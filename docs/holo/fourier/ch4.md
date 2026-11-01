@@ -9,11 +9,11 @@
 
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">光如何传播</span>
+    <span class="brlabel root">光的传播</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">
-        <span class="brlabel">舞台（4.1–4.3）</span>
+        <span class="brlabel">物理设定（4.1–4.3）</span>
         <span class="brace"></span>
         <div class="brkids">
           <span class="brleaf">5 条介质假设 → 解耦 → 标量</span>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">动手（4.5）</span>
+        <span class="brlabel">动手实验（4.5）</span>
         <span class="brace"></span>
         <div class="brkids">
           <span class="brleaf">jinc = J1(2πx)/x，jinc(0)=π</span>

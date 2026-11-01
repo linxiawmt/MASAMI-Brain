@@ -8,7 +8,7 @@
 
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">波动光学与全息</span>
+    <span class="brlabel root">从波动光学到全息</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">

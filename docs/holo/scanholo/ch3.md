@@ -10,7 +10,7 @@ OSH 的出身：Poon 和 Korpel 在声光外差图像处理器上做双极性非
 
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">光学扫描全息原理</span>
+    <span class="brlabel root">扫描全息如何编码信息</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">

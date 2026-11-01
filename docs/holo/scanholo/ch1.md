@@ -9,7 +9,7 @@
 
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">全息的数学语言</span>
+    <span class="brlabel root">全息问题的数学语言</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">

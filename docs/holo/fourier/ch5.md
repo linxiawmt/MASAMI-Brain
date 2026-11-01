@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">试跑(5.3)</span>
+        <span class="brlabel">实例演练（5.3）</span>
         <span class="brace"></span>
         <div class="brkids">
           <span class="brleaf">sqr_beam:0.5 m 窗、250 样本、2 mm</span>
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">设计纪律(5.4.5/5.4.6)</span>
+        <span class="brlabel">设计准则（5.4.5/5.4.6）</span>
         <span class="brace"></span>
         <div class="brkids">
           <span class="brleaf">表 5.3 四步流程</span>

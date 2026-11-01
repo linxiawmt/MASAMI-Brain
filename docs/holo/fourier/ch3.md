@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">提示袋（3.8）</span>
+        <span class="brlabel">提示与忠告（3.8）</span>
         <span class="brace"></span>
         <div class="brkids">
           <span class="brleaf">clear all / close all</span>
