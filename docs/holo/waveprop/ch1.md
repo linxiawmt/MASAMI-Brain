@@ -316,7 +316,7 @@ U_P(\mathbf r) = A\exp\left[i\frac{2\pi}{\lambda}(\alpha x + \beta y + \gamma z)
 这列波与 \(x\) 轴夹角 \(\cos^{-1}\alpha\)、与 \(y\) 轴夹角 \(\cos^{-1}\beta\)，如图 1.1。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-1.png" width="560" />
+  <img src="../../../images/holo/waveprop/fig-1-1.png" width="560" />
   <figcaption>图 1.1 方向余弦 \(\alpha\)、\(\beta\)、\(\gamma\)：波矢 \(\boldsymbol k\) 与三根坐标轴的夹角（截自原书）</figcaption>
 </figure>
 
@@ -395,7 +395,7 @@ R(z) = z\left[1 + \left(\frac{\pi W_0^2}{\lambda z}\right)^2\right],
 几何设置见图 1.2：源平面坐标 \(\mathbf r_1=(x_1,y_1)\)，观察平面坐标 \(\mathbf r_2=(x_2,y_2)\)，两平面相距 \(\Delta z\)。基本问题一句话：**已知源平面场 \(U(x_1,y_1)\)，求观察平面场 \(U(x_2,y_2)\)**。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-2.png" width="620" />
+  <img src="../../../images/holo/waveprop/fig-1-2.png" width="620" />
   <figcaption>图 1.2 光波传播的坐标系：源平面 \((x_1,y_1)\) 与观察平面 \((x_2,y_2)\) 相距 \(\Delta z\)（截自原书）</figcaption>
 </figure>
 
@@ -554,12 +554,12 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 单缝 \(\mathrm{rect}(x/D_x)\mathrm{rect}(y/D_y)\) 与双缝（缝宽 \(D_x=40\,\mu\mathrm m\)、缝高 \(D_y=400\,\mu\mathrm m\)、中心距 \(\Delta x=120\,\mu\mathrm m=3D_x\)）两个孔径，各传播两次：近场 \(z=5\) mm 用 (1.57) 的**传递函数法**（把 (1.57) 写成"FFT → 乘 \(H\) → IFFT"，\(H=\exp(ik\Delta z)\exp[-i\pi\lambda\Delta z(f_X^2+f_Y^2)]\)，离散窗 \(\Delta z\le 4dx^2/\lambda\approx 30\) mm，5 mm 安全），远场 \(z=80\) mm 用 (1.67) 的"变换 + 坐标缩放 \(x_2=\lambda\Delta z f_X\)"。胞元中心采样下 \(40\,\mu\mathrm m\) 缝恰好占 20 个胞元，离散谱零点严格落在连续理论位置上。代码文件：`matlab/waveprop/ch1/ch1_slit_diffraction.m`、`python/waveprop/ch1/ch1_slit_diffraction.py`。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-3.png" width="820" />
+  <img src="../../../images/holo/waveprop/fig-1-3.png" width="820" />
   <figcaption>图 1.3 单缝（上排）与双缝（下排）的菲涅耳近场（左列）与夫琅禾费远场（右列），灰度上限截到峰值的 2% 以压掉 0 级亮斑（自绘仿真）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-4.png" width="760" />
+  <img src="../../../images/holo/waveprop/fig-1-4.png" width="760" />
   <figcaption>图 1.4 双缝夫琅禾费剖面（4 倍补零）：\(\cos^2\) 条纹被 \(\mathrm{sinc}^2\) 包络调制，\(\Delta x=3D_x\) 导致 \(\pm3\) 级缺级（自绘仿真）</figcaption>
 </figure>
 
@@ -987,7 +987,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 1.1 节说"\(\lambda\to0\) 波走直线"，那就让直线光学和波动光学当场比武：直径 \(D=100\,\mu\mathrm m\) 的不透明圆盘（水滴模型）挡住平面波。几何光学预言盘后是**绝对阴影**；波动光学按 (1.57) 传播 \(U_1=1-\mathrm{circ}\)（平面波减圆盘），\(\Delta z=5\) mm。本版替换了旧稿的启发式 sinc 公式，但保留了"水滴挡光"的物理场景。代码文件：`matlab/waveprop/ch1/ch1_geom_vs_wave.m`、`python/waveprop/ch1/ch1_geom_vs_wave.py`。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-5.png" width="860" />
+  <img src="../../../images/holo/waveprop/fig-1-5.png" width="860" />
   <figcaption>图 1.5 左：圆盘后 5 mm 的波动光学光强分布——阴影中心残留亮斑（泊松斑）、边缘一圈圈衍射条纹；右：中心行剖面，几何光学（红虚线）vs 波动光学（蓝实线）（自绘仿真）</figcaption>
 </figure>
 
@@ -1177,7 +1177,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 (1.67) 说"夫琅禾费图样 = 孔径的 FT"。直径 \(D=100\,\mu\mathrm m\) 的圆孔 \(\mathrm{circ}(2r/D)\) 是最圆美的考题：理论 FT 是 \(J_1\) 型艾里斑，直流分量 = 孔径面积 \(\pi D^2/4\)，第一暗环在 \(f=3.8317/(\pi D)\)。同一孔径在细网格（1 µm 像素）与粗网格（4 µm 像素）上各变换一次，看离散化会造成什么。本版由旧稿 `Fourier_Transfer_2D.m`、`circle_digital.m`、`二维傅里叶变换.py`、`圆孔离散化.py` 四份合并而成；旧稿细网格圆用 OpenCV 抗锯齿画圆（`cv2.LINE_AA`），本版改成解析判据 \(R\le D/2\)——"抗锯齿"是把边缘人为抹糊，恰好掩盖了我们想研究的离散化效应。代码文件：`matlab/waveprop/ch1/ch1_circle_ft_aliasing.m`、`python/waveprop/ch1/ch1_circle_ft_aliasing.py`。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-6.png" width="880" />
+  <img src="../../../images/holo/waveprop/fig-1-6.png" width="880" />
   <figcaption>图 1.6 上排：细网格圆孔（a）、艾里斑频谱（b，对数尺度）、3D 光强（c）；下排：粗网格圆孔的锯齿边缘（d）、出现高频混叠的频谱（e）、沿 \(f_X\) 的剖面对比（f，对数纵轴）（自绘仿真）</figcaption>
 </figure>
 
@@ -1456,7 +1456,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 原书明说：(1.57) 要写成傅里叶变换才有高效算法，而把连续傅里叶变换搬进计算机要过三关——**空间采样、有限截断、频域采样**，每一步在两个域里各损失/改变什么。本工程用 \(g(x)=\exp(-a|x|)\)（\(a=10\)，\(\delta=0.0375\) m，\(L=0.6\) m，\(N=16\)，参数与你旧稿一致）把三步各画一行：空域乘 comb ↔ 频域卷积 comb（频谱周期复制、混叠）；空域乘 rect ↔ 频域卷积 \(L\,\mathrm{sinc}(Lf)\)（吉布斯波纹）；频域乘 comb ↔ 空域卷积 comb（虚拟周期延拓）。代码文件：`matlab/waveprop/ch1/ch1_dft_three_steps.m`、`python/waveprop/ch1/ch1_dft_three_steps.py`。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-1-7.png" width="880" />
+  <img src="../../../images/holo/waveprop/fig-1-7.png" width="880" />
   <figcaption>图 1.7 DFT 三步演化的双域对照：每行左为空间域、右为频域。灰线是连续参考，彩线是当前步骤的结果（自绘仿真）</figcaption>
 </figure>
 

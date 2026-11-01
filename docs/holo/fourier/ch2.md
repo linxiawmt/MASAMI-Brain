@@ -92,7 +92,7 @@ n = -\tfrac{N}{2},\,\cdots,\,\tfrac{N}{2}-1 .
 这是全书的**标准指标约定，且 \(M, N\) 默认为偶数**——偶数样本数对 DFT 效率和样本排布都有好处（2.4 节展开）。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-1.png" width="640" />
+  <img src="../../../images/holo/fourier/fig-2-1.png" width="640" />
   <figcaption>图 2.1 二维函数的 (a) 解析版本与 (b) 采样版本（截自原书）</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ D_X \le L_X, \qquad D_Y \le L_Y .
 \(B_X, B_Y\) 是连续函数频谱沿 \(x, y\) 方向的**带宽（bandwidth）**（图 2.2）。违反式 (2.5) 就发生**混叠（aliasing）**：欠采样的高频成分被错当成低频成分混进结果里（2.5 节会亲眼看到）。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-2.png" width="640" />
+  <img src="../../../images/holo/fourier/fig-2-2.png" width="640" />
   <figcaption>图 2.2 g(x,y) 沿 x 轴的 (a) 支撑 D_X 与 (b) 带宽 B_X；带宽按"半宽"计量（截自原书）</figcaption>
 </figure>
 
@@ -184,7 +184,7 @@ B \approx \frac{5}{w}.
 \]
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-3.png" width="620" />
+  <img src="../../../images/holo/fourier/fig-2-3.png" width="620" />
   <figcaption>图 2.3 rect(x/2w)rect(y/2w) 频谱的 98% 功率范围：(a) 幅度谱 |F|，(b) 功率谱 |F|²（截自原书）</figcaption>
 </figure>
 
@@ -456,7 +456,7 @@ Python 实测（\(w=1\)）：
 - 高斯：\(B\cdot w = 0.7892\)，解析值 \(\sqrt{\ln 50/(2\pi)} = 0.7891\)——表 2.1 的 \(0.79/w\) 就是方程 \(1-e^{-2\pi w^2 B^2} = 0.98\) 的精确解。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-py-effbw.png" width="880" />
+  <img src="../../../images/holo/fourier/fig-2-py-effbw.png" width="880" />
   <figcaption>图 2-P1 有效带宽数值验证：左两幅为 rect 频谱与 98% 功率圆（复现图 2.3），右为三种函数的累积功率曲线与 98% 交点（笔记自制）</figcaption>
 </figure>
 
@@ -568,14 +568,14 @@ f_X \;\rightarrow\; \left[-\frac{1}{2\Delta x} \;:\; \frac{1}{L} \;:\; \frac{1}{
 居中 → 移位的换位由 `fftshift` 完成，反方向用 `ifftshift`。图 2.4 用一维 rect 和它的频谱把三种排列全部摆了出来——左列空域、右列频域，Index 行是数组索引、coords 行是物理坐标。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-4.png" width="780" />
+  <img src="../../../images/holo/fourier/fig-2-4.png" width="780" />
   <figcaption>图 2.4 一维空域（左列）与频域（右列）向量的三种采样排列：(a)(b) 解析；(c)(d) 居中；(e)(f) FFT 前的移位排列（截自原书）</figcaption>
 </figure>
 
 二维数组同理：MATLAB 索引从 `(1,1)` 开始。居中排列中零坐标 \([x,y]=[0,0]\) 位于索引 `(N/2+1, M/2+1)`；2D FFT 之前要把它移到索引 `(1,1)`。所需的"移位"实际上就是**数组的四象限对调**（图 2.5）：`fftshift` 和 `ifftshift` 都能完成。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-5.png" width="700" />
+  <img src="../../../images/holo/fourier/fig-2-5.png" width="700" />
   <figcaption>图 2.5 二维空间阵列的采样排列：(a) 居中（[0,0] 在 (N/2+1, M/2+1)，象限序 3-4/2-1）与 (b) FFT 前的移位排列（[0,0] 在 (1,1)，象限序 1-2/4-3）（截自原书）</figcaption>
 </figure>
 
@@ -802,7 +802,7 @@ roundtrip fftshift(ifftshift(g)) == g : True
 ```
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-py-arrange.png" width="880" />
+  <img src="../../../images/holo/fourier/fig-2-py-arrange.png" width="880" />
   <figcaption>图 2-P2 排列演示：上排为居中 / 移位 / FFT 定标三种 1D 排列（复现图 2.4），下排为 2D 象限编号对调（复现图 2.5）与 FFT 原始输出顺序（笔记自制）</figcaption>
 </figure>
 
@@ -860,7 +860,7 @@ f_P(x) = \Big\{\Big[f(x)\cdot \mathrm{comb}\!\left(\frac{x}{\Delta x}\right)\Big
 书上的例子（图 2.6）：解析矩形（实线）与采样版本（点），向量长度 20（\(L = 20\)，\(\Delta x = 1\)）；虚线是周期延拓——样本向量"虚拟地"向两边无限复制。图 2.6(b)：解析谱幅度（实线）、FFT 结果（点）、周期谱（虚线）——**FFT 样本跟随周期谱**。与解析谱最明显的差别是高频瓣处样本值略大：矩形谱中欠采样频率成分混叠的结果。实践中，按有效带宽（如 98% 水平）采样，只会引入少量混叠。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-6.png" width="680" />
+  <img src="../../../images/holo/fourier/fig-2-6.png" width="680" />
   <figcaption>图 2.6 周期延拓演示：(a) rect 函数——解析（实线）、周期延拓（虚线）、采样（点）；(b) rect 频谱幅度——解析（实线）、周期延拓（虚线）、FFT 样本（点）（截自原书）</figcaption>
 </figure>
 
@@ -1042,7 +1042,7 @@ Python 实测：
 - DC 样本 \(G(0) = 5.000000\)，等于中心纵坐标定理给出的 \(\int f\,dx = 5\)——第 1 章的"免费仪器"继续可用。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-py-periodic.png" width="720" />
+  <img src="../../../images/holo/fourier/fig-2-py-periodic.png" width="720" />
   <figcaption>图 2-P3 周期延拓数值复现（书图 2.6 参数）：上为空域 rect 及其周期副本，下为解析谱（实线）、周期谱（虚线）与 FFT 样本（点）——高频瓣处样本被混叠抬起（笔记自制）</figcaption>
 </figure>
 
@@ -1051,7 +1051,7 @@ Python 实测：
 周期延拓的另一张账单出现在卷积上。如果用 FFT 做卷积 \(f(x)\ast h(x)\)，实际得到的是**缩放版的 \(f_P(x)\ast h_P(x)\)**——两个周期延拓之间的循环卷积。图 2.7 用矩形与直角三角形演示：两个函数各占 20 个样本的向量（(a) rect 支撑 \(D_1=9\)；(b) 右三角形支撑 \(D_2=15\)，值从 0 线性升到 1）。卷积在概念上是"翻转—平移—记录重叠面积"：图 2.7(c) 把翻转后的三角形平移到某个位置，解析卷积的重叠面积只是那个小灰三角形——但由于周期延拓，三角形左侧还有一条带子压在了**另一个矩形副本**上，这块面积也被算进了离散卷积结果。随着三角形继续右移，错误面积会退场，但卷积结果的边缘（图 2.7(d) 的点）始终跟着周期结果走。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-7.png" width="780" />
+  <img src="../../../images/holo/fourier/fig-2-7.png" width="780" />
   <figcaption>图 2.7 周期卷积演示：(a) 采样 rect；(b) 采样右三角形；(c) 平移重叠示意——周期函数（虚线）与采样函数（点）；(d) 卷积结果——解析（实线）、周期（虚线）与 FFT（点）（截自原书）</figcaption>
 </figure>
 
@@ -1266,7 +1266,7 @@ Python 实测：
 - 零填充到 \(N_1+N_2-1 = 39\)：同样 \(5.0\times10^{-3}\)——**不改网格、用旧样本就能修好**。
 
 <figure>
-  <img src="../../images/holo/fourier/fig-2-py-perconv.png" width="900" />
+  <img src="../../../images/holo/fourier/fig-2-py-perconv.png" width="900" />
   <figcaption>图 2-P4 周期卷积数值复现（书图 2.7(d)）：左为违反式 (2.27) 的卷绕污染，中/右为两种修复——加大 L 或零填充（笔记自制）</figcaption>
 </figure>
 

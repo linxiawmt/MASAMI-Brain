@@ -77,7 +77,7 @@
 先立住本章的舞台。图 5.1 是全章的成像模型：扩展物的每个点源发出球面波，到达**入瞳（entrance pupil）**时是发散球面波；理想成像系统应给它乘一个球面相位延迟，把它变成会聚球面波、聚到像面上的一个点。**像差就是对这个球面相位的偏离**——点物聚成有限大小的光斑，整幅像看起来就是模糊。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-1.png" width="760" />
+  <img src="../../../images/holo/waveprop/fig-5-1.png" width="760" />
   <figcaption>图 5.1 成像系统基本模型：物面 \((\xi,\eta)\)、入瞳与出瞳 \((x,y)\)、像面 \((u,v)\)；每个物点的发散球面波经系统变成（理想情形）会聚球面波（截自原书）</figcaption>
 </figure>
 
@@ -206,7 +206,7 @@ G_m(\theta) =
 图 5.2 给了同一族（x 像散）三个阶数的直观感受：\(i=6,12,24\) 的角向都是 \(\cos 2\theta\)，径向幂次分别是 2、4、6——阶数越高，从圆心到边缘的峰谷与零点越多。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-2.png" width="720" />
+  <img src="../../../images/holo/waveprop/fig-5-2.png" width="720" />
   <figcaption>图 5.2 三阶 x 像散：(a) \(i=6\) 初级、(b) \(i=12\) 次级、(c) \(i=24\) 三级——角向相同、径向越来越细（截自原书）</figcaption>
 </figure>
 
@@ -426,12 +426,12 @@ W(r, \theta) = W'(r, \theta) + \sum_{i=n_Z+1}^{\infty} a_i Z_i(r, \theta).
 原书 Listing 5.3 演示了完整流程：生成一帧湍流相位屏（\(N=40\)、\(L=2\)、\(r_0 = L/20\)，`ft_phase_screen` 来自第 9 章），投影到 100 个 Zernike 模式，再合成模式受限版本。图 5.3 与图 5.4 是结果的两半：图 5.3 是原始屏和限 3/16/36/100 阶的版本——模式越多越像原图；图 5.4 是对应的**残余相位**（(5.20) 的第二项）——模式越多残余结构越细。左上角（限 3 阶的残余）就是快速倾斜镜摘走 tilt 之后变形镜要面对的东西；右下角（限 100 阶的残余）是 100 阶变形镜之后仍然让像变糊的部分。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-3.png" width="560" />
+  <img src="../../../images/holo/waveprop/fig-5-3.png" width="560" />
   <figcaption>图 5.3 模式受限相位屏：(a) 原始湍流屏，(b)–(e) 限 3/16/36/100 阶（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-4.png" width="620" />
+  <img src="../../../images/holo/waveprop/fig-5-4.png" width="620" />
   <figcaption>图 5.4 模式受限的残余相位（图 5.3 各情形的补集）：阶数越高残余越细、方差越小（截自原书）</figcaption>
 </figure>
 
@@ -493,7 +493,7 @@ W(r, \theta) = W'(r, \theta) + \sum_{i=n_Z+1}^{\infty} a_i Z_i(r, \theta).
 工程 1 在此之上多走了两步（图 5-8）：一是画出相位屏的 **Zernike 系数谱**（\(|a_i|\) 随 \(i\) 大致按幂律下滑，湍流的统计性质写在 9.3 节）；二是把"残差方差的两种算法"摆在一起互证——直接算 \(\mathrm{mean}[(W-W')^2]\)，与用 (5.26) 从系数尾部算 \(\sum_{i>n_Z}a_i^2\)，两条曲线在光滑波前上重合，在湍流屏上差出一个恒定的 \(0.0057\)——**那是 200 阶也装不下的网格尺度内容**，恰好演示了原书 (5.15) "只是近似"的告诫。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-8.png" width="1100" />
+  <img src="../../../images/holo/waveprop/fig-5-8.png" width="1100" />
   <figcaption>图 5-8（自绘仿真）工程 1 复现原书图 5.3/5.4 并扩展：(a)–(e) 原始屏与限 3/16/36/100 阶；(f) Zernike 系数谱；(g) 残差方差两算法——红线（系数平方和）与黑线（直接算）差恒定 0.0057，即 200 阶外的网格尺度内容</figcaption>
 </figure>
 
@@ -1194,7 +1194,7 @@ H(f_x, f_y) = \mathcal{F}\{h(u, v)\}
 原书 Listing 5.4 是完整的相干成像例：\(N=256\)、\(L=0.1\ \mathrm m\)、\(D=0.07\ \mathrm m\)、\(\lambda = 1\ \mu\mathrm m\)、\(z_i = 0.25\ \mathrm m\)；像差取 **0.05 波的 Zernike 离焦**（`W = 0.05 * zernike(4, 2*r/D, theta)`）；物是三条 \(50\ \mu\mathrm m \times 200\ \mu\mathrm m\) 的竖缝（图 5.5(a)）。算出 ASF（图 5.5(b)——比物体窄得多，脉冲响应"窄"是线性系统的常态，3.1 节的老话）后 `myconv2(obj, h, 1)` 卷积成像（图 5.5(c)）。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-5.png" width="760" />
+  <img src="../../../images/holo/waveprop/fig-5-5.png" width="760" />
   <figcaption>图 5.5 相干成像例：(a) 三缝物体，(b) 0.05 波离焦的振幅扩散函数，(c) 相干像（截自原书）</figcaption>
 </figure>
 
@@ -1266,7 +1266,7 @@ img = myconv2(abs(obj).^2, abs(h).^2, 1);
 结果见图 5.6：同样 0.05 波离焦，非相干像的模糊形态与相干像不同（相干像的边缘有振铃——那是在卷积里干涉出来的；非相干像只是强度模糊）。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-6.png" width="760" />
+  <img src="../../../images/holo/waveprop/fig-5-6.png" width="760" />
   <figcaption>图 5.6 非相干成像例：(a) 三缝物体，(b) 点扩散函数（0.05 波离焦），(c) 非相干像（截自原书）</figcaption>
 </figure>
 
@@ -1334,12 +1334,12 @@ H(f) =
 原书图 5.7 展示了 OTF 对像差的敏感：实线是无像差圆孔（式 5.42），点划线是孔径边缘 **0.5 波离焦**系统的 OTF（数值积分）——中频段衰减明显更狠。图 5-9(b) 是工程 2 的复现：解析式、光瞳自相关、\(|h|^2\) 的 FT 三条线重合，外加 0.05 波离焦的 OTF 作对照。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-7.png" width="620" />
+  <img src="../../../images/holo/waveprop/fig-5-7.png" width="620" />
   <figcaption>图 5.7 圆孔 OTF：无像差（实线，式 5.42）与边缘 0.5 波离焦（点划线，数值积分）——离焦把中频压下去了（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-9.png" width="1100" />
+  <img src="../../../images/holo/waveprop/fig-5-9.png" width="1100" />
   <figcaption>图 5-9（自绘仿真）工程 2：(a) 三缝物体的相干/非相干像对比（0.05 波离焦）；(b) 圆孔 OTF 解析 vs 两条数值路线，0.05 波离焦衰减；(c) 相干像谱在 \(f_0\) 处截止（对数刻度，窗泄漏 \(10^{-3}\)）</figcaption>
 </figure>
 
@@ -1999,7 +1999,7 @@ n_C = n(656.27\ \mathrm{nm}) \quad \text{红氢线（C 线）}.
 实测：\(n_F = 1.522377\)、\(n_d = 1.516800\)、\(n_C = 1.514322\)——与手册六位值逐位吻合；阿贝数 \(V_d = (n_d - 1)/(n_F - n_C) = 64.12\)（BK7 标准 64.17，六位舍入所致）。平凸薄透镜（凸面半径 \(R = 51.68\ \mathrm{mm}\)、直径 \(12.7\ \mathrm{mm}\)）的焦距 \(f = R/(n-1)\)：F/d/C 三波长分别 **98.932 / 100.000 / 100.482 mm**——\(R=51.68\) 这个设计值让 d 光焦距正好 100 mm；衍射受限焦斑直径（第一暗环）\(2.44\lambda f/D\) 分别 9.24 / 11.29 / 12.67 \(\mu\mathrm m\)。按 5.2.1 的配方（\(N=1024\)、\(\delta = 0.199\ \mathrm{mm}\)）算三波长零离焦 PSF 切片：半高全宽 3.78 / 4.61 / 5.18 μm，焦斑随波长变红而变宽（图 5-10 上排）；d 光加 0 / 0.125 / 0.25 / 0.5 波离焦，峰值跌到 1.0000 / 0.5172 / 0.0704 / 0.0189（图 5-10 下排）——0.125 波就把峰值腰斩，离焦是成像的大敌（\(\sigma_\phi^2 = (2\pi\times0.125)^2 = 0.617\)，Maréchal 已进入失效区）。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-10.png" width="1100" />
+  <img src="../../../images/holo/waveprop/fig-5-10.png" width="1100" />
   <figcaption>图 5-10（自绘仿真）习题 1：上排 BK7 三波长焦斑切片（红线 = ±Airy 半径），下排 d 光 0/0.125/0.25/0.5 波离焦的峰值演化</figcaption>
 </figure>
 
@@ -2016,7 +2016,7 @@ n_C = n(656.27\ \mathrm{nm}) \quad \text{红氢线（C 线）}.
 两个值得盯住的形态（图 5-11）：像散在零离焦处聚焦成**两条焦线**，加 ±1 波离焦反而略抬峰值（0.0070 → 0.0096）——离焦把两条焦线往中间拉，部分补偿了像散的结构；球差则是在零离焦处最接近"最佳焦面"（0.0469），±离焦单调变差。1 波像差的 \(\sigma_\phi^2 = 4\pi^2 \approx 39.5\ \mathrm{rad^2}\)，Maréchal/经验式早已失效（给出负数/\(10^{-17}\)），这些数字只能靠仿真——Strehl 近似式的适用边界在此一目了然。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-11.png" width="1100" />
+  <img src="../../../images/holo/waveprop/fig-5-11.png" width="1100" />
   <figcaption>图 5-11（自绘仿真）习题 2/3：1 波像散（上排）与 1 波球差（下排）加 \(\pm2,\pm1,0\) 波离焦的 PSF（log10 显示，±40 μm 窗）——像散的焦线结构与球差的环结构清晰可辨</figcaption>
 </figure>
 
@@ -2048,7 +2048,7 @@ W(x, y) = 0.07\, Z_4 + 0.05\, Z_5 - 0.05\, Z_6 + 0.03\, Z_7 - 0.03\, Z_8,
 解析对照：孔径的 FT 是线性的，求和孔径的谱 = 单孔谱 \(\times\) 干涉因子 \(\sum_j e^{-i2\pi\mathbf{f}\cdot\mathbf{c}_j}\)。实测归一化形状最大差 \(5.0\times10^{-4}\)（采样点逐点对照）；并集孔径占满孔面积比 0.6082，PSF 峰值比 **0.3710** vs 面积比平方 0.3699——峰值 \(\propto\) 面积²，相干成像的又一铁证（图 5-12 中）。
 
 <figure>
-  <img src="../../images/holo/waveprop/fig-5-12.png" width="1100" />
+  <img src="../../../images/holo/waveprop/fig-5-12.png" width="1100" />
   <figcaption>图 5-12（自绘仿真）习题 5/6：环形孔径 PSF（左，log10）、三孔稀疏孔径 PSF（中，注意 y 方向的干涉条纹）、v=0 切片对比（右，环孔主瓣更窄、峰值 0.563）</figcaption>
 </figure>
 
