@@ -99,7 +99,7 @@ body.is-home::before {
   content: "";
   position: fixed; inset: 0;
   z-index: -2;
-  background: url("../../images/bg/meteors.jpg") center / cover no-repeat;
+  background: url("../../images/bg/ellen.jpg") center / cover no-repeat;
 }
 body.is-home::after {
   content: "";
