@@ -1,0 +1,4408 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/numana/ch03/">
+      
+      
+        <link rel="prev" href="../ch02/">
+      
+      
+        <link rel="next" href="../ch04/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第3章 非线性方程组 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-3-章-非线性方程组的数值解法" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第3章 非线性方程组
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-向量范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 向量范数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 向量范数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-三种常用范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 三种常用范数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-两个不等式的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 两个不等式的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-范数的等价性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 范数的等价性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-距离与向量序列的极限" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 距离与向量序列的极限
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 距离与向量序列的极限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-距离" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 距离
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-按范数收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 按范数收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-分量收敛与无穷范数收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 分量收敛与无穷范数收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.4 例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-矩阵范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 矩阵范数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 矩阵范数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-诱导范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 诱导范数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-Frobenius-范数与谱半径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 Frobenius 范数与谱半径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-逆矩阵的界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4 逆矩阵的界
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-多变量不动点迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 多变量不动点迭代
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 多变量不动点迭代">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-方程组与不动点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 方程组与不动点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-存在性定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 存在性定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-压缩映射收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 压缩映射收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-定理的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.4 定理的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-Jacobian-判据的三种写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.5 Jacobian 判据的三种写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#346-算例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.6 算例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#347-Seidel-加速" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.7 Seidel 加速
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#348-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.8 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-非线性方程组的-Newton-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 非线性方程组的 Newton 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 非线性方程组的 Newton 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-一维回顾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 一维回顾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-用-Jacobian-构造不动点映射" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 用 Jacobian 构造不动点映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-迭代格式与计算方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 迭代格式与计算方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-二次收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 二次收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355-定理的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.5 定理的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356-范数形式Jacobian-逆的界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.6 范数形式：Jacobian 逆的界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#357-算例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.7 算例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#358-算法与实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.8 算法与实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-拟-Newton-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 拟 Newton 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 拟 Newton 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-动机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-割线条件与秩一修正" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 割线条件与秩一修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#363-逆形式的递推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.3 逆形式的递推
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#364-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.4 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-下降法与线搜索" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 下降法与线搜索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 下降法与线搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-把方程组化成一个最小化问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.1 把方程组化成一个最小化问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-最速下降格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.2 最速下降格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-步长与线搜索" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.3 步长与线搜索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#374-算例与对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.4 算例与对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#375-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.5 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 用于衍射计算的采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 菲涅耳衍射的定标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 大气传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 自适应光学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 附录要点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-向量范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 向量范数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 向量范数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-三种常用范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 三种常用范数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-两个不等式的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 两个不等式的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-范数的等价性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 范数的等价性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-距离与向量序列的极限" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 距离与向量序列的极限
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 距离与向量序列的极限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-距离" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 距离
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-按范数收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 按范数收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-分量收敛与无穷范数收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 分量收敛与无穷范数收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.4 例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-矩阵范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 矩阵范数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 矩阵范数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-诱导范数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 诱导范数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-Frobenius-范数与谱半径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 Frobenius 范数与谱半径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-逆矩阵的界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4 逆矩阵的界
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-多变量不动点迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 多变量不动点迭代
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 多变量不动点迭代">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-方程组与不动点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 方程组与不动点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-存在性定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 存在性定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-压缩映射收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 压缩映射收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-定理的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.4 定理的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-Jacobian-判据的三种写法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.5 Jacobian 判据的三种写法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#346-算例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.6 算例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#347-Seidel-加速" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.7 Seidel 加速
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#348-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.8 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-非线性方程组的-Newton-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 非线性方程组的 Newton 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 非线性方程组的 Newton 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-一维回顾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 一维回顾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-用-Jacobian-构造不动点映射" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 用 Jacobian 构造不动点映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-迭代格式与计算方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 迭代格式与计算方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-二次收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 二次收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355-定理的证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.5 定理的证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356-范数形式Jacobian-逆的界" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.6 范数形式：Jacobian 逆的界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#357-算例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.7 算例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#358-算法与实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.8 算法与实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-拟-Newton-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 拟 Newton 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 拟 Newton 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-动机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-割线条件与秩一修正" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 割线条件与秩一修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#363-逆形式的递推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.3 逆形式的递推
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#364-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.4 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-下降法与线搜索" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 下降法与线搜索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 下降法与线搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-把方程组化成一个最小化问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.1 把方程组化成一个最小化问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-最速下降格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.2 最速下降格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-步长与线搜索" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.3 步长与线搜索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#374-算例与对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.4 算例与对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#375-MATLAB" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.5 MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-3-章-非线性方程组的数值解法">第 3 章 非线性方程组的数值解法<a class="headerlink" href="#第-3-章-非线性方程组的数值解法" title="Permanent link">#</a></h1>
+<blockquote>
+<p>内容：向量与矩阵范数、多变量不动点迭代、非线性方程组的 Newton 法、拟 Newton 法（Broyden）、下降法与线搜索。
+课件给出结论的两个定理——不动点收敛定理与 Newton 二次收敛定理——这里补完整证明；伪代码改写为 MATLAB。</p>
+</blockquote>
+<h2 id="30-本章导图">3.0 本章导图<a class="headerlink" href="#30-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">非线性方程组</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">范数工具</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">范数四条公理</span>
+          <span class="brleaf">L1、L2、L无穷</span>
+          <span class="brleaf">范数等价与向量极限</span>
+          <span class="brleaf">诱导矩阵范数</span>
+          <span class="brleaf">谱半径与逆的界</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">不动点迭代</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">把方程组改写成 G(x) = x</span>
+          <span class="brleaf">盒上的存在性定理</span>
+          <span class="brleaf">压缩映射与误差几何级数</span>
+          <span class="brleaf">Jacobian 行和判据</span>
+          <span class="brleaf">谱半径判据</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Newton 法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">Jacobian 代替导数</span>
+          <span class="brleaf">解线性方程组求步长</span>
+          <span class="brleaf">二次收敛</span>
+          <span class="brleaf">初值必须足够准</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">拟 Newton</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">割线条件</span>
+          <span class="brleaf">秩一修正公式</span>
+          <span class="brleaf">逆矩阵的递推</span>
+          <span class="brleaf">超线性收敛</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">下降法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">残差平方和作目标</span>
+          <span class="brleaf">负梯度是最速下降方向</span>
+          <span class="brleaf">线搜索定步长</span>
+          <span class="brleaf">线性收敛、初值宽松</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="31-向量范数">3.1 向量范数<a class="headerlink" href="#31-向量范数" title="Permanent link">#</a></h2>
+<h3 id="311-定义">3.1.1 定义<a class="headerlink" href="#311-定义" title="Permanent link">#</a></h3>
+<p>非线性方程组的迭代格式要讨论"<span class="arithmatex">\(\boldsymbol{x}^{(k)}\)</span> 是否靠近 <span class="arithmatex">\(\boldsymbol p\)</span>"，就需要在 <span class="arithmatex">\(\mathbb R^n\)</span> 上度量距离。绝对值在一维给出距离，多维的推广就是范数（<strong>norm</strong>）。</p>
+<p><strong>定义.</strong> <span class="arithmatex">\(\mathbb R^n\)</span> 上的向量范数是一个函数 <span class="arithmatex">\(\|\cdot\|:\mathbb R^n\to\mathbb R\)</span>，满足</p>
+<ol>
+<li><span class="arithmatex">\(\|\boldsymbol x\|\ge 0\)</span>，对一切 <span class="arithmatex">\(\boldsymbol x\in\mathbb R^n\)</span>；</li>
+<li><span class="arithmatex">\(\|\boldsymbol x\|=0\)</span> 当且仅当 <span class="arithmatex">\(\boldsymbol x=\boldsymbol 0\)</span>（正定性）；</li>
+<li><span class="arithmatex">\(\|\alpha\boldsymbol x\|=|\alpha|\,\|\boldsymbol x\|\)</span>，对任意 <span class="arithmatex">\(\alpha\in\mathbb R\)</span>（齐次性）；</li>
+<li><span class="arithmatex">\(\|\boldsymbol x+\boldsymbol y\|\le\|\boldsymbol x\|+\|\boldsymbol y\|\)</span>（三角不等式）。</li>
+</ol>
+<p>非负、正定、齐次、三角不等式——四条合起来保证范数是一个"长度"。</p>
+<h3 id="312-三种常用范数">3.1.2 三种常用范数<a class="headerlink" href="#312-三种常用范数" title="Permanent link">#</a></h3>
+<p>对 <span class="arithmatex">\(\boldsymbol x=(x_1,x_2,\dots,x_n)^{\top}\)</span> 定义</p>
+<div class="arithmatex">\[
+\|\boldsymbol x\|_1=\sum_{i=1}^{n}|x_i|,\qquad \|\boldsymbol x\|_2=\Big(\sum_{i=1}^{n}x_i^2\Big)^{1/2},\qquad \|\boldsymbol x\|_\infty=\max_{1\le i\le n}|x_i| .
+\]</div>
+<p>三者分别叫 <span class="arithmatex">\(L_1\)</span> 范数、<span class="arithmatex">\(L_2\)</span> 范数、<span class="arithmatex">\(L_\infty\)</span> 范数。<span class="arithmatex">\(n=1\)</span> 时都退化成绝对值，所以它们是绝对值的三种不同推广。</p>
+<p>几何上，<span class="arithmatex">\(\|\boldsymbol x\|_2&lt;1\)</span> 是单位圆盘（<span class="arithmatex">\(\mathbb R^3\)</span> 中是球），<span class="arithmatex">\(\|\boldsymbol x\|_\infty&lt;1\)</span> 是边长 2 的正方形（立方体）。<span class="arithmatex">\(\|\boldsymbol x\|_1&lt;1\)</span> 是菱形（正八面体）。范数不同，等值线的形状不同，但"有界""收敛"这些定性结论一致——3.1.4 说明原因。</p>
+<h3 id="313-两个不等式的证明">3.1.3 两个不等式的证明<a class="headerlink" href="#313-两个不等式的证明" title="Permanent link">#</a></h3>
+<p><strong><span class="arithmatex">\(L_\infty\)</span> 的三角不等式.</strong> 设 <span class="arithmatex">\(\boldsymbol x=(x_1,\dots,x_n)^{\top}\)</span>、<span class="arithmatex">\(\boldsymbol y=(y_1,\dots,y_n)^{\top}\)</span>，则</p>
+<div class="arithmatex">\[
+\|\boldsymbol x+\boldsymbol y\|_\infty=\max_{1\le i\le n}|x_i+y_i|\le\max_{1\le i\le n}\big(|x_i|+|y_i|\big)\le\max_{1\le i\le n}|x_i|+\max_{1\le i\le n}|y_i|=\|\boldsymbol x\|_\infty+\|\boldsymbol y\|_\infty .
+\]</div>
+<p>关键是中间一步：对每个 <span class="arithmatex">\(i\)</span> 有 <span class="arithmatex">\(|x_i|+|y_i|\le\max_i|x_i|+\max_i|y_i|\)</span>，右边与 <span class="arithmatex">\(i\)</span> 无关，取最大仍成立。</p>
+<p><strong>Cauchy–Bunyakovsky–Schwarz 不等式.</strong> 对任意 <span class="arithmatex">\(\boldsymbol x,\boldsymbol y\in\mathbb R^n\)</span> 有</p>
+<div class="arithmatex">\[
+\boldsymbol x^{\top}\boldsymbol y=\sum_{i=1}^{n}x_iy_i\le\Big(\sum_{i=1}^{n}x_i^2\Big)^{1/2}\Big(\sum_{i=1}^{n}y_i^2\Big)^{1/2}=\|\boldsymbol x\|_2\|\boldsymbol y\|_2 .
+\]</div>
+<p><strong>证明.</strong> <span class="arithmatex">\(\boldsymbol x=\boldsymbol 0\)</span> 或 <span class="arithmatex">\(\boldsymbol y=\boldsymbol 0\)</span> 时两边为零。否则对任意 <span class="arithmatex">\(\lambda\in\mathbb R\)</span>，</p>
+<div class="arithmatex">\[
+0\le\|\boldsymbol x-\lambda\boldsymbol y\|_2^2=\sum_{i=1}^{n}(x_i-\lambda y_i)^2=\|\boldsymbol x\|_2^2-2\lambda\sum_{i=1}^{n}x_iy_i+\lambda^2\|\boldsymbol y\|_2^2 .
+\]</div>
+<p>移项得</p>
+<div class="arithmatex">\[
+2\lambda\sum_{i=1}^{n}x_iy_i\le\|\boldsymbol x\|_2^2+\lambda^2\|\boldsymbol y\|_2^2 .
+\]</div>
+<p><span class="arithmatex">\(\|\boldsymbol x\|_2&gt;0\)</span>、<span class="arithmatex">\(\|\boldsymbol y\|_2&gt;0\)</span>，取 <span class="arithmatex">\(\lambda=\|\boldsymbol x\|_2/\|\boldsymbol y\|_2\)</span>：</p>
+<div class="arithmatex">\[
+2\frac{\|\boldsymbol x\|_2}{\|\boldsymbol y\|_2}\sum_{i=1}^{n}x_iy_i\le\|\boldsymbol x\|_2^2+\|\boldsymbol x\|_2^2=2\|\boldsymbol x\|_2^2\quad\Longrightarrow\quad\sum_{i=1}^{n}x_iy_i\le\|\boldsymbol x\|_2\|\boldsymbol y\|_2 .
+\]</div>
+<p>把 <span class="arithmatex">\(\boldsymbol x\)</span> 换成 <span class="arithmatex">\(-\boldsymbol x\)</span> 得到反向不等式，于是 <span class="arithmatex">\(\left|\boldsymbol x^{\top}\boldsymbol y\right|\le\|\boldsymbol x\|_2\|\boldsymbol y\|_2\)</span>。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong><span class="arithmatex">\(L_2\)</span> 的三角不等式.</strong> 用上面的不等式：</p>
+<div class="arithmatex">\[
+\|\boldsymbol x+\boldsymbol y\|_2^2=\|\boldsymbol x\|_2^2+2\boldsymbol x^{\top}\boldsymbol y+\|\boldsymbol y\|_2^2\le\|\boldsymbol x\|_2^2+2\|\boldsymbol x\|_2\|\boldsymbol y\|_2+\|\boldsymbol y\|_2^2=\big(\|\boldsymbol x\|_2+\|\boldsymbol y\|_2\big)^2 .
+\]</div>
+<p>两边开方即得。<span class="arithmatex">\(\blacksquare\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">别把 Cauchy–Schwarz 用反</p>
+<p><span class="arithmatex">\(\boldsymbol x^{\top}\boldsymbol y\le\|\boldsymbol x\|_2\|\boldsymbol y\|_2\)</span> 只用一次方向不够，必须配合 <span class="arithmatex">\(-\boldsymbol x\)</span> 才得到绝对值形式。后面估计二次型 <span class="arithmatex">\((x-p)^{\top}H(x-p)\)</span> 时用的就是绝对值版本。</p>
+</div>
+<h3 id="314-范数的等价性">3.1.4 范数的等价性<a class="headerlink" href="#314-范数的等价性" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 对任意 <span class="arithmatex">\(\boldsymbol x\in\mathbb R^n\)</span>，有</p>
+<div class="arithmatex">\[
+\|\boldsymbol x\|_\infty\le\|\boldsymbol x\|_2\le\sqrt n\,\|\boldsymbol x\|_\infty .
+\]</div>
+<p><strong>证明.</strong> 取下标 <span class="arithmatex">\(j\)</span> 使 <span class="arithmatex">\(\|\boldsymbol x\|_\infty=|x_j|\)</span>。则</p>
+<div class="arithmatex">\[
+\|\boldsymbol x\|_\infty^2=x_j^2\le\sum_{i=1}^{n}x_i^2=\|\boldsymbol x\|_2^2 ,
+\]</div>
+<p>开方得左半。右半：每个 <span class="arithmatex">\(|x_i|\le\|\boldsymbol x\|_\infty\)</span>，故</p>
+<div class="arithmatex">\[
+\|\boldsymbol x\|_2^2=\sum_{i=1}^{n}x_i^2\le\sum_{i=1}^{n}x_j^2=n\|\boldsymbol x\|_\infty^2 .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<p>同理 <span class="arithmatex">\(\|\boldsymbol x\|_2\le\|\boldsymbol x\|_1\le\sqrt n\|\boldsymbol x\|_2\)</span>、<span class="arithmatex">\(\|\boldsymbol x\|_\infty\le\|\boldsymbol x\|_1\le n\|\boldsymbol x\|_\infty\)</span>。<span class="arithmatex">\(\mathbb R^n\)</span> 上任意两个范数都只差常数倍（等价范数），这条事实在本章反复用到：一个范数下的收敛、有界，换任何范数仍成立。</p>
+<div class="admonition warning">
+<p class="admonition-title">等价不等于数值相同</p>
+<p><span class="arithmatex">\(\sqrt n\)</span> 可以是很大的倍数。用 <span class="arithmatex">\(\|\cdot\|_\infty\)</span> 判停到 <span class="arithmatex">\(10^{-8}\)</span>，换成 <span class="arithmatex">\(\|\cdot\|_2\)</span> 可能到 <span class="arithmatex">\(10^{-8}\sqrt n\)</span>。混用范数写容差是常见 bug。</p>
+</div>
+<h2 id="32-距离与向量序列的极限">3.2 距离与向量序列的极限<a class="headerlink" href="#32-距离与向量序列的极限" title="Permanent link">#</a></h2>
+<h3 id="321-距离">3.2.1 距离<a class="headerlink" href="#321-距离" title="Permanent link">#</a></h3>
+<p>对 <span class="arithmatex">\(\boldsymbol x,\boldsymbol y\in\mathbb R^n\)</span>，<span class="arithmatex">\(L_2\)</span> 与 <span class="arithmatex">\(L_\infty\)</span> 距离定义为</p>
+<div class="arithmatex">\[
+\|\boldsymbol x-\boldsymbol y\|_2=\Big(\sum_{i=1}^{n}(x_i-y_i)^2\Big)^{1/2},\qquad \|\boldsymbol x-\boldsymbol y\|_\infty=\max_{1\le i\le n}|x_i-y_i| .
+\]</div>
+<h3 id="322-按范数收敛">3.2.2 按范数收敛<a class="headerlink" href="#322-按范数收敛" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 序列 <span class="arithmatex">\(\{\boldsymbol x^{(k)}\}_{k=1}^{\infty}\subset\mathbb R^n\)</span> 按范数 <span class="arithmatex">\(\|\cdot\|\)</span> 收敛到 <span class="arithmatex">\(\boldsymbol x\)</span>，指：对任意 <span class="arithmatex">\(\epsilon&gt;0\)</span>，存在整数 <span class="arithmatex">\(N_\epsilon\)</span>，使 <span class="arithmatex">\(k\ge N_\epsilon\)</span> 时 <span class="arithmatex">\(\|\boldsymbol x^{(k)}-\boldsymbol x\|&lt;\epsilon\)</span>。</p>
+<h3 id="323-分量收敛与无穷范数收敛">3.2.3 分量收敛与无穷范数收敛<a class="headerlink" href="#323-分量收敛与无穷范数收敛" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> <span class="arithmatex">\(\{\boldsymbol x^{(k)}\}\)</span> 按 <span class="arithmatex">\(\|\cdot\|_\infty\)</span> 收敛到 <span class="arithmatex">\(\boldsymbol x\)</span>，当且仅当对每个 <span class="arithmatex">\(i=1,\dots,n\)</span> 有 <span class="arithmatex">\(\lim_{k\to\infty}x_i^{(k)}=x_i\)</span>。</p>
+<p><strong>证明.</strong> 若 <span class="arithmatex">\(\|\boldsymbol x^{(k)}-\boldsymbol x\|_\infty\to0\)</span>：给定 <span class="arithmatex">\(\epsilon&gt;0\)</span>，存在 <span class="arithmatex">\(N_\epsilon\)</span> 使 <span class="arithmatex">\(k\ge N_\epsilon\)</span> 时</p>
+<div class="arithmatex">\[
+\max_{1\le i\le n}\left|x_i^{(k)}-x_i\right|=\|\boldsymbol x^{(k)}-\boldsymbol x\|_\infty&lt;\epsilon ,
+\]</div>
+<p>最大值小于 <span class="arithmatex">\(\epsilon\)</span>，每个分量就都小于 <span class="arithmatex">\(\epsilon\)</span>，故每个分量收敛。</p>
+<p>反过来，若每个分量收敛：对给定 <span class="arithmatex">\(\epsilon&gt;0\)</span>，对每个 <span class="arithmatex">\(i\)</span> 存在 <span class="arithmatex">\(N_i\)</span> 使 <span class="arithmatex">\(k\ge N_i\)</span> 时 <span class="arithmatex">\(\left|x_i^{(k)}-x_i\right|&lt;\epsilon\)</span>。取 <span class="arithmatex">\(N_\epsilon=\max_i N_i\)</span>，则 <span class="arithmatex">\(k\ge N_\epsilon\)</span> 时所有分量同时小于 <span class="arithmatex">\(\epsilon\)</span>，故</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k)}-\boldsymbol x\|_\infty=\max_{1\le i\le n}\left|x_i^{(k)}-x_i\right|&lt;\epsilon .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<p>结合 3.1.4：按 <span class="arithmatex">\(L_\infty\)</span> 收敛 <span class="arithmatex">\(\Rightarrow\)</span> 按 <span class="arithmatex">\(L_2\)</span>、<span class="arithmatex">\(L_1\)</span> 收敛，反之亦然。所以"向量序列收敛"可以不提范数。</p>
+<h3 id="324-例">3.2.4 例<a class="headerlink" href="#324-例" title="Permanent link">#</a></h3>
+<p>设</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}=\big(1,\ 2+\tfrac1k,\ \tfrac{3}{k^2},\ e^{-k}\sin k\big)^{\top},\qquad \boldsymbol x=(1,2,0,0)^{\top} .
+\]</div>
+<p>逐分量看：<span class="arithmatex">\(x_1^{(k)}-1=0\)</span>；<span class="arithmatex">\(x_2^{(k)}-2=1/k\to0\)</span>；<span class="arithmatex">\(x_3^{(k)}=3/k^2\to0\)</span>；<span class="arithmatex">\(\left|e^{-k}\sin k\right|\le e^{-k}\to0\)</span>。由 3.2.3，按 <span class="arithmatex">\(L_\infty\)</span> 收敛。</p>
+<p>再按 <span class="arithmatex">\(L_2\)</span> 验证一遍（<span class="arithmatex">\(n=4\)</span>，<span class="arithmatex">\(\sqrt n=2\)</span>）：给定 <span class="arithmatex">\(\epsilon&gt;0\)</span>，取 <span class="arithmatex">\(N\)</span> 使 <span class="arithmatex">\(k\ge N\)</span> 时 <span class="arithmatex">\(\|\boldsymbol x^{(k)}-\boldsymbol x\|_\infty&lt;\epsilon/2\)</span>，则</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k)}-\boldsymbol x\|_2\le\sqrt4\,\|\boldsymbol x^{(k)}-\boldsymbol x\|_\infty&lt;2\cdot\frac{\epsilon}{2}=\epsilon .
+\]</div>
+<p>这就是"范数等价"在证明里的用法：省掉逐分量重算。</p>
+<h2 id="33-矩阵范数">3.3 矩阵范数<a class="headerlink" href="#33-矩阵范数" title="Permanent link">#</a></h2>
+<h3 id="331-定义">3.3.1 定义<a class="headerlink" href="#331-定义" title="Permanent link">#</a></h3>
+<p>迭代误差满足 <span class="arithmatex">\(\boldsymbol e^{(k)}\approx J_G(\boldsymbol p)\boldsymbol e^{(k-1)}\)</span>，要控制 <span class="arithmatex">\(J_G\)</span> 的"放大倍数"，必须给矩阵定义范数。</p>
+<p><strong>定义.</strong> <span class="arithmatex">\(\mathbb R^{n\times n}\)</span> 上的矩阵范数 <span class="arithmatex">\(\|\cdot\|\)</span> 满足向量范数的四条公理，并额外满足次乘性（<strong>submultiplicative</strong>）</p>
+<div class="arithmatex">\[
+\|AB\|\le\|A\|\,\|B\| .
+\]</div>
+<p>次乘性不是多余条件：没有它就无法估计 <span class="arithmatex">\(\|A^k\|\le\|A\|^k\)</span>，而迭代收敛性正需要这一条。</p>
+<h3 id="332-诱导范数">3.3.2 诱导范数<a class="headerlink" href="#332-诱导范数" title="Permanent link">#</a></h3>
+<p>给定向量范数 <span class="arithmatex">\(\|\cdot\|\)</span>，定义诱导（<strong>induced</strong>，也叫算子）范数</p>
+<div class="arithmatex">\[
+\|A\|=\max_{\|\boldsymbol x\|=1}\|A\boldsymbol x\|=\max_{\boldsymbol x\ne\boldsymbol 0}\frac{\|A\boldsymbol x\|}{\|\boldsymbol x\|} .
+\]</div>
+<p>单位球面是紧集，<span class="arithmatex">\(\boldsymbol x\mapsto\|A\boldsymbol x\|\)</span> 连续，最大值存在，定义合法。诱导范数自动满足相容性</p>
+<div class="arithmatex">\[
+\|A\boldsymbol x\|\le\|A\|\,\|\boldsymbol x\| ,
+\]</div>
+<p>且 <span class="arithmatex">\(\|I\|=1\)</span>。诱导范数必然次乘性：<span class="arithmatex">\(\|AB\boldsymbol x\|\le\|A\|\|B\boldsymbol x\|\le\|A\|\|B\|\|\boldsymbol x\|\)</span>。</p>
+<p><strong>三个计算公式.</strong></p>
+<div class="arithmatex">\[
+\|A\|_\infty=\max_{1\le i\le n}\sum_{j=1}^{n}|a_{ij}|,\qquad \|A\|_1=\max_{1\le j\le n}\sum_{i=1}^{n}|a_{ij}|,\qquad \|A\|_2=\sqrt{\lambda_{\max}(A^{\top}A)} .
+\]</div>
+<p>即 <span class="arithmatex">\(L_\infty\)</span> 范数是最大行绝对值之和，<span class="arithmatex">\(L_1\)</span> 范数是最大列绝对值之和，<span class="arithmatex">\(L_2\)</span> 范数是 <span class="arithmatex">\(A^{\top}A\)</span> 最大特征值的平方根（最大奇异值）。</p>
+<p><strong>行和公式的证明.</strong> 对任意 <span class="arithmatex">\(\boldsymbol x\)</span> 与每个 <span class="arithmatex">\(i\)</span>，</p>
+<div class="arithmatex">\[
+\left|(A\boldsymbol x)_i\right|=\Big|\sum_{j=1}^{n}a_{ij}x_j\Big|\le\sum_{j=1}^{n}|a_{ij}|\,|x_j|\le\Big(\sum_{j=1}^{n}|a_{ij}|\Big)\|\boldsymbol x\|_\infty .
+\]</div>
+<p>对 <span class="arithmatex">\(i\)</span> 取最大：</p>
+<div class="arithmatex">\[
+\|A\boldsymbol x\|_\infty\le\max_{1\le i\le n}\sum_{j=1}^{n}|a_{ij}|\,\|\boldsymbol x\|_\infty .
+\]</div>
+<p>上界可取到：设 <span class="arithmatex">\(i^\ast\)</span> 使行和最大，取 <span class="arithmatex">\(x_j=\operatorname{sign}(a_{i^\ast j})\)</span>（零元取 1），则 <span class="arithmatex">\(\|\boldsymbol x\|_\infty=1\)</span> 且 <span class="arithmatex">\((A\boldsymbol x)_{i^\ast}=\sum_j|a_{i^\ast j}|\)</span>，等号成立。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>列和公式的证明.</strong> 交换求和次序：</p>
+<div class="arithmatex">\[
+\|A\boldsymbol x\|_1=\sum_{i=1}^{n}\Big|\sum_{j=1}^{n}a_{ij}x_j\Big|\le\sum_{j=1}^{n}\Big(\sum_{i=1}^{n}|a_{ij}|\Big)|x_j|\le\Big(\max_{1\le j\le n}\sum_{i=1}^{n}|a_{ij}|\Big)\|\boldsymbol x\|_1 .
+\]</div>
+<p>取 <span class="arithmatex">\(\boldsymbol x=\boldsymbol e_{j^\ast}\)</span>（<span class="arithmatex">\(j^\ast\)</span> 为使列和最大的下标）即取等。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong><span class="arithmatex">\(L_2\)</span> 公式的证明.</strong> <span class="arithmatex">\(A^{\top}A\)</span> 对称半正定，取单位正交特征向量 <span class="arithmatex">\(\boldsymbol v_1,\dots,\boldsymbol v_n\)</span>，特征值 <span class="arithmatex">\(\lambda_1\ge\cdots\ge\lambda_n\ge0\)</span>。把 <span class="arithmatex">\(\|\boldsymbol x\|_2=1\)</span> 的 <span class="arithmatex">\(\boldsymbol x=\sum_i c_i\boldsymbol v_i\)</span> 代入：</p>
+<div class="arithmatex">\[
+\|A\boldsymbol x\|_2^2=\boldsymbol x^{\top}A^{\top}A\boldsymbol x=\sum_{i=1}^{n}\lambda_i c_i^2\le\lambda_1\sum_{i=1}^{n}c_i^2=\lambda_1 .
+\]</div>
+<p>取 <span class="arithmatex">\(\boldsymbol x=\boldsymbol v_1\)</span> 得等号。<span class="arithmatex">\(\blacksquare\)</span></p>
+<h3 id="333-Frobenius-范数与谱半径">3.3.3 Frobenius 范数与谱半径<a class="headerlink" href="#333-Frobenius-范数与谱半径" title="Permanent link">#</a></h3>
+<p><strong>Frobenius 范数</strong>把矩阵当成长向量：</p>
+<div class="arithmatex">\[
+\|A\|_F=\Big(\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}^2\Big)^{1/2}=\sqrt{\operatorname{tr}(A^{\top}A)}=\Big(\sum_{i=1}^{n}\sigma_i^2\Big)^{1/2} .
+\]</div>
+<p>它次乘性成立，但不是诱导范数（<span class="arithmatex">\(\|I\|_F=\sqrt n\ne1\)</span>）。三个 <span class="arithmatex">\(L\)</span> 范数与它的关系是</p>
+<div class="arithmatex">\[
+\|A\|_2\le\|A\|_F\le\sqrt n\,\|A\|_2 .
+\]</div>
+<p><strong>谱半径（spectral radius）</strong> 是特征值模的最大值：</p>
+<div class="arithmatex">\[
+\rho(A)=\max_{1\le i\le n}|\lambda_i| .
+\]</div>
+<p>两条基本事实：</p>
+<ul>
+<li>对任何诱导范数，<span class="arithmatex">\(\rho(A)\le\|A\|\)</span>。取特征对 <span class="arithmatex">\(A\boldsymbol v=\lambda\boldsymbol v\)</span>，则 <span class="arithmatex">\(|\lambda|\|\boldsymbol v\|=\|A\boldsymbol v\|\le\|A\|\|\boldsymbol v\|\)</span>，约掉 <span class="arithmatex">\(\|\boldsymbol v\|\ne0\)</span> 即得。</li>
+<li><span class="arithmatex">\(\rho(A)&lt;1\)</span> 当且仅当 <span class="arithmatex">\(A^k\to0\)</span>（<span class="arithmatex">\(k\to\infty\)</span>）。这条是迭代收敛的判据来源。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">谱半径与范数的差距可以很大</p>
+<p><span class="arithmatex">\(\rho(A)\le\|A\|\)</span> 通常是严格不等。例如 <span class="arithmatex">\(A=\begin{pmatrix}0&amp;10\\0&amp;0\end{pmatrix}\)</span> 的 <span class="arithmatex">\(\rho=0\)</span>，而 <span class="arithmatex">\(\|A\|_\infty=10\)</span>。所以"<span class="arithmatex">\(\|J\|&lt;1\)</span>"是充分条件，不是必要条件；真正刻画收敛的是 <span class="arithmatex">\(\rho(J)&lt;1\)</span>。</p>
+</div>
+<h3 id="334-逆矩阵的界">3.3.4 逆矩阵的界<a class="headerlink" href="#334-逆矩阵的界" title="Permanent link">#</a></h3>
+<p>Newton 法要在 <span class="arithmatex">\(\boldsymbol p\)</span> 附近用 <span class="arithmatex">\(J(\boldsymbol x)^{-1}\)</span>，需要一个"<span class="arithmatex">\(J\)</span> 接近 <span class="arithmatex">\(J(\boldsymbol p)\)</span> 时逆不会爆炸"的定量版本。</p>
+<p><strong>引理.</strong> 若 <span class="arithmatex">\(\|I-B\|=q&lt;1\)</span>（某诱导范数），则 <span class="arithmatex">\(B\)</span> 可逆，且</p>
+<div class="arithmatex">\[
+\|B^{-1}\|\le\frac{1}{1-q} .
+\]</div>
+<p><strong>证明.</strong> 记 <span class="arithmatex">\(N=I-B\)</span>，<span class="arithmatex">\(\|N\|=q\)</span>。由次乘性 <span class="arithmatex">\(\|N^k\|\le q^k\)</span>，故 <span class="arithmatex">\(\sum_{k=0}^{\infty}N^k\)</span> 绝对收敛。部分和满足</p>
+<div class="arithmatex">\[
+B\sum_{k=0}^{m}N^k=(I-N)\sum_{k=0}^{m}N^k=I-N^{m+1}\longrightarrow I ,
+\]</div>
+<p>于是 <span class="arithmatex">\(B^{-1}=\sum_{k=0}^{\infty}N^k\)</span>，取范数</p>
+<div class="arithmatex">\[
+\|B^{-1}\|\le\sum_{k=0}^{\infty}\|N\|^k=\frac{1}{1-q} .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<p>推论：<span class="arithmatex">\(\|A^{-1}\|\ge 1/\|A\|\)</span>（由 <span class="arithmatex">\(1=\|I\|\le\|A\|\|A^{-1}\|\)</span>），以及条件数 <span class="arithmatex">\(\kappa(A)=\|A\|\|A^{-1}\|\)</span> 度量线性方程组对扰动的敏感度。</p>
+<h2 id="34-多变量不动点迭代">3.4 多变量不动点迭代<a class="headerlink" href="#34-多变量不动点迭代" title="Permanent link">#</a></h2>
+<h3 id="341-方程组与不动点">3.4.1 方程组与不动点<a class="headerlink" href="#341-方程组与不动点" title="Permanent link">#</a></h3>
+<p>非线性方程组写成</p>
+<div class="arithmatex">\[
+f_1(\boldsymbol x)=0,\quad f_2(\boldsymbol x)=0,\quad\dots,\quad f_n(\boldsymbol x)=0\qquad\Longleftrightarrow\qquad F(\boldsymbol x)=\boldsymbol 0 ,
+\]</div>
+<p>其中 <span class="arithmatex">\(F=(f_1,\dots,f_n)^{\top}:\mathbb R^n\to\mathbb R^n\)</span>，各 <span class="arithmatex">\(f_i\)</span> 叫分量函数（<strong>coordinate function</strong>）。</p>
+<p><strong>不动点.</strong> 若 <span class="arithmatex">\(G:D\subset\mathbb R^n\to\mathbb R^n\)</span> 满足 <span class="arithmatex">\(G(\boldsymbol p)=\boldsymbol p\)</span>，则称 <span class="arithmatex">\(\boldsymbol p\)</span> 是 <span class="arithmatex">\(G\)</span> 的不动点（<strong>fixed point</strong>）。解 <span class="arithmatex">\(F(\boldsymbol x)=\boldsymbol 0\)</span> 等价于解某个 <span class="arithmatex">\(G(\boldsymbol x)=\boldsymbol x\)</span>，改写方式不唯一。</p>
+<p><strong>例（课件贯穿全章的三元方程组）.</strong></p>
+<div class="arithmatex">\[
+3x_1-\cos(x_2x_3)-\tfrac12=0,\qquad x_1^2-81(x_2+0.1)^2+\sin x_3+1.06=0,\qquad e^{-x_1x_2}+20x_3+\tfrac{10\pi-3}{3}=0 .
+\]</div>
+<p>把每个方程解出一个变量：</p>
+<div class="arithmatex">\[
+x_1=\frac13\cos(x_2x_3)+\frac16,\qquad x_2=\frac19\sqrt{x_1^2+\sin x_3+1.06}-0.1,\qquad x_3=-\frac{1}{20}e^{-x_1x_2}-\frac{10\pi-3}{60} .
+\]</div>
+<p>右边的三个函数就是 <span class="arithmatex">\(G\)</span> 的三个分量。这组方程的精确解是 <span class="arithmatex">\(\boldsymbol p=(0.5,\ 0,\ -\pi/6)^{\top}\)</span>，可回代验证。</p>
+<h3 id="342-存在性定理">3.4.2 存在性定理<a class="headerlink" href="#342-存在性定理" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(D=\{\boldsymbol x\mid a_i\le x_i\le b_i,\ i=1,\dots,n\}\)</span> 是盒子，<span class="arithmatex">\(G:D\to\mathbb R^n\)</span> 连续，且 <span class="arithmatex">\(\boldsymbol x\in D\)</span> 时 <span class="arithmatex">\(G(\boldsymbol x)\in D\)</span>（把盒子映进自身）。则 <span class="arithmatex">\(G\)</span> 在 <span class="arithmatex">\(D\)</span> 内有不动点。</p>
+<p>这就是 Brouwer 不动点定理在盒子上的形式，证明是拓扑的，本课不要求。<span class="arithmatex">\(n=1\)</span> 时可用介值定理直接看出：令 <span class="arithmatex">\(h(x)=g(x)-x\)</span>，<span class="arithmatex">\(g(a)\ge a\)</span> 给 <span class="arithmatex">\(h(a)\ge0\)</span>，<span class="arithmatex">\(g(b)\le b\)</span> 给 <span class="arithmatex">\(h(b)\le0\)</span>，故存在 <span class="arithmatex">\(h(p)=0\)</span>。</p>
+<p>注意：这个定理只保证"有"，不保证"唯一"，也不给算法。加上压缩条件才两者兼得。</p>
+<h3 id="343-压缩映射收敛定理">3.4.3 压缩映射收敛定理<a class="headerlink" href="#343-压缩映射收敛定理" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(D\)</span> 同上，<span class="arithmatex">\(G:D\to\mathbb R^n\)</span> 连续且 <span class="arithmatex">\(G(D)\subset D\)</span>。又设各分量函数有连续偏导，且存在常数 <span class="arithmatex">\(K&lt;1\)</span>，使</p>
+<div class="arithmatex">\[
+\left|\frac{\partial g_i(\boldsymbol x)}{\partial x_j}\right|\le\frac{K}{n},\qquad \boldsymbol x\in D,\quad i,j=1,\dots,n .
+\]</div>
+<p>则从任意 <span class="arithmatex">\(\boldsymbol x^{(0)}\in D\)</span> 出发、由 <span class="arithmatex">\(\boldsymbol x^{(k)}=G(\boldsymbol x^{(k-1)})\)</span> 生成的序列收敛到 <span class="arithmatex">\(D\)</span> 内唯一不动点 <span class="arithmatex">\(\boldsymbol p\)</span>，且</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k)}-\boldsymbol p\|_\infty\le\frac{K^k}{1-K}\|\boldsymbol x^{(1)}-\boldsymbol x^{(0)}\|_\infty .
+\]</div>
+<h3 id="344-定理的证明">3.4.4 定理的证明<a class="headerlink" href="#344-定理的证明" title="Permanent link">#</a></h3>
+<p><strong>第一步：<span class="arithmatex">\(G\)</span> 是压缩映射.</strong> 先写一个引理。设 <span class="arithmatex">\(D\)</span> 是盒子（凸集），<span class="arithmatex">\(G\)</span> 在 <span class="arithmatex">\(D\)</span> 上可微，则对 <span class="arithmatex">\(\boldsymbol x,\boldsymbol y\in D\)</span>，连接两点的线段仍在 <span class="arithmatex">\(D\)</span> 内。对每个分量令 <span class="arithmatex">\(h(t)=g_i(\boldsymbol y+t(\boldsymbol x-\boldsymbol y))\)</span>，由一元中值定理存在 <span class="arithmatex">\(\xi_i\)</span> 在线段上，使</p>
+<div class="arithmatex">\[
+g_i(\boldsymbol x)-g_i(\boldsymbol y)=h(1)-h(0)=h'(\xi_i)=\nabla g_i(\boldsymbol\xi_i)^{\top}(\boldsymbol x-\boldsymbol y)=\sum_{j=1}^{n}\frac{\partial g_i(\boldsymbol\xi_i)}{\partial x_j}(x_j-y_j) .
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\left|g_i(\boldsymbol x)-g_i(\boldsymbol y)\right|\le\sum_{j=1}^{n}\frac{K}{n}|x_j-y_j|\le\frac{K}{n}\cdot n\,\|\boldsymbol x-\boldsymbol y\|_\infty=K\|\boldsymbol x-\boldsymbol y\|_\infty .
+\]</div>
+<p>对 <span class="arithmatex">\(i\)</span> 取最大：</p>
+<div class="arithmatex">\[
+\|G(\boldsymbol x)-G(\boldsymbol y)\|_\infty\le K\|\boldsymbol x-\boldsymbol y\|_\infty .
+\]</div>
+<p>这就是压缩映射（<strong>contraction mapping</strong>）：像点之间的距离被一致地压缩了因子 <span class="arithmatex">\(K&lt;1\)</span>。</p>
+<p><strong>第二步：唯一性.</strong> 若 <span class="arithmatex">\(\boldsymbol p,\boldsymbol q\)</span> 都是不动点，则</p>
+<div class="arithmatex">\[
+\|\boldsymbol p-\boldsymbol q\|_\infty=\|G(\boldsymbol p)-G(\boldsymbol q)\|_\infty\le K\|\boldsymbol p-\boldsymbol q\|_\infty\quad\Longrightarrow\quad(1-K)\|\boldsymbol p-\boldsymbol q\|_\infty\le0 .
+\]</div>
+<p><span class="arithmatex">\(1-K&gt;0\)</span>，故 <span class="arithmatex">\(\|\boldsymbol p-\boldsymbol q\|_\infty=0\)</span>，即 <span class="arithmatex">\(\boldsymbol p=\boldsymbol q\)</span>。</p>
+<p><strong>第三步：存在性.</strong> 由 3.4.2，<span class="arithmatex">\(G(D)\subset D\)</span> 且 <span class="arithmatex">\(G\)</span> 连续，<span class="arithmatex">\(D\)</span> 内已有不动点，无需另证。</p>
+<p><strong>第四步：误差界.</strong> 反复用压缩性：</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k+1)}-\boldsymbol x^{(k)}\|_\infty=\|G(\boldsymbol x^{(k)})-G(\boldsymbol x^{(k-1)})\|_\infty\le K\|\boldsymbol x^{(k)}-\boldsymbol x^{(k-1)}\|_\infty\le\cdots\le K^{k}\|\boldsymbol x^{(1)}-\boldsymbol x^{(0)}\|_\infty .
+\]</div>
+<p>对 <span class="arithmatex">\(m&gt;k\)</span> 用三角不等式，</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(m)}-\boldsymbol x^{(k)}\|_\infty\le\sum_{j=k}^{m-1}\|\boldsymbol x^{(j+1)}-\boldsymbol x^{(j)}\|_\infty\le\Big(\sum_{j=k}^{m-1}K^{j}\Big)\|\boldsymbol x^{(1)}-\boldsymbol x^{(0)}\|_\infty .
+\]</div>
+<p>令 <span class="arithmatex">\(m\to\infty\)</span>，左边趋于 <span class="arithmatex">\(\|\boldsymbol p-\boldsymbol x^{(k)}\|_\infty\)</span>，右边几何级数求和：</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k)}-\boldsymbol p\|_\infty\le\frac{K^{k}}{1-K}\|\boldsymbol x^{(1)}-\boldsymbol x^{(0)}\|_\infty .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">实用的后验估计</p>
+<p>从第 <span class="arithmatex">\(k\)</span> 步起的差分求和，并用 <span class="arithmatex">\(\|\boldsymbol x^{(k+1)}-\boldsymbol x^{(k)}\|_\infty\le K\|\boldsymbol x^{(k)}-\boldsymbol x^{(k-1)}\|_\infty\)</span>，得 <span class="arithmatex">\(\|\boldsymbol x^{(k)}-\boldsymbol p\|_\infty\le\frac{K}{1-K}\|\boldsymbol x^{(k)}-\boldsymbol x^{(k-1)}\|_\infty\)</span>。<span class="arithmatex">\(K\)</span> 未知时用相邻两步差判停，仍是可靠的（只是常数未知）。误差按 <span class="arithmatex">\(K^k\)</span> 衰减——线性收敛。</p>
+</div>
+<h3 id="345-Jacobian-判据的三种写法">3.4.5 Jacobian 判据的三种写法<a class="headerlink" href="#345-Jacobian-判据的三种写法" title="Permanent link">#</a></h3>
+<p>记 <span class="arithmatex">\(J_G(\boldsymbol x)=\big(\partial g_i/\partial x_j\big)\)</span> 为 <span class="arithmatex">\(G\)</span> 的 Jacobian。上面的条件 <span class="arithmatex">\(|\partial g_i/\partial x_j|\le K/n\)</span> 意味着每一行的绝对值之和不超过 <span class="arithmatex">\(K\)</span>，即</p>
+<div class="arithmatex">\[
+\|J_G(\boldsymbol x)\|_\infty=\max_{1\le i\le n}\sum_{j=1}^{n}\left|\frac{\partial g_i}{\partial x_j}\right|\le K&lt;1 .
+\]</div>
+<p>所以定理的真正内容是：<strong>在 <span class="arithmatex">\(L_\infty\)</span> 范数下 Jacobian 的范数一致小于 1</strong>。三种判据按强弱排列：</p>
+<ol>
+<li><strong>逐元素判据</strong>（课件写法）：<span class="arithmatex">\(|\partial g_i/\partial x_j|\le K/n\)</span>。最容易验，最强，最保守。</li>
+<li><strong>行和判据</strong>：<span class="arithmatex">\(\|J_G\|_\infty\le K&lt;1\)</span>。允许某一行有一个大元素，只要整行和小于 1。</li>
+<li><strong>谱半径判据</strong>（最弱也最准）：<span class="arithmatex">\(\rho\big(J_G(\boldsymbol p)\big)&lt;1\)</span> 是局部收敛的充要条件。</li>
+</ol>
+<p>谱半径判据的理由：由中值定理，误差近似满足 <span class="arithmatex">\(\boldsymbol e^{(k)}\approx J_G(\boldsymbol p)\boldsymbol e^{(k-1)}\)</span>，故 <span class="arithmatex">\(\boldsymbol e^{(k)}\approx J_G(\boldsymbol p)^k\boldsymbol e^{(0)}\)</span>；由 3.3.3 的第二个事实，<span class="arithmatex">\(J_G(\boldsymbol p)^k\to0\)</span> 当且仅当 <span class="arithmatex">\(\rho&lt;1\)</span>。<span class="arithmatex">\(\rho\ge1\)</span> 时迭代一般不收敛（<span class="arithmatex">\(\rho=1\)</span> 时可能收敛但极慢，且无保证）。</p>
+<p>因为 <span class="arithmatex">\(\rho(A)\le\|A\|\)</span>，行和判据成立则谱半径判据必成立；反之不然。实践中常直接算 <span class="arithmatex">\(J_G(\boldsymbol p)\)</span> 的谱半径来判断收敛速度，因为渐近误差因子就是 <span class="arithmatex">\(\rho\)</span>。</p>
+<h3 id="346-算例">3.4.6 算例<a class="headerlink" href="#346-算例" title="Permanent link">#</a></h3>
+<p>对 3.4.1 的 <span class="arithmatex">\(G\)</span>，取 <span class="arithmatex">\(\boldsymbol x^{(0)}=(0.1,\ 0.1,\ -0.1)^{\top}\)</span>：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(k\)</span></th>
+<th><span class="arithmatex">\(x_1^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_2^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_3^{(k)}\)</span></th>
+<th><span class="arithmatex">\(\|\Delta\boldsymbol x\|_\infty\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.10000000</td>
+<td>0.10000000</td>
+<td>-0.10000000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.49998333</td>
+<td>0.00944115</td>
+<td>-0.52310127</td>
+<td>0.423</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.49999593</td>
+<td>0.00002557</td>
+<td>-0.52336331</td>
+<td>9.4e-3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.50000000</td>
+<td>0.00001234</td>
+<td>-0.52359814</td>
+<td>2.3e-4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.50000000</td>
+<td>0.00000003</td>
+<td>-0.52359847</td>
+<td>1.2e-5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.50000000</td>
+<td>0.00000002</td>
+<td>-0.52359877</td>
+<td>3.1e-7</td>
+</tr>
+</tbody>
+</table>
+<p>相邻差之比约 <span class="arithmatex">\(0.02\sim0.05\)</span>，即实际压缩因子远小于 1，五步就到 <span class="arithmatex">\(10^{-7}\)</span>。<span class="arithmatex">\(x_3\)</span> 收敛到 <span class="arithmatex">\(-0.52359877=-\pi/6\)</span>。</p>
+<p>这套方程能被不动点迭代愉快地解决，靠的是改写方式选得好：三个右端函数对各自变量的偏导都很小（<span class="arithmatex">\(1/3\)</span>、<span class="arithmatex">\(1/9\)</span>、<span class="arithmatex">\(1/20\)</span> 量级）。改写选错就发散，一维的对照最清楚：<span class="arithmatex">\(x=\cos x\)</span> 在根 <span class="arithmatex">\(0.739\)</span> 处导数 <span class="arithmatex">\(-0.674\)</span>，收敛；改写成 <span class="arithmatex">\(x=\arccos x\)</span>，同一点导数 <span class="arithmatex">\(-1.48\)</span>，必然发散。</p>
+<h3 id="347-Seidel-加速">3.4.7 Seidel 加速<a class="headerlink" href="#347-Seidel-加速" title="Permanent link">#</a></h3>
+<p>把已经算出的新分量立刻投入使用：</p>
+<div class="arithmatex">\[
+x_i^{(k)}=g_i\big(x_1^{(k)},\dots,x_{i-1}^{(k)},x_i^{(k-1)},\dots,x_n^{(k-1)}\big),\qquad i=1,\dots,n .
+\]</div>
+<p>这就是非线性 Gauss–Seidel 迭代。它通常比 Jacobi 型（全用旧值）快，但压缩性不再自动保持——新映射的 Jacobian 与原来不同，谱半径可能反而变大。实践做法：先跑普通迭代，再试 Seidel，比较几步内的残差下降速度再决定。</p>
+<h3 id="348-MATLAB">3.4.8 MATLAB<a class="headerlink" href="#348-MATLAB" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>x, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">fixed_point_sys</span><span class="p">(</span>G, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c">% G 为向量值迭代函数句柄；用 L∞ 范数判停</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="w">      </span><span class="c">% 相邻两步之差</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xn</span><span class="p">;</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xn</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">end</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">error</span><span class="p">(</span><span class="s">'不动点迭代 %d 步内未收敛'</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="35-非线性方程组的-Newton-法">3.5 非线性方程组的 Newton 法<a class="headerlink" href="#35-非线性方程组的-Newton-法" title="Permanent link">#</a></h2>
+<h3 id="351-一维回顾">3.5.1 一维回顾<a class="headerlink" href="#351-一维回顾" title="Permanent link">#</a></h3>
+<p>解 <span class="arithmatex">\(f(x)=0\)</span> 的 Newton 法是</p>
+<div class="arithmatex">\[
+x^{(k)}=x^{(k-1)}-\frac{f(x^{(k-1)})}{f'(x^{(k-1)})} .
+\]</div>
+<p>把它看成不动点迭代 <span class="arithmatex">\(x=g(x)\)</span>，其中 <span class="arithmatex">\(g(x)=x-f(x)/f'(x)\)</span>。在根 <span class="arithmatex">\(p\)</span> 处</p>
+<div class="arithmatex">\[
+g'(p)=1-\frac{f'(p)^2-f(p)f''(p)}{f'(p)^2}=\frac{f(p)f''(p)}{f'(p)^2}=0 ,
+\]</div>
+<p>导数在根处消失，正是二次收敛的来源。多变量版本要做同一件事：让迭代映射的 <strong>Jacobian 在根处为零矩阵</strong>。</p>
+<h3 id="352-用-Jacobian-构造不动点映射">3.5.2 用 Jacobian 构造不动点映射<a class="headerlink" href="#352-用-Jacobian-构造不动点映射" title="Permanent link">#</a></h3>
+<p>仿照一维，把方程组的不动点映射写成</p>
+<div class="arithmatex">\[
+G(\boldsymbol x)=\boldsymbol x-A(\boldsymbol x)^{-1}F(\boldsymbol x),
+\]</div>
+<p>其中 <span class="arithmatex">\(A(\boldsymbol x)\)</span> 是待定的 <span class="arithmatex">\(n\times n\)</span> 矩阵。记 <span class="arithmatex">\(B(\boldsymbol x)=A(\boldsymbol x)^{-1}\)</span>，其元素为 <span class="arithmatex">\(b_{ij}(\boldsymbol x)\)</span>，则</p>
+<div class="arithmatex">\[
+g_i(\boldsymbol x)=x_i-\sum_{j=1}^{n}b_{ij}(\boldsymbol x)f_j(\boldsymbol x) .
+\]</div>
+<p>求偏导，注意 <span class="arithmatex">\(x_i\)</span> 对 <span class="arithmatex">\(x_k\)</span> 的导数是 <span class="arithmatex">\(\delta_{ik}\)</span>：</p>
+<div class="arithmatex">\[
+\frac{\partial g_i}{\partial x_k}(\boldsymbol x)=\delta_{ik}-\sum_{j=1}^{n}\left(b_{ij}(\boldsymbol x)\frac{\partial f_j}{\partial x_k}(\boldsymbol x)+\frac{\partial b_{ij}}{\partial x_k}(\boldsymbol x)f_j(\boldsymbol x)\right).
+\]</div>
+<p>在根 <span class="arithmatex">\(\boldsymbol p\)</span> 处 <span class="arithmatex">\(f_j(\boldsymbol p)=0\)</span>，含 <span class="arithmatex">\(\partial b_{ij}\)</span> 的项整块消失：</p>
+<div class="arithmatex">\[
+\frac{\partial g_i}{\partial x_k}(\boldsymbol p)=\delta_{ik}-\sum_{j=1}^{n}b_{ij}(\boldsymbol p)\frac{\partial f_j}{\partial x_k}(\boldsymbol p)=\big(I-B(\boldsymbol p)J(\boldsymbol p)\big)_{ik},
+\]</div>
+<p>其中 <span class="arithmatex">\(J=(\partial f_j/\partial x_k)\)</span> 是 <strong>Jacobian 矩阵</strong>。要让 Jacobian 在根处为零（3.5.4 定理的条件 3），必须</p>
+<div class="arithmatex">\[
+B(\boldsymbol p)J(\boldsymbol p)=I\qquad\Longrightarrow\qquad A(\boldsymbol p)=B(\boldsymbol p)^{-1}=J(\boldsymbol p) .
+\]</div>
+<p>所以 <span class="arithmatex">\(A\)</span> 应取为 Jacobian，迭代格式为</p>
+<div class="arithmatex">\[
+\boxed{\ \boldsymbol x^{(k)}=\boldsymbol x^{(k-1)}-J\big(\boldsymbol x^{(k-1)}\big)^{-1}F\big(\boldsymbol x^{(k-1)}\big)\ }
+\]</div>
+<p><span class="arithmatex">\(A(\boldsymbol p)=J(\boldsymbol p)\)</span> 只在根处成立，但根未知，于是直接用 <span class="arithmatex">\(A(\boldsymbol x)=J(\boldsymbol x)\)</span>：这样导数在根处为零，而在别处只是一个合理的近似。</p>
+<h3 id="353-迭代格式与计算方式">3.5.3 迭代格式与计算方式<a class="headerlink" href="#353-迭代格式与计算方式" title="Permanent link">#</a></h3>
+<p>实际计算分两步，不显式求逆：</p>
+<ol>
+<li>解线性方程组 <span class="arithmatex">\(J(\boldsymbol x^{(k-1)})\boldsymbol y=-F(\boldsymbol x^{(k-1)})\)</span>；</li>
+<li>令 <span class="arithmatex">\(\boldsymbol x^{(k)}=\boldsymbol x^{(k-1)}+\boldsymbol y\)</span>。</li>
+</ol>
+<p>一步的代价：<span class="arithmatex">\(n^2\)</span> 个偏导数值加一次 <span class="arithmatex">\(O(n^3)\)</span> 的 LU 分解。显式求逆要 <span class="arithmatex">\(O(n^3)\)</span> 但常数更大，且数值上更不稳。</p>
+<h3 id="354-二次收敛定理">3.5.4 二次收敛定理<a class="headerlink" href="#354-二次收敛定理" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(\boldsymbol p\)</span> 是 <span class="arithmatex">\(G(\boldsymbol x)=\boldsymbol x\)</span> 的解，且存在 <span class="arithmatex">\(\delta&gt;0\)</span> 满足：</p>
+<ol>
+<li><span class="arithmatex">\(\partial g_i/\partial x_j\)</span> 在 <span class="arithmatex">\(N_\delta=\{\boldsymbol x:\|\boldsymbol x-\boldsymbol p\|&lt;\delta\}\)</span> 上连续；</li>
+<li><span class="arithmatex">\(\partial^2 g_i/(\partial x_j\partial x_k)\)</span> 连续，且在 <span class="arithmatex">\(N_\delta\)</span> 上有 <span class="arithmatex">\(|\partial^2 g_i/(\partial x_j\partial x_k)|\le M\)</span>；</li>
+<li><span class="arithmatex">\(\partial g_i(\boldsymbol p)/\partial x_k=0\)</span>，对一切 <span class="arithmatex">\(i,k\)</span>。</li>
+</ol>
+<p>则存在 <span class="arithmatex">\(\hat\delta\le\delta\)</span>，使任意满足 <span class="arithmatex">\(\|\boldsymbol x^{(0)}-\boldsymbol p\|&lt;\hat\delta\)</span> 的初值生成的序列 <span class="arithmatex">\(\boldsymbol x^{(k)}=G(\boldsymbol x^{(k-1)})\)</span> 二次收敛到 <span class="arithmatex">\(\boldsymbol p\)</span>，并且</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k)}-\boldsymbol p\|_\infty\le\frac{n^2M}{2}\|\boldsymbol x^{(k-1)}-\boldsymbol p\|_\infty^2,\qquad k\ge1 .
+\]</div>
+<h3 id="355-定理的证明">3.5.5 定理的证明<a class="headerlink" href="#355-定理的证明" title="Permanent link">#</a></h3>
+<p>用分量 Taylor 展开，余项写成 Hessian 形式。对每个 <span class="arithmatex">\(i\)</span>，在 <span class="arithmatex">\(\boldsymbol p\)</span> 处展开 <span class="arithmatex">\(g_i\)</span>：存在线段上的点 <span class="arithmatex">\(\boldsymbol\xi_i=\boldsymbol p+t_i(\boldsymbol x-\boldsymbol p)\)</span>（<span class="arithmatex">\(0&lt;t_i&lt;1\)</span>），使</p>
+<div class="arithmatex">\[
+g_i(\boldsymbol x)=g_i(\boldsymbol p)+\nabla g_i(\boldsymbol p)^{\top}(\boldsymbol x-\boldsymbol p)+\frac12(\boldsymbol x-\boldsymbol p)^{\top}H_i(\boldsymbol\xi_i)(\boldsymbol x-\boldsymbol p),
+\]</div>
+<p>其中 <span class="arithmatex">\(H_i\)</span> 是 <span class="arithmatex">\(g_i\)</span> 的 Hessian。由条件 3，梯度项为零；由 <span class="arithmatex">\(g_i(\boldsymbol p)=p_i\)</span>，于是</p>
+<div class="arithmatex">\[
+g_i(\boldsymbol x)-p_i=\frac12\sum_{j=1}^{n}\sum_{k=1}^{n}\frac{\partial^2 g_i}{\partial x_j\partial x_k}(\boldsymbol\xi_i)(x_j-p_j)(x_k-p_k).
+\]</div>
+<p>取绝对值并用条件 2：</p>
+<div class="arithmatex">\[
+\left|g_i(\boldsymbol x)-p_i\right|\le\frac{M}{2}\sum_{j=1}^{n}\sum_{k=1}^{n}|x_j-p_j|\,|x_k-p_k|=\frac{M}{2}\Big(\sum_{j=1}^{n}|x_j-p_j|\Big)^2 .
+\]</div>
+<p>而 <span class="arithmatex">\(\sum_j|x_j-p_j|\le n\|\boldsymbol x-\boldsymbol p\|_\infty\)</span>，故</p>
+<div class="arithmatex">\[
+\left|g_i(\boldsymbol x)-p_i\right|\le\frac{M}{2}\big(n\|\boldsymbol x-\boldsymbol p\|_\infty\big)^2=\frac{n^2M}{2}\|\boldsymbol x-\boldsymbol p\|_\infty^2 .
+\]</div>
+<p>对 <span class="arithmatex">\(i\)</span> 取最大，记 <span class="arithmatex">\(c=n^2M/2\)</span>：</p>
+<div class="arithmatex">\[
+\|G(\boldsymbol x)-\boldsymbol p\|_\infty\le c\|\boldsymbol x-\boldsymbol p\|_\infty^2 . \tag{3.1}
+\]</div>
+<p><strong>迭代保持在球内.</strong> 令 <span class="arithmatex">\(\hat\delta=\min(\delta,\,1/c)\)</span>（<span class="arithmatex">\(M=0\)</span> 时一步收敛，结论显然；否则 <span class="arithmatex">\(c&gt;0\)</span>）。若 <span class="arithmatex">\(\|\boldsymbol x-\boldsymbol p\|_\infty\le\hat\delta\)</span>，则由式 (3.1)</p>
+<div class="arithmatex">\[
+\|G(\boldsymbol x)-\boldsymbol p\|_\infty\le c\|\boldsymbol x-\boldsymbol p\|_\infty\cdot\|\boldsymbol x-\boldsymbol p\|_\infty\le\|\boldsymbol x-\boldsymbol p\|_\infty\le\hat\delta .
+\]</div>
+<p>所以球 <span class="arithmatex">\(N_{\hat\delta}\)</span> 在 <span class="arithmatex">\(G\)</span> 下不变，迭代不会跑出去，每一步都能用式 (3.1)。</p>
+<p><strong>二次收敛.</strong> 把 <span class="arithmatex">\(\boldsymbol x=\boldsymbol x^{(k-1)}\)</span> 代入式 (3.1) 得所述不等式。令 <span class="arithmatex">\(e_k=c\|\boldsymbol x^{(k)}-\boldsymbol p\|_\infty\)</span>，则 <span class="arithmatex">\(e_k\le e_{k-1}^2\)</span>，且 <span class="arithmatex">\(e_0\le c\hat\delta\le1\)</span>。递推</p>
+<div class="arithmatex">\[
+e_k\le e_{k-1}^2\le e_{k-2}^{4}\le\cdots\le e_0^{2^k}\longrightarrow0 ,
+\]</div>
+<p>而且 <span class="arithmatex">\(e_0&lt;1\)</span> 时是双指数下降——每步有效数字大约翻倍。<span class="arithmatex">\(\blacksquare\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">二次收敛的常数不重要</p>
+<p><span class="arithmatex">\(n^2M/2\)</span> 只影响"多近才算够近"，不影响收敛阶。初值进不了这个球，定理什么也不保证——这正是 Newton 法对初值敏感的理论根源。</p>
+</div>
+<h3 id="356-范数形式Jacobian-逆的界">3.5.6 范数形式：Jacobian 逆的界<a class="headerlink" href="#356-范数形式Jacobian-逆的界" title="Permanent link">#</a></h3>
+<p>上面的证明用了 Hessian 的界。更常用的写法直接用 Jacobian 的 Lipschitz 常数与逆的界，结论相同而假设更贴近实际。</p>
+<p><strong>引理.</strong> 设 <span class="arithmatex">\(J(\boldsymbol p)\)</span> 非奇异，<span class="arithmatex">\(\|J(\boldsymbol p)^{-1}\|\le\beta\)</span>，且 <span class="arithmatex">\(J\)</span> 在 <span class="arithmatex">\(N_\delta\)</span> 上 Lipschitz：<span class="arithmatex">\(\|J(\boldsymbol x)-J(\boldsymbol y)\|\le\gamma\|\boldsymbol x-\boldsymbol y\|\)</span>。若 <span class="arithmatex">\(q=\beta\gamma\delta&lt;1\)</span>，则 <span class="arithmatex">\(\boldsymbol x\in N_\delta\)</span> 时</p>
+<div class="arithmatex">\[
+\|J(\boldsymbol x)^{-1}\|\le\frac{\beta}{1-q} .
+\]</div>
+<p><strong>证明.</strong> 写 <span class="arithmatex">\(J(\boldsymbol x)=J(\boldsymbol p)+E\)</span>，<span class="arithmatex">\(\|E\|\le\gamma\delta\)</span>。则</p>
+<div class="arithmatex">\[
+J(\boldsymbol x)^{-1}=\big(I+J(\boldsymbol p)^{-1}E\big)^{-1}J(\boldsymbol p)^{-1} .
+\]</div>
+<p><span class="arithmatex">\(\|J(\boldsymbol p)^{-1}E\|\le\beta\gamma\delta=q&lt;1\)</span>，对 <span class="arithmatex">\(B=I+J(\boldsymbol p)^{-1}E\)</span> 用 3.3.4 的引理得 <span class="arithmatex">\(\|B^{-1}\|\le1/(1-q)\)</span>，于是 <span class="arithmatex">\(\|J(\boldsymbol x)^{-1}\|\le\beta/(1-q)\)</span>。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>定理（范数形式）.</strong> 在上述假设下，若 <span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 与 <span class="arithmatex">\(\boldsymbol p\)</span> 都在 <span class="arithmatex">\(N_\delta\)</span> 内，则</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k+1)}-\boldsymbol p\|\le\frac{\beta\gamma}{2(1-q)}\|\boldsymbol x^{(k)}-\boldsymbol p\|^2 .
+\]</div>
+<p><strong>证明.</strong> 由 <span class="arithmatex">\(F(\boldsymbol p)=\boldsymbol 0\)</span> 与微积分基本定理，</p>
+<div class="arithmatex">\[
+F(\boldsymbol x^{(k)})=\int_0^1J\big(\boldsymbol p+t(\boldsymbol x^{(k)}-\boldsymbol p)\big)(\boldsymbol x^{(k)}-\boldsymbol p)\,dt .
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k+1)}-\boldsymbol p=\boldsymbol x^{(k)}-\boldsymbol p-J(\boldsymbol x^{(k)})^{-1}F(\boldsymbol x^{(k)})=J(\boldsymbol x^{(k)})^{-1}\int_0^1\Big[J(\boldsymbol x^{(k)})-J\big(\boldsymbol p+t(\boldsymbol x^{(k)}-\boldsymbol p)\big)\Big](\boldsymbol x^{(k)}-\boldsymbol p)\,dt .
+\]</div>
+<p>被积函数的范数不超过 <span class="arithmatex">\(\gamma\|\boldsymbol x^{(k)}-(\boldsymbol p+t(\boldsymbol x^{(k)}-\boldsymbol p))\|\cdot\|\boldsymbol x^{(k)}-\boldsymbol p\|=\gamma(1-t)\|\boldsymbol x^{(k)}-\boldsymbol p\|^2\)</span>。积分 <span class="arithmatex">\(\int_0^1(1-t)dt=1/2\)</span>，再用引理的逆的界：</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k+1)}-\boldsymbol p\|\le\frac{\beta}{1-q}\cdot\frac{\gamma}{2}\|\boldsymbol x^{(k)}-\boldsymbol p\|^2 .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<p>两种写法的常数来源不同（一个来自 Hessian 的界 <span class="arithmatex">\(M\)</span>，一个来自 Jacobian 的 Lipschitz 常数 <span class="arithmatex">\(\gamma\)</span> 与 <span class="arithmatex">\(\beta\)</span>），但都给出 <span class="arithmatex">\(e_{k+1}\le Ce_k^2\)</span>。若取 <span class="arithmatex">\(L_\infty\)</span> 范数，由中值定理 <span class="arithmatex">\(\|J(\boldsymbol x)-J(\boldsymbol y)\|_\infty\le n^2M\|\boldsymbol x-\boldsymbol y\|_\infty\)</span>，即 <span class="arithmatex">\(\gamma=n^2M\)</span>，与课件的 <span class="arithmatex">\(n^2M/2\)</span> 同量级。</p>
+<h3 id="357-算例">3.5.7 算例<a class="headerlink" href="#357-算例" title="Permanent link">#</a></h3>
+<p>对方程组</p>
+<div class="arithmatex">\[
+3x_1-\cos(x_2x_3)-\tfrac12=0,\qquad x_1^2-81(x_2+0.1)^2+\sin x_3+1.06=0,\qquad e^{-x_1x_2}+20x_3+\tfrac{10\pi-3}{3}=0
+\]</div>
+<p>求 Jacobian。逐项求偏导：</p>
+<div class="arithmatex">\[
+J(\boldsymbol x)=\begin{pmatrix} 3 &amp; x_3\sin(x_2x_3) &amp; x_2\sin(x_2x_3)\\ 2x_1 &amp; -162(x_2+0.1) &amp; \cos x_3\\ -x_2e^{-x_1x_2} &amp; -x_1e^{-x_1x_2} &amp; 20 \end{pmatrix}.
+\]</div>
+<p>取 <span class="arithmatex">\(\boldsymbol x^{(0)}=(0.1,\ 0.1,\ -0.1)^{\top}\)</span>，结果：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(k\)</span></th>
+<th><span class="arithmatex">\(x_1^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_2^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_3^{(k)}\)</span></th>
+<th><span class="arithmatex">\(\|\boldsymbol x^{(k)}-\boldsymbol x^{(k-1)}\|_\infty\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.100000000</td>
+<td>0.100000000</td>
+<td>-0.100000000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.4998696728</td>
+<td>0.0194668485</td>
+<td>-0.5215204718</td>
+<td>1.788e-2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.5000142403</td>
+<td>0.0015885914</td>
+<td>-0.5235569638</td>
+<td>1.576e-3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.5000000113</td>
+<td>0.0000124448</td>
+<td>-0.5235984500</td>
+<td>1.244e-5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.5000000000</td>
+<td>8.516e-10</td>
+<td>-0.5235987755</td>
+<td>8.654e-10</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.5000000000</td>
+<td>-1.375e-11</td>
+<td>-0.5235987756</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>与 3.4.6 的不动点迭代表对照：同样五步，不动点法停在 <span class="arithmatex">\(10^{-7}\)</span>，Newton 已到 <span class="arithmatex">\(10^{-11}\)</span>。误差序列 <span class="arithmatex">\(1.8\times10^{-2}\to1.6\times10^{-3}\to1.2\times10^{-5}\to8.7\times10^{-10}\)</span>，每一步都约等于上一步的平方再乘 5 左右的常数——这正是 <span class="arithmatex">\(e_{k+1}\le Ce_k^2\)</span> 的形状，二次收敛的直接证据。</p>
+<h3 id="358-算法与实现">3.5.8 算法与实现<a class="headerlink" href="#358-算法与实现" title="Permanent link">#</a></h3>
+<p>课件伪代码的对应：</p>
+<ol>
+<li>输入 <span class="arithmatex">\(n\)</span>、<span class="arithmatex">\(\boldsymbol x^{(0)}\)</span>、容差 <span class="arithmatex">\(TOL\)</span>、最大步数 <span class="arithmatex">\(N\)</span>；</li>
+<li>循环 <span class="arithmatex">\(k=1,\dots,N\)</span>：算 <span class="arithmatex">\(F(\boldsymbol x)\)</span> 与 <span class="arithmatex">\(J(\boldsymbol x)\)</span>；</li>
+<li>解 <span class="arithmatex">\(n\times n\)</span> 线性方程组 <span class="arithmatex">\(J(\boldsymbol x)\boldsymbol y=-F(\boldsymbol x)\)</span>；</li>
+<li><span class="arithmatex">\(\boldsymbol x\leftarrow\boldsymbol x+\boldsymbol y\)</span>；</li>
+<li>若 <span class="arithmatex">\(\|\boldsymbol y\|&lt;TOL\)</span> 则输出 <span class="arithmatex">\(\boldsymbol x\)</span> 并停止；</li>
+<li>超步数则输出失败信息。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>x, ok, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">newton_sys</span><span class="p">(</span>F, J, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c">% F, J 分别为 F(x) 与 Jacobian 的函数句柄</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">Fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">Jx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">y</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">Jx</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">Fx</span><span class="p">;</span><span class="w">              </span><span class="c">% 解 J y = -F，绝不用 inv(J)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="w">       </span><span class="c">% 步长判停</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">end</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">end</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">判停用步长还是残差</p>
+<p><span class="arithmatex">\(\|\boldsymbol y\|\)</span> 小但 <span class="arithmatex">\(\|F(\boldsymbol x)\|\)</span> 大，说明 Jacobian 接近奇异，步长被放大后又缩回——此时解不可信。稳妥做法是两者都查，再加一步回代残差 <span class="arithmatex">\(\|F(\boldsymbol x)\|_\infty\)</span>。</p>
+</div>
+<h2 id="36-拟-Newton-法">3.6 拟 Newton 法<a class="headerlink" href="#36-拟-Newton-法" title="Permanent link">#</a></h2>
+<h3 id="361-动机">3.6.1 动机<a class="headerlink" href="#361-动机" title="Permanent link">#</a></h3>
+<p>Newton 法每步都要算 <span class="arithmatex">\(n^2\)</span> 个偏导并做 <span class="arithmatex">\(O(n^3)\)</span> 的分解。<span class="arithmatex">\(n\)</span> 大、<span class="arithmatex">\(F\)</span> 复杂时这是主要开销。拟 Newton 法（<strong>quasi-Newton</strong>）的想法：不重算 Jacobian，用前几步的函数值差去修正一个近似矩阵，保持"近似 Newton"的收敛速度，把每步代价降到 <span class="arithmatex">\(O(n^2)\)</span>。</p>
+<h3 id="362-割线条件与秩一修正">3.6.2 割线条件与秩一修正<a class="headerlink" href="#362-割线条件与秩一修正" title="Permanent link">#</a></h3>
+<p>一维割线法要求差商等于导数：<span class="arithmatex">\(\big(f(x^{(k)})-f(x^{(k-1)})\big)/(x^{(k)}-x^{(k-1)})\approx f'(x^{(k)})\)</span>。推广到多维，要求新的近似矩阵 <span class="arithmatex">\(B_{k+1}\)</span> 满足<strong>割线条件</strong>（<strong>secant condition</strong>）</p>
+<div class="arithmatex">\[
+B_{k+1}\boldsymbol s_k=\boldsymbol y_k,\qquad \boldsymbol s_k=\boldsymbol x^{(k+1)}-\boldsymbol x^{(k)},\quad \boldsymbol y_k=F(\boldsymbol x^{(k+1)})-F(\boldsymbol x^{(k)}) .
+\]</div>
+<p>一个向量方程（<span class="arithmatex">\(n\)</span> 个标量条件）约束 <span class="arithmatex">\(n^2\)</span> 个未知量，解不唯一。Broyden 的选择是：在所有满足割线条件的矩阵中，取与 <span class="arithmatex">\(B_k\)</span> 的 Frobenius 距离最小者，结果是秩一修正</p>
+<div class="arithmatex">\[
+\boxed{\ B_{k+1}=B_k+\frac{(\boldsymbol y_k-B_k\boldsymbol s_k)\boldsymbol s_k^{\top}}{\boldsymbol s_k^{\top}\boldsymbol s_k}\ }
+\]</div>
+<p>验证：两边右乘 <span class="arithmatex">\(\boldsymbol s_k\)</span>，</p>
+<div class="arithmatex">\[
+B_{k+1}\boldsymbol s_k=B_k\boldsymbol s_k+\frac{(\boldsymbol y_k-B_k\boldsymbol s_k)(\boldsymbol s_k^{\top}\boldsymbol s_k)}{\boldsymbol s_k^{\top}\boldsymbol s_k}=B_k\boldsymbol s_k+\boldsymbol y_k-B_k\boldsymbol s_k=\boldsymbol y_k .
+\]</div>
+<p>割线条件成立。修正量是列向量乘行向量，秩为 1，计算量 <span class="arithmatex">\(O(n^2)\)</span>。</p>
+<h3 id="363-逆形式的递推">3.6.3 逆形式的递推<a class="headerlink" href="#363-逆形式的递推" title="Permanent link">#</a></h3>
+<p>迭代步要解 <span class="arithmatex">\(B_k\boldsymbol s=-\!F(\boldsymbol x^{(k)})\)</span>。用 Sherman–Morrison 公式把 <span class="arithmatex">\(B\)</span> 的秩一修正转成 <span class="arithmatex">\(H=B^{-1}\)</span> 的秩一修正，就能直接算步长。对 <span class="arithmatex">\(B+uv^{\top}\)</span>，有</p>
+<div class="arithmatex">\[
+(B+uv^{\top})^{-1}=B^{-1}-\frac{B^{-1}uv^{\top}B^{-1}}{1+v^{\top}B^{-1}u} .
+\]</div>
+<p>取 <span class="arithmatex">\(u=(\boldsymbol y-B\boldsymbol s)/(\boldsymbol s^{\top}\boldsymbol s)\)</span>、<span class="arithmatex">\(v=\boldsymbol s\)</span>，此时 <span class="arithmatex">\(1+v^{\top}B^{-1}u=\boldsymbol s^{\top}H\boldsymbol y/(\boldsymbol s^{\top}\boldsymbol s)\)</span>，代入化简得</p>
+<div class="arithmatex">\[
+\boxed{\ H_{k+1}=H_k+\frac{(\boldsymbol s_k-H_k\boldsymbol y_k)\,\boldsymbol s_k^{\top}H_k}{\boldsymbol s_k^{\top}H_k\boldsymbol y_k}\ }
+\]</div>
+<p>于是 Broyden 迭代为</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k+1)}=\boldsymbol x^{(k)}-H_kF(\boldsymbol x^{(k)}),\qquad \boldsymbol s_k=\boldsymbol x^{(k+1)}-\boldsymbol x^{(k)},\qquad \boldsymbol y_k=F(\boldsymbol x^{(k+1)})-F(\boldsymbol x^{(k)}),
+\]</div>
+<p>再用上式更新 <span class="arithmatex">\(H\)</span>。初始 <span class="arithmatex">\(H_0=J(\boldsymbol x^{(0)})^{-1}\)</span>（算一次即可），或取 <span class="arithmatex">\(H_0=I\)</span>（更省但更慢）。</p>
+<p><strong>收敛性</strong>：局部超线性，即 <span class="arithmatex">\(\|\boldsymbol x^{(k+1)}-\boldsymbol p\|\le c_k\|\boldsymbol x^{(k)}-\boldsymbol p\|\)</span> 且 <span class="arithmatex">\(c_k\to0\)</span>。比 Newton 的二次收敛慢，但每步便宜，且不需要解析导数——<span class="arithmatex">\(F\)</span> 只能通过黑箱求值时这是唯一选择。配合线搜索（3.7.3）可扩大收敛域。</p>
+<div class="admonition warning">
+<p class="admonition-title">分母可能为零</p>
+<p><span class="arithmatex">\(\boldsymbol s_k^{\top}H_k\boldsymbol y_k\)</span> 接近 0 时修正量爆炸。实现里要检查分母，过小就跳过本次修正或重置 <span class="arithmatex">\(H=I\)</span>。这也是"重启"策略的由来。</p>
+</div>
+<h3 id="364-MATLAB">3.6.4 MATLAB<a class="headerlink" href="#364-MATLAB" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>x, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">broyden_sys</span><span class="p">(</span>F, J0, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c">% J0 为初始 Jacobian，H 存其逆的近似</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J0</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">J0</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="n">Fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">   </span><span class="c">% 只求一次逆</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Fx</span><span class="p">;</span><span class="w">                 </span><span class="c">% 拟 Newton 步</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">Fn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">y</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="n">Fn</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Fx</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">          </span><span class="c">% Sherman-Morrison 分母</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1e-14</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">H</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">den</span><span class="p">;</span><span class="w">   </span><span class="c">% 逆的秩一修正</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">Fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Fn</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="p">,</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">end</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="37-下降法与线搜索">3.7 下降法与线搜索<a class="headerlink" href="#37-下降法与线搜索" title="Permanent link">#</a></h2>
+<h3 id="371-把方程组化成一个最小化问题">3.7.1 把方程组化成一个最小化问题<a class="headerlink" href="#371-把方程组化成一个最小化问题" title="Permanent link">#</a></h3>
+<p>如果 <span class="arithmatex">\(f_i(\boldsymbol x)=0\)</span> 全部成立，则平方和为零。定义</p>
+<div class="arithmatex">\[
+g(\boldsymbol x)=\sum_{i=1}^{n}f_i^2(\boldsymbol x)=\|F(\boldsymbol x)\|_2^2\ge0 ,
+\]</div>
+<p>则 <span class="arithmatex">\(F(\boldsymbol x)=\boldsymbol 0\)</span> 等价于 <span class="arithmatex">\(g\)</span> 取到全局最小值 0。求 <span class="arithmatex">\(g\)</span> 的局部极小，就是下降法（<strong>steepest descent</strong> / <strong>gradient descent</strong>）的出发点。</p>
+<p><strong>梯度.</strong> <span class="arithmatex">\(g:\mathbb R^n\to\mathbb R\)</span> 的梯度为</p>
+<div class="arithmatex">\[
+\nabla g(\boldsymbol x)=\Big(\frac{\partial g}{\partial x_1},\dots,\frac{\partial g}{\partial x_n}\Big)^{\top}=2J(\boldsymbol x)^{\top}F(\boldsymbol x) .
+\]</div>
+<p>推导：<span class="arithmatex">\(\partial g/\partial x_k=\sum_i2f_i\,\partial f_i/\partial x_k=2\sum_i J_{ik}f_i=2(J^{\top}F)_k\)</span>。</p>
+<h3 id="372-最速下降格式">3.7.2 最速下降格式<a class="headerlink" href="#372-最速下降格式" title="Permanent link">#</a></h3>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}=\boldsymbol x^{(k-1)}-\alpha\nabla g(\boldsymbol x^{(k-1)}),
+\]</div>
+<p><span class="arithmatex">\(\alpha&gt;0\)</span> 是步长。为什么取负梯度：方向导数在方向 <span class="arithmatex">\(\boldsymbol d\)</span> 上为 <span class="arithmatex">\(\nabla g^{\top}\boldsymbol d\)</span>，取 <span class="arithmatex">\(\boldsymbol d=-\nabla g\)</span> 得 <span class="arithmatex">\(-\|\nabla g\|_2^2&lt;0\)</span>，是最速下降方向。一步展开验证：</p>
+<div class="arithmatex">\[
+g(\boldsymbol x-\alpha\nabla g)=g(\boldsymbol x)-\alpha\|\nabla g\|_2^2+O(\alpha^2),
+\]</div>
+<p><span class="arithmatex">\(\alpha\)</span> 足够小时严格下降。</p>
+<h3 id="373-步长与线搜索">3.7.3 步长与线搜索<a class="headerlink" href="#373-步长与线搜索" title="Permanent link">#</a></h3>
+<p><span class="arithmatex">\(\alpha\)</span> 固定时，太大震荡、太小龟速。两种标准做法：</p>
+<ul>
+<li><strong>精确线搜索</strong>：解一维问题 <span class="arithmatex">\(\min_{\alpha&gt;0}\varphi(\alpha)=g(\boldsymbol x-\alpha\nabla g(\boldsymbol x))\)</span>。</li>
+<li><strong>回溯（backtracking）Armijo</strong>：取 <span class="arithmatex">\(\alpha=1\)</span>，逐次令 <span class="arithmatex">\(\alpha\leftarrow\alpha/2\)</span>，直到步长满足下面的下降条件。</li>
+</ul>
+<div class="arithmatex">\[
+g(\boldsymbol x-\alpha\nabla g)\le g(\boldsymbol x)-c\alpha\|\nabla g\|_2^2 .
+\]</div>
+<p>常数 <span class="arithmatex">\(c\in(0,1)\)</span> 常取 <span class="arithmatex">\(10^{-4}\)</span>。该条件保证每步至少下降 <span class="arithmatex">\(c\alpha\|\nabla g\|^2\)</span>，累积起来可证全局收敛到驻点。</p>
+<h3 id="374-算例与对比">3.7.4 算例与对比<a class="headerlink" href="#374-算例与对比" title="Permanent link">#</a></h3>
+<p>对 3.4.1 的方程组，取 <span class="arithmatex">\(g=\sum f_i^2\)</span>，从同一初值出发，课件给出：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(k\)</span></th>
+<th><span class="arithmatex">\(x_1^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_2^{(k)}\)</span></th>
+<th><span class="arithmatex">\(x_3^{(k)}\)</span></th>
+<th><span class="arithmatex">\(g(\boldsymbol x^{(k)})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0.137860</td>
+<td>-0.205453</td>
+<td>-0.522059</td>
+<td>1.27406</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.266959</td>
+<td>0.00551102</td>
+<td>-0.558494</td>
+<td>1.06813</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.272734</td>
+<td>-0.00811751</td>
+<td>-0.522006</td>
+<td>0.468309</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.308689</td>
+<td>-0.0204026</td>
+<td>-0.533112</td>
+<td>0.381087</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.314308</td>
+<td>-0.0147046</td>
+<td>-0.520923</td>
+<td>0.318837</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.324267</td>
+<td>-0.00852549</td>
+<td>-0.528431</td>
+<td>0.287024</td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(g\)</span> 稳降但很慢，七步后 <span class="arithmatex">\(0.287\)</span>，离 0 还远。三点对照：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>每步代价</th>
+<th>收敛阶</th>
+<th>初值要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不动点迭代</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>线性，因子 <span class="arithmatex">\(K\)</span></td>
+<td>需在压缩域内</td>
+</tr>
+<tr>
+<td>Newton</td>
+<td><span class="arithmatex">\(O(n^3)\)</span></td>
+<td>二次</td>
+<td>必须足够靠近解</td>
+</tr>
+<tr>
+<td>下降法</td>
+<td><span class="arithmatex">\(O(n^2)\)</span></td>
+<td>线性</td>
+<td>宽松</td>
+</tr>
+</tbody>
+</table>
+<p>下降法"求的是 <span class="arithmatex">\(g\)</span> 的局部极小"，不是"<span class="arithmatex">\(F\)</span> 的根"：<span class="arithmatex">\(\nabla g=2J^{\top}F=\boldsymbol 0\)</span> 只说明 <span class="arithmatex">\(F\)</span> 与 <span class="arithmatex">\(J\)</span> 的列空间正交，若 <span class="arithmatex">\(J\)</span> 奇异（或方程数多于未知数），完全可能停在 <span class="arithmatex">\(g&gt;0\)</span> 的驻点。这就是下降法不能替代 Newton 的根本原因。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：Gauss–Newton 与 Levenberg–Marquardt</p>
+<p>把 <span class="arithmatex">\(F(\boldsymbol x+\boldsymbol s)\approx F(\boldsymbol x)+J\boldsymbol s\)</span> 代进 <span class="arithmatex">\(\|F\|^2\)</span>，最小化得到正规方程 <span class="arithmatex">\(J^{\top}J\boldsymbol s=-J^{\top}F\)</span>，即 <span class="arithmatex">\(\boldsymbol s=-(J^{\top}J)^{-1}J^{\top}F\)</span>。这就是 Gauss–Newton 法：<span class="arithmatex">\(J\)</span> 方阵非奇异时与 Newton 步完全等价（<span class="arithmatex">\(J^{\top}J\)</span> 可逆当且仅当 <span class="arithmatex">\(J\)</span> 可逆），但不需要二阶导数。<span class="arithmatex">\(J\)</span> 列相关时 <span class="arithmatex">\(J^{\top}J\)</span> 奇异，加阻尼变成 <span class="arithmatex">\((J^{\top}J+\mu I)\boldsymbol s=-J^{\top}F\)</span>，即 Levenberg–Marquardt。它是 Newton 与下降法的连续过渡：<span class="arithmatex">\(\mu\to0\)</span> 是 Newton，<span class="arithmatex">\(\mu\)</span> 大时步长方向退化为负梯度。</p>
+</div>
+<h3 id="375-MATLAB">3.7.5 MATLAB<a class="headerlink" href="#375-MATLAB" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>x, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">gd_sys</span><span class="p">(</span>F, J, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c">% 目标 g = ||F||_2^2，梯度 2*J'*F；回溯线搜索</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">Fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">gx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Fx</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Fx</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">grad</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Fx</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="p">,</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w">     </span><span class="c">% 梯度判停</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nb">alpha</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w">                            </span><span class="c">% Armijo 回溯</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">xt</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grad</span><span class="p">;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">Ft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">xt</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">Ft</span><span class="o">'*</span><span class="n">Ft</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">gx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="nb">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">grad</span><span class="o">'*</span><span class="n">grad</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">alpha</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-12</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="k">break</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="nb">alpha</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">alpha</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grad</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">end</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">八条</p>
+<ol>
+<li><strong>范数等价不等于数值相等</strong>：<span class="arithmatex">\(\|\cdot\|_2\le\sqrt n\|\cdot\|_\infty\)</span>，<span class="arithmatex">\(n\)</span> 大时差几个量级；容差和判据必须用同一个范数。</li>
+<li><strong><span class="arithmatex">\(\rho(A)\le\|A\|\)</span> 通常是严格不等</strong>：用 <span class="arithmatex">\(\|J\|&lt;1\)</span> 判收敛偏保守；真正刻画速度的是谱半径，<span class="arithmatex">\(\rho&lt;1\)</span> 才是充要条件。</li>
+<li><strong>不动点形式不唯一，选错就发散</strong>：同一方程写成 <span class="arithmatex">\(x=\cos x\)</span> 收敛，写成 <span class="arithmatex">\(x=\arccos x\)</span> 在根处导数大于 1 必发散。改写后先算 <span class="arithmatex">\(J_G(\boldsymbol p)\)</span> 的谱半径。</li>
+<li><strong>压缩常数接近 1 时慢得没法用</strong>：误差按 <span class="arithmatex">\(K^k\)</span> 走，<span class="arithmatex">\(K=0.99\)</span> 要几百步才有三位有效数字；此时换 Newton。</li>
+<li><strong>Newton 需要 Jacobian 非奇异</strong>：接近奇异时步长爆炸；必须配线搜索或改用阻尼/拟 Newton。</li>
+<li><strong>Newton 只是局部收敛</strong>：初值不在 <span class="arithmatex">\(\hat\delta\)</span> 球内，定理不保证任何事；实践中先用下降法或不动点迭代"拉近"，再切 Newton。</li>
+<li><strong>不要显式求逆</strong>：用 <code>J \ (-F)</code>；判停同时看步长与残差，只看一个会误判。</li>
+<li><strong><span class="arithmatex">\(\|F\|^2\)</span> 的驻点不是解</strong>：<span class="arithmatex">\(J\)</span> 奇异时下降法会停在 <span class="arithmatex">\(g&gt;0\)</span> 的点，别把"梯度为零"当成"找到根"。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>向量范数四条公理：非负、正定、齐次、三角不等式。</li>
+<li><span class="arithmatex">\(L_1\)</span> 是绝对值和，<span class="arithmatex">\(L_2\)</span> 是欧氏长度，<span class="arithmatex">\(L_\infty\)</span> 是最大分量。</li>
+<li><span class="arithmatex">\(\|\boldsymbol x\|_\infty\le\|\boldsymbol x\|_2\le\sqrt n\|\boldsymbol x\|_\infty\)</span>，故 <span class="arithmatex">\(\mathbb R^n\)</span> 上所有范数等价。</li>
+<li>向量序列按 <span class="arithmatex">\(L_\infty\)</span> 收敛当且仅当每个分量收敛；配合范数等价，收敛性与范数无关。</li>
+<li>诱导矩阵范数：<span class="arithmatex">\(\|A\|_\infty\)</span> 最大行和，<span class="arithmatex">\(\|A\|_1\)</span> 最大列和，<span class="arithmatex">\(\|A\|_2\)</span> 最大奇异值；Frobenius 范数不是诱导范数。</li>
+<li><span class="arithmatex">\(\rho(A)\le\|A\|\)</span>，且 <span class="arithmatex">\(\rho(A)&lt;1\iff A^k\to0\)</span>。</li>
+<li>逆的界：<span class="arithmatex">\(\|I-B\|=q&lt;1\Rightarrow\|B^{-1}\|\le1/(1-q)\)</span>，这是 Jacobian 逆有界的来源。</li>
+<li>不动点迭代收敛的充分条件：<span class="arithmatex">\(\|J_G\|_\infty\le K&lt;1\)</span>；误差 <span class="arithmatex">\(\le K^k\|\boldsymbol x^{(1)}-\boldsymbol x^{(0)}\|_\infty/(1-K)\)</span>。</li>
+<li>Newton 格式：<span class="arithmatex">\(\boldsymbol x^{(k)}=\boldsymbol x^{(k-1)}-J^{-1}F\)</span>；先解 <span class="arithmatex">\(J\boldsymbol y=-F\)</span> 再相加。</li>
+<li>Newton 二次收敛：<span class="arithmatex">\(\|\boldsymbol e^{(k)}\|\le C\|\boldsymbol e^{(k-1)}\|^2\)</span>，常数来自 Hessian 的界或 Jacobian 的 Lipschitz 常数与 <span class="arithmatex">\(\|J^{-1}\|\)</span> 的界。</li>
+<li>Broyden：割线条件 <span class="arithmatex">\(B_{k+1}\boldsymbol s_k=\boldsymbol y_k\)</span>，秩一修正，逆形式用 Sherman–Morrison，局部超线性。</li>
+<li>下降法最小化 <span class="arithmatex">\(\|F\|_2^2\)</span>，方向 <span class="arithmatex">\(-\nabla g=-2J^{\top}F\)</span>，线性收敛、初值宽松，但可能停在非零驻点。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector norm</td>
+<td>向量范数</td>
+<td>满足非负、正定、齐次、三角不等式的长度函数</td>
+</tr>
+<tr>
+<td>L1 / L2 / L-infinity norm</td>
+<td>三种常用范数</td>
+<td>绝对值和 / 欧氏长度 / 最大分量</td>
+</tr>
+<tr>
+<td>Cauchy–Bunyakovsky–Schwarz inequality</td>
+<td>柯西不等式</td>
+<td>内积不超过两向量长度之积</td>
+</tr>
+<tr>
+<td>equivalent norms</td>
+<td>等价范数</td>
+<td>任意两个范数只差常数倍</td>
+</tr>
+<tr>
+<td>induced matrix norm</td>
+<td>诱导矩阵范数</td>
+<td>由向量范数取上确界得到</td>
+</tr>
+<tr>
+<td>Frobenius norm</td>
+<td>Frobenius 范数</td>
+<td>所有元素平方和开方，非诱导范数</td>
+</tr>
+<tr>
+<td>spectral radius</td>
+<td>谱半径</td>
+<td>特征值模的最大值，决定迭代收敛</td>
+</tr>
+<tr>
+<td>submultiplicative</td>
+<td>次乘性</td>
+<td>乘积的范数不超过范数之积</td>
+</tr>
+<tr>
+<td>contraction mapping</td>
+<td>压缩映射</td>
+<td>像点距离被因子 K 小于 1 压缩</td>
+</tr>
+<tr>
+<td>fixed point</td>
+<td>不动点</td>
+<td>满足 G(p) = p 的点</td>
+</tr>
+<tr>
+<td>coordinate function</td>
+<td>分量函数</td>
+<td>向量值函数的各个分量</td>
+</tr>
+<tr>
+<td>Jacobian matrix</td>
+<td>Jacobian 矩阵</td>
+<td>一阶偏导排成的矩阵，导数的推广</td>
+</tr>
+<tr>
+<td>quadratic convergence</td>
+<td>二次收敛</td>
+<td>误差每步约为上一步的平方</td>
+</tr>
+<tr>
+<td>linear convergence</td>
+<td>线性收敛</td>
+<td>误差每步乘以固定因子</td>
+</tr>
+<tr>
+<td>secant condition</td>
+<td>割线条件</td>
+<td>近似矩阵作用在差分上等于差分</td>
+</tr>
+<tr>
+<td>quasi-Newton method</td>
+<td>拟 Newton 法</td>
+<td>用函数值差修正近似 Jacobian</td>
+</tr>
+<tr>
+<td>Broyden update</td>
+<td>Broyden 修正</td>
+<td>满足割线条件的秩一修正</td>
+</tr>
+<tr>
+<td>Sherman–Morrison formula</td>
+<td>Sherman–Morrison 公式</td>
+<td>秩一修正的逆的递推</td>
+</tr>
+<tr>
+<td>superlinear convergence</td>
+<td>超线性收敛</td>
+<td>相邻误差之比趋于零但非平方</td>
+</tr>
+<tr>
+<td>steepest descent</td>
+<td>最速下降</td>
+<td>沿负梯度方向下降</td>
+</tr>
+<tr>
+<td>line search</td>
+<td>线搜索</td>
+<td>在给定方向上选步长</td>
+</tr>
+<tr>
+<td>Armijo condition</td>
+<td>Armijo 条件</td>
+<td>保证每步有足够下降的回溯判据</td>
+</tr>
+<tr>
+<td>residual</td>
+<td>残差</td>
+<td>当前点处 F(x) 的值</td>
+</tr>
+</tbody>
+</table>
+<p class="pdf-note"><a href="../../files/nm9f3c/Lec03.pdf">课程课件 · Lec03（PDF）</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
