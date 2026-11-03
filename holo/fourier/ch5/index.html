@@ -242,7 +242,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../numana/ch01/" class="md-tabs__link">
+        <a href="../../../numana/ch01.md" class="md-tabs__link">
           
   
   
@@ -507,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch01/" class="md-nav__link">
+      <a href="../../../numana/ch01.md" class="md-nav__link">
         
   
   
@@ -535,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch02/" class="md-nav__link">
+      <a href="../../../numana/ch02.md" class="md-nav__link">
         
   
   
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch03/" class="md-nav__link">
+      <a href="../../../numana/ch03.md" class="md-nav__link">
         
   
   
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch04/" class="md-nav__link">
+      <a href="../../../numana/ch04.md" class="md-nav__link">
         
   
   
@@ -619,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch05/" class="md-nav__link">
+      <a href="../../../numana/ch05.md" class="md-nav__link">
         
   
   
@@ -647,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch06/" class="md-nav__link">
+      <a href="../../../numana/ch06.md" class="md-nav__link">
         
   
   
@@ -675,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch07/" class="md-nav__link">
+      <a href="../../../numana/ch07.md" class="md-nav__link">
         
   
   
@@ -703,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch08/" class="md-nav__link">
+      <a href="../../../numana/ch08.md" class="md-nav__link">
         
   
   
@@ -731,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch09/" class="md-nav__link">
+      <a href="../../../numana/ch09.md" class="md-nav__link">
         
   
   
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch10/" class="md-nav__link">
+      <a href="../../../numana/ch10.md" class="md-nav__link">
         
   
   
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch11/" class="md-nav__link">
+      <a href="../../../numana/ch11.md" class="md-nav__link">
         
   
   
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch12/" class="md-nav__link">
+      <a href="../../../numana/ch12.md" class="md-nav__link">
         
   
   
@@ -843,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../numana/ch13/" class="md-nav__link">
+      <a href="../../../numana/ch13.md" class="md-nav__link">
         
   
   
@@ -1637,6 +1637,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5.5 夫琅禾费传播">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-三种传播算子总对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 三种传播算子总对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2549,6 +2566,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5.5 夫琅禾费传播">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-三种传播算子总对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 三种传播算子总对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2695,9 +2729,10 @@ MATLAB / Python 双实现与数值验证照旧。本章书内代码 4 个文件(
         <span class="brlabel">设计准则（5.4.5/5.4.6）</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">表 5.3 四步流程</span>
+          <span class="brleaf">表 5.3 四步流程 + mermaid 决策图</span>
           <span class="brleaf">split-step 不救欠采样(式 5.15)</span>
           <span class="brleaf">窗函数 / 两步法(Appendix B)</span>
+          <span class="brleaf">三算子总对比表(5.5.1)</span>
           <span class="brleaf">M-Lint + Profiler 提效(5.6)</span>
         </div>
       </div>
@@ -2973,35 +3008,36 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>                                <span class="s2">".."</span><span class="p">,</span> <span class="s2">"common"</span><span class="p">))</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">base</span><span class="w"> </span><span class="kn">import</span> <span class="n">coords</span>                              <span class="c1"># 公共积木(ch1 起)</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ch5_prop</span><span class="w"> </span><span class="kn">import</span> <span class="n">propTF</span><span class="p">,</span> <span class="n">propIR</span>                  <span class="c1"># 本章三个传播器(ch5_prop.py)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># ---------- 书 sqr_beam 第 1-7 行:源面网格 ----------</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">L1</span> <span class="o">=</span> <span class="mf">0.5</span>                                             <span class="c1"># 边长 (m)</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">M</span> <span class="o">=</span> <span class="mi">250</span>                                              <span class="c1"># 样本数</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">dx1</span> <span class="o">=</span> <span class="n">L1</span> <span class="o">/</span> <span class="n">M</span>                                         <span class="c1"># 源面采样间隔 = 2 mm</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">x1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">(</span><span class="n">L1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>                                <span class="c1"># 书第 6 行:-L1/2 : dx1 : L1/2-dx1</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span>                                              <span class="c1"># 书第 7 行</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1"># ---------- 书第 8-14 行:方孔源场 ----------</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="n">lam</span> <span class="o">=</span> <span class="mf">0.5e-6</span>                                         <span class="c1"># 波长 (m)</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">lam</span>                                  <span class="c1"># 波数</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">w</span> <span class="o">=</span> <span class="mf">0.051</span>                                            <span class="c1"># 源方孔半宽 (m)</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="n">z</span> <span class="o">=</span> <span class="mf">2000.0</span>                                           <span class="c1"># 传播距离 (m)</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>                         <span class="c1"># 书第 13 行</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="n">u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>   <span class="c1"># 书第 14 行</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="c1">#     rect(X1/(2w))*rect(Y1/(2w));矩形的边界值歧义对均匀网格无影响</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="n">I1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>                                 <span class="c1"># 书第 15 行:源面辐照度</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="c1"># ---------- 书第 22 行:传播(TF 与 IR 各一次) ----------</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="n">u2_tf</span> <span class="o">=</span> <span class="n">propTF</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="n">u2_ir</span> <span class="o">=</span> <span class="n">propIR</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="n">I2_tf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u2_tf</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>                           <span class="c1"># 书第 26 行:观察面辐照度</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="n">row</span> <span class="o">=</span> <span class="n">M</span> <span class="o">//</span> <span class="mi">2</span>                                         <span class="c1"># y = 0 的行(numpy 0-based)</span>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="n">prof_tf</span> <span class="o">=</span> <span class="n">I2_tf</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:]</span>                              <span class="c1"># 书第 35 行:I2(M/2+1, :)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                                <span class="s2">".."</span><span class="p">,</span> <span class="s2">"common"</span><span class="p">))</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kn">from</span><span class="w"> </span><span class="nn">base</span><span class="w"> </span><span class="kn">import</span> <span class="n">coords</span>                              <span class="c1"># 公共积木(ch1 起)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ch5_prop</span><span class="w"> </span><span class="kn">import</span> <span class="n">propTF</span><span class="p">,</span> <span class="n">propIR</span>                  <span class="c1"># 本章三个传播器(ch5_prop.py)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># ---------- 书 sqr_beam 第 1-7 行:源面网格 ----------</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">L1</span> <span class="o">=</span> <span class="mf">0.5</span>                                             <span class="c1"># 边长 (m)</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">M</span> <span class="o">=</span> <span class="mi">250</span>                                              <span class="c1"># 样本数</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">dx1</span> <span class="o">=</span> <span class="n">L1</span> <span class="o">/</span> <span class="n">M</span>                                         <span class="c1"># 源面采样间隔 = 2 mm</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">x1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">(</span><span class="n">L1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>                                <span class="c1"># 书第 6 行:-L1/2 : dx1 : L1/2-dx1</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="n">y1</span> <span class="o">=</span> <span class="n">x1</span>                                              <span class="c1"># 书第 7 行</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="c1"># ---------- 书第 8-14 行:方孔源场 ----------</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="n">lam</span> <span class="o">=</span> <span class="mf">0.5e-6</span>                                         <span class="c1"># 波长 (m)</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">lam</span>                                  <span class="c1"># 波数</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="n">w</span> <span class="o">=</span> <span class="mf">0.051</span>                                            <span class="c1"># 源方孔半宽 (m)</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="n">z</span> <span class="o">=</span> <span class="mf">2000.0</span>                                           <span class="c1"># 传播距离 (m)</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>                         <span class="c1"># 书第 13 行</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="n">u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>   <span class="c1"># 书第 14 行</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="c1">#     rect(X1/(2w))*rect(Y1/(2w));矩形的边界值歧义对均匀网格无影响</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="n">I1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>                                 <span class="c1"># 书第 15 行:源面辐照度</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="c1"># ---------- 书第 22 行:传播(TF 与 IR 各一次) ----------</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="n">u2_tf</span> <span class="o">=</span> <span class="n">propTF</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="n">u2_ir</span> <span class="o">=</span> <span class="n">propIR</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="n">I2_tf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u2_tf</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>                           <span class="c1"># 书第 26 行:观察面辐照度</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="n">row</span> <span class="o">=</span> <span class="n">M</span> <span class="o">//</span> <span class="mi">2</span>                                         <span class="c1"># y = 0 的行(numpy 0-based)</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="n">prof_tf</span> <span class="o">=</span> <span class="n">I2_tf</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:]</span>                              <span class="c1"># 书第 35 行:I2(M/2+1, :)</span>
 </code></pre></div>
 </div>
 </div>
@@ -3146,7 +3182,8 @@ B_1 = \frac{5.98}{w} = 117.3\ \text{cycles/m}. \tag{5.10}
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">拓展:B1 = 5.98/w 的数值复核</p>
-<p>式 (5.10) 沿用 2.2 节式 (2.10) 的方法:谱功率 <span class="arithmatex">\(|F|^2 = (4w^2)^2\mathrm{sinc}^2(2wf_X)\mathrm{sinc}^2(2wf_Y)\)</span> 在<strong>半径 B 的圆盘</strong>内占全功率的比例达到 98%(2D 极坐标径向积分)。数值积分(本章脚本 <code>ch5_sampling.py</code>)给出:精确 98% 半径对应 <span class="arithmatex">\(2wB = 8.19\)</span>,即 <span class="arithmatex">\(B_{98\%} \approx 4.1/w \approx 80\)</span> cyc/m;而 <span class="arithmatex">\(5.98/w = 117.3\)</span> cyc/m 对应径向占比约 <strong>98.8%</strong>。也就是说书的系数取得偏保守(多收约 0.8% 的谱功率),方向上更安全;这也解释了 2.2 节的圆整值 <span class="arithmatex">\(B \approx 5/w\)</span> 与本章 <span class="arithmatex">\(5.98/w\)</span> 的出入——<span class="arithmatex">\(B_1\)</span> 本来就是个估计量,书 5.4.5 节干脆承认调参是"something of an art form"。</p>
+<p>式 (5.10) 沿用 2.2 节式 (2.10) 的方法:谱功率 <span class="arithmatex">\(|F|^2 = (4w^2)^2\mathrm{sinc}^2(2wf_X)\mathrm{sinc}^2(2wf_Y)\)</span> 在<strong>半径 B 的圆盘</strong>内占全功率的比例达到 98%(2D 极坐标径向积分)。数值积分(本章脚本 <code>ch5_sampling.py</code>,解析总功率 <span class="arithmatex">\((2w)^2\)</span> 归一化,四组网格收敛验证)给出:精确 98% 半径对应 <span class="arithmatex">\(B_{98\%} \approx 5.14/w \approx 101\)</span> cyc/m(<span class="arithmatex">\(2wB \approx 10.3\)</span>),与 2.2 节式 (2.11) 的 <span class="arithmatex">\(5/w\)</span> 一致(数值上 <span class="arithmatex">\(5/w\)</span> 占 <strong>97.98%</strong>);而 <span class="arithmatex">\(5.98/w = 117.3\)</span> cyc/m 对应径向占比 <strong>98.31%</strong>。也就是说书 5.10 的系数比 2.2 节的圆整值略保守(多收约 0.3% 的谱功率),方向上更安全——<span class="arithmatex">\(B_1\)</span> 本来就是个估计量,书 5.4.5 节干脆承认调参是"something of an art form"。
+实现提醒:这个积分<strong>必须用解析总功率 <span class="arithmatex">\((2w)^2\)</span> 当分母</strong>(ch2 2.2 节同款教训)。sinc² 尾部衰减慢,若偷懒用"网格总和"归一化,截断误差会把 98% 交点带偏百分之几十——本章初版脚本就栽在这上面(98% 半径错到 3.7/w),换解析归一化后与 ch2 闭环。</p>
 </div>
 <p>表 5.2 列出 sqr_beam 四个传播距离的采样信息:</p>
 <table>
@@ -3253,22 +3290,22 @@ C(\chi) = \int_0^\chi \cos\left(\frac{\pi t^2}{2}\right)dt, \qquad S(\chi) = \in
 <tbody>
 <tr>
 <td>TF @ z = 1000 m</td>
-<td>0.40 rad</td>
+<td>0.43 rad</td>
 <td>2.7%</td>
 </tr>
 <tr>
 <td>TF @ z = 2000 m</td>
-<td>0.082 rad</td>
+<td>0.093 rad</td>
 <td>0.8%</td>
 </tr>
 <tr>
 <td>IR @ z = 20,000 m</td>
-<td>0.0006 rad</td>
+<td>0.0011 rad</td>
 <td>0.02%</td>
 </tr>
 </tbody>
 </table>
-<p>结论与书一致:<strong>临界采样(TF@2000)极度吻合;"可用"案例(TF@1000、IR@20000)的主体区也准,偏差集中在两翼/边缘</strong>——那里正是采样判据管不到的地方。</p>
+<p>结论与书一致:<strong>临界采样(TF@2000)极度吻合;"可用"案例(TF@1000、IR@20000)的主体区也准,偏差集中在两翼/边缘</strong>——那里正是采样判据管不到的地方。(相位差对 unwrap 分支与插值细节敏感,±10% 出入属正常;幅度差稳定。)</p>
 <h3 id="545-采样决策">5.4.5 采样决策<a class="headerlink" href="#545-采样决策" title="Permanent link">#</a></h3>
 <p>表 5.3 汇总设计一个传播仿真的建议步骤:</p>
 <table>
@@ -3305,6 +3342,29 @@ z = \frac{L^2}{M\lambda}, \qquad M = \frac{L^2}{\lambda z}, \tag{5.14}
 \]</div>
 <p>它用"跨阵列边长的样本数"定义了临界判据。给定场景下,临界条件可能要求太多样本(FFT 算不动),也可能太少(源面或观察面采不够)。别的需求还会跟临界判据打架——比如模拟大气湍流传播用的相位屏,有自己的一套采样间隔与阵列尺寸要求(参考文献 2、4)。判据总可以靠<strong>插值或抽取</strong>维持,但额外步骤增加复杂度和运行时间,而且未必解决样本太多/太少的实际问题。</p>
 <p>实践中表 5.3 的第 3 步常常不那么直接——源的有效带宽未必好估。最省事的办法:对采样参数做"有根据的猜测",跑几个试验仿真看结果。出现 stair-step 或假旁瓣之类的 artifact 迹象(图 5.4、5.5 那样),就得回头细查采样参数。</p>
+<p>把表 5.1 的三条 regime 与表 5.3 的四步设计画成一张决策流程图(数值验证见本节上文与习题 5.3 的功率诊断):</p>
+<pre class="mermaid"><code>flowchart TD
+    A["开始:确定源支撑 D1 与波长 λ、距离 z"] --&gt; B{"D1 &amp;lt; L 且留 2~3 倍 guard?"}
+    B -- "否" --&gt; B1["加大 L 或缩小源,否则 FFT 周期回绕污染边缘"]
+    B1 --&gt; A
+    B -- "是" --&gt; C["估有效带宽 B1(如 5.98/w,式 5.10)"]
+    C --&gt; D{"Δx 与 λz/L 比大小(表 5.1)"}
+    D -- "Δx &amp;gt; λz/L(短距离)" --&gt; E["TF:H 过采样,首选"]
+    E --&gt; E1{"B1 &amp;lt; 1/(2Δx)? 观察面 D1+λz/Δx 够用?"}
+    D -- "Δx = λz/L(临界,式 5.14)" --&gt; F["TF ≡ IR:带宽与空间支撑全用满,尽量用它"]
+    D -- "Δx &amp;lt; λz/L(长距离)" --&gt; G{"B1 &amp;lt; L/(2λz)?"}
+    G -- "是" --&gt; G1["TF 可用(注意 ticks)"]
+    G -- "否" --&gt; G2["IR:等效窗口滤波,查边缘假旁瓣"]
+    E1 -- "是" --&gt; H["跑仿真 + 功率诊断 P2/P1 ≈ 1(习题 5.3)"]
+    E1 -- "否" --&gt; J["回步骤(4):重调 Δx/L,或加窗、两步法(附录 B)"]
+    F --&gt; H
+    G1 --&gt; H
+    G2 --&gt; H
+    H --&gt; I{"剖面有 ticks / stair-step / 副本 / 假旁瓣?"}
+    I -- "有" --&gt; J
+    I -- "无" --&gt; K["完成:结果可信"]
+    J --&gt; A</code></pre>
+<p>读图提醒:<strong>split-step 不出现在这张图里</strong>——它救不了采样判据(式 5.15),只在需要中途插相位屏时才用。</p>
 <h3 id="546-分步仿真加窗与扩展网格">5.4.6 分步仿真、加窗与扩展网格<a class="headerlink" href="#546-分步仿真加窗与扩展网格" title="Permanent link">#</a></h3>
 <p>有人会想:"嘿,等等!把长距离传播拆成一连串更短的、每步都满足 <span class="arithmatex">\(\Delta x \geq \lambda z/L\)</span> 的 TF 传播,不就行了?"——可惜,<strong>结果与单次 TF 传播完全一样</strong>。因为一连串 TF 传播等价于把各段传递函数<strong>相乘</strong>后作用到初始场:比如把 <span class="arithmatex">\(z_N\)</span> 拆成若干短距离,容易证明</p>
 <div class="arithmatex">\[
@@ -3460,6 +3520,69 @@ I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2
 <li>第一旁瓣解析 <span class="arithmatex">\(0.045\times I_{2\max} = 0.0105\)</span>,实测 0.0117(网格粗采样下的旁瓣峰);</li>
 <li>总功率源面 = 观察面 = <span class="arithmatex">\(4.84\times10^{-4}\)</span>(FFT 定标 <span class="arithmatex">\(\mathrm{d}x_1^2\)</span> 与 <span class="arithmatex">\(\mathrm{d}x_2^2\)</span> 各自正确)。</li>
 </ul>
+<h3 id="551-三种传播算子总对比">5.5.1 三种传播算子总对比<a class="headerlink" href="#551-三种传播算子总对比" title="Permanent link">#</a></h3>
+<p>本章三个算子到齐,放在一张表里对照(选型决策流程见 5.4.5 节末的 mermaid 图):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>propTF</strong>(5.1)</th>
+<th><strong>propIR</strong>(5.2)</th>
+<th><strong>propFF</strong>(5.5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出发式</td>
+<td>式 (5.1)/(5.2),频域乘 <span class="arithmatex">\(H\)</span></td>
+<td>式 (5.3)/(5.4),空域 <span class="arithmatex">\(h\)</span> 的 FFT 当 <span class="arithmatex">\(H\)</span></td>
+<td>式 (5.16)–(5.19),缩放 FT</td>
+</tr>
+<tr>
+<td>观察面边长</td>
+<td><span class="arithmatex">\(L_2 = L_1\)</span>(共网格)</td>
+<td><span class="arithmatex">\(L_2 = L_1\)</span>(共网格)</td>
+<td><span class="arithmatex">\(L_2 = \lambda z/\Delta x_1\)</span>、<span class="arithmatex">\(\Delta x_2 = \lambda z/L_1\)</span>(独立网格)</td>
+</tr>
+<tr>
+<td>采样要求</td>
+<td><span class="arithmatex">\(\Delta x \geq \lambda z/L\)</span>(<span class="arithmatex">\(H\)</span> chirp 过采样)<span class="arithmatex">\(+\ B_1 &lt; 1/(2\Delta x)\)</span></td>
+<td><span class="arithmatex">\(\Delta x \leq \lambda z/L\)</span>(<span class="arithmatex">\(h\)</span> chirp 过采样);判 <span class="arithmatex">\(B_1 &lt; L/(2\lambda z)\)</span></td>
+<td>辐照度:常规源面采样 <span class="arithmatex">\(B_1 &lt; 1/(2\Delta x_1)\)</span>;要相位:<span class="arithmatex">\(\Delta x_1 \geq \lambda z/L_1\)</span>(式 5.23)</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>短–中距离、最常用;观察面支撑 <span class="arithmatex">\(D_1+\lambda z/\Delta x\)</span> 够放结果</td>
+<td>长距离(<span class="arithmatex">\(\Delta x &lt; \lambda z/L\)</span>);结果平滑,快而糙</td>
+<td>远场 <span class="arithmatex">\(N_F = w^2/\lambda z \ll 1\)</span>;只要辐照度</td>
+</tr>
+<tr>
+<td>精度表现</td>
+<td>临界采样逐点等于解析;对拍 0.093 rad/0.8%(TF@2000)</td>
+<td>临界采样与 TF 全同;长距对拍 0.0011 rad/0.02%(IR@20000,主体区)</td>
+<td>峰值/零点/旁瓣位置准(临界时逐位);相位通常不保</td>
+</tr>
+<tr>
+<td>典型 artifacts</td>
+<td>欠采样 → ticks、stair-step</td>
+<td>欠采样 → 周期副本(功率 ×4);过采样压谱 → 边缘假旁瓣</td>
+<td><span class="arithmatex">\(L_2\)</span> 网格 ≠ 源面网格,标轴易错;chirp 欠采样(式 5.24)</td>
+</tr>
+<tr>
+<td>FFT 次数</td>
+<td>2</td>
+<td>3(<span class="arithmatex">\(h\)</span> 一次不能省)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>记号坑</td>
+<td>丢 <span class="arithmatex">\(e^{jkz}\)</span> 整体相位</td>
+<td>第 19 行 <span class="arithmatex">\(\mathrm{d}x^2\)</span> 定标不能丢</td>
+<td>返回 <span class="arithmatex">\(L_2\)</span>;<code>nthroot</code> 拉对比度看旁瓣</td>
+</tr>
+</tbody>
+</table>
+<p>表:表 5-总结 三种传播算子对照(判据细节见表 5.1;精度数字来自 5.4.4 节对拍)</p>
 <h2 id="56-编码效率">5.6 编码效率<a class="headerlink" href="#56-编码效率" title="Permanent link">#</a></h2>
 <p>本章(以及全书)的函数和脚本在某些方面是<strong>为了易用和展示而牺牲效率</strong>的。比如 sqr_beam 用 meshgrid 定义采样坐标,传播函数里又重新定义一遍——函数好用,但冗余。</p>
 <p>本书例子里速度和效率不是大问题,但如果要跑传播代码的多次迭代,就得注意了。MATLAB 提供两个调码工具:</p>
@@ -3473,7 +3596,7 @@ I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2
 <p><strong>5.1 圆孔 + 临界采样</strong>:半径 <span class="arithmatex">\(w = 0.05\)</span> m 的圆孔,平面波照明,<span class="arithmatex">\(\lambda = 0.5\ \mu\text{m}\)</span>,传播距离 1000 m,仿真阵列 500 × 500 样本,按菲涅耳传播的临界采样设计。(a) 求 <span class="arithmatex">\(L_1\)</span>、<span class="arithmatex">\(\Delta x\)</span> 与 Nyquist 频率 <span class="arithmatex">\(F_N\)</span>。(b) 确定源有效带宽 <span class="arithmatex">\(B_1\)</span>。<span class="arithmatex">\(B_1 &lt; F_N\)</span> 吗?跨圆函数直径有多少样本?&copy; 求菲涅耳数。传播距离在菲涅耳区内吗?(d) 用 (a) 的 <span class="arithmatex">\(L_1\)</span>,对 z = 500、1000、2000 m 做菲涅耳传播,TF 与 IR 都试。</p>
 <details class="note">
 <summary>5.1 参考答案要点(Python 实测)</summary>
-<p>临界采样要求 <span class="arithmatex">\(\Delta x = L_1/M = \lambda z/L_1\)</span>,解出 <span class="arithmatex">\(L_1 = \sqrt{M\lambda z} = \sqrt{500\times0.5\times10^{-6}\times1000} = 0.5\)</span> m,<span class="arithmatex">\(\Delta x = 1\)</span> mm,<span class="arithmatex">\(F_N = 1/(2\Delta x) = 500\)</span> cyc/m。<span class="arithmatex">\(B_1 = 5.98/w = 119.6 &lt; 500\)</span> ✓;跨直径 <span class="arithmatex">\(2w/\Delta x = 100\)</span> 样本。<span class="arithmatex">\(N_F = w^2/\lambda z = 5\)</span>(<span class="arithmatex">\(N_F = 1\)</span> 对应 <span class="arithmatex">\(z = 5000\)</span> m)——z = 1000 m 处 <span class="arithmatex">\(N_F &gt; 1\)</span>,处于菲涅耳区(圆孔是平滑孔径,式 (4.28) 的 <span class="arithmatex">\(N_F \gtrsim 1\)</span> 口径即可用)。离散圆盘功率 0.007825 vs 解析 <span class="arithmatex">\(\pi w^2 = 0.007854\)</span>(100 样本跨直径的圆盘近似)。z = 500/1000/2000 m 对应 <span class="arithmatex">\(\lambda z/(L\Delta x) = 0.5/1/2\)</span>:TF 过采样、临界、欠采样——只有 1000 m 时 TF 与 IR 一致。</p>
+<p>临界采样要求 <span class="arithmatex">\(\Delta x = L_1/M = \lambda z/L_1\)</span>,解出 <span class="arithmatex">\(L_1 = \sqrt{M\lambda z} = \sqrt{500\times0.5\times10^{-6}\times1000} = 0.5\)</span> m,<span class="arithmatex">\(\Delta x = 1\)</span> mm,<span class="arithmatex">\(F_N = 1/(2\Delta x) = 500\)</span> cyc/m。<span class="arithmatex">\(B_1 = 5.98/w = 119.6 &lt; 500\)</span> ✓;跨直径 <span class="arithmatex">\(2w/\Delta x = 100\)</span> 样本。<span class="arithmatex">\(N_F = w^2/\lambda z = 5\)</span>(<span class="arithmatex">\(N_F = 1\)</span> 对应 <span class="arithmatex">\(z = 5000\)</span> m)——z = 1000 m 处 <span class="arithmatex">\(N_F &gt; 1\)</span>,处于菲涅耳区(圆孔是平滑孔径,式 (4.28) 的 <span class="arithmatex">\(N_F \gtrsim 1\)</span> 口径即可用)。离散圆盘功率 0.007841 vs 解析 <span class="arithmatex">\(\pi w^2 = 0.007854\)</span>(100 样本跨直径的圆盘近似)。z = 500/1000/2000 m 对应 <span class="arithmatex">\(\lambda z/(L\Delta x) = 0.5/1/2\)</span>:TF 过采样、临界、欠采样——z = 1000 m 临界档实测 TF 与 IR 辐照度最大相对差 <span class="arithmatex">\(1.3\times10^{-15}\)</span>(逐位相同),500 m 档 IR 出周期副本、2000 m 档 TF 出网格纹。</p>
 </details>
 <figure>
   <img src="../../../images/holo/fourier/fig-5-py-ex51.png" width="880" />
@@ -3483,7 +3606,7 @@ I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2
 <p><strong>5.2 三个孔径的菲涅耳传播</strong>:回到习题 4.4 的三个孔径,用 500 × 500 阵列仿真菲涅耳传播:孔径 (a) <span class="arithmatex">\(L_1 = 2\)</span> mm,z = 0.5、1、5 cm;孔径 (b) <span class="arithmatex">\(L_1 = 2.5\)</span> cm,z = 0.5、2、5 m;孔径 &copy; <span class="arithmatex">\(L_1 = 2.5\)</span> cm,z = 0.5、2、5 m。哪些 z 给出临界采样?</p>
 <details class="note">
 <summary>5.2 提示</summary>
-<p>临界采样距离一律用式 (5.14):<span class="arithmatex">\(z = L_1^2/(M\lambda)\)</span>。代入 <span class="arithmatex">\(M = 500\)</span>、<span class="arithmatex">\(\lambda = 0.633\ \mu\text{m}\)</span>:(a) <span class="arithmatex">\(L_1 = 2\)</span> mm → <span class="arithmatex">\(z_{crit} \approx 1.26\)</span> cm(三档 0.5/&#8533; cm 都不是,最接近 1 cm);(b)&copy; <span class="arithmatex">\(L_1 = 2.5\)</span> cm → <span class="arithmatex">\(z_{crit} \approx 0.20\)</span> m(三档 0.5/&#8534; m 全都超过临界 → TF 欠采样/IR 过采样 regime)。注意 <span class="arithmatex">\(\lambda\)</span> 取值:习题 4.4 用 0.633 μm;若沿用本章例子的 0.5 μm 需重算。</p>
+<p>临界采样距离一律用式 (5.14):<span class="arithmatex">\(z = L_1^2/(M\lambda)\)</span>。代入 <span class="arithmatex">\(M = 500\)</span>、<span class="arithmatex">\(\lambda = 0.633\ \mu\text{m}\)</span>:(a) <span class="arithmatex">\(L_1 = 2\)</span> mm → <span class="arithmatex">\(z_{crit} \approx 1.26\)</span> cm(三档 0.5/&#8533; cm 都不是,最接近 1 cm);(b)&copy; <span class="arithmatex">\(L_1 = 2.5\)</span> cm → <span class="arithmatex">\(z_{crit} \approx 1.97\)</span> m(题给三档 0.5/&#8534; m:0.5 m 在临界之下、2 m 恰近临界、5 m 超过临界 → TF 欠采样/IR 过采样 regime)。注意 <span class="arithmatex">\(\lambda\)</span> 取值:习题 4.4 用 0.633 μm;若沿用本章例子的 0.5 μm 需重算。</p>
 </details>
 <p><strong>5.3 功率守恒诊断</strong>:传播仿真的一个有用诊断是计算源面与观察面的功率。假设没有吸收或散射(本书仿真都成立),功率(正比于瓦特)应当守恒——源面与观察面应含相同光功率,否则可能有代码错误或采样问题。功率是积分辐照度:</p>
 <div class="arithmatex">\[
@@ -3603,7 +3726,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 </div>
 <div class="admonition danger">
 <p class="admonition-title">unwrap 的整体常数任意,欠采样区会漂移</p>
-<p>比较两条相位曲线(数值 vs 解析)前,先各自减去中心样本的值对齐——unwrap 的 <span class="arithmatex">\(2\pi N\)</span> 分支是任意的,本次实测两条只差 8 圈(50.3 rad)常数的曲线,不对齐会读成"形状不同"。同理,相位振荡快过网格的区域(剖面两翼)unwrap 会累积分支错误,画出来的"漂移"不是物理误差;定量比较限定在主体区。</p>
+<p>比较两条相位曲线(数值 vs 解析)前,先各自减去中心样本的值对齐——unwrap 的 <span class="arithmatex">\(2\pi N\)</span> 分支是任意的,不同实现对齐前可以差任意多圈常数,不对齐会读成"形状不同"(本次实测:解析式按式 (5.11) 丢掉 <span class="arithmatex">\(e^{jkz}\)</span>、中心对齐后,两条曲线的中心常数差 &lt; 0.05 rad;若解析式保留 <span class="arithmatex">\(e^{jkz}\)</span>,<span class="arithmatex">\(jkz \approx 2.5\times10^{10}\)</span> rad 的浮点大数取模误差会直接污染常数项)。同理,相位振荡快过网格的区域(剖面两翼)unwrap 会累积分支错误,画出来的"漂移"不是物理误差;定量比较限定在主体区。</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">propFF 的观察面网格 ≠ 源面网格</p>
@@ -3611,7 +3734,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 </div>
 <div class="admonition danger">
 <p class="admonition-title">有效带宽 B1 是估计,书值偏保守</p>
-<p><span class="arithmatex">\(B_1 = 5.98/w\)</span>(式 5.10)按 ch2 的径向 98% 谱功率方法数值复核:精确 98% 半径对应 <span class="arithmatex">\(B \approx 4.1/w\)</span>,5.98/w 对应约 98.8% 占比。书取保守值(多收 0.8% 谱功率),做判据时安全方向;但别把它当精确常数,2.2 节的圆整值 5/w 与它同宗。<span class="arithmatex">\(B_1\)</span> 的选取本来就是书 5.4.5 节承认的"艺术"。</p>
+<p><span class="arithmatex">\(B_1 = 5.98/w\)</span>(式 5.10)按 ch2 的径向 98% 谱功率方法数值复核(解析总功率归一化):精确 98% 半径对应 <span class="arithmatex">\(B \approx 5.14/w\)</span>,2.2 节的圆整值 5/w 占 97.98%,5.98/w 占 98.31%——书取保守值(多收约 0.3% 谱功率),做判据时安全方向;但别把它当精确常数。另外这个积分的分母必须用解析总功率 <span class="arithmatex">\((2w)^2\)</span>,用网格总和归一化会把 98% 交点带偏百分之几十(见 5.4.3 拓展)。<span class="arithmatex">\(B_1\)</span> 的选取本来就是书 5.4.5 节承认的"艺术"。</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">scipy 的 fresnel 返回 (S, C),S 在前</p>
@@ -3625,7 +3748,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 <li>采样判据:<span class="arithmatex">\(D_1 &lt; L\)</span>(留 2–3 倍 guard);<span class="arithmatex">\(\Delta x \geq \lambda z/L\)</span> → TF 好/IR 副本;<span class="arithmatex">\(\Delta x \leq \lambda z/L\)</span> → IR 好/TF 混叠;<span class="arithmatex">\(\Delta x = \lambda z/L\)</span> 临界,TF≡IR 且采样 H、h 精确等于解析值。</li>
 <li>判据的物理:<span class="arithmatex">\(H\)</span> 的 chirp 活在频率网格(判相位增量),<span class="arithmatex">\(h\)</span> 的 chirp 活在空间网格(判瞬时频率 <span class="arithmatex">\(r/\lambda z\)</span>)——不等号方向相反。</li>
 <li>sqr_beam 四距离对照表 5.2:z=1000(TF 过 2×,观察面限 <span class="arithmatex">\(D_1+\lambda z/\Delta x=0.352\)</span> m)、2000(临界)、4000(H 欠 2×,带宽 125)、20000(欠 10×,带宽 25)。</li>
-<li>精度对拍(式 5.11,Fresnel 积分):TF@2000 主体区 0.08 rad/0.8%;TF@1000 0.40 rad/2.7%(两翼磨平);IR@20000 0.0006 rad/0.02%(边缘假旁瓣)。</li>
+<li>精度对拍(式 5.11,Fresnel 积分):TF@2000 主体区 0.093 rad/0.8%;TF@1000 0.43 rad/2.7%(两翼磨平);IR@20000 0.0011 rad/0.02%(边缘假旁瓣)。</li>
 <li>设计流程(表 5.3):源支撑 → 定 regime → 查带宽判据(<span class="arithmatex">\(B_1 = 5.98/w\)</span>)→ 有 artifacts 回头调参;临界距离 <span class="arithmatex">\(z = L^2/(M\lambda)\)</span>(式 5.14)。</li>
 <li>split-step 无用论(式 5.15):<span class="arithmatex">\(H(z_1)\cdots = H(\sum z)\)</span>,数值差 <span class="arithmatex">\(2\times10^{-14}\)</span>;功率守恒诊断(习题 5.3):TF 全程 1.00000,IR@1000 = 4.00000(周期副本 ×4),IR@20000 = 0.95(窗口滤波)。</li>
 <li>夫琅禾费(5.5):<span class="arithmatex">\(L_2 = \lambda z/\Delta x_1\)</span>;方孔解析 <span class="arithmatex">\(I_2 = (4w^2/\lambda z)^2\mathrm{sinc}^2(2wx_2/\lambda z)\mathrm{sinc}^2(2wy_2/\lambda z)\)</span>(式 5.22),峰值 0.2343 逐位对上;要相位充分采样需 <span class="arithmatex">\(M \gg (w/\Delta x_1)^2\)</span>(式 5.24)。</li>
@@ -3795,7 +3918,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 <tr>
 <td>5.5 Fraunhofer Propagation</td>
 <td>式 (5.16)–(5.24)、propFF、sqr_beam_FF、图 5.7</td>
-<td>5.5(含省略 warning 与实测)</td>
+<td>5.5(含省略 warning 与实测)+ 5.5.1(三算子总对比,笔记自加)</td>
 </tr>
 <tr>
 <td>5.6 Coding Efficiency</td>
