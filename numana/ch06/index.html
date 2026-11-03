@@ -1,0 +1,4202 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/numana/ch06/">
+      
+      
+        <link rel="prev" href="../ch05/">
+      
+      
+        <link rel="next" href="../ch07/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第6章 特征值的数值近似 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-6-章-特征值的数值近似" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第6章 特征值的数值近似
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#60-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-特征值与特征向量的复习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 特征值与特征向量的复习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 特征值与特征向量的复习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-特征方程与特征多项式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1 特征方程与特征多项式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-直接法的困难" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2 直接法的困难
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-线性无关与特征向量的独立性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3 线性无关与特征向量的独立性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-相似变换与正交矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.4 相似变换与正交矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#615-对角化与对称矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.5 对角化与对称矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#616-谱半径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.6 谱半径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#617-Geršgorin-圆盘" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.7 Geršgorin 圆盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 幂法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 幂法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-假设与特征展开" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1 假设与特征展开
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-归一化迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2 归一化迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-收敛定理与证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3 收敛定理与证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#624-收敛速度比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.4 收敛速度比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#625-例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.5 例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#626-位移收缩与次主特征值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.6 位移、收缩与次主特征值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#627-MATLAB幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.7 MATLAB：幂法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-反幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 反幂法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 反幂法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-逆矩阵的谱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 逆矩阵的谱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-格式与收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 格式与收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-最小模特征值与最近特征值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 最小模特征值与最近特征值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#634-Rayleigh-商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.4 Rayleigh 商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#635-Rayleigh-商迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.5 Rayleigh 商迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#636-MATLAB反幂法与-Rayleigh-商迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.6 MATLAB：反幂法与 Rayleigh 商迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-谱半径与收敛判别" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 谱半径与收敛判别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 谱半径与收敛判别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-谱半径判据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 谱半径判据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-线性迭代的收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 线性迭代的收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-收敛速度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 收敛速度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#644-圆盘估计与位移选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.4 圆盘估计与位移选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#645-三种方法的收敛因子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.5 三种方法的收敛因子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 频率分析iration与光学系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 用于衍射计算的采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 菲涅耳衍射的定标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 湍流基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 大气传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 自适应光学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 附录要点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 进展与附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#60-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-特征值与特征向量的复习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 特征值与特征向量的复习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 特征值与特征向量的复习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-特征方程与特征多项式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1 特征方程与特征多项式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-直接法的困难" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2 直接法的困难
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-线性无关与特征向量的独立性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3 线性无关与特征向量的独立性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-相似变换与正交矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.4 相似变换与正交矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#615-对角化与对称矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.5 对角化与对称矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#616-谱半径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.6 谱半径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#617-Geršgorin-圆盘" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.7 Geršgorin 圆盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 幂法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 幂法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-假设与特征展开" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1 假设与特征展开
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-归一化迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2 归一化迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-收敛定理与证明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3 收敛定理与证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#624-收敛速度比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.4 收敛速度比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#625-例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.5 例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#626-位移收缩与次主特征值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.6 位移、收缩与次主特征值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#627-MATLAB幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.7 MATLAB：幂法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-反幂法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 反幂法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 反幂法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-逆矩阵的谱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 逆矩阵的谱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-格式与收敛定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 格式与收敛定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-最小模特征值与最近特征值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 最小模特征值与最近特征值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#634-Rayleigh-商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.4 Rayleigh 商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#635-Rayleigh-商迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.5 Rayleigh 商迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#636-MATLAB反幂法与-Rayleigh-商迭代" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.6 MATLAB：反幂法与 Rayleigh 商迭代
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-谱半径与收敛判别" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 谱半径与收敛判别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 谱半径与收敛判别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-谱半径判据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 谱半径判据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-线性迭代的收敛" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 线性迭代的收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-收敛速度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 收敛速度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#644-圆盘估计与位移选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.4 圆盘估计与位移选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#645-三种方法的收敛因子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.5 三种方法的收敛因子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-6-章-特征值的数值近似">第 6 章 特征值的数值近似<a class="headerlink" href="#第-6-章-特征值的数值近似" title="Permanent link">#</a></h1>
+<blockquote>
+<p>内容：特征值与特征向量的复习、特征多项式与谱半径、相似变换与对角化、Geršgorin 圆盘、幂法、位移与收缩、反幂法、Rayleigh 商迭代、谱半径与迭代收敛的联系。
+课件给出结论的定理，这里补完整证明；伪代码改写为 MATLAB。</p>
+</blockquote>
+<h2 id="60-本章导图">6.0 本章导图<a class="headerlink" href="#60-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">特征值数值近似</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">特征值复习</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">特征多项式与特征方程</span>
+          <span class="brleaf">线性无关与基</span>
+          <span class="brleaf">相似变换</span>
+          <span class="brleaf">对角化与对称矩阵</span>
+          <span class="brleaf">谱半径</span>
+          <span class="brleaf">Geršgorin 圆盘</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">幂法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">唯一主特征值假设</span>
+          <span class="brleaf">无穷范数归一化</span>
+          <span class="brleaf">特征向量展开</span>
+          <span class="brleaf">收敛定理</span>
+          <span class="brleaf">收敛速度比</span>
+          <span class="brleaf">位移与收缩</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">反幂法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">逆矩阵的谱</span>
+          <span class="brleaf">最小模特征值</span>
+          <span class="brleaf">带位移最近特征值</span>
+          <span class="brleaf">Rayleigh 商</span>
+          <span class="brleaf">Rayleigh 商迭代</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">谱半径衔接</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">迭代矩阵判据</span>
+          <span class="brleaf">收敛速度</span>
+          <span class="brleaf">圆盘估计</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="61-特征值与特征向量的复习">6.1 特征值与特征向量的复习<a class="headerlink" href="#61-特征值与特征向量的复习" title="Permanent link">#</a></h2>
+<h3 id="611-特征方程与特征多项式">6.1.1 特征方程与特征多项式<a class="headerlink" href="#611-特征方程与特征多项式" title="Permanent link">#</a></h3>
+<p>设 <span class="arithmatex">\(A\in\mathbb R^{n\times n}\)</span>。若存在 <span class="arithmatex">\(\lambda\in\mathbb C\)</span> 和非零向量 <span class="arithmatex">\(\boldsymbol x\in\mathbb C^n\)</span> 使</p>
+<div class="arithmatex">\[
+A\boldsymbol x=\lambda\boldsymbol x,
+\]</div>
+<p>则称 <span class="arithmatex">\(\lambda\)</span> 为 <span class="arithmatex">\(A\)</span> 的特征值（<strong>eigenvalue</strong>），<span class="arithmatex">\(\boldsymbol x\)</span> 为对应的特征向量（<strong>eigenvector</strong>）。移项得</p>
+<div class="arithmatex">\[
+(A-\lambda I)\boldsymbol x=\boldsymbol 0 .
+\]</div>
+<p>因为 <span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span>，齐次方程组有非零解当且仅当 <span class="arithmatex">\(A-\lambda I\)</span> 奇异，即</p>
+<div class="arithmatex">\[
+p(\lambda)=\det(A-\lambda I)=0 .
+\]</div>
+<p><span class="arithmatex">\(p(\lambda)\)</span> 称为 <span class="arithmatex">\(A\)</span> 的特征多项式（<strong>characteristic polynomial</strong>）。按行列式定义展开，<span class="arithmatex">\(p\)</span> 是 <span class="arithmatex">\(n\)</span> 次多项式，首项系数为 <span class="arithmatex">\((-1)^n\)</span>，所以至多有 <span class="arithmatex">\(n\)</span> 个不同零点；实矩阵的复特征值成共轭对出现。全部特征值组成的集合记作 <span class="arithmatex">\(\sigma(A)\)</span>，称为 <span class="arithmatex">\(A\)</span> 的谱（<strong>spectrum</strong>）。</p>
+<p><strong>两条校验.</strong> 比较 <span class="arithmatex">\(p\)</span> 的系数（或由 Vieta 定理）可得</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{n}\lambda_i=\operatorname{tr}A,\qquad
+\prod_{i=1}^{n}\lambda_i=\det A,
+\]</div>
+<p>其中特征值按代数重数计。这两个式子不能用来求特征值，但可以在算完后快速检查：迹和行列式都是矩阵元素的简单函数，若与特征值之和不符，说明算错了。</p>
+<div class="admonition note">
+<p class="admonition-title">特征值可以是复数</p>
+<p>实矩阵也可能有复特征值。例如旋转矩阵 <span class="arithmatex">\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span> 的特征值是 <span class="arithmatex">\(\pm\mathrm i\)</span>，特征向量也是复向量。复特征值总是成共轭对出现；若 <span class="arithmatex">\(\lambda\)</span> 是特征值，则 <span class="arithmatex">\(\bar\lambda\)</span> 也是，对应的特征向量可以取共轭。</p>
+</div>
+<h3 id="612-直接法的困难">6.1.2 直接法的困难<a class="headerlink" href="#612-直接法的困难" title="Permanent link">#</a></h3>
+<p>按定义求特征值要三步：算 <span class="arithmatex">\(\det(A-\lambda I)\)</span>，求多项式的根，再解 <span class="arithmatex">\((A-\lambda I)\boldsymbol x=\boldsymbol 0\)</span>。三步在数值上都有问题。</p>
+<ol>
+<li><strong>行列式昂贵</strong>：按定义展开是 <span class="arithmatex">\(O(n!)\)</span>；用消元法算 <span class="arithmatex">\(n\times n\)</span> 行列式是 <span class="arithmatex">\(O(n^3)\)</span>，但得到的是多项式系数，仍然不是特征值。</li>
+<li><strong>多项式求根病态</strong>：系数的小扰动可以使根移动很远。Wilkinson 多项式 <span class="arithmatex">\(\prod_{i=1}^{20}(x-i)\)</span> 的系数只扰动 <span class="arithmatex">\(10^{-10}\)</span> 量级，部分根就会跑出很远。而且五次以上多项式一般没有根式解。</li>
+<li><strong>奇异方程组病态</strong>：<span class="arithmatex">\((A-\lambda I)\boldsymbol x=\boldsymbol 0\)</span> 只有方向可定，长度任意；<span class="arithmatex">\(\lambda\)</span> 稍有误差，矩阵就接近奇异，解对扰动非常敏感。</li>
+</ol>
+<p>所以实际算法不构造特征多项式，而是直接用矩阵-向量乘或线性方程组迭代地逼近特征对。幂法和反幂法就是最基本的两种。</p>
+<h3 id="613-线性无关与特征向量的独立性">6.1.3 线性无关与特征向量的独立性<a class="headerlink" href="#613-线性无关与特征向量的独立性" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 向量组 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(k)}\)</span> 线性无关（<strong>linearly independent</strong>），指</p>
+<div class="arithmatex">\[
+\alpha_1\boldsymbol v^{(1)}+\cdots+\alpha_k\boldsymbol v^{(k)}=\boldsymbol 0
+\]</div>
+<p>只有零解 <span class="arithmatex">\(\alpha_1=\cdots=\alpha_k=0\)</span>；否则称为线性相关。若它们张成整个空间，则任意 <span class="arithmatex">\(\boldsymbol x\)</span> 可唯一表示为</p>
+<div class="arithmatex">\[
+\boldsymbol x=\beta_1\boldsymbol v^{(1)}+\cdots+\beta_k\boldsymbol v^{(k)},
+\]</div>
+<p>这组向量称为一组基（<strong>basis</strong>），系数 <span class="arithmatex">\(\beta_i\)</span> 称为坐标。</p>
+<p><strong>定理.</strong> 属于不同特征值的特征向量线性无关。</p>
+<p><strong>证明.</strong> 对向量个数 <span class="arithmatex">\(k\)</span> 归纳。<span class="arithmatex">\(k=1\)</span> 时，特征向量非零，结论成立。设结论对 <span class="arithmatex">\(k-1\)</span> 成立，考虑 <span class="arithmatex">\(k\)</span> 个互异特征值 <span class="arithmatex">\(\lambda_1,\dots,\lambda_k\)</span> 对应的特征向量 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(k)}\)</span>。若</p>
+<div class="arithmatex">\[
+c_1\boldsymbol v^{(1)}+\cdots+c_k\boldsymbol v^{(k)}=\boldsymbol 0,
+\]</div>
+<p>重排下标使 <span class="arithmatex">\(c_k\ne0\)</span>。两边左乘 <span class="arithmatex">\(A-\lambda_kI\)</span>，并用 <span class="arithmatex">\(A\boldsymbol v^{(j)}=\lambda_j\boldsymbol v^{(j)}\)</span>：</p>
+<div class="arithmatex">\[
+\sum_{j=1}^{k-1}c_j(\lambda_j-\lambda_k)\boldsymbol v^{(j)}=\boldsymbol 0 .
+\]</div>
+<p>由归纳假设，<span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(k-1)}\)</span> 线性无关，故</p>
+<div class="arithmatex">\[
+c_j(\lambda_j-\lambda_k)=0,\qquad j=1,\dots,k-1.
+\]</div>
+<p>因 <span class="arithmatex">\(\lambda_j\ne\lambda_k\)</span>，得 <span class="arithmatex">\(c_j=0\)</span>（<span class="arithmatex">\(j&lt;k\)</span>）。代回原式得 <span class="arithmatex">\(c_k\boldsymbol v^{(k)}=\boldsymbol 0\)</span>，而 <span class="arithmatex">\(\boldsymbol v^{(k)}\ne\boldsymbol 0\)</span>，故 <span class="arithmatex">\(c_k=0\)</span>，矛盾。因此这 <span class="arithmatex">\(k\)</span> 个向量线性无关。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>推论.</strong> 若 <span class="arithmatex">\(n\times n\)</span> 矩阵有 <span class="arithmatex">\(n\)</span> 个互异特征值，则它有 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量，从而可对角化。</p>
+<h3 id="614-相似变换与正交矩阵">6.1.4 相似变换与正交矩阵<a class="headerlink" href="#614-相似变换与正交矩阵" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 两个 <span class="arithmatex">\(n\times n\)</span> 矩阵 <span class="arithmatex">\(A\)</span> 与 <span class="arithmatex">\(B\)</span> 相似（<strong>similar</strong>），若存在非奇异矩阵 <span class="arithmatex">\(S\)</span> 使</p>
+<div class="arithmatex">\[
+A=S^{-1}BS .
+\]</div>
+<p><strong>定理.</strong> 相似矩阵有相同的特征多项式，从而有相同的特征值（按代数重数计）。若 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span>，则 <span class="arithmatex">\(B(S\boldsymbol x)=\lambda(S\boldsymbol x)\)</span>，即特征向量按 <span class="arithmatex">\(\boldsymbol x\mapsto S\boldsymbol x\)</span> 对应。</p>
+<p><strong>证明.</strong> 利用行列式的乘法性质：</p>
+<div class="arithmatex">\[
+\det(A-\lambda I)
+=\det\big(S^{-1}(B-\lambda I)S\big)
+=\det(S^{-1})\det(B-\lambda I)\det(S)
+=\det(B-\lambda I).
+\]</div>
+<p>特征向量的对应关系：由 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span> 得</p>
+<div class="arithmatex">\[
+S^{-1}BS\boldsymbol x=\lambda\boldsymbol x
+\quad\Longrightarrow\quad
+B(S\boldsymbol x)=\lambda(S\boldsymbol x).
+\]</div>
+<p>因 <span class="arithmatex">\(S\)</span> 可逆且 <span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span>，<span class="arithmatex">\(S\boldsymbol x\ne\boldsymbol 0\)</span>，故 <span class="arithmatex">\(S\boldsymbol x\)</span> 是 <span class="arithmatex">\(B\)</span> 的特征向量。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p>相似变换不改变特征值，但会改变特征向量；数值上要选好的 <span class="arithmatex">\(S\)</span>，把矩阵化成简单形式（对角、三角、Hessenberg 等）。特别地，<strong>正交相似</strong> <span class="arithmatex">\(A\mapsto Q^{\top}AQ\)</span> 最安全，因为正交矩阵不放大误差。</p>
+<p>一组向量 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span> 称为正交的，若 <span class="arithmatex">\((\boldsymbol v^{(i)})^{\top}\boldsymbol v^{(j)}=0\)</span>（<span class="arithmatex">\(i\ne j\)</span>）；若还满足 <span class="arithmatex">\((\boldsymbol v^{(i)})^{\top}\boldsymbol v^{(i)}=1\)</span>，则称为标准正交的。</p>
+<p><strong>正交矩阵.</strong> 若 <span class="arithmatex">\(Q^{\top}Q=I\)</span>，即 <span class="arithmatex">\(Q\)</span> 的列构成标准正交组，则称 <span class="arithmatex">\(Q\)</span> 为正交矩阵（<strong>orthogonal matrix</strong>）。此时 <span class="arithmatex">\(Q^{-1}=Q^{\top}\)</span>，且对任意 <span class="arithmatex">\(\boldsymbol x,\boldsymbol y\in\mathbb R^n\)</span>，</p>
+<div class="arithmatex">\[
+(Q\boldsymbol x)^{\top}(Q\boldsymbol y)=\boldsymbol x^{\top}\boldsymbol y,
+\qquad
+\|Q\boldsymbol x\|_2=\|\boldsymbol x\|_2 .
+\]</div>
+<p><strong>证明.</strong> 第一式展开：</p>
+<div class="arithmatex">\[
+(Q\boldsymbol x)^{\top}(Q\boldsymbol y)
+=\boldsymbol x^{\top}Q^{\top}Q\boldsymbol y
+=\boldsymbol x^{\top}\boldsymbol y .
+\]</div>
+<p>第二式令 <span class="arithmatex">\(\boldsymbol y=\boldsymbol x\)</span>，得 <span class="arithmatex">\(\|Q\boldsymbol x\|_2^2=\|\boldsymbol x\|_2^2\)</span>，开方即得。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p>正交相似保持对称性：若 <span class="arithmatex">\(A\)</span> 对称，则 <span class="arithmatex">\(Q^{\top}AQ\)</span> 也对称。它还保持 2-范数：<span class="arithmatex">\(\|Q^{\top}AQ\|_2=\|A\|_2\)</span>。非正交的 <span class="arithmatex">\(S\)</span> 可能把误差放大 <span class="arithmatex">\(\kappa(S)=\|S\|\|S^{-1}\|\)</span> 倍，所以实际算法很少用它。</p>
+<h3 id="615-对角化与对称矩阵">6.1.5 对角化与对称矩阵<a class="headerlink" href="#615-对角化与对称矩阵" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> <span class="arithmatex">\(n\times n\)</span> 矩阵 <span class="arithmatex">\(A\)</span> 可对角化，当且仅当它有 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量。此时</p>
+<div class="arithmatex">\[
+S^{-1}AS=D=\operatorname{diag}(\lambda_1,\dots,\lambda_n),
+\]</div>
+<p>其中 <span class="arithmatex">\(S\)</span> 的第 <span class="arithmatex">\(j\)</span> 列是对应 <span class="arithmatex">\(\lambda_j\)</span> 的特征向量。</p>
+<p><strong>证明.</strong> 若 <span class="arithmatex">\(A=SDS^{-1}\)</span>，则 <span class="arithmatex">\(AS=SD\)</span>。比较第 <span class="arithmatex">\(j\)</span> 列：</p>
+<div class="arithmatex">\[
+A\boldsymbol s_j=\lambda_j\boldsymbol s_j,
+\]</div>
+<p>且 <span class="arithmatex">\(S\)</span> 可逆保证各列线性无关。反之，若 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span> 线性无关，令 <span class="arithmatex">\(S=[\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}]\)</span>，则</p>
+<div class="arithmatex">\[
+AS=[\lambda_1\boldsymbol v^{(1)},\dots,\lambda_n\boldsymbol v^{(n)}]=SD,
+\]</div>
+<p>故 <span class="arithmatex">\(S^{-1}AS=D\)</span>。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>重数的说法.</strong> 设 <span class="arithmatex">\(\lambda\)</span> 是特征值，<span class="arithmatex">\(m_a(\lambda)\)</span> 是它在 <span class="arithmatex">\(p\)</span> 中的重数（<strong>algebraic multiplicity</strong>），<span class="arithmatex">\(m_g(\lambda)=\dim\ker(A-\lambda I)\)</span> 是几何重数（<strong>geometric multiplicity</strong>），即线性无关特征向量的最大个数。总有</p>
+<div class="arithmatex">\[
+1\le m_g(\lambda)\le m_a(\lambda).
+\]</div>
+<p>第一个不等号是因为特征子空间非零；第二个不等号：取特征子空间的一组基并补成全基，<span class="arithmatex">\(A\)</span> 在这组基下是块上三角，左上块为 <span class="arithmatex">\(\lambda I\)</span>，故 <span class="arithmatex">\(p(t)=\det(A-tI)\)</span> 含因子 <span class="arithmatex">\((t-\lambda)^{m_g}\)</span>。</p>
+<p><span class="arithmatex">\(A\)</span> 可对角化当且仅当对每个特征值都有 <span class="arithmatex">\(m_g(\lambda)=m_a(\lambda)\)</span>。理由：不同特征值的特征子空间彼此独立，故线性无关特征向量的最大个数是 <span class="arithmatex">\(\sum m_g\)</span>；它等于 <span class="arithmatex">\(n\)</span> 当且仅当可对角化。而 <span class="arithmatex">\(\sum m_a=n\)</span>，每个 <span class="arithmatex">\(m_g\le m_a\)</span>，所以 <span class="arithmatex">\(\sum m_g=n\)</span> 等价于逐项相等。若 <span class="arithmatex">\(m_g&lt;m_a\)</span>，称为缺陷（<strong>defective</strong>），此时没有 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量。</p>
+<p><strong>定理（对称矩阵谱定理）.</strong> 实对称矩阵 <span class="arithmatex">\(A\)</span> 的特征值全为实数，且存在正交矩阵 <span class="arithmatex">\(Q\)</span> 和对角矩阵 <span class="arithmatex">\(D\)</span> 使</p>
+<div class="arithmatex">\[
+A=QDQ^{\top},\qquad Q^{\top}Q=I .
+\]</div>
+<p>也就是说，对称矩阵有一组标准正交的特征向量基。</p>
+<p><strong>证明.</strong> 分三步。</p>
+<p><strong>(1) 特征值实.</strong> 设 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span>，<span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span> 为复向量。则</p>
+<div class="arithmatex">\[
+\lambda\boldsymbol x^{*}\boldsymbol x=\boldsymbol x^{*}A\boldsymbol x .
+\]</div>
+<p>两边取共轭，利用 <span class="arithmatex">\(A^{*}=A\)</span>（实对称）：</p>
+<div class="arithmatex">\[
+\bar\lambda\,\boldsymbol x^{*}\boldsymbol x
+=(\boldsymbol x^{*}A\boldsymbol x)^{*}
+=\boldsymbol x^{*}A^{*}\boldsymbol x
+=\boldsymbol x^{*}A\boldsymbol x
+=\lambda\boldsymbol x^{*}\boldsymbol x .
+\]</div>
+<p>因 <span class="arithmatex">\(\boldsymbol x^{*}\boldsymbol x&gt;0\)</span>，得 <span class="arithmatex">\(\lambda=\bar\lambda\)</span>，故 <span class="arithmatex">\(\lambda\)</span> 为实数。</p>
+<p><strong>(2) 不同特征值的特征向量正交.</strong> 设 <span class="arithmatex">\(A\boldsymbol v=\lambda\boldsymbol v\)</span>，<span class="arithmatex">\(A\boldsymbol w=\mu\boldsymbol w\)</span>，<span class="arithmatex">\(\lambda\ne\mu\)</span>。则</p>
+<div class="arithmatex">\[
+\lambda\boldsymbol v^{\top}\boldsymbol w
+=(A\boldsymbol v)^{\top}\boldsymbol w
+=\boldsymbol v^{\top}A^{\top}\boldsymbol w
+=\boldsymbol v^{\top}A\boldsymbol w
+=\mu\boldsymbol v^{\top}\boldsymbol w .
+\]</div>
+<p>故 <span class="arithmatex">\((\lambda-\mu)\boldsymbol v^{\top}\boldsymbol w=0\)</span>。因 <span class="arithmatex">\(\lambda\ne\mu\)</span>，得 <span class="arithmatex">\(\boldsymbol v^{\top}\boldsymbol w=0\)</span>。</p>
+<p><strong>(3) 存在标准正交特征基.</strong> 对维数 <span class="arithmatex">\(n\)</span> 归纳。<span class="arithmatex">\(n=1\)</span> 显然。由 (1)，<span class="arithmatex">\(A\)</span> 有实特征值 <span class="arithmatex">\(\lambda_1\)</span>，取单位特征向量 <span class="arithmatex">\(\boldsymbol q_1\)</span>。令</p>
+<div class="arithmatex">\[
+W=\boldsymbol q_1^{\perp}=\{\boldsymbol w:\boldsymbol q_1^{\top}\boldsymbol w=0\}.
+\]</div>
+<p>对任意 <span class="arithmatex">\(\boldsymbol w\in W\)</span>，</p>
+<div class="arithmatex">\[
+\boldsymbol q_1^{\top}A\boldsymbol w
+=(A\boldsymbol q_1)^{\top}\boldsymbol w
+=\lambda_1\boldsymbol q_1^{\top}\boldsymbol w=0,
+\]</div>
+<p>故 <span class="arithmatex">\(A\boldsymbol w\in W\)</span>，即 <span class="arithmatex">\(W\)</span> 是 <span class="arithmatex">\(A\)</span> 的不变子空间。<span class="arithmatex">\(A\)</span> 在 <span class="arithmatex">\(W\)</span> 上的限制仍是对称变换，且 <span class="arithmatex">\(\dim W=n-1\)</span>。由归纳假设，<span class="arithmatex">\(W\)</span> 有一组标准正交的特征向量 <span class="arithmatex">\(\boldsymbol q_2,\dots,\boldsymbol q_n\)</span>。它们与 <span class="arithmatex">\(\boldsymbol q_1\)</span> 一起构成 <span class="arithmatex">\(\mathbb R^n\)</span> 的标准正交特征基。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>推论.</strong> 实对称矩阵 <span class="arithmatex">\(A\)</span> 正定，当且仅当它的所有特征值都大于零。</p>
+<p><strong>证明.</strong> 取标准正交特征基 <span class="arithmatex">\(\boldsymbol q_1,\dots,\boldsymbol q_n\)</span>，把 <span class="arithmatex">\(\boldsymbol x=\sum_i y_i\boldsymbol q_i\)</span> 代入：</p>
+<div class="arithmatex">\[
+\boldsymbol x^{\top}A\boldsymbol x
+=\sum_{i=1}^{n}\lambda_i y_i^2 .
+\]</div>
+<p>若所有 <span class="arithmatex">\(\lambda_i&gt;0\)</span>，则 <span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span> 时右端大于零，故正定。若某个 <span class="arithmatex">\(\lambda_k\le0\)</span>，取 <span class="arithmatex">\(\boldsymbol x=\boldsymbol q_k\)</span>，得 <span class="arithmatex">\(\boldsymbol q_k^{\top}A\boldsymbol q_k=\lambda_k\le0\)</span>，故不正定。<span class="arithmatex">\(\blacksquare\)</span></p>
+<h3 id="616-谱半径">6.1.6 谱半径<a class="headerlink" href="#616-谱半径" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 矩阵 <span class="arithmatex">\(A\)</span> 的谱半径（<strong>spectral radius</strong>）是特征值模的最大值：</p>
+<div class="arithmatex">\[
+\rho(A)=\max_{1\le i\le n}|\lambda_i| .
+\]</div>
+<p>两条基本性质：</p>
+<ul>
+<li>对任意诱导矩阵范数，<span class="arithmatex">\(\rho(A)\le\|A\|\)</span>。取特征对 <span class="arithmatex">\(A\boldsymbol v=\lambda\boldsymbol v\)</span>，则 <span class="arithmatex">\(|\lambda|\,\|\boldsymbol v\|=\|A\boldsymbol v\|\le\|A\|\,\|\boldsymbol v\|\)</span>，约去 <span class="arithmatex">\(\|\boldsymbol v\|\ne0\)</span> 即得。</li>
+<li>对称矩阵有 <span class="arithmatex">\(\rho(A)=\|A\|_2\)</span>。取标准正交特征基，<span class="arithmatex">\(\|A\boldsymbol x\|_2^2=\sum_i\lambda_i^2y_i^2\le\rho(A)^2\|\boldsymbol x\|_2^2\)</span>，在最大特征值对应的特征向量上取等。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">谱半径不是范数</p>
+<p><span class="arithmatex">\(\rho(A)\)</span> 不满足范数的正定性：幂零矩阵 <span class="arithmatex">\(A=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span> 的 <span class="arithmatex">\(\rho(A)=0\)</span>，但 <span class="arithmatex">\(A\ne0\)</span>。它也不满足三角不等式，<span class="arithmatex">\(\rho(A+B)\)</span> 可能大于 <span class="arithmatex">\(\rho(A)+\rho(B)\)</span>。谱半径刻画的是 <span class="arithmatex">\(A^k\)</span> 的渐近增长速度，不是矩阵的"大小"。</p>
+</div>
+<h3 id="617-Geršgorin-圆盘">6.1.7 Geršgorin 圆盘<a class="headerlink" href="#617-Geršgorin-圆盘" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 对 <span class="arithmatex">\(A=(a_{ij})\)</span>，令</p>
+<div class="arithmatex">\[
+R_i=\sum_{\substack{j=1\\ j\ne i}}^{n}|a_{ij}|,
+\qquad
+D_i=\{z\in\mathbb C:\ |z-a_{ii}|\le R_i\}.
+\]</div>
+<p><span class="arithmatex">\(D_i\)</span> 称为第 <span class="arithmatex">\(i\)</span> 个 Geršgorin 圆盘：圆心是对角元 <span class="arithmatex">\(a_{ii}\)</span>，半径是第 <span class="arithmatex">\(i\)</span> 行非对角元绝对值之和。</p>
+<p><strong>定理（Geršgorin 圆盘定理）.</strong></p>
+<ol>
+<li><span class="arithmatex">\(A\)</span> 的全部特征值都落在圆盘并集 <span class="arithmatex">\(D=\bigcup_{i=1}^{n}D_i\)</span> 中。</li>
+<li>若其中 <span class="arithmatex">\(k\)</span> 个圆盘的并集与其余 <span class="arithmatex">\(n-k\)</span> 个圆盘的并集不相交，则该并集恰含 <span class="arithmatex">\(A\)</span> 的 <span class="arithmatex">\(k\)</span> 个特征值（按代数重数计）。</li>
+</ol>
+<p><strong>证明 (1).</strong> 设 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span>，<span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span>。取下标 <span class="arithmatex">\(i\)</span> 使</p>
+<div class="arithmatex">\[
+|x_i|=\|\boldsymbol x\|_\infty=\max_{1\le j\le n}|x_j|&gt;0 .
+\]</div>
+<p>看第 <span class="arithmatex">\(i\)</span> 个方程：</p>
+<div class="arithmatex">\[
+(\lambda-a_{ii})x_i=\sum_{j\ne i}a_{ij}x_j .
+\]</div>
+<p>两边取绝对值，并用 <span class="arithmatex">\(|x_j|\le|x_i|\)</span>：</p>
+<div class="arithmatex">\[
+|\lambda-a_{ii}|\,|x_i|
+\le\sum_{j\ne i}|a_{ij}|\,|x_j|
+\le\Big(\sum_{j\ne i}|a_{ij}|\Big)|x_i|
+=R_i|x_i| .
+\]</div>
+<p>约去 <span class="arithmatex">\(|x_i|&gt;0\)</span>，得 <span class="arithmatex">\(|\lambda-a_{ii}|\le R_i\)</span>，即 <span class="arithmatex">\(\lambda\in D_i\)</span>。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>证明 (2).</strong> 令</p>
+<div class="arithmatex">\[
+A(t)=D+t(A-D),\qquad D=\operatorname{diag}(a_{11},\dots,a_{nn}),\quad t\in[0,1].
+\]</div>
+<p><span class="arithmatex">\(A(t)\)</span> 的特征值是 <span class="arithmatex">\(t\)</span> 的连续函数：特征多项式的系数连续依赖于 <span class="arithmatex">\(t\)</span>，而多项式的根连续依赖于系数。对每个 <span class="arithmatex">\(t\)</span>，第 <span class="arithmatex">\(i\)</span> 个圆盘的圆心仍是 <span class="arithmatex">\(a_{ii}\)</span>，半径是 <span class="arithmatex">\(tR_i\)</span>，只缩小不扩大。因此，原来不相交的两组圆盘并集在 <span class="arithmatex">\(0\le t\le1\)</span> 期间始终保持不相交。</p>
+<p>特征值不能从一个并集跳到另一个并集而不穿过空隙，所以两组中的特征值个数在 <span class="arithmatex">\(t\in[0,1]\)</span> 上不变。<span class="arithmatex">\(t=0\)</span> 时 <span class="arithmatex">\(A(0)=D\)</span>，特征值就是 <span class="arithmatex">\(a_{11},\dots,a_{nn}\)</span>；属于那 <span class="arithmatex">\(k\)</span> 个圆盘的圆心恰有 <span class="arithmatex">\(k\)</span> 个（按重数计）。故 <span class="arithmatex">\(t=1\)</span> 时该并集也恰含 <span class="arithmatex">\(k\)</span> 个特征值。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>例.</strong> 对</p>
+<div class="arithmatex">\[
+A=\begin{bmatrix}
+4&amp;1&amp;1\\
+0&amp;2&amp;1\\
+-2&amp;0&amp;9
+\end{bmatrix},
+\]</div>
+<p>三个圆盘为</p>
+<div class="arithmatex">\[
+D_1:\ |z-4|\le2,\qquad
+D_2:\ |z-2|\le1,\qquad
+D_3:\ |z-9|\le2 .
+\]</div>
+<p>在实轴上的区间分别是 <span class="arithmatex">\([2,6]\)</span>、<span class="arithmatex">\([1,3]\)</span>、<span class="arithmatex">\([7,11]\)</span>。<span class="arithmatex">\(D_1\cup D_2=[1,6]\)</span> 与 <span class="arithmatex">\(D_3=[7,11]\)</span> 不相交，所以 <span class="arithmatex">\(D_1\cup D_2\)</span> 中恰有两个特征值，<span class="arithmatex">\(D_3\)</span> 中恰有一个。于是</p>
+<div class="arithmatex">\[
+7\le\rho(A)\le 11 .
+\]</div>
+<p>实际特征值约为 <span class="arithmatex">\(8.485\)</span>、<span class="arithmatex">\(4.632\)</span>、<span class="arithmatex">\(1.883\)</span>，确实两小一大，且谱半径落在界内。</p>
+<div class="admonition note">
+<p class="admonition-title">列圆盘与更紧的界</p>
+<p>对 <span class="arithmatex">\(A^{\top}\)</span> 用同样的定理，得到按列求和的圆盘。行圆盘并集与列圆盘并集都包含谱，取交集通常更紧。Geršgorin 只给包含区域，不给精确值；它的价值在于便宜，而且不相交的圆盘还能数出特征值的个数。</p>
+</div>
+<h2 id="62-幂法">6.2 幂法<a class="headerlink" href="#62-幂法" title="Permanent link">#</a></h2>
+<h3 id="621-假设与特征展开">6.2.1 假设与特征展开<a class="headerlink" href="#621-假设与特征展开" title="Permanent link">#</a></h3>
+<p>幂法（<strong>power method</strong>）求模最大的特征值，即主特征值（<strong>dominant eigenvalue</strong>）。它还同时给出对应的特征向量；反过来，若特征值已由别的方法得到，幂法也常用来求它的特征向量。假设：</p>
+<ul>
+<li><span class="arithmatex">\(A\)</span> 有 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span>（即 <span class="arithmatex">\(A\)</span> 可对角化）；</li>
+<li>存在唯一的主特征值：<span class="arithmatex">\(|\lambda_1|&gt;|\lambda_2|\ge|\lambda_3|\ge\cdots\ge|\lambda_n|\)</span>；</li>
+<li>初值 <span class="arithmatex">\(\boldsymbol x^{(0)}\)</span> 在主特征向量方向的分量不为零：<span class="arithmatex">\(\boldsymbol x^{(0)}=\sum_{j=1}^{n}\beta_j\boldsymbol v^{(j)}\)</span>，且 <span class="arithmatex">\(\beta_1\ne0\)</span>。</li>
+</ul>
+<p>唯一主特征值一定是实数。因为实矩阵的复特征值成共轭对出现，<span class="arithmatex">\(\lambda\)</span> 与 <span class="arithmatex">\(\bar\lambda\)</span> 的模相等；若 <span class="arithmatex">\(|\lambda_1|\)</span> 严格大于其余所有特征值的模，<span class="arithmatex">\(\lambda_1\)</span> 就不可能是复数。</p>
+<p>把 <span class="arithmatex">\(A^k\)</span> 作用在初值上：</p>
+<div class="arithmatex">\[
+A^k\boldsymbol x^{(0)}
+=\sum_{j=1}^{n}\beta_j\lambda_j^k\boldsymbol v^{(j)}
+=\lambda_1^k\left(
+\beta_1\boldsymbol v^{(1)}
++\sum_{j=2}^{n}\beta_j\left(\frac{\lambda_j}{\lambda_1}\right)^k\boldsymbol v^{(j)}
+\right).
+\]</div>
+<p>因为 <span class="arithmatex">\(|\lambda_j/\lambda_1|&lt;1\)</span>，括号中第二项随 <span class="arithmatex">\(k\to\infty\)</span> 趋于零，所以 <span class="arithmatex">\(A^k\boldsymbol x^{(0)}\)</span> 的方向趋于 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span>，长度按 <span class="arithmatex">\(\lambda_1^k\)</span> 变化。长度会溢出或下溢，因此每步必须归一化。</p>
+<h3 id="622-归一化迭代">6.2.2 归一化迭代<a class="headerlink" href="#622-归一化迭代" title="Permanent link">#</a></h3>
+<p>取 <span class="arithmatex">\(\boldsymbol x^{(0)}\ne\boldsymbol 0\)</span>，对 <span class="arithmatex">\(k=1,2,\dots\)</span>：</p>
+<div class="arithmatex">\[
+\boldsymbol y^{(k)}=A\boldsymbol x^{(k-1)},\qquad
+c_k=\|\boldsymbol y^{(k)}\|_\infty,\qquad
+\boldsymbol x^{(k)}=\frac{\boldsymbol y^{(k)}}{c_k}.
+\]</div>
+<p>于是 <span class="arithmatex">\(\|\boldsymbol x^{(k)}\|_\infty=1\)</span>。反复代入得</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}
+=\frac{A^k\boldsymbol x^{(0)}}{c_1c_2\cdots c_k}
+=\frac{\lambda_1^k}{c_1\cdots c_k}
+\sum_{j=1}^{n}\beta_j\left(\frac{\lambda_j}{\lambda_1}\right)^k\boldsymbol v^{(j)} .
+\]</div>
+<p>用无穷范数是因为它计算便宜，归一化后最大分量的绝对值为 1，数值上不容易溢出。用 2-范数也可以，只要把 <span class="arithmatex">\(c_k\)</span> 的定义改成 <span class="arithmatex">\(\|\cdot\|_2\)</span>，不要中途混用两种范数。</p>
+<div class="admonition note">
+<p class="admonition-title">归一化只改长度，不改方向</p>
+<p><span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 与 <span class="arithmatex">\(A^k\boldsymbol x^{(0)}\)</span> 只差一个正数因子 <span class="arithmatex">\(c_1\cdots c_k\)</span>，方向完全相同。归一化不会改变特征向量的极限，只是把长度控制在 1 附近；同时 <span class="arithmatex">\(c_k\)</span> 还顺带给出了特征值模的估计。</p>
+</div>
+<h3 id="623-收敛定理与证明">6.2.3 收敛定理与证明<a class="headerlink" href="#623-收敛定理与证明" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(A\)</span> 为实矩阵，满足 6.2.1 的假设。则 <span class="arithmatex">\(\|\boldsymbol x^{(k)}\|_\infty=1\)</span>，且</p>
+<div class="arithmatex">\[
+\operatorname{dist}\big(\boldsymbol x^{(k)},\operatorname{span}\{\boldsymbol v^{(1)}\}\big)\to0,
+\qquad
+c_k\to|\lambda_1| .
+\]</div>
+<p>若 <span class="arithmatex">\(\lambda_1&gt;0\)</span>，适当选取 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 的符号和尺度可使 <span class="arithmatex">\(\boldsymbol x^{(k)}\to\boldsymbol v^{(1)}\)</span>；若 <span class="arithmatex">\(\lambda_1&lt;0\)</span>，<span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 在 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 与 <span class="arithmatex">\(-\boldsymbol v^{(1)}\)</span> 之间振荡，但方向仍收敛，且 Rayleigh 商</p>
+<div class="arithmatex">\[
+R(\boldsymbol x^{(k)})
+=\frac{(\boldsymbol x^{(k)})^{\top}A\boldsymbol x^{(k)}}
+{(\boldsymbol x^{(k)})^{\top}\boldsymbol x^{(k)}}
+\to\lambda_1 .
+\]</div>
+<p>更精确地，令 <span class="arithmatex">\(r=|\lambda_2/\lambda_1|&lt;1\)</span>，则</p>
+<div class="arithmatex">\[
+\operatorname{dist}\big(\boldsymbol x^{(k)},\operatorname{span}\{\boldsymbol v^{(1)}\}\big)=O(r^k),
+\qquad
+c_k=|\lambda_1|+O(r^k).
+\]</div>
+<p><strong>证明.</strong> 不妨设 <span class="arithmatex">\(\|\boldsymbol v^{(j)}\|_\infty=1\)</span>（<span class="arithmatex">\(j=1,\dots,n\)</span>）；否则重新缩放特征向量，<span class="arithmatex">\(\beta_j\)</span> 随之调整，下面的展开不变。令</p>
+<div class="arithmatex">\[
+\mu_k=\frac{\lambda_1^k}{c_1c_2\cdots c_k},
+\qquad
+\boldsymbol e_k=\sum_{j=2}^{n}\beta_j\left(\frac{\lambda_j}{\lambda_1}\right)^k\boldsymbol v^{(j)} .
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}=\mu_k\big(\beta_1\boldsymbol v^{(1)}+\boldsymbol e_k\big),
+\qquad
+\|\boldsymbol e_k\|_\infty\le Mr^k,
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+M=\sum_{j=2}^{n}|\beta_j|\,\|\boldsymbol v^{(j)}\|_\infty .
+\]</div>
+<p>由 <span class="arithmatex">\(\|\boldsymbol x^{(k)}\|_\infty=1\)</span>，</p>
+<div class="arithmatex">\[
+1=|\mu_k|\,\|\beta_1\boldsymbol v^{(1)}+\boldsymbol e_k\|_\infty .
+\]</div>
+<p>括号的范数趋于 <span class="arithmatex">\(|\beta_1|\,\|\boldsymbol v^{(1)}\|_\infty&gt;0\)</span>，故</p>
+<div class="arithmatex">\[
+|\mu_k|=\frac{1}{|\beta_1|}+O(r^k).
+\]</div>
+<p>于是 <span class="arithmatex">\(|\mu_k\beta_1|\to1\)</span>。记</p>
+<div class="arithmatex">\[
+\sigma_k=\frac{\mu_k\beta_1}{|\mu_k\beta_1|}\in\{-1,1\}
+\]</div>
+<p>（<span class="arithmatex">\(\lambda_1\)</span> 与 <span class="arithmatex">\(\beta_1\)</span> 都是实数，<span class="arithmatex">\(\mu_k\)</span> 也是实数）。则</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}
+=\mu_k\beta_1\boldsymbol v^{(1)}+\mu_k\boldsymbol e_k
+=\sigma_k\boldsymbol v^{(1)}+O(r^k).
+\]</div>
+<p>这正是方向收敛和 <span class="arithmatex">\(O(r^k)\)</span> 误差。</p>
+<p>再证 <span class="arithmatex">\(c_k\)</span>。由 <span class="arithmatex">\(\boldsymbol x^{(k-1)}=\sigma_{k-1}\boldsymbol v^{(1)}+O(r^{k-1})\)</span>，</p>
+<div class="arithmatex">\[
+c_k=\|A\boldsymbol x^{(k-1)}\|_\infty
+=\|\sigma_{k-1}\lambda_1\boldsymbol v^{(1)}+O(r^{k-1})\|_\infty
+=|\lambda_1|+O(r^{k-1}).
+\]</div>
+<p>最后，Rayleigh 商在非零向量上连续，且 <span class="arithmatex">\(R(\pm\boldsymbol v^{(1)})=\lambda_1\)</span>，故</p>
+<div class="arithmatex">\[
+R(\boldsymbol x^{(k)})\to R(\pm\boldsymbol v^{(1)})=\lambda_1 .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<div class="admonition warning">
+<p class="admonition-title">课件里特征值估计的默认前提</p>
+<p>课件写 <span class="arithmatex">\(\lim_{k\to\infty}c_k=\lambda_1\)</span>，但 <span class="arithmatex">\(c_k=\|A\boldsymbol x^{(k-1)}\|_\infty\ge0\)</span>，极限只能是 <span class="arithmatex">\(|\lambda_1|\)</span>。只有当 <span class="arithmatex">\(\lambda_1&gt;0\)</span> 时才有 <span class="arithmatex">\(c_k\to\lambda_1\)</span>。若 <span class="arithmatex">\(\lambda_1&lt;0\)</span>，用 Rayleigh 商或相邻分量之比恢复符号；<span class="arithmatex">\(c_k\)</span> 本身只给模。</p>
+</div>
+<h3 id="624-收敛速度比">6.2.4 收敛速度比<a class="headerlink" href="#624-收敛速度比" title="Permanent link">#</a></h3>
+<p>因为 <span class="arithmatex">\(|\lambda_1|=\rho(A)\)</span>，幂法也是求谱半径的方法。证明中的 <span class="arithmatex">\(\boldsymbol e_k\)</span> 含因子 <span class="arithmatex">\((\lambda_j/\lambda_1)^k\)</span>，其中衰减最慢的是 <span class="arithmatex">\(j=2\)</span>。所以幂法的渐近收敛因子是</p>
+<div class="arithmatex">\[
+r=\left|\frac{\lambda_2}{\lambda_1}\right| .
+\]</div>
+<p>误差按 <span class="arithmatex">\(r^k\)</span> 线性衰减。要把误差降到 <span class="arithmatex">\(10^{-m}\)</span>，大致需要</p>
+<div class="arithmatex">\[
+k\approx\frac{m\ln 10}{\ln(1/r)}
+\]</div>
+<p>步。<span class="arithmatex">\(r=0.9\)</span> 时每三位十进制数字约需 <span class="arithmatex">\(66\)</span> 步；<span class="arithmatex">\(r=0.99\)</span> 时约需 <span class="arithmatex">\(687\)</span> 步。<span class="arithmatex">\(r\)</span> 接近 1 时，幂法会非常慢。</p>
+<p>几个必须注意的情形：</p>
+<ul>
+<li>若 <span class="arithmatex">\(|\lambda_2|=|\lambda_1|\)</span>，唯一主特征值的假设不成立。典型例子是 <span class="arithmatex">\(\lambda_2=-\lambda_1\)</span>（向量来回振荡），或 <span class="arithmatex">\(\lambda_1,\lambda_2\)</span> 是一对共轭复根（向量在二维不变子空间里旋转）。此时幂法不收敛到单个特征向量。</li>
+<li>若 <span class="arithmatex">\(\beta_1=0\)</span>，主特征分量在初值中缺失，迭代会收敛到下一个特征向量。这不是算法错误，而是初值选得"太巧"；随机初值几乎必然避免这种情况，但全 1 向量等结构化初值可能正好落在某个不变子空间里。</li>
+<li>若 <span class="arithmatex">\(A\)</span> 不可对角化，6.2.3 的证明不适用；幂法仍可能收敛到主特征向量，但误差中会多出一个 <span class="arithmatex">\(k^{m-1}\)</span> 的多项式因子（<span class="arithmatex">\(m\)</span> 是最大 Jordan 块的大小），收敛仍是线性的。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Rayleigh 商与平方加速</p>
+<p>用 <span class="arithmatex">\(c_k\)</span> 估特征值时误差是 <span class="arithmatex">\(O(r^k)\)</span>；若 <span class="arithmatex">\(A\)</span> 对称，用 Rayleigh 商 <span class="arithmatex">\(R(\boldsymbol x^{(k)})\)</span> 估特征值，误差是 <span class="arithmatex">\(O(r^{2k})\)</span>，相当于把收敛因子平方。另一个办法是对 <span class="arithmatex">\(A^2\)</span> 做幂法：<span class="arithmatex">\(A^2\)</span> 的特征值是 <span class="arithmatex">\(\lambda_i^2\)</span>，主特征值是 <span class="arithmatex">\(\lambda_1^2\)</span>，收敛因子变为 <span class="arithmatex">\(r^2\)</span>；代价是每步两次矩阵-向量乘，而且要从 <span class="arithmatex">\(A\boldsymbol x\)</span> 与 <span class="arithmatex">\(\boldsymbol x\)</span> 的符号恢复 <span class="arithmatex">\(\lambda_1\)</span>。若 <span class="arithmatex">\(|\lambda_2|=|\lambda_1|\)</span>，平方后仍有重根，这个办法救不了。</p>
+</div>
+<h3 id="625-例">6.2.5 例<a class="headerlink" href="#625-例" title="Permanent link">#</a></h3>
+<p>取课件中的矩阵</p>
+<div class="arithmatex">\[
+A=\begin{bmatrix}-2&amp;-3\\ 6&amp;7\end{bmatrix},
+\qquad
+\boldsymbol x^{(0)}=\begin{pmatrix}1\\1\end{pmatrix}.
+\]</div>
+<p>特征值为 <span class="arithmatex">\(\lambda_1=4,\lambda_2=1\)</span>，对应特征向量可取 <span class="arithmatex">\((1,-2)^{\top}\)</span> 与 <span class="arithmatex">\((1,-1)^{\top}\)</span>。直接乘 <span class="arithmatex">\(A\)</span> 得到未归一化的迭代：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(k\)</span></th>
+<th><span class="arithmatex">\(\boldsymbol x^{(k)}=A^k\boldsymbol x^{(0)}\)</span></th>
+<th><span class="arithmatex">\(c_k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="arithmatex">\((1,1)^{\top}\)</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">\((-5,13)^{\top}\)</span></td>
+<td><span class="arithmatex">\(13\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex">\((-29,61)^{\top}\)</span></td>
+<td><span class="arithmatex">\(61/13=4.6923\)</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="arithmatex">\((-125,253)^{\top}\)</span></td>
+<td><span class="arithmatex">\(253/61=4.1475\)</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="arithmatex">\((-509,1021)^{\top}\)</span></td>
+<td><span class="arithmatex">\(1021/253=4.0356\)</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="arithmatex">\((-2045,4093)^{\top}\)</span></td>
+<td><span class="arithmatex">\(4093/1021=4.0088\)</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="arithmatex">\((-8189,16381)^{\top}\)</span></td>
+<td><span class="arithmatex">\(16381/4093=4.0022\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>表中 <span class="arithmatex">\(c_k=\|\boldsymbol x^{(k)}\|_\infty/\|\boldsymbol x^{(k-1)}\|_\infty\)</span>，正是归一化迭代的因子。误差 <span class="arithmatex">\(|c_k-4|\)</span> 依次为</p>
+<div class="arithmatex">\[
+0.6923,\quad 0.1475,\quad 0.0356,\quad 0.0088,\quad 0.0022,
+\]</div>
+<p>每步约缩小 <span class="arithmatex">\(4\)</span> 倍，正好是 <span class="arithmatex">\(|\lambda_2/\lambda_1|=1/4\)</span>。</p>
+<p>归一化迭代 <span class="arithmatex">\(\boldsymbol x^{(k)}/\|\boldsymbol x^{(k)}\|_\infty\)</span> 趋于 <span class="arithmatex">\((-1,2)^{\top}/2\)</span>，与归一化后的 <span class="arithmatex">\((1,-2)^{\top}/2\)</span> 只差一个符号——这正是定理中"收敛到 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 的某个符号"的含义。特征值 <span class="arithmatex">\(c_k\)</span> 则单调趋于 <span class="arithmatex">\(4\)</span>。</p>
+<h3 id="626-位移收缩与次主特征值">6.2.6 位移、收缩与次主特征值<a class="headerlink" href="#626-位移收缩与次主特征值" title="Permanent link">#</a></h3>
+<p><strong>位移.</strong> 对任意 <span class="arithmatex">\(\sigma\in\mathbb R\)</span>，令</p>
+<div class="arithmatex">\[
+B_\sigma=A-\sigma I .
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+B_\sigma\boldsymbol v^{(j)}=(\lambda_j-\sigma)\boldsymbol v^{(j)} .
+\]</div>
+<p>特征向量完全不变，谱整体平移 <span class="arithmatex">\(-\sigma\)</span>。对 <span class="arithmatex">\(B_\sigma\)</span> 用幂法，会收敛到使 <span class="arithmatex">\(|\lambda_j-\sigma|\)</span> 最大的特征向量。若这个下标是 <span class="arithmatex">\(j\)</span>，收敛因子为</p>
+<div class="arithmatex">\[
+r(\sigma)=\frac{|\lambda_{j'}-\sigma|}{|\lambda_j-\sigma|},
+\]</div>
+<p>其中 <span class="arithmatex">\(\lambda_{j'}\)</span> 是平移后第二大模的特征值。</p>
+<p><strong>加速.</strong> 若 <span class="arithmatex">\(\sigma\)</span> 选得使 <span class="arithmatex">\(\lambda_1\)</span> 仍是离 <span class="arithmatex">\(\sigma\)</span> 最远的特征值，即</p>
+<div class="arithmatex">\[
+|\lambda_1-\sigma|&gt;|\lambda_i-\sigma|,\qquad i=2,\dots,n,
+\]</div>
+<p>则迭代仍求 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span>，但比值变成</p>
+<div class="arithmatex">\[
+r(\sigma)=\frac{|\lambda_2-\sigma|}{|\lambda_1-\sigma|}.
+\]</div>
+<p>适当选 <span class="arithmatex">\(\sigma\)</span> 可使 <span class="arithmatex">\(r(\sigma)&lt;|\lambda_2/\lambda_1|\)</span>。例如特征值为 <span class="arithmatex">\(10,6,1\)</span> 时，原比值是 <span class="arithmatex">\(6/10=0.6\)</span>；取 <span class="arithmatex">\(\sigma=3\)</span>，平移后为 <span class="arithmatex">\(7,3,-2\)</span>，主特征值是 <span class="arithmatex">\(7\)</span>，第二是 <span class="arithmatex">\(3\)</span>，比值 <span class="arithmatex">\(3/7\approx0.429\)</span>。注意 <span class="arithmatex">\(\sigma=5\)</span> 时平移后为 <span class="arithmatex">\(5,1,-4\)</span>，第二变成 <span class="arithmatex">\(-4\)</span>，比值 <span class="arithmatex">\(4/5=0.8\)</span>，反而更慢——位移必须保证 <span class="arithmatex">\(\lambda_1-\sigma\)</span> 仍是最大模。</p>
+<div class="admonition note">
+<p class="admonition-title">最优位移</p>
+<p>在实谱 <span class="arithmatex">\(\lambda_1&gt;\lambda_2\ge\cdots\ge\lambda_n\)</span> 且 <span class="arithmatex">\(\sigma\in[\lambda_n,\lambda_2]\)</span> 的模型下，第二大的 <span class="arithmatex">\(|\lambda_i-\sigma|\)</span> 是 <span class="arithmatex">\(\max(\lambda_2-\sigma,\sigma-\lambda_n)\)</span>。令两者相等得 <span class="arithmatex">\(\sigma=(\lambda_2+\lambda_n)/2\)</span>，此时 <span class="arithmatex">\(r=(\lambda_2-\lambda_n)/(2\lambda_1-\lambda_2-\lambda_n)\)</span>，是该模型下的最优位移。这要求大致知道谱的端点；不知道时只能试。</p>
+</div>
+<p><strong>与次主特征值.</strong> 若 <span class="arithmatex">\(\sigma\approx\lambda_1\)</span>，则 <span class="arithmatex">\(\lambda_1-\sigma\approx0\)</span>，<span class="arithmatex">\(B_\sigma\)</span> 的主特征值不再是 <span class="arithmatex">\(\lambda_1-\sigma\)</span>，而是离 <span class="arithmatex">\(\sigma\)</span> 最远的那个特征值（常常是 <span class="arithmatex">\(\lambda_n\)</span>）。所以简单地把 <span class="arithmatex">\(A\)</span> 换成 <span class="arithmatex">\(A-\lambda_1I\)</span> 不能可靠地得到 <span class="arithmatex">\(\lambda_2\)</span>：它只是把 <span class="arithmatex">\(\lambda_1\)</span> 压到零，并把"最远"的特征值推到主位。若目标是 <span class="arithmatex">\(\lambda_2\)</span>，正确做法是<strong>收缩（deflation）</strong>：</p>
+<div class="arithmatex">\[
+B=A-\lambda_1\frac{\boldsymbol v^{(1)}\boldsymbol u^{\top}}{\boldsymbol u^{\top}\boldsymbol v^{(1)}},
+\qquad
+\boldsymbol u^{\top}\boldsymbol v^{(1)}\ne0 .
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+B\boldsymbol v^{(1)}=\boldsymbol 0,
+\qquad
+B\boldsymbol v^{(j)}
+=\lambda_j\boldsymbol v^{(j)}
+-\lambda_1\frac{\boldsymbol u^{\top}\boldsymbol v^{(j)}}{\boldsymbol u^{\top}\boldsymbol v^{(1)}}\boldsymbol v^{(1)},
+\quad j\ge2 .
+\]</div>
+<p>在基 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span> 下，<span class="arithmatex">\(B\)</span> 是上三角矩阵，对角元为 <span class="arithmatex">\(0,\lambda_2,\dots,\lambda_n\)</span>，所以 <span class="arithmatex">\(B\)</span> 的特征值正是 <span class="arithmatex">\(0,\lambda_2,\dots,\lambda_n\)</span>。若 <span class="arithmatex">\(|\lambda_2|&gt;|\lambda_3|\)</span>，对 <span class="arithmatex">\(B\)</span> 用幂法即得 <span class="arithmatex">\(\lambda_2\)</span>（以及 <span class="arithmatex">\(B\)</span> 的对应特征向量；对称情形就是 <span class="arithmatex">\(\boldsymbol v^{(2)}\)</span>），收敛因子为 <span class="arithmatex">\(|\lambda_3/\lambda_2|\)</span>。对称情形取 <span class="arithmatex">\(\boldsymbol u=\boldsymbol v^{(1)}\)</span>，则 <span class="arithmatex">\(\boldsymbol v^{(j)}\perp\boldsymbol v^{(1)}\)</span>（<span class="arithmatex">\(j\ge2\)</span>），</p>
+<div class="arithmatex">\[
+B\boldsymbol v^{(j)}=\lambda_j\boldsymbol v^{(j)},
+\]</div>
+<p><span class="arithmatex">\(\lambda_1\)</span> 被干净地移除，其余特征值原封不动。</p>
+<div class="admonition warning">
+<p class="admonition-title">平移不是收缩</p>
+<p><span class="arithmatex">\(A-\lambda_1I\)</span> 把全部特征值平移 <span class="arithmatex">\(-\lambda_1\)</span>，谱是 <span class="arithmatex">\(0,\lambda_2-\lambda_1,\dots,\lambda_n-\lambda_1\)</span>；它没有"只删掉 <span class="arithmatex">\(\lambda_1\)</span>"的效果。Hotelling 收缩只改变 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 方向，其余特征值不变。</p>
+</div>
+<h3 id="627-MATLAB幂法">6.2.7 MATLAB：幂法<a class="headerlink" href="#627-MATLAB幂法" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>lambda, v, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">power_method</span><span class="p">(</span>A, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c">% 幂法：求模最大的特征值及其特征向量</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c">% A: n×n 矩阵；x0: 初始向量；tol: 容差；N: 最大迭代步数</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">);</span><span class="w">              </span><span class="c">% 先归一化，避免初值过大</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">lambda_old</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">                     </span><span class="c">% 幂迭代</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">);</span><span class="w">              </span><span class="c">% 归一化因子，c -&gt; |lambda_1|</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s">'A 的零空间非平凡，幂法失败'</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">  </span><span class="c">% 旧 x 的 Rayleigh 商，保留符号</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">                     </span><span class="c">% 归一化，||x||_inf = 1</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda_old</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w">   </span><span class="c">% 用新 x 校正一次</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="n">lambda_old</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">end</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nb">warning</span><span class="p">(</span><span class="s">'幂法在 %d 步内未收敛'</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="63-反幂法">6.3 反幂法<a class="headerlink" href="#63-反幂法" title="Permanent link">#</a></h2>
+<h3 id="631-逆矩阵的谱">6.3.1 逆矩阵的谱<a class="headerlink" href="#631-逆矩阵的谱" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(A\)</span> 有特征值 <span class="arithmatex">\(\lambda_1,\dots,\lambda_n\)</span> 和线性无关的特征向量 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span>，且 <span class="arithmatex">\(q\)</span> 不等于任何 <span class="arithmatex">\(\lambda_i\)</span>。则 <span class="arithmatex">\((A-qI)^{-1}\)</span> 的特征值为</p>
+<div class="arithmatex">\[
+\frac{1}{\lambda_1-q},\quad
+\frac{1}{\lambda_2-q},\quad\dots,\quad
+\frac{1}{\lambda_n-q},
+\]</div>
+<p>特征向量仍是 <span class="arithmatex">\(\boldsymbol v^{(1)},\dots,\boldsymbol v^{(n)}\)</span>。</p>
+<p><strong>证明.</strong> 由</p>
+<div class="arithmatex">\[
+(A-qI)\boldsymbol v^{(j)}=(\lambda_j-q)\boldsymbol v^{(j)}
+\]</div>
+<p>且 <span class="arithmatex">\(\lambda_j-q\ne0\)</span>，两边左乘 <span class="arithmatex">\((A-qI)^{-1}\)</span>：</p>
+<div class="arithmatex">\[
+\boldsymbol v^{(j)}
+=(\lambda_j-q)(A-qI)^{-1}\boldsymbol v^{(j)}
+\quad\Longrightarrow\quad
+(A-qI)^{-1}\boldsymbol v^{(j)}
+=\frac{1}{\lambda_j-q}\boldsymbol v^{(j)} .
+\]</div>
+<p>另外，<span class="arithmatex">\(q\)</span> 不是特征值当且仅当 <span class="arithmatex">\(\det(A-qI)\ne0\)</span>，即 <span class="arithmatex">\(A-qI\)</span> 可逆，所以 <span class="arithmatex">\((A-qI)^{-1}\)</span> 确实存在。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p>关键观察：若 <span class="arithmatex">\(q\)</span> 很接近某个 <span class="arithmatex">\(\lambda_j\)</span>，则 <span class="arithmatex">\(1/(\lambda_j-q)\)</span> 的模很大，成为 <span class="arithmatex">\((A-qI)^{-1}\)</span> 的主特征值。反幂法（<strong>inverse power method</strong>）就是"对逆矩阵用幂法"，把离 <span class="arithmatex">\(q\)</span> 最近的特征值放大成主特征值。</p>
+<h3 id="632-格式与收敛定理">6.3.2 格式与收敛定理<a class="headerlink" href="#632-格式与收敛定理" title="Permanent link">#</a></h3>
+<p><strong>格式.</strong> 取 <span class="arithmatex">\(q\)</span> 和初值 <span class="arithmatex">\(\boldsymbol x^{(0)}\)</span>，对 <span class="arithmatex">\(k=1,2,\dots\)</span>：</p>
+<div class="arithmatex">\[
+(A-qI)\boldsymbol y^{(k)}=\boldsymbol x^{(k-1)},\qquad
+c_k=\|\boldsymbol y^{(k)}\|_\infty,\qquad
+\boldsymbol x^{(k)}=\frac{\boldsymbol y^{(k)}}{c_k}.
+\]</div>
+<p>实际计算中解线性方程组，绝不显式求逆。<span class="arithmatex">\(q\)</span> 固定时，<span class="arithmatex">\((A-qI)\)</span> 的 LU 分解只做一次，之后每步只需 <span class="arithmatex">\(O(n^2)\)</span> 次回代。</p>
+<p><strong>定理.</strong> 设 <span class="arithmatex">\(A\)</span> 可对角化，<span class="arithmatex">\(q\ne\lambda_i\)</span>，且 <span class="arithmatex">\(\lambda_j\)</span> 是离 <span class="arithmatex">\(q\)</span> 唯一的最近特征值：</p>
+<div class="arithmatex">\[
+|\lambda_j-q|&lt;|\lambda_i-q|,\qquad i\ne j .
+\]</div>
+<p>则反幂法的迭代向量方向收敛到 <span class="arithmatex">\(\boldsymbol v^{(j)}\)</span>，</p>
+<div class="arithmatex">\[
+c_k\to\frac{1}{|\lambda_j-q|},
+\]</div>
+<p>收敛因子为</p>
+<div class="arithmatex">\[
+r_q=\frac{|\lambda_j-q|}{|\lambda_{j'}-q|},
+\]</div>
+<p>其中 <span class="arithmatex">\(\lambda_{j'}\)</span> 是第二近的特征值。特征值可由 Rayleigh 商</p>
+<div class="arithmatex">\[
+\lambda_j=\lim_{k\to\infty}
+\frac{(\boldsymbol x^{(k)})^{\top}A\boldsymbol x^{(k)}}
+{(\boldsymbol x^{(k)})^{\top}\boldsymbol x^{(k)}}
+\]</div>
+<p>得到（带符号）；若已知 <span class="arithmatex">\(q\)</span> 在 <span class="arithmatex">\(\lambda_j\)</span> 的哪一侧，也可用 <span class="arithmatex">\(\lambda_j\approx q\pm1/c_k\)</span>。</p>
+<p><strong>证明.</strong> 令 <span class="arithmatex">\(B_q=(A-qI)^{-1}\)</span>。由 6.3.1，<span class="arithmatex">\(B_q\)</span> 的特征值为</p>
+<div class="arithmatex">\[
+\mu_i=\frac{1}{\lambda_i-q},
+\]</div>
+<p>特征向量为 <span class="arithmatex">\(\boldsymbol v^{(i)}\)</span>。条件 <span class="arithmatex">\(|\lambda_j-q|&lt;|\lambda_i-q|\)</span> 等价于</p>
+<div class="arithmatex">\[
+|\mu_j|=\frac{1}{|\lambda_j-q|}
+&gt;\frac{1}{|\lambda_i-q|}=|\mu_i|,
+\qquad i\ne j .
+\]</div>
+<p>所以 <span class="arithmatex">\(\mu_j\)</span> 是 <span class="arithmatex">\(B_q\)</span> 的唯一主特征值。反幂法的迭代正是对 <span class="arithmatex">\(B_q\)</span> 的幂法：</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}
+=\frac{B_q^k\boldsymbol x^{(0)}}{c_1c_2\cdots c_k}.
+\]</div>
+<p>把 6.2.3 的定理用于 <span class="arithmatex">\(B_q\)</span>，得 <span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 的方向收敛到 <span class="arithmatex">\(\boldsymbol v^{(j)}\)</span>，且</p>
+<div class="arithmatex">\[
+c_k\to|\mu_j|=\frac{1}{|\lambda_j-q|}.
+\]</div>
+<p>收敛因子是第二主特征值与主特征值之比：</p>
+<div class="arithmatex">\[
+\frac{|\mu_{j'}|}{|\mu_j|}
+=\frac{|\lambda_j-q|}{|\lambda_{j'}-q|}.
+\]</div>
+<p>最后，<span class="arithmatex">\(\boldsymbol x^{(k)}\to\pm\boldsymbol v^{(j)}\)</span>，Rayleigh 商连续，故 <span class="arithmatex">\(R(\boldsymbol x^{(k)})\to\lambda_j\)</span>。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>例.</strong> 取</p>
+<div class="arithmatex">\[
+A=\begin{bmatrix}4&amp;1\\2&amp;3\end{bmatrix},
+\]</div>
+<p>特征值为 <span class="arithmatex">\(5\)</span> 和 <span class="arithmatex">\(2\)</span>。若 <span class="arithmatex">\(q=2.1\)</span>，则 <span class="arithmatex">\((A-qI)^{-1}\)</span> 的特征值为</p>
+<div class="arithmatex">\[
+\frac{1}{5-2.1}\approx0.345,\qquad
+\frac{1}{2-2.1}=-10 .
+\]</div>
+<p>主特征值 <span class="arithmatex">\(-10\)</span> 对应 <span class="arithmatex">\(\lambda=2\)</span>，收敛因子</p>
+<div class="arithmatex">\[
+\frac{|2-2.1|}{|5-2.1|}=\frac{0.1}{2.9}\approx0.034,
+\]</div>
+<p>非常快。若取 <span class="arithmatex">\(q=0\)</span>，逆矩阵的特征值为 <span class="arithmatex">\(1/5=0.2\)</span> 和 <span class="arithmatex">\(1/2=0.5\)</span>，主特征值 <span class="arithmatex">\(0.5\)</span> 仍对应 <span class="arithmatex">\(\lambda=2\)</span>，收敛因子 <span class="arithmatex">\(0.2/0.5=0.4\)</span>。</p>
+<div class="admonition warning">
+<p class="admonition-title">两个失效情形</p>
+<p>若 <span class="arithmatex">\(q\)</span> 到两个特征值等距，则不存在唯一的最近特征值，<span class="arithmatex">\((A-qI)^{-1}\)</span> 的主特征值不唯一，反幂法可能不收敛到单个特征向量。若 <span class="arithmatex">\(q\)</span> 恰好等于某个特征值，<span class="arithmatex">\(A-qI\)</span> 奇异，线性方程组无解或有无穷多解，迭代直接失效；实际计算只能用 <span class="arithmatex">\(q\)</span> 的近似值。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">病态正是它工作的原因</p>
+<p><span class="arithmatex">\(q\approx\lambda_j\)</span> 时 <span class="arithmatex">\(A-qI\)</span> 接近奇异，LU 分解的条件数很大，解 <span class="arithmatex">\(\boldsymbol y^{(k)}\)</span> 的分量会非常大。这不是坏事：正是这个放大把 <span class="arithmatex">\(\boldsymbol v^{(j)}\)</span> 方向推到主位。归一化后方向仍然准确，但舍入误差也被放大，必要时要用高精度或迭代改进。</p>
+</div>
+<h3 id="633-最小模特征值与最近特征值">6.3.3 最小模特征值与最近特征值<a class="headerlink" href="#633-最小模特征值与最近特征值" title="Permanent link">#</a></h3>
+<p><strong>求最小模特征值.</strong> 取 <span class="arithmatex">\(q=0\)</span>。若 <span class="arithmatex">\(A\)</span> 可逆，则 <span class="arithmatex">\(B_0=A^{-1}\)</span> 的特征值为 <span class="arithmatex">\(1/\lambda_i\)</span>。模最大的 <span class="arithmatex">\(1/\lambda_i\)</span> 对应模最小的 <span class="arithmatex">\(\lambda_i\)</span>，所以反幂法收敛到最小模特征值（<strong>smallest magnitude eigenvalue</strong>），收敛因子为</p>
+<div class="arithmatex">\[
+\frac{|\lambda_{\min}|}{|\lambda_{\text{second}}|}.
+\]</div>
+<p>这里"最小"指的是模最小，不是数值最小；例如 <span class="arithmatex">\(-1\)</span> 的模比 <span class="arithmatex">\(2\)</span> 的模小，按模最小应选 <span class="arithmatex">\(-1\)</span>。</p>
+<p><strong>求最接近 <span class="arithmatex">\(q\)</span> 的特征值.</strong> 取 <span class="arithmatex">\(q\)</span> 为目标附近的数。<span class="arithmatex">\(q\)</span> 越接近 <span class="arithmatex">\(\lambda_j\)</span>，<span class="arithmatex">\(|\lambda_j-q|\)</span> 越小，收敛因子</p>
+<div class="arithmatex">\[
+\frac{|\lambda_j-q|}{|\lambda_{j'}-q|}
+\]</div>
+<p>越小。若 <span class="arithmatex">\(q\)</span> 恰好落在 <span class="arithmatex">\(\lambda_j\)</span> 上，矩阵奇异，不能直接解；实际用近似值即可。这就是"带位移的反幂法"（<strong>shifted inverse iteration</strong>）：位移 <span class="arithmatex">\(q\)</span> 的作用不是平移谱，而是选择离 <span class="arithmatex">\(q\)</span> 最近的特征值并把它放大。</p>
+<p><strong>与幂法的分工.</strong> 幂法求模最大的特征值；反幂法求模最小的（<span class="arithmatex">\(q=0\)</span>）或离指定 <span class="arithmatex">\(q\)</span> 最近的。两者都是对某个矩阵做幂迭代，区别只在于迭代矩阵是 <span class="arithmatex">\(A\)</span> 还是 <span class="arithmatex">\((A-qI)^{-1}\)</span>。</p>
+<h3 id="634-Rayleigh-商">6.3.4 Rayleigh 商<a class="headerlink" href="#634-Rayleigh-商" title="Permanent link">#</a></h3>
+<p><strong>定义.</strong> 对 <span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span>，定义 Rayleigh 商（<strong>Rayleigh quotient</strong>）</p>
+<div class="arithmatex">\[
+R(\boldsymbol x)=\frac{\boldsymbol x^{\top}A\boldsymbol x}{\boldsymbol x^{\top}\boldsymbol x}.
+\]</div>
+<p>基本性质：</p>
+<ul>
+<li>尺度不变：<span class="arithmatex">\(R(\alpha\boldsymbol x)=R(\boldsymbol x)\)</span>，<span class="arithmatex">\(\alpha\ne0\)</span>。</li>
+<li>若 <span class="arithmatex">\(\boldsymbol x=\boldsymbol v^{(j)}\)</span> 是特征向量，则 <span class="arithmatex">\(R(\boldsymbol v^{(j)})=\lambda_j\)</span>。</li>
+<li>若 <span class="arithmatex">\(A\)</span> 对称，则 <span class="arithmatex">\(\lambda_{\min}\le R(\boldsymbol x)\le\lambda_{\max}\)</span>。取标准正交特征基 <span class="arithmatex">\(\boldsymbol x=\sum_i y_i\boldsymbol q_i\)</span>，则 <span class="arithmatex">\(R(\boldsymbol x)=\sum_i\lambda_i y_i^2/\sum_i y_i^2\)</span>，它是特征值的加权平均。</li>
+<li>若 <span class="arithmatex">\(A\)</span> 对称，<span class="arithmatex">\(R\)</span> 在特征向量处取驻值。直接求梯度得 <span class="arithmatex">\(\nabla R(\boldsymbol x)=2\big(A\boldsymbol x-R(\boldsymbol x)\boldsymbol x\big)/(\boldsymbol x^{\top}\boldsymbol x)\)</span>，令它为零得 <span class="arithmatex">\(A\boldsymbol x=R(\boldsymbol x)\boldsymbol x\)</span>，即 <span class="arithmatex">\(\boldsymbol x\)</span> 是特征向量。</li>
+</ul>
+<p><strong>定理（二次精度）.</strong> 设 <span class="arithmatex">\(A\)</span> 实对称，<span class="arithmatex">\(\boldsymbol v\)</span> 是单位特征向量，<span class="arithmatex">\(A\boldsymbol v=\lambda\boldsymbol v\)</span>。若 <span class="arithmatex">\(\boldsymbol x=\boldsymbol v+\boldsymbol e\)</span>，<span class="arithmatex">\(\boldsymbol e\perp\boldsymbol v\)</span>，<span class="arithmatex">\(\|\boldsymbol e\|_2=\varepsilon\)</span>，则</p>
+<div class="arithmatex">\[
+|R(\boldsymbol x)-\lambda|
+\le
+\left(\max_{2\le i\le n}|\lambda_i-\lambda|\right)
+\frac{\varepsilon^2}{1+\varepsilon^2}.
+\]</div>
+<p>特别地，<span class="arithmatex">\(R(\boldsymbol x)-\lambda=O(\varepsilon^2)\)</span>。</p>
+<p><strong>证明.</strong> 取标准正交特征基</p>
+<div class="arithmatex">\[
+\boldsymbol v=\boldsymbol v^{(1)},\boldsymbol v^{(2)},\dots,\boldsymbol v^{(n)},
+\]</div>
+<p>对应特征值 <span class="arithmatex">\(\lambda=\lambda_1,\lambda_2,\dots,\lambda_n\)</span>。把 <span class="arithmatex">\(\boldsymbol x\)</span> 展开：</p>
+<div class="arithmatex">\[
+\boldsymbol x=\boldsymbol v+\sum_{i=2}^{n}\alpha_i\boldsymbol v^{(i)},
+\qquad
+\varepsilon^2=\sum_{i=2}^{n}\alpha_i^2 .
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+\boldsymbol x^{\top}A\boldsymbol x
+=\lambda+\sum_{i=2}^{n}\lambda_i\alpha_i^2,
+\qquad
+\boldsymbol x^{\top}\boldsymbol x
+=1+\sum_{i=2}^{n}\alpha_i^2
+=1+\varepsilon^2 .
+\]</div>
+<p>所以</p>
+<div class="arithmatex">\[
+R(\boldsymbol x)-\lambda
+=\frac{\sum_{i=2}^{n}(\lambda_i-\lambda)\alpha_i^2}{1+\varepsilon^2}.
+\]</div>
+<p>取绝对值，并用 <span class="arithmatex">\(|\lambda_i-\lambda|\le\max_{i\ge2}|\lambda_i-\lambda|\)</span> 与 <span class="arithmatex">\(\sum_{i=2}^n\alpha_i^2=\varepsilon^2\)</span>：</p>
+<div class="arithmatex">\[
+|R(\boldsymbol x)-\lambda|
+\le
+\max_{i\ge2}|\lambda_i-\lambda|
+\frac{\sum_{i=2}^n\alpha_i^2}{1+\varepsilon^2}
+=
+\max_{i\ge2}|\lambda_i-\lambda|
+\frac{\varepsilon^2}{1+\varepsilon^2}.
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<p>这个定理说明：特征向量有一阶误差 <span class="arithmatex">\(\varepsilon\)</span> 时，Rayleigh 商只有二阶误差 <span class="arithmatex">\(\varepsilon^2\)</span>。特征值估计比特征向量估计"多一位精度"，这是 Rayleigh 商最重要的性质。</p>
+<div class="admonition warning">
+<p class="admonition-title">非对称矩阵没有这个二次精度</p>
+<p>对非对称矩阵，<span class="arithmatex">\(R\)</span> 在特征向量处不一定驻定，误差一般只有 <span class="arithmatex">\(O(\varepsilon)\)</span>。例如 <span class="arithmatex">\(A=\begin{bmatrix}1&amp;1\\0&amp;2\end{bmatrix}\)</span>，<span class="arithmatex">\(\boldsymbol v=(1,0)^{\top}\)</span>，<span class="arithmatex">\(\lambda=1\)</span>。取 <span class="arithmatex">\(\boldsymbol x=(1,\varepsilon)^{\top}\)</span>，则 <span class="arithmatex">\(R(\boldsymbol x)=(1+\varepsilon+2\varepsilon^2)/(1+\varepsilon^2)=1+\varepsilon+O(\varepsilon^2)\)</span>，误差是 <span class="arithmatex">\(O(\varepsilon)\)</span>，不是 <span class="arithmatex">\(O(\varepsilon^2)\)</span>。二次精度依赖正规性（对称矩阵是特例）；这也导致 Rayleigh 商迭代在非对称矩阵上从三次收敛降为二次。</p>
+</div>
+<h3 id="635-Rayleigh-商迭代">6.3.5 Rayleigh 商迭代<a class="headerlink" href="#635-Rayleigh-商迭代" title="Permanent link">#</a></h3>
+<p>Rayleigh 商迭代（<strong>Rayleigh quotient iteration, RQI</strong>）把反幂法的固定位移换成每步更新的 Rayleigh 商。取单位初值 <span class="arithmatex">\(\boldsymbol x^{(0)}\)</span>（2-范数），对 <span class="arithmatex">\(k=0,1,2,\dots\)</span>：</p>
+<div class="arithmatex">\[
+q_k=R(\boldsymbol x^{(k)})
+=\frac{(\boldsymbol x^{(k)})^{\top}A\boldsymbol x^{(k)}}
+{(\boldsymbol x^{(k)})^{\top}\boldsymbol x^{(k)}},
+\]</div>
+<div class="arithmatex">\[
+(A-q_kI)\boldsymbol y^{(k)}=\boldsymbol x^{(k)},
+\qquad
+\boldsymbol x^{(k+1)}
+=\frac{\boldsymbol y^{(k)}}{\|\boldsymbol y^{(k)}\|_2}.
+\]</div>
+<p>若 <span class="arithmatex">\(\boldsymbol y^{(k)}=\boldsymbol 0\)</span>，则 <span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 已经是特征向量，停止。<span class="arithmatex">\(q_k\)</span> 同时就是当前最好的特征值估计。</p>
+<p><strong>定理（对称矩阵的三次收敛）.</strong> 设 <span class="arithmatex">\(A\)</span> 实对称，<span class="arithmatex">\(\lambda_j\)</span> 是单特征值，<span class="arithmatex">\(\boldsymbol x^{(k)}\)</span> 足够接近对应的单位特征向量 <span class="arithmatex">\(\boldsymbol v^{(j)}\)</span>，<span class="arithmatex">\(q_k=R(\boldsymbol x^{(k)})\)</span>。则</p>
+<div class="arithmatex">\[
+\|\boldsymbol x^{(k+1)}-\boldsymbol v^{(j)}\|_2
+=O\big(\|\boldsymbol x^{(k)}-\boldsymbol v^{(j)}\|_2^3\big),
+\]</div>
+<div class="arithmatex">\[
+|q_k-\lambda_j|
+=O\big(\|\boldsymbol x^{(k)}-\boldsymbol v^{(j)}\|_2^2\big).
+\]</div>
+<p><strong>证明思路.</strong> 令 <span class="arithmatex">\(\varepsilon=\operatorname{dist}(\boldsymbol x^{(k)},\operatorname{span}\{\boldsymbol v^{(j)}\})\)</span>，写</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k)}
+=c\boldsymbol v^{(j)}+\sum_{i\ne j}\alpha_i\boldsymbol v^{(i)},
+\qquad
+\sum_{i\ne j}\alpha_i^2=\varepsilon^2,
+\quad |c|\approx1 .
+\]</div>
+<p>由 6.3.4 的二次精度，</p>
+<div class="arithmatex">\[
+q_k-\lambda_j=O(\varepsilon^2).
+\]</div>
+<p>解方程 <span class="arithmatex">\((A-q_kI)\boldsymbol y^{(k)}=\boldsymbol x^{(k)}\)</span>，在特征基下逐分量得到</p>
+<div class="arithmatex">\[
+\boldsymbol y^{(k)}
+=\frac{c}{\lambda_j-q_k}\boldsymbol v^{(j)}
++\sum_{i\ne j}\frac{\alpha_i}{\lambda_i-q_k}\boldsymbol v^{(i)} .
+\]</div>
+<p>第一项的分母 <span class="arithmatex">\(|\lambda_j-q_k|=O(\varepsilon^2)\)</span>，所以这一项至少是 <span class="arithmatex">\(\varepsilon^{-2}\)</span> 量级；其余项的分母 <span class="arithmatex">\(|\lambda_i-q_k|\)</span> 有正的下界（约为 <span class="arithmatex">\(\lambda_j\)</span> 与其余谱的间隔），分子 <span class="arithmatex">\(|\alpha_i|\le\varepsilon\)</span>，所以其余项是 <span class="arithmatex">\(O(\varepsilon)\)</span>。归一化后，<span class="arithmatex">\(\boldsymbol v^{(j)}\)</span> 分量占主导，其余分量的相对大小至多是</p>
+<div class="arithmatex">\[
+\frac{O(\varepsilon)}{\Omega(\varepsilon^{-2})}=O(\varepsilon^3).
+\]</div>
+<p>故 <span class="arithmatex">\(\boldsymbol x^{(k+1)}\)</span> 的误差是 <span class="arithmatex">\(O(\varepsilon^3)\)</span>。特征值误差由 Rayleigh 商的二次精度直接得到。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>非对称矩阵.</strong> 若 <span class="arithmatex">\(A\)</span> 非对称，Rayleigh 商的误差一般是 <span class="arithmatex">\(O(\varepsilon)\)</span>，第一项被放大到 <span class="arithmatex">\(O(\varepsilon^{-1})\)</span>，其余项是 <span class="arithmatex">\(O(1)\)</span>，归一化后误差是 <span class="arithmatex">\(O(\varepsilon^2)\)</span>。所以 RQI 对一般矩阵（简单特征值）是二次收敛，对对称（更一般地，正规）矩阵才是三次。</p>
+<p><strong>代价.</strong> 每步 <span class="arithmatex">\(q_k\)</span> 都变，<span class="arithmatex">\((A-q_kI)\)</span> 需要重新做 LU 分解，稠密矩阵每步 <span class="arithmatex">\(O(n^3)\)</span>。但 RQI 通常两三步就收敛，所以尽管每步贵，总成本往往仍可接受。对对称三对角矩阵，每步解方程只需 <span class="arithmatex">\(O(n)\)</span>，RQI 是求三对角特征对的高效方法。</p>
+<h3 id="636-MATLAB反幂法与-Rayleigh-商迭代">6.3.6 MATLAB：反幂法与 Rayleigh 商迭代<a class="headerlink" href="#636-MATLAB反幂法与-Rayleigh-商迭代" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>lambda, v, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">inverse_power</span><span class="p">(</span>A, q, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c">% 反幂法：求最接近 q 的特征值；q = 0 时求模最小的特征值</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c">% A: n×n 矩阵；q: 位移；x0: 初始向量；tol: 容差；N: 最大迭代步数</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">M</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">lu</span><span class="p">(</span><span class="n">M</span><span class="p">);</span><span class="w">                 </span><span class="c">% 只分解一次，之后每步 O(n^2)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">if</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">U</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">eps</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nb">error</span><span class="p">(</span><span class="s">'A - qI 接近奇异，请调整 q'</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">end</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">);</span><span class="w">              </span><span class="c">% 归一化，||x||_inf = 1</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">lambda_old</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">));</span><span class="w">          </span><span class="c">% 解 (A - qI) y = x</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s">'(A - qI) 奇异，反幂法失败'</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">                      </span><span class="c">% 归一化</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="n">Ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ax</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">  </span><span class="c">% Rayleigh 商，带符号</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda_old</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">lambda_old</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="k">end</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="nb">warning</span><span class="p">(</span><span class="s">'反幂法在 %d 步内未收敛'</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="k">end</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>lambda, v, k<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">rayleigh_quotient_iteration</span><span class="p">(</span>A, x0, tol, N<span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c">% Rayleigh 商迭代：用当前 Rayleigh 商作位移</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c">% A: n×n 矩阵；x0: 初始向量；tol: 容差；N: 最大迭代步数</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x0</span><span class="p">(:);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">                   </span><span class="c">% 2-范数归一化</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">rcond</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">eps</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">eps</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">   </span><span class="c">% 避开精确奇异</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">M</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">lu</span><span class="p">(</span><span class="n">M</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">));</span><span class="w">          </span><span class="c">% 解 (A - lambda I) y = x</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">ny</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s">'(A - lambda I) 奇异，RQI 失败'</span><span class="p">);</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ny</span><span class="p">;</span><span class="w">                     </span><span class="c">% 2-范数归一化</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="n">Ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="n">lambda_new</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ax</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">'</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">lambda_new</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda_new</span><span class="p">;</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda_new</span><span class="p">;</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">end</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="nb">warning</span><span class="p">(</span><span class="s">'Rayleigh 商迭代在 %d 步内未收敛'</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="64-谱半径与收敛判别">6.4 谱半径与收敛判别<a class="headerlink" href="#64-谱半径与收敛判别" title="Permanent link">#</a></h2>
+<h3 id="641-谱半径判据">6.4.1 谱半径判据<a class="headerlink" href="#641-谱半径判据" title="Permanent link">#</a></h3>
+<p><strong>定理.</strong> 对任意 <span class="arithmatex">\(n\times n\)</span> 矩阵 <span class="arithmatex">\(A\)</span>，</p>
+<div class="arithmatex">\[
+\rho(A)&lt;1
+\quad\Longleftrightarrow\quad
+A^k\to0\quad(k\to\infty).
+\]</div>
+<p><strong>证明.</strong></p>
+<p><strong>(<span class="arithmatex">\(\Rightarrow\)</span>).</strong> 设 <span class="arithmatex">\(A^k\to0\)</span>。取任一特征对 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span>，<span class="arithmatex">\(\boldsymbol x\ne\boldsymbol 0\)</span>。则</p>
+<div class="arithmatex">\[
+A^k\boldsymbol x=\lambda^k\boldsymbol x\to\boldsymbol 0,
+\]</div>
+<p>故 <span class="arithmatex">\(\lambda^k\to0\)</span>，即 <span class="arithmatex">\(|\lambda|&lt;1\)</span>。对所有特征值成立，所以 <span class="arithmatex">\(\rho(A)&lt;1\)</span>。</p>
+<p><strong>(<span class="arithmatex">\(\Leftarrow\)</span>).</strong> 设 <span class="arithmatex">\(\rho(A)&lt;1\)</span>。在复数域上作 Jordan 分解</p>
+<div class="arithmatex">\[
+A=SJS^{-1},\qquad
+J=\operatorname{diag}(J_1,\dots,J_m),\qquad
+J_i=\lambda_iI+N_i,
+\]</div>
+<p>其中 <span class="arithmatex">\(N_i\)</span> 是幂零矩阵，<span class="arithmatex">\(N_i^{m_i}=0\)</span>。则</p>
+<div class="arithmatex">\[
+J_i^k=\sum_{r=0}^{\min(k,m_i-1)}\binom{k}{r}\lambda_i^{k-r}N_i^r .
+\]</div>
+<p>对 <span class="arithmatex">\(k\ge m_i-1\)</span>，用 <span class="arithmatex">\(|\lambda_i|\le\rho(A)&lt;1\)</span> 和 <span class="arithmatex">\(\binom{k}{r}\le k^r\)</span> 估计：</p>
+<div class="arithmatex">\[
+\|J_i^k\|
+\le\sum_{r=0}^{m_i-1}\binom{k}{r}|\lambda_i|^{k-r}\|N_i\|^r
+\le C_i\,k^{m_i-1}\rho(A)^k ,
+\]</div>
+<p>其中 <span class="arithmatex">\(C_i\)</span> 是与 <span class="arithmatex">\(k\)</span> 无关的常数（把 <span class="arithmatex">\(\rho(A)^{-(m_i-1)}\)</span> 和 <span class="arithmatex">\(\|N_i\|^r\)</span> 都吸收进去）。因 <span class="arithmatex">\(\rho(A)&lt;1\)</span>，<span class="arithmatex">\(k^{m_i-1}\rho(A)^k\to0\)</span>，故 <span class="arithmatex">\(J_i^k\to0\)</span>，从而 <span class="arithmatex">\(J^k\to0\)</span>，于是</p>
+<div class="arithmatex">\[
+A^k=SJ^kS^{-1}\to0 .
+\]</div>
+<p><span class="arithmatex">\(\blacksquare\)</span></p>
+<h3 id="642-线性迭代的收敛">6.4.2 线性迭代的收敛<a class="headerlink" href="#642-线性迭代的收敛" title="Permanent link">#</a></h3>
+<p>考虑线性定常迭代</p>
+<div class="arithmatex">\[
+\boldsymbol x^{(k+1)}=G\boldsymbol x^{(k)}+\boldsymbol g .
+\]</div>
+<p>若 <span class="arithmatex">\(\rho(G)&lt;1\)</span>，则 <span class="arithmatex">\(I-G\)</span> 可逆，不动点</p>
+<div class="arithmatex">\[
+\boldsymbol x^{*}=(I-G)^{-1}\boldsymbol g
+\]</div>
+<p>存在且唯一。误差 <span class="arithmatex">\(\boldsymbol e^{(k)}=\boldsymbol x^{(k)}-\boldsymbol x^{*}\)</span> 满足</p>
+<div class="arithmatex">\[
+\boldsymbol e^{(k+1)}=G\boldsymbol e^{(k)}
+\quad\Longrightarrow\quad
+\boldsymbol e^{(k)}=G^k\boldsymbol e^{(0)} .
+\]</div>
+<p><strong>定理.</strong> 迭代对任意初值收敛，当且仅当 <span class="arithmatex">\(\rho(G)&lt;1\)</span>。</p>
+<p><strong>证明.</strong> 若 <span class="arithmatex">\(\rho(G)&lt;1\)</span>，由 6.4.1，<span class="arithmatex">\(G^k\to0\)</span>，故 <span class="arithmatex">\(\boldsymbol e^{(k)}\to\boldsymbol 0\)</span>，对任意 <span class="arithmatex">\(\boldsymbol e^{(0)}\)</span> 成立。</p>
+<p>反之，若 <span class="arithmatex">\(\rho(G)\ge1\)</span>，取模最大的特征值 <span class="arithmatex">\(\lambda\)</span> 及特征向量 <span class="arithmatex">\(\boldsymbol v\)</span>。在复向量空间中令 <span class="arithmatex">\(\boldsymbol e^{(0)}=\boldsymbol v\)</span>，则</p>
+<div class="arithmatex">\[
+\boldsymbol e^{(k)}=G^k\boldsymbol v=\lambda^k\boldsymbol v
+\]</div>
+<p>不趋于零；若初值限定为实向量，取 <span class="arithmatex">\(\boldsymbol v\)</span> 的实部或虚部，迭代也不会趋于零。故迭代不是对任意初值收敛。<span class="arithmatex">\(\blacksquare\)</span></p>
+<p>这正是第 3 章不动点迭代用过的判据：把迭代写成 <span class="arithmatex">\(\boldsymbol x=G\boldsymbol x+\boldsymbol g\)</span>，收敛性由迭代矩阵的谱半径决定。非线性迭代在不动点附近线性化后，<span class="arithmatex">\(G\)</span> 就是 Jacobian <span class="arithmatex">\(J_G(\boldsymbol p)\)</span>；<span class="arithmatex">\(\rho(J_G(\boldsymbol p))&lt;1\)</span> 保证局部收敛，<span class="arithmatex">\(\rho(J_G(\boldsymbol p))&gt;1\)</span> 时一般发散，<span class="arithmatex">\(\rho=1\)</span> 时需更高阶分析。</p>
+<h3 id="643-收敛速度">6.4.3 收敛速度<a class="headerlink" href="#643-收敛速度" title="Permanent link">#</a></h3>
+<p>若 <span class="arithmatex">\(\rho(G)&lt;1\)</span>，误差的渐近衰减率就是 <span class="arithmatex">\(\rho(G)\)</span>：</p>
+<div class="arithmatex">\[
+\|\boldsymbol e^{(k)}\|\approx C\,\rho(G)^k .
+\]</div>
+<p>要把误差降到 <span class="arithmatex">\(10^{-m}\)</span>，大致需要</p>
+<div class="arithmatex">\[
+k\approx\frac{m\ln10}{\ln(1/\rho(G))}
+\]</div>
+<p>步。<span class="arithmatex">\(\rho(G)\)</span> 越接近 1，收敛越慢。</p>
+<p>对幂法，线性化后的迭代算子在 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 的补空间上的谱半径正是</p>
+<div class="arithmatex">\[
+r=\left|\frac{\lambda_2}{\lambda_1}\right|;
+\]</div>
+<p>对反幂法，是</p>
+<div class="arithmatex">\[
+r_q=\frac{|\lambda_j-q|}{|\lambda_{j'}-q|};
+\]</div>
+<p>对 Rayleigh 商迭代，没有固定的线性收敛因子，对称情形是三次收敛。</p>
+<div class="admonition note">
+<p class="admonition-title">Gelfand 公式</p>
+<p>由 6.4.1 可以推出谱半径的另一个刻画（对任意次乘矩阵范数）：<span class="arithmatex">\(\rho(A)=\lim_{k\to\infty}\|A^k\|^{1/k}\)</span>。证明只需两边夹：一方面 <span class="arithmatex">\(\rho(A)^k\le\|A^k\|\)</span>；另一方面对任意 <span class="arithmatex">\(\epsilon&gt;0\)</span>，<span class="arithmatex">\(\rho(A)/(\rho(A)+\epsilon)&lt;1\)</span>，由 6.4.1 得 <span class="arithmatex">\((A/(\rho(A)+\epsilon))^k\to0\)</span>，故 <span class="arithmatex">\(k\)</span> 充分大时 <span class="arithmatex">\(\|A^k\|^{1/k}\le\rho(A)+\epsilon\)</span>。令 <span class="arithmatex">\(\epsilon\to0\)</span> 即得。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">谱半径小于 1 不代表每步都下降</p>
+<p>谱半径是渐近量。非正规矩阵可能在前若干步放大误差，然后才衰减。例如 <span class="arithmatex">\(G=\begin{pmatrix}0&amp;10\\0&amp;0\end{pmatrix}\)</span> 的 <span class="arithmatex">\(\rho(G)=0\)</span>，但 <span class="arithmatex">\(\|G\|_\infty=10\)</span>，<span class="arithmatex">\(G^2=0\)</span>。所以判停不能只看"谱半径小于 1"，还要看实际残差；非正规问题的前期增长可能很大。</p>
+</div>
+<h3 id="644-圆盘估计与位移选择">6.4.4 圆盘估计与位移选择<a class="headerlink" href="#644-圆盘估计与位移选择" title="Permanent link">#</a></h3>
+<p>Geršgorin 圆盘可以直接给出收敛的充分条件：若 <span class="arithmatex">\(G\)</span> 的所有圆盘都在单位圆内，即对每个 <span class="arithmatex">\(i\)</span>，</p>
+<div class="arithmatex">\[
+|g_{ii}|+R_i&lt;1,
+\]</div>
+<p>则所有特征值都满足 <span class="arithmatex">\(|\lambda|&lt;1\)</span>，故 <span class="arithmatex">\(\rho(G)&lt;1\)</span>，迭代收敛。这个判据不需要算特征值，只用到矩阵元素，适合快速筛查。反过来，若某个圆盘伸出单位圆，不能断言发散——圆盘只是包含区域，可能很松。</p>
+<p>对 <span class="arithmatex">\(A\)</span> 本身用 Geršgorin 圆盘还可以选位移 <span class="arithmatex">\(q\)</span>。若某个圆盘与其他圆盘分离，由 Geršgorin 定理的第二部分，这个圆盘里恰有一个（或按重数计若干个）特征值；圆心 <span class="arithmatex">\(a_{ii}\)</span> 就是一个自然的初始位移，拿它做反幂法或 RQI，通常比盲目取 <span class="arithmatex">\(q\)</span> 好。圆盘半径还给出了误差量级：圆心到特征值的距离不超过半径。</p>
+<h3 id="645-三种方法的收敛因子">6.4.5 三种方法的收敛因子<a class="headerlink" href="#645-三种方法的收敛因子" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>目标特征值</th>
+<th>每步操作</th>
+<th>收敛因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>幂法</td>
+<td>模最大</td>
+<td><span class="arithmatex">\(\boldsymbol x\leftarrow A\boldsymbol x/\|A\boldsymbol x\|_\infty\)</span></td>
+<td><span class="arithmatex">\(\lvert\lambda_2/\lambda_1\rvert\)</span></td>
+</tr>
+<tr>
+<td>位移幂法</td>
+<td>离 <span class="arithmatex">\(\sigma\)</span> 最远</td>
+<td><span class="arithmatex">\(\boldsymbol x\leftarrow(A-\sigma I)\boldsymbol x/\|\cdot\|_\infty\)</span></td>
+<td><span class="arithmatex">\(\lvert\lambda_{j'}-\sigma\rvert/\lvert\lambda_j-\sigma\rvert\)</span></td>
+</tr>
+<tr>
+<td>反幂法</td>
+<td>离 <span class="arithmatex">\(q\)</span> 最近</td>
+<td>解 <span class="arithmatex">\((A-qI)\boldsymbol y=\boldsymbol x\)</span></td>
+<td><span class="arithmatex">\(\lvert\lambda_j-q\rvert/\lvert\lambda_{j'}-q\rvert\)</span></td>
+</tr>
+<tr>
+<td>Rayleigh 商迭代</td>
+<td>当前最近</td>
+<td><span class="arithmatex">\(q=R(\boldsymbol x)\)</span>，解 <span class="arithmatex">\((A-qI)\boldsymbol y=\boldsymbol x\)</span></td>
+<td>对称三次，非对称二次</td>
+</tr>
+</tbody>
+</table>
+<p>表中 <span class="arithmatex">\(\lambda_j\)</span> 是目标特征值，<span class="arithmatex">\(\lambda_{j'}\)</span> 是"第二竞争者"：幂法中是模第二大的特征值，反幂法中是离 <span class="arithmatex">\(q\)</span> 第二近的特征值。所有线性因子的共同来源都是同一个幂法定理，只是迭代矩阵不同。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">十条</p>
+<ol>
+<li><strong>唯一主特征值</strong>：幂法要求 <span class="arithmatex">\(|\lambda_1|&gt;|\lambda_2|\)</span>。若 <span class="arithmatex">\(|\lambda_1|=|\lambda_2|\)</span>（例如 <span class="arithmatex">\(\lambda_2=-\lambda_1\)</span>，或一对共轭复根），迭代向量会振荡或旋转，不收敛到单个特征向量。</li>
+<li><strong><span class="arithmatex">\(\beta_1=0\)</span></strong>：初值若与 <span class="arithmatex">\(\boldsymbol v^{(1)}\)</span> 正交，主特征分量缺失，幂法会收敛到下一个特征向量。随机初值几乎必然避免，但全 1 向量、单位向量等结构化初值可能正好落在这个陷阱里。</li>
+<li><strong><span class="arithmatex">\(c_k\)</span> 给的是模</strong>：<span class="arithmatex">\(c_k=\|A\boldsymbol x^{(k-1)}\|_\infty\ge0\)</span>，只能趋于 <span class="arithmatex">\(|\lambda_1|\)</span>。课件写 <span class="arithmatex">\(c_k\to\lambda_1\)</span> 默认了 <span class="arithmatex">\(\lambda_1&gt;0\)</span>；<span class="arithmatex">\(\lambda_1&lt;0\)</span> 时必须用 Rayleigh 商或相邻分量之比恢复符号。</li>
+<li><strong>不归一化会溢出</strong>：<span class="arithmatex">\(\lambda_1\)</span> 稍大，<span class="arithmatex">\(\|A^k\boldsymbol x^{(0)}\|\)</span> 就指数增长；<span class="arithmatex">\(\lambda_1\)</span> 稍小就下溢。归一化不是可选项，而且 <span class="arithmatex">\(c_k\)</span> 的定义要和所用范数一致，不能中途换范数。</li>
+<li><strong>收敛比接近 1 时极慢</strong>：误差按 <span class="arithmatex">\(|\lambda_2/\lambda_1|^k\)</span> 走，比值 <span class="arithmatex">\(0.99\)</span> 时三位有效数字要几百步。不要用固定迭代次数判停，要看残差 <span class="arithmatex">\(\|A\boldsymbol x-\lambda\boldsymbol x\|\)</span> 或相邻特征值估计之差。</li>
+<li><strong>位移靠近 <span class="arithmatex">\(\lambda_1\)</span> 不是加速</strong>：<span class="arithmatex">\(A-\lambda_1I\)</span> 把 <span class="arithmatex">\(\lambda_1\)</span> 压到零，主特征值变成离 <span class="arithmatex">\(\lambda_1\)</span> 最远的那个，通常不是 <span class="arithmatex">\(\lambda_2\)</span>。要专门求 <span class="arithmatex">\(\lambda_1\)</span> 附近的特征值，必须用反幂法 <span class="arithmatex">\((A-qI)^{-1}\)</span>；要删掉 <span class="arithmatex">\(\lambda_1\)</span> 求 <span class="arithmatex">\(\lambda_2\)</span>，用 Hotelling 收缩而不是简单平移。</li>
+<li><strong>反幂法不要显式求逆</strong>：每步解 <span class="arithmatex">\((A-qI)\boldsymbol y=\boldsymbol x\)</span>，LU 分解只做一次。<span class="arithmatex">\(q\approx\lambda_j\)</span> 时矩阵病态是正常现象，正是它把目标方向放大；但 <span class="arithmatex">\(q\)</span> 精确等于特征值时矩阵奇异，必须扰动 <span class="arithmatex">\(q\)</span>。</li>
+<li><strong><span class="arithmatex">\(q=0\)</span> 要求 <span class="arithmatex">\(A\)</span> 可逆</strong>：反幂法求最小模特征值时用 <span class="arithmatex">\(q=0\)</span>。若 <span class="arithmatex">\(\lambda_{\min}=0\)</span>，<span class="arithmatex">\(A\)</span> 奇异，<span class="arithmatex">\(A^{-1}\)</span> 不存在，方法直接失效。</li>
+<li><strong>Rayleigh 商的二次精度依赖正规性</strong>：对称矩阵有 <span class="arithmatex">\(|R(\boldsymbol x)-\lambda|=O(\varepsilon^2)\)</span>；一般非对称矩阵只有 <span class="arithmatex">\(O(\varepsilon)\)</span>，RQI 的收敛阶也从三次降到二次。</li>
+<li><strong>Geršgorin 只是包含区域</strong>：圆盘并集可能很松，伸到单位圆外不代表一定有特征值在外面。只有不相交的圆盘才能数出特征值个数；想收紧界，可以同时用行圆盘、列圆盘并取交集。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>特征方程 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span> 等价于 <span class="arithmatex">\((A-\lambda I)\boldsymbol x=\boldsymbol 0\)</span>，非零解存在当且仅当 <span class="arithmatex">\(\det(A-\lambda I)=0\)</span>。</li>
+<li>特征多项式 <span class="arithmatex">\(p(\lambda)=\det(A-\lambda I)\)</span> 是 <span class="arithmatex">\(n\)</span> 次多项式，至多 <span class="arithmatex">\(n\)</span> 个不同零点；<span class="arithmatex">\(\sum\lambda_i=\operatorname{tr}A\)</span>，<span class="arithmatex">\(\prod\lambda_i=\det A\)</span>。</li>
+<li>不同特征值的特征向量线性无关；有 <span class="arithmatex">\(n\)</span> 个互异特征值即可对角化。</li>
+<li>相似变换 <span class="arithmatex">\(A=S^{-1}BS\)</span> 保持特征值；正交相似 <span class="arithmatex">\(Q^{\top}AQ\)</span> 还保持 2-范数和对称性。</li>
+<li>实对称矩阵有实特征值和标准正交特征基，<span class="arithmatex">\(A=QDQ^{\top}\)</span>，且 <span class="arithmatex">\(\rho(A)=\|A\|_2\)</span>。</li>
+<li>Geršgorin 圆盘：圆心 <span class="arithmatex">\(a_{ii}\)</span>，半径 <span class="arithmatex">\(\sum_{j\ne i}|a_{ij}|\)</span>；所有特征值在并集中；若 <span class="arithmatex">\(k\)</span> 个圆盘的并集与其余圆盘不相交，则该并集恰含 <span class="arithmatex">\(k\)</span> 个特征值。</li>
+<li>幂法：<span class="arithmatex">\(\boldsymbol y=A\boldsymbol x^{(k-1)}\)</span>，<span class="arithmatex">\(c_k=\|\boldsymbol y\|_\infty\)</span>，<span class="arithmatex">\(\boldsymbol x^{(k)}=\boldsymbol y/c_k\)</span>；方向趋于主特征向量，<span class="arithmatex">\(c_k\to|\lambda_1|\)</span>。</li>
+<li>幂法收敛因子 <span class="arithmatex">\(|\lambda_2/\lambda_1|\)</span>；<span class="arithmatex">\(\lambda_1&lt;0\)</span> 时向量振荡，用 Rayleigh 商恢复符号。</li>
+<li>位移 <span class="arithmatex">\(B_\sigma=A-\sigma I\)</span> 不改变特征向量，只平移谱；对 <span class="arithmatex">\(B_\sigma\)</span> 用幂法求的是离 <span class="arithmatex">\(\sigma\)</span> 最远的特征值。</li>
+<li>Hotelling 收缩 <span class="arithmatex">\(B=A-\lambda_1\boldsymbol v\boldsymbol u^{\top}/(\boldsymbol u^{\top}\boldsymbol v)\)</span> 删掉 <span class="arithmatex">\(\lambda_1\)</span>，保留其余特征值；当 <span class="arithmatex">\(|\lambda_2|&gt;|\lambda_3|\)</span> 时可求 <span class="arithmatex">\(\lambda_2\)</span>。</li>
+<li>反幂法：解 <span class="arithmatex">\((A-qI)\boldsymbol y=\boldsymbol x\)</span>，求离 <span class="arithmatex">\(q\)</span> 最近的特征值；<span class="arithmatex">\(q=0\)</span> 求最小模特征值。</li>
+<li>反幂法收敛因子 <span class="arithmatex">\(|\lambda_j-q|/|\lambda_{j'}-q|\)</span>；<span class="arithmatex">\(q\)</span> 越接近目标越快。</li>
+<li>Rayleigh 商 <span class="arithmatex">\(R(\boldsymbol x)=\boldsymbol x^{\top}A\boldsymbol x/\boldsymbol x^{\top}\boldsymbol x\)</span> 在特征向量处等于特征值；对称矩阵误差 <span class="arithmatex">\(O(\varepsilon^2)\)</span>。</li>
+<li>RQI：<span class="arithmatex">\(q_k=R(\boldsymbol x^{(k)})\)</span>，解 <span class="arithmatex">\((A-q_kI)\boldsymbol y=\boldsymbol x^{(k)}\)</span>；对称矩阵三次收敛，非对称二次。</li>
+<li>谱半径判据：<span class="arithmatex">\(\rho(G)&lt;1\)</span> 当且仅当 <span class="arithmatex">\(G^k\to0\)</span>，也当且仅当线性迭代对任意初值收敛。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eigenvalue</td>
+<td>特征值</td>
+<td>使 <span class="arithmatex">\(A\boldsymbol x=\lambda\boldsymbol x\)</span> 有非零解的 <span class="arithmatex">\(\lambda\)</span></td>
+</tr>
+<tr>
+<td>eigenvector</td>
+<td>特征向量</td>
+<td>被 <span class="arithmatex">\(A\)</span> 作用后方向不变的向量</td>
+</tr>
+<tr>
+<td>characteristic polynomial</td>
+<td>特征多项式</td>
+<td><span class="arithmatex">\(\det(A-\lambda I)\)</span>，根为特征值</td>
+</tr>
+<tr>
+<td>spectrum</td>
+<td>谱</td>
+<td>全部特征值组成的集合</td>
+</tr>
+<tr>
+<td>spectral radius</td>
+<td>谱半径</td>
+<td>特征值模的最大值，决定迭代收敛</td>
+</tr>
+<tr>
+<td>algebraic multiplicity</td>
+<td>代数重数</td>
+<td>特征值作为特征多项式根的重数</td>
+</tr>
+<tr>
+<td>geometric multiplicity</td>
+<td>几何重数</td>
+<td>对应特征子空间的维数</td>
+</tr>
+<tr>
+<td>linearly independent</td>
+<td>线性无关</td>
+<td>只有零系数组合才能得零向量</td>
+</tr>
+<tr>
+<td>basis</td>
+<td>基</td>
+<td>张成空间的一组线性无关向量</td>
+</tr>
+<tr>
+<td>similar matrices</td>
+<td>相似矩阵</td>
+<td>相差一个非奇异相似变换的矩阵</td>
+</tr>
+<tr>
+<td>diagonalizable</td>
+<td>可对角化</td>
+<td>相似于对角矩阵，等价于有 <span class="arithmatex">\(n\)</span> 个线性无关特征向量</td>
+</tr>
+<tr>
+<td>orthogonal matrix</td>
+<td>正交矩阵</td>
+<td>列标准正交，<span class="arithmatex">\(Q^{-1}=Q^{\top}\)</span></td>
+</tr>
+<tr>
+<td>symmetric matrix</td>
+<td>对称矩阵</td>
+<td><span class="arithmatex">\(A^{\top}=A\)</span>，有实特征值和正交特征基</td>
+</tr>
+<tr>
+<td>positive definite</td>
+<td>正定</td>
+<td>对称矩阵所有特征值大于零</td>
+</tr>
+<tr>
+<td>Geršgorin circle</td>
+<td>Geršgorin 圆盘</td>
+<td>包含特征值的圆盘，圆心为对角元</td>
+</tr>
+<tr>
+<td>dominant eigenvalue</td>
+<td>主特征值</td>
+<td>模严格最大的特征值</td>
+</tr>
+<tr>
+<td>power method</td>
+<td>幂法</td>
+<td>反复乘 <span class="arithmatex">\(A\)</span> 并归一化，求主特征对</td>
+</tr>
+<tr>
+<td>normalization</td>
+<td>归一化</td>
+<td>每步除以范数，防止溢出并固定长度</td>
+</tr>
+<tr>
+<td>shift</td>
+<td>位移</td>
+<td>用 <span class="arithmatex">\(A-\sigma I\)</span> 改变谱的位置</td>
+</tr>
+<tr>
+<td>deflation</td>
+<td>收缩</td>
+<td>用秩一修正删掉已求出的特征值</td>
+</tr>
+<tr>
+<td>inverse power method</td>
+<td>反幂法</td>
+<td>对 <span class="arithmatex">\((A-qI)^{-1}\)</span> 做幂法，求离 <span class="arithmatex">\(q\)</span> 最近的特征值</td>
+</tr>
+<tr>
+<td>Rayleigh quotient</td>
+<td>Rayleigh 商</td>
+<td><span class="arithmatex">\(\boldsymbol x^{\top}A\boldsymbol x/\boldsymbol x^{\top}\boldsymbol x\)</span>，误差二阶的估计</td>
+</tr>
+<tr>
+<td>Rayleigh quotient iteration</td>
+<td>Rayleigh 商迭代</td>
+<td>用当前 Rayleigh 商作位移的反幂法</td>
+</tr>
+<tr>
+<td>convergence rate</td>
+<td>收敛速度</td>
+<td>误差每步缩小的渐近因子</td>
+</tr>
+</tbody>
+</table>
+<p class="pdf-note"><a href="../../files/nm9f3c/Lec06.pdf">课程课件 · Lec06（PDF）</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
