@@ -84,6 +84,8 @@ extra_css:
 
 nav:
   - 首页: index.md
+  - 数值分析方法:
+      - 第13章 微分方程的数值解法: numana/ch13.md
   - 深度学习视觉系统:
       - dl4vs/index.md
       - 第1章 欢迎来到计算机视觉: dl4vs/ch01.md
