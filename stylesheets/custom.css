@@ -301,3 +301,17 @@ body.is-home .md-typeset a.gbtn { color: #fff !important; }
 /* 首页：隐藏错位的"回到顶部"按钮，给内容留出呼吸空间 */
 body.is-home .md-top { display: none !important; }
 body.is-home .md-content__inner { padding-top: 0.5rem; }
+
+/* 章节末尾的小链接（不进目录） */
+.pdf-note {
+  margin-top: 2rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--md-default-fg-color--lightest);
+  font-size: 0.7rem;
+  text-align: right;
+}
+.pdf-note a {
+  color: var(--md-default-fg-color--light);
+  text-decoration: none;
+}
+.pdf-note a:hover { color: var(--md-accent-fg-color); }
