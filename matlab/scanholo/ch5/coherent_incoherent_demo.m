@@ -35,20 +35,22 @@ T(disc) = exp(1j*1.5);                                        % 相位延迟 1.5
 % ----- 2. 相干模式记录（式 5.1-6b + 例 5.1 的 p2=1 -> 式 5.1-9）-----
 % i_Omegap(x,y) = exp[-j k0 (z+z0)] * j k0 / (2 pi (z+z0)) * [ chirp(z+z0) * T ]
 % chirp(Z) = exp[-j k0 (x^2+y^2)/(2Z)]，其频谱是 exp[+j Z k^2 / (2 k0)]（书前向 +j）。
+% 书式卷积 = F^{-1}{F{chirp}·F{T}} = fft2(ifft2(T)·N^2·H)/N^2 = fft2(ifft2(T)·H)
+% （前向 ifft2*N^2 的 N^2 与逆变换 fft2/N^2 的 1/N^2 恰好相消——与 Python 版逐行一致）。
 A_coh = 1j*k0/(2*pi*z0) * exp(-1j*k0*z0);                     % 式 (5.1-9) 前因子
-Coh = A_coh .* ifft2( fft2(T) .* exp(1j*z0*K2/(2*k0)) ) * N^2;  % 复 FZP 全息图
+Coh = A_coh .* fft2( ifft2(T) .* exp(1j*z0*K2/(2*k0)) );      % 复 FZP 全息图
 
 % 相干重建：全息图反向共轭传播，乘回前因子
-Rc = fft2( ifft2(Coh) .* exp(-1j*z0*K2/(2*k0)) .* N^2 ) / N^2 / A_coh;
+Rc = fft2( ifft2(Coh) .* exp(-1j*z0*K2/(2*k0)) ) / A_coh;     % 精确恢复 T（H·W=1）
 
 % ----- 3. 非相干模式记录（式 5.1-6c，M=1；p1=1 球面波 + p2=delta 平面波，同 ch3 标准 OSH）-----
 % 取 ch3 (3.5-5) 的 +chirp 分支：H = |T|^2 * exp[+j k0 r^2/(2 z0)] * k0/(2 pi z0)，
 % 该核的频谱是 exp[-j z0 k^2 / (2 k0)]。
 I2 = abs(T).^2;
 A_inc = k0/(2*pi*z0);
-Inc = A_inc .* ifft2( fft2(I2) .* exp(-1j*z0*K2/(2*k0)) ) * N^2;  % 复 FZP 全息图（强度物体）
+Inc = A_inc .* fft2( ifft2(I2) .* exp(-1j*z0*K2/(2*k0)) );    % 复 FZP 全息图（强度物体）
 
-Ri = fft2( ifft2(Inc) .* exp(1j*z0*K2/(2*k0)) .* N^2 ) / N^2 / A_inc;  % 重建回 |T|^2
+Ri = fft2( ifft2(Inc) .* exp(1j*z0*K2/(2*k0)) ) / A_inc;      % 重建回 |T|^2
 
 % ----- 4. 数值验证 -----
 mycorr = @(a, b) sum((a(:)-mean(a(:))).*(b(:)-mean(b(:)))) / ...
