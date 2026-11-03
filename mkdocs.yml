@@ -85,6 +85,8 @@ extra_css:
 nav:
   - 首页: index.md
   - 数值分析方法:
+      - 第11章 数值积分: numana/ch11.md
+      - 第12章 微分方程初值问题: numana/ch12.md
       - 第13章 微分方程的数值解法: numana/ch13.md
   - 深度学习视觉系统:
       - dl4vs/index.md
