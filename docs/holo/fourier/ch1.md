@@ -441,7 +441,11 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 
 !!! warning "原书笔误 2：chirp 变换对的符号"
     表 1.3 最后一行印的是 \(\exp[-j\pi(x^2/a^2+y^2/b^2)] \leftrightarrow j\lvert ab\rvert\exp[-j\pi(a^2f_X^2+b^2f_Y^2)]\)，两侧的 chirp 符号不匹配。按式 (1.1) 的定义直接积分（配方 + Fresnel 积分 \(\int e^{-j\pi u^2}du = e^{-j\pi/4}\)）：
-    \[\mathcal{F}\{e^{-j\pi x^2/a^2}\} = a\,e^{-j\pi/4}\,e^{+j\pi a^2 f_X^2} \quad\Rightarrow\quad \mathcal{F}\{e^{-j\pi(x^2/a^2+y^2/b^2)}\} = -j\,\lvert ab\rvert\,e^{+j\pi(a^2f_X^2+b^2f_Y^2)} .\]
+
+\[
+\mathcal{F}\{e^{-j\pi x^2/a^2}\} = a\,e^{-j\pi/4}\,e^{+j\pi a^2 f_X^2} \quad\Rightarrow\quad \mathcal{F}\{e^{-j\pi(x^2/a^2+y^2/b^2)}\} = -j\,\lvert ab\rvert\,e^{+j\pi(a^2f_X^2+b^2f_Y^2)} .
+\]
+
     检验一个点即可分辨：\(a=b=1\)、\(f_X=0.5\) 时，修正式给 \(e^{-j\pi/4}e^{j\pi/4}=1\)（阻尼数值积分结果 \(0.99997+0.0050j\)），原书式给 \(j\,e^{-j\pi/4}=0.707+0.707j\)——数值积分站修正式。等价的正确写法是 \(e^{+j\pi(x^2/a^2+y^2/b^2)} \leftrightarrow j\lvert ab\rvert e^{-j\pi(a^2f_X^2+b^2f_Y^2)}\)（把正负号整体翻过来）。菲涅耳传播（第 4、5 章）里两个符号的 chirp 都会出现，到时候别把这笔账算错。
 
 圆函数的变换曲面如下——这就是著名的"jinc"形频谱，中心尖峰周围一圈圈衰减的环：

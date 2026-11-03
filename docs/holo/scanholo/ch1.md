@@ -684,11 +684,15 @@ G(k_x,k_y)=F(k_x,k_y)\,H(k_x,k_y),
 !!! note "拓展：例 1.4 的证明思路（卷积的傅里叶变换 = F·H）"
     按定义把 (1.2-2) 塞进 (1.1-2a)：
 
-    \[\mathcal{F}_{xy}\{f*h\}=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Big[\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x',y')\,h(x-x',y-y')\,dx'dy'\Big]\exp(jk_xx+jk_yy)\,dx\,dy.\]
+\[
+\mathcal{F}_{xy}\{f*h\}=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Big[\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x',y')\,h(x-x',y-y')\,dx'dy'\Big]\exp(jk_xx+jk_yy)\,dx\,dy.
+\]
 
     把 x、y 归到内层，交换积分次序后，内层正是 \(h(x-x',y-y')\) 的傅里叶变换——由性质表 #2，它等于 \(H(k_x,k_y)\exp(jk_xx'+jk_yy')\)。代回外层：
 
-    \[\mathcal{F}_{xy}\{f*h\}=H(k_x,k_y)\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x',y')\exp(jk_xx'+jk_yy')\,dx'dy'=H(k_x,k_y)\,F(k_x,k_y).\]
+\[
+\mathcal{F}_{xy}\{f*h\}=H(k_x,k_y)\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x',y')\exp(jk_xx'+jk_yy')\,dx'dy'=H(k_x,k_y)\,F(k_x,k_y).
+\]
 
     得 (1.2-3b)。全程只用了"平移 = 乘线性相位"这一条性质。
 
@@ -897,7 +901,9 @@ Python 版用 numpy 现场画笑脸代替 `imread('smiley.bmp')`，其余逐行�
 !!! note "拓展：把本章工具装到光传播上（原书第 2 章正式推导）"
     本章所有抽象概念——冲激响应、传递函数、卷积——在光学里最现成的实例就是**自由空间传播**。把 \(z=0\) 平面的场 \(f(x,y)\) 看成输入、\(z\) 处的场 \(g(x,y)\) 看成输出，自由空间就是 LSI 系统（平移输入，衍射图样跟着平移）：
 
-    \[h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad H(k_x,k_y;\,z)=\exp\!\Big[-j\frac{z}{2k_0}(k_x^2+k_y^2)\Big],\]
+\[
+h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad H(k_x,k_y;\,z)=\exp\!\Big[-j\frac{z}{2k_0}(k_x^2+k_y^2)\Big],
+\]
 
     （全局相位因子 \(e^{\mp jk_0z}\) 略去；\(k_0=2\pi/\lambda\)。）\(h\) 是"一个点在 \(z\) 处激起的多大响应"——球面波的二次相位；\(H\) 是对应的**频率传递函数**。两条路线按 (1.2-2)/(1.2-3b) 给出同一个答案：
 

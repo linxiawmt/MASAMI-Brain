@@ -61,11 +61,15 @@
 
 第 4 章说过:菲涅耳表达式是仿真里最常用的选择——适用场景广、计算直接。最常见的传播套路基于式 (4.18),这里重抄一遍作为起点:
 
-\[ U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\,H(f_X,f_Y)\big\}, \tag{5.1} \]
+\[
+U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\,H(f_X,f_Y)\big\}, \tag{5.1}
+\]
 
 其中的传递函数 \(H\) 就是第 4 章的式 (4.24):
 
-\[ H(f_X,f_Y) = \exp(jkz)\exp\left[-j\pi\lambda z\left(f_X^2+f_Y^2\right)\right]. \tag{5.2} \]
+\[
+H(f_X,f_Y) = \exp(jkz)\exp\left[-j\pi\lambda z\left(f_X^2+f_Y^2\right)\right]. \tag{5.2}
+\]
 
 新建 M 文件,存成 **propTF**,输入以下函数:
 
@@ -167,11 +171,15 @@ Python 侧把三个传播器统一放在 `python/fourier/ch5/ch5_prop.py` 里供
 
 另一条路基于式 (4.17),重抄:
 
-\[ U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\,\mathfrak{F}\{h(x,y)\}\big\}, \tag{5.3} \]
+\[
+U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\,\mathfrak{F}\{h(x,y)\}\big\}, \tag{5.3}
+\]
 
 脉冲响应 \(h\) 即第 4 章的式 (4.23):
 
-\[ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)\right]. \tag{5.4} \]
+\[
+h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)\right]. \tag{5.4}
+\]
 
 式 (5.1) 与 (5.3) 在解析上是**同一个运算**——但一旦经过离散采样和变换,TF 与 IR 两条路可以给出**不同的结果**(5.4 节的全部内容就是讲什么时候差、差多少)。
 
@@ -446,17 +454,23 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 
 第一条最显然:源场的支撑(support)要"装得进"数值阵列。设 \(D_1\) 是源场的有效支撑(最大线宽),\(L\) 是阵列边长,通常要求
 
-\[ D_1 < L. \tag{5.5} \]
+\[
+D_1 < L. \tag{5.5}
+\]
 
 实践中最好给源函数周围留"警戒区(guard area)",比如 \(L = 2D_1\) 或 \(3D_1\)——FFT 的周期延拓性质会让传播后的能量绕回阵列边缘,警戒区能减轻这种边缘 artifact。
 
 再考虑对 \(H\) 与 \(h\) 里 chirp 函数采样(附录 A)的效果。\(H\) 的 chirp 是 \(\exp[-j\pi\lambda z(f_X^2+f_Y^2)]\),**充分采样(过采样)**的条件是
 
-\[ \Delta x \geq \frac{\lambda z}{L}. \tag{5.6} \]
+\[
+\Delta x \geq \frac{\lambda z}{L}. \tag{5.6}
+\]
 
 \(h\) 的 chirp 是 \(\exp\left[j\frac{k}{2z}(x^2+y^2)\right]\),过采样条件是
 
-\[ \Delta x \leq \frac{\lambda z}{L}. \tag{5.7} \]
+\[
+\Delta x \leq \frac{\lambda z}{L}. \tag{5.7}
+\]
 
 !!! note "拓展:两个判据为什么方向相反——一页纸推导"
     同一对傅里叶变换 \(H \leftrightarrow h\),过采样判据却一个"\(\geq\)"一个"\(\leq\)",初看很别扭。关键在于**两个 chirp 活在两个不同的网格上**:
@@ -466,7 +480,9 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 
 式 (5.6) 与 (5.7) **同时**满足的条件是
 
-\[ \Delta x = \frac{\lambda z}{L}, \tag{5.8} \]
+\[
+\Delta x = \frac{\lambda z}{L}, \tag{5.8}
+\]
 
 书里称之为**临界采样(critical sampling)**条件。表 5.1 汇总了由 \(H\) 或 \(h\) 相位项的过/欠/临界采样定义的三种 regime,每种 regime 配一条涉及源场带宽 \(B_1\) 的判据:
 
@@ -488,11 +504,15 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 
 5.3 节的源场是
 
-\[ U_1(x,y) = \mathrm{rect}\left(\frac{x}{2w}\right)\mathrm{rect}\left(\frac{y}{2w}\right), \tag{5.9} \]
+\[
+U_1(x,y) = \mathrm{rect}\left(\frac{x}{2w}\right)\mathrm{rect}\left(\frac{y}{2w}\right), \tag{5.9}
+\]
 
 \(w = 0.051\) m。源支撑 \(D_1 = 2w = 0.102\) m,轻松装进 \(L = 0.5\) m(图 5.1)。按 2.2 节的思路,有效带宽的合理估计是
 
-\[ B_1 = \frac{5.98}{w} = 117.3\ \text{cycles/m}. \tag{5.10} \]
+\[
+B_1 = \frac{5.98}{w} = 117.3\ \text{cycles/m}. \tag{5.10}
+\]
 
 !!! note "拓展:B1 = 5.98/w 的数值复核"
     式 (5.10) 沿用 2.2 节式 (2.10) 的方法:谱功率 \(|F|^2 = (4w^2)^2\mathrm{sinc}^2(2wf_X)\mathrm{sinc}^2(2wf_Y)\) 在**半径 B 的圆盘**内占全功率的比例达到 98%(2D 极坐标径向积分)。数值积分(本章脚本 `ch5_sampling.py`)给出:精确 98% 半径对应 \(2wB = 8.19\),即 \(B_{98\%} \approx 4.1/w \approx 80\) cyc/m;而 \(5.98/w = 117.3\) cyc/m 对应径向占比约 **98.8%**。也就是说书的系数取得偏保守(多收约 0.8% 的谱功率),方向上更安全;这也解释了 2.2 节的圆整值 \(B \approx 5/w\) 与本章 \(5.98/w\) 的出入——\(B_1\) 本来就是个估计量,书 5.4.5 节干脆承认调参是"something of an art form"。
@@ -522,15 +542,21 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 
 sqr_beam 的传播器结果离解析菲涅耳解有多近?书挑了三个"看起来合理"的案例:TF @ 1000 m、TF @ 2000 m、IR @ 20,000 m。方孔有解析结果可用(引 Goodman):
 
-\[ U_2(x,y) = \frac{e^{jkz}}{2j}\Big\{\big[C(\xi_1)-C(\xi_2)\big] + j\big[S(\xi_1)-S(\xi_2)\big]\Big\}\Big\{\big[C(\eta_1)-C(\eta_2)\big] + j\big[S(\eta_1)-S(\eta_2)\big]\Big\}, \tag{5.11} \]
+\[
+U_2(x,y) = \frac{e^{jkz}}{2j}\Big\{\big[C(\xi_1)-C(\xi_2)\big] + j\big[S(\xi_1)-S(\xi_2)\big]\Big\}\Big\{\big[C(\eta_1)-C(\eta_2)\big] + j\big[S(\eta_1)-S(\eta_2)\big]\Big\}, \tag{5.11}
+\]
 
 其中 \(C\) 与 \(S\) 是**菲涅耳积分(Fresnel integrals)**:
 
-\[ C(\chi) = \int_0^\chi \cos\left(\frac{\pi t^2}{2}\right)dt, \qquad S(\chi) = \int_0^\chi \sin\left(\frac{\pi t^2}{2}\right)dt, \tag{5.12} \]
+\[
+C(\chi) = \int_0^\chi \cos\left(\frac{\pi t^2}{2}\right)dt, \qquad S(\chi) = \int_0^\chi \sin\left(\frac{\pi t^2}{2}\right)dt, \tag{5.12}
+\]
 
 且
 
-\[ \xi_1(x) = \sqrt{\frac{2}{\lambda z}}\,(-w-x), \quad \xi_2(x) = \sqrt{\frac{2}{\lambda z}}\,(w-x), \quad \eta_1(y) = \sqrt{\frac{2}{\lambda z}}\,(-w-y), \quad \eta_2(y) = \sqrt{\frac{2}{\lambda z}}\,(w-y). \tag{5.13} \]
+\[
+\xi_1(x) = \sqrt{\frac{2}{\lambda z}}\,(-w-x), \quad \xi_2(x) = \sqrt{\frac{2}{\lambda z}}\,(w-x), \quad \eta_1(y) = \sqrt{\frac{2}{\lambda z}}\,(-w-y), \quad \eta_2(y) = \sqrt{\frac{2}{\lambda z}}\,(w-y). \tag{5.13}
+\]
 
 !!! note "拓展:式 (5.11) 的来历与常数因子"
     从式 (4.25) 的 FT 形式出发:对 \(\mathrm{rect}(\xi/2w)\) 一维配方 \(\frac{\pi\xi^2}{\lambda z} - \frac{2\pi x\xi}{\lambda z} = \frac{\pi(\xi-x)^2}{\lambda z} - \frac{\pi x^2}{\lambda z}\),换元 \(t = \sqrt{2/(\lambda z)}(\xi - x)\) 后积分变成菲涅耳积分的差;二维两个一维因子相乘,前导 \(e^{jkz}/(j\lambda z)\) 的 \(e^{j\pi(x^2+y^2)/(\lambda z)}\) 恰好与配方产生的 \(e^{-j\pi(x^2+y^2)/(\lambda z)}\) 相消,剩下 \(\frac{e^{jkz}}{j\lambda z}\cdot\frac{\lambda z}{2} = \frac{e^{jkz}}{2j}\)——这就是式 (5.11) 的常数。中心值验证:\(I_2(0,0) = 4\big[C^2(T)+S^2(T)\big]^2\),\(T = \sqrt{2/(\lambda z)}\,w = 2.281\),解析值 1.895,数值传播给 1.916(差 1%,方孔边缘混叠所致)。**本式已与 propTF/propIR 数值结果逐点对拍**(见下),包括相位。
@@ -580,7 +606,9 @@ sqr_beam 的传播器结果离解析菲涅耳解有多近?书挑了三个"看起
 
 临界采样能让阵列边长与带宽的利用都最大化,尽量用它是对的。但维持这个条件可能不方便:把 \(\Delta x = \lambda z/L\) 改写成样本数的形式
 
-\[ z = \frac{L^2}{M\lambda}, \qquad M = \frac{L^2}{\lambda z}, \tag{5.14} \]
+\[
+z = \frac{L^2}{M\lambda}, \qquad M = \frac{L^2}{\lambda z}, \tag{5.14}
+\]
 
 它用"跨阵列边长的样本数"定义了临界判据。给定场景下,临界条件可能要求太多样本(FFT 算不动),也可能太少(源面或观察面采不够)。别的需求还会跟临界判据打架——比如模拟大气湍流传播用的相位屏,有自己的一套采样间隔与阵列尺寸要求(参考文献 2、4)。判据总可以靠**插值或抽取**维持,但额外步骤增加复杂度和运行时间,而且未必解决样本太多/太少的实际问题。
 
@@ -590,7 +618,9 @@ sqr_beam 的传播器结果离解析菲涅耳解有多近?书挑了三个"看起
 
 有人会想:"嘿,等等!把长距离传播拆成一连串更短的、每步都满足 \(\Delta x \geq \lambda z/L\) 的 TF 传播,不就行了?"——可惜,**结果与单次 TF 传播完全一样**。因为一连串 TF 传播等价于把各段传递函数**相乘**后作用到初始场:比如把 \(z_N\) 拆成若干短距离,容易证明
 
-\[ H(f_X,f_Y; z_1)\,H(f_X,f_Y; z_2)\cdots H(f_X,f_Y; z_{N-1}) = H(f_X,f_Y; z_1+z_2+\cdots+z_N), \tag{5.15} \]
+\[
+H(f_X,f_Y; z_1)\,H(f_X,f_Y; z_2)\cdots H(f_X,f_Y; z_{N-1}) = H(f_X,f_Y; z_1+z_2+\cdots+z_N), \tag{5.15}
+\]
 
 其中各 \(z\) 参数按式 (5.2) 理解。所以即使每段短传播都是临界采样,最终结果仍与一次传播相同!**起作用的是总传播距离。**不过 split-step(分步)仿真在很多场景依然必用——比如要在传播路径中穿插一系列大气湍流相位屏。
 
@@ -605,19 +635,27 @@ sqr_beam 的传播器结果离解析菲涅耳解有多近?书挑了三个"看起
 
 夫琅禾费图样的表达式重抄一遍(源面变量换下标 1、观察面下标 2,方便编程):
 
-\[ U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right]\iint U_1(x_1,y_1)\exp\left[-j\frac{2\pi}{\lambda z}(x x_1 + y y_1)\right]dx_1\,dy_1, \tag{5.16} \]
+\[
+U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right]\iint U_1(x_1,y_1)\exp\left[-j\frac{2\pi}{\lambda z}(x x_1 + y y_1)\right]dx_1\,dy_1, \tag{5.16}
+\]
 
 用 FFT 计算夫琅禾费场时,源面与观察面的边长**一般不同**。由式 (4.31),
 
-\[ x_2 = \lambda z f_{X1}, \tag{5.17} \]
+\[
+x_2 = \lambda z f_{X1}, \tag{5.17}
+\]
 
 再用式 (2.17),观察面边长与采样间隔可用源面参数表示:
 
-\[ L_2 = \frac{\lambda z}{\Delta x_1}, \qquad \Delta x_2 = \frac{\lambda z}{L_1}. \tag{5.18} \]
+\[
+L_2 = \frac{\lambda z}{\Delta x_1}, \qquad \Delta x_2 = \frac{\lambda z}{L_1}. \tag{5.18}
+\]
 
 于是观察面坐标为
 
-\[ x_2 = -\frac{L_2}{2}:\Delta x_2:\frac{L_2}{2}-\Delta x_2 = -\frac{\lambda z}{2\Delta x_1}:\frac{\lambda z}{L_1}:\frac{\lambda z}{2\Delta x_1}-\frac{\lambda z}{L_1}. \tag{5.19} \]
+\[
+x_2 = -\frac{L_2}{2}:\Delta x_2:\frac{L_2}{2}-\Delta x_2 = -\frac{\lambda z}{2\Delta x_1}:\frac{\lambda z}{L_1}:\frac{\lambda z}{2\Delta x_1}-\frac{\lambda z}{L_1}. \tag{5.19}
+\]
 
 如果用临界采样(\(\Delta x_1 = \lambda z/L_1\)),式 (5.18) 表明两边长相等(\(L_2 = L_1\));否则不同。计算夫琅禾费图样的函数 **propFF** 如下:
 
@@ -716,30 +754,40 @@ imagesc(x2,y2,nthroot(I2,3)); %stretch image contrast
 
 <figure>
   <img src="../../../images/holo/fourier/fig-5-7.png" width="760" />
-  <figcaption>图 5.7 夫琅禾费辐照度:(a) 图样(\(I_2^{1/3}\) 拉伸);(b) x 剖面,散点为解析值(截自原书)</figcaption>
+  <figcaption>图 5.7 夫琅禾费辐照度:(a) 图样(<span class="arithmatex">\(I_2^{1/3}\)</span> 拉伸);(b) x 剖面,散点为解析值(截自原书)</figcaption>
 </figure>
 
 仿真结果可以对照解析夫琅禾费结果检查。先取源分布的傅里叶变换(表 1.3):
 
-\[ \mathfrak{F}\left\{\mathrm{rect}\left(\frac{x_1}{2w}\right)\mathrm{rect}\left(\frac{y_1}{2w}\right)\right\} = 4w^2\,\mathrm{sinc}(2wf_{X1})\,\mathrm{sinc}(2wf_{Y1}). \tag{5.20} \]
+\[
+\mathfrak{F}\left\{\mathrm{rect}\left(\frac{x_1}{2w}\right)\mathrm{rect}\left(\frac{y_1}{2w}\right)\right\} = 4w^2\,\mathrm{sinc}(2wf_{X1})\,\mathrm{sinc}(2wf_{Y1}). \tag{5.20}
+\]
 
 代入 \(f_{X1} = x_2/\lambda z\)、\(f_{Y1} = y_2/\lambda z\),再乘上各前导因子,得到夫琅禾费场:
 
-\[ U_2(x_2,y_2) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x_2^2+y_2^2)\right]\times 4w^2\,\mathrm{sinc}\left(\frac{2wx_2}{\lambda z}\right)\mathrm{sinc}\left(\frac{2wy_2}{\lambda z}\right). \tag{5.21} \]
+\[
+U_2(x_2,y_2) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x_2^2+y_2^2)\right]\times 4w^2\,\mathrm{sinc}\left(\frac{2wx_2}{\lambda z}\right)\mathrm{sinc}\left(\frac{2wy_2}{\lambda z}\right). \tag{5.21}
+\]
 
 辐照度 \(I_2(x_2,y_2) = U_2(x_2,y_2)U_2^*(x_2,y_2)\):
 
-\[ I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2wx_2}{\lambda z}\right)\mathrm{sinc}^2\left(\frac{2wy_2}{\lambda z}\right). \tag{5.22} \]
+\[
+I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2wx_2}{\lambda z}\right)\mathrm{sinc}^2\left(\frac{2wy_2}{\lambda z}\right). \tag{5.22}
+\]
 
 解析函数的点也画在图 5.7(b) 里。现在轮到你:把式 (5.22) 插进脚本,看能不能复现图 5.7(b)。
 
 通常算夫琅禾费图样关心的是辐照度,前面的复指数都消失了——这种情况下唯一要操心的是常规源面采样条件 \(B_1 < 1/2\Delta x_1\)。但假如你需要**带 chirp 项的夫琅禾费场**:按式 (5.7) 的逻辑,观察面 chirp \(\exp\left[j\frac{k}{2z}(x_2^2+y_2^2)\right]\) 充分采样的条件是 \(\Delta x_2 \leq \lambda z/L_2\),用式 (5.18) 换算回源面就是
 
-\[ \Delta x_1 \geq \frac{\lambda z}{L_1}. \tag{5.23} \]
+\[
+\Delta x_1 \geq \frac{\lambda z}{L_1}. \tag{5.23}
+\]
 
 若式 (5.23) 不满足,接到变换前面的 chirp 相位会混叠。再结合菲涅耳数(夫琅禾费 regime 要求 \(N_F = w^2/\lambda z \ll 1\))与式 (5.23),可得
 
-\[ \Delta x_1 \gg \frac{w^2}{L_1}, \qquad\text{或}\qquad M \gg \left(\frac{w}{\Delta x_1}\right)^2, \tag{5.24} \]
+\[
+\Delta x_1 \gg \frac{w^2}{L_1}, \qquad\text{或}\qquad M \gg \left(\frac{w}{\Delta x_1}\right)^2, \tag{5.24}
+\]
 
 即网格样本数 M 要远大于"跨源孔径半径的样本数(\(w/\Delta x_1\))"的**平方**——意味着很大的 M。幸运的是,夫琅禾费相位通常不需要。
 
@@ -773,7 +821,7 @@ Python 侧的对应物:`python -m cProfile -s cumulative 脚本.py` 看各函数
 
 <figure>
   <img src="../../../images/holo/fourier/fig-5-py-ex51.png" width="880" />
-  <figcaption>图 5-P3 习题 5.1(d):圆孔菲涅耳 TF 传播(\(I_2^{1/3}\)),z = 500/1000/2000 m 对应 TF 过/临界/欠采样(笔记自制)</figcaption>
+  <figcaption>图 5-P3 习题 5.1(d):圆孔菲涅耳 TF 传播(<span class="arithmatex">\(I_2^{1/3}\)</span>),z = 500/1000/2000 m 对应 TF 过/临界/欠采样(笔记自制)</figcaption>
 </figure>
 
 **5.2 三个孔径的菲涅耳传播**:回到习题 4.4 的三个孔径,用 500 × 500 阵列仿真菲涅耳传播:孔径 (a) \(L_1 = 2\) mm,z = 0.5、1、5 cm;孔径 (b) \(L_1 = 2.5\) cm,z = 0.5、2、5 m;孔径 (c) \(L_1 = 2.5\) cm,z = 0.5、2、5 m。哪些 z 给出临界采样?
@@ -783,7 +831,9 @@ Python 侧的对应物:`python -m cProfile -s cumulative 脚本.py` 看各函数
 
 **5.3 功率守恒诊断**:传播仿真的一个有用诊断是计算源面与观察面的功率。假设没有吸收或散射(本书仿真都成立),功率(正比于瓦特)应当守恒——源面与观察面应含相同光功率,否则可能有代码错误或采样问题。功率是积分辐照度:
 
-\[ P = \iint I(x,y)\,dx\,dy. \tag{5.25} \]
+\[
+P = \iint I(x,y)\,dx\,dy. \tag{5.25}
+\]
 
 对本章 sqr_beam 例子:(a) 加代码用 `sum` 计算源面与观察面功率(各传播案例)。要不要套两层 sum?dx 与 dy 怎么办?可以把功率计算行末的分号去掉,让数值在执行时显示到命令窗口。(b) 某些案例的源/观察面功率有出入吗?
 
@@ -806,19 +856,27 @@ Python 侧的对应物:`python -m cProfile -s cumulative 脚本.py` 看各函数
 
 **5.5 高斯光束**:傅里叶方法非常适合仿真激光光束传播。激光束通常满足傍轴光线角近似(菲涅耳表达式适用);而且高斯函数比同支撑的方孔/圆孔光束**在采样 artifacts 方面宽容得多**。激光教科书定义沿 z 传播的高斯激光束(TEM\(_{0,0}\) 模)辐照度:
 
-\[ I(x,y,z) = I_0\left(\frac{w_0}{w(z)}\right)^2\exp\left[-\frac{2(x^2+y^2)}{w(z)^2}\right], \tag{5.26} \]
+\[
+I(x,y,z) = I_0\left(\frac{w_0}{w(z)}\right)^2\exp\left[-\frac{2(x^2+y^2)}{w(z)^2}\right], \tag{5.26}
+\]
 
 其中 \(w_0\) 是源光束 \(e^{-2}\) 半径(z = 0),\(w(z)\) 是距离 z 处的光束半径:
 
-\[ w(z) = w_0\sqrt{1+\left(\frac{z}{z_R}\right)^2}, \tag{5.27} \]
+\[
+w(z) = w_0\sqrt{1+\left(\frac{z}{z_R}\right)^2}, \tag{5.27}
+\]
 
 其中
 
-\[ z_R = \frac{\pi w_0^2}{\lambda} \tag{5.28} \]
+\[
+z_R = \frac{\pi w_0^2}{\lambda} \tag{5.28}
+\]
 
 为**瑞利距离(Rayleigh range)**。以下问题取源光场(z = 0):
 
-\[ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29} \]
+\[
+U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
+\]
 
 \(w_0 = 1\) mm、\(\lambda = 0.633\ \mu\text{m}\)、\(A_0 = 1\) V/m。(严格说 \(I_0 = |A_0|^2/(2\eta)\) W/m²,\(\eta = 377\ \Omega\) 为自由空间阻抗。)(a) 取边长 15 mm、250 × 250 阵列,在源阵列里生成式 (5.29) 的高斯束,对 z = 1、5、10 m 做菲涅耳传播,与式 (5.26) 的解析结果比较辐照度。(b) 临界采样的传播距离是多少?对 10 m 传播检验源带宽判据。(c) 推导 \(U_0\) 束的夫琅禾费辐照度表达式,证明与式 (5.26) 一致。
 

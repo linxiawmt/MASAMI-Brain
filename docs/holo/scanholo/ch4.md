@@ -1378,7 +1378,7 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,p
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-4-16.png" width="560" class="lq-img" />
-  <figcaption>图 4.16 数字解密单元（DDU）：密文 \(i(x,y;z^c)\) 与解密端信息 \(i(x,y;z^d)\) 各做 \(\mathcal{F}\)，相乘，\(\mathcal{F}^{-1}\)，输出"解密图像" \(|\Gamma_0(x,y;z^c)|^2\) [Poon et al., Applied Optics 42, 496 (2003)]（截自原书）</figcaption>
+  <figcaption>图 4.16 数字解密单元（DDU）：密文 <span class="arithmatex">\(i(x,y;z^c)\)</span> 与解密端信息 <span class="arithmatex">\(i(x,y;z^d)\)</span> 各做 <span class="arithmatex">\(\mathcal{F}\)</span>，相乘，<span class="arithmatex">\(\mathcal{F}^{-1}\)</span>，输出"解密图像" <span class="arithmatex">\(|\Gamma_0(x,y;z^c)|^2\)</span> [Poon et al., Applied Optics 42, 496 (2003)]（截自原书）</figcaption>
 </figure>
 
 \[

@@ -317,7 +317,7 @@ U_P(\mathbf r) = A\exp\left[i\frac{2\pi}{\lambda}(\alpha x + \beta y + \gamma z)
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-1-1.png" width="560" />
-  <figcaption>图 1.1 方向余弦 \(\alpha\)、\(\beta\)、\(\gamma\)：波矢 \(\boldsymbol k\) 与三根坐标轴的夹角（截自原书）</figcaption>
+  <figcaption>图 1.1 方向余弦 <span class="arithmatex">\(\alpha\)</span>、<span class="arithmatex">\(\beta\)</span>、<span class="arithmatex">\(\gamma\)</span>：波矢 <span class="arithmatex">\(\boldsymbol k\)</span> 与三根坐标轴的夹角（截自原书）</figcaption>
 </figure>
 
 **球面波（spherical wave）**——波前是球面，发散或汇聚。能量均匀铺在面积 \(4\pi R^2\) 的球面上（\(R\) 为波前曲率半径），能量守恒要求振幅按 \(R^{-1}\) 衰减：
@@ -396,7 +396,7 @@ R(z) = z\left[1 + \left(\frac{\pi W_0^2}{\lambda z}\right)^2\right],
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-1-2.png" width="620" />
-  <figcaption>图 1.2 光波传播的坐标系：源平面 \((x_1,y_1)\) 与观察平面 \((x_2,y_2)\) 相距 \(\Delta z\)（截自原书）</figcaption>
+  <figcaption>图 1.2 光波传播的坐标系：源平面 <span class="arithmatex">\((x_1,y_1)\)</span> 与观察平面 <span class="arithmatex">\((x_2,y_2)\)</span> 相距 <span class="arithmatex">\(\Delta z\)</span>（截自原书）</figcaption>
 </figure>
 
 ### 1.3.1 菲涅耳衍射积分与矩形孔解析解
@@ -415,9 +415,11 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}}{i\lambda\Delta z}\int_{-\infty}^{\infty}\int_
 
 !!! note "拓展：(1.57) 上面还有两层——克希霍夫与瑞利-索末菲"
     格林定理 + 基尔霍夫边界条件给出**克希霍夫衍射积分**：观察点的场由孔径面上的 \(U\) 与 \(\nabla U\) 贡献，核 \(\frac{e^{ikr}}{r}\) 里带一个倾斜因子（平面屏下 \(K(\theta)=\frac{1+\cos\theta}{2}\)，\(\theta\) 是观察方向与孔径法线的夹角）。它的毛病是边界条件数学上不自洽：同时假设孔径外 \(U\) 和 \(\partial U/\partial n\) 都是零， overdetermined。**瑞利–索末菲（Rayleigh–Sommerfeld）**理论改用第一类格林函数问题，修掉了不自洽，倾斜因子简化为 \(\cos\theta\)（第一积分）：
+
     \[
     U(P_2) = \frac{1}{i\lambda}\iint_\Sigma U(P_1)\,\frac{e^{ikr_{12}}}{r_{12}}\,\cos\theta\;d\Sigma,
     \]
+
     还有以 \(J_1\) 为核的第二瑞利–索末菲积分（与第 4 章角谱法等价）。傍轴极限下 \(r_{12}\approx\Delta z+\frac{(x_1-x_2)^2+(y_1-y_2)^2}{2\Delta z}\)、\(\cos\theta\approx 1\)、\(\frac{1}{r_{12}}\approx\frac{1}{\Delta z}\)——两条积分都退化成 (1.57)。所以层级是：**克希霍夫 / 瑞利–索末菲（一般）→ 菲涅耳（傍轴）→ 夫琅禾费（远场）**，本章走最后两级，第 4 章补角谱视角。
 
 解析解稀罕，但有一个必须认识：**矩形孔的菲涅耳衍射**——原书第 6–8 章反复拿它当数值结果的"考卷答案"。设源平面场为
@@ -517,9 +519,11 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 
 !!! note "拓展：相干与非相干照明——'加场'还是'加强度'是原则问题"
     两列场 \(U_1,U_2\) 叠加：瞬时场永远线性相加 \(U=U_1+U_2\)，但探测器响应的是时间平均强度
+
     \[
     \langle|U_1+U_2|^2\rangle = \langle|U_1|^2\rangle+\langle|U_2|^2\rangle + 2\,\mathrm{Re}\langle U_1U_2^*\rangle.
     \]
+
     最后一项是干涉项，它的死活决定图像长相：
     - **完全相干**（单模激光；同一波前分出的双缝两列正是这种）：相位差稳定，干涉项存活——(1.71) 的 \(\cos^2\) 条纹；
     - **完全非相干**（两个独立热光源）：相位差随机游走，时间平均后干涉项为零——强度直接相加，看不到条纹；
@@ -560,7 +564,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-1-4.png" width="760" />
-  <figcaption>图 1.4 双缝夫琅禾费剖面（4 倍补零）：\(\cos^2\) 条纹被 \(\mathrm{sinc}^2\) 包络调制，\(\Delta x=3D_x\) 导致 \(\pm3\) 级缺级（自绘仿真）</figcaption>
+  <figcaption>图 1.4 双缝夫琅禾费剖面（4 倍补零）：<span class="arithmatex">\(\cos^2\)</span> 条纹被 <span class="arithmatex">\(\mathrm{sinc}^2\)</span> 包络调制，<span class="arithmatex">\(\Delta x=3D_x\)</span> 导致 <span class="arithmatex">\(\pm3\)</span> 级缺级（自绘仿真）</figcaption>
 </figure>
 
 === "MATLAB"
@@ -1178,7 +1182,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-1-6.png" width="880" />
-  <figcaption>图 1.6 上排：细网格圆孔（a）、艾里斑频谱（b，对数尺度）、3D 光强（c）；下排：粗网格圆孔的锯齿边缘（d）、出现高频混叠的频谱（e）、沿 \(f_X\) 的剖面对比（f，对数纵轴）（自绘仿真）</figcaption>
+  <figcaption>图 1.6 上排：细网格圆孔（a）、艾里斑频谱（b，对数尺度）、3D 光强（c）；下排：粗网格圆孔的锯齿边缘（d）、出现高频混叠的频谱（e）、沿 <span class="arithmatex">\(f_X\)</span> 的剖面对比（f，对数纵轴）（自绘仿真）</figcaption>
 </figure>
 
 === "MATLAB"
@@ -1737,18 +1741,22 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 
 ??? note "1.3 答案要点"
     \(\delta\) 的抽样性质把积分直接"挑"成被积核在源点的取值：
+
     \[
     U(\mathbf r_2) = \frac{e^{ik\Delta z}}{i\lambda\Delta z}\,e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}.
     \]
+
     与 (1.52) 逐项对照：这就是 \(A=\frac{1}{i\lambda}\) 的傍轴球面波。物理注解：菲涅耳传播是线性空不变系统，其冲激响应（点源像）就是傍轴球面波——(1.57) 之所以能写成卷积、进而能用 FFT 快算，根据全在这条题里。
 
 **1.4 写出球坐标下的标量波方程，证明球面波是它的解。**
 
 ??? note "1.4 答案要点"
     径向对称（\(\partial/\partial\theta=\partial/\partial\phi=0\)）时拉普拉斯算子只剩 \(\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dU}{dr}\right)\)，亥姆霍兹方程变成
+
     \[
     \frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{dU}{dr}\right) + k^2U = 0.
     \]
+
     代入 \(U=e^{ikr}/r\)：\(\frac{dU}{dr}=\left(\frac{ik}{r}-\frac{1}{r^2}\right)e^{ikr}\)，\(r^2\frac{dU}{dr}=(ikr-1)e^{ikr}\)，再求导得 \(-k^2r\,e^{ikr}\)，于是 \(\frac{1}{r^2}(\cdot)=-k^2\frac{e^{ikr}}{r}=-k^2U\)，两脚抵消（\(r\neq0\)）。通解 \(A\frac{e^{ikr}}{r}+B\frac{e^{-ikr}}{r}\)——出射/入射球面波对，与 (1.47) 对上。
 
 **1.5 把源平面球面波**
@@ -1762,24 +1770,30 @@ U(\mathbf r_1) = \frac{A\,e^{ikR_1}}{R_1}\,e^{i\frac{k}{2R_1}\left[(x-x_c)^2+(y-
 
 ??? note "1.5 答案要点"
     取轴上球心（\(x_c=y_c=0\)）最清楚。两个二次相位相乘、按 \(x_1\) 配方：
+
     \[
     e^{i\frac{k}{2R_1}x_1^2}\,e^{i\frac{k}{2\Delta z}(x_1-x_2)^2} = e^{i\frac{k x_2^2}{2\Delta z}}\;e^{i\frac{k}{2}\left(\frac{1}{R_1}+\frac{1}{\Delta z}\right)x_1^2}\;e^{-i\frac{k}{\Delta z}x_1x_2}.
     \]
+
     对 \(x_1\) 的高斯型积分 \(\int e^{iax_1^2-ibx_1}dx_1\propto e^{-ib^2/(4a)}\)，把 \(a=\frac{k}{2}\big(\frac{1}{R_1}+\frac{1}{\Delta z}\big)\)、\(b=\frac{kx_2}{\Delta z}\) 代进去，配方的相位与观察面二次相位合并后恰好剩下
+
     \[
     U(\mathbf r_2) = \frac{A\,e^{ik\Delta z}}{R_2}\;e^{i\frac{k}{2R_2}(x_2^2+y_2^2)},
     \qquad R_2 = R_1+\Delta z.
     \]
+
     结论很漂亮：傍轴下球面波传播 \(\Delta z\) 后还是球面波，曲率半径加 \(\Delta z\)（发散更平）。振幅里的 \(\frac{1}{R_1}\frac{\pi}{a}\frac{1}{i\lambda\Delta z}=\frac{1}{R_2}\) 也自动对上。
 
 **1.6 平面波穿过环形圆孔，孔后场 \(U(\mathbf r_1)=\mathrm{circ}\!\left(\frac{2r_1}{D_{\mathrm{out}}}\right)-\mathrm{circ}\!\left(\frac{2r_1}{D_{\mathrm{in}}}\right)\)（\(D_{\mathrm{out}}>D_{\mathrm{in}}\)）。用夫琅禾费衍射积分求远场。**
 
 ??? note "1.6 答案要点"
     环孔 = 大圆盘减小圆盘，FT 的线性允许频域里两个 jinc 相减。用"半径 \(R\) 圆盘 ↔ \(R J_1(2\pi R\rho)/\rho\)"（\(\rho\) 为径向空间频率），并以 \(\rho=\sqrt{x_2^2+y_2^2}/(\lambda\Delta z)\) 代入 (1.67)：
+
     \[
     U(x_2,y_2) = \frac{e^{ik\Delta z}\,e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lambda\Delta z}\;
     \frac{\frac{D_{\mathrm{out}}}{2}J_1\!\left(\pi D_{\mathrm{out}}\rho\right)-\frac{D_{\mathrm{in}}}{2}J_1\!\left(\pi D_{\mathrm{in}}\rho\right)}{\rho}.
     \]
+
     两个极限自检：\(D_{\mathrm{in}}\to0\) 退化为圆孔艾里斑；\(D_{\mathrm{in}}\to D_{\mathrm{out}}\) 环宽趋零，图样变成细环傅里叶核（中心亮斑变窄、外环变强）——这也是"望远镜加遮拦提升分辨率"的衍射学根源。
 
 ## 坑与陷阱

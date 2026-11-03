@@ -78,7 +78,7 @@
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-1.png" width="760" />
-  <figcaption>图 5.1 成像系统基本模型：物面 \((\xi,\eta)\)、入瞳与出瞳 \((x,y)\)、像面 \((u,v)\)；每个物点的发散球面波经系统变成（理想情形）会聚球面波（截自原书）</figcaption>
+  <figcaption>图 5.1 成像系统基本模型：物面 <span class="arithmatex">\((\xi,\eta)\)</span>、入瞳与出瞳 <span class="arithmatex">\((x,y)\)</span>、像面 <span class="arithmatex">\((u,v)\)</span>；每个物点的发散球面波经系统变成（理想情形）会聚球面波（截自原书）</figcaption>
 </figure>
 
 用射线追踪（CODE V、OSLO、ZEMAX 这类设计软件）可以算出给定物点的波前像差 \(W(x,y)\)。本书不追光线，直接假设 \(W\) 已经拿到，单位是**波**（波长数）；对应的相位是 \(\phi(x,y) = 2\pi W(x,y)\)（弧度）。把光瞳的振幅效应（渐晕、切趾）和像差并进一个复函数——**广义光瞳函数（generalized pupil function）**：
@@ -207,7 +207,7 @@ G_m(\theta) =
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-2.png" width="720" />
-  <figcaption>图 5.2 三阶 x 像散：(a) \(i=6\) 初级、(b) \(i=12\) 次级、(c) \(i=24\) 三级——角向相同、径向越来越细（截自原书）</figcaption>
+  <figcaption>图 5.2 三阶 x 像散：(a) <span class="arithmatex">\(i=6\)</span> 初级、(b) <span class="arithmatex">\(i=12\)</span> 次级、(c) <span class="arithmatex">\(i=24\)</span> 三级——角向相同、径向越来越细（截自原书）</figcaption>
 </figure>
 
 原书 Listing 5.1 的 `zernike` 函数（共 27 行）负责按 (5.4) 求值。它要 `load('zernike_index')` 读入 \((n,m)\mapsto i\) 的映射表；工程 1 的 Python 版把这个映射直接按表 5.2 的规则生成（按 \(n\) 升序、行内 \(|m|\) 升序、\(m=0\) 占一行、\(|m|>0\) 占两行，sin/cos 由 \(i\) 奇偶定）：
@@ -1340,7 +1340,7 @@ H(f) =
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-9.png" width="1100" />
-  <figcaption>图 5-9（自绘仿真）工程 2：(a) 三缝物体的相干/非相干像对比（0.05 波离焦）；(b) 圆孔 OTF 解析 vs 两条数值路线，0.05 波离焦衰减；(c) 相干像谱在 \(f_0\) 处截止（对数刻度，窗泄漏 \(10^{-3}\)）</figcaption>
+  <figcaption>图 5-9（自绘仿真）工程 2：(a) 三缝物体的相干/非相干像对比（0.05 波离焦）；(b) 圆孔 OTF 解析 vs 两条数值路线，0.05 波离焦衰减；(c) 相干像谱在 <span class="arithmatex">\(f_0\)</span> 处截止（对数刻度，窗泄漏 <span class="arithmatex">\(10^{-3}\)</span>）</figcaption>
 </figure>
 
 选路线的决策图：
@@ -2017,7 +2017,7 @@ n_C = n(656.27\ \mathrm{nm}) \quad \text{红氢线（C 线）}.
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-11.png" width="1100" />
-  <figcaption>图 5-11（自绘仿真）习题 2/3：1 波像散（上排）与 1 波球差（下排）加 \(\pm2,\pm1,0\) 波离焦的 PSF（log10 显示，±40 μm 窗）——像散的焦线结构与球差的环结构清晰可辨</figcaption>
+  <figcaption>图 5-11（自绘仿真）习题 2/3：1 波像散（上排）与 1 波球差（下排）加 <span class="arithmatex">\(\pm2,\pm1,0\)</span> 波离焦的 PSF（log10 显示，±40 μm 窗）——像散的焦线结构与球差的环结构清晰可辨</figcaption>
 </figure>
 
 **习题 4（五阶混合像差的 Strehl）**。给定

@@ -86,41 +86,57 @@
 
 先立术语。在各向同性介质中传播的**单色（monochromatic，单一频率）**标量场可以写成
 
-\[ u(P,t) = A(P)\cos\big[2\pi\nu t - \phi(P)\big], \tag{4.1} \]
+\[
+u(P,t) = A(P)\cos\big[2\pi\nu t - \phi(P)\big], \tag{4.1}
+\]
 
 其中 \(A(P)\) 是空间位置 \(P=(x,y,z)\) 处的**振幅（amplitude）**，\(\phi(P)\) 是**相位（phase）**，\(\nu\) 是时间频率。这个表达式建模的是单一偏振的横向光场。单色光是全书解析推导与计算机仿真的基础。严格说，真单色光源必然**相干（coherent）**——相干指场在时间/空间上分开的两点之间相位有相关性，它使干涉在时间平均意义下得以形成。激光也只能产生"近单色"辐射，真单色光不可实现；不过第 7、9 章会看到，把单色结果推广到多色、部分相干、非相干辐射，在许多有用场合是直接的（"……幸好！"）。
 
 一个具体例子：沿 \(z\) 方向传播的**平面波（plane wave）**对应式 (4.1) 取
 
-\[ u(z,t) = A\cos\big[2\pi\nu t - kz\big], \tag{4.2} \]
+\[
+u(z,t) = A\cos\big[2\pi\nu t - kz\big], \tag{4.2}
+\]
 
 其中**波数（wavenumber）**定义为
 
-\[ k = \frac{2\pi}{\lambda}, \tag{4.3} \]
+\[
+k = \frac{2\pi}{\lambda}, \tag{4.3}
+\]
 
 \(\lambda\) 是真空波长，且 \(\nu = c/\lambda\)（\(c\) 为真空光速）。这个波对 \(x,y\) 没有任何依赖——解读为在横向无限延伸。
 
 如果式 (4.1) 的场在（标量衍射假设的）线性介质中传播，时间频率保持不变，所以时间项不必显式带着；再把余弦换成**复相量（complex phasor）**形式——传播结果依然正确，而且数学操作方便得多。于是得到只描述场的空间分布的函数
 
-\[ U(P) = A(P)\exp\big[j\phi(P)\big]. \tag{4.4} \]
+\[
+U(P) = A(P)\exp\big[j\phi(P)\big]. \tag{4.4}
+\]
 
 这个复相量形式的场是全书解析与仿真推导的主角。平面波式 (4.2) 的相量形式是
 
-\[ U(z) = A\exp(jkz). \tag{4.5} \]
+\[
+U(z) = A\exp(jkz). \tag{4.5}
+\]
 
 式 (4.1) 与 (4.4) 的关系是
 
-\[ u(P,t) = \mathrm{Re}\big\{U(P)\exp(-j2\pi\nu t)\big\}, \tag{4.6} \]
+\[
+u(P,t) = \mathrm{Re}\big\{U(P)\exp(-j2\pi\nu t)\big\}, \tag{4.6}
+\]
 
 \(\mathrm{Re}\) 取实部，时间因子 \(\exp(-j2\pi\nu t)\) 单独拎出来。再进一步，把 \(z\) 的显式依赖也拿掉（\(z\) 是基本传播方向），记
 
-\[ U_1(x,y) = A_1(x,y)\exp\big[j\phi_1(x,y)\big], \tag{4.7} \]
+\[
+U_1(x,y) = A_1(x,y)\exp\big[j\phi_1(x,y)\big], \tag{4.7}
+\]
 
 下标 "1" 表示这是 \(z\) 轴上某个位置 "1" 处 \(x\text{–}y\) 平面内的场。
 
 探测器跟不上光频振荡（\(>10^{14}\) Hz），只能响应场的时间平均平方幅度。所以真正感兴趣的量是**辐照度（irradiance）**，本书定义为
 
-\[ I_1(x,y) = U_1(x,y)U_1^*(x,y) = |U_1(x,y)|^2. \tag{4.8} \]
+\[
+I_1(x,y) = U_1(x,y)U_1^*(x,y) = |U_1(x,y)|^2. \tag{4.8}
+\]
 
 irradiance 是辐射度量学术语：落在观察平面上的单位面积功率通量（W/m²），是功率密度量——别的激光与傅里叶光学书里常叫它"**intensity**（强度）"。
 
@@ -131,17 +147,23 @@ irradiance 是辐射度量学术语：落在观察平面上的单位面积功率
 
 介质的**折射率（refractive index）**\(n\) 是真空光速与介质中光速之比——可见光波段的典型玻璃约 1.6。光在折射率 \(n\) 的介质中走过几何距离 \(d\)，**光程（optical path length, OPL）**定义为
 
-\[ \mathrm{OPL} = nd. \tag{4.9} \]
+\[
+\mathrm{OPL} = nd. \tag{4.9}
+\]
 
 OPL 乘以波数 \(k\) 出现在场的相位里。把 \(k\) 想成"换算器"：一个波长的距离 ↔ \(2\pi\) rad 相位。平面波式 (4.2) 里 \(z\) 就是 OPL（真空 \(n=1\)），\(kz\) 给出正弦相位在这段距离上行进了多少弧度。正弦与复指数都是模 \(2\pi\) 的量——**只有 0 到 \(2\pi\) 之间的相对相位有意义**。平面波穿过厚 \(d\)、折射率 \(n\) 的玻璃后，场的相量表示是
 
-\[ U(d) = A\exp(jknd). \tag{4.10} \]
+\[
+U(d) = A\exp(jknd). \tag{4.10}
+\]
 
 效果上，玻璃里波长缩短为 \(\lambda/n\)。这个主题还有别的变体，比如 \(\exp(jkr)\)，\(r\) 是真空中的径向距离（球面波）。
 
 相量也可以是横向位置的函数，例如
 
-\[ \exp\left[j\frac{k}{2z}\left(x^2 + y^2\right)\right]. \tag{4.11} \]
+\[
+\exp\left[j\frac{k}{2z}\left(x^2 + y^2\right)\right]. \tag{4.11}
+\]
 
 这叫 **chirp（啁啾）项**（见原书附录 A），相位随横向位置的**平方**变化，用来建模收缩或会聚、扩张或发散的光场。式 (4.11) 相位的一维剖面见图 4.1。
 
@@ -161,9 +183,13 @@ OPL 乘以波数 \(k\) 出现在场的相位里。把 \(k\) 想成"换算器"：
 
 考虑单色光从一个 2D 平面（源平面）传播，平面坐标记 \(\xi\) 与 \(\eta\)（图 4.2）。源平面上的区域 \(\Sigma\) 是光源或被照亮孔径的范围；源平面场分布 \(U_1(\xi,\eta)\)，远处观察平面上的场 \(U_2(x,y)\) 由**第一瑞利–索末菲衍射解（Rayleigh–Sommerfeld solution I）**预测：
 
-\[ U_2(x,y) = \frac{z}{j\lambda}\iint_\Sigma U_1(\xi,\eta)\,\frac{\exp(jkr_{12})}{r_{12}^2}\,d\xi d\eta, \tag{4.12} \]
+\[
+U_2(x,y) = \frac{z}{j\lambda}\iint_\Sigma U_1(\xi,\eta)\,\frac{\exp(jkr_{12})}{r_{12}^2}\,d\xi d\eta, \tag{4.12}
+\]
 
-\[ r_{12} = \sqrt{z^2 + (x-\xi)^2 + (y-\eta)^2}. \tag{4.13} \]
+\[
+r_{12} = \sqrt{z^2 + (x-\xi)^2 + (y-\eta)^2}. \tag{4.13}
+\]
 
 这里 \(\lambda\) 是光波长，\(k = 2\pi/\lambda\)（自由空间），\(z\) 是源与观察坐标系中心之间的距离，\(r_{12}\) 是源平面上一点到观察平面上一点的距离，积分限即源区域 \(\Sigma\)。
 
@@ -176,25 +202,37 @@ OPL 乘以波数 \(k\) 出现在场的相位里。把 \(k\) 想成"换算器"：
 
 一般说式 (4.12) 是一个叠加积分；源与观察面平行时，它恰好是**卷积**：
 
-\[ U_2(x,y) = \iint U_1(\xi,\eta)\,h(x-\xi, y-\eta)\,d\xi d\eta, \tag{4.14} \]
+\[
+U_2(x,y) = \iint U_1(\xi,\eta)\,h(x-\xi, y-\eta)\,d\xi d\eta, \tag{4.14}
+\]
 
 其中 Rayleigh–Sommerfeld **脉冲响应（impulse response）**的一般形式为
 
-\[ h(x,y) = \frac{z}{j\lambda}\,\frac{\exp(jkr)}{r^2}, \tag{4.15} \]
+\[
+h(x,y) = \frac{z}{j\lambda}\,\frac{\exp(jkr)}{r^2}, \tag{4.15}
+\]
 
-\[ r = \sqrt{z^2 + x^2 + y^2}. \tag{4.16} \]
+\[
+r = \sqrt{z^2 + x^2 + y^2}. \tag{4.16}
+\]
 
 用傅里叶卷积定理把式 (4.14) 写成
 
-\[ U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\mathfrak{F}\{h(x,y)\}\big\}, \tag{4.17} \]
+\[
+U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}\mathfrak{F}\{h(x,y)\}\big\}, \tag{4.17}
+\]
 
 （对卷积解释，源与观察面变量统一重标为 \(x,y\)。）等价地
 
-\[ U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}H(f_X,f_Y)\big\}, \tag{4.18} \]
+\[
+U_2(x,y) = \mathfrak{F}^{-1}\big\{\mathfrak{F}\{U_1(x,y)\}H(f_X,f_Y)\big\}, \tag{4.18}
+\]
 
 其中 \(H\) 是 Rayleigh–Sommerfeld **传递函数（transfer function）**：
 
-\[ H(f_X,f_Y) = \exp\left\{jkz\sqrt{1 - (\lambda f_X)^2 - (\lambda f_Y)^2}\right\}. \tag{4.19} \]
+\[
+H(f_X,f_Y) = \exp\left\{jkz\sqrt{1 - (\lambda f_X)^2 - (\lambda f_Y)^2}\right\}. \tag{4.19}
+\]
 
 严格说，\(\sqrt{f_X^2+f_Y^2} < 1/\lambda\) 必须满足，对应的才是**传播波（propagating）**分量。式 (4.19) 也常用**角谱（angular spectrum）**分析导出。
 
@@ -207,39 +245,57 @@ Rayleigh–Sommerfeld 表达式是本书考虑的**最精确**衍射解。除标
 
 式 (4.13) 或 (4.16) 里的平方根让 RS 解的解析操作变难、也给仿真增加执行时间。对距离项引入近似，就得到更方便的形式。考虑二项式展开
 
-\[ \sqrt{1+b} = 1 + \frac{1}{2}b - \frac{1}{8}b^2 + \dots \tag{4.20} \]
+\[
+\sqrt{1+b} = 1 + \frac{1}{2}b - \frac{1}{8}b^2 + \dots \tag{4.20}
+\]
 
 （\(b<1\)）。把式 (4.13) 改写成 \(\sqrt{1+b}\) 的形状并保留前两项：
 
-\[ r_{12} \approx z\left[1 + \frac{1}{2}\left(\frac{x-\xi}{z}\right)^2 + \frac{1}{2}\left(\frac{y-\eta}{z}\right)^2\right]. \tag{4.21} \]
+\[
+r_{12} \approx z\left[1 + \frac{1}{2}\left(\frac{x-\xi}{z}\right)^2 + \frac{1}{2}\left(\frac{y-\eta}{z}\right)^2\right]. \tag{4.21}
+\]
 
 这个近似用在式 (4.12) 指数的相位距离项上——相当于假设虚构点源发出的是**抛物面波（parabolic wave）**而非球面波；再把式 (4.12) 分母里的 \(r_{12}\) 用 \(z\) 近似，得到**菲涅耳衍射表达式（Fresnel diffraction expression）**：
 
-\[ U_2(x,y) = \frac{e^{jkz}}{j\lambda z}\iint U_1(\xi,\eta)\exp\left\{j\frac{k}{2z}\left[(x-\xi)^2 + (y-\eta)^2\right]\right\}d\xi d\eta. \tag{4.22} \]
+\[
+U_2(x,y) = \frac{e^{jkz}}{j\lambda z}\iint U_1(\xi,\eta)\exp\left\{j\frac{k}{2z}\left[(x-\xi)^2 + (y-\eta)^2\right]\right\}d\xi d\eta. \tag{4.22}
+\]
 
 它同样是式 (4.14) 形状的卷积，脉冲响应为
 
-\[ h(x,y) = \frac{e^{jkz}}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)\right], \tag{4.23} \]
+\[
+h(x,y) = \frac{e^{jkz}}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)\right], \tag{4.23}
+\]
 
 传递函数为
 
-\[ H(f_X,f_Y) = e^{jkz}\exp\left[-j\pi\lambda z\left(f_X^2+f_Y^2\right)\right]. \tag{4.24} \]
+\[
+H(f_X,f_Y) = e^{jkz}\exp\left[-j\pi\lambda z\left(f_X^2+f_Y^2\right)\right]. \tag{4.24}
+\]
 
 式 (4.17)、(4.18) 在此照常适用。菲涅耳表达式还有一个常用变形：把含 \(x,y\) 的二次相位因子提到积分号外：
 
-\[ U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times \iint U_1(\xi,\eta)\exp\left[j\frac{k}{2z}(\xi^2+\eta^2)\right]\exp\left[-j\frac{2\pi}{\lambda z}(x\xi+y\eta)\right]d\xi d\eta. \tag{4.25} \]
+\[
+U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times \iint U_1(\xi,\eta)\exp\left[j\frac{k}{2z}(\xi^2+\eta^2)\right]\exp\left[-j\frac{2\pi}{\lambda z}(x\xi+y\eta)\right]d\xi d\eta. \tag{4.25}
+\]
 
 除了前面的振幅与 chirp 乘法因子，这就是"源场 × chirp 函数"的傅里叶变换，变换中使用了频率替换
 
-\[ f_X \to \frac{x}{\lambda z}, \qquad f_Y \to \frac{y}{\lambda z}. \tag{4.26} \]
+\[
+f_X \to \frac{x}{\lambda z}, \qquad f_Y \to \frac{y}{\lambda z}. \tag{4.26}
+\]
 
 菲涅耳表达式在**近距离**建模标量衍射时会因近似而失准。允许（丢掉式 (4.20) 中 \(b^2/8\) 及以上项造成的）最大 1 rad 相位偏差，可以导出条件
 
-\[ z^3 \gg \left(\frac{\pi}{4\lambda}\left[(x-\xi)^2 + (y-\eta)^2\right]^2\right)_{\max}, \tag{4.27} \]
+\[
+z^3 \gg \left(\frac{\pi}{4\lambda}\left[(x-\xi)^2 + (y-\eta)^2\right]^2\right)_{\max}, \tag{4.27}
+\]
 
 "max" 指给定源与观察几何下感兴趣区域内的最大值。式 (4.27) 给了一个明确的"菲涅耳近似几乎无损失"的适用条件。但对源平面上空间变化平缓的场——比如平面波背照明的简单孔径——即使违反式 (4.27)，菲涅耳近似也能给出高精度。更宽松的判据用**菲涅耳数（Fresnel number）**：
 
-\[ N_F = \frac{w^2}{\lambda z}, \tag{4.28} \]
+\[
+N_F = \frac{w^2}{\lambda z}, \tag{4.28}
+\]
 
 \(w\) 是源平面方形孔径的半宽或圆孔半径，\(z\) 是到观察面的距离。通常认为 \(N_F \lesssim 1\) 时观察面处于**菲涅耳区（Fresnel region）**，菲涅耳近似"典型地"给出有用结果；而对源孔径上比较"平滑"的场，菲涅耳表达式在 \(N_F\) 高达 20–30 时仍然适用。在几何光学语境下，菲涅耳表达式描述**傍轴（paraxial）**假设下的衍射——只考虑与光轴夹角小于约 0.1 rad 的光线。
 
@@ -385,17 +441,23 @@ Rayleigh–Sommerfeld 表达式是本书考虑的**最精确**衍射解。除标
 
 **夫琅禾费衍射（Fraunhofer diffraction）**指的是俗称"**远场（far field）**"区域的衍射图样。数学上，把式 (4.25) 积分号内乘在初始场上的 chirp 项近似为 1，假设是
 
-\[ z \gg \left(\frac{k(\xi^2+\eta^2)}{2}\right)_{\max}, \tag{4.29} \]
+\[
+z \gg \left(\frac{k(\xi^2+\eta^2)}{2}\right)_{\max}, \tag{4.29}
+\]
 
 得到**夫琅禾费衍射表达式**：
 
-\[ U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times \iint U_1(\xi,\eta)\exp\left[-j\frac{2\pi}{\lambda z}(x\xi+y\eta)\right]d\xi d\eta. \tag{4.30} \]
+\[
+U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times \iint U_1(\xi,\eta)\exp\left[-j\frac{2\pi}{\lambda z}(x\xi+y\eta)\right]d\xi d\eta. \tag{4.30}
+\]
 
 式 (4.29) 通常要求传播距离远大于源支撑尺寸——但涉及透镜的传播分析里也会出现夫琅禾费图样。夫琅禾费表达式是有力工具：激光光束传播、图像分析、光谱学都用它。
 
 除了前面的乘法因子，夫琅禾费表达式就是源场的傅里叶变换，变量替换为
 
-\[ f_X \to \frac{x}{\lambda z}, \qquad f_Y \to \frac{y}{\lambda z}. \tag{4.31} \]
+\[
+f_X \to \frac{x}{\lambda z}, \qquad f_Y \to \frac{y}{\lambda z}. \tag{4.31}
+\]
 
 夫琅禾费表达式**写不成卷积积分**——因此没有脉冲响应，也没有传递函数。但它是初始场傅里叶变换的缩放版本，计算相对容易；而且与菲涅耳表达式一样，即使式 (4.29) 没满足也常被成功地使用：对平面波照明的简单孔径，违反超过 10 倍时夫琅禾费结果仍可能有用——特别是当主要兴趣只是接收面上的辐照度图样时。用菲涅耳数说：夫琅禾费区的公认要求是 \(N_F \ll 1\)。
 
@@ -408,32 +470,44 @@ Rayleigh–Sommerfeld 表达式是本书考虑的**最精确**衍射解。除标
 
 考虑单位振幅平面波照明的圆孔。紧贴孔径平面之后的复场为
 
-\[ U_1(\xi,\eta) = \mathrm{circ}\left(\frac{\sqrt{\xi^2+\eta^2}}{w}\right). \tag{4.32} \]
+\[
+U_1(\xi,\eta) = \mathrm{circ}\left(\frac{\sqrt{\xi^2+\eta^2}}{w}\right). \tag{4.32}
+\]
 
 !!! warning "约定差异（衔接第 1 章勘误 1）：这个 circ 是"半径 = 分母"的 Goodman 约定"
     表 1.2 的 \(\mathrm{circ}(r)\) 是半径 \(1/2\) 的圆盘——照那个定义，式 (4.32) 的孔径半径会是 \(w/2\)，与式 (4.33) 的 \(2\pi w\) 及后文" \(w\) 是圆孔半径"的说法（4.4.2 节：\(w\) 是方形孔径半宽**或圆孔半径**）对不上。式 (4.32) 必须按表 1.3 变换对所用的 Goodman 约定读：\(\mathrm{circ}(\rho/w)\) = **半径 \(w\)** 的单位圆盘。这就是第 1 章勘误 1 的 circ 约定冲突——表 1.2 定义与表 1.3/正文用法不一致——在第 4 章的直接再现。写代码时用"半径 = 分母"的锚点最稳：半径 \(R\) 圆盘 \(\leftrightarrow R\,J_1(2\pi R\rho)/\rho\)，峰值 = 面积 \(\pi R^2\)。
 
 对它做傅里叶变换：
 
-\[ \mathfrak{F}\{U_1(\xi,\eta)\} = w^2\,\frac{J_1\!\left(2\pi w\sqrt{f_X^2+f_Y^2}\right)}{w\sqrt{f_X^2+f_Y^2}}, \tag{4.33} \]
+\[
+\mathfrak{F}\{U_1(\xi,\eta)\} = w^2\,\frac{J_1\!\left(2\pi w\sqrt{f_X^2+f_Y^2}\right)}{w\sqrt{f_X^2+f_Y^2}}, \tag{4.33}
+\]
 
 再代入替换 (4.31)、乘上式 (4.30) 的前导振幅与相位因子，得到场
 
-\[ U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times w^2\,\frac{J_1\!\left(2\pi\frac{w}{\lambda z}\sqrt{x^2+y^2}\right)}{\frac{w}{\lambda z}\sqrt{x^2+y^2}}. \tag{4.34} \]
+\[
+U_2(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right] \times w^2\,\frac{J_1\!\left(2\pi\frac{w}{\lambda z}\sqrt{x^2+y^2}\right)}{\frac{w}{\lambda z}\sqrt{x^2+y^2}}. \tag{4.34}
+\]
 
 用式 (4.8) 得辐照度：
 
-\[ I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \left[\frac{J_1\!\left(2\pi\frac{w}{\lambda z}\sqrt{x^2+y^2}\right)}{\frac{w}{\lambda z}\sqrt{x^2+y^2}}\right]^2. \tag{4.35} \]
+\[
+I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \left[\frac{J_1\!\left(2\pi\frac{w}{\lambda z}\sqrt{x^2+y^2}\right)}{\frac{w}{\lambda z}\sqrt{x^2+y^2}}\right]^2. \tag{4.35}
+\]
 
 原书特意留了一句：式 (4.35) 里的一些 \(w/\lambda z\) 项其实可以约掉，但**保留这种对称形式对编程更友好**——它就是 \( \left(\frac{w^2}{\lambda z}\right)^2 \mathrm{jinc}^2\!\left(\frac{w\rho}{\lambda z}\right) \)，与下面 jinc.m 的代码形状一字不差。
 
 现在用 MATLAB 画这个辐照度图样。参数：\(w = 1\) mm，\(\lambda = 0.633\ \mu\text{m}\)（He–Ne 激光）。菲涅耳数判据要求 \(w^2/\lambda z < 0.1\)，即 \(z > 10w^2/\lambda = 15.8\) m——取 \(z = 50\) m。网格怎么选：好的显示尺寸是阵列边长约为图样中心瓣宽的 5 倍。贝塞尔函数 \(J_1\) 的第一个零点在自变量等于 \(1.22\pi\) 处。令 \(y=0\)，图样第一零点满足
 
-\[ 2\pi\frac{w}{\lambda z}x = 1.22\pi, \tag{4.36} \]
+\[
+2\pi\frac{w}{\lambda z}x = 1.22\pi, \tag{4.36}
+\]
 
 解出 \(x\) 得到中心瓣的**半宽**，翻倍得到全宽：
 
-\[ D_{lobe} = 1.22\,\frac{\lambda z}{w}. \tag{4.37} \]
+\[
+D_{lobe} = 1.22\,\frac{\lambda z}{w}. \tag{4.37}
+\]
 
 据此取 \(L = 5\times 1.22\lambda z/w \approx 0.2\) m。
 
@@ -661,7 +735,7 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 
 <figure>
   <img src="../../../images/holo/fourier/fig-4-py-airy.png" width="860" />
-  <figcaption>图 4-P2 Airy 图样数值复现：\(I_2^{1/3}\) 图像（1/3 次根拉出圆环）与 \(y=0\) 剖面（红线为式 (4.36) 的 \(\pm0.61\lambda z/w\) 零点参考位）（笔记自制）</figcaption>
+  <figcaption>图 4-P2 Airy 图样数值复现：<span class="arithmatex">\(I_2^{1/3}\)</span> 图像（1/3 次根拉出圆环）与 <span class="arithmatex">\(y=0\)</span> 剖面（红线为式 (4.36) 的 <span class="arithmatex">\(\pm0.61\lambda z/w\)</span> 零点参考位）（笔记自制）</figcaption>
 </figure>
 
 !!! note "拓展：1.22 从哪来，Airy disk 为什么决定望远镜分辨率"
@@ -681,7 +755,9 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 ??? note "4.1 参考答案要点"
     从平面 \(a\) 到平面 \(b\)（间距 \(d_2\)，即厚玻璃的右端面）：穿玻璃 \(n_1\)（厚 \(d_1\)）的那一路，剩余 \(d_2-d_1\) 走空气。两路的 OPL 分别为 \(\mathrm{OPL}_1 = n_1 d_1 + 1\cdot(d_2-d_1)\)、\(\mathrm{OPL}_2 = n_2 d_2\)。光程差
 
-    \[ \mathrm{OPD} = \mathrm{OPL}_1 - \mathrm{OPL}_2 = (n_1-1)d_1 - (n_2-1)d_2. \]
+\[
+\mathrm{OPD} = \mathrm{OPL}_1 - \mathrm{OPL}_2 = (n_1-1)d_1 - (n_2-1)d_2.
+\]
 
     记账口诀：玻璃那一截每毫米"多攒" \((n-1)\) 毫米光程（相对空气）。相位差 = \(k\cdot\mathrm{OPD} = \frac{2\pi}{\lambda}\mathrm{OPD}\)（模 \(2\pi\)）。哪一路超前取决于符号——用式 (4.10) 逐段乘 \(e^{jknd}\) 加起来最不容易错。
 
@@ -701,11 +777,15 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 ??? note "4.3 参考答案要点（解析推导）"
     对 \(h(x,y) = \frac{e^{jkz}}{j\lambda z}\exp\left[j\frac{k}{2z}(x^2+y^2)\right]\) 做变换，逐维用配方积分
 
-    \[ \int_{-\infty}^{\infty} e^{j\alpha x^2} e^{-j2\pi f x}dx = \sqrt{\frac{\pi}{\alpha}}\,e^{j\pi/4}\,e^{-j\pi^2 f^2/\alpha}, \qquad \alpha = \frac{\pi}{\lambda z}. \]
+\[
+\int_{-\infty}^{\infty} e^{j\alpha x^2} e^{-j2\pi f x}dx = \sqrt{\frac{\pi}{\alpha}}\,e^{j\pi/4}\,e^{-j\pi^2 f^2/\alpha}, \qquad \alpha = \frac{\pi}{\lambda z}.
+\]
 
     （配方：\(j\alpha x^2 - j2\pi fx = j\alpha(x - \pi f/\alpha)^2 - j\pi^2 f^2/\alpha\)；剩余的是菲涅耳积分 \(\int e^{j\alpha u^2}du = \sqrt{\pi/\alpha}e^{j\pi/4}\)。）二维乘起来，\(\sqrt{\pi/\alpha}^2 = \pi/\alpha = \lambda z\)，且 \(e^{j\pi/4}\cdot e^{j\pi/4} = j\)：
 
-    \[ \mathfrak{F}\{h\} = \frac{e^{jkz}}{j\lambda z}\cdot j\lambda z\, e^{-j\pi\lambda z(f_X^2+f_Y^2)} = e^{jkz}\exp\left[-j\pi\lambda z(f_X^2+f_Y^2)\right] = H. \]
+\[
+\mathfrak{F}\{h\} = \frac{e^{jkz}}{j\lambda z}\cdot j\lambda z\, e^{-j\pi\lambda z(f_X^2+f_Y^2)} = e^{jkz}\exp\left[-j\pi\lambda z(f_X^2+f_Y^2)\right] = H.
+\]
 
     正是式 (4.24)——两处 \(j\) 与 \(\lambda z\) 精确对消，没有任何近似。
 
@@ -713,7 +793,7 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 
 <figure>
   <img src="../../../images/holo/fourier/fig-4-py-ex43.png" width="860" />
-  <figcaption>图 4-P3 习题 4.3 数值验证：左——\(\angle(H_{num}/H_{an})\) 沿 \(f_X\)（\(f_Y=0\)）在 0.8 驻点带内全部缠绕在 ±0.1 rad 内；右——低频窗（|f|≤400）内两个解卷绕相位完全重合（笔记自制）</figcaption>
+  <figcaption>图 4-P3 习题 4.3 数值验证：左——<span class="arithmatex">\(\angle(H_{num}/H_{an})\)</span> 沿 <span class="arithmatex">\(f_X\)</span>（<span class="arithmatex">\(f_Y=0\)</span>）在 0.8 驻点带内全部缠绕在 ±0.1 rad 内；右——低频窗（|f|≤400）内两个解卷绕相位完全重合（笔记自制）</figcaption>
 </figure>
 
 **4.4 三个孔径的解析夫琅禾费场与辐照度**（图 4.5，单位振幅平面波照明）：推导解析表达式，并在计算机上画解析辐照度图样与剖面；自选合适的传播距离 \(z\) 与观察面边长 \(L\)；\(\lambda = 0.633\ \mu\text{m}\)，参数：(a) \(w_X = 0.1\) mm、\(w_Y = 0.05\) mm；(b) \(w_1 = 1\) mm、\(w_2 = 0.2\) mm；(c) \(w = 1\) mm、\(s = 4\) mm。
@@ -728,25 +808,31 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 
     **(a) 矩形孔** \(U_1 = \mathrm{rect}(\xi/2w_X)\mathrm{rect}(\eta/2w_Y)\)：变换 \(4w_Xw_Y\,\mathrm{sinc}(2w_Xf_X)\mathrm{sinc}(2w_Yf_Y)\)，代入得
 
-    \[ I_2(x,y) = \left(\frac{4w_Xw_Y}{\lambda z}\right)^2 \mathrm{sinc}^2\!\left(\frac{2w_X x}{\lambda z}\right)\mathrm{sinc}^2\!\left(\frac{2w_Y y}{\lambda z}\right). \]
+\[
+I_2(x,y) = \left(\frac{4w_Xw_Y}{\lambda z}\right)^2 \mathrm{sinc}^2\!\left(\frac{2w_X x}{\lambda z}\right)\mathrm{sinc}^2\!\left(\frac{2w_Y y}{\lambda z}\right).
+\]
 
     取 \(z = 5\) m（式 (4.29) 要求 \(z \gg 0.062\) m，裕量 81 倍）、\(L = 0.16\) m。零点在 \(x = \lambda z/(2w_X) = 15.8\) mm、\(y = 31.6\) mm；峰值 \(= 3.993\times10^{-5}\)，数值逐点等于解析。
 
     **(b) 带遮拦圆孔（环）** \(U_1 = \mathrm{circ}(\rho_\xi/w_1) - \mathrm{circ}(\rho_\xi/w_2)\)：变换相减，得
 
-    \[ I_2(x,y) = \left(\frac{w_1^2}{\lambda z}\right)^2\left[\mathrm{jinc}\!\left(\frac{w_1\rho}{\lambda z}\right) - \left(\frac{w_2}{w_1}\right)^2 \mathrm{jinc}\!\left(\frac{w_2\rho}{\lambda z}\right)\right]^2, \quad \rho = \sqrt{x^2+y^2}. \]
+\[
+I_2(x,y) = \left(\frac{w_1^2}{\lambda z}\right)^2\left[\mathrm{jinc}\!\left(\frac{w_1\rho}{\lambda z}\right) - \left(\frac{w_2}{w_1}\right)^2 \mathrm{jinc}\!\left(\frac{w_2\rho}{\lambda z}\right)\right]^2, \quad \rho = \sqrt{x^2+y^2}.
+\]
 
     取 \(z = 50\) m（要求 \(z \gg 5.2\) m）、\(L = 0.2\) m、\(M = 512\)。峰值 \(\left(\pi(w_1^2-w_2^2)/\lambda z\right)^2 = 9.080\times10^{-3}\)——等于无遮拦值 \(9.853\times10^{-3}\) 乘 \(\big(1-(w_2/w_1)^2\big)^2 = 0.922\)；外环第一零点仍在 \(0.61\lambda z/w_1 = 19.3\) mm 附近（谷值实测 \(2.2\times10^{-7}\)）。中央峰变窄、环变亮是环形孔径的经典特征。
 
     **(c) 一对圆孔** \(U_1 = \mathrm{circ}(\sqrt{(\xi-s/2)^2+\eta^2}/w) + \mathrm{circ}(\sqrt{(\xi+s/2)^2+\eta^2}/w)\)：位移定理把两个圆盘谱各乘一个线性相位再相加：
 
-    \[ I_2(x,y) = \left(\frac{2w^2}{\lambda z}\right)^2 \cos^2\!\left(\frac{\pi s x}{\lambda z}\right)\,\mathrm{jinc}^2\!\left(\frac{w\rho}{\lambda z}\right). \]
+\[
+I_2(x,y) = \left(\frac{2w^2}{\lambda z}\right)^2 \cos^2\!\left(\frac{\pi s x}{\lambda z}\right)\,\mathrm{jinc}^2\!\left(\frac{w\rho}{\lambda z}\right).
+\]
 
     取 \(z = 500\) m（要求 \(z \gg 49.6\) m——孔径外缘离中心远，远场更苛刻）、\(L = 0.6\) m。这是"Airy 包络 × 余弦条纹"的双缝升级版：条纹周期 \(\lambda z/s = 79.1\) mm，包络（单孔 Airy）第一零点 \(0.61\lambda z/w = 193\) mm，包络内约 5 条亮纹。峰值 \((2\pi w^2/\lambda z)^2 = 3.94\times10^{-4}\)，数值逐点吻合。
 
 <figure>
   <img src="../../../images/holo/fourier/fig-4-py-ex44.png" width="900" />
-  <figcaption>图 4-P4 习题 4.4 解析夫琅禾费图样：上排——(a) 矩形孔图像与 sinc²×sinc² 剖面、(b) 环形孔剖面（实线）与无遮拦圆孔（虚线）对比；下排——(b) 环形孔图像、(c) 双孔图像与"条纹 × Airy 包络"剖面（显示一律 \(I_2^{1/3}\) 拉伸）（笔记自制）</figcaption>
+  <figcaption>图 4-P4 习题 4.4 解析夫琅禾费图样：上排——(a) 矩形孔图像与 sinc²×sinc² 剖面、(b) 环形孔剖面（实线）与无遮拦圆孔（虚线）对比；下排——(b) 环形孔图像、(c) 双孔图像与"条纹 × Airy 包络"剖面（显示一律 <span class="arithmatex">\(I_2^{1/3}\)</span> 拉伸）（笔记自制）</figcaption>
 </figure>
 
 **4.5 两路振幅不同的双孔**：图 4.5(c) 的孔径上，平面波穿过两孔时被衰减得不一样——一孔出射场幅度 \(A_1\)，另一孔 \(A_2\)。求该孔径夫琅禾费辐照度的解析表达式；画 \(A_1 = 1\)、\(A_2 = 0.4\) 的辐照度图样与 \(x\) 轴剖面。（提示：先把模方算出来，再把复指数合并成余弦项。）
@@ -754,21 +840,27 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 ??? note "4.5 参考答案要点"
     场是 4.4(c) 的加权版：
 
-    \[ \mathfrak{F}\{U_1\} = \frac{w\,J_1(2\pi w\rho_f)}{\rho_f}\left(A_1 e^{-j\pi s f_X} + A_2 e^{+j\pi s f_X}\right). \]
+\[
+\mathfrak{F}\{U_1\} = \frac{w\,J_1(2\pi w\rho_f)}{\rho_f}\left(A_1 e^{-j\pi s f_X} + A_2 e^{+j\pi s f_X}\right).
+\]
 
     按书提示先取模方（交叉项配对共轭）：
 
-    \[ \left|A_1 e^{-j\alpha} + A_2 e^{j\alpha}\right|^2 = A_1^2 + A_2^2 + 2A_1A_2\cos(2\alpha), \quad \alpha = \pi s f_X \to \frac{\pi s x}{\lambda z}. \]
+\[
+\left|A_1 e^{-j\alpha} + A_2 e^{j\alpha}\right|^2 = A_1^2 + A_2^2 + 2A_1A_2\cos(2\alpha), \quad \alpha = \pi s f_X \to \frac{\pi s x}{\lambda z}.
+\]
 
     所以
 
-    \[ I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \mathrm{jinc}^2\!\left(\frac{w\rho}{\lambda z}\right)\left[A_1^2 + A_2^2 + 2A_1A_2\cos\!\left(\frac{2\pi s x}{\lambda z}\right)\right]. \]
+\[
+I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \mathrm{jinc}^2\!\left(\frac{w\rho}{\lambda z}\right)\left[A_1^2 + A_2^2 + 2A_1A_2\cos\!\left(\frac{2\pi s x}{\lambda z}\right)\right].
+\]
 
     \(A_1 = A_2\) 时退化为 4.4(c) 的 \(\cos^2\)（此时 \(A_1^2+A_2^2+2A_1A_2\cos 2\alpha = 2A^2(1+\cos 2\alpha) = 4A^2\cos^2\alpha\)）；\(A_2 \to 0\) 时条纹消失只剩单孔 Airy。条纹**可见度（visibility）** \(V = 2A_1A_2/(A_1^2+A_2^2)\)：\(A_1=1, A_2=0.4\) 时 \(V = 0.69\)，中心区 \(I_{\max}/I_{\min} = \big((A_1+A_2)/(A_1-A_2)\big)^2 = 5.44\)。数值验证（\(z=500\) m）：峰值 \((w^2/\lambda z)^2\pi^2(A_1+A_2)^2 = 1.931\times10^{-4}\) 与实测一致，条纹周期 79.1 mm。
 
 <figure>
   <img src="../../../images/holo/fourier/fig-4-py-ex45.png" width="860" />
-  <figcaption>图 4-P5 习题 4.5（\(A_1=1, A_2=0.4\)）：Airy 包络内可见度 0.69 的余弦条纹；与图 4-P4(c) 对比，暗纹不再到零（笔记自制）</figcaption>
+  <figcaption>图 4-P5 习题 4.5（<span class="arithmatex">\(A_1=1, A_2=0.4\)</span>）：Airy 包络内可见度 0.69 的余弦条纹；与图 4-P4(c) 对比，暗纹不再到零（笔记自制）</figcaption>
 </figure>
 
 把习题 4.2–4.5 的数值部分合并成完整脚本（与仓库文件一致）：

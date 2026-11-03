@@ -313,7 +313,9 @@ xlabel('fx (cyc/m)');
 
 好习惯：**新代码先用解析可查的简单输入试刀**——既帮诊断问题，也让你带着信心往上垒代码。本例的解析结果现成：
 
-\[ f(x) = \mathrm{rect}\!\left(\frac{x}{2w}\right) \quad\Longleftrightarrow\quad F(f_X) = 2w\,\mathrm{sinc}(2w f_X). \tag{3.1} \]
+\[
+f(x) = \mathrm{rect}\!\left(\frac{x}{2w}\right) \quad\Longleftrightarrow\quad F(f_X) = 2w\,\mathrm{sinc}(2w f_X). \tag{3.1}
+\]
 
 （表 1.3 第一行取 \(a = 2w\)；矩形面积 \(2w\) 就是频谱峰值——中心纵坐标定理。）把解析谱在同样的频率网格上采样，与 FFT 结果同图对比：
 
@@ -609,7 +611,7 @@ xlabel('x (m)')
 
 <figure>
   <img src="../../../images/holo/fourier/fig-3-9.png" width="760" />
-  <figcaption>图 3.9 (a) 两个高斯函数 \(f_a\)（\(w_a=0.3\)）与 \(f_b\)（\(w_b=0.2\)）；(b) FFT 卷积结果（截自原书）</figcaption>
+  <figcaption>图 3.9 (a) 两个高斯函数 <span class="arithmatex">\(f_a\)</span>（<span class="arithmatex">\(w_a=0.3\)</span>）与 <span class="arithmatex">\(f_b\)</span>（<span class="arithmatex">\(w_b=0.2\)</span>）；(b) FFT 卷积结果（截自原书）</figcaption>
 </figure>
 
 FFT 卷积五行代码的要点：
@@ -630,7 +632,9 @@ FFT 卷积五行代码的要点：
 
 解析卷积（习题 3.2 的答案）顺手推出来：用表 1.3 的高斯对 \(\exp(-\pi x^2/w^2) \leftrightarrow w\exp(-\pi w^2 f_X^2)\)，频域相乘得 \(w_a w_b \exp[-\pi(w_a^2+w_b^2)f_X^2]\)，再逆变换：
 
-\[ (f_a * f_b)(x) = \frac{w_a w_b}{\sqrt{w_a^2 + w_b^2}}\; \exp\!\left[-\pi\,\frac{x^2}{w_a^2 + w_b^2}\right]. \tag{3.2} \]
+\[
+(f_a * f_b)(x) = \frac{w_a w_b}{\sqrt{w_a^2 + w_b^2}}\; \exp\!\left[-\pi\,\frac{x^2}{w_a^2 + w_b^2}\right]. \tag{3.2}
+\]
 
 峰值 \(= 0.06/\sqrt{0.13} = 0.16641\)，与图 3.9(b) 的峰一致。
 
@@ -1318,7 +1322,7 @@ out=T.*mask;
 
 <figure>
   <img src="../../../images/holo/fourier/fig-3-py-exercise.png" width="860" />
-  <figcaption>图 3-P4 习题数值解答：三角函数采样与 |FFT| vs \(w\,\mathrm{sinc}^2(w f_X)\)（上排）、圆盘图像与 \(f_Y=0\) 剖面 vs jinc（下排）（笔记自制）</figcaption>
+  <figcaption>图 3-P4 习题数值解答：三角函数采样与 |FFT| vs <span class="arithmatex">\(w\,\mathrm{sinc}^2(w f_X)\)</span>（上排）、圆盘图像与 <span class="arithmatex">\(f_Y=0\)</span> 剖面 vs jinc（下排）（笔记自制）</figcaption>
 </figure>
 
 ## 坑与陷阱

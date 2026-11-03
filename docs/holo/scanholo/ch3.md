@@ -62,7 +62,7 @@ OSH 的出身：Poon 和 Korpel 在声光外差图像处理器上做双极性非
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-1.png" width="620" class="lq-img" />
-  <figcaption>图 3.1 主动光学扫描图像处理系统：平面波（频率 \(\omega_0\)）照明光瞳 \(p(x,y)\)，经透镜 L1、x-y 扫描器扫过透明片 \(\Gamma_0(x,y)\)，PD 收全光输出 \(i(x,y)\)，与 x-y 同步信号一起存入计算机/显示器（截自原书）</figcaption>
+  <figcaption>图 3.1 主动光学扫描图像处理系统：平面波（频率 <span class="arithmatex">\(\omega_0\)</span>）照明光瞳 <span class="arithmatex">\(p(x,y)\)</span>，经透镜 L1、x-y 扫描器扫过透明片 <span class="arithmatex">\(\Gamma_0(x,y)\)</span>，PD 收全光输出 <span class="arithmatex">\(i(x,y)\)</span>，与 x-y 同步信号一起存入计算机/显示器（截自原书）</figcaption>
 </figure>
 
 图 3.1 的信息流：平面波照明光瞳 \(p(x,y)\) → 复场穿过 x-y 光学扫描器 → 扫过振幅透过率为 \(\Gamma_0(x,y)\) 的物体 → PD 输出电流。若电流与扫描机构的 2-D 驱动信号**同步数字化存储**，存下来的 2-D 记录就是物体的一幅（被处理过的）图像。
@@ -86,7 +86,7 @@ i(t)=\iint_D\big|\psi(x,y)\exp(j\omega_0t)\big|^2\,dx\,dy
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-2.png" width="600" class="lq-img" />
-  <figcaption>图 3.2 光学直接探测：\(i\propto\int_D|\psi_p\exp(j\omega_0t)|^2dxdy=\int_D|\psi_p|^2dxdy\)，相位 \(\phi(x,y)\) 全部丢失（截自原书）</figcaption>
+  <figcaption>图 3.2 光学直接探测：<span class="arithmatex">\(i\propto\int_D|\psi_p\exp(j\omega_0t)|^2dxdy=\int_D|\psi_p|^2dxdy\)</span>，相位 <span class="arithmatex">\(\phi(x,y)\)</span> 全部丢失（截自原书）</figcaption>
 </figure>
 
 ### 3.1.2 扫描的数学建模
@@ -95,7 +95,7 @@ i(t)=\iint_D\big|\psi(x,y)\exp(j\omega_0t)\big|^2\,dx\,dy
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-3.png" width="520" class="lq-img" />
-  <figcaption>图 3.3 扫描情形：光束 \(b(x',y')\) 静止在 PD 平面原点，透明片 \(\Gamma_0(x'+x,y'+y)\) 平移（截自原书）</figcaption>
+  <figcaption>图 3.3 扫描情形：光束 <span class="arithmatex">\(b(x',y')\)</span> 静止在 PD 平面原点，透明片 <span class="arithmatex">\(\Gamma_0(x'+x,y'+y)\)</span> 平移（截自原书）</figcaption>
 </figure>
 
 到达 PD 的总复场是 \(b(x',y')\,\Gamma_0(x'+x,y'+y)\)，按 (3.1-1) 积分得扫描电流：
@@ -139,7 +139,7 @@ b(x,y)=\mathcal{F}_{xy}\{p(x,y)\}\Big|_{\substack{k_x=k_0x/f_0\\ k_y=k_0y/f_0}}.
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-5.png" width="560" class="lq-img" />
-  <figcaption>图 3.5 光学外差探测：半反镜合束信息光 \(\psi_p(x,y)\exp(j\omega_0t)\) 与参考光 \(B\exp[j(\omega_0+\Omega)t]\)，PD 输出电流 \(i\)（截自原书）</figcaption>
+  <figcaption>图 3.5 光学外差探测：半反镜合束信息光 <span class="arithmatex">\(\psi_p(x,y)\exp(j\omega_0t)\)</span> 与参考光 <span class="arithmatex">\(B\exp[j(\omega_0+\Omega)t]\)</span>，PD 输出电流 <span class="arithmatex">\(i\)</span>（截自原书）</figcaption>
 </figure>
 
 两束光频率分别为 \(\omega_0\)（信息光）与 \(\omega_0+\Omega\)（参考光）——不同频率的激光怎么来，3.3 节讲声光频移。设信息光是平面波 \(\psi_p=Ae^{j\phi}\exp(j\omega_0t)\)（幅度 \(A\)、相位 \(\phi\)），参考光 \(B\exp[j(\omega_0+\Omega)t]\)（设 \(B\) 为实）。PD 电流：
@@ -165,7 +165,7 @@ i=\iint_D\big|\psi_p\exp(j\omega_0t)+B\exp[j(\omega_0+\Omega)t]\big|^2dxdy
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-6.png" width="520" class="lq-img" />
-  <figcaption>图 3.6 电子多路检测：BPF 调谐在 \(\Omega\) 提取外差电流 \(i_\Omega\)，分两路各乘 \(\cos\Omega t\) / \(\sin\Omega t\) 再低通，得 \(i_c\)、\(i_s\)（截自原书）</figcaption>
+  <figcaption>图 3.6 电子多路检测：BPF 调谐在 <span class="arithmatex">\(\Omega\)</span> 提取外差电流 <span class="arithmatex">\(i_\Omega\)</span>，分两路各乘 <span class="arithmatex">\(\cos\Omega t\)</span> / <span class="arithmatex">\(\sin\Omega t\)</span> 再低通，得 <span class="arithmatex">\(i_c\)</span>、<span class="arithmatex">\(i_s\)</span>（截自原书）</figcaption>
 </figure>
 
 ```mermaid
@@ -345,7 +345,7 @@ i_c+j\,i_s=A\cos\phi+jA\sin\phi=A\exp(j\phi).
 
 <figure>
   <img src="../../../images/holo/scanholo/sim-heterodyne.png" width="640" class="lq-img" />
-  <figcaption>图（本笔记运行结果）：左上 拍频电流（DC + 外差项）；右上 频谱（直流 + Ω 处外差谱线）；左下 BPF 后的纯外差电流；右下 lock-in 解调——乘 cos/sin 后的低通输出分别给出 \(i_c/2\)、\(-i_s/2\)（水平虚线），恢复 \(A=0.700000\)（误差 \(2\times10^{-16}\)）、\(\phi=1.300000\) rad（误差 \(2\times10^{-15}\)）</figcaption>
+  <figcaption>图（本笔记运行结果）：左上 拍频电流（DC + 外差项）；右上 频谱（直流 + Ω 处外差谱线）；左下 BPF 后的纯外差电流；右下 lock-in 解调——乘 cos/sin 后的低通输出分别给出 <span class="arithmatex">\(i_c/2\)</span>、<span class="arithmatex">\(-i_s/2\)</span>（水平虚线），恢复 <span class="arithmatex">\(A=0.700000\)</span>（误差 <span class="arithmatex">\(2\times10^{-16}\)</span>）、<span class="arithmatex">\(\phi=1.300000\)</span> rad（误差 <span class="arithmatex">\(2\times10^{-15}\)</span>）</figcaption>
 </figure>
 
 ## 3.3 声光频移
@@ -354,7 +354,7 @@ i_c+j\,i_s=A\cos\phi+jA\sin\phi=A\exp(j\phi).
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-7.png" width="520" class="lq-img" />
-  <figcaption>图 3.7 声光调制器：压电换能器把电信号变成声波在玻璃中传播（折射率扰动，类比光栅周期 \(\Lambda\) 的相位光栅），入射光 \(\phi_{inc}\) 被分成 0 阶与 1 阶衍射光（截自原书）</figcaption>
+  <figcaption>图 3.7 声光调制器：压电换能器把电信号变成声波在玻璃中传播（折射率扰动，类比光栅周期 <span class="arithmatex">\(\Lambda\)</span> 的相位光栅），入射光 <span class="arithmatex">\(\phi_{inc}\)</span> 被分成 0 阶与 1 阶衍射光（截自原书）</figcaption>
 </figure>
 
 AOM 是一种空间光调制器：声学介质（如玻璃）上贴压电换能器，加电信号就在介质里激起声波，折射率扰动正比于电激励，穿过介质的光束被"声光栅"衍射——可以类比成一块**相位光栅**，光栅线间距 = 声波长 \(\Lambda\)。在特定入射角 \(\phi_{inc}\) 下，声光栅把光分成 **0 阶**与 **1 阶**两束衍射光。
@@ -395,7 +395,7 @@ AOM 是一种空间光调制器：声学介质（如玻璃）上贴压电换能�
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-8.png" width="640" class="lq-img" />
-  <figcaption>图 3.8 声光互作用：a) 波矢图——\(\boldsymbol{k}_{t1}=\boldsymbol{k}_{t0}+\boldsymbol{K}\) 构成近等腰三角形，两底角均为布拉格角 \(\phi_B\)；b) 实验配置——\(\omega_0\) 入射，1 阶衍射光 \(\omega_{+1}=\omega_0+\Omega\)，两衍射光夹角 \(2\phi_B\)（截自原书）</figcaption>
+  <figcaption>图 3.8 声光互作用：a) 波矢图——<span class="arithmatex">\(\boldsymbol{k}_{t1}=\boldsymbol{k}_{t0}+\boldsymbol{K}\)</span> 构成近等腰三角形，两底角均为布拉格角 <span class="arithmatex">\(\phi_B\)</span>；b) 实验配置——<span class="arithmatex">\(\omega_0\)</span> 入射，1 阶衍射光 <span class="arithmatex">\(\omega_{+1}=\omega_0+\Omega\)</span>，两衍射光夹角 <span class="arithmatex">\(2\phi_B\)</span>（截自原书）</figcaption>
 </figure>
 
 实际情形 \(|K|\ll|k_{t0}|\)（声波长 ≫ 光波长），波矢三角形近似等腰，其底角即**布拉格角**（Bragg angle）：
@@ -425,7 +425,7 @@ AOM 是一种空间光调制器：声学介质（如玻璃）上贴压电换能�
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-10.png" width="660" class="lq-img" />
-  <figcaption>图 3.10 典型双瞳光学外差扫描系统：激光 @ω0 经 BS 分束，一臂过 AOFS 得 ω0+Ω（cos Ωt 驱动），另一臂 ω0；\(p_1(x,y)\)（ω0）与 \(p_2(x,y)\)（ω0+Ω）分别在 L1、L2 前焦面，BS1 合束聚焦到 2-D 扫描振镜；L3 收全光到 PD，BPF@Ω 输出 \(i_\Omega(x,y)\)（截自原书）</figcaption>
+  <figcaption>图 3.10 典型双瞳光学外差扫描系统：激光 @ω0 经 BS 分束，一臂过 AOFS 得 ω0+Ω（cos Ωt 驱动），另一臂 ω0；<span class="arithmatex">\(p_1(x,y)\)</span>（ω0）与 <span class="arithmatex">\(p_2(x,y)\)</span>（ω0+Ω）分别在 L1、L2 前焦面，BS1 合束聚焦到 2-D 扫描振镜；L3 收全光到 PD，BPF@Ω 输出 <span class="arithmatex">\(i_\Omega(x,y)\)</span>（截自原书）</figcaption>
 </figure>
 
 系统解剖（图 3.10）：
@@ -584,7 +584,7 @@ i_s(x,y)=\mathrm{Im}\Big[\int\mathcal{F}^{-1}\{\mathcal{F}\{|\Gamma_0(x,y;z)|^2\
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-11.png" width="660" class="lq-img" />
-  <figcaption>图 3.11 完整的双瞳光学外差扫描图像处理器：上半部同图 3.10（M-Z 干涉仪 + 双瞳 + 扫描 + BPF@Ω），下半部 \(\cos\Omega t\)/\(\sin\Omega t\) 双通道解调得 \(i_c,i_s\) 存入 PC（截自原书）</figcaption>
+  <figcaption>图 3.11 完整的双瞳光学外差扫描图像处理器：上半部同图 3.10（M-Z 干涉仪 + 双瞳 + 扫描 + BPF@Ω），下半部 <span class="arithmatex">\(\cos\Omega t\)</span>/<span class="arithmatex">\(\sin\Omega t\)</span> 双通道解调得 <span class="arithmatex">\(i_c,i_s\)</span> 存入 PC（截自原书）</figcaption>
 </figure>
 
 ## 3.5 扫描全息
@@ -787,7 +787,7 @@ H_{c-}(x,y)=H_{\cos}(x,y)-jH_{\sin}(x,y),
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-3-15.png" width="620" class="lq-img" />
-  <figcaption>图 3.15 OSH.m 仿真结果 [原书 Table 3.1，\(\sigma=2.0\)]：a) 原图 \(I(x,y)\)（Virginia Tech 校徽）；b) 正弦全息图；c) 余弦全息图；d) sin 全息图重建（孪生噪声）；e) cos 全息图重建（孪生噪声）；f) 复全息图 \(H_{c+}\) 在 \(z=z_0\) 的重建（干净）；g) \(H_{c-}\) 在 \(z=z_0\) 的重建（离焦乱纹 = 原物 2z₀ 菲涅耳衍射）（截自原书）</figcaption>
+  <figcaption>图 3.15 OSH.m 仿真结果 [原书 Table 3.1，<span class="arithmatex">\(\sigma=2.0\)</span>]：a) 原图 <span class="arithmatex">\(I(x,y)\)</span>（Virginia Tech 校徽）；b) 正弦全息图；c) 余弦全息图；d) sin 全息图重建（孪生噪声）；e) cos 全息图重建（孪生噪声）；f) 复全息图 <span class="arithmatex">\(H_{c+}\)</span> 在 <span class="arithmatex">\(z=z_0\)</span> 的重建（干净）；g) <span class="arithmatex">\(H_{c-}\)</span> 在 <span class="arithmatex">\(z=z_0\)</span> 的重建（离焦乱纹 = 原物 2z₀ 菲涅耳衍射）（截自原书）</figcaption>
 </figure>
 
 原书 Table 3.1 的 OSH.m 全文及规范化重写如下（输入图换成本笔记生成的 "VT/OSH" 文字图，避免依赖 vatech.bmp）：
@@ -1188,7 +1188,7 @@ H_{c-}(x,y)=H_{\cos}(x,y)-jH_{\sin}(x,y),
 
 <figure>
   <img src="../../../images/holo/scanholo/sim-point-target.png" width="700" class="lq-img" />
-  <figcaption>图（本笔记运行结果，点目标）：上排 解析 sin-FZP 与 cos-FZP 全息图（式 3.5-4a/b，就是标准波带片）；右上 \(H_{c+}*h(z_0)\) 聚焦成点（能量集中度 **1.00**）；下排 sin 全息图单独重建（点 + 孪生，主像能量 0.501）；\(H_{c-}*h(z_0)\) 离焦图与原物 2z₀ 菲涅耳衍射图（右下）**逐点吻合（相关 1.0000）**，验证书 p.88 结论</figcaption>
+  <figcaption>图（本笔记运行结果，点目标）：上排 解析 sin-FZP 与 cos-FZP 全息图（式 3.5-4a/b，就是标准波带片）；右上 <span class="arithmatex">\(H_{c+}*h(z_0)\)</span> 聚焦成点（能量集中度 **1.00**）；下排 sin 全息图单独重建（点 + 孪生，主像能量 0.501）；<span class="arithmatex">\(H_{c-}*h(z_0)\)</span> 离焦图与原物 2z₀ 菲涅耳衍射图（右下）**逐点吻合（相关 1.0000）**，验证书 p.88 结论</figcaption>
 </figure>
 
 ### 3.5.5 拓展实战：同轴数字全息的背景相除法（编者拓展，原书无）
@@ -1548,7 +1548,7 @@ I_{scan}(x,y;z_0,t)=E^2+F^2+EF\sin\Big[\frac{k_0}{2z_0}(x^2+y^2)-\Omega t\Big]
 
 <figure>
   <img src="../../../images/holo/scanholo/sim-tdfzp.png" width="700" class="lq-img" />
-  <figcaption>图（本笔记运行结果）：TDFZP 三个时刻的条纹帧（\(\Omega t=0,\ 1.10,\ 2.20\)）——同相位圆环随 \(t\) 收缩，即"条纹向中心跑"；把 +Ωt 换成 −Ωt（式 3.6-4，换瞳情形）则向外跑</figcaption>
+  <figcaption>图（本笔记运行结果）：TDFZP 三个时刻的条纹帧（<span class="arithmatex">\(\Omega t=0,\ 1.10,\ 2.20\)</span>）——同相位圆环随 <span class="arithmatex">\(t\)</span> 收缩，即"条纹向中心跑"；把 +Ωt 换成 −Ωt（式 3.6-4，换瞳情形）则向外跑</figcaption>
 </figure>
 
 ## 坑与陷阱

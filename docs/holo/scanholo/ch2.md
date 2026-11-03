@@ -108,23 +108,33 @@
 !!! note "拓展：例 2.1 —— 矢量波动方程的推导（三步走）"
     **第一步**：对 (2.1-3) 两边取旋度，代入 (2.1-6b)（设 \(\mu\) 不随时空变）：
 
-    \[\nabla\times\nabla\times\mathcal{E}=-\nabla\times\frac{\partial\mathcal{B}}{\partial t}=-\frac{\partial}{\partial t}(\nabla\times\mathcal{B})=-\mu\frac{\partial}{\partial t}(\nabla\times\mathcal{H}).\tag{2.1-7}\]
+\[
+\nabla\times\nabla\times\mathcal{E}=-\nabla\times\frac{\partial\mathcal{B}}{\partial t}=-\frac{\partial}{\partial t}(\nabla\times\mathcal{B})=-\mu\frac{\partial}{\partial t}(\nabla\times\mathcal{H}).\tag{2.1-7}
+\]
 
     **第二步**：代入 (2.1-4) 和 (2.1-6a)（设 \(\epsilon\) 不随时间变）：
 
-    \[\nabla\times\nabla\times\mathcal{E}=-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}-\mu\frac{\partial\mathcal{J}_c}{\partial t}.\tag{2.1-8}\]
+\[
+\nabla\times\nabla\times\mathcal{E}=-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}-\mu\frac{\partial\mathcal{J}_c}{\partial t}.\tag{2.1-8}
+\]
 
     **第三步**：用矢量恒等式 \(\nabla\times\nabla\times\mathcal{A}=\nabla(\nabla\cdot\mathcal{A})-\nabla^2\mathcal{A}\)（式 2.1-9），得到
 
-    \[\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=\mu\frac{\partial\mathcal{J}_c}{\partial t}+\nabla(\nabla\cdot\mathcal{E}),\tag{2.1-10}\]
+\[
+\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=\mu\frac{\partial\mathcal{J}_c}{\partial t}+\nabla(\nabla\cdot\mathcal{E}),\tag{2.1-10}
+\]
 
     再把 \(\nabla\cdot\mathcal{E}=\rho_v/\epsilon\)（由 (2.1-1) 加 (2.1-6a)，式 2.1-11）代进去：
 
-    \[\boxed{\;\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=\mu\frac{\partial\mathcal{J}_c}{\partial t}+\frac{1}{\epsilon}\nabla\rho_v.\;}\tag{2.1-12}\]
+\[
+\boxed{\;\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=\mu\frac{\partial\mathcal{J}_c}{\partial t}+\frac{1}{\epsilon}\nabla\rho_v.\;}\tag{2.1-12}
+\]
 
     这就是带源项的**矢量波动方程**（vector wave equation）：给定 \(\mathcal{J}_c,\rho_v\) 就能解出 \(\mathcal{E}\)。一旦场离开源区进入无源区域（\(\mathcal{J}_c=0,\rho_v=0\)），它必须满足**齐次矢量波动方程**（homogeneous vector wave equation）
 
-    \[\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=0.\tag{2.1-13}\]
+\[
+\nabla^2\mathcal{E}-\mu\epsilon\frac{\partial^2\mathcal{E}}{\partial t^2}=0.\tag{2.1-13}
+\]
 
     图 2.1 画的就是这个局面：区域 V′ 里有源，无源区域 V 里场满足齐次方程。
 
@@ -188,7 +198,7 @@ v^2=\frac{1}{\mu\epsilon}.
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-2.png" width="480" class="lq-img" />
-  <figcaption>图 2.2 平面波沿 \(\boldsymbol{k}_0\) 方向传播：三个分量决定方向（截自原书）</figcaption>
+  <figcaption>图 2.2 平面波沿 <span class="arithmatex">\(\boldsymbol{k}_0\)</span> 方向传播：三个分量决定方向（截自原书）</figcaption>
 </figure>
 
 电磁场本质上是实的，取实部还原物理场：
@@ -282,11 +292,15 @@ R\Big(\frac{\partial^2\psi}{\partial R^2}+\frac{2}{R}\frac{\partial\psi}{\partia
 !!! note "拓展：例 2.2 —— 亥姆霍兹方程的推导"
     把 (2.3-1) 代入标量波动方程 (2.2-4)：时间上只作用在 \(e^{j\omega_0 t}\) 上，\(\partial^2/\partial t^2\to(j\omega_0)^2=-\omega_0^2\)。于是
 
-    \[\Big[\frac{\partial^2\psi_p}{\partial x^2}+\frac{\partial^2\psi_p}{\partial y^2}+\frac{\partial^2\psi_p}{\partial z^2}\Big]e^{j\omega_0 t}=\frac{-\omega_0^2}{v^2}\psi_p(x,y,z)e^{j\omega_0 t}=-k_0^2\psi_p e^{j\omega_0 t},\]
+\[
+\Big[\frac{\partial^2\psi_p}{\partial x^2}+\frac{\partial^2\psi_p}{\partial y^2}+\frac{\partial^2\psi_p}{\partial z^2}\Big]e^{j\omega_0 t}=\frac{-\omega_0^2}{v^2}\psi_p(x,y,z)e^{j\omega_0 t}=-k_0^2\psi_p e^{j\omega_0 t},
+\]
 
     即**亥姆霍兹方程**（Helmholtz equation）：
 
-    \[\frac{\partial^2\psi_p}{\partial x^2}+\frac{\partial^2\psi_p}{\partial y^2}+\frac{\partial^2\psi_p}{\partial z^2}+k_0^2\psi_p=0,\qquad k_0=\frac{\omega_0}{v}.\tag{2.3-2}\]
+\[
+\frac{\partial^2\psi_p}{\partial x^2}+\frac{\partial^2\psi_p}{\partial y^2}+\frac{\partial^2\psi_p}{\partial z^2}+k_0^2\psi_p=0,\qquad k_0=\frac{\omega_0}{v}.\tag{2.3-2}
+\]
 
     时间变量消失了——复振幅的世界里没有时间。
 
@@ -381,11 +395,15 @@ H(k_x,k_y;z)=\mathcal{F}_{xy}\{h(x,y;z)\}=\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y
 !!! note "拓展：例 2.3 的另一条路——直接傍轴展开 (2.3-5)"
     假设 \(k_x^2+k_y^2\ll k_0^2\)（传播矢量的横向分量很小），对 (2.3-5) 的根式做泰勒展开 \(\sqrt{1-u}\simeq1-u/2\)（\(u=(k_x^2+k_y^2)/k_0^2\)）：
 
-    \[\mathcal{H}(k_x,k_y;z)=\exp\Big[-jk_0\sqrt{1-(k_x^2+k_y^2)/k_0^2}\,z\Big]\simeq\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y^2)z}{2k_0}\Big]=H(k_x,k_y;z).\]
+\[
+\mathcal{H}(k_x,k_y;z)=\exp\Big[-jk_0\sqrt{1-(k_x^2+k_y^2)/k_0^2}\,z\Big]\simeq\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y^2)z}{2k_0}\Big]=H(k_x,k_y;z).
+\]
 
     与 (2.3-13) 一致。所以菲涅耳衍射 = 精确角谱的"二次相位"近似：频域里把 \(\sqrt{1-k^2/k_0^2}\) 换成抛物线，空域里把 \(R\) 换成 \(z+r^2/2z\)。两条路线的框图总结见图 2.9，输出频谱满足
 
-    \[\Psi_p(k_x,k_y;z)=\Psi_{p0}(k_x,k_y)\,H(k_x,k_y;z).\tag{2.3-14}\]
+\[
+\Psi_p(k_x,k_y;z)=\Psi_{p0}(k_x,k_y)\,H(k_x,k_y;z).\tag{2.3-14}
+\]
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-9.png" width="620" class="lq-img" />
@@ -423,7 +441,7 @@ H(k_x,k_y;z)=\mathcal{F}_{xy}\{h(x,y;z)\}=\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-10.png" width="560" class="lq-img" />
-  <figcaption>图 2.10 任意光场 \(t(x,y)\) 的菲涅耳衍射：空域卷积 \(t(x,y)*h(x,y)\)（截自原书）</figcaption>
+  <figcaption>图 2.10 任意光场 <span class="arithmatex">\(t(x,y)\)</span> 的菲涅耳衍射：空域卷积 <span class="arithmatex">\(t(x,y)*h(x,y)\)</span>（截自原书）</figcaption>
 </figure>
 
 原书 Table 2.1 的 `Fresnel_diffraction.m` 用"频域乘法"实现这个卷积（图 2.9 的频域路线）：参数 \(a=M/256=111/256=0.4336\) cm，\(\lambda_0=0.6328\times10^{-4}\) cm（红光），\(z=5\) cm。图 2.11 是输出：a) 方孔；b) 方孔中心横截面；c) \(z=5\) cm 处的衍射幅度 \(|\psi_p(x,0;z)|\)——孔内几乎保持原样，**孔边缘长出菲涅耳条纹**（这是菲涅耳数 \(a^2/\lambda_0 z\approx150\) 的深近场特征）。
@@ -839,7 +857,7 @@ H(k_x,k_y;z)=\mathcal{F}_{xy}\{h(x,y;z)\}=\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-12.png" width="560" class="lq-img" />
-  <figcaption>图 2.12 透明片紧贴理想透镜：出射场 = \(t\cdot t_f\)（截自原书）</figcaption>
+  <figcaption>图 2.12 透明片紧贴理想透镜：出射场 = <span class="arithmatex">\(t\cdot t_f\)</span>（截自原书）</figcaption>
 </figure>
 
 人话版：后焦面上的场**正比于 \(t\) 的傅里叶变换**（频率坐标 \((k_0x/f,k_0y/f)\)），但前面多了一个二次相位因子 \(\exp[-jk_0(x^2+y^2)/2f]\)——**相位弯曲**（phase curvature）。它是"想做光学傅里叶变换时的相位误差"；特殊情形 \(t=1\)（全透明）时它单独存在，对应平面波聚焦成点。变记号 \(\mathcal{F}_{xy}\) 即第 1 章的 \(\mathcal{F}_{xy}\)（书约定前向 \(+j\)）。
@@ -860,7 +878,7 @@ H(k_x,k_y;z)=\mathcal{F}_{xy}\{h(x,y;z)\}=\exp(-jk_0z)\exp\Big[\frac{j(k_x^2+k_y
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-13.png" width="600" class="lq-img" />
-  <figcaption>图 2.13 平面波照明位于透镜前 \(d_0\) 的透明片：a) 物理布置；b) 框图（截自原书）</figcaption>
+  <figcaption>图 2.13 平面波照明位于透镜前 <span class="arithmatex">\(d_0\)</span> 的透明片：a) 物理布置；b) 框图（截自原书）</figcaption>
 </figure>
 
 还是"FT × 相位弯曲"，但弯曲系数变成了 \((1-d_0/f)\)。**当 \(d_0=f\)（透明片放在前焦面）时相位弯曲彻底消失**：
@@ -1191,12 +1209,12 @@ H_c(k_x,k_y)=\mathrm{rect}\Big(\frac{k_x}{Xk_0/f}\Big),
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-15.png" width="560" class="lq-img" />
-  <figcaption>图 2.15 单缝光瞳 \(p=\mathrm{rect}(x/X)\)：a) 相干传递函数（通带 ±Xk₀/2f）；b) OTF（三角形，通带 ±Xk₀/f）——非相干截止是相干的两倍（截自原书）</figcaption>
+  <figcaption>图 2.15 单缝光瞳 <span class="arithmatex">\(p=\mathrm{rect}(x/X)\)</span>：a) 相干传递函数（通带 ±Xk₀/2f）；b) OTF（三角形，通带 ±Xk₀/f）——非相干截止是相干的两倍（截自原书）</figcaption>
 </figure>
 
 <figure>
   <img src="../../../images/holo/scanholo/fig-2-16.png" width="560" class="lq-img" />
-  <figcaption>图 2.16 双缝光瞳：a) \(H_c\) 两个通带（相干可以带通）；b) OTF 中心三角永远最大（非相干天生低通）（截自原书）</figcaption>
+  <figcaption>图 2.16 双缝光瞳：a) <span class="arithmatex">\(H_c\)</span> 两个通带（相干可以带通）；b) OTF 中心三角永远最大（非相干天生低通）（截自原书）</figcaption>
 </figure>
 
 ## 2.5 全息
