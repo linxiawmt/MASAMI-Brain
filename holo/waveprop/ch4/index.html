@@ -2521,7 +2521,7 @@ U_{th}(x_2, y_2) = \frac{e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lambda \Delta 
 </div>
 <figure>
   <img src="../../../images/holo/waveprop/fig-4-1.png" width="720" />
-  <figcaption>图 4.1 圆孔夫琅禾费图样的 \(y_2=0\) 切片：数值（叉）与解析（线）重合，轴上辐照度约 1.54 mW/m²（截自原书）</figcaption>
+  <figcaption>图 4.1 圆孔夫琅禾费图样的 <span class="arithmatex">\(y_2=0\)</span> 切片：数值（叉）与解析（线）重合，轴上辐照度约 1.54 mW/m²（截自原书）</figcaption>
 </figure>
 
 <p>工程 1 用同样的参数把这道例题复现了一遍（图 4-5），并把误差拆成两种来汇报：</p>
@@ -2532,7 +2532,7 @@ U_{th}(x_2, y_2) = \frac{e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lambda \Delta 
 </ul>
 <figure>
   <img src="../../../images/holo/waveprop/fig-4-5.png" width="1100" />
-  <figcaption>图 4-5（自绘仿真）工程 1 复现原书图 4.1：(a) 观察面辐照度二维图样（±0.1 m），(b) \(y_2=0\) 切片数值 vs 解析，(c) 归一化形状误差——残差集中在爱里环陡坡，直流标度差已单独扣除</figcaption>
+  <figcaption>图 4-5（自绘仿真）工程 1 复现原书图 4.1：(a) 观察面辐照度二维图样（±0.1 m），(b) <span class="arithmatex">\(y_2=0\)</span> 切片数值 vs 解析，(c) 归一化形状误差——残差集中在爱里环陡坡，直流标度差已单独扣除</figcaption>
 </figure>
 
 <p><strong>能量账本</strong>。离散 Parseval 保证</p>
@@ -3095,7 +3095,7 @@ e^{i\frac{k}{2 f_l}(x_2^2+y_2^2)}\,
 <p>和 (4.3) 一样：<strong>一次 FT + 观察面二次相位</strong>，只是频率标度从 <span class="arithmatex">\(\lambda\Delta z\)</span> 换成了 <span class="arithmatex">\(\lambda f_l\)</span>、被变换的东西从 <span class="arithmatex">\(U_1\)</span> 换成了 <span class="arithmatex">\(t_A P\)</span>。</p>
 <figure>
   <img src="../../../images/holo/waveprop/fig-4-2.png" width="720" />
-  <figcaption>图 4.2 物片紧贴透镜的几何：单色平面波照明，物片 \(t_A(x_1,y_1)\) 与透镜 \(P\,e^{i\phi}\) 重合，传 \(\Delta z=f_l\) 到焦面（截自原书）</figcaption>
+  <figcaption>图 4.2 物片紧贴透镜的几何：单色平面波照明，物片 <span class="arithmatex">\(t_A(x_1,y_1)\)</span> 与透镜 <span class="arithmatex">\(P\,e^{i\phi}\)</span> 重合，传 <span class="arithmatex">\(\Delta z=f_l\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
 <h3 id="422-物在透镜之前">4.2.2 物在透镜之前<a class="headerlink" href="#422-物在透镜之前" title="Permanent link">#</a></h3>
@@ -3122,7 +3122,7 @@ P\!\left(x_1 + \frac{d}{f_l}x_2,\; y_1 + \frac{d}{f_l}y_2\right)\right\}\Big|_{f
 </ul>
 <figure>
   <img src="../../../images/holo/waveprop/fig-4-3.png" width="760" />
-  <figcaption>图 4.3 物片在透镜前 \(d\) 处的几何：物片 \(t_A(x_1,y_1)\) 先被照明，传 \(d\) 到透镜 \(P\,e^{i\phi}\)，再传 \(\Delta z=f_l\) 到焦面（截自原书）</figcaption>
+  <figcaption>图 4.3 物片在透镜前 <span class="arithmatex">\(d\)</span> 处的几何：物片 <span class="arithmatex">\(t_A(x_1,y_1)\)</span> 先被照明，传 <span class="arithmatex">\(d\)</span> 到透镜 <span class="arithmatex">\(P\,e^{i\phi}\)</span>，再传 <span class="arithmatex">\(\Delta z=f_l\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
 <p>(4.11) 里光瞳的<strong>移位</strong>自变量 <span class="arithmatex">\(P(x_1+\frac{d}{f_l}x_2, \ldots)\)</span> 描述渐晕（<strong>vignetting</strong>）：焦面上每个点对应一束斜光束，离轴越远，光束在透镜上扫过的位置越偏，被有限光瞳切掉的部分越多——光轴上的点渐晕最轻。原书把细节留给 Goodman（其 Ref. 5）。</p>
@@ -3242,7 +3242,7 @@ P\!\left(\frac{f_l}{d}x_1,\; \frac{f_l}{d}y_1\right)\right\}\Big|_{f_x=\frac{x_2
 <p>和前两式相比有两点质变：<strong>FT 的频率标度换成 <span class="arithmatex">\(\lambda d\)</span></strong>（不是 <span class="arithmatex">\(\lambda f_l\)</span>——物片离焦面越近，焦斑越小），<strong>幅度多乘 <span class="arithmatex">\(f_l/d\)</span></strong>（会聚越厉害场越强）。</p>
 <figure>
   <img src="../../../images/holo/waveprop/fig-4-4.png" width="700" />
-  <figcaption>图 4.4 物片在透镜后（距焦面 \(d\)）的几何：透镜先给会聚球面波 \(P\,e^{i\phi}\)，物片 \(t_A\) 浸在会聚波里，再传 \(\Delta z=d\) 到焦面（截自原书）</figcaption>
+  <figcaption>图 4.4 物片在透镜后（距焦面 <span class="arithmatex">\(d\)</span>）的几何：透镜先给会聚球面波 <span class="arithmatex">\(P\,e^{i\phi}\)</span>，物片 <span class="arithmatex">\(t_A\)</span> 浸在会聚波里，再传 <span class="arithmatex">\(\Delta z=d\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
 <div class="admonition warning">

@@ -2930,7 +2930,9 @@
 </div>
 <h3 id="521-LeNet-架构">5.2.1 LeNet 架构<a class="headerlink" href="#521-LeNet-架构" title="Permanent link">#</a></h3>
 <p>原书的架构串：</p>
-<div class="arithmatex">\[\text{INPUT} \Rightarrow \text{C1} \Rightarrow \text{TANH} \Rightarrow \text{S2} \Rightarrow \text{C3} \Rightarrow \text{TANH} \Rightarrow \text{S4} \Rightarrow \text{C5} \Rightarrow \text{TANH} \Rightarrow \text{FC6} \Rightarrow \text{SOFTMAX}\]</div>
+<div class="arithmatex">\[
+\text{INPUT} \Rightarrow \text{C1} \Rightarrow \text{TANH} \Rightarrow \text{S2} \Rightarrow \text{C3} \Rightarrow \text{TANH} \Rightarrow \text{S4} \Rightarrow \text{C5} \Rightarrow \text{TANH} \Rightarrow \text{FC6} \Rightarrow \text{SOFTMAX}
+\]</div>
 <p>C = 卷积层，S = 次采样（池化）层，FC = 全连接层。注意 LeCun 团队用的是 <strong>tanh</strong> 而不是今天的 ReLU——1998 年 ReLU 还没进 DL 的视野，隐藏层流行 tanh 或 sigmoid。</p>
 <table>
 <tr>
@@ -3043,7 +3045,9 @@
 
 <h3 id="531-AlexNet-架构">5.3.1 AlexNet 架构<a class="headerlink" href="#531-AlexNet-架构" title="Permanent link">#</a></h3>
 <p>积木与 LeNet 相同，规格不同：11×11、5×5、3×3 三种卷积核；最大池化降采样；Dropout 防过拟合；隐藏层全部 ReLU（LeNet 是 tanh），输出层 softmax。文字串：</p>
-<div class="arithmatex">\[\text{INPUT} \Rightarrow \text{CONV1} \Rightarrow \text{POOL2} \Rightarrow \text{CONV3} \Rightarrow \text{POOL4} \Rightarrow \text{CONV5} \Rightarrow \text{CONV6} \Rightarrow \text{CONV7} \Rightarrow \text{POOL8} \Rightarrow \text{FC9} \Rightarrow \text{FC10} \Rightarrow \text{SOFTMAX}\]</div>
+<div class="arithmatex">\[
+\text{INPUT} \Rightarrow \text{CONV1} \Rightarrow \text{POOL2} \Rightarrow \text{CONV3} \Rightarrow \text{POOL4} \Rightarrow \text{CONV5} \Rightarrow \text{CONV6} \Rightarrow \text{CONV7} \Rightarrow \text{POOL8} \Rightarrow \text{FC9} \Rightarrow \text{FC10} \Rightarrow \text{SOFTMAX}
+\]</div>
 <p>（原书把末项印作 "SOFTMAX7"，是编号笔误，实为第 11 层的 softmax。）</p>
 <div class="admonition warning">
 <p class="admonition-title">224 还是 227？</p>
@@ -3409,7 +3413,9 @@
 </div>
 <h3 id="553-Inception-模块带降维的版本">5.5.3 Inception 模块：带降维的版本<a class="headerlink" href="#553-Inception-模块带降维的版本" title="Permanent link">#</a></h3>
 <p>naive 版有个大问题：<strong>大核太贵</strong>。算一算上面例子里 5×5 分支的乘法量：输入 32×32×200，接 32 个 5×5×32 的核，</p>
-<div class="arithmatex">\[(32\times32\times200)\times(5\times5\times32)=163{,}840{,}000\approx 1.6\ \text{亿次乘法}\]</div>
+<div class="arithmatex">\[
+(32\times32\times200)\times(5\times5\times32)=163{,}840{,}000\approx 1.6\ \text{亿次乘法}
+\]</div>
 <p>现代计算机跑得动，但确实贵。救星是<strong>降维层（dimensionality reduction layer）——1×1 卷积</strong>：在大核（3×3、5×5）之前先插一个 1×1 卷积把<strong>深度压小</strong>，乘法量跟着崩塌。</p>
 <figure>
   <img src="../images/ch05/fig-5-12.png" width="620" class="lq-img" />
@@ -3417,7 +3423,9 @@
 </figure>
 
 <p>还是那个例子：输入 32×32×200，先过 16 核的 1×1 卷积压成 32×32×16，再上 5×5 卷积。输出还是 32×32×32（与不加降维层时相同），但成本变成两段：</p>
-<div class="arithmatex">\[\underbrace{(32\times32\times200)\times(1\times1\times16)}_{3.2\ \text{百万}}+\underbrace{(32\times32\times16)\times(5\times5\times32)}_{13.1\ \text{百万}}=16.3\ \text{百万}\]</div>
+<div class="arithmatex">\[
+\underbrace{(32\times32\times200)\times(1\times1\times16)}_{3.2\ \text{百万}}+\underbrace{(32\times32\times16)\times(5\times5\times32)}_{13.1\ \text{百万}}=16.3\ \text{百万}
+\]</div>
 <p><strong>1.63 亿 → 1630 万，整整省 90%。</strong></p>
 <div class="admonition note">
 <p class="admonition-title">侧栏：1×1 卷积层</p>
@@ -3693,7 +3701,9 @@
 </figure>
 
 <p>细节看图 5.20：捷径箭头指向的是<strong>第二个卷积层的末尾</strong>——两条路径在<strong>该层 ReLU 之前</strong>相加。x 走捷径，主路算出 <span class="arithmatex">\(f(x)\)</span>，相加后一起过激活：</p>
-<div class="arithmatex">\[\text{output} = \text{relu}\big(f(x) + x\big)\]</div>
+<div class="arithmatex">\[
+\text{output} = \text{relu}\big(f(x) + x\big)
+\]</div>
 <figure>
   <img src="../images/ch05/fig-5-20.png" width="640" class="lq-img" />
   <figcaption>图 5.20 主路 f(x) + 捷径 x，相加后再过 ReLU（截自原书）</figcaption>

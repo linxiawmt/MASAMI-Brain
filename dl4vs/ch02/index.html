@@ -3287,15 +3287,15 @@ z = \text{height} \cdot w_1 + \text{age} \cdot w_2 + b
   <img src="../images/ch02/fig-2-s1.png" width="520" class="lq-img" />
   <figcaption>线性模型给概率"判负"又"爆表"：25 岁以下 p&lt;0，50 岁以上 p&gt;1（截自原书）</figcaption>
 </figure>
-怎么修出 <span class="arithmatex">\(0 &lt; p &lt; 1\)</span>？第一步，消掉负值——<strong>指数函数</strong>：任何数的指数恒为正。对线性方程取指数：<span class="arithmatex">\(p = \exp(z) = \exp(\beta_0 + \beta_1 \cdot \text{age})\)</span>，概率保证大于 0。第二步，压住超过 1 的值——按比例的思维，任何数除以一个比它大的数，结果小于 1。把上式除以"它本身加一个小量"（取 1，或某个极小值 <span class="arithmatex">\(\epsilon\)</span>）：
-[
+怎么修出 <span class="arithmatex">\(0 &lt; p &lt; 1\)</span>？第一步，消掉负值——<strong>指数函数</strong>：任何数的指数恒为正。对线性方程取指数：<span class="arithmatex">\(p = \exp(z) = \exp(\beta_0 + \beta_1 \cdot \text{age})\)</span>，概率保证大于 0。第二步，压住超过 1 的值——按比例的思维，任何数除以一个比它大的数，结果小于 1。把上式除以"它本身加一个小量"（取 1，或某个极小值 <span class="arithmatex">\(\epsilon\)</span>）：</p>
+<div class="arithmatex">\[
 p = \frac{\exp(z)}{\exp(z) + \epsilon}
-]
-再把分子分母同除以 <span class="arithmatex">\(\exp(z)\)</span>：
-[
+\]</div>
+<p>再把分子分母同除以 <span class="arithmatex">\(\exp(z)\)</span>：</p>
+<div class="arithmatex">\[
 p = \frac{1}{1 + \exp(-z)}
-]
-画出它的概率曲线——正是 sigmoid 的 S 形：概率不再低于 0 或高于 1；病人年龄越大，概率<strong>渐近</strong>趋近 1；权重往下走，函数渐近趋近 0，但永远不出 <span class="arithmatex">\((0,1)\)</span> 区间。这就是 sigmoid 函数与逻辑回归（logistic regression）的图。
+\]</div>
+<p>画出它的概率曲线——正是 sigmoid 的 S 形：概率不再低于 0 或高于 1；病人年龄越大，概率<strong>渐近</strong>趋近 1；权重往下走，函数渐近趋近 0，但永远不出 <span class="arithmatex">\((0,1)\)</span> 区间。这就是 sigmoid 函数与逻辑回归（logistic regression）的图。
 <figure>
   <img src="../images/ch02/fig-2-s2.png" width="520" class="lq-img" />
   <figcaption>年龄越大概率渐近 1——sigmoid / 逻辑回归的曲线（截自原书）</figcaption>
@@ -3512,12 +3512,12 @@ a^{3}_{(1)} = \sigma(w^{(1)}_{31}x_1 + w^{(1)}_{32}x_2 + w^{(1)}_{33}x_3)
 <strong>维度定义</strong>：标量（scalar）= 单个数；向量（vector）= 一维数组；矩阵（matrix）= 二维数组；张量（tensor）= 维度 n &gt; 2 的 n 维数组。数学惯例：标量小写斜体（如 <span class="arithmatex">\(n\)</span>）；向量小写粗斜体（如 <span class="arithmatex">\(\mathbf{x}\)</span>）；矩阵大写粗斜体（如 <span class="arithmatex">\(\mathbf{X}\)</span>）；矩阵维度写作 (行 × 列)。
 <strong>标量乘法</strong>：标量乘进矩阵的每个元素，<strong>不改变矩阵维度</strong>。
 <strong>矩阵乘法</strong>：<span class="arithmatex">\((r_1 \times c_1) \cdot (r_2 \times c_2)\)</span> 要求 <span class="arithmatex">\(c_1 = r_2\)</span>（前者的列数 = 后者的行数），结果的维度是 <span class="arithmatex">\((r_1 \times c_2)\)</span>。原书给了一个 (3×3)·(3×1) 的例子：结果向量的第一个元素 <span class="arithmatex">\(x = 3 \cdot 13 + 4 \cdot 8 + 2 \cdot 6 = 83\)</span>，同理 <span class="arithmatex">\(y = 63\)</span>、<span class="arithmatex">\(z = 37\)</span>。学完规则，拿张纸把前面神经网络例子的矩阵维度走一遍（图 2.21 的矩阵方程可直接拿来练手）。
-<strong>转置（transposition）</strong>：行向量变列向量、反之亦然；形状 <span class="arithmatex">\((m \times n)\)</span> 翻转成 <span class="arithmatex">\((n \times m)\)</span>，记号是上标 <span class="arithmatex">\(A^T\)</span>：
-[
-A = \begin{bmatrix} 2 &amp; 8 \end{bmatrix} \Rightarrow A^T = \begin{bmatrix} 2 \ 8 \end{bmatrix}
+<strong>转置（transposition）</strong>：行向量变列向量、反之亦然；形状 <span class="arithmatex">\((m \times n)\)</span> 翻转成 <span class="arithmatex">\((n \times m)\)</span>，记号是上标 <span class="arithmatex">\(A^T\)</span>：</p>
+<div class="arithmatex">\[
+A = \begin{bmatrix} 2 &amp; 8 \end{bmatrix} \Rightarrow A^T = \begin{bmatrix} 2 \\ 8 \end{bmatrix}
 \qquad
-A = \begin{bmatrix} 0 &amp; 2 &amp; 1 \ 1 &amp; 4 &amp; -1 \end{bmatrix} \Rightarrow A^T = \begin{bmatrix} 0 &amp; 1 \ 2 &amp; 4 \ 1 &amp; -1 \end{bmatrix}
-]</p>
+A = \begin{bmatrix} 0 &amp; 2 &amp; 1 \\ 1 &amp; 4 &amp; -1 \end{bmatrix} \Rightarrow A^T = \begin{bmatrix} 0 &amp; 1 \\ 2 &amp; 4 \\ 1 &amp; -1 \end{bmatrix}
+\]</div>
 </div>
 <h3 id="242-特征学习">2.4.2 特征学习<a class="headerlink" href="#242-特征学习" title="Permanent link">#</a></h3>
 <p>隐藏层的节点 <span class="arithmatex">\(a^i\)</span> 就是<strong>每层学出来的新特征</strong>。看图 2.20：3 个输入特征 <span class="arithmatex">\((x_1, x_2, x_3)\)</span>，第一层前向计算后变成 3 个值不同的新特征（<span class="arithmatex">\(a^{1}_{(1)}, a^{2}_{(1)}, a^{3}_{(1)}\)</span>）；下一层在图案里再找图案，产出新特征 <span class="arithmatex">\(a^{1}_{(2)}, \dots, a^{4}_{(2)}\)</span>，以此类推。</p>
@@ -3798,17 +3798,17 @@ w_{\text{next-step}} = w_{\text{current}} + \Delta w
 </tbody>
 </table>
 <p>拿简单函数练一遍：<span class="arithmatex">\(f(x) = 10x^5 + 4x^7 + 12x\)</span>。套幂规则、常数倍规则、和规则，得 <span class="arithmatex">\(f'(x) = 50x^4 + 28x^6 + 12\)</span>（也记作 <span class="arithmatex">\(f'(x)\)</span>）。想直观理解就画出 <span class="arithmatex">\(f(x)\)</span>：想知道任意点的斜率，代入该点算 <span class="arithmatex">\(f'(x)\)</span>——<span class="arithmatex">\(f'(2)\)</span> 给出第一条切线的斜率，<span class="arithmatex">\(f'(6)\)</span> 给出第二条。
-最后一个例子：用幂规则推 sigmoid 的导数：
-[
+最后一个例子：用幂规则推 sigmoid 的导数：</p>
+<div class="arithmatex">\[
 \frac{d}{dx}\sigma(x) = \frac{d}{dx}\left[\frac{1}{1 + e^{-x}}\right]
-= \frac{d}{dx}\left(1 + e<sup -1="-1">{-x}\right)</sup>
-= -(1 + e<sup -2="-2">{-x})</sup>)
-= \frac{e^{-x}}{(1 + e}(-e^{-x<sup>{-x})</sup>2}
-]
-[
+= \frac{d}{dx}\left(1 + e^{-x}\right)^{-1}
+= -(1 + e^{-x})^{-2}(-e^{-x})
+= \frac{e^{-x}}{(1 + e^{-x})^2}
+\]</div>
+<div class="arithmatex">\[
 = \frac{1}{1 + e^{-x}} \cdot \frac{e^{-x}}{1 + e^{-x}} = \sigma(x) \cdot (1 - \sigma(x))
-]
-写成代码：
+\]</div>
+<p>写成代码：
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
@@ -3924,20 +3924,20 @@ L(W, b) = \frac{1}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i)^2
 
 <div class="admonition note">
 <p class="admonition-title">侧栏：微积分复习——导数的链式法则（选读）</p>
-<p>回到微积分。前面列的导数规则里最重要的就是链式法则：
-[
+<p>回到微积分。前面列的导数规则里最重要的就是链式法则：</p>
+<div class="arithmatex">\[
 \frac{d}{dx}f(g(x)) = f'(g(x))\,g'(x)
-]
-链式法则计算"函数套函数"的复合导数，也叫<strong>由外而内规则（outside-inside rule）</strong>：
-[
-\frac{d}{dx}f(g(x)) = \underbrace{\frac{d}{dx}f(g(x))}<em _text_内层函数的导数="\text{内层函数的导数">{\text{外层函数的导数}} \times \underbrace{\frac{d}{dx}g(x)}</em>
-]
-一句话：}<strong>函数复合时，导数直接相乘。<strong>这对反向传播是天赐良机——前向传播本来就是一串函数的复合，反向传播就是对这串函数逐段求导。
-实现时我们要做的只是把一串偏导数</strong>乘起来</strong>，把误差的影响一路传回输入。例：要算总误差对输入 <span class="arithmatex">\(x\)</span> 的影响 <span class="arithmatex">\(\dfrac{dE}{dx}\)</span>：
-[
+\]</div>
+<p>链式法则计算"函数套函数"的复合导数，也叫<strong>由外而内规则（outside-inside rule）</strong>：</p>
+<div class="arithmatex">\[
+\frac{d}{dx}f(g(x)) = \underbrace{\frac{d}{dx}f(g(x))}_{\text{外层函数的导数}} \times \underbrace{\frac{d}{dx}g(x)}_{\text{内层函数的导数}}
+\]</div>
+<p>一句话：<strong>函数复合时，导数直接相乘。<strong>这对反向传播是天赐良机——前向传播本来就是一串函数的复合，反向传播就是对这串函数逐段求导。
+实现时我们要做的只是把一串偏导数</strong>乘起来</strong>，把误差的影响一路传回输入。例：要算总误差对输入 <span class="arithmatex">\(x\)</span> 的影响 <span class="arithmatex">\(\dfrac{dE}{dx}\)</span>：</p>
+<div class="arithmatex">\[
 \frac{dE}{dx} = \frac{dE}{dB} \cdot \frac{dB}{dA} \cdot \frac{dA}{dx}
-]
-无非是<strong>上游梯度 × 局部梯度</strong>，一路乘到目标值。</p>
+\]</div>
+<p>无非是<strong>上游梯度 × 局部梯度</strong>，一路乘到目标值。</p>
 </div>
 <p>正式推一遍：算误差对 <span class="arithmatex">\(w^{(1)}_{1,3}\)</span> 的导数——(1) 表示第 1 层，1,3 表示"第一条输入上的第三条权重"（原书原话）：</p>
 <div class="arithmatex">\[

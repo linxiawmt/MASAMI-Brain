@@ -2772,7 +2772,9 @@
 </tr>
 </tbody>
 </table>
-<div class="arithmatex">\[ \text{total\_loss} = [\,\text{style}(style\_image) - \text{style}(combined\_image)\,] + [\,\text{content}(original\_image) - \text{content}(combined\_image)\,] + \text{total\_variation\_loss} \]</div>
+<div class="arithmatex">\[
+\text{total\_loss} = [\,\text{style}(style\_image) - \text{style}(combined\_image)\,] + [\,\text{content}(original\_image) - \text{content}(combined\_image)\,] + \text{total\_variation\_loss}
+\]</div>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>Gatys 等人的原始算法<strong>不含</strong>总变差损失。实验发现，鼓励输出图像整体空间平滑后，风格迁移的结果更好、更美观，所以经典实现加了这一项。</p>
@@ -2780,7 +2782,9 @@
 <h3 id="931-内容损失Content-Loss">9.3.1 内容损失（Content Loss）<a class="headerlink" href="#931-内容损失Content-Loss" title="Permanent link">#</a></h3>
 <p>内容损失衡量两图在<strong>主题内容与整体布局</strong>上的差异：两张图场景相似 → 损失小；场景完全不同 → 损失大。度量手段：按 ConvNet 的<strong>高层特征表示</strong>给图像打分（海豚、植物、水这类语义概念）。识别这些高级特征正是深度网络的存在意义——网络通过在前层简单特征中找模式，在深层学到高级特征。所以需要一个<strong>预训练</strong>网络，并从<strong>深层</strong>取特征。</p>
 <p>具体计算：取内容图与组合图在某一深层的输出，算<strong>均方误差（MSE）</strong>：</p>
-<p>[ \text{Content loss} = \sum \big[\,\text{content}(original_image) - \text{content}(combined_image)\,]^2 ]</p>
+<div class="arithmatex">\[
+\text{Content loss} = \sum \big[\,\text{content}(original\_image) - \text{content}(combined\_image)\,\big]^2
+\]</div>
 <p>最小化它，网络就会不断往组合图里"补内容"，让它越来越像原内容图。</p>
 <p><strong>实现。</strong> 把内容图、风格图、组合图分别送进 VGG19 的卷积部分，用 forward hook 取同一深层的激活，再算平方误差。<strong>选层是关键</strong>：必须选<strong>深层</strong>（这里取 <code>features[30]</code>，也就是最后一个 block 的第 2 个卷积层）——如果选开头几个卷积层，网络只能看见线、边缘、斑块这些低级特征，迁移不出完整内容。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 9.3.1 内容损失：深层特征平方误差 =====</span>
@@ -2840,10 +2844,13 @@
 <div class="admonition note">
 <p class="admonition-title">侧栏：Gram 矩阵——度量联合激活的特征图</p>
 <p><strong>Gram 矩阵（Gram Matrix）</strong> 是数值化衡量"两个特征图被<strong>联合激活（jointly activated）<strong>程度"的方法。要构建跨层捕捉风格与纹理的损失，就得计算 CNN 各激活通道之间的</strong>相关性（correlation）</strong>——这个相关性正好由激活的 Gram 矩阵（特征间外积）捕获。
-数学写法：把某层激活 <span class="arithmatex">\(a\)</span>（形状 <span class="arithmatex">\(C \times H \times W\)</span>）展平成矩阵 <span class="arithmatex">\(F \in \mathbb{R}^{C \times (H \cdot W)}\)</span>，则
-[ G = F F^{\mathsf T}, \qquad G_{ij} = \sum_{k=1}^{H \cdot W} F_{ik}\, F_{jk} ]
-<span class="arithmatex">\(G\)</span> 是 <span class="arithmatex">\(C \times C\)</span> 矩阵：对角线 <span class="arithmatex">\(G_{ii}\)</span> 是第 <span class="arithmatex">\(i\)</span> 个通道的"总激活量"，非对角线 <span class="arithmatex">\(G_{ij}\)</span> 是通道 <span class="arithmatex">\(i\)</span> 与通道 <span class="arithmatex">\(j\)</span> 的<strong>共现强度</strong>。</p>
+数学写法：把某层激活 <span class="arithmatex">\(a\)</span>（形状 <span class="arithmatex">\(C \times H \times W\)</span>）展平成矩阵 <span class="arithmatex">\(F \in \mathbb{R}^{C \times (H \cdot W)}\)</span>，则</p>
 </div>
+<div class="arithmatex">\[
+G = F F^{\mathsf T}, \qquad G_{ij} = \sum_{k=1}^{H \cdot W} F_{ik}\, F_{jk}
+\]</div>
+<div class="highlight"><pre><span></span><code>\(G\) 是 \(C \times C\) 矩阵：对角线 \(G_{ii}\) 是第 \(i\) 个通道的"总激活量"，非对角线 \(G_{ij}\) 是通道 \(i\) 与通道 \(j\) 的**共现强度**。
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 9.3.2 Gram 矩阵与风格损失 =====</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">gram_matrix</span><span class="p">(</span><span class="n">act</span><span class="p">):</span>                    <span class="c1"># act: (1, C, H, W)，单张图</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">c</span> <span class="o">=</span> <span class="n">act</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -2890,7 +2897,9 @@
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">square</span><span class="p">()</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>       <span class="c1"># 1.25 次幂：平缓区强平滑，大边缘保留</span>
 </code></pre></div>
-<div class="arithmatex">\[ \text{TV}(x) = \sum_{i,j} \big[\,(x_{i,j} - x_{i+1,j})^2 + (x_{i,j} - x_{i,j+1})^2\,\big]^{1.25} \]</div>
+<div class="arithmatex">\[
+\text{TV}(x) = \sum_{i,j} \big[\,(x_{i,j} - x_{i+1,j})^2 + (x_{i,j} - x_{i,j+1})^2\,\big]^{1.25}
+\]</div>
 <p>三项损失加权相加：<code>total_loss = content_weight * content_l + style_weight * style_l + tv_weight * tv_l</code>。完整组装见 9.3.4。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：总变差损失为什么能让图像平滑？</p>

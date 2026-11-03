@@ -3111,7 +3111,9 @@
 </figure>
 
 <p>问题来了：<strong>MLP 只接受一维向量输入，维度 <span class="arithmatex">\((1,n)\)</span></strong>，吃不下 <span class="arithmatex">\((x,y)\)</span> 的二维矩阵。所以必须先把图像"压扁"成一条长向量，这叫 <strong>Image Flattening（图像展平）</strong>：<span class="arithmatex">\(28\times28\)</span> 展成 <span class="arithmatex">\((1, 784)\)</span>，输入向量按行拼接：</p>
-<div class="arithmatex">\[ x = [row_1, row_2, \dots, row_{28}] \]</div>
+<div class="arithmatex">\[
+x = [row_1, row_2, \dots, row_{28}]
+\]</div>
 <p>输入层因此有 784 个节点 <span class="arithmatex">\(x_1, x_2, \dots, x_{784}\)</span>。PyTorch 里一个 <code>nn.Flatten</code> 层就完成展平——它没有任何权重，只负责把矩阵按行拼成一条长向量：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 3.1.1 输入层：把 28×28 展平成 784 =====</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -3202,7 +3204,9 @@
 <h4 id="缺陷一空间特征丢失">缺陷一：空间特征丢失<a class="headerlink" href="#缺陷一空间特征丢失" title="Permanent link">#</a></h4>
 <p>展平把 2D 图像压成 1D 向量的瞬间，<strong>所有二维结构信息全扔了</strong>。把输入当一串毫无结构的数字，对 1D 信号也许没问题；但 2D 图像里"相邻像素强相关"这件事，MLP 一无所知——它在找模式时不会把像素值彼此关联起来。CNN 则直接吃原始矩阵，天然理解"离得近的像素关系更紧"。</p>
 <p>作者用一个极简实验说明后果：教网络认"正方形"（黑底白方块，图 3.5）。展平后输入是 16 维向量：</p>
-<div class="arithmatex">\[ \text{Input vector} = [1, 1, 0, 0, \ 1, 1, 0, 0, \ 0, 0, 0, 0, \ 0, 0, 0, 0] \]</div>
+<div class="arithmatex">\[
+\text{Input vector} = [1, 1, 0, 0, \ 1, 1, 0, 0, \ 0, 0, 0, 0, \ 0, 0, 0, 0]
+\]</div>
 <p>训练完成后，网络学会的是"<strong>当 <span class="arithmatex">\(x_1, x_2, x_5, x_6\)</span> 点火时是正方形</strong>"——它记住的是输入节点的编号，不是"正方形"这个形状。换一张正方形出现在别处的图（图 3.6），网络直接不认识。想让它全图都认得？那就得把每个位置的正方形都喂一遍——对复杂问题完全不可扩展。认猫同理：我们希望网络学会"耳朵、鼻子、眼睛"这些<strong>特征本身</strong>，而不是它们在某张图里的绝对位置（图 3.7）。</p>
 <table>
 <tr>
@@ -3299,12 +3303,18 @@
 </ul>
 <p>**核的值是什么？**就是权重——随机初始化、由网络训练学出来。你不用手工设计它。</p>
 <p>图 3.13 的算例（感受野左上角 <span class="arithmatex">\(\begin{bmatrix}3&amp;0&amp;1\\2&amp;2&amp;2\\2&amp;4&amp;2\end{bmatrix}\)</span> 配对应位置的核元素）：</p>
-<div class="arithmatex">\[ (-1\times3) + (0\times0) + (1\times1) + (-2\times2) + (0\times6) + (2\times2) + (-1\times2) + (0\times4) + (1\times1) = -3 \]</div>
+<div class="arithmatex">\[
+(-1\times3) + (0\times0) + (1\times1) + (-2\times2) + (0\times6) + (2\times2) + (-1\times2) + (0\times4) + (1\times1) = -3
+\]</div>
 <h4 id="卷积运算--矩阵版加权求和">卷积运算 = 矩阵版加权求和<a class="headerlink" href="#卷积运算--矩阵版加权求和" title="Permanent link">#</a></h4>
 <p>这套数学在第 2 章见过——MLP 的加权求和：</p>
-<div class="arithmatex">\[ \text{weighted sum} = x_1 \cdot w_1 + x_2 \cdot w_2 + \dots + x_n \cdot w_n + b \]</div>
+<div class="arithmatex">\[
+\text{weighted sum} = x_1 \cdot w_1 + x_2 \cdot w_2 + \dots + x_n \cdot w_n + b
+\]</div>
 <p>CNN 只是把神经元和权重排成了矩阵形状：<strong>感受野的每个像素与核的对应像素相乘、全部加起来</strong>，得到新图（特征图）中心像素的值（图 3.15）。原书算例：</p>
-<div class="arithmatex">\[ (93\times-1) + (139\times0) + (101\times1) + (26\times-2) + (252\times0) + (196\times2) + (135\times-1) + (240\times0) + (48\times1) \]</div>
+<div class="arithmatex">\[
+(93\times-1) + (139\times0) + (101\times1) + (26\times-2) + (252\times0) + (196\times2) + (135\times-1) + (240\times0) + (48\times1)
+\]</div>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误：图 3.15 的 243 应为 261</p>
 <p>按上图数字实算：<span class="arithmatex">\(-93 + 101 - 52 + 392 - 135 + 48 = 261\)</span>。原书标注 <strong>243</strong>，与实算差 18，属排版错误；运算过程本身没错。本笔记按实算 261 修正。</p>
@@ -3317,9 +3327,13 @@
 <p>核滑遍全图，每次都做一遍这样的乘加——产出的新图就叫<strong>特征图（Feature Map）<strong>或</strong>激活图（Activation Map）</strong>。</p>
 <h4 id="滤波器如何通向学特征">滤波器如何通向"学特征"<a class="headerlink" href="#滤波器如何通向学特征" title="Permanent link">#</a></h4>
 <p>回到根本目标：提取特征。图像处理里，滤波器本就用来滤掉不要的信息或放大某类特征——比如这个<strong>边缘检测核</strong>：</p>
-<div class="arithmatex">\[ K = \begin{bmatrix} 0 &amp; -1 &amp; 0 \\ -1 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{bmatrix} \]</div>
+<div class="arithmatex">\[
+K = \begin{bmatrix} 0 &amp; -1 &amp; 0 \\ -1 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{bmatrix}
+\]</div>
 <p>它与输入 <span class="arithmatex">\(F(x,y)\)</span> 卷积，生成的特征图会放大边缘。书中的算例：输入块 <span class="arithmatex">\(\begin{bmatrix}120&amp;140&amp;120\\225&amp;220&amp;205\\225&amp;250&amp;230\end{bmatrix}\)</span>，</p>
-<div class="arithmatex">\[ 0\times120 + (-1)\times140 + 0\times120 + (-1)\times225 + 4\times220 + (-1)\times205 + 0\times225 + (-1)\times250 + 0\times230 = 60 \]</div>
+<div class="arithmatex">\[
+0\times120 + (-1)\times140 + 0\times120 + (-1)\times225 + 4\times220 + (-1)\times205 + 0\times225 + (-1)\times250 + 0\times230 = 60
+\]</div>
 <p>输出 60 &gt; 0——检测到了一个小边缘。不同滤波器检测不同特征：水平边、垂直边、角点……这些滤波器放进卷积层，就产生我们前面说的逐层特征学习：先学边缘直线，后学复杂特征。</p>
 <h4 id="卷积层的五个超参数">卷积层的五个超参数<a class="headerlink" href="#卷积层的五个超参数" title="Permanent link">#</a></h4>
 <p>用 <code>nn.Conv2d</code> 建一个卷积层，它有五个主要参数：</p>
@@ -3364,14 +3378,16 @@
 <div class="admonition note">
 <p class="admonition-title">拓展：卷积输出尺寸公式</p>
 <p>stride/padding 对输出尺寸的影响可以精确计算（原书只给"大致"说法，公式补充如下）：</p>
-<div class="arithmatex">\[ O = \frac{W - K + 2P}{S} + 1 \]</div>
-<p>其中 <span class="arithmatex">\(W\)</span> = 输入宽（高同理单独算）、<span class="arithmatex">\(K\)</span> = 核尺寸、<span class="arithmatex">\(P\)</span> = 补零圈数、<span class="arithmatex">\(S\)</span> = 步幅；<strong>除不尽时向下取整</strong>。三个算例：</p>
-<ul>
-<li><strong>图 3.12 的网络</strong>：<span class="arithmatex">\(28\times28\)</span> 输入、<span class="arithmatex">\(5\times5\)</span> 核、无 padding、S=1：<span class="arithmatex">\(O=(28-5)/1+1=24\)</span> → 卷积层 24×24；<span class="arithmatex">\(2\times2\)</span> 池化 <span class="arithmatex">\(O=(24-2)/2+1=12\)</span> → 12×12；再卷 <span class="arithmatex">\((12-5)/1+1=8\)</span>；再池 <span class="arithmatex">\((8-2)/2+1=4\)</span>——与图 3.12 标注的 24→12→8→4 完全一致。</li>
-<li><strong>3.4 节 MNIST CNN</strong>：<span class="arithmatex">\(3\times3\)</span> 核 + padding=1（保持尺寸）、S=1：<span class="arithmatex">\(O=(28-3+2)/1+1=28\)</span>，尺寸不变；池化 <span class="arithmatex">\((28-2)/2+1=14\)</span>。</li>
-<li><strong>步幅 2 的取整</strong>：<span class="arithmatex">\(28\times28\)</span>、<span class="arithmatex">\(3\times3\)</span> 核、无 padding、S=2：<span class="arithmatex">\((28-3)/2+1=13.5 \to 13\)</span>——余数直接扔掉，设计网络时要提前把尺寸线算好。</li>
-</ul>
 </div>
+<div class="arithmatex">\[
+O = \frac{W - K + 2P}{S} + 1
+\]</div>
+<div class="highlight"><pre><span></span><code>其中 \(W\) = 输入宽（高同理单独算）、\(K\) = 核尺寸、\(P\) = 补零圈数、\(S\) = 步幅；**除不尽时向下取整**。三个算例：
+
+- **图 3.12 的网络**：\(28\times28\) 输入、\(5\times5\) 核、无 padding、S=1：\(O=(28-5)/1+1=24\) → 卷积层 24×24；\(2\times2\) 池化 \(O=(24-2)/2+1=12\) → 12×12；再卷 \((12-5)/1+1=8\)；再池 \((8-2)/2+1=4\)——与图 3.12 标注的 24→12→8→4 完全一致。
+- **3.4 节 MNIST CNN**：\(3\times3\) 核 + padding=1（保持尺寸）、S=1：\(O=(28-3+2)/1+1=28\)，尺寸不变；池化 \((28-2)/2+1=14\)。
+- **步幅 2 的取整**：\(28\times28\)、\(3\times3\) 核、无 padding、S=2：\((28-3)/2+1=13.5 \to 13\)——余数直接扔掉，设计网络时要提前把尺寸线算好。
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">拓展：权值共享为什么把参数量打下来</p>
 <p>全连接 <span class="arithmatex">\(1000\times1000\)</span> 的图 + 1000 个隐藏神经元 = 10 亿参数；而一个 <span class="arithmatex">\(3\times3\)</span> 卷积核只有 <span class="arithmatex">\(9+1\)</span> 个参数，<strong>滑动扫过全图，同一套权重在所有位置复用</strong>——这就是<strong>权值共享（Weight Sharing）</strong>。3.4 节会看到：MNIST CNN 的第一层用 320 个参数就提取了 32 种特征（MLP 同位置要 40 万）。共享还有个副产品：同一特征在图里<strong>挪到任何位置</strong>都能被同一个核检测到——正好治好 3.1.5 节"正方形挪位置就不认识"的病。</p>
@@ -3531,9 +3547,13 @@
 </table>
 <h3 id="342-参数量对账220234">3.4.2 参数量对账：220,234<a class="headerlink" href="#342-参数量对账220234" title="Permanent link">#</a></h3>
 <p><strong>参数（Parameters）= 权重</strong>，就是网络在梯度下降 + 反向传播里不断更新的东西。MLP 里全连接，参数 = 两层神经元数相乘；CNN 的参数算法不一样，但有公式：</p>
-<div class="arithmatex">\[ \text{number of params} = \text{filters} \times \text{kernel size} \times \text{depth}_{\text{prev}} + \text{filters} \]</div>
+<div class="arithmatex">\[
+\text{number of params} = \text{filters} \times \text{kernel size} \times \text{depth}_{\text{prev}} + \text{filters}
+\]</div>
 <p>（最后一项是每个滤波器一个偏置。）以 CONV_2 为例，前一层深度是 32：</p>
-<div class="arithmatex">\[ \text{Params} = 64 \times 3 \times 3 \times 32 + 64 = 18{,}496 \]</div>
+<div class="arithmatex">\[
+\text{Params} = 64 \times 3 \times 3 \times 32 + 64 = 18{,}496
+\]</div>
 <p>完整对账（与图 3.27 逐行一致）：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 3.4.2 参数量对账 =====</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># CONV_1: 32×(3×3×1) + 32 = 320</span>

@@ -2367,7 +2367,7 @@
 <p>先立住本章的舞台。图 5.1 是全章的成像模型：扩展物的每个点源发出球面波，到达**入瞳（entrance pupil）**时是发散球面波；理想成像系统应给它乘一个球面相位延迟，把它变成会聚球面波、聚到像面上的一个点。<strong>像差就是对这个球面相位的偏离</strong>——点物聚成有限大小的光斑，整幅像看起来就是模糊。</p>
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-1.png" width="760" />
-  <figcaption>图 5.1 成像系统基本模型：物面 \((\xi,\eta)\)、入瞳与出瞳 \((x,y)\)、像面 \((u,v)\)；每个物点的发散球面波经系统变成（理想情形）会聚球面波（截自原书）</figcaption>
+  <figcaption>图 5.1 成像系统基本模型：物面 <span class="arithmatex">\((\xi,\eta)\)</span>、入瞳与出瞳 <span class="arithmatex">\((x,y)\)</span>、像面 <span class="arithmatex">\((u,v)\)</span>；每个物点的发散球面波经系统变成（理想情形）会聚球面波（截自原书）</figcaption>
 </figure>
 
 <p>用射线追踪（CODE V、OSLO、ZEMAX 这类设计软件）可以算出给定物点的波前像差 <span class="arithmatex">\(W(x,y)\)</span>。本书不追光线，直接假设 <span class="arithmatex">\(W\)</span> 已经拿到，单位是<strong>波</strong>（波长数）；对应的相位是 <span class="arithmatex">\(\phi(x,y) = 2\pi W(x,y)\)</span>（弧度）。把光瞳的振幅效应（渐晕、切趾）和像差并进一个复函数——<strong>广义光瞳函数（generalized pupil function）</strong>：</p>
@@ -2735,7 +2735,7 @@ G_m(\theta) =
 <p>图 5.2 给了同一族（x 像散）三个阶数的直观感受：<span class="arithmatex">\(i=6,12,24\)</span> 的角向都是 <span class="arithmatex">\(\cos 2\theta\)</span>，径向幂次分别是 2、4、6——阶数越高，从圆心到边缘的峰谷与零点越多。</p>
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-2.png" width="720" />
-  <figcaption>图 5.2 三阶 x 像散：(a) \(i=6\) 初级、(b) \(i=12\) 次级、(c) \(i=24\) 三级——角向相同、径向越来越细（截自原书）</figcaption>
+  <figcaption>图 5.2 三阶 x 像散：(a) <span class="arithmatex">\(i=6\)</span> 初级、(b) <span class="arithmatex">\(i=12\)</span> 次级、(c) <span class="arithmatex">\(i=24\)</span> 三级——角向相同、径向越来越细（截自原书）</figcaption>
 </figure>
 
 <p>原书 Listing 5.1 的 <code>zernike</code> 函数（共 27 行）负责按 (5.4) 求值。它要 <code>load('zernike_index')</code> 读入 <span class="arithmatex">\((n,m)\mapsto i\)</span> 的映射表；工程 1 的 Python 版把这个映射直接按表 5.2 的规则生成（按 <span class="arithmatex">\(n\)</span> 升序、行内 <span class="arithmatex">\(|m|\)</span> 升序、<span class="arithmatex">\(m=0\)</span> 占一行、<span class="arithmatex">\(|m|&gt;0\)</span> 占两行，sin/cos 由 <span class="arithmatex">\(i\)</span> 奇偶定）：</p>
@@ -3814,7 +3814,7 @@ H(f) =
 
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-9.png" width="1100" />
-  <figcaption>图 5-9（自绘仿真）工程 2：(a) 三缝物体的相干/非相干像对比（0.05 波离焦）；(b) 圆孔 OTF 解析 vs 两条数值路线，0.05 波离焦衰减；(c) 相干像谱在 \(f_0\) 处截止（对数刻度，窗泄漏 \(10^{-3}\)）</figcaption>
+  <figcaption>图 5-9（自绘仿真）工程 2：(a) 三缝物体的相干/非相干像对比（0.05 波离焦）；(b) 圆孔 OTF 解析 vs 两条数值路线，0.05 波离焦衰减；(c) 相干像谱在 <span class="arithmatex">\(f_0\)</span> 处截止（对数刻度，窗泄漏 <span class="arithmatex">\(10^{-3}\)</span>）</figcaption>
 </figure>
 
 <p>选路线的决策图：</p>
@@ -4476,7 +4476,7 @@ n_C = n(656.27\ \mathrm{nm}) \quad \text{红氢线（C 线）}.
 <p>两个值得盯住的形态（图 5-11）：像散在零离焦处聚焦成<strong>两条焦线</strong>，加 ±1 波离焦反而略抬峰值（0.0070 → 0.0096）——离焦把两条焦线往中间拉，部分补偿了像散的结构；球差则是在零离焦处最接近"最佳焦面"（0.0469），±离焦单调变差。1 波像差的 <span class="arithmatex">\(\sigma_\phi^2 = 4\pi^2 \approx 39.5\ \mathrm{rad^2}\)</span>，Maréchal/经验式早已失效（给出负数/<span class="arithmatex">\(10^{-17}\)</span>），这些数字只能靠仿真——Strehl 近似式的适用边界在此一目了然。</p>
 <figure>
   <img src="../../../images/holo/waveprop/fig-5-11.png" width="1100" />
-  <figcaption>图 5-11（自绘仿真）习题 2/3：1 波像散（上排）与 1 波球差（下排）加 \(\pm2,\pm1,0\) 波离焦的 PSF（log10 显示，±40 μm 窗）——像散的焦线结构与球差的环结构清晰可辨</figcaption>
+  <figcaption>图 5-11（自绘仿真）习题 2/3：1 波像散（上排）与 1 波球差（下排）加 <span class="arithmatex">\(\pm2,\pm1,0\)</span> 波离焦的 PSF（log10 显示，±40 μm 窗）——像散的焦线结构与球差的环结构清晰可辨</figcaption>
 </figure>
 
 <p><strong>习题 4（五阶混合像差的 Strehl）</strong>。给定</p>

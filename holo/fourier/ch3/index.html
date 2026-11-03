@@ -2440,7 +2440,9 @@ MATLAB / Python 双实现与数值验证照旧。本章发现原书 1 处笔误�
 </div>
 <h2 id="35-与解析结果比较">3.5 与解析结果比较<a class="headerlink" href="#35-与解析结果比较" title="Permanent link">#</a></h2>
 <p>好习惯：<strong>新代码先用解析可查的简单输入试刀</strong>——既帮诊断问题，也让你带着信心往上垒代码。本例的解析结果现成：</p>
-<div class="arithmatex">\[ f(x) = \mathrm{rect}\!\left(\frac{x}{2w}\right) \quad\Longleftrightarrow\quad F(f_X) = 2w\,\mathrm{sinc}(2w f_X). \tag{3.1} \]</div>
+<div class="arithmatex">\[
+f(x) = \mathrm{rect}\!\left(\frac{x}{2w}\right) \quad\Longleftrightarrow\quad F(f_X) = 2w\,\mathrm{sinc}(2w f_X). \tag{3.1}
+\]</div>
 <p>（表 1.3 第一行取 <span class="arithmatex">\(a = 2w\)</span>；矩形面积 <span class="arithmatex">\(2w\)</span> 就是频谱峰值——中心纵坐标定理。）把解析谱在同样的频率网格上采样，与 FFT 结果同图对比：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">F_an</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">sinc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">fx</span><span class="p">);</span><span class="w">  </span><span class="c">%analytic result</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
@@ -2722,7 +2724,7 @@ MATLAB / Python 双实现与数值验证照旧。本章发现原书 1 处笔误�
 </code></pre></div>
 <figure>
   <img src="../../../images/holo/fourier/fig-3-9.png" width="760" />
-  <figcaption>图 3.9 (a) 两个高斯函数 \(f_a\)（\(w_a=0.3\)）与 \(f_b\)（\(w_b=0.2\)）；(b) FFT 卷积结果（截自原书）</figcaption>
+  <figcaption>图 3.9 (a) 两个高斯函数 <span class="arithmatex">\(f_a\)</span>（<span class="arithmatex">\(w_a=0.3\)</span>）与 <span class="arithmatex">\(f_b\)</span>（<span class="arithmatex">\(w_b=0.2\)</span>）；(b) FFT 卷积结果（截自原书）</figcaption>
 </figure>
 
 <p>FFT 卷积五行代码的要点：</p>
@@ -2742,7 +2744,9 @@ MATLAB / Python 双实现与数值验证照旧。本章发现原书 1 处笔误�
 <p>实测 FFT 卷积与解析式的最大差异只有 <span class="arithmatex">\(5.3\times10^{-12}\)</span>——比"矩形求和近似"的正常水平（第 2 章是 <span class="arithmatex">\(10^{-3}\)</span> 量级）好得多。原因是 Poisson 求和的一个漂亮推论：对高斯这种衰减极快的函数，离散求和与连续积分之差约为 <span class="arithmatex">\(e^{-\pi/\Delta x^2}\)</span>（周期副本的尾部贡献），<span class="arithmatex">\(\Delta x = 0.01\)</span> 时是 <span class="arithmatex">\(e^{-31414}\)</span>——天文数字般地小于浮点精度。所以剩余误差纯粹是 FFT 本身的舍入。<strong>别把这份"免费午餐"推广到 rect 这类硬边函数</strong>——第 2 章的卷积例子（rect ∗ 三角形）误差就在 <span class="arithmatex">\(10^{-3}\)</span> 量级。</p>
 </div>
 <p>解析卷积（习题 3.2 的答案）顺手推出来：用表 1.3 的高斯对 <span class="arithmatex">\(\exp(-\pi x^2/w^2) \leftrightarrow w\exp(-\pi w^2 f_X^2)\)</span>，频域相乘得 <span class="arithmatex">\(w_a w_b \exp[-\pi(w_a^2+w_b^2)f_X^2]\)</span>，再逆变换：</p>
-<div class="arithmatex">\[ (f_a * f_b)(x) = \frac{w_a w_b}{\sqrt{w_a^2 + w_b^2}}\; \exp\!\left[-\pi\,\frac{x^2}{w_a^2 + w_b^2}\right]. \tag{3.2} \]</div>
+<div class="arithmatex">\[
+(f_a * f_b)(x) = \frac{w_a w_b}{\sqrt{w_a^2 + w_b^2}}\; \exp\!\left[-\pi\,\frac{x^2}{w_a^2 + w_b^2}\right]. \tag{3.2}
+\]</div>
 <p>峰值 <span class="arithmatex">\(= 0.06/\sqrt{0.13} = 0.16641\)</span>，与图 3.9(b) 的峰一致。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MATLAB</label><label for="__tabbed_3_2">Python</label></div>
 <div class="tabbed-content">
@@ -3406,7 +3410,7 @@ MATLAB / Python 双实现与数值验证照旧。本章发现原书 1 处笔误�
 </div>
 <figure>
   <img src="../../../images/holo/fourier/fig-3-py-exercise.png" width="860" />
-  <figcaption>图 3-P4 习题数值解答：三角函数采样与 |FFT| vs \(w\,\mathrm{sinc}^2(w f_X)\)（上排）、圆盘图像与 \(f_Y=0\) 剖面 vs jinc（下排）（笔记自制）</figcaption>
+  <figcaption>图 3-P4 习题数值解答：三角函数采样与 |FFT| vs <span class="arithmatex">\(w\,\mathrm{sinc}^2(w f_X)\)</span>（上排）、圆盘图像与 <span class="arithmatex">\(f_Y=0\)</span> 剖面 vs jinc（下排）（笔记自制）</figcaption>
 </figure>
 
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
