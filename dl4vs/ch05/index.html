@@ -2807,7 +2807,7 @@
 <p>这些架构成名多半因为它们在 ImageNet 竞赛上成绩好。ImageNet 是一个百万级图像基准，DL/CV 研究者用它对比算法（详见 5.3 节侧栏）。</p>
 <div class="admonition info">
 <p class="admonition-title">本章代码片段不可直接运行</p>
-<p>书中代码按原论文规格实现结构，目标是教你"读论文 → 写实现"；完整可运行代码在书的官网与 GitHub 仓库（moelgendy/deep_learning_for_vision_systems）。下文全部改为 PyTorch 等价实现，层数/通道/核大小/超参与书一致，参数量已逐一跑模型对账。</p>
+<p>书中代码按原论文规格实现结构，目标是教你"读论文 → 写实现"；完整可运行代码在书的官网与 GitHub 仓库（moelgendy/deep_learning_for_vision_systems）。下文所有代码均用 PyTorch 编写，层数/通道/核大小/超参与书一致，参数量已逐一跑模型对账。</p>
 </div>
 <h2 id="52-LeNet-5">5.2 LeNet-5<a class="headerlink" href="#52-LeNet-5" title="Permanent link">#</a></h2>
 <p>1998 年 Lecun 等人提出 LeNet-5——CNN 的开山之作。组件你在第 3 章全见过（当年它们可是新发明）：<strong>5 个权重层</strong> = 3 个卷积层 + 2 个全连接层，名字里的"-5"就是指权重层数。</p>
@@ -2863,10 +2863,10 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">),</span>   <span class="c1"># C1: 28×28×1 → 28×28×6（对应 Keras padding='same'）</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">),</span>   <span class="c1"># C1: 28×28×1 → 28×28×6（same 填充：宽高不变）</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>                                        <span class="c1"># 1998 年还没有 ReLU</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>            <span class="c1"># S2: → 14×14×6（书用平均池化，不是最大池化）</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>                  <span class="c1"># C3: → 10×10×16（Keras padding='valid'）</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>                  <span class="c1"># C3: → 10×10×16（无填充，10 = 14−5+1）</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>            <span class="c1"># S4: → 5×5×16</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>                <span class="c1"># C5: → 1×1×120</span>
@@ -2887,21 +2887,21 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">拓展：softmax 去哪了？</p>
-<p>Keras 版最后一层写 <code>Dense(10, activation='softmax')</code>；PyTorch 惯例是网络输出 logits（不加 softmax），训练时用 <code>nn.CrossEntropyLoss</code>——它内部已包含 log-softmax + 负对数似然，数值上比"先 softmax 再取 log"稳定得多。推理要概率时再手动 <code>torch.softmax(out, dim=1)</code>。本章之后所有网络同理。</p>
+<p>架构串末尾印着 SOFTMAX，代码里却找不到它——PyTorch 惯例是网络直接输出 logits（不加 softmax），训练时用 <code>nn.CrossEntropyLoss</code>：它内部已包含 log-softmax + 负对数似然，数值上比"先 softmax 再取 log"稳定得多。推理要概率时再手动 <code>torch.softmax(out, dim=1)</code>。本章之后所有网络同理。</p>
 </div>
-<p>对账：C1 参数 (5×5×1+1)×6 = 156；C3 = (5×5×6+1)×16 = 2,416；C5 = (5×5×16+1)×120 = 48,120；FC6 = 120×84+84 = 10,164；输出 = 84×10+10 = 850。合计 <strong>61,706</strong>——与原书 Keras summary（图 5.5）一模一样。按今天的标准这只是个小网络；后面 AlexNet 直接放大一千倍。</p>
+<p>对账：C1 参数 (5×5×1+1)×6 = 156；C3 = (5×5×6+1)×16 = 2,416；C5 = (5×5×16+1)×120 = 48,120；FC6 = 120×84+84 = 10,164；输出 = 84×10+10 = 850。合计 <strong>61,706</strong>——与原书的参数汇总（图 5.5）一模一样。按今天的标准这只是个小网络；后面 AlexNet 直接放大一千倍。</p>
 <div class="admonition note">
 <p class="admonition-title">读原论文的建议（作者经验）</p>
 <p>LeNet 论文比本章其他论文难读。核心内容在论文第 2 节（架构与学习细节）；第 3 节是一堆有趣的实验和结果；后面大篇幅讲 graph transformer network，今天已不常用，可跳过。推荐的阅读顺序：<strong>先 AlexNet（5.3），再 VGGNet（5.4），最后回头读 LeNet</strong>——读完现代的再看经典，事半功倍。</p>
 </div>
 <h3 id="523-学习超参">5.2.3 学习超参<a class="headerlink" href="#523-学习超参" title="Permanent link">#</a></h3>
-<p>LeCun 团队用<strong>分段衰减</strong>的学习率：前 2 个 epoch 用 0.0005，接着 3 个用 0.0002，再 4 个用 0.00005，之后 0.00001；SGD 优化，共训 20 epochs，batch 32。Keras 用 <code>LearningRateScheduler</code> 回调；PyTorch 用 <code>LambdaLR</code> 等价实现：</p>
+<p>LeCun 团队用<strong>分段衰减</strong>的学习率：前 2 个 epoch 用 0.0005，接着 3 个用 0.0002，再 4 个用 0.00005，之后 0.00001；SGD 优化，共训 20 epochs，batch 32。PyTorch 用 <code>LambdaLR</code> 调度器实现分段衰减：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 书 5.2.3 节 =====</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>   <span class="c1"># 基准 lr</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">lr_lambda</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="sd">"""原书调度：前 2 个 epoch 5e-4 → 3~5 取 2e-4 → 6~9 取 5e-5 → 之后 1e-5。</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">    注意：Keras 回调传入的 epoch 从 0 计数，书中代码 `epoch &lt;= 2`</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">    注意：LambdaLR 传入的 epoch 从 0 计数，书中的调度条件 `epoch &lt;= 2`</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sd">    实际覆盖前 3 个 epoch——抄调度函数时留意这个 off-by-one。"""</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">if</span> <span class="n">epoch</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>   <span class="k">return</span> <span class="mf">1.0</span>             <span class="c1"># lr = 5e-4</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="k">elif</span> <span class="n">epoch</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="mf">2e-4</span> <span class="o">/</span> <span class="mf">5e-4</span>     <span class="c1"># lr = 2e-4</span>
@@ -3048,12 +3048,13 @@
 <p><strong>③ 数据增强。</strong> 用<strong>保持标签的变换</strong>（旋转、翻转、缩放等）人工扩充训练集，第 4 章详解过。</p>
 <p><strong>④ 局部响应归一化（LRN）。</strong> 与第 4 章的批归一化（BN）不同，LRN 靠"邻通道竞争"加速收敛。<strong>如今 BN 已全面替代 LRN</strong>——书里的实现也直接用 BN。</p>
 <p><strong>⑤ 权重正则化。</strong> Krizhevsky 用 weight decay = 0.0005，即第 4 章的 <strong>L2 正则</strong>。过拟合压不住时可以调大 λ：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Keras 写法（原书）：model.add(Conv2D(32, (3,3), kernel_regularizer=l2(λ)))</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># PyTorch 等价：optimizer = torch.optim.SGD(..., weight_decay=λ)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># L2 正则交给优化器：λ 就是 weight_decay（Krizhevsky 取 5e-4）</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                            <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>⑥ 双 GPU 训练。</strong> 当年的 GTX 580 只有 3 GB 显存，装不下 120 万训练样本，团队把网络拆到两块 GPU 上分头算、按需通信（论文里网络画成两条管道就是这个原因）。今天你不需要复刻这套细节——分布式训练已有成熟得多的方案。</p>
 <h3 id="533-AlexNet-实现PyTorch">5.3.3 AlexNet 实现（PyTorch）<a class="headerlink" href="#533-AlexNet-实现PyTorch" title="Permanent link">#</a></h3>
-<p>读原论文第 4 页的架构描述。8 个权重层（5 conv + 3 FC），末层 1000 类 softmax；书的 Keras 实现给每个卷积层后加了 BN、所有隐藏层用 ReLU：</p>
+<p>读原论文第 4 页的架构描述。8 个权重层（5 conv + 3 FC），末层 1000 类 softmax；书的实现给每个卷积层后加了 BN、所有隐藏层用 ReLU：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 5.3.3 节 =====</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">AlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="sd">"""8 个权重层：5 conv + 3 FC；输入 227×227×3（论文写 224 是笔误）"""</span>
@@ -3065,7 +3066,7 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>           <span class="c1"># → 27×27×96（overlapping pool）</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">96</span><span class="p">),</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="c1"># 第 2 层 CONV2：5×5，same padding；Keras 版此层起带 l2(0.0005) 正则</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="c1"># 第 2 层 CONV2：5×5，same padding；原论文自此层起带 0.0005 的 weight decay</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>    <span class="c1"># → 27×27×256</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>           <span class="c1"># → 13×13×256</span>
@@ -3101,23 +3102,21 @@
 <a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="n">model</span> <span class="o">=</span> <span class="n">AlexNet</span><span class="p">()</span>
 <a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>     <span class="c1"># 62,381,096</span>
 </code></pre></div>
-<p>对账：可训练参数 <strong>62,381,096</strong>（Keras summary 的 Total 62,383,848 还包含 5 个 BN 层共 2,752 个不可训练的均值/方差统计量）；FC 三层就占约 5,860 万——大头永远在全连接。</p>
+<p>对账：可训练参数 <strong>62,381,096</strong>（书里参数汇总的 Total 62,383,848 还包含 5 个 BN 层共 2,752 个不可训练的均值/方差统计量）；FC 三层就占约 5,860 万——大头永远在全连接。</p>
 <h3 id="534-学习超参">5.3.4 学习超参<a class="headerlink" href="#534-学习超参" title="Permanent link">#</a></h3>
-<p>AlexNet 训了 <strong>90 epochs，在两块 GTX 580 上跑了 6 天</strong>。初始 lr = 0.01、momentum = 0.9，验证误差不再改善时 lr 除以 10（Keras 代码用 <code>factor=np.sqrt(0.1)</code> 实现"降为 √0.1 倍"）：</p>
+<p>AlexNet 训了 <strong>90 epochs，在两块 GTX 580 上跑了 6 天</strong>。初始 lr = 0.01、momentum = 0.9，验证误差不再改善时衰减 lr——正文说"除以 10"，书中代码实际每次乘 √0.1 ≈ 0.316：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 5.3.4 节 =====</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Keras 的 kernel_regularizer=l2(0.0005) 只惩罚该层卷积核；</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># PyTorch 等价做法是把 L2 交给优化器：weight_decay=5e-4</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># （注意差异：PyTorch 会对优化器内全部参数（含 bias/BN）施加衰减）</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Keras: ReduceLROnPlateau(monitor='val_loss', factor=np.sqrt(0.1))</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">#        验证损失停滞时 lr × 0.1^0.5 ≈ ×0.316；书中未设 patience（用 Keras 默认值）</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                                                       <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>      <span class="c1"># categorical_crossentropy 的等价物</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># 训练 90 epochs、batch_size=128；每个 epoch 调 scheduler.step(val_loss)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># L2 正则交给优化器：weight_decay=5e-4（原论文的 weight decay）</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 注意：weight_decay 作用于交给优化器的全部参数（含 bias、BN 的 γ/β）</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># 验证损失停滞时 lr × 0.1^0.5 ≈ ×0.316（patience 用默认值）</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                                                       <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>      <span class="c1"># 交叉熵损失（内部已含 log-softmax）</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># 训练 90 epochs、batch_size=128；每个 epoch 调 scheduler.step(val_loss)</span>
 </code></pre></div>
 <h3 id="535-AlexNet-成绩">5.3.5 AlexNet 成绩<a class="headerlink" href="#535-AlexNet-成绩" title="Permanent link">#</a></h3>
 <p>2012 年 ILSVRC 上 <strong>top-5 错误率 15.3%</strong>，碾压第二名的 26.2%（传统分类器方法）。这一跳让 CV 社区看到了卷积网络的潜力，直接催生了后面几代架构。</p>
@@ -3293,7 +3292,7 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">为什么用 padding = same</p>
-<p>Keras 的 <code>padding='same'</code> 让输出与输入等宽等高。四条分支必须<strong>等宽等高</strong>才能在深度维对齐拼接——这也是 Inception 模块里所有 conv 用 same、池化用 stride 1 的原因：拼接时直接把各分支深度加起来即可。</p>
+<p>same 填充指让输出与输入<strong>等宽等高</strong>——PyTorch 里用 padding 参数控制：3×3 核配 <code>padding=1</code>、5×5 核配 <code>padding=2</code>（<code>nn.Conv2d</code> 也直接支持 <code>padding='same'</code>）。四条分支必须等宽等高才能在通道维对齐拼接——这也是 Inception 模块里所有 conv 用 same、池化用 stride 1 的原因：拼接时直接把各分支通道数加起来即可。</p>
 </div>
 <h3 id="553-Inception-模块带降维的版本">5.5.3 Inception 模块：带降维的版本<a class="headerlink" href="#553-Inception-模块带降维的版本" title="Permanent link">#</a></h3>
 <p>naive 版有个大问题：<strong>大核太贵</strong>。算一算上面例子里 5×5 分支的乘法量：输入 32×32×200，接 32 个 5×5×32 的核，</p>
@@ -3473,7 +3472,7 @@
 </table>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 5.5.5 节 =====</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">InceptionModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="sd">"""四条路线并行 → 通道维拼接（Keras 在 axis=3 拼接，PyTorch 通道在 dim=1）"""</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="sd">"""四条路线并行 → 通道维拼接（PyTorch 的通道维是 dim=1）"""</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_ch</span><span class="p">,</span> <span class="n">f1x1</span><span class="p">,</span> <span class="n">f3x3_red</span><span class="p">,</span> <span class="n">f3x3</span><span class="p">,</span> <span class="n">f5x5_red</span><span class="p">,</span> <span class="n">f5x5</span><span class="p">,</span> <span class="n">f_pool</span><span class="p">):</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="c1"># 路线①：1×1 直连</span>
@@ -3524,7 +3523,7 @@
 <a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>          <span class="c1"># 7×7×1024 → 1×1×1024（全局平均池化）</span>
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
 <a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">),</span>                  <span class="c1"># dropout 40%</span>
-<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>     <span class="c1"># 原书 Keras 码写 Dense(10)（CIFAR）；ImageNet 用 1000</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span>     <span class="c1"># 书示例代码输出 10 类（CIFAR）；ImageNet 用 1000</span>
 <a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>        <span class="p">)</span>
 <a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>
 <a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -3549,7 +3548,7 @@
 
 <div class="admonition warning">
 <p class="admonition-title">原书笔误（小）</p>
-<p>书中 Part A 代码注释写 "# input layer with size = 24 × 24 × 3"，而下一行是 <code>Input(shape=(224, 224, 3))</code>——应为 224，注释笔误。</p>
+<p>书中 Part A 代码注释写 "input layer with size = 24 × 24 × 3"，而代码实际输入的图像是 224×224×3——应为 224，注释笔误。</p>
 </div>
 <h3 id="556-学习超参">5.5.6 学习超参<a class="headerlink" href="#556-学习超参" title="Permanent link">#</a></h3>
 <p>SGD + momentum 0.9（不用 Nesterov）；固定学习率衰减：<strong>每 8 个 epoch 乘 0.96</strong>（即衰减 4%）。书给的示例配置：初始 lr 0.01、batch 256、25 epochs。</p>
@@ -3557,7 +3556,7 @@
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Keras: lrate = 0.01 * 0.96^floor((1+epoch)/8)，epoch 从 0 计</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># lr = 0.01 × 0.96^floor((1+epoch)/8)：每 8 个 epoch 乘 0.96（epoch 从 0 计）</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">LambdaLR</span><span class="p">(</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_lambda</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">:</span> <span class="mf">0.96</span> <span class="o">**</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">epoch</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">))</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
@@ -3591,14 +3590,22 @@
 <p class="admonition-title">拓展：残差连接为什么治梯度消失——一行求导</p>
 <p>把块输出写成 <span class="arithmatex">\(y=f(x)+x\)</span>，反向传播时 <span class="arithmatex">\(\dfrac{\partial y}{\partial x}=\dfrac{\partial f}{\partial x}+1\)</span>。关键在那个 <strong>"+1"</strong>：无论 <span class="arithmatex">\(f\)</span> 的导数多小，梯度里永远有一份"1"原封不动地流回浅层——连乘链条上每过一块就补一个 1，梯度不再指数衰减（对照图 5.20 的捷径箭头）。同理，恒等项让"最优解 = 恒等映射"变得触手可及：多余层只要把 <span class="arithmatex">\(f\)</span> 推向 0 就无害，这就是 152 层训得动的数学根基。</p>
 </div>
-<p>代码上 skip connection 一目了然（原书 Keras 片段）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 5.6.1 节（Keras 原书片段，结构演示）=====</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># X_shortcut = X                                                # 存下输入 x，留作捷径</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># X = Conv2D(filters=F1, kernel_size=(3,3), strides=(1,1))(X)   # 主路：CONV</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># X = Activation('relu')(X)                                     #      + ReLU</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># X = Conv2D(filters=F1, kernel_size=(3,3), strides=(1,1))(X)   #      + CONV</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># X = Add()([X, X_shortcut])                                    # 两路相加</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># X = Activation('relu')(X)                                     # relu(f(x)+x)</span>
+<p>代码上 skip connection 一目了然——最简残差块只要两个 3×3 卷积加一条捷径：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 5.6.1 节：skip connection 结构演示 =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">SimpleResidualBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="sd">"""最简残差块：两个 3×3 卷积（F1 个滤波器）+ 捷径，输出 relu(f(x)+x)"""</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f1</span><span class="p">):</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="n">shortcut</span> <span class="o">=</span> <span class="n">x</span>                       <span class="c1"># 存下输入 x，留作捷径</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>     <span class="c1"># 主路：CONV + ReLU</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>              <span class="c1">#       CONV</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span> <span class="o">+</span> <span class="n">shortcut</span>               <span class="c1"># 两路相加</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>              <span class="c1"># relu(f(x)+x)</span>
 </code></pre></div>
 <p>skip connection + 卷积层的组合叫<strong>残差块（residual block）</strong>。与 Inception 一样，ResNet 也是"积木叠积木"：开头卷积 + 池化，中间残差块堆叠（想多深堆多少），末尾 FC + softmax（图 5.21）。</p>
 <figure>
@@ -3627,7 +3634,7 @@
   <figcaption>图 5.23 reduce shortcut：捷径上加 1×1 conv + BN，尺寸对齐才能相加（截自原书）</figcaption>
 </figure>
 
-<p><strong>残差块小结</strong>：主路 = 1×1 → 3×3 → 1×1（各带 BN，前两层后有 ReLU）；捷径两种做法——regular shortcut（原样直连）与 reduce shortcut（中途加 1×1 conv + BN）。实现 ResNet 时两种都会用到。书用 <code>bottleneck_residual_block</code> 函数封装，<code>reduce=True</code> 走 reduce shortcut（另传主路中层核大小 <code>f</code>、滤波器列表 <code>[F1, F2, F3]</code>、stride <code>s</code>）。PyTorch 版：</p>
+<p><strong>残差块小结</strong>：主路 = 1×1 → 3×3 → 1×1（各带 BN，前两层后有 ReLU）；捷径两种做法——regular shortcut（原样直连）与 reduce shortcut（中途加 1×1 conv + BN）。实现 ResNet 时两种都会用到。把残差块封装成一个类：<code>reduce=True</code> 走 reduce shortcut，参数里另有主路中层核大小 <code>kernel_size</code>、三个卷积的滤波器数 <code>f1/f2/f3</code> 与降采样步长 <code>s</code>：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 5.6.2 节 =====</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BottleneckBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">"""主路 [1×1 → 3×3 → 1×1]（各带 BN）+ shortcut；</span>
@@ -3739,8 +3746,8 @@
 <a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage3</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span>  <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 4 块 = 12 层</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage4</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span>  <span class="mi">256</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 6 块 = 18 层</span>
 <a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage5</span> <span class="o">=</span> <span class="n">stage</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 3 块 = 9 层</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>        <span class="c1"># AVGPOOL：原书 Keras 码写 AveragePooling2D((1,1))，对 7×7 输入毫无降维作用</span>
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="c1"># （勘误③）；按原论文应使用全局平均池化：</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>        <span class="c1"># AVGPOOL：书中代码用 1×1 窗口的平均池化，对 7×7 输入毫无降维作用（勘误③）；</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="c1"># 按原论文应使用全局平均池化：</span>
 <a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>   <span class="c1"># FC + softmax（softmax 并入损失）</span>
 <a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>
@@ -3754,10 +3761,10 @@
 <a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># 25,583,592</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">原书笔误（勘误③）：AveragePooling2D((1,1))</p>
-<p>原书 AVGPOOL 写的是 <code>AveragePooling2D((1,1))</code>——1×1 池化窗口等于把每个数字原样复制，7×7 输入出去还是 7×7，起不到降维作用。原论文用的是 <strong>global average pooling</strong>（整张特征图取平均，7×7×2048 → 1×1×2048），PyTorch 对应 <code>nn.AdaptiveAvgPool2d(1)</code>。</p>
+<p class="admonition-title">原书笔误（勘误③）：1×1 平均池化</p>
+<p>原书 AVGPOOL 用的是 1×1 窗口的平均池化——1×1 窗口等于把每个数字原样复制，7×7 输入出去还是 7×7，起不到降维作用。原论文用的是 <strong>global average pooling</strong>（整张特征图取平均，7×7×2048 → 1×1×2048），PyTorch 对应 <code>nn.AdaptiveAvgPool2d(1)</code>。</p>
 </div>
-<p>对账：<strong>25,583,592</strong> 个可训练参数（与原书 Keras 实现一致，conv 带偏置；若按 torchvision 惯例在 BN 前省略 conv 偏置则为 25,557,032）。复杂度同样惊人地低：图 5.24 底部的 FLOPs 行显示 ResNet50 只需 3.8×10⁹ 次运算；书里明确说 50/101/152 层的 ResNet"复杂度比 19 层的 VGGNet 还低"——<strong>更深反而更便宜</strong>，这就是瓶颈设计的威力。</p>
+<p>对账：<strong>25,583,592</strong> 个可训练参数（与原书实现的口径一致，conv 带偏置；若按 torchvision 惯例在 BN 前省略 conv 偏置则为 25,557,032）。复杂度同样惊人地低：图 5.24 底部的 FLOPs 行显示 ResNet50 只需 3.8×10⁹ 次运算；书里明确说 50/101/152 层的 ResNet"复杂度比 19 层的 VGGNet 还低"——<strong>更深反而更便宜</strong>，这就是瓶颈设计的威力。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：更深曾先饱和，ResNet 为何能继续加深</p>
 <p>第 4 章的视角：更深 → 容量更大 → 更容易过拟合，但正则化能治。真正的墙是<strong>退化（degradation）</strong>：训练深度加深后，<strong>训练误差</strong>反而回升——这不是过拟合（过拟合是训练误差低、验证误差高），而是优化变难：普通深网里浅层学恒等映射都很费劲。ResNet 的两个设计正对此症：① 捷径让"学恒等"零成本（<span class="arithmatex">\(f\to 0\)</span> 即可），加深不再有下限风险；② 恒等项给梯度留常数通路，很深的网络也能正常反向传播。于是 50/101/152 层全线训练成功且持续变好——深度第一次成为"可自由消费"的资源。</p>
@@ -3767,18 +3774,17 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 5.6.4 节 =====</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>                            <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>             <span class="c1"># 论文的 L2（书代码省略，此处补上）</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Keras: ReduceLROnPlateau(monitor='val_loss', factor=np.sqrt(0.1),</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">#                          patience=5, min_lr=0.5e-6)</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_lr</span><span class="o">=</span><span class="mf">5e-7</span><span class="p">)</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># 训练 200 epochs、batch_size=256</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 验证损失连续 5 个 epoch 停滞就把 lr 乘 √0.1 ≈ 0.316，lr 下限 5e-7</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_lr</span><span class="o">=</span><span class="mf">5e-7</span><span class="p">)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># 训练 200 epochs、batch_size=256</span>
 </code></pre></div>
 <h3 id="565-ResNet-成绩">5.6.5 ResNet 成绩<a class="headerlink" href="#565-ResNet-成绩" title="Permanent link">#</a></h3>
 <p>ResNet-152 拿下 <strong>ILSVRC 2015</strong> 分类冠军：单模型 top-5 错误率 <strong>4.49%</strong>，模型集成后 <strong>3.57%</strong>——大幅领先 GoogLeNet 的 6.67%。它还顺手拿下了当年多个检测与定位赛事的第一（第 7 章再会）。更重要的遗产：<strong>残差块打开了高效训练数百层网络的大门</strong>，此后"残差"成了所有极深网络（含 Transformer）的标配组件。</p>
 <div class="admonition note">
 <p class="admonition-title">侧栏：善用开源实现</p>
-<p>实战建议：这些网络因为学习率衰减等调参细节非常"娇气"，照论文复现很难完全对上——DL 研究者复现别人的工作也费劲。好在大多数研究者会把代码开源：GitHub 搜网络名，能找到各框架的实现；找到原作者的实现可以直接起飞。当然，像本章这样从零重写一遍也是极好的练习。</p>
+<p>实战建议：这些网络因为学习率衰减等调参细节非常"娇气"，照论文复现很难完全对上——DL 研究者复现别人的工作也费劲。好在大多数研究者会把代码开源：GitHub 搜网络名，能找到现成的 PyTorch 实现；找到原作者的实现可以直接起飞。当然，像本章这样从零重写一遍也是极好的练习。</p>
 </div>
 <h2 id="57-五大架构演进总览">5.7 五大架构演进总览<a class="headerlink" href="#57-五大架构演进总览" title="Permanent link">#</a></h2>
 <p>把五代网络串成一条决策链——每一环都在解决上一环暴露的短板：</p>
@@ -3842,7 +3848,7 @@
 </tr>
 </tbody>
 </table>
-<p>训练配置也值得并排看一眼（各节已给出 PyTorch 等价代码）：</p>
+<p>训练配置也值得并排看一眼（各节已给出 PyTorch 代码）：</p>
 <table>
 <thead>
 <tr>
@@ -3907,9 +3913,9 @@
 <li><strong>池化层不降深度</strong>：想让 Inception 拼接深度可控，池化后必须补 1×1；想让网络变窄，靠的也是 1×1 而不是池化。</li>
 <li><strong>残差块相加发生在最后的 ReLU 之前</strong>：主路第三层只有 CONV+BN，没有 ReLU；先 <span class="arithmatex">\(f(x)+x\)</span> 再统一激活。</li>
 <li><strong>块间尺寸变了必须用 reduce shortcut</strong>：矩阵相加要求形状一致；捷径上的 1×1 conv + BN 负责对齐尺寸与步长。</li>
-<li><strong>AveragePooling2D((1,1)) 不是全局平均池化</strong>：1×1 窗口对 7×7 毫无作用；用 <code>nn.AdaptiveAvgPool2d(1)</code>。</li>
-<li><strong>Keras 的 l2 正则 ≠ PyTorch weight_decay</strong>：前者只罚该层卷积核，后者罚优化器里全部参数（含 bias/BN）；对账参数量、复现精度时留意。</li>
-<li><strong>Keras 回调的 epoch 从 0 计数</strong>：抄学习率调度函数时核对边界（"前 2 个 epoch"到底是 epoch&lt;2 还是 ≤2）。</li>
+<li><strong>1×1 平均池化不是全局平均池化</strong>：1×1 窗口对 7×7 毫无作用；用 <code>nn.AdaptiveAvgPool2d(1)</code>。</li>
+<li><strong>weight_decay 作用于优化器里的全部参数</strong>：包括 bias 和 BN 的 γ/β，比"只罚卷积核"（一些论文的做法）更粗；想精确复现就给参数分组，把 bias/BN 组的 weight_decay 设为 0。</li>
+<li><strong>lr 调度器的 epoch 从 0 计数</strong>：抄学习率调度函数时核对边界（"前 2 个 epoch"到底是 epoch&lt;2 还是 ≤2）。</li>
 </ol>
 </div>
 <h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
@@ -3983,7 +3989,7 @@
 <tr>
 <td>Weight Decay / L2</td>
 <td>权重衰减</td>
-<td>L2 正则；Keras 写 kernel_regularizer，PyTorch 写 weight_decay</td>
+<td>L2 正则；PyTorch 在优化器里写 weight_decay</td>
 </tr>
 <tr>
 <td>Top-1 / Top-5 Error</td>
@@ -4127,7 +4133,7 @@
 <td>§5.5.6–5.5.7</td>
 </tr>
 <tr>
-<td>5.6.1（更深不强？/ 消失爆炸侧栏 / skip connection / Keras 片段 / 图 5.19/5.20）</td>
+<td>5.6.1（更深不强？/ 消失爆炸侧栏 / skip connection / 残差块演示 / 图 5.19/5.20）</td>
 <td>§5.6.1</td>
 </tr>
 <tr>
@@ -4135,7 +4141,7 @@
 <td>§5.6.2</td>
 </tr>
 <tr>
-<td>5.6.3（ResNet50 + 50 层账 + AveragePooling 笔误 + 图 5.24）</td>
+<td>5.6.3（ResNet50 + 50 层账 + 1×1 平均池化笔误 + 图 5.24）</td>
 <td>§5.6.3（勘误③）</td>
 </tr>
 <tr>

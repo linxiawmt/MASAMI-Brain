@@ -3057,7 +3057,7 @@
 
 <div class="admonition warning">
 <p class="admonition-title">原书笔误 / 实现注意</p>
-<p>表 10.1 中 BS 的负样本权重写作 <span class="arithmatex">\(\mathrm{multinomial}\{-D_{ax}\}\)</span>：距离取负后<strong>权重非正，不满足分类分布（multinomial）对非负权重的要求，不能直接采样</strong>。实现时要用 softmax 形式归一化：<span class="arithmatex">\(P(x_n = x) \propto e^{-D_{ax}}\)</span>——恰好就是表中 BW 负样本权重的公式。正样本权重 <span class="arithmatex">\(\{D_{ax}\}\)</span> 本身非负，可直接使用（书内脚注也给了 TensorFlow 的 categorical 采样示例链接 mng.bz/zjvQ）。</p>
+<p>表 10.1 中 BS 的负样本权重写作 <span class="arithmatex">\(\mathrm{multinomial}\{-D_{ax}\}\)</span>：距离取负后<strong>权重非正，不满足分类分布（multinomial）对非负权重的要求，不能直接采样</strong>。实现时要用 softmax 形式归一化：<span class="arithmatex">\(P(x_n = x) \propto e^{-D_{ax}}\)</span>——恰好就是表中 BW 负样本权重的公式。正样本权重 <span class="arithmatex">\(\{D_{ax}\}\)</span> 本身非负，可直接使用（书内脚注给了一个分类分布采样的示例链接 mng.bz/zjvQ）。</p>
 </div>
 <h3 id="四种策略同框对比书表-101本章精华">四种策略同框对比（书表 10.1，本章精华）<a class="headerlink" href="#四种策略同框对比书表-101本章精华" title="Permanent link">#</a></h3>
 <p>把四种策略放回 Ristani 的统一公式 <span class="arithmatex">\(l_{\text{triplet}}(a) = \sum_{p}\sum_{n}[\alpha + w_p D_{ap} - w_n D_{an}]_+\)</span>，区别只在权重：</p>
@@ -3178,7 +3178,7 @@
 </figure>
 
 <h3 id="1053-实现超参与网络">10.5.3 实现：超参与网络<a class="headerlink" href="#1053-实现超参与网络" title="Permanent link">#</a></h3>
-<p>项目基于 Hermans 等 [11] 的 GitHub 代码库 triplet-reid（sampling 分支）；数据预处理与步骤总结随书的可下载代码提供，配套 Jupyter notebook 是逐步教程。TensorFlow 用户推荐 Olivier Moindrot 的博客《Triplet Loss and Online Triplet Mining in TensorFlow》。本书的超参清单：</p>
+<p>项目基于 Hermans 等 [11] 的 GitHub 代码库 triplet-reid（sampling 分支）；数据预处理与步骤总结随书的可下载代码提供，配套 Jupyter notebook 是逐步教程。也推荐 Olivier Moindrot 的博客《Triplet Loss and Online Triplet Mining》作为入门读物。本书的超参清单：</p>
 <table>
 <thead>
 <tr>
@@ -3234,7 +3234,7 @@
 <p class="admonition-title">定义：MAC（乘加操作）</p>
 <p>计算中的 multiply–accumulate（乘累加）操作：算出两数乘积并累加到累加器。执行该操作的硬件单元叫 <strong>multiplier–accumulator（MAC 单元）</strong>；这个操作本身也常被叫做 MAC / MAC 操作——衡量网络算力开销的常用单位。</p>
 </div>
-<p>嵌入网络的 PyTorch 等价实现（书用 Keras 系的 Mobilenet-v1；torchvision 从 v2 起才提供预训练权重，这里用 mobilenet_v2 演示，结构对齐书内"主干 + 128 维全连接"的设定）：</p>
+<p>嵌入网络实现：主干用 torchvision 的 mobilenet_v2 预训练权重，后接 128 维全连接，结构对齐“主干 + 128 维特征”的设定：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 10.5.3 节 =====</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>

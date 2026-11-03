@@ -2988,10 +2988,10 @@ z = \text{height} \cdot w_1 + \text{age} \cdot w_2 + b
 
 <p>图 2.9 是一个建模非线性数据的小神经网络：三个神经元堆在同一层里，这层叫<strong>隐藏层（hidden layer）</strong>——因为训练过程中我们看不到这些层的输出。</p>
 <h3 id="221-多层感知机架构">2.2.1 多层感知机架构<a class="headerlink" href="#221-多层感知机架构" title="Permanent link">#</a></h3>
-<p>把"多神经元"的思路推到更复杂的数据集。图 2.10 来自 TensorFlow Playground（playground.tensorflow.org）：要拟合这个螺旋形二分类数据集，需要几十个神经元。非常常见的做法是把神经元一层层堆起来（隐藏层），每层 n 个神经元，层与层之间用权重连接——这就得到**多层感知机（MLP）**架构。</p>
+<p>把"多神经元"的思路推到更复杂的数据集。图 2.10 来自一个可视化的神经网络实验台（浏览器里可交互调结构）：要拟合这个螺旋形二分类数据集，需要几十个神经元。非常常见的做法是把神经元一层层堆起来（隐藏层），每层 n 个神经元，层与层之间用权重连接——这就得到**多层感知机（MLP）**架构。</p>
 <figure>
   <img src="../images/ch02/fig-2-10.png" width="560" class="lq-img" />
-  <figcaption>图 2.10 TensorFlow Playground：6 个隐藏层（每层 6 个神经元）逐层学习特征，最终分开螺旋数据（截自原书）</figcaption>
+  <figcaption>图 2.10 神经网络可视化实验台：6 个隐藏层（每层 6 个神经元）逐层学习特征，最终分开螺旋数据（截自原书）</figcaption>
 </figure>
 
 <p>神经网络架构的四大组件：</p>
@@ -3010,7 +3010,7 @@ z = \text{height} \cdot w_1 + \text{age} \cdot w_2 + b
 <li>一个网络可以有<strong>一个或多个隐藏层</strong>（技术上想要多少有多少），每层一个或多个神经元。</li>
 <li>通常把<strong>两个及以上隐藏层</strong>的网络叫<strong>深度神经网络（deep neural network）</strong>。</li>
 <li>一般规则：网络越深，对训练数据拟合越好。<strong>但太深不是好事</strong>——网络可能把训练集"背下来"而不是学到特征，遇到新数据就抓瞎（<strong>过拟合</strong>）；而且算力开销随深度涨。</li>
-<li>你的任务是搭一个"对数据来说不太简单、也不太复杂"的网络。建议：先读别人成功实现的架构，建立"什么算太简单"的感觉；<strong>从 3~5 层起步</strong>（CPU 训练的话），观察性能——欠拟合（underfitting）就加层，出现过拟合迹象就减层。去 TensorFlow Playground 玩一玩，亲手感受加层的效应。</li>
+<li>你的任务是搭一个"对数据来说不太简单、也不太复杂"的网络。建议：先读别人成功实现的架构，建立"什么算太简单"的感觉；<strong>从 3~5 层起步</strong>（CPU 训练的话），观察性能——欠拟合（underfitting）就加层，出现过拟合迹象就减层。在可视化实验台里亲手试，感受加层的效应。</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">侧栏：全连接层（Fully Connected Layers）</p>
@@ -3049,8 +3049,8 @@ z = \text{height} \cdot w_1 + \text{age} \cdot w_2 + b
 </tbody>
 </table>
 <p>就这么个简单网络也有 73 个权重。它们的值<strong>随机初始化</strong>，然后网络通过前向传播 + 反向传播学出最贴合训练数据的权重值。</p>
-<p>原书用 Keras 验证这个数字（<code>Dense(5, input_dim=4)</code> + <code>Dense(5)</code> + <code>Dense(3)</code>，<code>model.summary()</code> 输出 25 / 30 / 18，Total params: 73）。PyTorch 等价实现（结构、参数量与书完全一致）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 2.2.3 节：数一数网络参数（原书 Keras 改写 PyTorch） =====</span>
+<p>三层全连接 4 → 5 → 5 → 3，逐层参数量 25 / 30 / 18，合计 73。结构、参数量与书完全一致：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 2.2.3 节：数一数网络参数 =====</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
@@ -3058,9 +3058,9 @@ z = \text{height} \cdot w_1 + \text{age} \cdot w_2 + b
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>   <span class="c1"># 隐藏层1 → 隐藏层2：5×5 权重 + 5 偏置 = 30 参数</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>   <span class="c1"># 隐藏层2 → 输出层：5×3 权重 + 3 偏置 = 18 参数</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Keras → PyTorch 的两点差异：</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># ① Keras 的 Dense(5) 能自动推断输入维度，PyTorch 的 nn.Linear 必须把每层输入维度写全；</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># ② Keras Dense 权重形状是 (in, out)，PyTorch Linear 是 (out, in)，互为转置，不影响参数量。</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># nn.Linear 的两个要点：</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># ① 每层的输入/输出维度都要写全，不会自动推断；</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># ② 权重形状是 (out_features, in_features)，转置关系不影响参数量统计。</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>      <span class="c1"># 逐个看参数形状</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
@@ -3415,7 +3415,7 @@ A = \begin{bmatrix} 0 &amp; 2 &amp; 1 \ 1 &amp; 4 &amp; -1 \end{bmatrix} \Righta
   <figcaption>图 2.22 三个输入特征逐层变换成新特征，最终输出房价估计（截自原书）</figcaption>
 </figure>
 
-<p>再看一遍 TensorFlow Playground（图 2.23，与图 2.10 同图，原书复用）帮眼睛建立直觉：第一层学直线、边缘这类基础特征；第二层开始学角点等更复杂的特征；一路继续，最后几层学出圆形、螺旋这类能拟合数据集的复杂形状。</p>
+<p>再看一遍那张可视化实验台的图（图 2.23，与图 2.10 同图，原书复用）帮眼睛建立直觉：第一层学直线、边缘这类基础特征；第二层开始学角点等更复杂的特征；一路继续，最后几层学出圆形、螺旋这类能拟合数据集的复杂形状。</p>
 <p>神经网络就是这样学新特征的：隐藏层先识别数据中的模式，再识别图案中的图案，再再识别……<strong>网络越深，对训练数据学得越多</strong>。</p>
 <h2 id="25-误差函数">2.5 误差函数<a class="headerlink" href="#25-误差函数" title="Permanent link">#</a></h2>
 <p>前向传播会了，能出预测了。新问题：<strong>怎么评价这个预测？它离正确答案（标签）有多远？</strong>——测误差。误差函数（error function）又叫<strong>代价函数（cost function）<strong>或</strong>损失函数（loss function）</strong>，DL 文献里三词互换。</p>
@@ -3538,7 +3538,7 @@ E(W, b) = -\sum_{i=1}^{n} \sum_{j=1}^{m} y_{ij} \log(p_{ij})
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">侧栏 NOTE（原书）</p>
-<p>这些计算不需要手算。懂底层机制是为了在设计网络时有更好的直觉。实际 DL 项目里用 TensorFlow、PyTorch、Keras 等库，误差函数只是个参数选项。</p>
+<p>这些计算不需要手算。懂底层机制是为了在设计网络时有更好的直觉。实际 DL 项目里用 PyTorch 等深度学习框架，误差函数只是个参数选项。</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误（记号）</p>
@@ -4059,8 +4059,8 @@ L(W, b) = \frac{1}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i)^2
 <td>§2.1（图 2.3/2.4/2.6/2.7/2.8 嵌入；图 2.5 与图 2.14 同图，公式与代码在正文）</td>
 </tr>
 <tr>
-<td>2.2（Linear vs nonlinear 侧栏；2.2.1 架构；2.2.2 隐藏层；2.2.3 层数/节点 + Fully connected 侧栏 + 73 边练习 + Keras 代码；2.2.4 要点 + 超参数清单 + More on hyperparameters 侧栏）</td>
-<td>§2.2（图 2.9/2.10 嵌入；Keras 片段改写为 PyTorch 并对账 73 参数）</td>
+<td>2.2（Linear vs nonlinear 侧栏；2.2.1 架构；2.2.2 隐藏层；2.2.3 层数/节点 + Fully connected 侧栏 + 73 边练习；2.2.4 要点 + 超参数清单 + More on hyperparameters 侧栏）</td>
+<td>§2.2（图 2.9/2.10 嵌入；PyTorch 实现并对账 73 参数）</td>
 </tr>
 <tr>
 <td>2.3（为什么需要激活 + 图 2.11；2.3.1 线性 + 图 2.12/2.13；2.3.2 阶跃 + 图 2.14；2.3.3 sigmoid + 图 2.15 + Just-in-time linear algebra 侧栏；2.3.4 softmax + 图 2.16 + TIP；2.3.5 tanh + 图 2.17；2.3.6 ReLU + 图 2.18；2.3.7 Leaky ReLU + 图 2.19；表 2.1；Hyperparameter alert 侧栏）</td>

@@ -845,10 +845,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#训练判别器Keras--PyTorch" class="md-nav__link">
+  <a href="#训练判别器一次梯度更新拆成四步" class="md-nav__link">
     <span class="md-ellipsis">
       
-        训练判别器：Keras → PyTorch
+        训练判别器：一次梯度更新拆成四步
       
     </span>
   </a>
@@ -2231,10 +2231,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#训练判别器Keras--PyTorch" class="md-nav__link">
+  <a href="#训练判别器一次梯度更新拆成四步" class="md-nav__link">
     <span class="md-ellipsis">
       
-        训练判别器：Keras → PyTorch
+        训练判别器：一次梯度更新拆成四步
       
     </span>
   </a>
@@ -2601,7 +2601,7 @@
         <div class="brkids">
           <span class="brleaf">训 D：普通监督（真 1 / 假 0）</span>
           <span class="brleaf">训 G：combined 模型 + 冻结 D</span>
-          <span class="brleaf">train_on_batch ↔ 手动反向传播</span>
+          <span class="brleaf">训练循环：两次前向、两次反向</span>
         </div>
       </div>
       <div class="brrow">
@@ -2710,7 +2710,7 @@
   <figcaption>图 8.5 判别器：真图（训练集）与假图（生成器输出）一起进来，卷积层提取特征，sigmoid 输出 0.1 这样的"真实度概率"（截自原书）</figcaption>
 </figure>
 
-<p>训练判别器非常直白：喂带标签的图像——真图来自训练集，假图来自生成器的输出。原书用 Keras 实现，下面是结构与超参完全一致的 PyTorch 等价版本：</p>
+<p>训练判别器非常直白：喂带标签的图像——真图来自训练集，假图来自生成器的输出。PyTorch 实现如下（结构与超参与书一致）：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书 8.1.2 节：判别器 =====</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
@@ -2719,46 +2719,37 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="c1"># 输入 (1, 28, 28)。Keras: Conv2D(32, 3, strides=2, padding="same")</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>    <span class="c1"># → 32 × 14 × 14</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>                           <span class="c1"># Keras: LeakyReLU(alpha=0.2)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="c1"># 输入 (1, 28, 28)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>    <span class="c1"># 3×3 卷积、步幅 2 → 32 × 14 × 14</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>                           <span class="c1"># 负斜率 0.2：负值不全"杀死"，保留梯度通路</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>                            <span class="c1"># 25% 随机失活</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>   <span class="c1"># → 64 × 7 × 7</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="c1"># Keras: ZeroPadding2D((0,1),(0,1))，7×7 → 8×8（凑整便于后续减半）</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ZeroPad2d</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>                  <span class="c1"># → 64 × 8 × 8</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="c1"># 坑：Keras 的 BatchNormalization(momentum=0.8) 与 PyTorch 语义相反！</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="c1">#   Keras momentum=0.8 = 保留 80% 旧的 running 统计量</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            <span class="c1">#   PyTorch momentum=0.2 = 新观测占 20%（= 1 - 0.8），效果等价</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># → 128 × 4 × 4</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="c1"># → 256 × 4 × 4</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>            <span class="c1"># → 4096</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>      <span class="c1"># Keras: Dense(1)</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(),</span>            <span class="c1"># 二分类：输出"真图概率"</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ZeroPad2d</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>                  <span class="c1"># 补零 7×7 → 8×8（凑成偶数，便于继续减半）</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="c1"># momentum=0.2：running stats 更新系数——</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="c1">#   new_running = 0.8 × 旧统计量 + 0.2 × 新批统计量</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># → 128 × 4 × 4</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="c1"># → 256 × 4 × 4</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>            <span class="c1"># → 4096</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>      <span class="c1"># 全连接收敛到单个分数</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(),</span>            <span class="c1"># 二分类：输出"真图概率"</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">原书笔误（一）：BatchNormalization 的 momentum 语义</p>
-<p>原书 Keras 代码写 <code>BatchNormalization(momentum=0.8)</code>。<strong>Keras 与 PyTorch 里这个 momentum 含义相反</strong>：
-- Keras：<code>new_running = 0.8 × 旧统计量 + 0.2 × 新批统计量</code>——momentum 是<strong>旧 running 统计量的保留权重</strong>；
-- PyTorch：<code>new_running = (1-momentum) × 旧统计量 + momentum × 新批统计量</code>——momentum 是<strong>新观测的权重</strong>。
-要在 PyTorch 里复现 Keras <code>momentum=0.8</code> 的行为，应写 <code>momentum=0.2</code>。数字不同，效果相同，换框架时千万别照抄数值。</p>
-</div>
 <figure>
   <img src="../images/ch08/fig-8-6.png" width="420" class="lq-img" />
   <figcaption>图 8.6 判别器 summary：总参数 393,729（其中 896 个不可训练——正是 BN 层的 running 统计量）（截自原书）</figcaption>
@@ -2775,7 +2766,7 @@
 <p>生成器看起来像<strong>倒置的 ConvNet</strong>：输入是随机噪声向量，先 Reshape 成带宽、高、深的立方体体积，把它当特征图，送进若干卷积层，最终"画"出一张图。</p>
 <div class="admonition note">
 <p class="admonition-title">侧栏：上采样（Upsampling）——把特征图放大</p>
-<p>传统 CNN 用池化层<strong>下采样</strong>；生成器反着来，用<strong>上采样层</strong>放大特征图——做法是把输入的每一行、每一列像素重复若干次。Keras 的 <code>UpSampling2D(size=(2, 2))</code> 把每行每列重复 2 次（图 8.8）；<code>size=(3, 3)</code> 重复 3 次（图 8.9）。搭生成器时不断加上采样层，直到特征图尺寸与训练集图像一致。</p>
+<p>传统 CNN 用池化层<strong>下采样</strong>；生成器反着来，用<strong>上采样层</strong>放大特征图——做法是把输入的每一行、每一列像素重复若干次。PyTorch 的 <code>nn.Upsample(scale_factor=2, mode='nearest')</code> 把每行每列重复 2 次（图 8.8）；<code>scale_factor=3</code> 重复 3 次（图 8.9）。搭生成器时不断加上采样层，直到特征图尺寸与训练集图像一致。</p>
 </div>
 <figure>
   <img src="../images/ch08/fig-8-8.png" width="360" class="lq-img" />
@@ -2787,38 +2778,37 @@
   <figcaption>图 8.9 size=(3,3)：每个值重复成 3×3 的块，输出 6×6（截自原书）</figcaption>
 </figure>
 
-<p>原书 Keras 版生成器（教学版）的 PyTorch 等价实现：</p>
+<p>生成器（教学版）的 PyTorch 实现，结构与书一致：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 书 8.1.3 节：生成器（教学版） =====</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">LATENT_DIM</span> <span class="o">=</span> <span class="mi">100</span>   <span class="c1"># 噪声向量长度。书选 100 为了让网络简单</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Generator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="o">=</span><span class="n">LATENT_DIM</span><span class="p">):</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="mi">128</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>   <span class="c1"># Keras: Dense(128*7*7, relu)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="mi">128</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>   <span class="c1"># 全连接：100 维噪声 → 6272 维</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="c1"># 8.1.3 教学版的结构：</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="c1">#   Dense(relu) → Reshape(7,7,128) → Up(2) → Conv128 → BN → ReLU</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="c1">#   → Up(2) → Conv64 → BN → ReLU → Conv1 → tanh</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="c1"># Keras 用 UpSampling2D(2)+Conv2D(3×3) 两步完成 2 倍上采样；</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="c1"># PyTorch 用一个 stride=2 的转置卷积（可学习的上采样）一步等效</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Unflatten</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span>                       <span class="c1"># Reshape → 7×7×128</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>              <span class="c1"># 7×7 → 14×14</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>                  <span class="c1"># 同判别器：0.2 ↔ Keras 0.8</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>               <span class="c1"># 14×14 → 28×28</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>                     <span class="c1"># → 1×28×28</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>   <span class="c1"># 输出压到 [-1,1]——与数据归一化 X/127.5-1 严格匹配</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="p">)</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>   <span class="c1"># Dense + ReLU → 6272 维向量</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="c1">#   Linear(relu) → Reshape(7,7,128) → 2 倍上采样 → Conv128 → BN → ReLU</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="c1">#   → 2 倍上采样 → Conv64 → BN → ReLU → Conv1 → tanh</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="c1"># 上采样用 stride=2 的转置卷积（可学习的上采样），一步把宽高翻倍</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Unflatten</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span>                       <span class="c1"># Reshape → 7×7×128</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>              <span class="c1"># 7×7 → 14×14</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>                  <span class="c1"># momentum：running stats 更新系数</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>               <span class="c1"># 14×14 → 28×28</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>                     <span class="c1"># → 1×28×28</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>   <span class="c1"># 输出压到 [-1,1]——与数据归一化 X/127.5-1 严格匹配</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="p">)</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>   <span class="c1"># 全连接 + ReLU → 6272 维向量</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">拓展：UpSampling+Conv 与转置卷积，选哪个？</p>
-<p>Keras 的 <code>UpSampling2D(2)</code>（最近邻复制）后接 3×3 卷积，与 PyTorch 的 <code>ConvTranspose2d(kernel=4, stride=2, padding=1)</code> 尺寸效果等价，区别在于：前者是<strong>先复制后卷积</strong>，上采样本身没有参数；后者是<strong>可学习的上采样</strong>。转置卷积若核尺寸不能被步幅整除，输出会出现<strong>棋盘伪影（checkerboard artifacts）</strong>——所以约定 kernel 能被 stride 整除（如 4 与 2）。DCGAN 论文和本书原代码选择"复制+卷积"正是为了避开棋盘效应；两种写法你都应该认识。</p>
+<p class="admonition-title">拓展：nn.Upsample+卷积 与转置卷积，选哪个？</p>
+<p>PyTorch 里上采样有两种常见写法：<strong>最近邻复制 + 卷积</strong>——<code>nn.Upsample(scale_factor=2, mode='nearest')</code> 先把每行每列复制一遍，再接 3×3 的 <code>nn.Conv2d</code>；或者<strong>转置卷积</strong>——<code>nn.ConvTranspose2d(kernel_size=4, stride=2, padding=1)</code> 一步把宽高翻倍。两者尺寸效果相同，区别在于：前者是<strong>先复制后卷积</strong>，上采样本身没有参数；后者是<strong>可学习的上采样</strong>。转置卷积若核尺寸不能被步幅整除，输出会出现<strong>棋盘伪影（checkerboard artifacts）</strong>——所以约定 kernel 能被 stride 整除（如 4 与 2）。DCGAN 论文和许多经典实现选择"复制+卷积"正是为了避开棋盘效应；本笔记用 kernel 4 ÷ stride 2 整除的转置卷积，同样避开棋盘伪影。两种写法你都应该认识。</p>
 </div>
 <figure>
   <img src="../images/ch08/fig-8-10.png" width="420" class="lq-img" />
@@ -2828,9 +2818,9 @@
 <p>盯着图 8.10 的 Output Shape 列看：从 1D 的 6272 维向量开始，Reshape 成 7×7×128 体积，宽高两次上采样：7×7 → 14×14 → 28×28；<strong>深度从 128 → 64 → 1 递减</strong>——这是为灰度 MNIST 项目定制的。要生成彩色图，最后一层卷积的 filters 设为 3 即可。28×28 时不再上采样，因为已经等于 MNIST 图像尺寸（自己的问题自己调）。</p>
 <div class="admonition note">
 <p class="admonition-title">生成器的两个版本（8.1.3 教学版 vs 8.4 项目版）</p>
-<p>原书生成器代码出现两次，结构相同（Dense(128·7·7)→Reshape→两次上采样→Conv128→Conv64→Conv1），但有两处差异：
-1. <strong>激活顺序</strong>：教学版把激活写成独立层，顺序是 <strong>Conv ⇒ BN ⇒ ReLU</strong>；项目版把 activation 写进 Conv 层，实际顺序变成 <strong>Conv ⇒ ReLU ⇒ BN</strong>——而项目节文字明明说 scheme 是 "convolution ⇒ batch normalization ⇒ ReLU"，代码与文字自相矛盾。标准 DCGAN 用前者，本笔记的 PyTorch 版统一按 Conv ⇒ BN ⇒ ReLU 实现。
-2. <strong>输出层激活</strong>：教学版最后一层是 <strong>tanh</strong>；项目版却写成 ReLU。数据归一化到 [-1,1] 时，tanh 才是正确搭配（详见 8.4 Step 2 的 warning）。</p>
+<p>书里生成器出现两次，结构相同（全连接 → Reshape 7×7×128 → 两次上采样 → 128 通道卷积 → 64 通道卷积 → 1 通道输出），但有两处差异：
+1. <strong>激活顺序</strong>：教学版是 <strong>Conv ⇒ BN ⇒ ReLU</strong>；项目版代码的实际顺序却是 <strong>Conv ⇒ ReLU ⇒ BN</strong>——而项目节文字明明写 scheme 是 "convolution ⇒ batch normalization ⇒ ReLU"，代码与文字自相矛盾。标准 DCGAN 用前者，本笔记统一按 Conv ⇒ BN ⇒ ReLU 实现。
+2. <strong>输出层激活</strong>：教学版最后是 <strong>tanh</strong>；项目版却写成 ReLU。数据归一化到 [-1,1] 时，tanh 才是正确搭配（详见 8.4 Step 2 的 warning）。</p>
 </div>
 <h3 id="814-训练-GAN">8.1.4 训练 GAN<a class="headerlink" href="#814-训练-GAN" title="Permanent link">#</a></h3>
 <p>两个模型各自登场后，现在拼起来端到端训练。两个网络的目标背道而驰：</p>
@@ -2852,7 +2842,7 @@
 <p>**为什么要冻结判别器？**训练组合模型时，我们把判别器的权重冻结（freeze），因为这条车道只训练生成器。机制如下：</p>
 <ul>
 <li>生成器和判别器的<strong>损失函数方向相反</strong>（一个想让假图判真、一个想让假图判假）。如果不冻结 D 的权重，它会被拉着朝"更容易把生成图判为真"的方向走——这不是我们想要的。</li>
-<li>冻结 D <strong>不影响</strong>之前为训练判别器而编译的那个 D 本体。可以这样想象：有两个判别器模型（实际上只有一个，但这么想更容易理解）。</li>
+<li>冻结 D <strong>不影响</strong>车道 1 的训练：轮到阶段 1 更新判别器时，把 <code>requires_grad</code> 设回 <code>True</code> 即可照常训练 D。可以这样想象：有两个判别器模型（实际上只有一个，但这么想更容易理解）。</li>
 </ul>
 <p>两个过程都遵循第 2 章讲过的标准神经网络训练流程：前向 → 预测 → 算误差 → 反向传播。区别只在误差流向哪里：<strong>训练判别器时，误差回传更新判别器的权重；训练组合模型时，误差回传更新生成器的权重</strong>。</p>
 <figure>
@@ -2860,121 +2850,119 @@
   <figcaption>图 8.12 组合模型：噪声 → 生成器 → 假图 → 判别器 → 输出（如 0.3）→ 误差通过反向传播一路穿回生成器——穿过判别器，但不改判别器的权重（截自原书）</figcaption>
 </figure>
 
-<h4 id="训练判别器Keras--PyTorch">训练判别器：Keras → PyTorch<a class="headerlink" href="#训练判别器Keras--PyTorch" title="Permanent link">#</a></h4>
-<p>原书先构建判别器并用 <code>binary_crossentropy</code> 损失 + Adam 优化器编译，再用 <code>train_on_batch</code> 对单个批次做一次梯度更新：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 8.1.4 节（Keras 原意）=====</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># discriminator.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># noise = np.random.normal(0, 1, (batch_size, 100))   # 采样噪声</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># gen_imgs = generator.predict(noise)                  # 生成一批假图</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># d_loss_real = discriminator.train_on_batch(imgs, valid)   # 真图 → 标签 1</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># d_loss_fake = discriminator.train_on_batch(gen_imgs, fake) # 假图 → 标签 0</span>
-</code></pre></div>
-<p>Keras 的 <code>train_on_batch(imgs, labels)</code> 一次做完"清梯度 → 前向 → 算损失 → 反向 → 更新"。PyTorch 把这五步拆开手写，下面是严格对应：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== PyTorch 等价：train_on_batch 的拆解 =====</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>   <span class="c1"># binary_crossentropy 的 PyTorch 对应（D 已带 Sigmoid）</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                               <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># 书超参：Adam(lr=0.0002, beta_1=0.5)；PyTorch 写 betas=(beta1, beta2)=(0.5, 0.999)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 真图的目标标签：全 1</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 假图的目标标签：全 0</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># -- 真图这批 --</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>                          <span class="c1"># ① 清空梯度</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>  <span class="c1"># ② 前向 + 损失</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">d_loss_real</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>                           <span class="c1"># ③ 反向传播</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>                               <span class="c1"># ④ 更新权重 ← 这就是一次 train_on_batch</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># -- 假图这批（同上四步） --</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">d_loss_fake</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<h4 id="训练判别器一次梯度更新拆成四步">训练判别器：一次梯度更新拆成四步<a class="headerlink" href="#训练判别器一次梯度更新拆成四步" title="Permanent link">#</a></h4>
+<p>判别器就是普通的二分类器：损失用<strong>二元交叉熵</strong>（<code>nn.BCELoss()</code>，因为 D 的最后一层已带 Sigmoid，输出就是概率），优化器按书的超参 <strong>Adam(lr=0.0002, beta1=0.5)</strong>。对一个批次做一次梯度更新，PyTorch 明确拆成四步：清梯度 → 前向+算损失 → 反向 → 更新权重：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 8.1.4 节：判别器的一次梯度更新 =====</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>   <span class="c1"># 二元交叉熵损失（D 已带 Sigmoid）</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>                               <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># 书超参：Adam(lr=0.0002, beta_1=0.5)，betas=(beta1, beta2)=(0.5, 0.999)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 真图的目标标签：全 1</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 假图的目标标签：全 0</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># -- 真图这批 --</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>                          <span class="c1"># ① 清空梯度</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>  <span class="c1"># ② 前向 + 损失</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">d_loss_real</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>                           <span class="c1"># ③ 反向传播</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>                               <span class="c1"># ④ 更新权重——一次单批梯度更新完成</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># -- 假图这批（同上四步） --</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="n">d_loss_fake</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 </code></pre></div>
 <h4 id="训练生成器组合模型">训练生成器：组合模型<a class="headerlink" href="#训练生成器组合模型" title="Permanent link">#</a></h4>
-<p>现在到 GAN 训练里 tricky 的部分。判别器可以脱离生成器单独训练，生成器却离不开判别器——需要它当"考官"。于是构建包含两个模型的组合网络：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 8.1.4 节：构建组合模型（PyTorch 版） =====</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># generator = build_generator()          # 生成器</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># z = Input(shape=(100,))                # 噪声输入</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># image = generator(z)                   # 生成假图</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># discriminator.trainable = False        # ★ 冻结判别器权重</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># valid = discriminator(image)           # 判别器对假图打分</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># combined = Model(z, valid)             # 组合模型：噪声进 → 真假分出</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># combined.compile(loss='binary_crossentropy', optimizer=optimizer)</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># g_loss = combined.train_on_batch(noise, valid)   # 目标标签是 valid（全 1）！</span>
+<p>现在到 GAN 训练里 tricky 的部分。判别器可以脱离生成器单独训练，生成器却离不开判别器——需要它当"考官"。于是把两个模型串成一条<strong>组合网络</strong>：噪声 z 进生成器得到假图，假图直接进判别器打分。PyTorch 里不需要为这条链封装新的模型对象——一行串联前向就是组合模型（正是图 8.12 那条链路）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 8.1.4 节：组合网络就是一行串联前向 =====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># 噪声 → 生成器 → 假图 → 判别器 → "真实度概率"</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">valid</span> <span class="o">=</span> <span class="n">discriminator</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">))</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 拿全 1 的目标标签算损失并反向传播，误差就会一路穿回生成器</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">原书笔误（二）：变量名 <code>img</code> 未定义</p>
-<p>原书这段 Keras 代码写的是 <code>valid = discriminator(img)</code>，但前一行定义的变量名是 <code>image</code>——<code>img</code> 在此处并不存在，应为 <code>valid = discriminator(image)</code>。PyTorch 版已修正。</p>
-</div>
-<p>PyTorch 版把"冻结"翻译成关掉参数的梯度开关：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== PyTorch 等价：组合模型与冻结 =====</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">generator</span>     <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">discriminator</span> <span class="o">=</span> <span class="n">Discriminator</span><span class="p">()</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># —— 车道 1 的优化器：只管判别器的参数 ——</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># ★ 冻结判别器（Keras：trainable=False，且必须在 compile combined 之前设置）</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># PyTorch 等价：关掉所有参数的 requires_grad。</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># 之后反向传播仍会"穿过"判别器把梯度送给生成器，只是判别器自己的参数不累积梯度、不被更新。</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># —— 车道 2 的优化器：只管生成器的参数 ——</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">optimizer_G</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
+<p>反向传播前必须先冻结判别器。"冻结"在 PyTorch 里就是关掉参数的梯度开关；两条车道各用一个只装自家参数的优化器：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 8.1.4 节：双优化器与冻结 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">generator</span>     <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">discriminator</span> <span class="o">=</span> <span class="n">Discriminator</span><span class="p">()</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># —— 车道 1 的优化器：只管判别器的参数 ——</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># ★ 冻结判别器：关掉所有参数的 requires_grad。</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">#   冻结后反向传播仍会"穿过"判别器把梯度送给生成器，</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">#   只是判别器自己的参数不再累积梯度、不会被更新。</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">#   车道 1（训 D）使用前要把 requires_grad 设回 True——</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">#   见下方训练循环里的 freeze/unfreeze 开关。</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># —— 车道 2 的优化器：只管生成器的参数 ——</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">optimizer_G</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
 </code></pre></div>
 <h4 id="完整训练循环一场博弈的两次前向两次反向">完整训练循环：一场博弈的两次前向、两次反向<a class="headerlink" href="#完整训练循环一场博弈的两次前向两次反向" title="Permanent link">#</a></h4>
-<p>这是全书本章最值得逐行读的代码。一个 epoch 内，两个模型先后各训练一次——<strong>两次前向、两次反向</strong>，博弈全在这十六步里：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 8.1.4 / 8.4 Step 6：训练循环（GAN 的心脏） =====</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">32</span>          <span class="c1"># 与书一致</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="c1"># ---------- 阶段 1：训练判别器（车道 1，普通监督学习） ----------</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="c1"># 1a. 从训练集随机抽一批真图（相当于书的 X_train[idx]）</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">idx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="n">BATCH_SIZE</span><span class="p">)</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">imgs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>   <span class="c1"># 真图批次</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                  <span class="c1"># 真图目标 = 1</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># 假图目标 = 0</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="c1"># 1b. 生成器造一批假图（此步不更新 G）</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>        <span class="c1"># z ~ N(0, 1)</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>                              <span class="c1"># 造图不需要 G 的梯度</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="n">gen_imgs</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="c1"># 1c. 判别器两次前向：真图想判 1，假图想判 0</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="c1">#   ↑ detach() 是关键：把假图从生成器的计算图上摘下来，</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="c1">#     这次反向传播只会更新判别器，不会顺着链路改生成器</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="n">d_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_loss_real</span> <span class="o">+</span> <span class="n">d_loss_fake</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="c1">#   ↑ 对应书里的 0.5 * np.add(d_loss_real, d_loss_fake)</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>   <span class="c1"># 清判别器梯度</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="n">d_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>         <span class="c1"># 误差只回传到判别器</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>        <span class="c1"># 更新判别器 ← 两次 train_on_batch 的合体</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="c1"># ---------- 阶段 2：训练生成器（车道 2，走组合模型） ----------</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="c1"># 2a. 新噪声，整条链前向：噪声 → 生成器 → 判别器</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
-<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="n">g_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)),</span> <span class="n">valid</span><span class="p">)</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>    <span class="c1">#   ↑ 目标标签是 valid（全 1）：让判别器把假图判成真图！</span>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>    <span class="c1">#   ↑ 判别器参数已冻结（requires_grad=False），梯度穿过它直达生成器</span>
-<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>
-<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="n">optimizer_G</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>   <span class="c1"># 清生成器梯度</span>
-<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>    <span class="n">g_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>         <span class="c1"># 反向传播穿 D（D 不动），只有 G 的权重被更新</span>
-<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>    <span class="n">optimizer_G</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>        <span class="c1"># 更新生成器 ← 对应 combined.train_on_batch(noise, valid)</span>
-<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>
-<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>    <span class="c1"># ---------- 观察进度 ----------</span>
-<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> [D loss: </span><span class="si">{</span><span class="n">d_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">] [G loss: </span><span class="si">{</span><span class="n">g_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
-<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>        <span class="n">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span>   <span class="c1"># 存一批生成图，肉眼评估</span>
+<p>这是本章最值得逐行读的代码。一个 epoch 内，两条车道各跑一遍——<strong>两次前向、两次反向</strong>，博弈全在这个循环里：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== 书 8.1.4 / 8.4 Step 6：训练循环（GAN 的心脏） =====</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">32</span>          <span class="c1"># 与书一致</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">freeze</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>     <span class="c1"># 冻结：参数停止累积梯度（考官模式，只打分不学习）</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">unfreeze</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>   <span class="c1"># 解冻：恢复梯度累积（考生模式，准备被更新）</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="c1"># ---------- 阶段 1：训练判别器（车道 1，普通监督学习） ----------</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">unfreeze</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>   <span class="c1"># ★ 本车道要更新的正是 D，先打开梯度开关</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="c1"># 1a. 从训练集随机抽一批真图（相当于书的 X_train[idx]）</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">idx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="n">BATCH_SIZE</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="n">imgs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>   <span class="c1"># 真图批次</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                  <span class="c1"># 真图目标 = 1</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># 假图目标 = 0</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="c1"># 1b. 生成器造一批假图（此步不更新 G）</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>        <span class="c1"># z ~ N(0, 1)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>                              <span class="c1"># 造图不需要 G 的梯度</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>        <span class="n">gen_imgs</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>    <span class="c1"># 1c. 判别器两次前向：真图想判 1，假图想判 0</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>    <span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="c1">#   ↑ detach() 是关键：把假图从生成器的计算图上摘下来，</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="c1">#     这次反向传播只会更新判别器，不会顺着链路改生成器</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>    <span class="n">d_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_loss_real</span> <span class="o">+</span> <span class="n">d_loss_fake</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>    <span class="c1">#   ↑ 对应书里的 0.5 * np.add(d_loss_real, d_loss_fake)</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>    <span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>   <span class="c1"># 清判别器梯度</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>    <span class="n">d_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>         <span class="c1"># 误差只回传到判别器 ← 第一次反向传播</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>    <span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>        <span class="c1"># 更新判别器权重</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>    <span class="c1"># ---------- 阶段 2：训练生成器（车道 2，噪声 → G → D 串联） ----------</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>    <span class="n">freeze</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>     <span class="c1"># ★ 考官进场：只打分，不学习</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>    <span class="c1"># 2a. 新噪声，整条链前向：噪声 → 生成器 → 判别器</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>    <span class="n">g_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)),</span> <span class="n">valid</span><span class="p">)</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>    <span class="c1">#   ↑ 目标标签是 valid（全 1）：让判别器把假图判成真图！</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>    <span class="c1">#   ↑ D 的参数 requires_grad=False，梯度穿过 D 直达生成器</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>    <span class="n">optimizer_G</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>   <span class="c1"># 清生成器梯度</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>    <span class="n">g_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>         <span class="c1"># 反向传播穿 D（D 不动），只有 G 收到梯度 ← 第二次反向传播</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>    <span class="n">optimizer_G</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>        <span class="c1"># 更新生成器权重</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>    <span class="c1"># ---------- 观察进度 ----------</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> [D loss: </span><span class="si">{</span><span class="n">d_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">] [G loss: </span><span class="si">{</span><span class="n">g_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+<a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a>        <span class="n">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span>   <span class="c1"># 存一批生成图，肉眼评估</span>
 </code></pre></div>
 <h4 id="训练轮次肉眼看图决定何时停">训练轮次：肉眼看图，决定何时停<a class="headerlink" href="#训练轮次肉眼看图决定何时停" title="Permanent link">#</a></h4>
-<p>两个编译好的模型（判别器和组合模型）在每个 epoch 同时训练，生成器与判别器都持续进步。观察 GAN 表现的实用手段：每隔一个（或若干个）epoch 打印一批生成图，看看生成器把训练集学得怎么样。</p>
+<p>两条车道在每个 epoch 里各跑一遍（先训 D、再训 G），生成器与判别器都持续进步。观察 GAN 表现的实用手段：每隔一个（或若干个）epoch 打印一批生成图，看看生成器把训练集学得怎么样。</p>
 <figure>
   <img src="../images/ch08/fig-8-13.png" width="640" class="lq-img" />
   <figcaption>图 8.13 MNIST 上生成器的进化：epoch 0 是纯随机噪声；epoch 1500~2500 出现笔画雏形；epoch 3500~9500 数字越来越清晰——肉眼观察生成质量，是决定 epoch 数与停止时机的朴素而有效的手段（截自原书）</figcaption>
@@ -3070,7 +3058,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">拓展：non-saturating loss——原书公式其实有个实践修正</p>
-<p>原书公式里 G 的目标是 <span class="arithmatex">\(\min \log(1 - D(G(z)))\)</span>，这在数学上漂亮，训练早期却有个坑：此时 D 一眼识破假图，<span class="arithmatex">\(D(G(z)) \approx 0\)</span>，于是 <span class="arithmatex">\(\log(1-0)=\log 1 \approx 0\)</span>，函数平坦、<strong>梯度几乎消失</strong>——G 明明最需要学，却学不动（这就是"饱和"，saturating）。Goodfellow 在论文里给出的实践修正：G 改为<strong>最大化 <span class="arithmatex">\(\log D(G(z))\)</span></strong>（即 non-saturating loss）。训练初期 <span class="arithmatex">\(D(G(z))\)</span> 小，<span class="arithmatex">\(\log D(G(z))\)</span> 陡峭，梯度充足；两大框架的实现几乎都采用这一形式。原书讲的是原始公式，读代码时看到 <code>BCELoss(D(G(z)), 1)</code> 别奇怪——那就是 non-saturating 版本。</p>
+<p>原书公式里 G 的目标是 <span class="arithmatex">\(\min \log(1 - D(G(z)))\)</span>，这在数学上漂亮，训练早期却有个坑：此时 D 一眼识破假图，<span class="arithmatex">\(D(G(z)) \approx 0\)</span>，于是 <span class="arithmatex">\(\log(1-0)=\log 1 \approx 0\)</span>，函数平坦、<strong>梯度几乎消失</strong>——G 明明最需要学，却学不动（这就是"饱和"，saturating）。Goodfellow 在论文里给出的实践修正：G 改为<strong>最大化 <span class="arithmatex">\(\log D(G(z))\)</span></strong>（即 non-saturating loss）。训练初期 <span class="arithmatex">\(D(G(z))\)</span> 小，<span class="arithmatex">\(\log D(G(z))\)</span> 陡峭，梯度充足；主流实现几乎都采用这一形式。原书正文讲的是原始公式，本笔记代码里看到 <code>nn.BCELoss(D(G(z)), 1)</code>（配全 1 目标标签）别奇怪——那就是 non-saturating 版本。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">拓展：判别器太好、太坏，都会卡死生成器</p>
@@ -3195,7 +3183,7 @@
 </figure>
 
 <h3 id="834-准备好动手了吗">8.3.4 准备好动手了吗？<a class="headerlink" href="#834-准备好动手了吗" title="Permanent link">#</a></h3>
-<p>GAN 在创造"从未存在过的新现实"上潜力巨大，本节的几例只是冰山一角——新应用每隔几周就冒出来一个。想继续上手更多 GAN 应用，原书强烈推荐 Erik Linder-Norén 维护的 <strong>Keras-GAN 仓库</strong>（github.com/eriklindernoren/Keras-GAN）：收录了大量 Keras 实现的 GAN 模型。<strong>本章大量代码正是受它启发并改编而来。</strong></p>
+<p>GAN 在创造"从未存在过的新现实"上潜力巨大，本节的几例只是冰山一角——新应用每隔几周就冒出来一个。想继续上手更多 GAN 应用，推荐 Erik Linder-Norén 维护的 <strong>PyTorch-GAN 仓库</strong>（github.com/eriklindernoren/PyTorch-GAN）：收录了大量 GAN 变体的 PyTorch 实现（DCGAN、WGAN-GP、SRGAN、Pix2Pix 等一应俱全）。<strong>本章项目代码也正是参照它的风格写成的。</strong></p>
 <h2 id="84-项目动手建自己的-GAN">8.4 项目：动手建自己的 GAN<a class="headerlink" href="#84-项目动手建自己的-GAN" title="Permanent link">#</a></h2>
 <p>本项目的目标：用卷积层搭建生成器和判别器——即 <strong>DCGAN</strong>（8.1.1，Radford 等人 2016 首创，生成新图像的效果令人印象深刻）。训练数据集：<strong>Fashion-MNIST</strong>。</p>
 <p>数据集概况（图 8.17）：</p>
@@ -3274,46 +3262,43 @@
 </tbody>
 </table>
 <h3 id="Step-1导入库">Step 1：导入库<a class="headerlink" href="#Step-1导入库" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 8.4 Step 1：导入库 =====</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Keras 版从这里导入 fashion_mnist、各种 layer、Sequential/Model、Adam；</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># PyTorch 对应换成 torch、torch.nn 与 torchvision</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 8.4 Step 1：导入库 =====</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </code></pre></div>
 <h3 id="Step-2下载并可视化数据集">Step 2：下载并可视化数据集<a class="headerlink" href="#Step-2下载并可视化数据集" title="Permanent link">#</a></h3>
-<p>Keras 一行 <code>fashion_mnist.load_data()</code> 搞定下载；这里用 torchvision。关键预处理：<strong>把训练集缩放到 -1 到 1</strong>，让模型收敛更快（图像缩放的原理见第 4 章"数据归一化"一节）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 8.4 Step 2：下载 + 归一化到 [-1, 1] =====</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Keras: X_train = training_data / 127.5 - 1.   （[0,255] → [-1,1]）</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>               <span class="c1"># [0,255] → [0,1]</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]),</span>  <span class="c1"># [0,1] → [-1,1]，与 /127.5-1 等价</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">])</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">'data'</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>                                <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Keras 还要 np.expand_dims(X_train, axis=3) 手动补通道维；</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># PyTorch 通道在前，ToTensor 已给出 (1, 28, 28)，无需补</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># drop_last=True：丢掉不满的尾批，保证每个批次都是 32 张，与 valid/fake 标签形状对齐</span>
+<p>torchvision 内置 FashionMNIST 数据集，<code>download=True</code> 一行搞定下载。关键预处理：<strong>把训练集缩放到 -1 到 1</strong>，让模型收敛更快（图像缩放的原理见第 4 章"数据归一化"一节）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 8.4 Step 2：下载 + 归一化到 [-1, 1] =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># 目标：[0,255] → [-1,1]（即 X/127.5 - 1 的效果）</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>               <span class="c1"># [0,255] → [0,1]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]),</span>  <span class="c1"># [0,1] → [-1,1]：(x - 0.5) / 0.5</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">])</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">'data'</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>                                <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># ToTensor 已给出通道在前的 (1, 28, 28)，无需手动补通道维</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># drop_last=True：丢掉不满的尾批，保证每个批次都是 32 张，与 valid/fake 标签形状对齐</span>
 </code></pre></div>
 <p>顺手玩一把书中"彩蛋"——把第 3343 张图的像素矩阵直接打印在图上（图 8.18）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 书 8.4 Step 2（续）：可视化像素矩阵 =====</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">visualize_input</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">thresh</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.5</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>                        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>                        <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span> <span class="k">if</span> <span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s1">'black'</span><span class="p">)</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="n">visualize_input</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3343</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">ax</span><span class="p">)</span>   <span class="c1"># 用原始 [0,255] 的数据画</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 8.4 Step 2（续）：可视化像素矩阵 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">visualize_input</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">thresh</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.5</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>                        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>                        <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span> <span class="k">if</span> <span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s1">'black'</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">visualize_input</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3343</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">ax</span><span class="p">)</span>   <span class="c1"># 用原始 [0,255] 的数据画</span>
 </code></pre></div>
 <figure>
   <img src="../images/ch08/fig-8-18.png" width="380" class="lq-img" />
@@ -3321,8 +3306,8 @@
 </figure>
 
 <div class="admonition warning">
-<p class="admonition-title">原书笔误（三）：项目版生成器的输出激活与归一化不匹配</p>
-<p>项目把数据归一化到 <strong>[-1, 1]</strong>，但 Step 3 的生成器最后一层写的是 <code>Conv2D(1, activation='relu')</code>——ReLU 的输出范围是 <span class="arithmatex">\([0, +\infty)\)</span>，<strong>永远产不出负值</strong>（图像的暗半边），与 [-1,1] 的目标分布对不上。8.1.3 教学版用的 <strong>tanh</strong>（值域恰为 [-1,1]）才是与这套归一化严格匹配的搭配。本笔记的 PyTorch 版输出层用 tanh，同时按项目节文字描述的 "conv ⇒ BN ⇒ ReLU" 顺序修正了书代码中 activation 写在 Conv 层里的顺序问题。</p>
+<p class="admonition-title">原书笔误（一）：项目版生成器的输出激活与归一化不匹配</p>
+<p>项目把数据归一化到 <strong>[-1, 1]</strong>，但书里 Step 3 的生成器最后一层用的却是 <strong>ReLU</strong> 激活——ReLU 的输出范围是 <span class="arithmatex">\([0, +\infty)\)</span>，<strong>永远产不出负值</strong>（图像的暗半边），与 [-1,1] 的目标分布对不上。8.1.3 教学版用的 <strong>tanh</strong>（值域恰为 [-1,1]）才是与这套归一化严格匹配的搭配。本笔记输出层用 tanh，同时按项目节文字描述的 "conv ⇒ BN ⇒ ReLU" 顺序，修正了书项目代码里激活与 BN 顺序颠倒的问题。</p>
 </div>
 <h3 id="Step-3搭建生成器项目版">Step 3：搭建生成器（项目版）<a class="headerlink" href="#Step-3搭建生成器项目版" title="Permanent link">#</a></h3>
 <p>输入是 8.1.5 里的噪声向量 <span class="arithmatex">\(z\)</span>。架构（图 8.19）：</p>
@@ -3332,30 +3317,29 @@
 <li>全程三个卷积层，配 BN 和 ReLU，<strong>一般套路：卷积 ⇒ 批归一化 ⇒ ReLU</strong>；</li>
 <li>最后一层转置卷积输出 28×28×1。</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 8.4 Step 3：项目版生成器 =====</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">LATENT_DIM</span> <span class="o">=</span> <span class="mi">100</span>   <span class="c1"># 噪声维度，与书一致</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Generator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="o">=</span><span class="n">LATENT_DIM</span><span class="p">):</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="mi">128</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>   <span class="c1"># Dense(128*7*7, relu)</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="c1"># Keras: UpSampling2D() 复制像素 + Conv2D(3×3) 卷积</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="c1"># PyTorch 等价：ConvTranspose2d(4, stride=2, padding=1) 一步到位</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">up1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 7×7  → 14×14</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>      <span class="c1"># momentum 坑见 8.1.2</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">up2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 14×14 → 28×28</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># → 1×28×28</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>            <span class="c1"># 100 → 6272</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>             <span class="c1"># Reshape → 7×7×128</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># conv ⇒ BN ⇒ ReLU（按书 8.4 文字顺序）</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up2</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>        <span class="c1"># tanh 输出，匹配 [-1,1] 归一化</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>        <span class="c1"># 原书项目代码此处是 ReLU——见上方 warning 框</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="n">generator</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 书 8.4 Step 3：项目版生成器 =====</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">LATENT_DIM</span> <span class="o">=</span> <span class="mi">100</span>   <span class="c1"># 噪声维度，与书一致</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Generator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="o">=</span><span class="n">LATENT_DIM</span><span class="p">):</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="mi">128</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>   <span class="c1"># 全连接：100 维噪声 → 6272 维</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="c1"># 上采样用 stride=2 的转置卷积（可学习的上采样），一步把宽高翻倍</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">up1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 7×7  → 14×14</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>      <span class="c1"># momentum：running stats 更新系数</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">up2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ConvTranspose2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 14×14 → 28×28</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># → 1×28×28</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>            <span class="c1"># 100 → 6272</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>             <span class="c1"># Reshape → 7×7×128</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># conv ⇒ BN ⇒ ReLU（按书 8.4 文字顺序）</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up2</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>        <span class="c1"># tanh 输出，匹配 [-1,1] 归一化</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>        <span class="c1"># 原书项目代码此处是 ReLU——见上方 warning 框</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="n">generator</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
 </code></pre></div>
 <p>28×28 之后不再上采样——已经等于 MNIST/Fashion-MNIST 的图像尺寸；自己的问题自己调。</p>
 <figure>
@@ -3371,17 +3355,17 @@
 <li>用 BN 和 Dropout 优化训练（第 4 章的老朋友）；</li>
 <li>四层卷积的一般套路：<strong>卷积 ⇒ 批归一化 ⇒ LeakyReLU</strong>。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 8.4 Step 4：项目版判别器 =====</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># 与 8.1.2 教学版完全同构（原书两次给的就是同一份结构），此处给出完整可运行版</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">discriminator</span> <span class="o">=</span> <span class="n">Discriminator</span><span class="p">()</span>   <span class="c1"># 直接复用 8.1.2 定义的类</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 结构：Conv32(s2) → LReLU → Drop</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1">#      → Conv64(s2) → ZeroPad(7×7→8×8) → BN → LReLU → Drop</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1">#      → Conv128(s2) → BN → LReLU → Drop</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">#      → Conv256(s1) → BN → LReLU → Drop</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1">#      → Flatten(4096) → Dense(1) → Sigmoid</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 8.4 Step 4：项目版判别器 =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># 与 8.1.2 教学版完全同构（原书两次给的就是同一份结构），此处给出完整可运行版</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">discriminator</span> <span class="o">=</span> <span class="n">Discriminator</span><span class="p">()</span>   <span class="c1"># 直接复用 8.1.2 定义的类</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># 结构：Conv32(s2) → LReLU → Drop</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1">#      → Conv64(s2) → ZeroPad(7×7→8×8) → BN → LReLU → Drop</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">#      → Conv128(s2) → BN → LReLU → Drop</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">#      → Conv256(s1) → BN → LReLU → Drop</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1">#      → Flatten(4096) → Linear(4096→1) → Sigmoid</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">原书笔误（四）：第一层 filter 数，文字与代码对不上</p>
+<p class="admonition-title">原书笔误（二）：第一层 filter 数，文字与代码对不上</p>
 <p>项目节正文说 "we start with 64 layers, then 128, and then 256"（从 64 开始），但代码和图 8.20 里第一层都是 <strong>32</strong> 个 filter（输出 14×14×32）。以代码和图为准：32 → 64 → 128 → 256。</p>
 </div>
 <figure>
@@ -3391,116 +3375,116 @@
 
 <h3 id="Step-5搭建组合模型">Step 5：搭建组合模型<a class="headerlink" href="#Step-5搭建组合模型" title="Permanent link">#</a></h3>
 <p>如 8.1.4 所讲：训练生成器需要一个同时装着生成器和判别器的组合网络（图 8.21）——输入噪声信号 <span class="arithmatex">\(z\)</span>，输出判别器对"生成图是真是假"的预测。<strong>务必在组合模型里禁用判别器的训练</strong>：训练生成器时不许判别器更新权重，但判别器必须留在链路里当考官。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 8.4 Step 5：组合模型 =====</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># 定义优化器：书超参 Adam(lr=0.0002, beta_1=0.5) → PyTorch betas=(0.5, 0.999)</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># （Keras 版一个 optimizer 编译两个模型；PyTorch 两个优化器共用同一套超参）</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">optimizer_G</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>     <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>   <span class="c1"># binary_crossentropy 对应</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># —— 先"编译"判别器（车道 1 用） ——</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Keras: discriminator.compile(loss='binary_crossentropy',</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1">#                              optimizer=optimizer, metrics=['accuracy'])</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># —— 冻结判别器（车道 2 用） ——</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># Keras: discriminator.trainable = False（必须发生在 compile combined 之前！）</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="c1"># —— 搭组合模型：z → 生成器 → 判别器 ——</span>
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="c1"># z = Input(shape=(100,)); img = generator(z); valid = discriminator(img)</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1"># combined = Model(inputs=z, outputs=valid)</span>
-<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="c1"># combined.compile(loss='binary_crossentropy', optimizer=optimizer)</span>
-<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="c1"># PyTorch 版的组合模型就是训练循环阶段 2 那一行：</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="c1">#   g_loss = criterion(discriminator(generator(noise)), valid)</span>
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="c1"># 生成器 + 冻结的判别器串联，与图 8.21 一一对应</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 8.4 Step 5：组合模型 =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># PyTorch 里组合模型无需新建网络对象：</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># 训练循环中 discriminator(generator(z)) 的串联前向，</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 就是图 8.21 那条"噪声 → G → D"链路。要准备的是两个优化器和一个冻结开关。</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># 优化器超参（书）：Adam(lr=0.0002, beta_1=0.5) → betas=(0.5, 0.999)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">optimizer_D</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">optimizer_G</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>     <span class="n">lr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>   <span class="c1"># 二元交叉熵损失（D 已带 Sigmoid）</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># —— 冻结开关：控制参数的 requires_grad ——</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">freeze</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>     <span class="c1"># 冻结：参数停止累积梯度，反向传播穿过它但不更新它</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>        <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="k">def</span><span class="w"> </span><span class="nf">unfreeze</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>   <span class="c1"># 解冻：恢复梯度累积（车道 1 要更新 D）</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="c1"># 训练循环里的用法（见 Step 6）：</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="c1">#   阶段 1 unfreeze(discriminator) → 训 D</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="c1">#   阶段 2 freeze(discriminator)   → 训 G，误差只许改 G</span>
 </code></pre></div>
 <figure>
   <img src="../images/ch08/fig-8-21.png" width="640" class="lq-img" />
   <figcaption>图 8.21 组合模型架构 = 生成器（蓝）+ 判别器（紫）串联：100 z → 7×7×128 → … → 28×28×1 → … → FC 4096 → 1（截自原书）</figcaption>
 </figure>
 
-<div class="admonition danger">
-<p class="admonition-title">Keras 专属坑：冻结时机</p>
-<p>原书 Keras 代码里 <code>discriminator.trainable = False</code> 必须写在 <code>combined.compile()</code> <strong>之前</strong>——Keras 在 compile 时固化 trainable 状态；写晚了冻结不生效，训练生成器时会连判别器一起更新。PyTorch 没有这个坑：<code>requires_grad = False</code> 随时可以设，而且因为判别器和生成器各用独立的优化器（<code>optimizer_D</code> 只装 D 的参数），即使不冻结、<code>optimizer_G.step()</code> 也碰不到 D 的权重。两种框架、两种保险，机制同一件事：<strong>生成器的误差只许改生成器</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">有了双优化器，冻结是不是多余的？</p>
+<p><code>optimizer_D</code> 只装 D 的参数、<code>optimizer_G</code> 只装 G 的参数，严格说即使不冻结，<code>optimizer_G.step()</code> 也碰不到 D 的权重。但 <code>freeze(discriminator)</code> 仍然值得写：一是冻结后阶段 2 的反向传播不再给 D 的参数累积梯度，省内存省计算；二是把博弈规则明确钉死——<strong>生成器的误差只许改生成器</strong>，不给"D 的参数被误塞进 G 的优化器"这类失误留任何机会。</p>
 </div>
 <h3 id="Step-6搭建训练函数">Step 6：搭建训练函数<a class="headerlink" href="#Step-6搭建训练函数" title="Permanent link">#</a></h3>
 <p>训练 GAN = 训练两个网络：判别器 + 组合网络。<code>train()</code> 函数接收三个参数：<strong>epoch 数</strong>、<strong>batch size</strong>、<strong>save_interval</strong>（隔多少 epoch 存一次结果图）。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 8.4 Step 6：训练函数 =====</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">save_interval</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="c1"># 对抗博弈的"标准答案"标签：真=1，假=0</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="c1"># Keras: valid = np.ones((batch_size, 1)); fake = np.zeros((batch_size, 1))</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="c1"># ---------- 阶段 1：训练判别器 ----------</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="n">idx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">)</span>  <span class="c1"># 随机抽 batch 个索引</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="n">imgs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>       <span class="c1"># 真图批次</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>        <span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>        <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>   <span class="c1"># 采样噪声 N(0,1)</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>            <span class="n">gen_imgs</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>               <span class="c1"># 生成器造一批假图</span>
-<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
-<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>        <span class="c1"># 真图 → 目标 1；假图 → 目标 0（书：real classified as ones, generated as zeros）</span>
-<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>        <span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>        <span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
-<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>        <span class="n">d_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_loss_real</span> <span class="o">+</span> <span class="n">d_loss_fake</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>       <span class="c1"># 书：0.5 * np.add(...)</span>
-<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
-<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>        <span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">d_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>
-<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>        <span class="c1"># ---------- 阶段 2：训练组合网络（= 训生成器） ----------</span>
-<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>        <span class="n">noise</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
-<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>        <span class="n">g_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)),</span> <span class="n">valid</span><span class="p">)</span>
-<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>        <span class="c1"># 目标 valid（全 1）：盼着判别器把假图当成真的</span>
-<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>        <span class="n">optimizer_G</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">g_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer_G</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
-<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>        <span class="c1"># ---------- 打印进度 ----------</span>
-<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> [D loss: </span><span class="si">{</span><span class="n">d_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">] [G loss: </span><span class="si">{</span><span class="n">g_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
-<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>
-<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>        <span class="c1"># 每 save_interval 个 epoch 存一批生成样图</span>
-<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>            <span class="n">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 8.4 Step 6：训练函数 =====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">save_interval</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="c1"># ---------- 阶段 1：训练判别器 ----------</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="n">unfreeze</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>   <span class="c1"># 打开 D 的梯度开关：本车道更新 D</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="n">idx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">)</span>  <span class="c1"># 随机抽 batch 个索引</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="n">imgs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>       <span class="c1"># 真图批次</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        <span class="n">valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    <span class="c1"># 对抗博弈的"标准答案"标签：真=1</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        <span class="n">fake</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">#                             假=0</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>   <span class="c1"># 采样噪声 N(0,1)</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>            <span class="n">gen_imgs</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>               <span class="c1"># 生成器造一批假图</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        <span class="c1"># 真图 → 目标 1；假图 → 目标 0（书：real classified as ones, generated as zeros）</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        <span class="n">d_loss_real</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">valid</span><span class="p">)</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>        <span class="n">d_loss_fake</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">gen_imgs</span><span class="o">.</span><span class="n">detach</span><span class="p">()),</span> <span class="n">fake</span><span class="p">)</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>        <span class="n">d_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_loss_real</span> <span class="o">+</span> <span class="n">d_loss_fake</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>       <span class="c1"># 书：0.5 * np.add(...)</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>        <span class="n">optimizer_D</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">d_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer_D</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>   <span class="c1"># 第一次反向：更新 D</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="c1"># ---------- 阶段 2：训练组合网络（= 训生成器） ----------</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>        <span class="n">freeze</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>     <span class="c1"># 关掉 D 的梯度开关：误差只许改 G</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>        <span class="n">noise</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>        <span class="n">g_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">discriminator</span><span class="p">(</span><span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)),</span> <span class="n">valid</span><span class="p">)</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>        <span class="c1"># 目标 valid（全 1）：盼着判别器把假图当成真的</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>        <span class="n">optimizer_G</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">g_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer_G</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>   <span class="c1"># 第二次反向：更新 G</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>        <span class="c1"># ---------- 打印进度 ----------</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> [D loss: </span><span class="si">{</span><span class="n">d_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">] [G loss: </span><span class="si">{</span><span class="n">g_loss</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>        <span class="c1"># 每 save_interval 个 epoch 存一批生成样图</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="n">save_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>            <span class="n">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span>
 </code></pre></div>
 <p>配套的 <code>plot_generated_images()</code>：生成 100 张图排成 10×10 网格，存成 <code>gan_generated_image_epoch_%d.png</code>：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># ===== 书 8.4 Step 6（续）：结果可视化 =====</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">examples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>        <span class="n">generated_images</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">generated_images</span> <span class="o">=</span> <span class="n">generated_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">generated_images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">generated_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray_r'</span><span class="p">)</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">'gan_generated_image_epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">.png'</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 8.4 Step 6（续）：结果可视化 =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">plot_generated_images</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">examples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">LATENT_DIM</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="n">generated_images</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">generated_images</span> <span class="o">=</span> <span class="n">generated_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">generated_images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">generated_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray_r'</span><span class="p">)</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">'gan_generated_image_epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">.png'</span><span class="p">)</span>
 </code></pre></div>
-<p>原书 Keras 训练日志长这样（图 8.22 重排）——前 16 个 epoch，D 的损失与准确率来回波动，G 的损失也在 0.7~2.2 之间起伏，这就是博弈的常态：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>0  [D loss: 0.963556, acc.: 42.19%] [G loss: 0.726341]
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>1  [D loss: 0.707453, acc.: 65.62%] [G loss: 1.239887]
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>2  [D loss: 0.478705, acc.: 76.56%] [G loss: 1.666347]
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>3  [D loss: 0.721997, acc.: 60.94%] [G loss: 2.243804]
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>4  [D loss: 0.937356, acc.: 45.31%] [G loss: 1.459240]
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>5  [D loss: 0.881121, acc.: 50.00%] [G loss: 1.417385]
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>6  [D loss: 0.558153, acc.: 73.44%] [G loss: 1.393961]
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>7  [D loss: 0.404117, acc.: 78.12%] [G loss: 1.141378]
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>8  [D loss: 0.452483, acc.: 82.81%] [G loss: 0.802813]
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>9  [D loss: 0.591792, acc.: 76.56%] [G loss: 0.690274]
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>10 [D loss: 0.753802, acc.: 67.19%] [G loss: 0.934047]
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>11 [D loss: 0.957626, acc.: 50.00%] [G loss: 1.140045]
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>12 [D loss: 0.919308, acc.: 51.56%] [G loss: 1.311618]
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>13 [D loss: 0.776363, acc.: 56.25%] [G loss: 1.041264]
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>14 [D loss: 0.763993, acc.: 56.25%] [G loss: 1.090716]
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>15 [D loss: 0.754735, acc.: 56.25%] [G loss: 1.530865]
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>16 [D loss: 0.739731, acc.: 68.75%] [G loss: 1.887644]
+<p>原书的训练日志长这样（图 8.22 重排）——前 16 个 epoch，D 的损失与准确率来回波动，G 的损失也在 0.7~2.2 之间起伏，这就是博弈的常态：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>0  [D loss: 0.963556, acc.: 42.19%] [G loss: 0.726341]
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>1  [D loss: 0.707453, acc.: 65.62%] [G loss: 1.239887]
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>2  [D loss: 0.478705, acc.: 76.56%] [G loss: 1.666347]
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>3  [D loss: 0.721997, acc.: 60.94%] [G loss: 2.243804]
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>4  [D loss: 0.937356, acc.: 45.31%] [G loss: 1.459240]
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>5  [D loss: 0.881121, acc.: 50.00%] [G loss: 1.417385]
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>6  [D loss: 0.558153, acc.: 73.44%] [G loss: 1.393961]
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>7  [D loss: 0.404117, acc.: 78.12%] [G loss: 1.141378]
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>8  [D loss: 0.452483, acc.: 82.81%] [G loss: 0.802813]
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>9  [D loss: 0.591792, acc.: 76.56%] [G loss: 0.690274]
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>10 [D loss: 0.753802, acc.: 67.19%] [G loss: 0.934047]
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>11 [D loss: 0.957626, acc.: 50.00%] [G loss: 1.140045]
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>12 [D loss: 0.919308, acc.: 51.56%] [G loss: 1.311618]
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>13 [D loss: 0.776363, acc.: 56.25%] [G loss: 1.041264]
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>14 [D loss: 0.763993, acc.: 56.25%] [G loss: 1.090716]
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>15 [D loss: 0.754735, acc.: 56.25%] [G loss: 1.530865]
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>16 [D loss: 0.739731, acc.: 68.75%] [G loss: 1.887644]
 </code></pre></div>
 <h3 id="Step-7开训并观察结果">Step 7：开训并观察结果<a class="headerlink" href="#Step-7开训并观察结果" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== 书 8.4 Step 7：启动训练 =====</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">save_interval</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># 与书一致：1000 个 epoch，每 50 个 epoch 存一次图</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># 原书作者自己跑了 10,000 个 epoch</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># ===== 书 8.4 Step 7：启动训练 =====</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">save_interval</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># 与书一致：1000 个 epoch，每 50 个 epoch 存一次图</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># 原书作者自己跑了 10,000 个 epoch</span>
 </code></pre></div>
 <p>跑起来后训练进度按图 8.22 的格式逐行打印。作者亲测 10,000 个 epoch 的结果（图 8.23）：</p>
 <ul>
@@ -3544,8 +3528,8 @@
 <div class="admonition danger">
 <p class="admonition-title">GAN 新手最容易踩的 8 个坑</p>
 <ol>
-<li><strong>momentum 数字照抄</strong>：Keras <code>BatchNormalization(momentum=0.8)</code> 换到 PyTorch 必须写 <code>momentum=0.2</code>——前者是旧统计量保留权重，后者是新观测权重，语义相反。</li>
-<li><strong>Keras 冻结时机</strong>：<code>discriminator.trainable = False</code> 必须写在 <code>combined.compile()</code> 之前，否则冻结无效、训练 G 时 D 一起被更新。</li>
+<li><strong>BN momentum 方向搞反</strong>：<code>nn.BatchNorm2d(64, momentum=0.2)</code> 里 momentum 是 running stats 更新时<strong>新批统计量的权重</strong>（<code>new_running = 0.8×旧 + 0.2×新</code>），数字越小 running stats 变得越慢；推理/生成图时记得 <code>model.eval()</code>，用的就是这套 running stats。</li>
+<li><strong>循环里忘了 freeze/unfreeze</strong>：阶段 1 前必须 <code>unfreeze(discriminator)</code>，否则 D 收不到梯度、原地踏步；阶段 2 前要 <code>freeze(discriminator)</code>，否则训 G 时 D 的参数也在白白累积梯度（双优化器下虽不会被误更新，但浪费内存、博弈边界也不清晰）。</li>
 <li><strong>PyTorch 忘了 detach</strong>：训判别器时假图要 <code>gen_imgs.detach()</code>，否则反向传播会顺着生成链更新 G——两个网络的博弈边界就乱了。</li>
 <li><strong>项目版输出层 ReLU + [-1,1] 归一化不匹配</strong>：tanh 才是 [-1,1] 的正确搭档（教学版是对的）。</li>
 <li><strong>判别器太好/太坏都卡死 G</strong>：太强 → 梯度消失；太弱 → 反馈是噪声。D 的准确率长期逼近 0% 或 100% 都是红灯。</li>
@@ -3615,12 +3599,7 @@
 <tr>
 <td>Freezing Weights</td>
 <td>冻结权重</td>
-<td>训 G 时禁止 D 的参数更新</td>
-</tr>
-<tr>
-<td>train_on_batch</td>
-<td>单批训练</td>
-<td>Keras 的一次梯度更新（PyTorch 手写四步）</td>
+<td>训 G 时禁止 D 的参数更新（requires_grad=False）</td>
 </tr>
 <tr>
 <td>Zero-sum Game</td>
@@ -3683,9 +3662,9 @@
 <td>低分辨率图 → 高分辨率图</td>
 </tr>
 <tr>
-<td>UpSampling2D / Transposed Conv</td>
+<td>Upsample / Transposed Conv</td>
 <td>上采样 / 转置卷积</td>
-<td>复制行列放大 vs 可学习的上采样</td>
+<td>nn.Upsample 复制行列放大 vs 转置卷积可学习上采样</td>
 </tr>
 <tr>
 <td>Strided Convolution</td>
@@ -3723,7 +3702,7 @@
 <td>§8.1.1</td>
 </tr>
 <tr>
-<td>8.1.2 判别器（图 8.5、8.6 + Keras 代码 + momentum 勘误）</td>
+<td>8.1.2 判别器（图 8.5、8.6 + PyTorch 实现）</td>
 <td>§8.1.2</td>
 </tr>
 <tr>
@@ -3731,7 +3710,7 @@
 <td>§8.1.3</td>
 </tr>
 <tr>
-<td>8.1.4 训练 GAN（图 8.11~8.13 + 冻结机制 + train_on_batch 对应）</td>
+<td>8.1.4 训练 GAN（图 8.11~8.13 + 冻结机制 + 完整训练循环）</td>
 <td>§8.1.4</td>
 </tr>
 <tr>
@@ -3767,7 +3746,7 @@
 <td>§8.3.3</td>
 </tr>
 <tr>
-<td>8.3.4 Keras-GAN 资源</td>
+<td>8.3.4 GAN 仓库资源</td>
 <td>§8.3.4</td>
 </tr>
 <tr>
