@@ -1,0 +1,3197 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/opencv/ch01/">
+      
+      
+        <link rel="prev" href="../../dl4vs/ch10/">
+      
+      
+        <link rel="next" href="../../holo/fourier/ch1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第1章 OpenCV入门 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-1-章-OpenCV-入门" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第1章 OpenCV入门
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../numana/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-如何使用PythonAnaconda-与-OpenCV-的安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 如何使用：Python、Anaconda 与 OpenCV 的安装
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-图像处理基本操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 图像处理基本操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 图像处理基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-读取图像cv2imread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 读取图像：cv2.imread()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-显示图像imshowwaitKey-与窗口管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 显示图像：imshow、waitKey 与窗口管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-保存图像cv2imwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.3 保存图像：cv2.imwrite()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-OpenCV-贡献库" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 OpenCV 贡献库
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 自适应光学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 附录要点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-如何使用PythonAnaconda-与-OpenCV-的安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 如何使用：Python、Anaconda 与 OpenCV 的安装
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-图像处理基本操作" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 图像处理基本操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 图像处理基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-读取图像cv2imread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 读取图像：cv2.imread()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-显示图像imshowwaitKey-与窗口管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 显示图像：imshow、waitKey 与窗口管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-保存图像cv2imwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.3 保存图像：cv2.imwrite()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-OpenCV-贡献库" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 OpenCV 贡献库
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-1-章-OpenCV-入门">第 1 章 OpenCV 入门<a class="headerlink" href="#第-1-章-OpenCV-入门" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：OpenCV 是什么、凭什么用它——开源计算机视觉库的定位与历史（章首）；环境怎么配（1.1）；以及图像处理最基本的三件事：读取、显示、保存（1.2）。
+<strong>承上启下</strong>：本章打通"读 → 显 → 存"的最小闭环，从此图像在 Python 里就是一个 numpy 数组——第 2 章起的像素处理、通道、ROI……全部围绕这个数组展开；1.3 节的贡献库则埋了个伏笔，第 23 章人脸识别用到的 face 模块就来自那里。</p>
+</blockquote>
+<p>OpenCV 是一个开源的计算机视觉库，1999 年由英特尔的 Gary Bradski 启动。Bradski 访学时注意到，很多优秀大学的实验室里都有一套完备的内部视觉接口，从一届学生传给另一届学生——新人直接用接口，比重复造轮子方便得多。OpenCV 正是基于"<strong>为计算机视觉提供通用接口</strong>"这个目标策划的。</p>
+<p>为什么是英特尔（硬件厂商）而非软件厂商来开发它？因为要用视觉库，用户就得买更快的 CPU——这无疑会提升英特尔的销量。如今 OpenCV 已开源并由基金会支持，研究主力早已不限于英特尔，全球用户都在为它做贡献。</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>事实</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出生</td>
+<td>1999 年，英特尔，Gary Bradski 发起</td>
+</tr>
+<tr>
+<td>底层</td>
+<td>C / C++ 编写，可在多种操作系统上运行</td>
+</tr>
+<tr>
+<td>规模</td>
+<td>覆盖计算机视觉各领域的 500 多个函数</td>
+</tr>
+<tr>
+<td>心法</td>
+<td><strong>当黑盒用</strong>：像用 PhotoShop——专注图像处理本身，不抠算法实现细节</td>
+</tr>
+<tr>
+<td>Python 接口</td>
+<td><code>import cv2</code>（改善版 API，面向对象；区别于旧版面向过程的 cv 模块，见 §1.2.1 侧栏）</td>
+</tr>
+</tbody>
+</table>
+<p>图像处理的最小流程只有四步，本章就把这条链完整走通：</p>
+<pre class="mermaid"><code>flowchart LR
+    A["① 读取图像&lt;br/&gt;cv2.imread"] --&gt; B["② 处理图像&lt;br/&gt;本章用灰度化客串&lt;br/&gt;第 2 章起才是主体"]
+    B --&gt; C["③ 显示图像&lt;br/&gt;imshow + waitKey"]
+    C --&gt; D["④ 保存图像&lt;br/&gt;cv2.imwrite"]</code></pre>
+<div class="admonition note">
+<p class="admonition-title">运行环境约定</p>
+<p>本章所有代码引用本目录根下的素材（<code>picture1.jpg</code> 等），路径写作相对路径 <code>picture1.jpg</code>。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，否则 <code>imread</code> 读不到图（详见 §1.2.2 的 (-215) 错误与"坑与陷阱"第 2 条）。拿不准时先 <code>print(os.getcwd())</code> 确认。</p>
+</div>
+<h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">OpenCV 入门</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">OpenCV 是什么</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">1999 年 Intel 发起，Gary Bradski</span>
+          <span class="brleaf">C/C++ 编写 · 500 多个函数 · 跨平台</span>
+          <span class="brleaf">黑盒思维：像 PhotoShop，拿来就用</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">环境配置</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">Python 3 + Anaconda</span>
+          <span class="brleaf">pip install opencv-python</span>
+          <span class="brleaf">conda list / cv2.__version__ 验证</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">基本流程四步</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">读取 imread 返回 ndarray</span>
+          <span class="brleaf">处理（第 2 章起各章的主体）</span>
+          <span class="brleaf">显示 imshow + waitKey</span>
+          <span class="brleaf">保存 imwrite</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">读取 imread</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">flags：-1 原格式 / 0 灰度 / 1 默认 BGR</span>
+          <span class="brleaf">读不到只返回 None，不报错</span>
+          <span class="brleaf">相对路径按当前工作目录解析</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">显示 imshow + waitKey</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">窗口不存在时 imshow 自动创建</span>
+          <span class="brleaf">waitKey：暂停程序 + 驱动窗口事件</span>
+          <span class="brleaf">ord 比较按键，做键盘交互</span>
+          <span class="brleaf">destroyAllWindows 收尾销毁</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">保存 imwrite</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">扩展名决定编码格式</span>
+          <span class="brleaf">成功 True / 失败 False</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">主库与贡献库</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">主库：成熟稳定，核心团队维护</span>
+          <span class="brleaf">contrib：dnn / face / tracking / ximgpro</span>
+          <span class="brleaf">含专利算法，注意许可</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="11-如何使用PythonAnaconda-与-OpenCV-的安装">1.1 如何使用：Python、Anaconda 与 OpenCV 的安装<a class="headerlink" href="#11-如何使用PythonAnaconda-与-OpenCV-的安装" title="Permanent link">#</a></h2>
+<p>书里选 <strong>Anaconda</strong> 作为开发环境，配置分三步：装 Python 3 → 装 Anaconda → 装 OpenCV。前两步去官网（python.org、anaconda.com）按"操作系统 + 处理器位数"选对应安装包即可；OpenCV 有两种装法：</p>
+<ul>
+<li><strong>官方途径</strong>：从 OpenCV 官网下载安装包，编译后使用——折腾；</li>
+<li><strong>PyPI 预编译包（书的选择，也是如今的标准做法）</strong>：直接 <code>pip install</code>，一行搞定。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install opencv-python           # 只装主库（本书大部分章节够用）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip install opencv-contrib-python   # 主库 + 贡献库（1.3 节），二选一即可
+</code></pre></div>
+<p>装完验证：Anaconda Prompt 里 <code>conda list</code> 能看到 opencv 及版本号，就说明安装成功；更直接的办法是让 Python 亲口报版本：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 1.1 验证安装：能 import、能报版本，就说明装好了 =====</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>   <span class="c1"># 例如 4.10.0；报 ModuleNotFoundError 才是没装上</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">两个小提醒</p>
+<ol>
+<li><strong>模块名是 <code>cv2</code>，不是 <code>opencv</code></strong>：<code>import opencv</code> 会直接报错。cv2 这个名字不代表"OpenCV 2 专用"，它指引入了改善 API 的模块（面向对象）；旧版 cv 模块面向过程，早已不用。</li>
+<li><code>opencv-python</code> 与 <code>opencv-contrib-python</code> <strong>不要同时装进同一个环境</strong>——两个包会互相覆盖文件，官方 FAQ 明确建议二选一。</li>
+</ol>
+</div>
+<h2 id="12-图像处理基本操作">1.2 图像处理基本操作<a class="headerlink" href="#12-图像处理基本操作" title="Permanent link">#</a></h2>
+<p>在图像处理过程中，<strong>读取图像、显示图像、保存图像</strong>是最基本的操作。本节把这三件事逐一讲清，中间的"处理"环节本章先用"读取时转灰度"客串一下——第 2 章开始，处理才是每章的主体。</p>
+<h3 id="121-读取图像cv2imread">1.2.1 读取图像：cv2.imread()<a class="headerlink" href="#121-读取图像cv2imread" title="Permanent link">#</a></h3>
+<p>函数 <code>cv2.imread()</code> 用来读取图像，支持各种常见静态图像格式，语法格式为：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>retval = cv2.imread( filename[, flags] )
+</code></pre></div>
+<ul>
+<li><strong>retval</strong>：返回值，即读取到的图像。<strong>如果未读取到图像，返回 None——不报错</strong>；</li>
+<li><strong>filename</strong>：要读取的图像的完整文件名（路径名 + 文件名）；</li>
+<li><strong>flags</strong>：读取标记，控制读取文件的类型。第一列参数与第三列数值等价，写哪个都行。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>flags 参数</th>
+<th>含义</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cv2.IMREAD_UNCHANGED</code></td>
+<td>保持原格式不变</td>
+<td>−1</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_GRAYSCALE</code></td>
+<td>转换为单通道灰度图像</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_COLOR</code>（默认值）</td>
+<td>转换为 3 通道 BGR 图像</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_ANYDEPTH</code></td>
+<td>16/32 位深度图返回对应深度，否则转 8 位</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_ANYCOLOR</code></td>
+<td>以任何可能的颜色格式读取</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_LOAD_GDAL</code></td>
+<td>使用 gdal 驱动程序加载图像</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_REDUCED_GRAYSCALE_2 / 4 / 8</code></td>
+<td>单通道灰度，尺寸缩至 &frac12;、&frac14;、&#8539;</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_REDUCED_COLOR_2 / 4 / 8</code></td>
+<td>3 通道 BGR 彩色，尺寸缩至 &frac12;、&frac14;、&#8539;</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>cv2.IMREAD_IGNORE_ORIENTATION</code></td>
+<td>不以 EXIF 方向标记旋转图像</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>支持的格式很全：Windows 位图（*.bmp、*.dib）、JPEG（*.jpeg、*.jpg、*.jpe）、JPEG 2000（*.jp2）、PNG（*.png）、WebP（*.webp）、便携式图像格式（*.pbm、*.pgm、*.ppm 等）、TIFF（*.tiff、*.tif）、OpenEXR（*.exr）、HDR（*.hdr、*.pic），还能通过 GDAL 读地理空间栅格/矢量数据。</p>
+<p>【例 1.1】读取图像并打印。读取结果就是一个 numpy 数组，<code>print(img)</code> 会刷出满屏像素值——更实用的习惯是先看 <code>shape</code>（高、宽、通道）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 1.2.1 例 1.1：读取图像 =====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>    <span class="c1"># 默认 flags=1：3 通道 BGR 彩色图</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>                    <span class="c1"># &lt;class 'numpy.ndarray'&gt;：图像就是数组</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                    <span class="c1"># (1080, 1920, 3)：高 1080、宽 1920、3 通道 BGR</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># print(img)                        # 能打印，但满屏数字没法看——先看 shape</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># 读不到不报错、只返回 None，务必养成检查习惯：</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"读取失败：检查文件名与当前工作目录"</span><span class="p">)</span>
+</code></pre></div>
+<p>flags 换着用，同一张图能读出不同形态（彩色 3 通道、灰度 2 维无通道维）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 1.2.1 flags：同一张图，三种读法 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">img_u</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>                     <span class="c1"># −1：保持原格式</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">img_g</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 0：单通道灰度</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">img_c</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>       <span class="c1"># 1：3 通道 BGR（默认）</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">img_u</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># (1080, 1920, 3)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">img_g</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># (1080, 1920)      ← 灰度图没有第 3 维</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">img_c</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># (1080, 1920, 3)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">侧栏：cv2 与 cv</p>
+<p>大多数常用 OpenCV 函数都在 <code>cv2</code> 模块内；与之对应的 <code>cv</code> 模块代表传统版本。<strong>cv2 并不是"专门针对 OpenCV 2"</strong>，而是指该模块引入了一套改善的 API：cv2 内部采用面向对象的编程方式，cv 模块则更多面向过程。本书全部使用 cv2 模块函数，为了醒目，函数名前面都带 <code>cv2.</code> 前缀（但标题中的函数名不带）。</p>
+</div>
+<h3 id="122-显示图像imshowwaitKey-与窗口管理">1.2.2 显示图像：imshow、waitKey 与窗口管理<a class="headerlink" href="#122-显示图像imshowwaitKey-与窗口管理" title="Permanent link">#</a></h3>
+<p>显示相关的函数有五个：<code>namedWindow</code>（建窗）、<code>imshow</code>（显示）、<code>waitKey</code>（等待按键）、<code>destroyWindow</code>（销毁指定窗口）、<code>destroyAllWindows</code>（销毁所有窗口）。</p>
+<p><strong>namedWindow 与 imshow</strong>。<code>namedWindow</code> 用来创建指定名称的窗口；<code>imshow</code> 在指定窗口内显示图像：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>None = cv2.namedWindow( winname )        # winname：要创建的窗口名称
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>None = cv2.imshow( winname, mat )        # winname：窗口名称；mat：要显示的图像
+</code></pre></div>
+<p>【例 1.2】可以先 <code>namedWindow</code> 建窗、再 <code>imshow</code> 引用它：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 1.2.2 例 1.2：先建窗再显示 =====</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s2">"lesson"</span><span class="p">)</span>       <span class="c1"># 创建名为 lesson 的窗口</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"lesson"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>       <span class="c1"># 在 lesson 窗口内显示图像</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                  <span class="c1"># 等待按键（见下文，没有它窗口画不出来）</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>         <span class="c1"># 按键后销毁窗口，程序干净收尾</span>
+</code></pre></div>
+<p>实际使用中<strong>通常省略 namedWindow</strong>：直接让 <code>imshow</code> 引用一个不存在的窗口，它会自动完成两步——创建指定名称的新窗口，再把图像显示进去：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 1.2.2 省事写法：imshow 自动建窗 =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>    <span class="c1"># demo 窗口不存在：imshow 先创建它，再显示图像</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">高频报错：(-215:Assertion failed)</p>
+<p>显示图像时初学者最常遇到：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>error: (-215:Assertion failed) size.width&gt;0 &amp;&amp; size.height&gt;0 in function 'cv::imshow'
+</code></pre></div>
+<p>它说明<strong>当前要显示的图像是空的（None）</strong>——根源几乎总在读取环节：要么文件名写错，要么<strong>工作路径配置错误</strong>。注意相对路径是按"当前工作目录"解析的：程序放在 e:\lesson、想读 image\lena.bmp，若当前工作目录是 e:\lesson，实际读取 e:\lesson\image\lena.bmp（正确）；若工作目录是 e:\python，实际读取的却是 e:\python\image\lena.bmp（不存在）。防御方法就是例 1.1 里的 <code>if img is None</code> 检查。</p>
+</div>
+<p><strong>waitKey：显示图像离不开的搭档</strong>。函数 <code>cv2.waitKey()</code> 用来等待按键，语法格式为：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>retval = cv2.waitKey( [delay] )
+</code></pre></div>
+<ul>
+<li><strong>retval</strong>：返回值。没有按键被按下时返回 −1；有按键被按下时返回该按键的 ASCII 码；</li>
+<li><strong>delay</strong>：等待键盘触发的时间，<strong>单位是 ms</strong>。负数或 0 表示无限等待，默认为 0。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">为什么需要 waitKey：两个角度理解</p>
+<p><strong>书上角度——暂停程序</strong>：程序运行到 <code>waitKey</code> 会按 delay 设定等待。delay=0 时一直等，直到有按键事件才执行后续语句；delay 为正数时等指定毫秒数，期间有按键就提前继续，到点没等到也继续往下走。没有这一暂停，<code>imshow</code> 之后程序立刻往下跑、跑完就退出——窗口连存在的时间都没有。</p>
+<p><strong>底层角度——GUI 事件泵</strong>：<code>imshow</code> 只是向窗口提交"绘制图像"的请求，OpenCV 自带的简易图形界面组件（HighGUI）里的绘制与键盘/鼠标事件，要靠 <code>waitKey</code> 这类函数去处理才真正生效。缺了它，窗口表现为<strong>一闪而过、一片灰白，甚至标题栏写着"未响应"</strong>。所以"imshow + waitKey + destroyAllWindows"是固定三件套。</p>
+<p><strong>附赠用途</strong>：返回的 ASCII 码可用于键盘交互（例 1.3）；视频循环里 <code>waitKey(30)</code> 既控制每帧间隔 30 ms、又监听退出键——第 18 章视频处理会再见到它。</p>
+</div>
+<p>【例 1.3】用按键做交互。判断是否按下了某个特定键时，用 Python 的 <code>ord()</code> 取字符的 ASCII 码值再与返回值比较，程序里就不用直接出现 ASCII 数字了：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 1.2.2 例 1.3：waitKey 返回 ASCII 码，做键盘交互 =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>              <span class="c1"># 默认 0：无限等待，按下的键返回其 ASCII 码</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">):</span>              <span class="c1"># ord('A') = 65：不查 ASCII 表也能写分支</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"PressA"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>    <span class="c1"># 按 A：新开窗口 PressA</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'B'</span><span class="p">):</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"PressB"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>    <span class="c1"># 按 B：新开窗口 PressB</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># 原书示例到此为止；不加下面两行，新窗口会随脚本结束一闪而过：</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<p>【例 1.4】从"暂停"的角度用 waitKey——按任意键后程序才继续：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 1.2.2 例 1.4：waitKey 充当暂停键 =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>       <span class="c1"># 未按键：程序停在这一行；按键：往下执行</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>             <span class="c1"># 有按键时返回值不是 -1</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"触发了按键"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>destroyWindow 与 destroyAllWindows</strong>。前者释放指定名称的窗口，后者释放所有窗口；通常与 <code>waitKey</code> 组合，在按键后统一收尾：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>None = cv2.destroyWindow( winname )     # 销毁指定名称的窗口
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>None = cv2.destroyAllWindows( )         # 销毁所有窗口
+</code></pre></div>
+<p>【例 1.5 / 1.6】两个窗口显示同一幅图，按键后统一销毁：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 1.2.2 例 1.5 / 1.6：销毁窗口 =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"demo1"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"demo2"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>          <span class="c1"># 两个窗口显示同一幅图</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>                     <span class="c1"># 等待按键</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="s2">"demo1"</span><span class="p">)</span>        <span class="c1"># 只销毁 demo1</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># cv2.destroyAllWindows()         # 或一键销毁全部（更常用，见例 1.2/1.3）</span>
+</code></pre></div>
+<p>本章起反复用到"显示一幅图、按键后销毁"，封装成一个小函数，后面各章直接复用：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># ===== 1.2.2 封装：cv_show（跟随代码同款）=====</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">cv_show</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="sd">"""显示一幅图：按任意键后销毁窗口再返回。"""</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="123-保存图像cv2imwrite">1.2.3 保存图像：cv2.imwrite()<a class="headerlink" href="#123-保存图像cv2imwrite" title="Permanent link">#</a></h3>
+<p>函数 <code>cv2.imwrite()</code> 用来保存图像，语法格式为：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>retval = cv2.imwrite( filename, img[, params] )
+</code></pre></div>
+<ul>
+<li><strong>retval</strong>：返回值。保存成功返回 True，失败返回 False；</li>
+<li><strong>filename</strong>：目标文件的完整路径名，<strong>包含文件扩展名</strong>（扩展名决定按什么格式编码保存）；</li>
+<li><strong>img</strong>：被保存图像的名称；</li>
+<li><strong>params</strong>：保存类型参数，可选。</li>
+</ul>
+<p>【例 1.7】把"读 → 显 → 存"串成一个完整闭环，再用 flags=0 演示灰度链：读取时转灰度、显示、另存为新文件：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== 1.2.3 例 1.7 + 灰度链：读 → 显 → 存 完整闭环 =====</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># ① 读取（工作目录：数字图像处理-python 根目录）</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># ② 显示：imshow + waitKey + destroyAllWindows 三件套</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"Image"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1"># ③ 保存：扩展名 .jpg 决定按 JPEG 编码，成功返回 True</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">r</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">"result.jpg"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>                                             <span class="c1"># True</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1"># 灰度版：读取时直接转灰度（flags=0）→ 显示 → 另存</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="n">img_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"Gray Image"</span><span class="p">,</span> <span class="n">img_gray</span><span class="p">)</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">"picture1_gray.jpg"</span><span class="p">,</span> <span class="n">img_gray</span><span class="p">)</span>           <span class="c1"># 生成 picture1_gray.jpg</span>
+</code></pre></div>
+<h2 id="13-OpenCV-贡献库">1.3 OpenCV 贡献库<a class="headerlink" href="#13-OpenCV-贡献库" title="Permanent link">#</a></h2>
+<p>目前 OpenCV 库包含两部分：</p>
+<ul>
+<li><strong>OpenCV 主库</strong>：即通常安装的 OpenCV，成熟稳定，由核心的 OpenCV 团队维护；</li>
+<li><strong>OpenCV 贡献库（opencv_contrib）</strong>：主要由社区开发和维护，包含的视觉应用比主库更全面。注意其中包含<strong>非 OpenCV 许可的部分与受专利保护的算法</strong>，使用前要特别留意许可问题。</li>
+</ul>
+<p>贡献库模块很多，常见的有：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bioinspired</td>
+<td>生物视觉模块</td>
+</tr>
+<tr>
+<td>datasets</td>
+<td>数据集读取模块</td>
+</tr>
+<tr>
+<td>dnn</td>
+<td>深度神经网络模块</td>
+</tr>
+<tr>
+<td>face</td>
+<td>人脸识别模块（第 23 章的 LBPH / EigenFaces / Fisherfaces 就来自它）</td>
+</tr>
+<tr>
+<td>matlab</td>
+<td>MATLAB 接口模块</td>
+</tr>
+<tr>
+<td>stereo</td>
+<td>双目立体匹配模块</td>
+</tr>
+<tr>
+<td>text</td>
+<td>视觉文本匹配模块</td>
+</tr>
+<tr>
+<td>tracking</td>
+<td>基于视觉的目标跟踪模块</td>
+</tr>
+<tr>
+<td>ximgpro</td>
+<td>图像处理扩展模块</td>
+</tr>
+<tr>
+<td>xobjdetect</td>
+<td>增强 2D 目标检测模块</td>
+</tr>
+<tr>
+<td>xphoto</td>
+<td>计算摄影扩展模块</td>
+</tr>
+</tbody>
+</table>
+<p>使用贡献库有两种方式：</p>
+<ul>
+<li>下载 OpenCV 贡献库源码，用 cmake 手动编译；</li>
+<li><code>pip install opencv-contrib-python</code> 直接安装编译好的贡献库（其 PyPI 页面提供持续更新的 FAQ）。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">怎么选</p>
+<p>只用主库装 <code>opencv-python</code>；想一步到位（或后续要用 face/tracking/dnn 等扩展）就直接装 <code>opencv-contrib-python</code>——它包含主库的全部内容，<strong>不要两个都装</strong>（同一环境会互相覆盖，见 §1.1 的提醒）。</p>
+</div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>imread 失败不报错</strong>：只默默返回 None，等 <code>imshow</code> 时才炸出 <code>error: (-215:Assertion failed) size.width&gt;0 &amp;&amp; size.height&gt;0</code>。读完立刻 <code>if img is None</code> 检查，错误当场现形而不是拖到显示环节。</li>
+<li><strong>相对路径 ≠ 相对脚本文件</strong>：<code>imread("picture1.jpg")</code> 按<strong>当前工作目录</strong>解析——VSCode 默认工作区根、PyCharm 默认项目根、Jupyter 默认启动目录，都可能不是素材所在处。运行前确认工作目录为 数字图像处理-python 根目录，或用 <code>os.getcwd()</code> 现场验证。</li>
+<li><strong>忘写 waitKey</strong>：imshow 只提交绘制请求，waitKey 才真正驱动窗口事件——漏掉它，窗口一闪而过、灰白一片甚至"未响应"。</li>
+<li><strong>waitKey 的单位是毫秒</strong>：<code>waitKey(1)</code> 只等 1 毫秒，不是"无限等待"；0 或负数才是无限等（默认值就是 0，所以平时 <code>cv2.waitKey()</code> 什么都不传即可）。</li>
+<li><strong>中文路径静默失败</strong>：Windows 下 imread/imwrite 遇到中文路径可能直接返回 None/False（OpenCV 不走 Python 的文件接口）。素材与保存路径尽量全英文；第 2 章学了 numpy 后，也可用 <code>np.fromfile</code> + <code>cv2.imdecode</code>、<code>cv2.imencode</code> + <code>tofile</code> 中转绕过。</li>
+<li><strong>通道顺序是 BGR 不是 RGB</strong>：把 imread 的结果直接喂给 matplotlib 的 <code>imshow</code> 会红蓝颠倒（第 13 章会大量混用两个库）。转换用 <code>cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</code>（第 4 章详讲）。</li>
+<li><strong>PNG 的透明通道默认被丢掉</strong>：flags 默认 1（IMREAD_COLOR）会强转 3 通道 BGR，带 alpha 的图要 <code>flags=-1</code>（IMREAD_UNCHANGED）才能保住第 4 通道。</li>
+<li><strong>窗口残留</strong>：脚本结束前不 <code>destroyAllWindows</code>，Jupyter 里反复运行会堆出成排"未响应"窗口；<code>imshow → waitKey → destroyAllWindows</code> 三件套要练成肌肉记忆（或直接用 cv_show）。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>OpenCV：开源计算机视觉库，1999 年英特尔 Gary Bradski 发起；C/C++ 编写、500 多个函数、跨平台；当"黑盒/PhotoShop"用，专注应用不抠算法细节。</li>
+<li>环境三步：Python 3 → Anaconda → <code>pip install opencv-python</code>（或 <code>opencv-contrib-python</code>，二选一）；<code>conda list</code> 或 <code>cv2.__version__</code> 验证。</li>
+<li>图像处理基本流程四步：<strong>读取 imread → 处理 → 显示 imshow+waitKey → 保存 imwrite</strong>；本章走通全链，处理环节从第 2 章开始展开。</li>
+<li><code>cv2.imread(filename[, flags])</code>：成功返回 ndarray（BGR 顺序），失败返回 None 不报错；flags：−1 原格式（含 alpha）、0 灰度、1 默认 3 通道 BGR；还有 ANYDEPTH/ANYCOLOR/REDUCED_* 等一族。</li>
+<li>图像即 numpy 数组：<code>shape</code> = (高, 宽, 通道)；灰度图没有第 3 维。<code>print(img)</code> 满屏像素值，先看 shape 更实用。</li>
+<li><code>cv2.imshow(winname, mat)</code>：窗口不存在时自动"建窗 + 显示"两步完成；<code>namedWindow</code> 可显式提前建窗。</li>
+<li><code>cv2.waitKey([delay])</code>：delay 单位 ms，默认 0 = 无限等待；返回按键 ASCII 码、无按键 −1。它既是暂停键，又是 GUI 事件泵——没有它窗口画不出来；视频循环里兼作帧间隔控制（第 18 章）。</li>
+<li>交互判断按键：<code>key == ord('A')</code>，<code>ord()</code> 把字符转 ASCII 码，免查表。</li>
+<li>窗口管理：<code>cv2.destroyWindow("名")</code> 销毁指定窗口，<code>cv2.destroyAllWindows()</code> 销毁全部；显示三件套 <code>imshow → waitKey → destroyAllWindows</code> 是固定收尾。</li>
+<li><code>cv2.imwrite(filename, img[, params])</code>：按扩展名编码保存，成功 True、失败 False；OpenCV 分主库与 opencv_contrib 贡献库（dnn、face、tracking、ximgpro……），贡献库含专利算法需注意许可。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文 / 函数</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cv2</td>
+<td>——</td>
+<td>OpenCV 的 Python 模块名：改善版 API、面向对象（旧 cv 模块面向过程）</td>
+</tr>
+<tr>
+<td>retval</td>
+<td>返回值</td>
+<td>书中函数语法格式里指返回值（图像 / True/False / ASCII 码）</td>
+</tr>
+<tr>
+<td>imread / imshow / imwrite</td>
+<td>读取 / 显示 / 保存</td>
+<td>图像处理基本操作三件套</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>读取标记</td>
+<td>imread 的读取方式：−1 原格式 / 0 灰度 / 1 默认 BGR</td>
+</tr>
+<tr>
+<td>IMREAD_UNCHANGED / GRAYSCALE / COLOR</td>
+<td>保持原格式 / 灰度 / 彩色</td>
+<td>最常用的三个 flags（−1 / 0 / 1）</td>
+</tr>
+<tr>
+<td>ndarray</td>
+<td>多维数组</td>
+<td>imread 的返回值类型，图像在 Python 里的形态</td>
+</tr>
+<tr>
+<td>shape</td>
+<td>形状</td>
+<td>(高, 宽, 通道)；灰度图只有 (高, 宽)</td>
+</tr>
+<tr>
+<td>BGR</td>
+<td>蓝-绿-红通道顺序</td>
+<td>OpenCV 默认色彩顺序，与 matplotlib 的 RGB 相反</td>
+</tr>
+<tr>
+<td>namedWindow</td>
+<td>创建窗口</td>
+<td>显式建指定名称的窗口；imshow 引用不存在的窗口会自动创建</td>
+</tr>
+<tr>
+<td>waitKey</td>
+<td>等待按键</td>
+<td>delay 单位 ms、默认 0 无限等待；返回 ASCII 码，无按键返回 −1</td>
+</tr>
+<tr>
+<td>HighGUI</td>
+<td>图形界面组件</td>
+<td>OpenCV 自带的简易窗口组件，imshow/waitKey 所属（拓展名）</td>
+</tr>
+<tr>
+<td>ord()</td>
+<td>字符转 ASCII 码</td>
+<td><code>key == ord('A')</code> 判断按键，避免直接写 ASCII 数字</td>
+</tr>
+<tr>
+<td>destroyWindow / destroyAllWindows</td>
+<td>销毁指定 / 所有窗口</td>
+<td>释放窗口资源，程序收尾标配</td>
+</tr>
+<tr>
+<td>params</td>
+<td>保存类型参数</td>
+<td>imwrite 的可选参数</td>
+</tr>
+<tr>
+<td>opencv_contrib</td>
+<td>贡献库</td>
+<td>社区维护的扩展模块集合，含非 OpenCV 许可与专利算法</td>
+</tr>
+<tr>
+<td>dnn</td>
+<td>深度神经网络模块</td>
+<td>贡献库中做深度学习推理的模块</td>
+</tr>
+<tr>
+<td>face / tracking / ximgpro / xphoto</td>
+<td>人脸识别 / 目标跟踪 / 图像处理扩展 / 计算摄影</td>
+<td>常用贡献库模块（face 在第 23 章登场）</td>
+</tr>
+</tbody>
+</table>
+<p class="pdf-note"><a href="../第01章_OpenCV入门_跟随代码.ipynb">配套跟随代码 · 第01章（ipynb）</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
