@@ -1,0 +1,54 @@
+E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py:326: RuntimeWarning: divide by zero encountered in divide
+  x2 = rmax / 1.33 * (k / Dz) ** (5 / 6) / A[1, :]        # 上界（式 9.74 反解）
+E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py:332: RuntimeWarning: divide by zero encountered in power
+  r0scrn = X ** (-3 / 5)
+E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py:192: RuntimeWarning: divide by zero encountered in divide
+  PSD_phi = 0.023 * r0 ** (-5 / 3) * np.exp(-(f / fm) ** 2) \
+E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py:223: RuntimeWarning: divide by zero encountered in divide
+  PSD_phi = 0.023 * r0 ** (-5 / 3) * np.exp(-(f / fm) ** 2) \
+===== 验证 0：大气参数总账（书 9.5.1 节数字）=====
+    D1 = 0.0250 m（sinc 主瓣），D2 = 0.5 m，Dz = 50 km
+    r0,pw = 7.031 cm   r0,sw = 12.664 cm（书：12.7 cm）
+    r0,sw / r0,pw = 1.8013（理论 (8/3)^(3/5) = 1.8013）
+    sigma_chi^2,sw = 0.436（书：0.436）
+    式 (9.75) 矩阵第 1 行（alpha^(5/3)，5 屏情形书值）： [0.     0.0215 0.0684 0.1344 0.2172] （书：0 0.0992 0.315 0.619 1）
+===== 验证 1：屏幕 r0i 约束优化（Listing 9.5）=====
+    exit: True, ||A*X-b||^2 = 1.841e-17
+    r0scrn [m] = [5.000e+01 3.526e-01 3.012e-01 2.683e-01 2.746e-01 2.819e-01 2.854e-01
+ 2.826e-01 2.662e-01 2.163e-01 1.000e+06]
+    回代：r0,sw = 12.6642 cm（目标 12.6642），Rytov = 0.4365（目标 0.4365）
+    相对差：8.09e-11 / 4.16e-11
+===== 验证 2：采样分析（Listing 9.6，c = 2）=====
+    D1p = 0.8146 m, D2p = 1.2896 m（c*lambda*Dz/r0 = 0.790 m）
+    选点 delta1 = delta_n = 10 mm：约束 2 需 N >= 355.2（log2 = 8.47，书：more than 2^8.47）
+    约束 1 上界 dn_max(delta1) = 45.5 mm；约束 3 区间 [-41.4, 81.4] mm
+    约束 4：Dz_max = 51.2 km -> nmin = 2 平面（书：最小 2 平面，实际用 11 平面/10 次传播）
+    已保存 E:\Desktop\深度学习\mynotes\python\waveprop\ch9\..\..\docs\images\holo\waveprop\fig-9-12.png
+===== 验证 3：真空仿真（Listing 9.7）=====
+    ROI 内辐照度：mean = 373.3 W/m^2，std/mean = 1.53e-01
+    准直后 ROI 相位：RMS = 1.57e+00 rad（书图 9.7：平坦相位 + 均匀辐照度）
+    已保存 E:\Desktop\深度学习\mynotes\python\waveprop\ch9\..\..\docs\images\holo\waveprop\fig-9-13.png
+===== 验证 7：FT 屏 vs 次谐波屏（Listing 9.4 参数）=====
+    大间隔（8-12 r0）最大相对偏差：SH = 46.11%，FT = 88.5%
+    （低频缺失使 FT 屏大间隔结构函数远低于理论；次谐波法补救 —— 书 9.3 节）
+    已保存 E:\Desktop\深度学习\mynotes\python\waveprop\ch9\..\..\docs\images\holo\waveprop\fig-9-11.png
+===== 验证 4：湍流仿真 40 次实现（Listing 9.8）=====
+    已保存 E:\Desktop\深度学习\mynotes\python\waveprop\ch9\..\..\docs\images\holo\waveprop\fig-9-14.png
+===== 验证 5：相位屏结构函数（书图 9.9）=====
+    末平面 40 块屏（r0 = 1000000.000 m）：与 6.88(r/r0)^(5/3) 的最大相对偏差 = 100.0%
+===== 验证 6：观测面相干因子（书图 9.10）=====
+    r0,sw = 12.664 cm；rn/r0 ∈ (0, 1.6] 内 |mu_sim - mu_th| 平均 = 0.022
+Traceback (most recent call last):
+  File "E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py", line 681, in <module>
+    main(sys.argv[1] if len(sys.argv) > 1 else None)
+  File "E:\Desktop\深度学习\mynotes\python\waveprop\ch9\ch9_turbulence.py", line 660, in main
+    axs[0].plot(cprof / r0_last, Dprof, 'k-.', lw=1.5, label='Simulated（40 块屏）')
+  File "C:\Users\17272\AppData\Roaming\Python\Python312\site-packages\matplotlib\axes\_axes.py", line 1777, in plot
+    lines = [*self._get_lines(self, *args, data=data, **kwargs)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\17272\AppData\Roaming\Python\Python312\site-packages\matplotlib\axes\_base.py", line 297, in __call__
+    yield from self._plot_args(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\17272\AppData\Roaming\Python\Python312\site-packages\matplotlib\axes\_base.py", line 494, in _plot_args
+    raise ValueError(f"x and y must have same first dimension, but "
+ValueError: x and y must have same first dimension, but have shapes (92,) and (1,)
