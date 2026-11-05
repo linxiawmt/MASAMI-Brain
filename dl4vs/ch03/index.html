@@ -1664,17 +1664,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3492,17 +3481,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3525,8 +3503,7 @@
 
 <h1 id="第-3-章-卷积神经网络">第 3 章 卷积神经网络<a class="headerlink" href="#第-3-章-卷积神经网络" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：MLP 处理图像为什么不行（3.1）、CNN 靠什么行——卷积/池化/全连接三大组件（3.2–3.3）、以及两个完整实战（3.4 MNIST、3.7 CIFAR-10）。
-<strong>承上启下</strong>：第 2 章的神经元、权重、激活函数、梯度下降全部沿用，只是把"全连接层"换成了"卷积层"来提特征；本章的调参直觉在第 4 章升级成系统的性能诊断，第 5 章再给你一套现成的经典架构（AlexNet、ResNet……）。</p>
+<p><strong>本章解决</strong>：全连接网络处理图像的两个根本困难——参数量随分辨率爆炸、缺乏平移不变性，以及卷积神经网络（CNN）的应对：卷积层提取局部特征、池化层压缩空间信息、全连接层完成分类，训练中的神经元、权重、激活函数与梯度下降全部沿用。以 MNIST 与 CIFAR-10 两个完整的图像分类实战演示从搭建、训练到调参的全过程。学完能够独立构建并诊断自己的 CNN 分类器。</p>
 </blockquote>
 <p>与 MLP 相比，CNN 只换了"特征提取"这一环，其余四件事完全一样：</p>
 <table>
@@ -4688,100 +4665,6 @@ O = \frac{W - K + 2P}{S} + 1
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书</th>
-<th>笔记</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>章首（本章路线 + MLP/CNN 四个相同点）</td>
-<td>导语表 + 3.0 导图</td>
-</tr>
-<tr>
-<td>3.1.1 输入层 + 侧栏"可视化输入向量"</td>
-<td>§3.1.1（numpy 演示）</td>
-</tr>
-<tr>
-<td>3.1.2 隐藏层 + 侧栏"选激活函数"</td>
-<td>§3.1.2–3.1.3</td>
-</tr>
-<tr>
-<td>3.1.3 输出层</td>
-<td>§3.1.3</td>
-</tr>
-<tr>
-<td>3.1.4 组装 + 参数对账 669,706 + 侧栏"MLPs vs. CNNs"</td>
-<td>§3.1.4</td>
-</tr>
-<tr>
-<td>3.1.5 两大缺陷（空间特征丢失 / 全连接）+ 图 3.5–3.8</td>
-<td>§3.1.5</td>
-</tr>
-<tr>
-<td>3.2.1 大局观 + DEFINITION 特征图</td>
-<td>§3.2.1</td>
-</tr>
-<tr>
-<td>3.2.2 细看特征提取</td>
-<td>§3.2.2</td>
-</tr>
-<tr>
-<td>3.2.3 细看分类 + 侧栏"CNN 如何学模式"</td>
-<td>§3.2.3</td>
-</tr>
-<tr>
-<td>3.3 三组件总览 + 文字表示法</td>
-<td>§3.3 引言</td>
-</tr>
-<tr>
-<td>3.3.1 卷积层（卷积运算/感受野/边缘核/四超参）+ 侧栏"调参"</td>
-<td>§3.3.1（公式与权值共享为拓展）</td>
-</tr>
-<tr>
-<td>3.3.2 池化层（max/avg/GAP）+ 侧栏"池化 vs stride/padding" + 回顾 + 逐层可视化侧栏</td>
-<td>§3.3.2</td>
-</tr>
-<tr>
-<td>3.3.3 全连接层 + 侧栏"名词统一"</td>
-<td>§3.3.3</td>
-</tr>
-<tr>
-<td>3.4.1 搭架构 + 图 3.27 逐行解读</td>
-<td>§3.4.1</td>
-</tr>
-<tr>
-<td>3.4.2 参数公式 220,234 + 可训练/非可训练</td>
-<td>§3.4.2</td>
-</tr>
-<tr>
-<td>3.5.1–3.5.4 过拟合与 Dropout + 侧栏"二头肌直觉"</td>
-<td>§3.5</td>
-</tr>
-<tr>
-<td>3.6.1 彩色图 3D 卷积 + 图 3.33–3.35</td>
-<td>§3.6.1</td>
-</tr>
-<tr>
-<td>3.6.2 计算复杂度 + 图 3.36–3.37 + 收尾忠告侧栏</td>
-<td>§3.6.2</td>
-</tr>
-<tr>
-<td>3.7 项目 Step 1–7（含图 3.38–3.43、标签矩阵侧栏、架构决策侧栏、训练现象侧栏）</td>
-<td>§3.7 各 Step</td>
-</tr>
-<tr>
-<td>章末 Summary（6 条）</td>
-<td>§速览（无重复摘抄）</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 

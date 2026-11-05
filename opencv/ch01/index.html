@@ -2753,8 +2753,11 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip install opencv-contrib-python   # 主库 + 贡献库（1.3 节），二选一即可
 </code></pre></div>
 <p>装完验证：Anaconda Prompt 里 <code>conda list</code> 能看到 opencv 及版本号，就说明安装成功；更直接的办法是让 Python 亲口报版本：</p>
-<p><img alt="" src="../images/ch01/fig-1-1.png" />
-<em>图 1-1 包列表（截自原书）</em></p>
+<figure>
+  <img src="../images/ch01/fig-1-1.png" class="lq-img" />
+  <figcaption>图 1.1 包列表（截自原书）</figcaption>
+</figure>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 1.1 验证安装：能 import、能报版本，就说明装好了 =====</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>   <span class="c1"># 例如 4.10.0；报 ModuleNotFoundError 才是没装上</span>
@@ -2847,8 +2850,11 @@
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"读取失败：检查文件名与当前工作目录"</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="" src="../images/ch01/fig-1-2.png" />
-<em>图 1-2 图像部分像素值（截自原书）</em></p>
+<figure>
+  <img src="../images/ch01/fig-1-2.png" class="lq-img" />
+  <figcaption>图 1.2 图像部分像素值（截自原书）</figcaption>
+</figure>
+
 <p>flags 换着用，同一张图能读出不同形态（彩色 3 通道、灰度 2 维无通道维）：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 1.2.1 flags：同一张图，三种读法 =====</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -2881,8 +2887,11 @@
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                  <span class="c1"># 等待按键（见下文，没有它窗口画不出来）</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>         <span class="c1"># 按键后销毁窗口，程序干净收尾</span>
 </code></pre></div>
-<p><img alt="" src="../images/ch01/fig-1-3.png" />
-<em>图 1-3 【例 1.2】程序的运行结果（截自原书）</em></p>
+<figure>
+  <img src="../images/ch01/fig-1-3.png" class="lq-img" />
+  <figcaption>图 1.3 【例 1.2】程序的运行结果（截自原书）</figcaption>
+</figure>
+
 <p>实际使用中<strong>通常省略 namedWindow</strong>：直接让 <code>imshow</code> 引用一个不存在的窗口，它会自动完成两步——创建指定名称的新窗口，再把图像显示进去：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 1.2.2 省事写法：imshow 自动建窗 =====</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -2927,8 +2936,11 @@
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="../images/ch01/fig-1-4.png" />
-<em>图 1-4 【例 1.3】程序的运行结果（截自原书）</em></p>
+<figure>
+  <img src="../images/ch01/fig-1-4.png" class="lq-img" />
+  <figcaption>图 1.4 【例 1.3】程序的运行结果（截自原书）</figcaption>
+</figure>
+
 <p>【例 1.4】从"暂停"的角度用 waitKey——按任意键后程序才继续：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 1.2.2 例 1.4：waitKey 充当暂停键 =====</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>

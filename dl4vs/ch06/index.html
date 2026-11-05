@@ -1570,17 +1570,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3136,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3169,9 +3147,7 @@
 
 <h1 id="第-6-章-迁移学习">第 6 章 迁移学习<a class="headerlink" href="#第-6-章-迁移学习" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：数据不够、算力不够时，怎么站在"别人训好的网络"肩膀上做自己的视觉任务。
-前面埋的伏笔到本章收线：第 1 章说过机器样本效率低，第 4 章讲过数据量怎么估——工程界最常用的答案是<strong>迁移学习（Transfer Learning, TL）</strong>：下载一个在 ImageNet 上调好训好的网络，把它的知识搬到你的小数据集上。
-主线：为什么迁移（6.1）→ 是什么（6.2）→ 为什么可行（6.3）→ 三种用法（6.4）→ 四场景决策表（6.5）→ 数据集哪里找（6.6）→ 两个端到端项目（6.7 猫狗、6.8 手语）。</p>
+<p><strong>本章解决</strong>：样本与算力受限时如何做迁移学习（Transfer Learning, TL）——把大规模数据集（ImageNet）上预训练网络学到的特征，搬到自己的小数据任务上。介绍了迁移可行的原因（浅层特征的通用性）、预训练 + 特征提取与微调两类用法、按数据规模与任务相似度选择微调深度的决策方法，以及常用数据集与猫狗分类、手语识别两个端到端项目。</p>
 </blockquote>
 <h2 id="60-本章导图">6.0 本章导图<a class="headerlink" href="#60-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -4193,76 +4169,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书</th>
-<th>笔记</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>章首导言 + This chapter covers</td>
-<td>导语 + 6.0 导图</td>
-</tr>
-<tr>
-<td>6.1（两大问题 + 泛化好处 + 汽车分类器例）</td>
-<td>§6.1</td>
-</tr>
-<tr>
-<td>6.2（定义 + from scratch NOTE + Yosinski 引文 + 猫狗例 + DEFINITION + 五步改造 + 三张参数账）</td>
-<td>§6.2（参数表重排；Total params 勘误）</td>
-</tr>
-<tr>
-<td>6.3（四问四答 + 特征图 + 架构+权重）</td>
-<td>§6.3</td>
-</tr>
-<tr>
-<td>6.3.1（逐层特征 + 人脸例 + 四模型对比）</td>
-<td>§6.3.1</td>
-</tr>
-<tr>
-<td>6.3.2（后层可迁移性 + 源域/目标域 DEFINITIONS）</td>
-<td>§6.3.2</td>
-</tr>
-<tr>
-<td>6.4.1（作分类器 + 德牧 99.72%）</td>
-<td>§6.4.1</td>
-</tr>
-<tr>
-<td>6.4.2（作特征提取器 + 丢旧分类器的理由）</td>
-<td>§6.4.2</td>
-</tr>
-<tr>
-<td>6.4.3（微调定义 + 图 6.10 + 两个 WHY 侧栏）</td>
-<td>§6.4.3（附差异化学习率、灾难性遗忘拓展）</td>
-</tr>
-<tr>
-<td>6.5 + 6.5.1–6.5.5 + 表 6.1 + 图 6.11</td>
-<td>§6.5（四场景决策表 + mermaid 决策图）</td>
-</tr>
-<tr>
-<td>6.6 + 6.6.1–6.6.7（MNIST→Kaggle）</td>
-<td>§6.6（规模/用途总表 + 各小节）</td>
-</tr>
-<tr>
-<td>6.7（项目 1 全流程 + 图 6.18 + 训练日志 + 95.79%）</td>
-<td>§6.7（附数据增强变换表）</td>
-</tr>
-<tr>
-<td>6.8（项目 2 全流程 + GAP + 解冻最后 5 层 + 最优权重保存 + 混淆矩阵）</td>
-<td>§6.8（附 GAP 拓展、Epoch/150 勘误）</td>
-</tr>
-<tr>
-<td>章末小结（10 条）</td>
-<td>§速览（无重复摘抄）</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 

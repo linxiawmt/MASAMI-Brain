@@ -1630,17 +1630,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3312,17 +3301,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3345,9 +3323,7 @@
 
 <h1 id="第-5-章-经典-CNN-架构演进">第 5 章 经典 CNN 架构演进<a class="headerlink" href="#第-5-章-经典-CNN-架构演进" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：卷积、池化、全连接这些积木（第 3 章）该怎么拼成一个能打的网络？答案是抄作业——逐个拆解 LeNet-5、AlexNet、VGGNet、Inception/GoogLeNet、ResNet 五个划时代架构，看每代设计者解决了上一代的什么短板。
-主线一条：<strong>更深、更准、更省</strong>。第 4 章的超参调优技巧在本章全部落地：每个网络都按原论文配置了优化器、学习率、正则化。
-读完本章，你应当具备的能力是<strong>读论文 → 复现架构</strong>——这是全书作者最想交给你的技能。</p>
+<p><strong>本章解决</strong>：如何把卷积、池化、全连接等组件组织成高性能网络。逐一剖析 LeNet-5、AlexNet、VGGNet、Inception/GoogLeNet、ResNet 五个经典架构，梳理每代设计对上一代短板的改进，看清网络在<strong>更深、更准、更省</strong>三个维度上的演进脉络。学完能够读懂主流论文中的网络结构图，并按原论文的优化器、学习率与正则化配置复现这些架构。</p>
 </blockquote>
 <h2 id="50-本章导图">5.0 本章导图<a class="headerlink" href="#50-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -4709,108 +4685,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书</th>
-<th>笔记</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>章首（本章路线 / 三目标 / 读论文 TIP / 代码不可运行 NOTE）</td>
-<td>导语 + §5.1</td>
-</tr>
-<tr>
-<td>5.1（模式 1–3）</td>
-<td>§5.1（图 5.1、5.2）</td>
-</tr>
-<tr>
-<td>5.2.1–5.2.2（LeNet 架构 + 实现 + 读论文建议 + 图 5.5 summary）</td>
-<td>§5.2（图 5.&#8535;.4，61,706 对账）</td>
-</tr>
-<tr>
-<td>5.2.3–5.2.4（学习率调度 + MNIST 成绩）</td>
-<td>§5.2.3–5.2.4</td>
-</tr>
-<tr>
-<td>5.3 开篇 + ImageNet 侧栏</td>
-<td>§5.3</td>
-</tr>
-<tr>
-<td>5.3.1（架构 + 224/227 NOTE + 逐层尺寸 + 图 5.6/5.7）</td>
-<td>§5.3.1</td>
-</tr>
-<tr>
-<td>5.3.2（ReLU + 梯度消失侧栏 / Dropout / 增强 / LRN / 权重正则 / 多 GPU）</td>
-<td>§5.3.2（图 fig-5-vanish）</td>
-</tr>
-<tr>
-<td>5.3.3–5.3.4（实现 62,381,096 + 超参）</td>
-<td>§5.3.3–5.3.4</td>
-</tr>
-<tr>
-<td>5.3.5（15.3% vs 26.2% + top-1/top-5 侧栏）</td>
-<td>§5.3.5</td>
-</tr>
-<tr>
-<td>5.4.1（统一组件 + 3×3 论证 + 感受野侧栏）</td>
-<td>§5.4.1（图 5.8）</td>
-</tr>
-<tr>
-<td>5.4.2（配置 A–E + 表 5.1 + 图 5.9）</td>
-<td>§5.4.2（重排表）</td>
-</tr>
-<tr>
-<td>5.4.3–5.4.4（VGG16/19 实现 + 超参 + 成绩）</td>
-<td>§5.4.3–5.4.4</td>
-</tr>
-<tr>
-<td>5.5.1–5.5.2（全都要 + naive 模块例题 + same padding NOTE）</td>
-<td>§5.5.1–5.5.2（图 5.10/5.11，勘误①）</td>
-</tr>
-<tr>
-<td>5.5.3（成本计算 + 1×1 侧栏 + 降维版模块 + 图 5.12/5.13）</td>
-<td>§5.5.3</td>
-</tr>
-<tr>
-<td>5.5.4（堆叠 + GoogLeNet 三部分 + "2+5+5"笔误 + 图 5.14/5.15）</td>
-<td>§5.5.4（勘误②）</td>
-</tr>
-<tr>
-<td>5.5.5（inception_module + Part A/B/C + 表 5.2 + 图 5.16/5.17/5.18）</td>
-<td>§5.5.5（补全 9 模块配置表）</td>
-</tr>
-<tr>
-<td>5.5.6–5.5.7（超参 + 6.67%）</td>
-<td>§5.5.6–5.5.7</td>
-</tr>
-<tr>
-<td>5.6.1（更深不强？/ 消失爆炸侧栏 / skip connection / 残差块演示 / 图 5.19/5.20）</td>
-<td>§5.6.1</td>
-</tr>
-<tr>
-<td>5.6.2（残差块 / bottleneck / reduce shortcut + 函数实现 + 图 5.21/5.22/5.23）</td>
-<td>§5.6.2</td>
-</tr>
-<tr>
-<td>5.6.3（ResNet50 + 50 层账 + 1×1 平均池化笔误 + 图 5.24）</td>
-<td>§5.6.3（勘误③）</td>
-</tr>
-<tr>
-<td>5.6.4–5.6.5（超参 + 成绩 + 开源实现侧栏）</td>
-<td>§5.6.4–5.6.5</td>
-</tr>
-<tr>
-<td>章末 Summary（6 条）</td>
-<td>§速览（无重复摘抄）</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 

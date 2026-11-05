@@ -1849,17 +1849,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3638,17 +3627,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3671,9 +3649,7 @@
 
 <h1 id="第-7-章-目标检测R-CNNSSD-与-YOLO">第 7 章 目标检测：R-CNN、SSD 与 YOLO<a class="headerlink" href="#第-7-章-目标检测R-CNNSSD-与-YOLO" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：从"这张图是什么"升级到"图里有哪些物体、各在哪里"。前六章的图像分类默认一张图只有一个主角；本章让网络同时输出<strong>类别 + 边界框</strong>。
-全书位置：第 5、6 章的 CNN/迁移学习是本章的"特征提取器零件"；本章讲完判别式任务的巅峰（检测），第 8 章起进入生成模型。
-三大主角：<strong>R-CNN 家族</strong>（两阶段，准）、<strong>SSD</strong> 与 <strong>YOLO</strong>（单阶段，快），外加一个自动驾驶 SSD 训练项目。</p>
+<p><strong>本章解决</strong>：目标检测问题——让网络同时输出图中各物体的<strong>类别与边界框</strong>。介绍了两阶段方法（R-CNN 家族：先提候选区域再分类，精度高）与单阶段方法（SSD、YOLO：直接回归检测结果，速度快）的技术路线与性能权衡，并给出 IoU、mAP 等检测评价指标与一个自动驾驶场景的 SSD 训练项目。</p>
 </blockquote>
 <h2 id="70-本章导图">7.0 本章导图<a class="headerlink" href="#70-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -5265,60 +5241,6 @@ P_o = \Pr(\text{containing an object}) \times \text{IoU}(\text{pred}, \text{trut
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书</th>
-<th>笔记</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>章首（分类 vs 检测、表 7.1、图 7.1、章节路线）</td>
-<td>导语 + 7.1 开篇</td>
-</tr>
-<tr>
-<td>7.1（四组件）+ 7.1.1 + 7.1.2 + 7.1.3 + 7.1.4（FPS/IoU/PR/mAP + RECAP）</td>
-<td>§7.1（含 numpy IoU/NMS 实现）</td>
-</tr>
-<tr>
-<td>7.2.1（R-CNN 四模块、Selective Search 侧栏、训练、缺点）</td>
-<td>§7.2.1</td>
-</tr>
-<tr>
-<td>7.2.2（Fast R-CNN 架构、多任务损失、缺点）</td>
-<td>§7.2.2（含 PyTorch 损失）</td>
-</tr>
-<tr>
-<td>7.2.3（基网络、VGG vs ResNet 侧栏、FCN 侧栏、RPN、anchor、RPN 训练、FC 层、多任务损失、RPN 单独应用侧栏）</td>
-<td>§7.2.3</td>
-</tr>
-<tr>
-<td>7.2.4（表 7.3 演进总结 + R-CNN 局限 + 两阶段 vs 单阶段）</td>
-<td>§7.2.4（表格重排 + 拓展）</td>
-</tr>
-<tr>
-<td>7.3（单阶段原理 + FPS 侧栏）+ 7.3.1（8732）+ 7.3.2（基网络 + 预测输出侧栏）+ 7.3.3（多尺度 + 空洞卷积侧栏）+ 7.3.4（NMS）</td>
-<td>§7.3（padding 笔误标注 + PyTorch 全套核心代码）</td>
-</tr>
-<tr>
-<td>7.4（家族 + v1/v2/v3）+ 7.4.1（网格、10647、多尺度）+ 7.4.2（Darknet、三检测头）</td>
-<td>§7.4（含 SSD vs YOLO 对比表）</td>
-</tr>
-<tr>
-<td>7.5（SSD7 项目七步 + LabelImg 侧栏）</td>
-<td>§7.5（PyTorch 训练骨架 + 超参全保留）</td>
-</tr>
-<tr>
-<td>章末 Summary</td>
-<td>§速览（无重复摘抄）</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 

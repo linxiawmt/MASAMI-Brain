@@ -1719,17 +1719,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3546,17 +3535,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3579,9 +3557,7 @@
 
 <h1 id="第-4-章-项目构建与超参数调优">第 4 章 项目构建与超参数调优<a class="headerlink" href="#第-4-章-项目构建与超参数调优" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：一个 DL 项目从想法到可用模型，中间的完整工程流程——定指标、立基线、备数据、诊断瓶颈、调参、正则化，最后用 CIFAR-10 项目把准确率从约 65% 拉到 90%。
-第 2、3 章给了零件（MLP、CNN、反向传播），本章是第一部分的收官：把它们装配成能迭代的<strong>项目</strong>。第 5 章起进入第二部分，用更强的架构（LeNet→ResNet）继续提分。
-深度学习是高度**经验性（empirical）**的工作：先有想法 → 写代码跑实验 → 观察结果 → 用结果修正想法。本章教的就是这条循环怎么转得快、转得对。</p>
+<p><strong>本章解决</strong>：深度学习项目从想法到可用模型的完整工程流程——确定评价指标、建立基线、准备数据、诊断性能瓶颈（欠拟合/过拟合）、超参数调优与正则化。以 CIFAR-10 项目为主线，系统运用这些方法把准确率从约 65% 提升到 90%。学完能够按照"提出想法 → 实验验证 → 修正想法"的**经验性（empirical）**循环，独立推进自己的视觉项目。</p>
 </blockquote>
 <h2 id="40-本章导图">4.0 本章导图<a class="headerlink" href="#40-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -5142,140 +5118,6 @@ y_i \leftarrow \gamma \hat{x}_i + \beta
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书</th>
-<th>笔记</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>章首（本章路线 + TIP 动手攒直觉）</td>
-<td>导语 + 4.0 导图</td>
-</tr>
-<tr>
-<td>4.1（4.1.1 accuracy、4.1.2 混淆矩阵、4.1.3 P/R + 选指标侧栏、4.1.4 F-score + NOTE）</td>
-<td>§4.1（表 4.1 重排；specificity 勘误）</td>
-</tr>
-<tr>
-<td>4.2 + NOTE（AlexNet + 图 4.1）</td>
-<td>§4.2（CONV4=385 勘误）</td>
-</tr>
-<tr>
-<td>4.3.1 + validation 侧栏 + 划分比例 + 图 4.2-4.4</td>
-<td>§4.3.1</td>
-</tr>
-<tr>
-<td>4.3.2 + 同分布侧栏 + 图 4.5-4.6 + 两处 TIP</td>
-<td>§4.3.2（+ 归一化统计量拓展）</td>
-</tr>
-<tr>
-<td>4.4.1 + 学生备考 TIP + Bayes error 侧栏 + 图 4.7-4.9</td>
-<td>§4.4.1</td>
-</tr>
-<tr>
-<td>4.4.2 + 图 4.10</td>
-<td>§4.4.2（+ 诊断决策流程图/表）</td>
-</tr>
-<tr>
-<td>4.4.3 练习 + 图 4.11-4.12</td>
-<td>§4.4.3（PyTorch 版，参数量文字化）</td>
-</tr>
-<tr>
-<td>4.5.1 + human-in-the-loop NOTE + TIP</td>
-<td>§4.5.1（决策流程 mermaid）</td>
-</tr>
-<tr>
-<td>4.5.2 参数 vs 超参数</td>
-<td>§4.5.2（对照表）</td>
-</tr>
-<tr>
-<td>4.5.3 + 旋钮面板图</td>
-<td>§4.5.3（三分类表）</td>
-</tr>
-<tr>
-<td>4.5.4 + 参数量侧栏 + 图 4.13</td>
-<td>§4.5.4</td>
-</tr>
-<tr>
-<td>4.6.1 + Bengio 引言 + 图 4.14-4.18 + TIP</td>
-<td>§4.6.1</td>
-</tr>
-<tr>
-<td>4.6.2 + lr 四形态图</td>
-<td>§4.6.2（图转表）</td>
-</tr>
-<tr>
-<td>4.6.3 + 图 4.19-4.20</td>
-<td>§4.6.3</td>
-</tr>
-<tr>
-<td>4.6.4 + 图 4.21-4.22 + batch 关系图 + 选型指南</td>
-<td>§4.6.4</td>
-</tr>
-<tr>
-<td>4.7.1 + momentum 数学侧栏 + 图 4.23</td>
-<td>§4.7.1</td>
-</tr>
-<tr>
-<td>4.7.2 Adam</td>
-<td>§4.7.2（+ PyTorch 签名）</td>
-</tr>
-<tr>
-<td>4.7.3 + 图 4.24-4.26</td>
-<td>§4.7.3（逐轮日志转代码块）</td>
-</tr>
-<tr>
-<td>4.7.4 早停 + TIP</td>
-<td>§4.7.4（+ 早停=正则化拓展）</td>
-</tr>
-<tr>
-<td>4.8.1 L2 + 实践说明</td>
-<td>§4.8.1</td>
-</tr>
-<tr>
-<td>4.8.2 Dropout + 掷硬币 TIP</td>
-<td>§4.8.2</td>
-</tr>
-<tr>
-<td>4.8.3 数据增强 + 图 4.27</td>
-<td>§4.8.3</td>
-</tr>
-<tr>
-<td>4.9.1 covariate shift + 图 4.29</td>
-<td>§4.9.1</td>
-</tr>
-<tr>
-<td>4.9.2 + NOTE + 图 4.30</td>
-<td>§4.9.2</td>
-</tr>
-<tr>
-<td>4.9.3 + BN 数学侧栏</td>
-<td>§4.9.3（γX→γx̂ 括注）</td>
-</tr>
-<tr>
-<td>4.9.4 BN 实现</td>
-<td>§4.9.4（PyTorch 版 + 训练/推理差异拓展 + 前后位置拓展）</td>
-</tr>
-<tr>
-<td>4.9.5 BN recap</td>
-<td>§4.9.5</td>
-</tr>
-<tr>
-<td>4.10 STEP 1-6 + 图 4.31-4.33 + Further improvements</td>
-<td>§4.10（x_test=1000 勘误；4.31/4.32 表格化）</td>
-</tr>
-<tr>
-<td>Summary（5 条）</td>
-<td>§速览（无重复摘抄）</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 
