@@ -124,6 +124,9 @@ nav:
       - 第11章 图像金字塔: opencv/ch11.md
       - 第12章 图像轮廓: opencv/ch12.md
       - 第13章 直方图处理: opencv/ch13.md
+      - 第14章 傅里叶变换: opencv/ch14.md
+      - 第15章 模板匹配: opencv/ch15.md
+      - 第16章 霍夫变换: opencv/ch16.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
