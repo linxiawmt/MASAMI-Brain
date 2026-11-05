@@ -3237,6 +3237,8 @@ a+b, &amp; a+b \leq 255\\
 </tbody>
 </table>
 <p>结论：<strong>想让图变亮，用 <code>cv2.add()</code>；用加号运算符只会得到"回绕"的怪异结果</strong>。两者都会损失信息，只是损失方式不同。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-1.png" /></p>
+<p><em>图 3.1 【例 3.3】程序的运行结果：原图、<code>a+b</code> 取模变暗、<code>cv2.add</code> 饱和变亮（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：既不回绕、也不提前截断</p>
 <p>需要保留中间结果时，先提升 dtype 再算，最后自己裁剪：</p>
@@ -3316,6 +3318,8 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <p>两幅图各贡献一部分，结果同时看得出两者的轮廓与色彩，这就是"混合/透明过渡"的效果。把 <code>alpha</code> 从 0 连续调到 1、<code>beta</code> 取 <code>1-alpha</code>，就得到从 a 渐变到 b 的动画。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-2.png" /></p>
+<p><em>图 3.2 【例 3.5】程序的运行结果：两幅图按 0.6 / 0.4 加权混合（截自原书）</em></p>
 <p>【例 3.6】只混合局部：把一幅图的脸部混进另一幅图的同一位置。做法是先切片取出两块同尺寸的 <strong>ROI</strong>（<strong>Region of Interest</strong>，感兴趣区域），混合后再写回：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
@@ -3335,6 +3339,8 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <p>切片顺序是 <code>[行, 列]</code>，即 <code>[y, x]</code>：<code>150:550</code> 是高度方向（行），<code>200:600</code> 是宽度方向（列）。写反了会取到完全不相干的一块。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-3.png" /></p>
+<p><em>图 3.3 图像加权混合结果：只把两块 ROI 混合后写回原位置（截自原书）</em></p>
 <p>权重和不为 1 时亮度怎么变，用常数图测一遍最清楚（<code>src1 = src2 = 120</code>，<code>gamma = 0</code>）：</p>
 <table>
 <thead>
@@ -3423,6 +3429,8 @@ a+b, &amp; a+b \leq 255\\
 </table>
 <h3 id="331-按位与运算">3.3.1 按位与运算<a class="headerlink" href="#331-按位与运算" title="Permanent link">#</a></h3>
 <p>与运算（<strong>AND</strong>）的规则：两个逻辑值<strong>都为真时结果才为真</strong>。可以类比<strong>串联电路</strong>——两个开关都闭合，灯才亮。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-4.png" /></p>
+<p><em>图 3.4 与运算类比电路：两个开关串联，都闭合灯才亮（截自原书）</em></p>
 <table>
 <thead>
 <tr>
@@ -3600,6 +3608,8 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
 <a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-5.png" /></p>
+<p><em>图 3.5 【例 3.8】程序的运行结果：掩模内保留原图，掩模外全黑（截自原书）</em></p>
 <p>【例 3.9】彩色图像怎么办？按位运算要求两个操作数的<strong>通道数相同</strong>，所以 3 通道的 BGR 图不能直接与单通道掩模按位与（会报 <code>(-209:Sizes of input arguments do not match)</code>）。书中的做法是把掩模也建成 3 通道：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -3614,8 +3624,12 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"b.shape="</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                     <span class="c1"># (1080, 1920, 3)</span>
 </code></pre></div>
 <p>三个通道的掩模同步为 0 / 255，等价于"这块像素保留、那块变黑"。更省事的写法留到 3.4 节：用 <code>mask</code> 参数，单通道掩模就能直接作用于彩色图。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-6.png" /></p>
+<p><em>图 3.6 【例 3.9】程序的运行结果：掩模扩成 3 通道后按位与提取（截自原书）</em></p>
 <h3 id="332-按位或运算">3.3.2 按位或运算<a class="headerlink" href="#332-按位或运算" title="Permanent link">#</a></h3>
 <p>或运算（<strong>OR</strong>）：两个逻辑值中<strong>有一个为真，结果就为真</strong>。类比<strong>并联电路</strong>——任一开关闭合灯就亮。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-7.png" /></p>
+<p><em>图 3.7 或运算类比电路图：两个开关并联，任一闭合灯就亮（截自原书）</em></p>
 <table>
 <thead>
 <tr>
@@ -3943,6 +3957,8 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <p>注意 <code>mask.shape</code> 只有两维：传进来的掩模是单通道，作用到 3 通道图像时对三个通道一视同仁；掩模的<strong>行、列数必须与图像一致</strong>，否则报错。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-8.png" /></p>
+<p><em>图 3.8 彩色图像按位与提取：<code>mask</code> 参数保留指定区域（截自原书）</em></p>
 <h2 id="35-图像与数值的运算">3.5 图像与数值的运算<a class="headerlink" href="#35-图像与数值的运算" title="Permanent link">#</a></h2>
 <p>加法运算与按位运算里，两个操作数可以都是图像，也可以是一个图像配一个数值。想整体提亮，最直接的办法就是给每个像素加同一个常数：</p>
 <table>
@@ -4058,6 +4074,8 @@ a+b, &amp; a+b \leq 255\\
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>0010 0111   0101 0010   1001 1010   0111 1111
 </code></pre></div>
 <p>把所有像素的最低位（最右边那一位）竖起来看，就得到第 0 个位平面：<code>1 1 1 1 / 1 1 0 0 / 1 1 1 1 / 1 0 0 1</code>；取最高位则得到第 7 个位平面：<code>1 1 1 1 / 0 1 1 0 / 1 1 1 1 / 0 0 1 0</code>。前者是 4×4 的杂乱点阵，后者已经能看出原图明暗的大轮廓。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-9.png" /></p>
+<p><em>图 3.9 位平面分解：4×4 灰度图 8 个位平面的构成（截自原书）</em></p>
 <p><strong>分解的五个步骤</strong>：</p>
 <pre class="mermaid"><code>flowchart LR
     A["① 读图&lt;br/&gt;取宽高 M、N"] --&gt; B["② 构造提取矩阵&lt;br/&gt;值为 2 的 n 次幂"]
@@ -4243,6 +4261,8 @@ a+b, &amp; a+b \leq 255\\
 </tbody>
 </table>
 <p>相关系数从 0.026 一路涨到 0.843，正是"位越高、权重越大、越像原图"的量化体现。白点比例随位升高而增大，是因为这张素材整体偏亮（均值 186.9），高位更容易是 1。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-10.png" /></p>
+<p><em>图 3.10 位平面分解效果图：第 0 位近似噪声，第 7 位最像原图（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：位平面可以合成回原图</p>
 <p>分解是可逆的。把第 i 个位平面（先归一化成 0/1）乘以 <span class="arithmatex">\(2^i\)</span> 再全部相加，就得到原图：</p>
@@ -4361,6 +4381,8 @@ a+b, &amp; a+b \leq 255\\
 <li><strong>密钥可以是任意图像</strong>：有意义的图、无意义的图都行，关键是双方各存一份、保持一致；</li>
 <li><strong>密钥要随机</strong>：用 <code>np.random.randint(0,256,...)</code> 生成，密文的均值会落在 127.5 附近（某次实测 127.4），直方图趋于均匀，看不出原图痕迹；若用一幅纯色图当密钥，密文的明暗结构会原样保留。</li>
 </ul>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-11.png" /></p>
+<p><em>图 3.11 【例 3.14】程序的运行结果：明文、密钥、密文、解密结果（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：这套加密的强度边界</p>
 <p>这种"一次性异或"在密码学上叫<strong>一次性密码本</strong>（<strong>One-Time Pad</strong>）：密钥真随机、长度等于明文、且<strong>只用一次</strong>时，理论上是不可破解的。三条里坏掉任何一条就出问题——最典型的是<strong>重复使用同一把密钥</strong>：两幅密文异或后，密钥被消掉，剩下的正好是两幅明文的异或，统计规律立刻回来。另外它只管"内容不可读"，不管"完整性"：密文随便改一个比特，解密后就错一个比特，接收方无从察觉。</p>
@@ -4471,6 +4493,8 @@ a+b, &amp; a+b \leq 255\\
 </table>
 <p>一句话：<strong>A 与单位比特 B 相或，等价于用 B 替换 A 的最低位</strong>。</p>
 <p>（6）显示原始载体图、水印图、含水印图。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-12.png" /></p>
+<p><em>图 3.12 水印嵌入过程流程图（截自原书）</em></p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误</p>
 <p>书中 3.8.2 节那个 4×4 的"含水印载体图像"示例表有 7 个单元格与"高七位 或 水印位"算出来的值不一致（例如第 2 行第 2 列应为 86，表中写成 87；第 4 行第 1 列应为 85，表中写成 84）。机制本身没错，是表格誊抄串行了——按本节的步骤自己算一遍即可。</p>
@@ -4508,6 +4532,8 @@ a+b, &amp; a+b \leq 255\\
 <p>再把 1 阈值成 255，就得到可视的二值水印图。</p>
 <p>（4）计算去除水印后的载体图像：把含水印图与 254 按位与，最低位清零即可。注意这只能"抹掉水印痕迹"，原始的最低位已经找不回来了。</p>
 <p>（5）显示提取出的水印、去水印的载体图。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-13.png" /></p>
+<p><em>图 3.13 水印提取过程流程图（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：两种操作各有一个等价写法</p>
 <p>提取最低位：<code>e % 2</code> 与 <code>cv2.bitwise_and(e, 1)</code> 结果相同；清零最低位：<code>(e &gt;&gt; 1) &lt;&lt; 1</code> 与 <code>cv2.bitwise_and(e, 254)</code> 结果相同。都可实测验证。反过来说，<strong>别用除法代替位移</strong>——<code>e / 2</code> 会变成 float，<code>e // 2</code> 虽精确但慢，位运算才是这里想要的东西。</p>
@@ -4585,6 +4611,8 @@ a+b, &amp; a+b \leq 255\\
 </tbody>
 </table>
 <p>含水印图与原始图像肉眼看不出区别，隐蔽性很高。但也正因为"改一个比特"太简单，安全性并不高——拿到图的人取个最低位就能读出水印。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-14.png" /></p>
+<p><em>图 3.14 【例 3.15】程序的运行结果：载体图、水印、含水印图、提取出的水印（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：可见水印与不可见水印</p>
 <p><strong>不可见水印</strong>（<strong>Invisible Watermark</strong>）就是本节这种：嵌入后肉眼不可见，用于版权认证、溯源。<strong>可见水印</strong>（<strong>Visible Watermark</strong>）则要求看得见，典型做法是用 <code>cv2.addWeighted</code> 把水印图叠在原图上：</p>
@@ -4718,6 +4746,8 @@ a+b, &amp; a+b \leq 255\\
 </tbody>
 </table>
 <p>实测（736×1110 人像，脸部区域 500×500）：打码后脸部 250000 个像素里有 249021 个与原图不同（占 99.6%），非脸部区域逐像素等于原图；解码结果与原图<strong>完全一致</strong>（<code>array_equal</code> 为 True）。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-15.png" /></p>
+<p><em>图 3.15 【例 3.16】程序的运行结果：打码与解码的 12 个中间结果（截自原书）</em></p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误</p>
 <p>书中正文把 <code>maskFace = encryptFace + noFace1</code> 与 <code>extractLena = noFace2 + extractFace</code> 说成"按位或运算"，代码写的却是加号。本例结果相同，纯粹因为两块区域互斥——任何像素只有一个加数非零。真遇到重叠区域，加号会进位、在 uint8 下回绕，按位或只保留位的合并结果，两者立刻分家。拼互斥区域时用"或"更稳妥。</p>
