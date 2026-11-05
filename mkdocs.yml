@@ -120,6 +120,10 @@ nav:
       - 第7章 图像平滑处理: opencv/ch07.md
       - 第8章 形态学操作: opencv/ch08.md
       - 第9章 图像梯度: opencv/ch09.md
+      - 第10章 Canny边缘检测: opencv/ch10.md
+      - 第11章 图像金字塔: opencv/ch11.md
+      - 第12章 图像轮廓: opencv/ch12.md
+      - 第13章 直方图处理: opencv/ch13.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
