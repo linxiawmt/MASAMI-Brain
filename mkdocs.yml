@@ -156,3 +156,8 @@ nav:
       - holo/scanholo/ch3.md
       - holo/scanholo/ch4.md
       - holo/scanholo/ch5.md
+  - 传热学:
+      - 第1章 引言: heat/ch01.md
+      - 第2章 导热引论: heat/ch02.md
+      - 第3章 一维稳态导热: heat/ch03.md
+      - 第4章 二维稳态导热: heat/ch04.md
