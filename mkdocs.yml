@@ -117,6 +117,9 @@ nav:
       - 第4章 色彩空间类型转换: opencv/ch04.md
       - 第5章 几何变换: opencv/ch05.md
       - 第6章 阈值处理: opencv/ch06.md
+      - 第7章 图像平滑处理: opencv/ch07.md
+      - 第8章 形态学操作: opencv/ch08.md
+      - 第9章 图像梯度: opencv/ch09.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
