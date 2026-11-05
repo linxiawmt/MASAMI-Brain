@@ -7,7 +7,7 @@ icon: material/book-open-variant
 《**Deep Learning for Vision Systems**》，Mohamed Elgendy 著，Manning 2020。
 从神经网络基础讲到目标检测、GAN 与视觉嵌入的 CV 入门书，本栏目是全书 10 章的精读笔记。
 
-- 原书代码为 Keras，笔记与配套 notebook 一律使用 **PyTorch** 重写（超参数与书一致，框架差异在注释中说明）。
+- 笔记与配套 notebook 使用 **PyTorch** 重写书中示例代码（超参数与书一致，框架差异在注释中说明）。
 - 插图截自原书，仅作学习用途；版权归原书作者与出版社所有。
 
 <div class="grid cards" markdown>
