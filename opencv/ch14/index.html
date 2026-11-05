@@ -1,0 +1,4111 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/opencv/ch14/">
+      
+      
+        <link rel="prev" href="../ch13/">
+      
+      
+        <link rel="next" href="../ch15/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第14章 傅里叶变换 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-14-章-傅里叶变换" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第14章 傅里叶变换
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../numana/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#140-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-理论基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 理论基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 理论基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#从一杯饮料看时域与频域" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从一杯饮料看时域与频域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#傅里叶定理与变换过程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        傅里叶定理与变换过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#相位时间差不能丢" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相位：时间差不能丢
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#回到图像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回到图像
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-Numpy-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Numpy 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 Numpy 实现傅里叶变换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-实现逆傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 实现逆傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-高通滤波示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.3 高通滤波示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-OpenCV-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 OpenCV 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 OpenCV 实现傅里叶变换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.1 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-实现逆傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.2 实现逆傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1433-低通滤波示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.3 低通滤波示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#140-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-理论基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 理论基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 理论基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#从一杯饮料看时域与频域" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从一杯饮料看时域与频域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#傅里叶定理与变换过程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        傅里叶定理与变换过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#相位时间差不能丢" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相位：时间差不能丢
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#回到图像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回到图像
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-Numpy-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Numpy 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 Numpy 实现傅里叶变换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-实现逆傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 实现逆傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1423-高通滤波示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.3 高通滤波示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-OpenCV-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 OpenCV 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 OpenCV 实现傅里叶变换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-实现傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.1 实现傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1432-实现逆傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.2 实现逆傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1433-低通滤波示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3.3 低通滤波示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-14-章-傅里叶变换">第 14 章 傅里叶变换<a class="headerlink" href="#第-14-章-傅里叶变换" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：图像除了像素直接操作的空间域（<strong>spatial domain</strong>），还有频率域（<strong>frequency domain</strong>）这把尺子：颜色趋于一致的大块缓变区域是低频，灰度急剧过渡的边缘和噪声是高频。傅里叶变换（<strong>Fourier Transform</strong>）把图像从空间域搬到频率域，把两种成分拆开摆放；在频域里用低通滤波抹掉高频（图像变模糊、噪声减弱），或用高通滤波只留高频（边缘轮廓凸显）；处理完再用逆傅里叶变换（<strong>Inverse Fourier Transform</strong>）搬回空间域。频率（<strong>frequency</strong>）、幅度（<strong>amplitude</strong>）、相位（<strong>phase</strong>）三个词是理解全章的钥匙。</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">运行环境约定</p>
+<p>原书本章素材 <code>image\lena.bmp</code>、<code>boat.bmp</code> 不在素材目录中，本章统一换用素材目录里的图片顶替：<code>picture2.png</code> 顶替 lena（1387×1040×3，例 14.1、14.2 使用），<code>picture8.jpg</code> 顶替 boat（936×432×3，例 14.3~14.6 使用）。路径写作相对路径，运行时工作目录需为 数字图像处理-python 根目录，否则 <code>imread</code> 返回 None。例 14.6 的低通掩模边长由原书的 30 调整为 50（即中心 100×100 区域），与跟随代码一致；跟随代码还在例 14.3、14.6 里比原书多显示了滤波前后的频谱图，笔记代码保持原书结构。所有验证结论均为 OpenCV 4.13 + NumPy 2.2 + Matplotlib 3.10 环境实测。</p>
+</div>
+<h2 id="140-本章导图">14.0 本章导图<a class="headerlink" href="#140-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">傅里叶变换</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">两种处理域</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">空间域：直接处理像素，简单快速</span>
+          <span class="brleaf">灰度变换：对比度、阈值等单像素操作</span>
+          <span class="brleaf">空间滤波：平滑等改变图像质量的操作</span>
+          <span class="brleaf">频率域：先变换、再处理、再反变换回来</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">频率·幅度·相位</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">傅里叶定理：周期函数是不同频率正弦之和</span>
+          <span class="brleaf">幅度：各频率分量的强弱</span>
+          <span class="brleaf">相位：分量之间的时间差</span>
+          <span class="brleaf">低频=缓变区域，高频=边缘与噪声</span>
+          <span class="brleaf">显示用幅度图像加相位图像</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Numpy 实现</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">fft2：输入灰度图，返回复数数组</span>
+          <span class="brleaf">fftshift：零频率分量从左上角移到中心</span>
+          <span class="brleaf">取模加对数：把频谱缩放进可显示范围</span>
+          <span class="brleaf">ifftshift：逆变换前把零频率移回原位</span>
+          <span class="brleaf">ifft2 逆变换，abs 取幅度</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">OpenCV 实现</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">dft 前必须先转 float32</span>
+          <span class="brleaf">DFT_COMPLEX_OUTPUT 输出双通道复数阵列</span>
+          <span class="brleaf">第 1 通道实部，第 2 通道虚部</span>
+          <span class="brleaf">magnitude 求平方和的平方根得幅度</span>
+          <span class="brleaf">idft 做逆变换，结果仍是复数</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">频域滤波</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">低通滤波器：低频通过，图像变模糊</span>
+          <span class="brleaf">高通滤波器：高频通过，细节凸显</span>
+          <span class="brleaf">高通示例：频谱中心 60×60 直接置零</span>
+          <span class="brleaf">低通示例：0-1 掩模乘频谱，中心保留</span>
+          <span class="brleaf">处理完逆变换回空间域</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">应用与坑</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">图像增强、去噪、边缘检测、压缩、加密</span>
+          <span class="brleaf">idft 默认不缩放，结果被放大 N 倍</span>
+          <span class="brleaf">fftshift 默认连通道轴一起滚</span>
+          <span class="brleaf">fftshift 与 ifftshift 必须成对</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="141-理论基础">14.1 理论基础<a class="headerlink" href="#141-理论基础" title="Permanent link">#</a></h2>
+<p>图像处理一般分为空间域处理和频率域处理两大类。</p>
+<p>空间域处理直接对图像内的像素进行处理，主要分为两种形式：灰度变换对图像内的单个像素进行处理，比如调节对比度、处理阈值；空间滤波涉及图像质量的改变，比如图像平滑。空间域处理计算简单方便，运算速度更快。</p>
+<p>频率域处理是先将图像变换到频率域，然后在频率域内对图像进行处理，最后再通过反变换将图像从频率域变换回空间域。傅里叶变换是应用最广泛的一种频域变换：它把图像从空间域变换到频率域，逆傅里叶变换再把频率域信息变换回空间域。</p>
+<h3 id="从一杯饮料看时域与频域">从一杯饮料看时域与频域<a class="headerlink" href="#从一杯饮料看时域与频域" title="Permanent link">#</a></h3>
+<p>傅里叶变换非常抽象，很多人在工程中用了多年也没彻底理解它到底是怎么回事。先用一个生活中的例子铺路。表 14-1 是某饮料的配方，以时间形式记录了从时刻 00:00 到 00:11 的操作。</p>
+<table>
+<thead>
+<tr>
+<th>时刻</th>
+<th>00:00</th>
+<th>00:01</th>
+<th>00:02</th>
+<th>00:03</th>
+<th>00:04</th>
+<th>00:05</th>
+<th>00:06</th>
+<th>00:07</th>
+<th>00:08</th>
+<th>00:09</th>
+<th>00:10</th>
+<th>00:11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冰糖</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>红豆</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>绿豆</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>西红柿</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>纯净水</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>仔细分析可以发现，这份配方其实能浓缩成五句话：</p>
+<ul>
+<li>每隔 1 分钟放 1 块冰糖；</li>
+<li>每隔 2 分钟放 3 粒红豆；</li>
+<li>每隔 3 分钟放 2 粒绿豆；</li>
+<li>每隔 4 分钟放 4 块西红柿；</li>
+<li>每隔 5 分钟放 1 杯纯净水。</li>
+</ul>
+<p>这是从<strong>操作频率</strong>的角度对配方的说明。同一份信息有两种等价表示：</p>
+<ul>
+<li>时域图（图 14-1）：横轴是时间，逐分钟画出每种配料的投放，信息完整但表格很长；</li>
+<li>频域图（图 14-2）：横轴是周期（频率的倒数），纵轴是配料的份数，五根柱子就完整描述了整个操作过程。</li>
+</ul>
+<figure>
+  <img src="../images/ch14/fig-14-1.png" class="lq-img" />
+  <figcaption>图 14.1 配方的时域图：五条曲线记录五种配料随时间的投放（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch14/fig-14-2.png" class="lq-img" />
+  <figcaption>图 14.2 配方的频域图：横坐标是周期，纵坐标是配料份数（截自原书）</figcaption>
+</figure>
+
+<p>函数也一样。图 14-3 是一条频率为 5（1 秒内 5 个周期）、振幅为 1 的正弦曲线；换成频率视角，它就是图 14-4 里频率 5 处、高度 1 的一根柱子（横坐标频率、纵坐标振幅）。两张图完全等价——它们是同一个函数的不同表示形式，可以从频域表示得到对应的时域表示，也可以从时域表示得到对应的频域表示。</p>
+<figure>
+  <img src="../images/ch14/fig-14-3.png" class="lq-img" />
+  <figcaption>图 14.3 频率为 5、振幅为 1 的正弦曲线（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch14/fig-14-4.png" class="lq-img" />
+  <figcaption>图 14.4 正弦函数的频域图：一根柱子完整描述这根正弦（截自原书）</figcaption>
+</figure>
+
+<h3 id="傅里叶定理与变换过程">傅里叶定理与变换过程<a class="headerlink" href="#傅里叶定理与变换过程" title="Permanent link">#</a></h3>
+<p>法国数学家傅里叶指出：<strong>任何周期函数都可以表示为不同频率的正弦函数和的形式</strong>。这个理论今天看是理所当然，但在当时难以理解，遭受了很大质疑。</p>
+<p>看一个具体例子。图 14-5 左上角的周期函数可以表示为：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>y = 3*np.sin(0.8*x) + 7*np.sin(0.5*x) + 2*np.sin(0.2*x)
+</code></pre></div>
+<p>它由三个正弦函数叠加而成：函数 1 <code>y1 = 3*np.sin(0.8*x)</code>（右上角）、函数 2 <code>y2 = 7*np.sin(0.5*x)</code>（左下角）、函数 3 <code>y3 = 2*np.sin(0.2*x)</code>（右下角），曲线见图 14-5 的其余三幅小图。</p>
+<figure>
+  <img src="../images/ch14/fig-14-5.png" class="lq-img" />
+  <figcaption>图 14.5 函数曲线：左上为三个正弦之和，其余三幅为各分量（截自原书）</figcaption>
+</figure>
+
+<p>从频域角度看，三个正弦分量对应图 14-6 的三根柱子：横坐标是频率 0.2、0.5、0.8，纵坐标是各自的振幅 2、7、3。</p>
+<figure>
+  <img src="../images/ch14/fig-14-6.png" class="lq-img" />
+  <figcaption>图 14.6 函数的频域图：三根柱子对应三个正弦分量（截自原书）</figcaption>
+</figure>
+
+<p>从图 14-5 左上角的时域函数图形，构造出图 14-6 所示频域图形的过程，就是<strong>傅里叶变换</strong>。图 14-1 与图 14-2 表示相同的信息，图 14-5 左上角与图 14-6 表示的也是完全相同的信息——傅里叶变换就是从频域的角度完整地表述时域信息。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>原书此段"图14-5 左上角的时域函数图形，与图14-6 所示的频域图形表示的页是完全相同的信息"中的"表示的页是"应为"表示的是"。</p>
+</div>
+<h3 id="相位时间差不能丢">相位：时间差不能丢<a class="headerlink" href="#相位时间差不能丢" title="Permanent link">#</a></h3>
+<p>除了频率和振幅，还要考虑时间差。饮料配方为了控制风味，需要严格控制加入配料的时间：表 14-1 中"00:00"时刻的操作，在更精细的控制下实际如表 14-2 所示——各配料并不是同时投放的。</p>
+<table>
+<thead>
+<tr>
+<th>配料</th>
+<th>开始时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冰糖</td>
+<td>00:00:00</td>
+</tr>
+<tr>
+<td>红豆</td>
+<td>00:00:12</td>
+</tr>
+<tr>
+<td>绿豆</td>
+<td>00:00:28</td>
+</tr>
+<tr>
+<td>西红柿</td>
+<td>00:00:47</td>
+</tr>
+<tr>
+<td>纯净水</td>
+<td>00:00:55</td>
+</tr>
+</tbody>
+</table>
+<p>加入配料的时间一变，饮料的风味就会变。所以实际处理中还要考虑时间差，这个时间差在傅里叶变换里就是<strong>相位</strong>（<strong>phase</strong>），它表述的是与时间差相关的信息。</p>
+<p>图 14-7 左上角的函数是：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>y = 3*np.sin(0.8*x) + 7*np.sin(0.5*x+2) + 2*np.sin(0.2*x+3)
+</code></pre></div>
+<p>三个分量分别带有 +0、+2、+3 的初相——把横坐标看成开始时间，它们并不都是从 0 时刻开始的，彼此之间存在时间差。如果直接使用没有时间差的三个函数，叠出来的是图 14-5 左上角那条曲线，而不是图 14-7 左上角这条。所以相差也是傅里叶变换中非常重要的条件。</p>
+<figure>
+  <img src="../images/ch14/fig-14-7.png" class="lq-img" />
+  <figcaption>图 14.7 相位演示：三个分量存在时间差（截自原书）</figcaption>
+</figure>
+
+<h3 id="回到图像">回到图像<a class="headerlink" href="#回到图像" title="Permanent link">#</a></h3>
+<p>在图像处理中，傅里叶变换把图像分解为正弦分量和余弦分量两部分，即将图像从空间域转换到频率域（以下简称频域）。数字图像经过傅里叶变换后，得到的频域值是复数（<strong>complex number</strong>），显示结果需要使用两种形式之一：</p>
+<ul>
+<li>实数图像（<strong>real image</strong>）加虚数图像（<strong>complex image</strong>）；</li>
+<li>幅度图像（<strong>magnitude image</strong>）加相位图像（<strong>phase image</strong>）。</li>
+</ul>
+<p>因为幅度图像包含了原图像中所需的大部分信息，图像处理中通常仅使用幅度图像。但如果希望先在频域内处理、再通过逆傅里叶变换得到修改后的空域图像，就必须<strong>同时保留幅度图像和相位图像</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：相位里藏着什么</p>
+<p>原书强调逆变换必须同时保留幅度与相位。实测（picture8.jpg）：把相位全部清零、只留幅度，重建图与原图的相关系数只有 0.06，只剩一团中心对称的亮斑；把幅度全部置 1、只留相位，重建图与原图的相关系数绝对值达 0.48，轮廓结构仍可辨认（相关系数为负只说明对比度翻转）。图像的"结构在哪儿"主要由相位决定，"每个频率有多强"由幅度决定，两者缺一不可。</p>
+</div>
+<p>变换后，图像中同时存在低频和高频信息：</p>
+<ul>
+<li><strong>低频信息</strong>对应图像内变化缓慢的灰度分量。大草原图像里那片广袤的、颜色趋于一致的草原是低频；</li>
+<li><strong>高频信息</strong>对应图像内变化越来越快的灰度分量，由灰度的尖锐过渡造成。草原上那头狮子的轮廓等各种边缘以及噪声是高频。</li>
+</ul>
+<p>傅里叶变换的目的，就是把图像从空域转换到频域，在频域内实现对图像内特定对象的处理，再对处理后的频域图像做逆傅里叶变换得到空域图像。它在图像处理领域可以实现图像增强、图像去噪、边缘检测、特征提取、图像压缩和加密等。</p>
+<h2 id="142-Numpy-实现傅里叶变换">14.2 Numpy 实现傅里叶变换<a class="headerlink" href="#142-Numpy-实现傅里叶变换" title="Permanent link">#</a></h2>
+<p>Numpy 模块提供了傅里叶变换功能，<code>numpy.fft.fft2()</code> 可以实现图像的傅里叶变换。本节介绍如何用它实现变换与逆变换，并在频域内过滤低频信息、保留高频信息，实现高通滤波。</p>
+<h3 id="1421-实现傅里叶变换">14.2.1 实现傅里叶变换<a class="headerlink" href="#1421-实现傅里叶变换" title="Permanent link">#</a></h3>
+<p>语法格式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>返回值 = numpy.fft.fft2(原始图像)
+</code></pre></div>
+<p>两点注意：</p>
+<ul>
+<li>参数"原始图像"的类型是<strong>灰度图像</strong>；</li>
+<li>返回值是一个复数数组（<strong>complex ndarray</strong>）。</li>
+</ul>
+<p>经过该函数的处理就得到了图像的频谱信息。此时，图像频谱中的零频率分量位于频谱图像的左上角（原书脚注：本章中"频谱图像"与"频域图像"是同义词，作者会根据上下文混用）。为了便于观察，通常用 <code>numpy.fft.fftshift()</code> 将零频率成分移动到频域图像的中心位置，如图 14-8 所示。</p>
+<figure>
+  <img src="../images/ch14/fig-14-8.png" class="lq-img" />
+  <figcaption>图 14.8 将零频率分量移到频域图像的中心（截自原书）</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>返回值 = numpy.fft.fftshift(原始频谱)
+</code></pre></div>
+<p>使用该函数处理后，零频率分量会被移到频域图像的中心位置，对观察傅里叶变换后频谱中的零频率部分非常有效。</p>
+<p>对图像做傅里叶变换得到的是复数数组，要显示为图像，需要把值调整到 <span class="arithmatex">\([0, 255]\)</span> 的灰度空间内，公式为：</p>
+<div class="arithmatex">\[
+\text{像素新值} = 20 \times \text{np.log}\left(\text{np.abs}(\text{频谱值})\right)
+\]</div>
+<p>式中 np 是 numpy 的缩写，来源于 <code>import numpy as np</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么频谱要用对数才能看清</p>
+<p>频谱值的动态范围极大：picture8.jpg 的直流分量（所有像素之和）高达约 <span class="arithmatex">\(8.6\times10^7\)</span>，而绝大多数频率分量的幅度接近 0，直接当灰度显示几乎是一张全黑图。对数把"乘法尺度"压成"加法尺度"：幅度翻 10 倍，显示值只加一段常数，大小悬殊的分量才能同时看得见。系数 20 沿用信号处理里幅度谱的分贝式表达 <span class="arithmatex">\(20\log_{10}|F|\)</span>。另外注意 <code>np.log</code> 是自然对数，它压缩动态范围但<strong>不保证结果落在 <span class="arithmatex">\([0, 255]\)</span></strong>（见 14.3.1 的勘误说明）。</p>
+</div>
+<p>【例 14.1】用 Numpy 实现傅里叶变换，观察得到的频谱图像。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 14.2.1 例 14.1：Numpy 傅里叶变换，观察频谱 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture2.png"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 读入灰度图（原书 lena.bmp）</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>                                     <span class="c1"># 傅里叶变换：返回复数数组，零频率在左上角</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>                              <span class="c1"># 零频率分量移到频谱中心</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">magnitude_spectrum</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fshift</span><span class="p">))</span>           <span class="c1"># 取模 + 对数缩放，映射到可显示范围</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>           <span class="c1"># 左图：原始图像</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"original"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">magnitude_spectrum</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>   <span class="c1"># 右图：频谱图像</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"magnitude spectrum"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-9：左图是原始图像，右图是频谱图像。中心最亮的点就是零频率分量，从中心向外频率越来越高，越亮的点表示该频率分量的幅度越大。</p>
+<figure>
+  <img src="../images/ch14/fig-14-9.png" class="lq-img" />
+  <figcaption>图 14.9 原始图像及其频谱图像（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：中心最亮的点是什么——直流分量</p>
+<p>中心那个最亮的点是零频率分量，也称直流分量（<strong>DC component</strong>，Direct Current 的借用），它等于图像全部像素值之和，对应图像的整体亮度。实测 picture8.jpg：频谱中心处的幅度为 86 236 830，与像素总和 86 236 829（差 1 来自 float32 舍入）一致，<span class="arithmatex">\(20\ln(8.6\times10^7)\approx 365\)</span> 正是频谱显示值里的最大者。14.2.3 的高通滤波把中心区域置零，等于连"整体亮度"一起删掉，这是还原图整体变暗、只剩轮廓的原因之一。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：二维离散傅里叶变换在算什么</p>
+<p><code>fft2</code> 是二维离散傅里叶变换（<strong>DFT</strong>, Discrete Fourier Transform）的快速实现（<strong>FFT</strong>, Fast Fourier Transform）。把图像看作 <span class="arithmatex">\(M\times N\)</span> 的矩阵 <span class="arithmatex">\(f(x,y)\)</span>，变换与逆变换为：</p>
+<div class="arithmatex">\[
+F(u,v) = \sum_{x=0}^{M-1}\sum_{y=0}^{N-1} f(x,y)\,\mathrm{e}^{-\mathrm{j}2\pi\left(\frac{ux}{M}+\frac{vy}{N}\right)}
+\]</div>
+<div class="arithmatex">\[
+f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathrm{j}2\pi\left(\frac{ux}{M}+\frac{vy}{N}\right)}
+\]</div>
+<p><span class="arithmatex">\(F(u,v)\)</span> 是频率 <span class="arithmatex">\((u,v)\)</span> 处的复数系数：模长 <span class="arithmatex">\(\big|F(u,v)\big|\)</span> 是该频率分量的幅度，辐角是相位。逆变换自带系数 <span class="arithmatex">\(\frac{1}{MN}\)</span>——这正是 OpenCV 的 <code>idft</code> 需要手动加 <code>DFT_SCALE</code> 的原因（见 14.3.2 节）。</p>
+</div>
+<h3 id="1422-实现逆傅里叶变换">14.2.2 实现逆傅里叶变换<a class="headerlink" href="#1422-实现逆傅里叶变换" title="Permanent link">#</a></h3>
+<p>需要注意：如果在傅里叶变换过程中用了 <code>numpy.fft.fftshift()</code> 移动零频率分量，那么在逆傅里叶变换前，要先用 <code>numpy.fft.ifftshift()</code> 把零频率分量移回原来的位置，再进行逆变换，过程如图 14-10 所示。</p>
+<figure>
+  <img src="../images/ch14/fig-14-10.png" class="lq-img" />
+  <figcaption>图 14.10 逆变换前用 ifftshift 把零频率分量移回原位（截自原书）</figcaption>
+</figure>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>调整后的频谱 = numpy.fft.ifftshift(原始频谱)
+</code></pre></div>
+<p><code>numpy.fft.ifftshift()</code> 是 <code>numpy.fft.fftshift()</code> 的逆函数。逆傅里叶变换用 <code>numpy.fft.ifft2()</code> 实现，它是 <code>numpy.fft.fft2()</code> 的逆函数：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>返回值 = numpy.fft.ifft2(频域数据)
+</code></pre></div>
+<p>返回值仍旧是一个复数数组（<strong>complex ndarray</strong>）。逆傅里叶变换得到的空域信息需要调整至 <span class="arithmatex">\([0, 255]\)</span> 灰度空间内，公式为：</p>
+<div class="arithmatex">\[
+\text{iimg} = \text{np.abs}(\text{逆傅里叶变换结果})
+\]</div>
+<p>【例 14.2】在 Numpy 内实现傅里叶变换、逆傅里叶变换，观察逆变换的结果图像。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 14.2.2 例 14.2：Numpy 傅里叶变换 + 逆变换 =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture2.png"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 原书 boat.bmp</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>                  <span class="c1"># 傅里叶变换</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>           <span class="c1"># 零频率移到中心</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fshift</span><span class="p">)</span>     <span class="c1"># 逆变换前：零频率移回左上角</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">ishift</span><span class="p">)</span>           <span class="c1"># 逆傅里叶变换：返回空域复数数组</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">iimg</span><span class="p">)</span>                   <span class="c1"># 取幅度，调整到灰度空间</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"original"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">iimg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"inverse FFT"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-11：左图是原始图像，右图是"变换 → 逆变换"一圈回来的图像，肉眼看不出差别（实测最大误差在 <span class="arithmatex">\(10^{-5}\)</span> 量级，纯属浮点精度）。</p>
+<figure>
+  <img src="../images/ch14/fig-14-11.png" class="lq-img" />
+  <figcaption>图 14.11 逆傅里叶变换：原图与还原结果一致（截自原书）</figcaption>
+</figure>
+
+<h3 id="1423-高通滤波示例">14.2.3 高通滤波示例<a class="headerlink" href="#1423-高通滤波示例" title="Permanent link">#</a></h3>
+<p>一幅图像内同时存在着高频信号和低频信号：</p>
+<ul>
+<li>低频信号对应图像内变化缓慢的灰度分量。大草原图像中，低频信号对应颜色趋于一致的广袤草原；</li>
+<li>高频信号对应图像内变化越来越快的灰度分量，由灰度的尖锐过渡造成。草原上还有一头狮子的话，高频信号就对应狮子的边缘等信息。</li>
+</ul>
+<p>滤波器（<strong>filter</strong>）能够允许一定频率的分量通过或者拒绝其通过，按作用方式分为两类：</p>
+<ul>
+<li>允许低频信号通过的叫<strong>低通滤波器</strong>（<strong>low-pass filter</strong>）。低通滤波器使高频信号衰减而对低频信号放行，会使图像变模糊；</li>
+<li>允许高频信号通过的叫<strong>高通滤波器</strong>（<strong>high-pass filter</strong>）。高通滤波器使低频信号衰减而让高频信号通过，将增强图像中尖锐的细节，但是会导致图像的对比度降低。</li>
+</ul>
+<p>傅里叶变换可以将图像的高频信号和低频信号分离：变换后低频信号位于频谱的中心位置（图 14-9 右图的中心）。于是可以对高频、低频分别处理——高通滤波或低通滤波——处理完再逆变换返回空域，就完成了对图像的频域处理。频域处理可以实现图像增强、图像去噪、边缘检测、特征提取、压缩和加密等操作。</p>
+<p>高通滤波的做法：将频谱中心区域的低频分量值都替换为 0（处理为黑色），屏蔽低频信号、只保留高频信号，如图 14-12 所示。</p>
+<figure>
+  <img src="../images/ch14/fig-14-12.png" class="lq-img" />
+  <figcaption>图 14.12 滤波示例：original 原图、result 频谱、filter 中心置零后的掩模（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>原书此段写作"例如，在图14-11 中，左图 original 是原始图像，中间的图像 result 是对左图 original 进行傅里叶变化后得到的结果，右图则是对 result 进行高通滤波后的结果"。图 14-11 只有 original 与 iimg 两张图，三图对照的应是<strong>图 14-12</strong>；"傅里叶变化"应为"傅里叶变换"。</p>
+</div>
+<p>要把中心区域置零，先计算中心位置的坐标，再选取以该坐标为中心、上下左右各 30 个像素的区域置零：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>                        <span class="c1"># 图像的行数、列数</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">crow</span><span class="p">,</span> <span class="n">ccol</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rows</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>         <span class="c1"># 频谱中心坐标</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">fshift</span><span class="p">[</span><span class="n">crow</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">crow</span><span class="o">+</span><span class="mi">30</span><span class="p">,</span> <span class="n">ccol</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">ccol</span><span class="o">+</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 中心 60×60 区域的低频分量置零</span>
+</code></pre></div>
+<p>【例 14.3】在 Numpy 内对图像傅里叶变换，在频域内将低频分量的值处理为 0 实现高通滤波，最后逆变换回空域，观察变换前后的差异。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 14.2.3 例 14.3：Numpy 高通滤波（频谱中心置零） =====</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture8.jpg"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 原书 boat.bmp</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>                             <span class="c1"># 傅里叶变换</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>                      <span class="c1"># 零频率移到中心</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>                           <span class="c1"># 行数、列数</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">crow</span><span class="p">,</span> <span class="n">ccol</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rows</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># 频谱中心坐标</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="n">fshift</span><span class="p">[</span><span class="n">crow</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">crow</span><span class="o">+</span><span class="mi">30</span><span class="p">,</span> <span class="n">ccol</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">ccol</span><span class="o">+</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># 中心 60×60 低频置零 → 高通滤波</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="n">ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fshift</span><span class="p">)</span>                <span class="c1"># 零频率移回原位</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">ishift</span><span class="p">)</span>                      <span class="c1"># 逆傅里叶变换</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">iimg</span><span class="p">)</span>                              <span class="c1"># 取幅度</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"original"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">iimg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"inverse"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-13：经过高通滤波，图像的边缘信息得以保留，大面积平缓的区域（低频）被抹掉，还原图只剩轮廓感、整体偏暗。</p>
+<figure>
+  <img src="../images/ch14/fig-14-13.png" class="lq-img" />
+  <figcaption>图 14.13 傅里叶变换对比图：高通滤波后边缘信息得以保留（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：高通滤波前后实测</p>
+<p>对 picture8.jpg 做例 14.3 的高通滤波，实测：频谱总能量中中心 60×60 低频区占 12.2%，置零后剩下 87.8% 的能量分布在四周高频区；空域上还原图的横向 Sobel 梯度从 52.9 升到 450.7（约 8.5 倍），边缘与细节被显著突出。</p>
+</div>
+<h2 id="143-OpenCV-实现傅里叶变换">14.3 OpenCV 实现傅里叶变换<a class="headerlink" href="#143-OpenCV-实现傅里叶变换" title="Permanent link">#</a></h2>
+<p>OpenCV 提供了 <code>cv2.dft()</code> 和 <code>cv2.idft()</code> 来实现傅里叶变换和逆傅里叶变换。</p>
+<h3 id="1431-实现傅里叶变换">14.3.1 实现傅里叶变换<a class="headerlink" href="#1431-实现傅里叶变换" title="Permanent link">#</a></h3>
+<p>语法格式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>返回结果 = cv2.dft(原始图像, 转换标识)
+</code></pre></div>
+<p>使用时注意参数规范：</p>
+<ul>
+<li>参数"原始图像"要先使用 <code>np.float32()</code> 转换成 np.float32 格式；</li>
+<li>"转换标识"的值通常为 <code>cv2.DFT_COMPLEX_OUTPUT</code>，用来输出一个复数阵列。</li>
+</ul>
+<p><code>cv2.dft()</code> 返回的结果与 Numpy 傅里叶变换的结果一致，但它返回的值是<strong>双通道</strong>的：第 1 个通道是结果的实数部分，第 2 个通道是结果的虚数部分。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：dft 与 fft2 到底是不是同一个结果</p>
+<p>是。用同一组固定随机数（8×8）实测：把 cv2.dft 的双通道（实部+虚部）拼成复数后，与 np.fft.fft2 的结果 <code>np.allclose</code> 通过——float32 输入最大偏差 <span class="arithmatex">\(6.8\times10^{-5}\)</span>（float32 的精度级），float64 输入严格 allclose。两者的差别只在"装频谱的容器"：numpy 给一个复数数组，OpenCV 给一个两通道实数数组。注意 <code>cv2.dft</code> 只接受 32/64 位浮点输入，uint8 直接断言失败：<code>type == CV_32FC1 || type == CV_32FC2 || ...</code>。</p>
+</div>
+<p>经过 <code>cv2.dft()</code> 变换后得到原始图像的频谱信息，此时零频率分量并不在中心位置，为了处理方便需要将其移至中心——仍然用 <code>numpy.fft.fftshift()</code> 实现：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">dftShift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>    <span class="c1"># 把频谱 dft 中的零频率分量移到中心</span>
+</code></pre></div>
+<p>处理后频谱还只是"实部+虚部"的原始值，要显示还需进一步处理。函数 <code>cv2.magnitude()</code> 计算频谱信息的幅度：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>返回值 = cv2.magnitude(参数1, 参数2)
+</code></pre></div>
+<p>两个参数的含义：</p>
+<ul>
+<li>参数 1：浮点型 x 坐标值，也就是实部；</li>
+<li>参数 2：浮点型 y 坐标值，也就是虚部，它必须和参数 1 具有相同的大小（是 size 相同，不是 value 相同）。</li>
+</ul>
+<p>返回值是参数 1 和参数 2 的平方和的平方根：</p>
+<div class="arithmatex">\[
+\text{dst}(I) = \sqrt{\text{src1}(I)^2 + \text{src2}(I)^2}
+\]</div>
+<p>式中 I 表示原始图像，dst 表示目标图像。</p>
+<p>得到频谱幅度后，通常再做一次对数转换，把幅度值映射到灰度空间内，以灰度图像的形式展示出来：</p>
+<div class="arithmatex">\[
+\text{result} = 20 \times \text{np.log}(\text{cv2.magnitude}(\text{实部}, \text{虚部}))
+\]</div>
+<p>对一幅图像完整走一遍流程，观察每一步的值。如下代码对图像做傅里叶变换、计算幅度并做规范化处理：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 14.3.1 演示：观察 cv2.dft 各步骤的值 =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'picture8.jpg'</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>           <span class="c1"># 原书 lena.bmp</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">dft</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DFT_COMPLEX_OUTPUT</span><span class="p">)</span>     <span class="c1"># 转 float32 后变换，输出双通道</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>                                                       <span class="c1"># 频谱原始值：实部+虚部</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">dftShift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>                                  <span class="c1"># 零频率分量移到中心</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">dftShift</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">result</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">magnitude</span><span class="p">(</span><span class="n">dftShift</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dftShift</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]))</span>   <span class="c1"># 幅度 → 对数缩放</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<p>控制台输出（节选，picture8.jpg，数组形状 (936, 432, 2)）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[[[ 8.6236832e+07  0.0000000e+00]
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  [ 1.5278692e+06 -2.8842247e+05]
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  [ 1.6993070e+06 -1.3284852e+06]
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  ...
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  [ 1.6993070e+06  1.3284852e+06]
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  [ 1.5278692e+06  2.8842247e+05]]
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a> ...
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a> [[ 5.8876855e+03 -1.2730505e+02]
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  [ 3.4094033e+03  2.2128416e+03]
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>  ...
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>  [ 3.4094033e+03 -2.2128416e+03]
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>  [ 5.8876924e+03  1.2730969e+02]]]
+</code></pre></div>
+<p>幅度值对数缩放后（result 的前几行）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[[115.17808 166.80937 157.20457 ... 140.02374 157.20457 166.80937]
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a> [170.33455 169.99630 182.59192 ... 178.78554 175.72964 166.86703]
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a> [145.33728 171.02048 162.05890 ... 159.65900 156.89287 166.03783]]
+</code></pre></div>
+<p>各步骤的取值范围如图 14-14 所示：</p>
+<ul>
+<li>左图是 <code>cv2.dft()</code> 得到的频谱值，由实部和虚部构成，数值可达 <span class="arithmatex">\(10^3\)</span>~<span class="arithmatex">\(10^8\)</span>；</li>
+<li>中间的图是 <code>cv2.magnitude()</code> 计算得到的频谱幅度值，不在标准灰度空间 <span class="arithmatex">\([0, 255]\)</span> 内；</li>
+<li>右图是对幅度进一步规范化（20·log）后的结果，量级回落到一百多。</li>
+</ul>
+<figure>
+  <img src="../images/ch14/fig-14-14.png" class="lq-img" />
+  <figcaption>图 14.14 值范围：频谱原始值、幅度值、规范化后的显示值（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书表述不准：20*np.log 并不会把值压进 [0, 255]</p>
+<p>原书称规范化后"值的范围在 [0, 255] 内"。实测 picture8.jpg：result 的范围是 <span class="arithmatex">\([51.5, 365.5]\)</span>，中心直流分量 <span class="arithmatex">\(20\ln(8.6\times10^7)\approx 365\)</span>，明显超过 255。<code>np.log</code> 是自然对数，20·ln 只是把跨度几千万倍的动态范围压缩到几百的跨度，并不装箱；显示正常是因为 <code>plt.imshow</code> 默认按数据 min–max 归一化。要严格压进 <span class="arithmatex">\([0, 255]\)</span>，可再套一层 <code>cv2.normalize</code> 或 <code>cv2.convertScaleAbs</code>。</p>
+</div>
+<p>【例 14.4】用 OpenCV 函数对图像进行傅里叶变换，并展示其频谱信息。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== 14.3.1 例 14.4：OpenCV 傅里叶变换，展示频谱 =====</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'picture8.jpg'</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>           <span class="c1"># 原书 lena.bmp</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">dft</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DFT_COMPLEX_OUTPUT</span><span class="p">)</span>     <span class="c1"># 傅里叶变换：float32 输入、双通道输出</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">dftShift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>                                  <span class="c1"># 零频率分量移到中心</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">result</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">magnitude</span><span class="p">(</span><span class="n">dftShift</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dftShift</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]))</span>   <span class="c1"># 幅度 → 对数缩放</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Input Image'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Magnitude Spectrum'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-15：左图是原始图像，右图是频谱图像——用 <code>np.fft.fftshift()</code> 把零频率分量移至中心后的结果，形态与例 14.1 的 Numpy 版一致。</p>
+<figure>
+  <img src="../images/ch14/fig-14-15.png" class="lq-img" />
+  <figcaption>图 14.15 原图像与傅里叶变换后的频谱图像（截自原书）</figcaption>
+</figure>
+
+<h3 id="1432-实现逆傅里叶变换">14.3.2 实现逆傅里叶变换<a class="headerlink" href="#1432-实现逆傅里叶变换" title="Permanent link">#</a></h3>
+<p>OpenCV 用函数 <code>cv2.idft()</code> 实现逆傅里叶变换，它是 <code>cv2.dft()</code> 的逆函数。语法格式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>返回结果 = cv2.idft(原始数据)
+</code></pre></div>
+<p>对图像做傅里叶变换后，通常会把零频率分量移至频谱中心。如果用了 <code>numpy.fft.fftshift()</code> 移动零频率分量，逆傅里叶变换前要用 <code>numpy.fft.ifftshift()</code> 把零频率分量恢复到原来位置。还要注意，逆傅里叶变换后得到的值仍旧是复数，需要用 <code>cv2.magnitude()</code> 计算其幅度。</p>
+<p>【例 14.5】用 OpenCV 函数对图像进行傅里叶变换、逆傅里叶变换，并展示原始图像及逆变换后的图像。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># ===== 14.3.2 例 14.5：OpenCV 傅里叶变换 + 逆变换 =====</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'picture8.jpg'</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>           <span class="c1"># 原书 lena.bmp</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">dft</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DFT_COMPLEX_OUTPUT</span><span class="p">)</span>     <span class="c1"># 傅里叶变换</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">dftShift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>                                  <span class="c1"># 零频率移到中心</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">dftShift</span><span class="p">)</span>                              <span class="c1"># 零频率移回原位</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="n">iImg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">idft</span><span class="p">(</span><span class="n">ishift</span><span class="p">)</span>                                          <span class="c1"># 逆傅里叶变换：返回复数（双通道）</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="n">iImg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">magnitude</span><span class="p">(</span><span class="n">iImg</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">iImg</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">])</span>               <span class="c1"># 计算幅度</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'original'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">iImg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'inverse'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-16：左图是原始图像 img，右图是"变换 → 逆变换"一圈回来的图像，两者肉眼一致。</p>
+<figure>
+  <img src="../images/ch14/fig-14-16.png" class="lq-img" />
+  <figcaption>图 14.16 原始图像与逆傅里叶变换示例（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：cv2.idft 默认不缩放，结果是原图的 N 倍</p>
+<p>cv2.dft 与 cv2.idft 默认都不做归一化（对应 14.2.1 拓展里逆变换公式的 <span class="arithmatex">\(\frac{1}{MN}\)</span>：OpenCV 默认不乘）。实测 8×8 数组：<code>cv2.idft</code> 的结果与原数组最大偏差 15 687 = 最大像素值 249 × 63，正好是 <span class="arithmatex">\(N-1\)</span> 倍关系（结果被放大了 <span class="arithmatex">\(N=64\)</span> 倍）。原书例 14.5 直接 <code>plt.imshow</code> 看起来正常，是因为 plt.imshow 自动按 min–max 归一化，把 N 倍图线性压回显示；换成 <code>cv2.imshow</code>（float 图按 0~1 解释）或 <code>imwrite</code> 就是一片全白。要拿到真值，写 <code>cv2.idft(ishift, flags=cv2.DFT_SCALE)</code>：实测 8×8 数组还原最大偏差 <span class="arithmatex">\(5.7\times10^{-14}\)</span>，936×432 图最大偏差 <span class="arithmatex">\(7.6\times10^{-5}\)</span>（float32 精度级）。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：getOptimalDFTSize——让 dft 跑得更快</p>
+<p>cv2.dft 对尺寸为 2 的幂或 2、3、5 的倍数的矩阵有专门优化。<code>cv2.getOptimalDFTSize(n)</code> 返回不小于 n 的最优尺寸（实测：512→512，936→960，1000→1000，1040→1080）。工程上常用 <code>cv2.copyMakeBorder</code> 给图像扩边到最优尺寸再变换，处理完再裁回去，频谱内容不变、只是多出填充区。本章的示例尺寸不大，直接变换即可。</p>
+</div>
+<h3 id="1433-低通滤波示例">14.3.3 低通滤波示例<a class="headerlink" href="#1433-低通滤波示例" title="Permanent link">#</a></h3>
+<p>前面讲过，低频信号对应图像内变化缓慢的灰度分量（大草原上颜色趋于一致的广袤草原）。低通滤波器让高频信号衰减而让低频信号通过，图像低通滤波后会变模糊。</p>
+<p>做法：将傅里叶变换结果中高频信号的值都替换为 0（黑），屏蔽高频信号、只保留低频信号，从而实现低通滤波，如图 14-17 所示。</p>
+<figure>
+  <img src="../images/ch14/fig-14-17.png" class="lq-img" />
+  <figcaption>图 14.17 低通滤波示意图：original 原图、result 频谱、filter 高频置黑（截自原书）</figcaption>
+</figure>
+
+<p>实现时可以专门构造一个如图 14-18 左图所示的掩模图像，用它<strong>乘</strong>频谱图像，就能把频谱中的高频信号过滤掉。</p>
+<figure>
+  <img src="../images/ch14/fig-14-18.png" class="lq-img" />
+  <figcaption>图 14.18 构造滤波器：掩模 × 频谱 = 滤波后的频谱（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：'与运算'应为'乘法运算'</p>
+<p>原书两处写"用它与原图的傅里叶变换频谱图像进行与运算""然后，将其与频谱图像进行运算"。实际代码是 <code>fShift = dftShift * mask</code>，做的是<strong>乘法</strong>。0/1 掩模下乘法与按位与的结果恰好一致（<span class="arithmatex">\(1\cdot x=x\)</span>，<span class="arithmatex">\(0\cdot x=0\)</span>），但按位与对浮点频谱并无定义，准确的表述是掩模乘法。</p>
+</div>
+<p>图 14-18 左图的掩模可以采用如下方式构造：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>                       <span class="c1"># 行数、列数</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">crow</span><span class="p">,</span> <span class="n">ccol</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rows</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>        <span class="c1"># 中心坐标</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>   <span class="c1"># 两个通道，与频域图像匹配</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">mask</span><span class="p">[</span><span class="n">crow</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">crow</span><span class="o">+</span><span class="mi">30</span><span class="p">,</span> <span class="n">ccol</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="n">ccol</span><span class="o">+</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># 中心 60×60 置 1，其余为 0</span>
+</code></pre></div>
+<p>然后将其与频谱图像相乘，实现低通滤波：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">fShift</span> <span class="o">=</span> <span class="n">dftShift</span> <span class="o">*</span> <span class="n">mask</span>
+</code></pre></div>
+<p>【例 14.6】使用 <code>cv2.dft()</code> 对图像傅里叶变换得到频谱图像，在频域内将其高频分量的值处理为 0 实现低通滤波，最后逆变换回空域，观察变换前后的差异。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># ===== 14.3.3 例 14.6：OpenCV 低通滤波（掩模法） =====</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'picture8.jpg'</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>           <span class="c1"># 原书 lena.bmp</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="n">dft</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DFT_COMPLEX_OUTPUT</span><span class="p">)</span>     <span class="c1"># 傅里叶变换</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="n">dftShift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>                                  <span class="c1"># 零频率移到中心</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="n">crow</span><span class="p">,</span> <span class="n">ccol</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rows</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>   <span class="c1"># 两个通道，与频域图像匹配</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="n">mask</span><span class="p">[</span><span class="n">crow</span><span class="o">-</span><span class="mi">50</span><span class="p">:</span><span class="n">crow</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="n">ccol</span><span class="o">-</span><span class="mi">50</span><span class="p">:</span><span class="n">ccol</span><span class="o">+</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># 中心 100×100 置 1（原书为 30，跟随代码改 50）</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="n">fShift</span> <span class="o">=</span> <span class="n">dftShift</span> <span class="o">*</span> <span class="n">mask</span>                     <span class="c1"># 掩模乘频谱：中心低频保留，四周高频归零</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="n">ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fShift</span><span class="p">)</span>            <span class="c1"># 零频率移回原位</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="n">iImg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">idft</span><span class="p">(</span><span class="n">ishift</span><span class="p">)</span>                      <span class="c1"># 逆傅里叶变换</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="n">iImg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">magnitude</span><span class="p">(</span><span class="n">iImg</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">iImg</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1"># 取幅度</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'original'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">iImg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'inverse'</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>运行结果如图 14-19：左图为原始图像，右图为变换后的图像。经过低通滤波后，图像的边缘信息被削弱了，整体变模糊。</p>
+<figure>
+  <img src="../images/ch14/fig-14-19.png" class="lq-img" />
+  <figcaption>图 14.19 傅里叶变换前后的对比图：低通滤波后边缘被削弱（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：低通滤波实测与带通滤波</p>
+<p>实测 picture8.jpg（掩模 100×100）：频谱能量只剩 20.7%，还原图的 Sobel 梯度从 52.9 降到 38.8（73%），而全图均值几乎不变（213.28 vs 213.27）——直流分量留在中心，整图亮度得以保留，与高通"连亮度一起删"形成对照。掩模法稍加推广就是带通滤波器（<strong>band-pass filter</strong>）：用一个大低通掩模减去一个小低通掩模，得到只允许中间频率通过的环形区域，可提取中等尺度的结构；在特定位置开"窗口"（陷波滤波）则有针对性地去除周期性噪声。</p>
+</div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>cv2.dft 不吃 uint8</strong>：输入必须是 32/64 位浮点，先 <code>np.float32(img)</code> 再传入，否则断言失败 <code>type == CV_32FC1 || type == CV_32FC2 || type == CV_64FC1 || type == CV_64FC2</code>。numpy 的 fft2 没有这个要求。</li>
+<li><strong>np.fft.fftshift 默认滚动全部轴</strong>：对 cv2.dft 的 (行, 列, 2) 输出，第 3 个通道轴也会被滚半圈——实部与虚部两通道整体对调。算幅度时碰巧无影响（<span class="arithmatex">\(|a+b\mathrm{j}| = |b+a\mathrm{j}|\)</span>），原书的示例因此都显示正常；但只要对单个通道做运算就全错。给 OpenCV 双通道频谱做移位请写 <code>np.fft.fftshift(dft, axes=(0, 1))</code>。</li>
+<li><strong>cv2.idft 默认不缩放</strong>：结果为原图的 N 倍（N = rows×cols，8×8 数组实测偏差 15 687）。plt.imshow 靠 min-max 归一化遮住了这个问题；cv2.imshow / imwrite 会得到全白。需要真值时加 <code>flags=cv2.DFT_SCALE</code>。</li>
+<li><strong>fftshift 与 ifftshift 要成对</strong>：跳过 ifftshift 直接逆变换时，每个空域像素被乘上一个单位相位因子；"取幅度"流程侥幸不受影响（实测带/不带结果完全一致），但取实部/虚部继续运算立刻错乱（实测取实部最大偏差 368）。别依赖侥幸，成对使用。</li>
+<li><strong>fft2 喂彩图不报错但无意义</strong>：np.fft.fft2 对三维数组沿最后两轴变换，(936, 432, 3) 输入返回 (936, 432, 3) 的复数结果——形状都对，但根本不是"这幅图的频谱"。先 <code>cv2.cvtColor</code> 转灰度或逐通道处理。</li>
+<li><strong>掩模必须是 (rows, cols, 2)</strong>：cv2.dft 的频谱是双通道，<code>np.zeros((rows, cols, 2), np.uint8)</code> 与之匹配；0/1 掩模乘上去，实部虚部同时被保留或清零。写成单通道形状不匹配。</li>
+<li><strong>np.log(0) 产生 -inf</strong>：高通滤波把频谱中心置 0 后再算 <code>20*np.log(np.abs(...))</code> 会得到 -inf 并触发 RuntimeWarning。要显示滤波后的频谱，用 <code>20*np.log(np.abs(fshift) + 1)</code> 这类"加一防零"写法。</li>
+<li>**20*np.log 不保证落在 [0, 255]**：np.log 是自然对数，它压缩动态范围但不装箱；实测 picture8 的 result 范围 <span class="arithmatex">\([51.5, 365.5]\)</span>。显示靠 plt.imshow 自动归一化；要严格 <span class="arithmatex">\([0, 255]\)</span> 得再 <code>cv2.normalize</code> / <code>cv2.convertScaleAbs</code>。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>图像处理分空间域（直接处理像素：灰度变换、空间滤波，简单快速）与频率域（变换 → 频域处理 → 逆变换）；傅里叶变换是应用最广的频域变换。</li>
+<li>傅里叶定理：任何周期函数都是不同频率正弦函数的和；每个分量由频率、幅度、相位唯一确定，相位对应分量间的时间差，丢不得。</li>
+<li>低频对应变化缓慢的灰度分量（大块一致区域），高频对应尖锐过渡（边缘、轮廓、噪声）。</li>
+<li>变换结果是复数，显示用"幅度图像+相位图像"或"实数图像+虚数图像"；幅度包含大部分信息，但要逆变换回空域必须幅度与相位都保留。</li>
+<li>Numpy 流程：<code>np.fft.fft2(灰度图)</code> → <code>np.fft.fftshift</code>（零频率移到中心）→ <code>20*np.log(np.abs())</code> 显示；逆流程 <code>np.fft.ifftshift</code> → <code>np.fft.ifft2</code> → <code>np.abs</code>。</li>
+<li>OpenCV 流程：<code>np.float32</code> 转换后 <code>cv2.dft(img, flags=cv2.DFT_COMPLEX_OUTPUT)</code>（双通道：实部/虚部）→ <code>np.fft.fftshift</code> → <code>20*np.log(cv2.magnitude(实部, 虚部))</code>；逆流程 <code>ifftshift</code> → <code>cv2.idft</code> → <code>cv2.magnitude</code>。</li>
+<li>cv2.dft 与 np.fft.fft2 数值一致（float64 严格 allclose；float32 差异在 <span class="arithmatex">\(10^{-4}\)</span> 精度级），差别只在容器：复数数组 vs 双通道实数数组。</li>
+<li>高通滤波：频谱中心区域置零（<code>fshift[crow-30:crow+30, ccol-30:ccol+30] = 0</code>），边缘保留、整体偏暗只剩轮廓；低通滤波：0/1 掩模乘频谱保留中心，图像变模糊、亮度均值不变。</li>
+<li>cv2.idft 默认不缩放，结果被放大 N 倍；plt.imshow 显示正常是自动归一化的功劳，要真值加 <code>flags=cv2.DFT_SCALE</code>。</li>
+<li><code>cv2.getOptimalDFTSize(n)</code> 给出 &#8532;/5 倍数的最优尺寸（实测 936→960、1040→1080），配合 <code>cv2.copyMakeBorder</code> 扩边可加速 dft。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文 / 函数</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spatial domain</td>
+<td>空间域</td>
+<td>直接对像素进行处理所在的域</td>
+</tr>
+<tr>
+<td>frequency domain</td>
+<td>频域</td>
+<td>以频率为横轴的表示，与时域/空域信息等价</td>
+</tr>
+<tr>
+<td>Fourier transform</td>
+<td>傅里叶变换</td>
+<td>从时域/空域到频域的变换</td>
+</tr>
+<tr>
+<td>inverse Fourier transform</td>
+<td>逆傅里叶变换</td>
+<td>从频域搬回时域/空域的变换</td>
+</tr>
+<tr>
+<td>DFT（Discrete Fourier Transform）</td>
+<td>离散傅里叶变换</td>
+<td>图像这类离散信号的傅里叶变换</td>
+</tr>
+<tr>
+<td>FFT（Fast Fourier Transform）</td>
+<td>快速傅里叶变换</td>
+<td>DFT 的快速算法，fft2 的底层</td>
+</tr>
+<tr>
+<td>frequency</td>
+<td>频率</td>
+<td>分量重复的快慢，周期的倒数</td>
+</tr>
+<tr>
+<td>amplitude</td>
+<td>振幅 / 幅度</td>
+<td>该频率分量的强弱</td>
+</tr>
+<tr>
+<td>phase</td>
+<td>相位</td>
+<td>分量间的时间差信息</td>
+</tr>
+<tr>
+<td>low-frequency component</td>
+<td>低频分量</td>
+<td>变化缓慢的灰度成分，位于频谱中心</td>
+</tr>
+<tr>
+<td>high-frequency component</td>
+<td>高频分量</td>
+<td>尖锐过渡的灰度成分（边缘、噪声），位于频谱四周</td>
+</tr>
+<tr>
+<td>DC component</td>
+<td>直流分量</td>
+<td>零频率分量，等于全部像素之和，对应整体亮度</td>
+</tr>
+<tr>
+<td>magnitude image</td>
+<td>幅度图像</td>
+<td>各频率分量强弱的显示，包含大部分信息</td>
+</tr>
+<tr>
+<td>phase image</td>
+<td>相位图像</td>
+<td>各频率分量时间差的显示，决定结构位置</td>
+</tr>
+<tr>
+<td>real image / complex image</td>
+<td>实数图像 / 虚数图像</td>
+<td>频谱另一种显示组合：实部图加虚部图</td>
+</tr>
+<tr>
+<td>complex ndarray</td>
+<td>复数数组</td>
+<td>fft2 / ifft2 的返回类型</td>
+</tr>
+<tr>
+<td>low-pass filter</td>
+<td>低通滤波器</td>
+<td>低频通过、高频衰减，图像变模糊</td>
+</tr>
+<tr>
+<td>high-pass filter</td>
+<td>高通滤波器</td>
+<td>高频通过、低频衰减，细节凸显</td>
+</tr>
+<tr>
+<td>band-pass filter</td>
+<td>带通滤波器</td>
+<td>只允许中间频率通过（掩模法的环形推广）</td>
+</tr>
+<tr>
+<td>mask</td>
+<td>掩模</td>
+<td>0/1 模板，乘频谱实现选频</td>
+</tr>
+<tr>
+<td>np.fft.fft2 / np.fft.ifft2</td>
+<td>二维（逆）傅里叶变换</td>
+<td>输入灰度图，返回复数数组</td>
+</tr>
+<tr>
+<td>np.fft.fftshift / np.fft.ifftshift</td>
+<td>零频率移中 / 移回</td>
+<td>fftshift 移到中心，ifftshift 是它的逆操作</td>
+</tr>
+<tr>
+<td>cv2.dft / cv2.idft</td>
+<td>OpenCV（逆）傅里叶变换</td>
+<td>输入须 float32；DFT_COMPLEX_OUTPUT 双通道；idft 默认不缩放，真值加 DFT_SCALE</td>
+</tr>
+<tr>
+<td>cv2.magnitude</td>
+<td>求幅度</td>
+<td>实部虚部平方和的平方根，两参数须同 size</td>
+</tr>
+<tr>
+<td>cv2.getOptimalDFTSize</td>
+<td>最优尺寸</td>
+<td>返回 &#8532;/5 倍数的最小尺寸，配合扩边加速 dft</td>
+</tr>
+</tbody>
+</table>
+<p class="pdf-note"><a href="../第14章_傅里叶变换_跟随代码.ipynb">配套跟随代码 · 第14章（ipynb）</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
