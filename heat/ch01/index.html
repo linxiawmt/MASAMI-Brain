@@ -1,0 +1,4901 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/heat/ch01/">
+      
+      
+        <link rel="prev" href="../../holo/scanholo/ch5/">
+      
+      
+        <link rel="next" href="../ch02/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第1章 引言 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-1-章-引言" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第1章 引言
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../numana/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../opencv/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-什么是传热怎样传热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 什么是传热、怎样传热
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-物理起源与速率方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 物理起源与速率方程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 物理起源与速率方程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-导热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 导热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-对流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 对流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-热辐射" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.3 热辐射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-热阻概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.4 热阻概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-与热力学的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 与热力学的关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 与热力学的关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-与热力学第一定律能量守恒的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 与热力学第一定律（能量守恒）的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#表面能量平衡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        表面能量平衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-与热力学第二定律及热机效率的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 与热力学第二定律及热机效率的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-单位与量纲" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 单位与量纲
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-传热问题的分析方法解题方法论" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 传热问题的分析方法：解题方法论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-传热的相关性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 传热的相关性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-什么是传热怎样传热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 什么是传热、怎样传热
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-物理起源与速率方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 物理起源与速率方程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 物理起源与速率方程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-导热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 导热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-对流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 对流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-热辐射" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.3 热辐射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-热阻概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.4 热阻概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-与热力学的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 与热力学的关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 与热力学的关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-与热力学第一定律能量守恒的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 与热力学第一定律（能量守恒）的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#表面能量平衡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        表面能量平衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-与热力学第二定律及热机效率的关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 与热力学第二定律及热机效率的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-单位与量纲" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 单位与量纲
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-传热问题的分析方法解题方法论" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 传热问题的分析方法：解题方法论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-传热的相关性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 传热的相关性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-1-章-引言">第 1 章 引言<a class="headerlink" href="#第-1-章-引言" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：热力学只告诉你过程始末交换了多少能量，不回答"以多快的速率交换"——传热学补上这一半：只要介质内部或介质之间存在温度差，就必然发生传热，而传热有三种模式（导热、对流、辐射），每种模式有一条把热流量与温度差联系起来的速率方程。能量守恒（热力学第一定律）是贯穿全书的分析主线：选控制体、列能量平衡、代入速率方程，就能求出温度与热流量；热力学第二定律则给出热机效率的天花板，并说明真实换热如何把它压低。本章把全套"词汇表"、速率方程和解题方法论一次立起来，后面每一章都在这个框架里展开。</p>
+</blockquote>
+<h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">传热学引言</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">三种传热模式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">导热：分子碰撞的能量扩散</span>
+          <span class="brleaf">对流：扩散叠加流体宏观运动</span>
+          <span class="brleaf">辐射：电磁波发射，不需介质</span>
+          <span class="brleaf">每种模式一条速率方程</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">速率方程</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">傅里叶定律与导热系数</span>
+          <span class="brleaf">牛顿冷却公式与表面传热系数</span>
+          <span class="brleaf">斯特藩–玻尔兹曼定律与发射率</span>
+          <span class="brleaf">热流密度与热流量两层含义</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">热阻概念</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">热流量等于温差除以热阻</span>
+          <span class="brleaf">导热热阻与对流、辐射热阻</span>
+          <span class="brleaf">辐射线性化的辐射换热系数</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">与热力学的关系</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">第一定律：控制体能量平衡</span>
+          <span class="brleaf">贮能、生成、流入流出三类项</span>
+          <span class="brleaf">表面能量平衡</span>
+          <span class="brleaf">第二定律：卡诺效率与修正效率</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">单位与分析方法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">四个基本量纲与 SI 单位</span>
+          <span class="brleaf">开尔文与摄氏度的换算规则</span>
+          <span class="brleaf">解题七步格式</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">应用领域</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">能源转换与废热回收</span>
+          <span class="brleaf">燃气轮机叶片冷却</span>
+          <span class="brleaf">电子器件散热</span>
+          <span class="brleaf">生物与医学传热</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="11-什么是传热怎样传热">1.1 什么是传热、怎样传热<a class="headerlink" href="#11-什么是传热怎样传热" title="Permanent link">#</a></h2>
+<p>热力学课处理的是系统与外界之间的能量交换：交换的两种形式叫功和热。但热力学只关心过程<strong>端态</strong>（end states）——始末状态之间交换了多少，不回答两件事：这种交换的<strong>物理机制</strong>是什么？它以怎样的<strong>时间速率</strong>发生？传热学的目标就是把热力学分析向前推一步：研究传热模式，建立计算传热速率的关系式。</p>
+<p>第一个问题"什么是传热"用一句话就能答死：</p>
+<blockquote>
+<p>只要介质内部或介质之间存在温度差，传热就必然发生。（Whenever a temperature difference exists in a medium or between media, heat transfer must occur.）</p>
+</blockquote>
+<p>更完整的定义：</p>
+<blockquote>
+<p><strong>热量</strong>（heat）是因空间温度差而迁移的热能（Heat transfer (or heat) is thermal energy in transit due to a spatial temperature difference）。</p>
+</blockquote>
+<p>第二个问题"怎样传"——传热按<strong>模式</strong>（mode）分三类，见图 1.1：</p>
+<ul>
+<li><strong>导热</strong>（conduction）：静止介质（固体或流体）内部存在温度梯度时，穿越介质的传热；</li>
+<li><strong>对流</strong>（convection）：表面与运动流体温度不同时，表面与流体之间的传热；</li>
+<li><strong>热辐射</strong>（thermal radiation）：一切有限温度的表面都以电磁波形式发射能量；在没有中间介质的真空中，两个不同温度的表面之间照样有净辐射换热。</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-1.png" class="lq-img" />
+  <figcaption>图 1.1 导热、对流、辐射三种传热模式（截自原书）</figcaption>
+</figure>
+
+<h2 id="12-物理起源与速率方程">1.2 物理起源与速率方程<a class="headerlink" href="#12-物理起源与速率方程" title="Permanent link">#</a></h2>
+<p>作为工程师，要抓两件事：每种模式背后的<strong>物理机制</strong>，以及量化"单位时间转移多少能量"的<strong>速率方程</strong>（rate equation）。</p>
+<h3 id="121-导热">1.2.1 导热<a class="headerlink" href="#121-导热" title="Permanent link">#</a></h3>
+<p>一提到导热，脑子里应该立刻出现原子与分子的活动——正是这些微观过程支撑着导热。导热可以看成：由于粒子之间的相互作用，能量从物质中能量较高的粒子传给能量较低的粒子。</p>
+<p>用气体讲最清楚（图 1.2）：设气体中存在温度梯度，且没有宏观整体运动。任一点的温度对应于该点附近气体分子的能量——包括随机平动，也包括分子内部的转动与振动能。温度越高，分子能量越高。邻近分子在不断碰撞，碰撞时能量必然从高能分子流向低能分子。只要存在温度梯度，导热就必然沿温度降低的方向进行——即使没有碰撞，图 1.2 中假想平面 <span class="arithmatex">\(x_0\)</span> 也在被上、下两边的分子随机穿越：上方分子温度高、下方分子温度低，正 <span class="arithmatex">\(x\)</span> 方向必有净能量输运，碰撞只会强化这种输运。这种靠分子随机运动实现的净能量输运，叫能量<strong>扩散</strong>（diffusion）。</p>
+<figure>
+  <img src="../images/ch01/fig-1-2.png" class="lq-img" />
+  <figcaption>图 1.2 导热与分子活动引起的能量扩散的联系（截自原书）</figcaption>
+</figure>
+
+<p>液体的情况类似，只是分子排列更紧、相互作用更强更频繁。固体里，导热归因于原子活动，形式是<strong>晶格振动</strong>（lattice vibrations）——现代观点把它归结为原子运动诱发的晶格波：电绝缘体中能量完全靠晶格波传递；导体中还有<strong>自由电子</strong>的平动参与。导热相关的物性在第 2 章和附录 A 展开。</p>
+<p>导热的例子随处可见：金属勺插入热咖啡，露在外面的勺柄慢慢变热；冬天供暖房间通过墙壁向室外散热，主要就是墙内的导热。</p>
+<p><strong>速率方程：傅里叶定律</strong>。对图 1.3 的一维平壁，温度分布为 <span class="arithmatex">\(T(x)\)</span>，导热的速率方程叫<strong>傅里叶定律</strong>（Fourier's law）：</p>
+<div class="arithmatex">\[
+q_x'' = -k\,\frac{dT}{dx}
+\tag{1.1}
+\]</div>
+<p>逐项拆开：</p>
+<ul>
+<li><span class="arithmatex">\(q_x''\)</span>：<strong>热流密度</strong>（heat flux），单位 W/m²。它是垂直于传热方向的单位面积上、沿 <span class="arithmatex">\(x\)</span> 方向的传热速率；</li>
+<li><span class="arithmatex">\(dT/dx\)</span>：<span class="arithmatex">\(x\)</span> 方向的<strong>温度梯度</strong>（temperature gradient）；</li>
+<li><span class="arithmatex">\(k\)</span>：<strong>导热系数</strong>（thermal conductivity），单位 W/(m·K)，是输运物性，由壁面材料决定；</li>
+<li>负号的来源：热量沿温度降低的方向传递。温度梯度为负（<span class="arithmatex">\(T\)</span> 随 <span class="arithmatex">\(x\)</span> 增大而减小），热流密度为正。</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-3.png" class="lq-img" />
+  <figcaption>图 1.3 一维导热（能量的扩散）（截自原书）</figcaption>
+</figure>
+
+<p>图 1.3 是<strong>稳态</strong>（steady-state）条件：温度分布为线性，梯度可写成</p>
+<div class="arithmatex">\[
+\frac{dT}{dx} = \frac{T_2 - T_1}{L}
+\]</div>
+<p>于是热流密度为常数：</p>
+<div class="arithmatex">\[
+q_x'' = -k\,\frac{T_2 - T_1}{L} = k\,\frac{T_1 - T_2}{L} = k\,\frac{\Delta T}{L}
+\tag{1.2}
+\]</div>
+<p>注意式 (1.2) 给的是<strong>热流密度</strong>——单位面积的传热速率。整个壁面积 <span class="arithmatex">\(A\)</span> 上的<strong>热流量</strong>（heat rate）<span class="arithmatex">\(q_x\)</span>（单位 W）等于热流密度乘面积：</p>
+<div class="arithmatex">\[
+q_x = q_x'' \, A
+\]</div>
+<p>热流密度（W/m²）和热流量（W）是两个量，单位差一个 m²，别混。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：导热系数的量级感</p>
+<p><span class="arithmatex">\(k\)</span> 跨好几个数量级：纯金属约 10–400 W/(m·K)（铜约 400），合金几十，液体约 0.1–1，气体约 0.01–0.2（空气 300 K 时约 0.026），多孔隔热材料可以低到 0.01–0.1。选材时"导热好"与"隔热好"就是在这根数轴两端做选择。具体数值查附录 A。</p>
+</div>
+<p><strong>【例 1.1】工业炉墙的散热</strong></p>
+<p><strong>已知（Known）</strong>：工业炉的炉墙由厚 0.15 m 的耐火黏土砖（fireclay brick）砌成，导热系数 1.7 W/(m·K)。稳态运行时测得内、外表面温度分别为 1400 K 和 1150 K。</p>
+<p><strong>求（Find）</strong>：0.5 m × 1.2 m 墙面的散热速率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-1.png" class="lq-img" />
+  <figcaption>例 1.1 示意图：炉墙的一维导热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 通过炉墙为一维导热；3. 导热系数为常数。</p>
+<p><strong>分析（Analysis）</strong>：传热方式是导热，热流密度由傅里叶定律给出。用式 (1.2)：</p>
+<div class="arithmatex">\[
+q_x'' = k\,\frac{\Delta T}{L} = 1.7\ \mathrm{W/(m \cdot K)} \times \frac{250\ \mathrm{K}}{0.15\ \mathrm{m}} = 2833\ \mathrm{W/m^2}
+\]</div>
+<p>热流密度代表通过单位面积截面的传热速率，它在整个墙面上均匀（不变）。墙面积 <span class="arithmatex">\(A = H \times W\)</span>，热损失为</p>
+<div class="arithmatex">\[
+q_x = (H \times W)\, q_x'' = (0.5\ \mathrm{m} \times 1.2\ \mathrm{m}) \times 2833\ \mathrm{W/m^2} = 1700\ \mathrm{W}
+\]</div>
+<p><strong>点评（Comments）</strong>：注意热流方向（从高温内表面指向低温外表面），以及热流密度与热流量的区别。</p>
+<h3 id="122-对流">1.2.2 对流<a class="headerlink" href="#122-对流" title="Permanent link">#</a></h3>
+<p>对流模式包含两种机制的叠加：除了随机分子运动造成的能量扩散，还有流体<strong>宏观整体运动</strong>携带的能量。任一瞬间都有大量分子成团地集体运动，存在温度梯度时，这种整体运动对传热有贡献。由于成团的分子仍保留随机运动，总传热 = 随机分子运动输运 + 流体整体运动输运的叠加。习惯上把这种复合输运叫<strong>对流</strong>（convection），而把"靠流体整体运动输运"单独称为<strong>平流</strong>（advection）。</p>
+<p>我们最关心的是<strong>运动流体与其接触表面</strong>之间、二者温度不同时发生的对流换热。看图 1.4：流体流过加热表面，流体–表面相互作用的结果，是流体中形成一个速度从壁面处为零过渡到来流速度 <span class="arithmatex">\(u_\infty\)</span> 的区域——<strong>流动边界层</strong>（hydrodynamic, or velocity, boundary layer，也叫速度边界层）。若表面与来流温度不同，还有一个温度从壁面处 <span class="arithmatex">\(T_s\)</span> 过渡到外流 <span class="arithmatex">\(T_\infty\)</span> 的区域——<strong>热边界层</strong>（thermal boundary layer），它可能比速度边界层小、大或相当。只要 <span class="arithmatex">\(T_s \neq T_\infty\)</span>，表面就会向外流对流换热。</p>
+<figure>
+  <img src="../images/ch01/fig-1-4.png" class="lq-img" />
+  <figcaption>图 1.4 对流换热中的边界层发展（截自原书）</figcaption>
+</figure>
+
+<p>对流换热靠边界层内的随机分子运动和流体整体运动共同维持：靠近壁面处流体速度低，随机分子运动（扩散）的贡献占主导——事实上在表面与流体的界面（<span class="arithmatex">\(y=0\)</span>）处流体速度为零，传热完全靠这一机制。整体运动的贡献来自边界层沿 <span class="arithmatex">\(x\)</span> 方向不断增长：导入边界层的热量被下游带走，最终交给边界层外的流体。理解对流离不开边界层，所以流体力学在后面的对流分析中会反复出场。</p>
+<p>按流动的起因分类（图 1.5）：</p>
+<ul>
+<li><strong>强制对流</strong>（forced convection）：流动由外部手段驱动——风扇、泵、大气风等。例：用风扇给印制电路板上的发热元件吹风冷却（图 1.5a）。</li>
+<li><strong>自然对流</strong>（free convection，或 natural convection）：流动由<strong>浮升力</strong>（buoyancy forces）诱发，浮升力来自流体中温度差异造成的密度差异。例：竖直排列的电路板，接触元件的空气升温、密度变小，比周围空气轻而上浮，较冷的环境空气从下方补入（图 1.5b）。</li>
+<li><strong>混合对流</strong>（mixed convection）：强制与自然并存。若图 1.5a 中流速小、浮升力大，会诱发出与强制流相当的二次流，方向垂直于强制流，对换热影响显著；图 1.5b 中若用风扇强迫空气向上（顺浮升力）或向下（逆浮升力）流过板间，也构成混合对流。</li>
+</ul>
+<p>传的能量通常是流体的<strong>显热</strong>（sensible，即内热能）；但对某些对流过程，还有<strong>潜热</strong>（latent）交换参与，一般与液–汽两相间的相变相伴。本书关注两个特例：<strong>沸腾</strong>（boiling，锅底产生的汽泡诱发液体运动，图 1.5c）与<strong>凝结</strong>（condensation，水蒸气在冷水管外表面凝结，图 1.5d）。</p>
+<figure>
+  <img src="../images/ch01/fig-1-5.png" class="lq-img" />
+  <figcaption>图 1.5 对流换热过程：(a) 强制对流；(b) 自然对流；(c) 沸腾；(d) 凝结（截自原书）</figcaption>
+</figure>
+
+<p>不论哪种对流过程，速率方程都写成<strong>牛顿冷却公式</strong>（Newton's law of cooling）：</p>
+<div class="arithmatex">\[
+q'' = h\,(T_s - T_\infty)
+\tag{1.3a}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(q''\)</span>：<strong>对流热流密度</strong>（convective heat flux），W/m²，正比于表面温度 <span class="arithmatex">\(T_s\)</span> 与流体温度 <span class="arithmatex">\(T_\infty\)</span> 之差；</li>
+<li><span class="arithmatex">\(h\)</span>：<strong>对流换热系数</strong>（convection heat transfer coefficient），单位 W/(m²·K)。国内教材（杨世铭、陶文铨《传热学》）也称<strong>表面传热系数</strong>。</li>
+</ul>
+<p><span class="arithmatex">\(h\)</span> 取决于边界层内的状况，受表面几何、流动性质以及一堆流体热力学与输运物性影响。对流研究的最终目标就是确定 <span class="arithmatex">\(h\)</span>（第 6 章）；在那之前，对流经常作为导热问题（第 2–5 章）的边界条件出现——那时把 <span class="arithmatex">\(h\)</span> 当已知量，取表 1.1 的典型值。</p>
+<p>方向约定：用式 (1.3a) 时，规定热从表面流出（<span class="arithmatex">\(T_s &gt; T_\infty\)</span>）为正、流入表面为负。当然也可以反过来写</p>
+<div class="arithmatex">\[
+q'' = h\,(T_\infty - T_s)
+\tag{1.3b}
+\]</div>
+<p>此时热流入表面为正。两种写法都行，关键是说清楚正方向。</p>
+<p><strong>表 1.1 对流换热系数的典型值</strong></p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>流体</th>
+<th><span class="arithmatex">\(h\)</span> [W/(m²·K)]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自然对流（free convection）</td>
+<td>气体</td>
+<td>2–25</td>
+</tr>
+<tr>
+<td>自然对流</td>
+<td>液体</td>
+<td>50–1000</td>
+</tr>
+<tr>
+<td>强制对流（forced convection）</td>
+<td>气体</td>
+<td>25–250</td>
+</tr>
+<tr>
+<td>强制对流</td>
+<td>液体</td>
+<td>100–20 000</td>
+</tr>
+<tr>
+<td>相变对流：沸腾或凝结（boiling / condensation）</td>
+<td>液–汽</td>
+<td>2500–100 000</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">拓展：h 为什么不是物性</p>
+<p><span class="arithmatex">\(k\)</span> 是材料属性，<span class="arithmatex">\(h\)</span> 不是任何材料的属性——它是"边界层内导热 + 整体运动输运"这个复合过程的表现强度，随流动起因（强制/自然）、几何（平板/圆管/翼型）、流速、流体物性（<span class="arithmatex">\(\rho, c_p, \mu, k\)</span>……）而变，同一工况下还可能随位置变化（例 1.3 点评 3：桨叶扫过机舱时 <span class="arithmatex">\(h\)</span> 周期性波动，取的是时间平均值）。第 6 章会用无量纲数（努塞尔数、雷诺数、普朗特数）系统地算 <span class="arithmatex">\(h\)</span>。</p>
+</div>
+<h3 id="123-热辐射">1.2.3 热辐射<a class="headerlink" href="#123-热辐射" title="Permanent link">#</a></h3>
+<p><strong>热辐射</strong>（thermal radiation）是一切非零温度物质发射的能量。虽然本书聚焦固体表面的辐射，液体、气体同样发射。不管物质形态如何，发射都归因于组成原子/分子的电子构型变化；辐射场的能量靠电磁波（或说光子）输运。导热和对流都需要物质介质，辐射不需要——事实上辐射在真空中传递得最有效。</p>
+<p>看图 1.6a：表面发射的辐射来自表面所包物质的热能，单位面积单位时间的发射速率叫<strong>表面发射功率</strong>（surface emissive power）<span class="arithmatex">\(E\)</span>（W/m²）。发射功率有上限，由<strong>斯特藩–玻尔兹曼定律</strong>（Stefan–Boltzmann law）给出：</p>
+<div class="arithmatex">\[
+E_b = \sigma T_s^4
+\tag{1.4}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(T_s\)</span>：表面的<strong>绝对温度</strong>（absolute temperature），必须用开尔文（K）；</li>
+<li><span class="arithmatex">\(\sigma\)</span>：<strong>斯特藩–玻尔兹曼常数</strong>（Stefan–Boltzmann constant），<span class="arithmatex">\(\sigma = 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}\)</span>。</li>
+</ul>
+<p>达到上限的理想辐射体叫<strong>黑体</strong>（blackbody）。真实表面的发射热流密度低于同温度黑体，写成</p>
+<div class="arithmatex">\[
+E = \varepsilon\,\sigma T_s^4
+\tag{1.5}
+\]</div>
+<p>其中 <span class="arithmatex">\(\varepsilon\)</span> 是表面的辐射物性——<strong>发射率</strong>（emissivity），<span class="arithmatex">\(0 \le \varepsilon \le 1\)</span>，衡量表面相对黑体的发射效率，强烈依赖材料与表面处理（查附录 A）。</p>
+<p>辐射也会从外界<strong>入射</strong>到表面上——可能来自太阳这类特殊源，也可能来自周围其他表面。不管来源，把单位面积上入射辐射的速率记为<strong>投入辐射</strong>（irradiation）<span class="arithmatex">\(G\)</span>（图 1.6a）。</p>
+<p>投入辐射的一部分（或全部）被表面吸收，使物质热能增加。单位面积吸收辐射的速率用表面辐射物性<strong>吸收比</strong>（absorptivity，旧译"吸收率"）<span class="arithmatex">\(\alpha\)</span> 计算：</p>
+<div class="arithmatex">\[
+G_{\mathrm{abs}} = \alpha G
+\tag{1.6}
+\]</div>
+<p><span class="arithmatex">\(0 \le \alpha \le 1\)</span>。若 <span class="arithmatex">\(\alpha &lt; 1\)</span> 且表面<strong>不透明</strong>（opaque），其余投入辐射被反射；若表面<strong>半透明</strong>（semitransparent），还有一部分透射。注意：吸收使物质热能增加、发射使其减少，而反射和透射对物质热能没有影响。<span class="arithmatex">\(\alpha\)</span> 的值既取决于表面本身，也取决于入射辐射的性质——同一表面对太阳辐射的吸收比可能不同于对炉墙辐射的吸收比。</p>
+<figure>
+  <img src="../images/ch01/fig-1-6.png" class="lq-img" />
+  <figcaption>图 1.6 辐射换热：(a) 表面处；(b) 表面与大环境之间（截自原书）</figcaption>
+</figure>
+
+<p>工程中（太阳辐射或其他极高温源是显著例外）通常认为：液体对热辐射不透明，气体对热辐射透明；固体可以不透明（金属），也可以半透明（某些聚合物薄膜、半导体材料）。</p>
+<p>一个经常出现的特殊情形：小表面 <span class="arithmatex">\(T_s\)</span> 被一个远大的等温表面完全包围（图 1.6b），比如房间或炉子的墙壁 <span class="arithmatex">\(T_{sur}\)</span> 包着里面的一个表面（<span class="arithmatex">\(T_{sur} \neq T_s\)</span>）。第 12 章会证明：此时投入辐射可近似为 <span class="arithmatex">\(T_{sur}\)</span> 下黑体的发射，即 <span class="arithmatex">\(G = \sigma T_{sur}^4\)</span>。若再设表面为<strong>灰体</strong>（gray surface，<span class="arithmatex">\(\alpha = \varepsilon\)</span>），则该表面单位面积的净辐射换热为</p>
+<div class="arithmatex">\[
+q_{\mathrm{rad}}'' = \frac{q}{A} = \varepsilon E_b(T_s) - \alpha G = \varepsilon \sigma\,(T_s^4 - T_{sur}^4)
+\tag{1.7}
+\]</div>
+<p>这是"发射释放的热能"与"吸收获得的热能"之差。</p>
+<p>很多场合把净辐射换热写成类似对流的形式：</p>
+<div class="arithmatex">\[
+q_{\mathrm{rad}} = h_r A\,(T_s - T_{sur})
+\tag{1.8}
+\]</div>
+<p>由式 (1.7)，<strong>辐射换热系数</strong>（radiation heat transfer coefficient）<span class="arithmatex">\(h_r\)</span> 为</p>
+<div class="arithmatex">\[
+h_r = \varepsilon \sigma\,(T_s + T_{sur})(T_s^2 + T_{sur}^2)
+\tag{1.9}
+\]</div>
+<p>这一步把辐射速率方程<strong>线性化</strong>了：热流量正比于温度差，而不是四次方差。但注意，<span class="arithmatex">\(h_r\)</span> 强烈依赖温度，而对流换热系数 <span class="arithmatex">\(h\)</span> 的温度依赖一般较弱。</p>
+<p>图 1.6 的表面还可能同时对邻近气体对流换热。对图 1.6b 的情形，表面总换热速率为</p>
+<div class="arithmatex">\[
+q = q_{\mathrm{conv}} + q_{\mathrm{rad}} = hA\,(T_s - T_\infty) + \varepsilon \sigma A\,(T_s^4 - T_{sur}^4)
+\tag{1.10}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：黑体、灰体与基尔霍夫定律</p>
+<p>黑体有两个含义：吸收一切入射辐射，且在给定温度下发射功率最大（式 1.4 取等号）。真实表面的 <span class="arithmatex">\(\varepsilon\)</span> 与 <span class="arithmatex">\(\alpha\)</span> 都随波长、方向变化；<strong>灰体</strong>（gray surface）是"物性与波长无关"的理想化模型，此时热力学平衡下的基尔霍夫定律给出 <span class="arithmatex">\(\alpha = \varepsilon\)</span>，于是式 (1.7) 才能写成两个四次方项相减的形式。第 12 章展开。</p>
+</div>
+<p><strong>【例 1.2】裸蒸汽管道的热损失</strong></p>
+<p><strong>已知（Known）</strong>：一段无保温的蒸汽管穿过房间，空气与墙壁均为 25°C。管外径 70 mm，表面温度 200°C，发射率 0.8。管表面与空气间自然对流的换热系数为 15 W/(m²·K)。</p>
+<p><strong>求（Find）</strong>：1. 表面发射功率与投入辐射；2. 单位管长的热损失 <span class="arithmatex">\(q'\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-2.png" class="lq-img" />
+  <figcaption>例 1.2 示意图：房间内蒸汽管的对流与辐射散热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 管与房间之间的辐射换热属于"小表面对大封闭腔"；3. 表面发射率与吸收比相等。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>发射功率由式 (1.5) 计算，投入辐射对应 <span class="arithmatex">\(G = \sigma T_{sur}^4\)</span>（温度先换算成 K：<span class="arithmatex">\(T_s = 473\ \mathrm{K}\)</span>，<span class="arithmatex">\(T_{sur} = 298\ \mathrm{K}\)</span>）：</li>
+</ol>
+<div class="arithmatex">\[
+E = \varepsilon \sigma T_s^4 = 0.8 \times (5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}) \times (473\ \mathrm{K})^4 = 2270\ \mathrm{W/m^2}
+\]</div>
+<div class="arithmatex">\[
+G = \sigma T_{sur}^4 = (5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}) \times (298\ \mathrm{K})^4 = 447\ \mathrm{W/m^2}
+\]</div>
+<ol>
+<li>管的散热 = 向空气的对流 + 与墙壁的辐射，即式 (1.10)，其中 <span class="arithmatex">\(A = \pi D L\)</span>：</li>
+</ol>
+<div class="arithmatex">\[
+q = h(\pi D L)(T_s - T_\infty) + \varepsilon \sigma (\pi D L)(T_s^4 - T_{sur}^4)
+\]</div>
+<p>单位管长的热损失：</p>
+<div class="arithmatex">\[
+q' = \frac{q}{L} = 15\ \mathrm{W/(m^2 \cdot K)} \times (\pi \times 0.07\ \mathrm{m}) \times (200 - 25)^\circ\mathrm{C} = 577\ \mathrm{W/m}
+\]</div>
+<div class="arithmatex">\[
+q' = \frac{q_{\mathrm{rad}}}{L} = \pi D\,(E - \alpha G) = \pi \times 0.07\ \mathrm{m} \times (2270 - 0.8 \times 447)\ \mathrm{W/m^2} = 421\ \mathrm{W/m}
+\]</div>
+<div class="arithmatex">\[
+q' = 577\ \mathrm{W/m} + 421\ \mathrm{W/m} = 998\ \mathrm{W/m}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>对流（或导热）速率公式里的温度差用 °C 或 K 都行；但辐射速率公式里的温度必须用开尔文。</li>
+<li>管的净辐射速率也可写为 <span class="arithmatex">\(q'_{\mathrm{rad}} = \pi D (E - \alpha G)\)</span>（上式第二行）。</li>
+<li>这里辐射与对流量级相当，因为 <span class="arithmatex">\(T_s\)</span> 比 <span class="arithmatex">\(T_{sur}\)</span> 大得多，而自然对流的 <span class="arithmatex">\(h\)</span> 小。<span class="arithmatex">\(T_s\)</span> 更温和、<span class="arithmatex">\(h\)</span> 更大（强制对流）的场合，辐射常可忽略。本题条件下由式 (1.9) 算得 <span class="arithmatex">\(h_r = 11\ \mathrm{W/(m^2 \cdot K)}\)</span>。</li>
+</ol>
+<h3 id="124-热阻概念">1.2.4 热阻概念<a class="headerlink" href="#124-热阻概念" title="Permanent link">#</a></h3>
+<p>把式 (1.2)、(1.3a)、(1.8) 放在一起看，三种模式的传热速率都能写成同一个形状：</p>
+<div class="arithmatex">\[
+q = \frac{\Delta T}{R_t}
+\tag{1.11}
+\]</div>
+<p><span class="arithmatex">\(\Delta T\)</span> 是相关温差，<span class="arithmatex">\(A\)</span> 是垂直于传热方向的面积，<span class="arithmatex">\(R_t\)</span> 叫<strong>热阻</strong>（thermal resistance），单位 K/W，三种模式各有各的形式。例如把式 (1.2) 乘以面积 <span class="arithmatex">\(A\)</span> 改写成 <span class="arithmatex">\(q_x = \Delta T / R_{t,c}\)</span>，则导热热阻为</p>
+<div class="arithmatex">\[
+R_{t,c} = \frac{L}{kA}
+\]</div>
+<p>热阻概念第 3 章详细展开，它是解决复杂传热问题的一件利器。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：热阻的电路类比</p>
+<p>式 (1.11) 与欧姆定律 <span class="arithmatex">\(I = U/R\)</span> 同构：温差对应电压差，热流量对应电流，热阻对应电阻。于是导热杆是"电阻"，复合换热是"电阻串并联"——墙一层层砌就是串联，表面同时对流加辐射就是并联。第 3 章的热阻网络法全靠这个类比。</p>
+</div>
+<h2 id="13-与热力学的关系">1.3 与热力学的关系<a class="headerlink" href="#13-与热力学的关系" title="Permanent link">#</a></h2>
+<p>传热学与热力学高度互补、互相纠缠，但有根本区别。热交换在热力学第一、第二定律里都是核心角色——它是系统与外界交换能量的主要机制之一。热力学能算出系统从一个状态变到另一个状态需要多少热量，但既不管交换的<strong>机制</strong>，也不管计算交换<strong>速率</strong>的方法。传热学恰恰专门回答"多快"——速率方程（式 1.2、1.3、1.7）就是干这个的。传热学原理常常是把热力学概念落地的手段：比如单靠热力学定不了一座待建电站的尺寸，设计阶段必须引入传热学原理。</p>
+<h3 id="131-与热力学第一定律能量守恒的关系">1.3.1 与热力学第一定律（能量守恒）的关系<a class="headerlink" href="#131-与热力学第一定律能量守恒的关系" title="Permanent link">#</a></h3>
+<p>第一定律说到底就是一句话：系统总能量守恒，系统能量的变化只能来自跨边界的能量输运。对<strong>闭口系统</strong>（closed system，质量固定的区域），能量跨边界只有两条路：通过边界的热传递、对系统做功或系统对外做功。于是有熟悉的形式：</p>
+<div class="arithmatex">\[
+\Delta E_{\mathrm{tot}}^{\mathrm{st}} = Q - W
+\tag{1.12a}
+\]</div>
+<p><span class="arithmatex">\(\Delta E_{\mathrm{tot}}^{\mathrm{st}}\)</span> 是系统储存总能量的变化，<span class="arithmatex">\(Q\)</span> 是净传入系统的热量，<span class="arithmatex">\(W\)</span> 是系统对外做的净功（图 1.7a）。</p>
+<p>第一定律也适用于<strong>控制体</strong>（control volume，又称开口系统 open system）：由<strong>控制表面</strong>（control surface）围成的空间区域，质量可以穿过控制表面进出。进出的质量携带能量，这一过程叫<strong>能量平流</strong>（energy advection）——它是控制体的第三条能量通道。对控制体和闭口系统，第一定律可以统一陈述为：</p>
+<blockquote>
+<p><strong>时间间隔 <span class="arithmatex">\(\Delta t\)</span> 上的第一定律</strong>：控制体储存能量的增加量 = 进入控制体的能量 − 离开控制体的能量。</p>
+</blockquote>
+<p>应用时要记住：能量进入/离开控制体有三条路——通过边界的传热、对控制体做功或控制体对外做功、以及能量平流。</p>
+<figure>
+  <img src="../images/ch01/fig-1-7.png" class="lq-img" />
+  <figcaption>图 1.7 能量守恒：(a) 闭口系统、时间间隔上；(b) 控制体、瞬时（截自原书）</figcaption>
+</figure>
+
+<p>第一定律管的是<strong>总能量</strong>：动能与势能（合称机械能）加内能。内能再细分：显热分量（对应原子/分子的平动、转动、振动）、潜热分量（与相变相关的分子间作用）、化学分量（化学键）、核分量（核束缚）。传热学聚焦热能与机械能两种形式，而热能+机械能的总量并不守恒——其他形式的能量会转换过来。例如化学反应消耗化学能、使系统热能增加；系统内的电动机把电能变成机械能。这类转换看作热能或机械能的<strong>生成</strong>（generation，可正可负）。于是，特别适合传热分析的第一定律陈述是：</p>
+<blockquote>
+<p><strong>时间间隔 <span class="arithmatex">\(\Delta t\)</span> 上的热能与机械能方程</strong>：控制体中储存的热能与机械能的增加量 = 进入控制体的热能与机械能 − 离开控制体的热能与机械能 + 控制体内生成的热能与机械能。</p>
+</blockquote>
+<p>第一定律必须在<strong>每一瞬间</strong>都成立，所以还可以写成速率形式（各项单位 J/s，即 W）：</p>
+<blockquote>
+<p><strong>瞬时 <span class="arithmatex">\(t\)</span> 的热能与机械能方程</strong>：控制体中储存的热能与机械能的增加速率 = 进入速率 − 离开速率 + 生成速率。</p>
+</blockquote>
+<p>现在给各项配符号：<span class="arithmatex">\(E\)</span> 表示热能与机械能之和（区别于总能量 <span class="arithmatex">\(E_{\mathrm{tot}}\)</span>）；下标 st 表示控制体内储存的能量，in/out 表示进入/离开；生成记作 <span class="arithmatex">\(E_g\)</span>。两个框述分别写成：</p>
+<div class="arithmatex">\[
+\Delta E_{\mathrm{st}} = E_{\mathrm{in}} - E_{\mathrm{out}} + E_g
+\tag{1.12b}
+\]</div>
+<div class="arithmatex">\[
+\dot{E}_{\mathrm{st}} \equiv \frac{dE_{\mathrm{st}}}{dt} = \dot{E}_{\mathrm{in}} - \dot{E}_{\mathrm{out}} + \dot{E}_g
+\tag{1.12c}
+\]</div>
+<p>若流入与生成超过流出，控制体内储存的热能与机械能增加；反之减少；若三者平衡，就是稳态（steady-state），储存量不变。图 1.7b 是式 (1.12c) 的示意。</p>
+<p><strong>三类能量项怎么认</strong>：</p>
+<ul>
+<li><strong>储存能 <span class="arithmatex">\(E_{\mathrm{st}}\)</span></strong>：<span class="arithmatex">\(E_{\mathrm{tot}} = KE + PE + U\)</span>，其中动能 <span class="arithmatex">\(KE = \tfrac{1}{2}mV^2\)</span>，势能 <span class="arithmatex">\(PE = mgz\)</span>。传热问题里动能、势能变化通常小到可忽略。内能 <span class="arithmatex">\(U\)</span> 的显热与潜热分量合称<strong>热能</strong>（thermal energy）<span class="arithmatex">\(U_t = U_{\mathrm{sens}} + U_{\mathrm{lat}}\)</span>：显热分量主要伴随温度变化（也可能与压强有关）；潜热分量伴随相变——熔化、汽化使潜热能增加，凝结、凝固使其减少，无相变则该项不动。于是 <span class="arithmatex">\(E_{\mathrm{st}} = KE + PE + U_t\)</span>；很多问题里唯一要紧的储存项就是显热能，<span class="arithmatex">\(E_{\mathrm{st}} = U_{\mathrm{sens}}\)</span>。</li>
+<li><strong>生成 <span class="arithmatex">\(E_g\)</span></strong>：来自其他形式的内能（化学、电、电磁、核）向热能/机械能的转换，是<strong>体积现象</strong>（volumetric phenomenon），发生在控制体内部，一般正比于体积大小。例：放热化学反应把化学能换成热能；电流 <span class="arithmatex">\(I\)</span> 通过电阻 <span class="arithmatex">\(R\)</span>，电能以 <span class="arithmatex">\(I^2 R\)</span> 的速率耗散成热能。化学、电、核效应在本书中都按热能/机械能的源（或汇，即负源）处理，归入 <span class="arithmatex">\(E_g\)</span>。</li>
+<li><strong>流入与流出 <span class="arithmatex">\(E_{\mathrm{in}}\)</span>、<span class="arithmatex">\(E_{\mathrm{out}}\)</span></strong>：是<strong>表面现象</strong>（surface phenomena），只发生在控制表面，一般正比于表面积。包括传热（导热、对流、辐射）与边界上的功（边界位移、转轴、电磁效应）。质量穿边界时还要加上随质量平流带进/带出的能量：质量流量 <span class="arithmatex">\(\dot m\)</span> 进入时携带 <span class="arithmatex">\(\dot m(u_t + \tfrac{1}{2}V^2 + gz)\)</span>，其中 <span class="arithmatex">\(u_t\)</span> 是单位质量的热能。</li>
+</ul>
+<p><strong>稳流能量方程</strong>。控制体有流体穿越时，习惯把功分成两块：<strong>流动功</strong>（flow work）——压力推动流体穿越边界所做的功，单位质量为压强 × 比体积 <span class="arithmatex">\(pv\)</span>；其余功记作 <span class="arithmatex">\(\dot W\)</span>。稳态（<span class="arithmatex">\(dE_{\mathrm{st}}/dt = 0\)</span>）且无生成时，式 (1.12c) 化为<strong>稳流能量方程</strong>（steady-flow energy equation，图 1.8）：</p>
+<div class="arithmatex">\[
+\dot m \left(u_t + pv + \frac{1}{2}V^2 + gz\right)_{\mathrm{in}} - \dot m \left(u_t + pv + \frac{1}{2}V^2 + gz\right)_{\mathrm{out}} + q - \dot W = 0
+\tag{1.12d}
+\]</div>
+<p>括号内按进、出口处单位质量流体计。单位质量的热能与流动功之和就是<strong>焓</strong>（enthalpy）<span class="arithmatex">\(i = u_t + pv\)</span>。</p>
+<figure>
+  <img src="../images/ch01/fig-1-8.png" class="lq-img" />
+  <figcaption>图 1.8 稳流开口系统的能量守恒（截自原书）</figcaption>
+</figure>
+
+<p>本书大多数开口系统问题中，进、出口间潜热变化可忽略，热能只剩显热分量。若流体按理想气体处理、比热为常数，进、出口焓差为 <span class="arithmatex">\((i_{\mathrm{in}} - i_{\mathrm{out}}) = c_p(T_{\mathrm{in}} - T_{\mathrm{out}})\)</span>，<span class="arithmatex">\(c_p\)</span> 是比定压热容；若流体是不可压液体，<span class="arithmatex">\(c_p = c_v = c\)</span>，显热差为 <span class="arithmatex">\(c(T_{\mathrm{in}} - T_{\mathrm{out}})\)</span>，且只要压降不太大，流动功差 <span class="arithmatex">\((pv)_{\mathrm{in}} - (pv)_{\mathrm{out}}\)</span> 可忽略。</p>
+<p>在已假设稳态、无潜热变化、无生成的前提下，再加四种情形之一的假设，式 (1.12d) 就简化为<strong>稳流热能方程</strong>：</p>
+<div class="arithmatex">\[
+q = \dot m c_p (T_{\mathrm{out}} - T_{\mathrm{in}})
+\tag{1.12e}
+\]</div>
+<p>四种情形：</p>
+<ol>
+<li>理想气体，动能、势能变化可忽略，除流动功外无其他功；</li>
+<li>不可压液体，动能、势能变化可忽略，包括流动功在内的功都可忽略（压降不太大时流动功可忽略）；</li>
+<li>理想气体，黏性耗散可忽略、压强变化可忽略；</li>
+<li>不可压液体，黏性耗散可忽略。</li>
+</ol>
+<p><strong>黏性耗散</strong>（viscous dissipation）指流体中黏性力把机械能转换为热能的过程，只在高流速和/或高黏度时才重要。工程应用大多满足上述条件之一，所以式 (1.12e) 是分析运动流体换热的常用武器，第 8 章内部流动对流换热会再用。</p>
+<p>质量流量与体积流量：</p>
+<div class="arithmatex">\[
+\dot m = \rho V A_c, \qquad \dot \forall = V A_c = \frac{\dot m}{\rho}
+\]</div>
+<p>其中 <span class="arithmatex">\(\rho\)</span> 是流体密度，<span class="arithmatex">\(V\)</span> 是流速，<span class="arithmatex">\(A_c\)</span> 是流道横截面积。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：流动功与焓</p>
+<p><span class="arithmatex">\(pv\)</span> 这一项的物理图像：控制体上游的流体像活塞一样把单位质量的新流体"推进"控制体，压力乘比体积就是推入时做的功。它和热能 <span class="arithmatex">\(u_t\)</span> 打包成焓 <span class="arithmatex">\(i = u_t + pv\)</span>，是因为对开口系统而言这两笔能量总是结伴跨边界——这就是热力学里"焓是开口系统的能量货币"的传热学版本。</p>
+</div>
+<p><strong>【例 1.3】风电机舱的最低可能运行温度</strong></p>
+<p><strong>已知（Known）</strong>：风力机叶片带动大轴低速旋转，经齿轮箱（效率 <span class="arithmatex">\(\eta_{gb} = 0.93\)</span>）增速后驱动发电机（效率 <span class="arithmatex">\(\eta_{gen} = 0.95\)</span>）。容纳齿轮箱、发电机及配套设备的圆柱形机舱（nacelle）长 <span class="arithmatex">\(L = 6\ \mathrm{m}\)</span>、直径 <span class="arithmatex">\(D = 3\ \mathrm{m}\)</span>。风力机输出电功率 <span class="arithmatex">\(P = 2.5\ \mathrm{MW}\)</span>，空气与环境温度分别为 <span class="arithmatex">\(T_\infty = 25^\circ\mathrm{C}\)</span>、<span class="arithmatex">\(T_{sur} = 20^\circ\mathrm{C}\)</span>。机舱发射率 <span class="arithmatex">\(\varepsilon = 0.83\)</span>，换热系数 <span class="arithmatex">\(h = 35\ \mathrm{W/(m^2 \cdot K)}\)</span>。机舱靠桨毂一侧的表面可视为绝热，太阳辐射忽略。</p>
+<p><strong>求（Find）</strong>：机舱内部的最低可能运行温度。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-3.png" class="lq-img" />
+  <figcaption>例 1.3 示意图：机舱的功率流与表面散热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 大环境辐射；3. 机舱靠桨毂一侧的表面绝热。</p>
+<p><strong>分析（Analysis）</strong>：机舱外表面温度 <span class="arithmatex">\(T_s\)</span> 对应舱内的最低可能温度——舱内热量必须先传到表面、再散给空气与环境，所以舱内温度只会更高。</p>
+<p><strong>按总能量守恒算</strong>：第一定律写成速率形式 <span class="arithmatex">\(dE_{\mathrm{tot}}^{\mathrm{st}}/dt = \dot E_{\mathrm{in}}^{\mathrm{tot}} - \dot E_{\mathrm{out}}^{\mathrm{tot}}\)</span>，稳态下 <span class="arithmatex">\(\dot E_{\mathrm{in}}^{\mathrm{tot}} = \dot E_{\mathrm{out}}^{\mathrm{tot}}\)</span>。进入项是输入机舱的机械功 <span class="arithmatex">\(\dot W\)</span>，离开项包括电功率输出 <span class="arithmatex">\(P\)</span> 和机舱散热 <span class="arithmatex">\(q\)</span>：</p>
+<div class="arithmatex">\[
+\dot W - P - q = 0
+\]</div>
+<p><strong>按热能与机械能守恒算</strong>：从式 (1.12c) 出发，稳态下 <span class="arithmatex">\(\dot E_{\mathrm{in}} - \dot E_{\mathrm{out}} + \dot E_g = 0\)</span>。进入项仍是 <span class="arithmatex">\(\dot W\)</span>；离开项只有 <span class="arithmatex">\(q\)</span>——电功率不算在 <span class="arithmatex">\(E\)</span> 里，因为 <span class="arithmatex">\(E\)</span> 只指热能与机械能；发电把机械能转换成电能，是机械能的负源，所以电功率出现在生成项 <span class="arithmatex">\(\dot E_g = -P\)</span>：</p>
+<div class="arithmatex">\[
+\dot W - q - P = 0
+\]</div>
+<p>两种写法必然等价。于是散热速率为</p>
+<div class="arithmatex">\[
+q = \dot W - P
+\]</div>
+<p>机械功与电功率之间隔着两级效率：</p>
+<div class="arithmatex">\[
+P = \dot W\, \eta_{gb}\, \eta_{gen}
+\]</div>
+<p>代入得</p>
+<div class="arithmatex">\[
+q = P\left(\frac{1}{\eta_{gb}\,\eta_{gen}} - 1\right) = 2.5 \times 10^6\ \mathrm{W} \times \left(\frac{1}{0.93 \times 0.95} - 1\right) = 0.33 \times 10^6\ \mathrm{W}
+\]</div>
+<p><strong>代入速率方程</strong>：散热靠机舱外表面的对流（式 1.3a）与辐射（式 1.7）。换热面积 = 侧面 + 前端盖（后端盖绝热）：</p>
+<div class="arithmatex">\[
+A = \pi D L + \frac{\pi D^2}{4}
+\]</div>
+<div class="arithmatex">\[
+\left(\pi D L + \frac{\pi D^2}{4}\right)\left[\varepsilon \sigma (T_s^4 - T_{sur}^4) + h\,(T_s - T_\infty)\right] = 0.33 \times 10^6\ \mathrm{W}
+\]</div>
+<p>即</p>
+<div class="arithmatex">\[
+0.83 \times 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (T_s^4 - 293^4)\ \mathrm{K^4} + 35\ \mathrm{W/(m^2 \cdot K)} \times (T_s - 298)\ \mathrm{K} = \frac{0.33 \times 10^6\ \mathrm{W}}{63.6\ \mathrm{m^2}}
+\]</div>
+<p>这个方程没有闭式解，用试差法（或 IHT 之类软件）解得</p>
+<div class="arithmatex">\[
+T_s = 416\ \mathrm{K} = 143^\circ\mathrm{C}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>舱内温度非常高，例行维护根本没法进去——必须用风扇/鼓风机做热管理把温度降下来。</li>
+<li>提高齿轮箱或发电机的效率，既多发有用的电，又减小热管理硬件的尺寸与成本——一举两得。</li>
+<li>桨叶每次扫过机舱，<span class="arithmatex">\(h\)</span> 都会波动，所以题给的换热系数是时间平均值。</li>
+</ol>
+<p><strong>【例 1.4】通电导棒的升温方程</strong></p>
+<p><strong>已知（Known）</strong>：直径 <span class="arithmatex">\(D\)</span>、单位长度电阻 <span class="arithmatex">\(R_e'\)</span> 的长导棒初始与环境空气及大环境处于热平衡。通电电流 <span class="arithmatex">\(I\)</span> 后平衡被打破。</p>
+<p><strong>求（Find）</strong>：描述棒温随通电时间变化的方程。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-4.png" class="lq-img" />
+  <figcaption>例 1.4 示意图：通电导棒的控制体（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 任一时刻棒内温度均匀；2. 物性为常数（<span class="arithmatex">\(\rho, c, \varepsilon = \alpha\)</span>）；3. 棒外表面与大环境之间的辐射换热属于"小表面对大封闭腔"。</p>
+<p><strong>分析（Analysis）</strong>：要求温度随时间的变化率，第一定律应取瞬时（速率）形式。没有机械能分量，相关项只有：表面对流与辐射散热、棒内电阻（欧姆）加热生成、以及储存热能的变化。对长为 <span class="arithmatex">\(L\)</span> 的控制体应用式 (1.12c)：</p>
+<div class="arithmatex">\[
+\dot E_g - \dot E_{\mathrm{out}} = \dot E_{\mathrm{st}}
+\]</div>
+<p>生成项来自电阻加热：</p>
+<div class="arithmatex">\[
+\dot E_g = I^2 R_e' L
+\]</div>
+<p>加热在控制体内均匀发生，也可用体积热生成率 <span class="arithmatex">\(\dot q\)</span>（W/m³）表示：<span class="arithmatex">\(\dot q = I^2 R_e' / (\pi D^2/4)\)</span>，则 <span class="arithmatex">\(\dot E_g = \dot q V\)</span>。流出项为表面对流（式 1.3a）与净辐射（式 1.7）：</p>
+<div class="arithmatex">\[
+\dot E_{\mathrm{out}} = h(\pi D L)(T - T_\infty) + \varepsilon \sigma (\pi D L)(T^4 - T_{sur}^4)
+\]</div>
+<p>储存项变化来自温度变化：</p>
+<div class="arithmatex">\[
+\dot E_{\mathrm{st}} = \frac{dU_t}{dt} = \frac{d(\rho V c T)}{dt}
+\]</div>
+<p><span class="arithmatex">\(\rho\)</span>、<span class="arithmatex">\(c\)</span> 分别是棒材料的密度与比热，<span class="arithmatex">\(V = (\pi D^2/4)L\)</span> 是棒的体积。代入能量平衡：</p>
+<div class="arithmatex">\[
+I^2 R_e' L - h(\pi D L)(T - T_\infty) - \varepsilon \sigma (\pi D L)(T^4 - T_{sur}^4) = \rho c \frac{\pi D^2}{4} L\, \frac{dT}{dt}
+\]</div>
+<p>整理得</p>
+<div class="arithmatex">\[
+\frac{dT}{dt} = \frac{I^2 R_e' - \pi D h\,(T - T_\infty) - \pi D \varepsilon \sigma\,(T^4 - T_{sur}^4)}{\rho c\,(\pi D^2/4)}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>该方程可数值积分求棒温随时间的变化。稳态时 <span class="arithmatex">\(dT/dt = 0\)</span>，温度由代数方程确定：</li>
+</ol>
+<div class="arithmatex">\[
+\pi D h\,(T - T_\infty) + \pi D \varepsilon \sigma\,(T^4 - T_{sur}^4) = I^2 R_e'
+\]</div>
+<ol>
+<li>固定环境条件（<span class="arithmatex">\(h, T_\infty, T_{sur}\)</span>）、棒几何（<span class="arithmatex">\(D\)</span>）与物性（<span class="arithmatex">\(\rho, R_e', \varepsilon\)</span>）后，稳态温度只取决于生成速率、也就是电流。取一根裸铜线（<span class="arithmatex">\(D = 1\ \mathrm{mm}\)</span>，<span class="arithmatex">\(\varepsilon = 0.8\)</span>，<span class="arithmatex">\(R_e' = 0.4\ \Omega/\mathrm{m}\)</span>），放在大封闭腔（<span class="arithmatex">\(T_{sur} = 300\ \mathrm{K}\)</span>）里，通冷却风（<span class="arithmatex">\(h = 100\ \mathrm{W/(m^2 \cdot K)}\)</span>，<span class="arithmatex">\(T_\infty = 300\ \mathrm{K}\)</span>），对 <span class="arithmatex">\(0 \le I \le 10\ \mathrm{A}\)</span> 算出的稳态温度随电流单调上升。</li>
+<li>若安全上限规定 <span class="arithmatex">\(T = 60^\circ\mathrm{C}\)</span>，电流不得超过 5.2 A。此时辐射散热（0.6 W/m）远小于对流（10.4 W/m）。想在温度不超标的前提下加大电流，就得提高风速增大 <span class="arithmatex">\(h\)</span>：<span class="arithmatex">\(h = 250\ \mathrm{W/(m^2 \cdot K)}\)</span> 时最大允许电流可增到 8.1 A。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">拓展：这就是集总参数模型</p>
+<p>例 1.4 假设"任一时刻棒内温度均匀"，等于默认棒内导热"快到瞬间扯平"。这个假设成立的判据是毕渥数 <span class="arithmatex">\(Bi \ll 1\)</span>（第 5 章），对应的模型叫<strong>集总电容模型</strong>（lumped capacitance model）。一根 1 mm 的铜线导热好、尺寸小，这个假设相当靠谱；换成粗大的钢件就不行了。</p>
+</div>
+<p><strong>【例 1.5】氢–空 PEM 燃料电池的冷却风速</strong></p>
+<p><strong>背景</strong>：氢–空质子交换膜（PEM）燃料电池由电解质膜夹在多孔阴、阳极之间，构成很薄的三层膜电极组件（MEA）。阳极产生质子与电子（<span class="arithmatex">\(2\mathrm{H_2} \to 4\mathrm{H^+} + 4e^-\)</span>），阴极处二者复合成水（<span class="arithmatex">\(\mathrm{O_2} + 4e^- + 4\mathrm{H^+} \to 2\mathrm{H_2O}\)</span>），总反应 <span class="arithmatex">\(2\mathrm{H_2} + \mathrm{O_2} \to 2\mathrm{H_2O}\)</span>。电解质膜的双重职责：传导氢离子、阻挡电子——逼电子走外电路做电功。</p>
+<p>膜必须保持湿润才能传导离子；但阴极材料里若出现液态水，会堵住氧到达反应位，电池失效。所以必须控制电池温度 <span class="arithmatex">\(T_c\)</span>，让阴极侧恰好是饱和水蒸气。给定氢与空气入口流量、50 mm × 50 mm 的 MEA，电池发电 <span class="arithmatex">\(P = I \cdot E_c = 9\ \mathrm{W}\)</span>。饱和蒸汽条件对应 <span class="arithmatex">\(T_c = T_{sat} = 56.4^\circ\mathrm{C}\)</span>。电化学反应放热，生成热速率 <span class="arithmatex">\(\dot E_g = 11.25\ \mathrm{W}\)</span>，必须靠对流与辐射散掉。环境与大环境温度 <span class="arithmatex">\(T_\infty = T_{sur} = 25^\circ\mathrm{C}\)</span>，冷却风速与换热系数的关系为 <span class="arithmatex">\(h = 10.9\ \mathrm{W \cdot s^{0.8}/(m^{2.8} \cdot K)} \times V^{0.8}\)</span>（<span class="arithmatex">\(V\)</span> 单位 m/s）。电池外表面发射率 <span class="arithmatex">\(\varepsilon = 0.88\)</span>。</p>
+<p><strong>求（Find）</strong>：维持稳态运行（<span class="arithmatex">\(T_c = 56.4^\circ\mathrm{C}\)</span>）所需的冷却风速 <span class="arithmatex">\(V\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-5.png" class="lq-img" />
+  <figcaption>例 1.5 示意图：燃料电池的生成热与表面散热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 电池内部温度变化可忽略；3. 电池置于大环境中；4. 电池边缘绝热良好；5. 气体/液体流进出的能量可忽略。</p>
+<p><strong>分析（Analysis）</strong>：对电池做能量平衡。无机械能分量：<span class="arithmatex">\(\dot E_{\mathrm{in}} = 0\)</span>，稳态下 <span class="arithmatex">\(\dot E_{\mathrm{out}} = \dot E_g = 11.25\ \mathrm{W}\)</span>，即</p>
+<div class="arithmatex">\[
+q_{\mathrm{conv}} + q_{\mathrm{rad}} = \dot E_g = 11.25\ \mathrm{W}
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+q_{\mathrm{rad}} = \varepsilon A \sigma\,(T_c^4 - T_{sur}^4) = 0.88 \times (2 \times 0.05\ \mathrm{m} \times 0.05\ \mathrm{m}) \times 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (329.4^4 - 298^4)\ \mathrm{K^4} = 0.97\ \mathrm{W}
+\]</div>
+<p>（两块大面散热，<span class="arithmatex">\(A = 2 \times 0.05 \times 0.05 = 5 \times 10^{-3}\ \mathrm{m^2}\)</span>；温度已换算 <span class="arithmatex">\(T_c = 329.4\ \mathrm{K}\)</span>、<span class="arithmatex">\(T_{sur} = 298\ \mathrm{K}\)</span>。）</p>
+<p>于是</p>
+<div class="arithmatex">\[
+q_{\mathrm{conv}} = 11.25\ \mathrm{W} - 0.97\ \mathrm{W} = 10.28\ \mathrm{W}
+\]</div>
+<div class="arithmatex">\[
+q_{\mathrm{conv}} = hA\,(T_c - T_\infty) = 10.9\ \mathrm{W \cdot s^{0.8}/(m^{2.8} \cdot K)} \times V^{0.8} \times A\,(T_c - T_\infty)
+\]</div>
+<p>整理出风速：</p>
+<div class="arithmatex">\[
+V = \left[\frac{10.28\ \mathrm{W}}{10.9\ \mathrm{W \cdot s^{0.8}/(m^{2.8} \cdot K)} \times (2 \times 0.05\ \mathrm{m} \times 0.05\ \mathrm{m}) \times (56.4 - 25)^\circ\mathrm{C}}\right]^{1.25} = 9.4\ \mathrm{m/s}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>膜的温度与湿度在电池内各处不同，预测局部状态需要更细的分析。</li>
+<li>9.4 m/s 的风速相当高；若在电池外加换热强化件，可以降低所需风速。</li>
+<li>对流散热量明显大于辐射散热量。</li>
+<li>氢与氧的化学能（20.25 W）转换成电能（9 W）与热能（11.25 W），该电池的能量转换效率为 (9 W)/(20.25 W) × 100 = 44%。</li>
+</ol>
+<p><strong>【例 1.6】融冰为燃料电池供水</strong></p>
+<p><strong>已知（Known）</strong>：大型 PEM 燃料电池（如车用）需要内部液态水冷却，冷天停车时冷却水必须排到旁边容器里，防止冻坏电池。考虑质量为 <span class="arithmatex">\(M\)</span> 的冰：停车期间冻结而成，温度处于熔点 <span class="arithmatex">\(T_f = 0^\circ\mathrm{C}\)</span>，装在边长 <span class="arithmatex">\(W\)</span> 的立方容器内，容器壁厚 <span class="arithmatex">\(L\)</span>、导热系数 <span class="arithmatex">\(k\)</span>。开车后把容器外壁加热到 <span class="arithmatex">\(T_1 &gt; T_f\)</span> 融冰，向电池供水。</p>
+<p><strong>求（Find）</strong>：融完整块冰所需时间的表达式。</p>
+<p><strong>示意图（Schematic）</strong>：立方容器，冰水混合物（<span class="arithmatex">\(T_f\)</span>）在内，外壁面 <span class="arithmatex">\(A\)</span> 温度 <span class="arithmatex">\(T_1\)</span>，壁厚 <span class="arithmatex">\(L\)</span>、导热系数 <span class="arithmatex">\(k\)</span>（见原书例题插图）。</p>
+<p><strong>假设（Assumptions）</strong>：1. 整个过程中壁内表面温度恒为 <span class="arithmatex">\(T_f\)</span>；2. 物性为常数；3. 通过各面壁为稳态一维导热；4. 单面壁的导热面积近似取 <span class="arithmatex">\(W^2\)</span>（<span class="arithmatex">\(L \ll W\)</span>）。</p>
+<p><strong>分析（Analysis）</strong>：要求融化时间 <span class="arithmatex">\(t_m\)</span>，第一定律应取时间间隔形式，<span class="arithmatex">\(\Delta t = t_m\)</span>。对冰水混合物的控制体应用式 (1.12b)：</p>
+<div class="arithmatex">\[
+E_{\mathrm{in}} = \Delta E_{\mathrm{st}} = \Delta U_{\mathrm{lat}}
+\]</div>
+<p>储存能量的增加完全来自固–液相变的潜热能变化。热量靠穿过容器壁的导热进入冰中。整个融化过程壁两侧温差保持 <span class="arithmatex">\((T_1 - T_f)\)</span>，所以导热速率恒定：</p>
+<div class="arithmatex">\[
+q_{\mathrm{cond}} = k\,(6W^2)\,\frac{T_1 - T_f}{L}
+\]</div>
+<p>（六个面，单面面积 <span class="arithmatex">\(W^2\)</span>。）进入的能量为</p>
+<div class="arithmatex">\[
+E_{\mathrm{in}} = q_{\mathrm{cond}}\, t_m = k\,(6W^2)\,\frac{T_1 - T_f}{L}\, t_m
+\]</div>
+<p>单位质量固体完成相变所需的能量叫<strong>熔化潜热</strong>（latent heat of fusion）<span class="arithmatex">\(h_{sf}\)</span>，于是储存能增加 <span class="arithmatex">\(\Delta E_{\mathrm{st}} = M h_{sf}\)</span>。代入第一定律：</p>
+<div class="arithmatex">\[
+t_m = \frac{M\, h_{sf}\, L}{6 W^2\, k\,(T_1 - T_f)}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>若冰初始过冷（低于 <span class="arithmatex">\(T_f\)</span>），还得加上把冰升温到熔点的显热能项，且冰内会出现温度梯度，问题变复杂。</li>
+<li>数值演练：<span class="arithmatex">\(W = 100\ \mathrm{mm}\)</span>，<span class="arithmatex">\(L = 5\ \mathrm{mm}\)</span>，<span class="arithmatex">\(k = 0.05\ \mathrm{W/(m \cdot K)}\)</span>，<span class="arithmatex">\(T_1 = 30^\circ\mathrm{C}\)</span>。冰的质量</li>
+</ol>
+<div class="arithmatex">\[
+M = \rho_s (W - 2L)^3 = 920\ \mathrm{kg/m^3} \times (0.100 - 0.01)^3\ \mathrm{m^3} = 0.67\ \mathrm{kg}
+\]</div>
+<p>（冰的密度 <span class="arithmatex">\(\rho_s = 920\ \mathrm{kg/m^3}\)</span>，熔化潜热 <span class="arithmatex">\(h_{sf} = 334\ \mathrm{kJ/kg}\)</span>。）融化时间</p>
+<div class="arithmatex">\[
+t_m = \frac{0.67\ \mathrm{kg} \times 334\,000\ \mathrm{J/kg} \times 0.005\ \mathrm{m}}{6 \times (0.100\ \mathrm{m})^2 \times 0.05\ \mathrm{W/(m \cdot K)} \times (30 - 0)^\circ\mathrm{C}} = 12\,430\ \mathrm{s} \approx 207\ \mathrm{min}
+\]</div>
+<ol>
+<li>注意 <span class="arithmatex">\(t_m\)</span> 表达式里 K 与 °C 互相抵消——温度差出现的地方两个单位等价，传热分析里这种抵消很常见。</li>
+</ol>
+<h3 id="表面能量平衡">表面能量平衡<a class="headerlink" href="#表面能量平衡" title="Permanent link">#</a></h3>
+<p>经常要在<strong>介质表面</strong>上应用能量守恒。这时把两个控制表面贴着物理边界两侧放置，围出的控制体没有质量、没有体积（图 1.9）。生成项与储存项都不再出现——即使介质内部有能量生成，也不影响这个表面上的平衡；这个平衡对稳态和瞬态都成立。守恒要求变成：</p>
+<div class="arithmatex">\[
+\dot E_{\mathrm{in}} - \dot E_{\mathrm{out}} = 0
+\tag{1.13}
+\]</div>
+<figure>
+  <img src="../images/ch01/fig-1-9.png" class="lq-img" />
+  <figcaption>图 1.9 介质表面处的能量平衡（截自原书）</figcaption>
+</figure>
+
+<p>图 1.9 的控制表面上画了三项传热（按单位面积）：介质向控制表面的导热 <span class="arithmatex">\(q''_{\mathrm{cond}}\)</span>、表面对流体的对流 <span class="arithmatex">\(q''_{\mathrm{conv}}\)</span>、表面对环境的净辐射 <span class="arithmatex">\(q''_{\mathrm{rad}}\)</span>。能量平衡为</p>
+<div class="arithmatex">\[
+q_{\mathrm{cond}}'' - q_{\mathrm{conv}}'' - q_{\mathrm{rad}}'' = 0
+\tag{1.14}
+\]</div>
+<p>各项分别用速率方程（式 1.2、1.3a、1.7）代入即可。</p>
+<p><strong>【例 1.7】人体皮肤在空气里与在水里</strong></p>
+<p><strong>已知（Known）</strong>：人靠调节产热与散热维持核心体温 <span class="arithmatex">\(T_c = 37^\circ\mathrm{C}\)</span> 基本恒定——这叫体温调节（thermoregulation）。计算人体与环境换热时，聚焦一层皮肤+脂肪：外表面暴露于环境，内表面温度略低于核心温度，<span class="arithmatex">\(T_i = 35^\circ\mathrm{C} = 308\ \mathrm{K}\)</span>。某人的皮肤/脂肪层厚 <span class="arithmatex">\(L = 3\ \mathrm{mm}\)</span>，有效导热系数 <span class="arithmatex">\(k = 0.3\ \mathrm{W/(m \cdot K)}\)</span>，体表面积 <span class="arithmatex">\(A = 1.8\ \mathrm{m^2}\)</span>，穿泳装，皮肤发射率 <span class="arithmatex">\(\varepsilon = 0.95\)</span>。</p>
+<p><strong>求（Find）</strong>：1. 静止空气 <span class="arithmatex">\(T_\infty = 297\ \mathrm{K}\)</span>、自然对流 <span class="arithmatex">\(h = 2\ \mathrm{W/(m^2 \cdot K)}\)</span> 时，皮肤表面温度与人体散热速率；2. 在水 <span class="arithmatex">\(T_\infty = 297\ \mathrm{K}\)</span>、<span class="arithmatex">\(h = 200\ \mathrm{W/(m^2 \cdot K)}\)</span> 时，同样的两个量。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-7.png" class="lq-img" />
+  <figcaption>例 1.7 示意图：皮肤/脂肪层的导热与表面散热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 皮肤/脂肪层内为一维导热；3. 导热系数均匀；4. 皮肤表面与大环境的辐射换热属于"小表面对大封闭腔"，环境温度等于空气温度；5. 液态水对热辐射不透明；6. 泳装不影响散热；7. 太阳辐射忽略；8. 第 2 问中人体完全浸没。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>皮肤表面温度由表面能量平衡求出。由式 (1.13)，单位面积上：</li>
+</ol>
+<div class="arithmatex">\[
+q_{\mathrm{cond}}'' - q_{\mathrm{conv}}'' - q_{\mathrm{rad}}'' = 0
+\]</div>
+<p>代入式 (1.2)、(1.3a)、(1.7)：</p>
+<div class="arithmatex">\[
+\frac{k\,(T_i - T_s)}{L} = h\,(T_s - T_\infty) + \varepsilon \sigma\,(T_s^4 - T_{sur}^4)
+\]</div>
+<p>未知量只有 <span class="arithmatex">\(T_s\)</span>，但辐射项是四次方，解不出显式解——只能迭代（手算或用方程求解器）。手算技巧：用式 (1.8)、(1.9) 把辐射写成 <span class="arithmatex">\(h_r\)</span> 的形式：</p>
+<div class="arithmatex">\[
+\frac{k\,(T_i - T_s)}{L} = h\,(T_s - T_\infty) + h_r\,(T_s - T_{sur})
+\]</div>
+<p>先猜 <span class="arithmatex">\(T_s = 305\ \mathrm{K}\)</span>，由式 (1.9) 估出 <span class="arithmatex">\(h_r = 5.9\ \mathrm{W/(m^2 \cdot K)}\)</span>。解出 <span class="arithmatex">\(T_s\)</span>（<span class="arithmatex">\(T_{sur} = T_\infty\)</span>）：</p>
+<div class="arithmatex">\[
+T_s = \frac{\dfrac{k}{L}T_i + (h + h_r)\,T_\infty}{\dfrac{k}{L} + (h + h_r)} = \frac{\dfrac{0.3\ \mathrm{W/(m \cdot K)}}{3 \times 10^{-3}\ \mathrm{m}} \times 308\ \mathrm{K} + (2 + 5.9)\ \mathrm{W/(m^2 \cdot K)} \times 297\ \mathrm{K}}{\dfrac{0.3\ \mathrm{W/(m \cdot K)}}{3 \times 10^{-3}\ \mathrm{m}} + (2 + 5.9)\ \mathrm{W/(m^2 \cdot K)}} = 307.2\ \mathrm{K}
+\]</div>
+<p>用新的 <span class="arithmatex">\(T_s\)</span> 重算 <span class="arithmatex">\(h_r\)</span> 与 <span class="arithmatex">\(T_s\)</span>，数值不再变化——迭代收敛。皮肤温度 <span class="arithmatex">\(307.2\ \mathrm{K} \approx 34^\circ\mathrm{C}\)</span>。</p>
+<p>散热速率由皮肤/脂肪层的导热算：</p>
+<div class="arithmatex">\[
+q_s = kA\,\frac{T_i - T_s}{L} = 0.3\ \mathrm{W/(m \cdot K)} \times 1.8\ \mathrm{m^2} \times \frac{(308 - 307.2)\ \mathrm{K}}{3 \times 10^{-3}\ \mathrm{m}} \approx 146\ \mathrm{W}
+\]</div>
+<ol>
+<li>液态水对热辐射不透明，皮肤散热只有对流。用上面的表达式、令 <span class="arithmatex">\(h_r = 0\)</span>：</li>
+</ol>
+<div class="arithmatex">\[
+T_s = \frac{\dfrac{k}{L}T_i + h\,T_\infty}{\dfrac{k}{L} + h} = \frac{100\ \mathrm{W/(m^2 \cdot K)} \times 308\ \mathrm{K} + 200\ \mathrm{W/(m^2 \cdot K)} \times 297\ \mathrm{K}}{100\ \mathrm{W/(m^2 \cdot K)} + 200\ \mathrm{W/(m^2 \cdot K)}} = 300.7\ \mathrm{K}
+\]</div>
+<div class="arithmatex">\[
+q_s = kA\,\frac{T_i - T_s}{L} = 0.3\ \mathrm{W/(m \cdot K)} \times 1.8\ \mathrm{m^2} \times \frac{(308 - 300.7)\ \mathrm{K}}{3 \times 10^{-3}\ \mathrm{m}} = 1320\ \mathrm{W}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>做含辐射的能量平衡时，辐射项里的温度必须用开尔文；为避免混淆，所有项都用 K 是好习惯。</li>
+<li>第 1 问里对流损失 37 W、辐射损失 109 W——辐射不能省。凡是换热系数小（气体自然对流往往如此）的场合，即使题目没有任何提示，也要把辐射考虑进去。</li>
+<li>人体代谢产热的典型值是 100 W。在水里泡太久，核心体温就会开始下降——水里的巨大散热来自大得多的换热系数，归根结底是水的导热系数远大于空气。</li>
+<li>第 1 问皮肤温度 34°C，舒适；第 2 问 28°C，冷得难受。</li>
+</ol>
+<p><strong>守恒律应用方法论</strong>。除了熟悉 1.2 节的速率方程，还必须会用式 (1.12)、(1.13) 的能量守恒要求。按几条基本规则走，应用会顺很多：</p>
+<ol>
+<li>定义合适的<strong>控制体</strong>，控制表面用虚线画出；</li>
+<li>确定<strong>时间基准</strong>：时间间隔（式 1.12b）还是瞬时速率（式 1.12c），取决于求解目标和题目给信息的方式；</li>
+<li>认出<strong>相关能量过程</strong>，每个过程在控制体上画一条标注清楚的箭头；</li>
+<li>写出守恒方程，把相应的速率表达式代入相关项。</li>
+</ol>
+<p>守恒要求既可以加在<strong>有限控制体</strong>上（得到整体行为的方程），也可以加在<strong>微分（无限小）控制体</strong>上（得到能解出系统内每一点状态的微分方程）。微分控制体第 2 章引入，两种控制体全书都在用。</p>
+<h3 id="132-与热力学第二定律及热机效率的关系">1.3.2 与热力学第二定律及热机效率的关系<a class="headerlink" href="#132-与热力学第二定律及热机效率的关系" title="Permanent link">#</a></h3>
+<p><strong>热机</strong>（heat engine）是连续或循环运行、把热转换为功的装置：内燃机、电站、温差电器件（第 3.8 节）都是。提高热机效率极其重要：更高效的燃烧发动机做同样多的功烧更少的油，污染物与二氧化碳排放随之减少；更高效的温差电器件从废热里发更多的电。不管什么能量转换装置，尺寸、重量、成本都能靠提高转换效率压下来。</p>
+<p>关心效率时经常搬出第二定律，它有多种等价表述。<strong>开尔文–普朗克表述</strong>（Kelvin–Planck statement）与热机运行直接相关：</p>
+<blockquote>
+<p>任何系统都不可能在热力学循环中向外界输出净功，同时只从单一热库（thermal reservoir）接受热量。</p>
+</blockquote>
+<p>热力学循环是始末状态相同的过程，系统储能不变，于是第一定律（式 1.12a）退化为 <span class="arithmatex">\(W = Q\)</span>。开尔文–普朗克表述的一个推论：热机必须与<strong>两个（或更多）热库</strong>换热——从高温热库吸热、向低温热库排热。把全部输入热变成功是不可能的：<span class="arithmatex">\(W = Q_{\mathrm{in}} - Q_{\mathrm{out}}\)</span>，<span class="arithmatex">\(Q_{\mathrm{in}}\)</span>、<span class="arithmatex">\(Q_{\mathrm{out}}\)</span> 都取正值——前者是高温热源给热机的热，后者是热机给低温热汇的热。</p>
+<p><strong>热机效率</strong>（heat engine efficiency）定义为吸热中转换为功的份额：</p>
+<div class="arithmatex">\[
+\eta \equiv \frac{W}{Q_{\mathrm{in}}} = \frac{Q_{\mathrm{in}} - Q_{\mathrm{out}}}{Q_{\mathrm{in}}} = 1 - \frac{Q_{\mathrm{out}}}{Q_{\mathrm{in}}}
+\tag{1.15}
+\]</div>
+<p>第二定律还告诉我们：<strong>可逆过程</strong>中 <span class="arithmatex">\(Q_{\mathrm{out}}/Q_{\mathrm{in}}\)</span> 等于两热库绝对温度之比。于是可逆热机的效率——<strong>卡诺效率</strong>（Carnot efficiency）——为</p>
+<div class="arithmatex">\[
+\eta_C = 1 - \frac{T_c}{T_h}
+\tag{1.16}
+\]</div>
+<p><span class="arithmatex">\(T_c\)</span>、<span class="arithmatex">\(T_h\)</span> 分别是低温、高温热库的绝对温度。卡诺效率是任何热机在这两个温度之间运行的效率上限，真实热机必有不可逆过程，效率更低。</p>
+<p>热力学知识说：要可逆地传热，热库与热机之间的温差必须是无穷小。但刚学完传热机制就知道：要有传热，热库与热机之间<strong>必须有非零温差</strong>（式 1.2、1.3、1.7 全都要求）。这个现实引入不可逆性、拉低效率。</p>
+<p>于是可以建立更真实的热机模型（图 1.10）：热经热阻 <span class="arithmatex">\(R_{t,h}\)</span> 进热机，经第二个热阻 <span class="arithmatex">\(R_{t,c}\)</span> 出热机；下标 h、c 指热机的高温侧与低温侧。这些热阻对应热机与热库之间隔着非零温差时的导热、对流和/或辐射——比如可以是"热机与两个热库之间的墙"的导热热阻。热库温度仍是 <span class="arithmatex">\(T_h\)</span>、<span class="arithmatex">\(T_c\)</span>，但热机"看到"的温度是 <span class="arithmatex">\(T_{h,i} &lt; T_h\)</span> 与 <span class="arithmatex">\(T_{c,i} &gt; T_c\)</span>。热机内部仍设为可逆，效率仍是卡诺效率，但卡诺效率现在要按<strong>内部温度</strong> <span class="arithmatex">\(T_{h,i}\)</span>、<span class="arithmatex">\(T_{c,i}\)</span> 计算。考虑真实（不可逆）换热的<strong>修正效率</strong>（modified efficiency）<span class="arithmatex">\(\eta_m\)</span> 定义为</p>
+<div class="arithmatex">\[
+\eta_m \equiv 1 - \frac{Q_{\mathrm{out}}}{Q_{\mathrm{in}}} = 1 - \frac{q_{\mathrm{out}}}{q_{\mathrm{in}}} = 1 - \frac{T_{c,i}}{T_{h,i}}
+\tag{1.17}
+\]</div>
+<p>其中时间间隔上的热量比 <span class="arithmatex">\(Q_{\mathrm{out}}/Q_{\mathrm{in}}\)</span> 已换成对应的速率比 <span class="arithmatex">\(q_{\mathrm{out}}/q_{\mathrm{in}}\)</span>——这是把瞬时能量守恒（1.3.1 节）用在连续稳流过程上的结果。</p>
+<figure>
+  <img src="../images/ch01/fig-1-10.png" class="lq-img" />
+  <figcaption>图 1.10 经热阻与高、低温热库换热的内部可逆热机（截自原书）</figcaption>
+</figure>
+
+<p>按热阻的定义，进、出热机的传热速率为</p>
+<div class="arithmatex">\[
+q_{\mathrm{in}} = \frac{T_h - T_{h,i}}{R_{t,h}}
+\tag{1.18a}
+\]</div>
+<div class="arithmatex">\[
+q_{\mathrm{out}} = \frac{T_{c,i} - T_c}{R_{t,c}}
+\tag{1.18b}
+\]</div>
+<p>解出内部温度：</p>
+<div class="arithmatex">\[
+T_{h,i} = T_h - q_{\mathrm{in}} R_{t,h}
+\tag{1.19a}
+\]</div>
+<div class="arithmatex">\[
+T_{c,i} = T_c + q_{\mathrm{out}} R_{t,c} = T_c + q_{\mathrm{in}}(1 - \eta_m) R_{t,c}
+\tag{1.19b}
+\]</div>
+<p>（式 1.19b 中用式 1.17 把 <span class="arithmatex">\(q_{\mathrm{out}}\)</span> 写成 <span class="arithmatex">\(q_{\mathrm{in}}\)</span> 与 <span class="arithmatex">\(\eta_m\)</span> 的函数。）代入修正效率定义：</p>
+<div class="arithmatex">\[
+\eta_m = 1 - \frac{T_c + q_{\mathrm{in}}(1 - \eta_m) R_{t,c}}{T_h - q_{\mathrm{in}} R_{t,h}}
+\tag{1.20}
+\]</div>
+<p>解出 <span class="arithmatex">\(\eta_m\)</span>：</p>
+<div class="arithmatex">\[
+\eta_m = 1 - \frac{T_c}{T_h - q_{\mathrm{in}} R_{\mathrm{tot}}}
+\tag{1.21}
+\]</div>
+<p>其中 <span class="arithmatex">\(R_{\mathrm{tot}} = R_{t,h} + R_{t,c}\)</span>。显然：只有当 <span class="arithmatex">\(R_{t,h}\)</span>、<span class="arithmatex">\(R_{t,c}\)</span> 小到可忽略（或 <span class="arithmatex">\(q_{\mathrm{in}} = 0\)</span>）时才有 <span class="arithmatex">\(\eta_m = \eta_C\)</span>。<span class="arithmatex">\(R_{\mathrm{tot}}\)</span> 非零时 <span class="arithmatex">\(\eta_m &lt; \eta_C\)</span>，且 <span class="arithmatex">\(R_{\mathrm{tot}}\)</span> 或 <span class="arithmatex">\(q_{\mathrm{in}}\)</span> 越大，<span class="arithmatex">\(\eta_m\)</span> 越差。极端情形：<span class="arithmatex">\(T_h = T_c + q_{\mathrm{in}} R_{\mathrm{tot}}\)</span> 时 <span class="arithmatex">\(\eta_m = 0\)</span>——此时按式 (1.16) 算出的卡诺效率明明非零，热机却发不出任何功率。</p>
+<p>另一个关键参数是热机的<strong>功率输出</strong>：</p>
+<div class="arithmatex">\[
+\dot W = q_{\mathrm{in}}\, \eta_m = q_{\mathrm{in}}\left(1 - \frac{T_c}{T_h - q_{\mathrm{in}} R_{\mathrm{tot}}}\right)
+\tag{1.22}
+\]</div>
+<p><span class="arithmatex">\(q_{\mathrm{in}} = 0\)</span> 时效率达到上限 <span class="arithmatex">\(\eta_m = \eta_C\)</span>，但功率输出也是零。要加大 <span class="arithmatex">\(\dot W\)</span>，就得增大 <span class="arithmatex">\(q_{\mathrm{in}}\)</span>、牺牲效率。实际应用必须在"效率最大"与"功率最大"之间找平衡：热源便宜（比如利用废热发电），可以牺牲效率换功率；燃料贵或排放有害（常规化石燃料电站），效率可能与功率同等甚至更重要。无论哪种情形，都该用传热学与热力学原理联立确定热机的真实效率与功率输出。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：有限时间热力学与真实热机</p>
+<p>式 (1.21) 这类"卡诺循环 + 两侧换热热阻"的模型属于<strong>有限时间热力学</strong>（finite-time thermodynamics）。该模型的另一著名结果是 Curzon–Ahlborn 效率 <span class="arithmatex">\(\eta_{CA} = 1 - \sqrt{T_c/T_h}\)</span>：当热机工作在最大功率输出点时，效率逼近这个值。它落在卡诺效率之下、许多真实热机效率之上——真实电站 300 K/1000 K 的卡诺效率 70%，但实际远达不到。本书参考文献里的 Curzon &amp; Ahlborn (1975) 与 Novikov (1958) 就是这一模型的源头文献。</p>
+</div>
+<p><strong>【例 1.8】蒸汽电站的效率与结垢损失</strong></p>
+<p><strong>已知（Known）</strong>：某大型蒸汽电站烧煤供热 <span class="arithmatex">\(q_{\mathrm{in}} = 2500\ \mathrm{MW}\)</span>，火焰温度 <span class="arithmatex">\(T_h = 1000\ \mathrm{K}\)</span>；废热排入 <span class="arithmatex">\(T_c = 300\ \mathrm{K}\)</span> 的河流。热从燃烧产物经辐射+对流传到锅炉管外壁、经导热穿管壁、再由对流到管内工质（水）；冷侧是蒸汽在冷凝管外凝结、导热穿管壁、再对流给河水。热、冷两侧热阻合计了导热、对流与辐射的效应，设计工况下 <span class="arithmatex">\(R_{t,h} = 8 \times 10^{-8}\ \mathrm{K/W}\)</span>、<span class="arithmatex">\(R_{t,c} = 2 \times 10^{-8}\ \mathrm{K/W}\)</span>。</p>
+<p><strong>求（Find）</strong>：1. 洁净工况下电站的效率与功率输出；2. 煤渣在锅炉管燃烧侧逐渐结垢（<span class="arithmatex">\(R_{t,h} \to 9 \times 10^{-8}\ \mathrm{K/W}\)</span>）、水生物在冷凝管河水侧积聚（<span class="arithmatex">\(R_{t,c} \to 2.2 \times 10^{-8}\ \mathrm{K/W}\)</span>）后，效率与功率输出。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-8.png" class="lq-img" />
+  <figcaption>例 1.8 示意图：经两侧热阻与高、低温热库换热的蒸汽电站（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 电站按内部可逆热机处理，效率为修正效率。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>洁净工况。总热阻</li>
+</ol>
+<div class="arithmatex">\[
+R_{\mathrm{tot}} = R_{t,h} + R_{t,c} = 8 \times 10^{-8}\ \mathrm{K/W} + 2 \times 10^{-8}\ \mathrm{K/W} = 1.0 \times 10^{-7}\ \mathrm{K/W}
+\]</div>
+<p>由式 (1.21)：</p>
+<div class="arithmatex">\[
+\eta_m = 1 - \frac{T_c}{T_h - q_{\mathrm{in}} R_{\mathrm{tot}}} = 1 - \frac{300\ \mathrm{K}}{1000\ \mathrm{K} - 2500 \times 10^6\ \mathrm{W} \times 1.0 \times 10^{-7}\ \mathrm{K/W}} = 0.60 = 60\%
+\]</div>
+<p>由式 (1.22)：</p>
+<div class="arithmatex">\[
+\dot W = q_{\mathrm{in}}\, \eta_m = 2500\ \mathrm{MW} \times 0.60 = 1500\ \mathrm{MW}
+\]</div>
+<ol>
+<li>结垢工况。重复上述计算（<span class="arithmatex">\(R_{\mathrm{tot}} = 9 \times 10^{-8} + 2.2 \times 10^{-8} = 1.12 \times 10^{-7}\ \mathrm{K/W}\)</span>）：</li>
+</ol>
+<div class="arithmatex">\[
+\eta_m = 0.583 = 58.3\%, \qquad \dot W = 1460\ \mathrm{MW}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>真实电站的效率与功率输出远低于上述值——机组内部还有其他不可逆因素；但即使把它们全部考虑进去，结垢照样拉低效率与输出。</li>
+<li>卡诺效率 <span class="arithmatex">\(\eta_C = 1 - 300/1000 = 70\%\)</span>，对应 <span class="arithmatex">\(\dot W = q_{\mathrm{in}} \eta_C = 1750\ \mathrm{MW}\)</span>。忽略两侧换热不可逆性，电站功率会被明显高估。</li>
+<li>结垢使功率输出减少 <span class="arithmatex">\(\Delta P = 40\ \mathrm{MW}\)</span>。若电价按 $0.08/kW·h 计，结垢电站每天少赚 <span class="arithmatex">\(C = 40\,000\ \mathrm{kW} \times \$0.08/\mathrm{kW \cdot h} \times 24\ \mathrm{h/day} = \$76\,800/\mathrm{day}\)</span>——一天七万多美元，这就是传热学值钱的地方。</li>
+</ol>
+<h2 id="14-单位与量纲">1.4 单位与量纲<a class="headerlink" href="#14-单位与量纲" title="Permanent link">#</a></h2>
+<p>传热的物理量用<strong>量纲</strong>（dimension）描述、用<strong>单位</strong>（unit）度量。传热需要四个基本量纲：长度（L）、质量（M）、时间（t）、温度（T），其余物理量都能由这四个推出。</p>
+<p>英制单位（美国习惯）的基本单位：长度 foot（ft）、质量 pound mass（lbm）、时间 second（s）、温度 degree Fahrenheit（°F）。</p>
+<p>1960 年第十一届国际计量大会定义了<strong>国际单位制</strong>（SI，Système International d'Unités）作为世界标准。美国机械工程师学会（ASME）自 1974 年起要求所有出版物使用 SI。本书计算一律用 SI——它比英制好用。但工程师免不了碰到英制结果，换算本领要有（换算因子见书内封底）。</p>
+<p><strong>表 1.2 SI 基本单位与辅助单位</strong></p>
+<table>
+<thead>
+<tr>
+<th>量与符号</th>
+<th>单位与符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长度（L）</td>
+<td>米（m）</td>
+</tr>
+<tr>
+<td>质量（M）</td>
+<td>千克（kg）</td>
+</tr>
+<tr>
+<td>物质的量</td>
+<td>摩尔（mol）</td>
+</tr>
+<tr>
+<td>时间（t）</td>
+<td>秒（s）</td>
+</tr>
+<tr>
+<td>电流（I）</td>
+<td>安培（A）</td>
+</tr>
+<tr>
+<td>热力学温度（T）</td>
+<td>开尔文（K）</td>
+</tr>
+<tr>
+<td>平面角（辅助单位）</td>
+<td>弧度（rad）</td>
+</tr>
+<tr>
+<td>立体角（辅助单位）</td>
+<td>球面度（sr）</td>
+</tr>
+</tbody>
+</table>
+<p>关于摩尔：1 mol 是含有"与 12 g 碳-12 中原子数相同"的原子/分子数的物量（克分子）。SI 推荐摩尔作为物质的量的单位，但用<strong>千摩尔</strong>（kmol）与全书更一致：1 kmol 对应 12 kg 碳-12 中的原子数。同一问题内用 mol 或 kmol 保持一致即可。物质的<strong>分子量</strong>（molecular weight）是每摩尔（或千摩尔）对应的质量。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：氧的分子量</p>
+<p>原书写"以氧为例，分子量 <span class="arithmatex">\(\mathcal{M}\)</span> 为 16 g/mol 或 16 kg/kmol"。16 是<strong>氧原子</strong> O 的摩尔质量；通常的氧气分子 <span class="arithmatex">\(\mathrm{O_2}\)</span> 的分子量是 <strong>32</strong> kg/kmol。查物性时别被这一句带偏。</p>
+</div>
+<p>SI 温度单位是开尔文，但摄氏温标仍广泛使用。摄氏零度对应热力学温标的 273.15 K：</p>
+<div class="arithmatex">\[
+T\ (\mathrm{K}) = T\ (^\circ\mathrm{C}) + 273.15
+\]</div>
+<p>两套温标的<strong>温度差</strong>完全等价，可记作 °C 也可记作 K。SI 时间单位是秒，但分、时、天太常用，与 SI 并用一般可接受。</p>
+<p>SI 是相容的公制：所有其余单位都能由基本单位经"不带数值因子"的公式导出。<strong>表 1.3</strong> 列出部分导出单位：力用牛顿，1 N 使 1 kg 获得加速度 1 m/s²，即 <span class="arithmatex">\(1\ \mathrm{N} = 1\ \mathrm{kg \cdot m/s^2}\)</span>；压强单位 N/m² 常称帕斯卡；能量只有一种单位焦耳，<span class="arithmatex">\(1\ \mathrm{J} = 1\ \mathrm{N \cdot m}\)</span>（热、机械、电能通吃）；能量速率（功率）单位是 J/s，<span class="arithmatex">\(1\ \mathrm{J/s} = 1\ \mathrm{W}\)</span>。</p>
+<p><strong>表 1.3 部分量的 SI 导出单位</strong></p>
+<table>
+<thead>
+<tr>
+<th>量与符号</th>
+<th>单位名称</th>
+<th>表达式</th>
+<th>用 SI 基本单位表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>力</td>
+<td>牛顿（N）</td>
+<td>—</td>
+<td>m·kg/s²</td>
+</tr>
+<tr>
+<td>压强与应力</td>
+<td>帕斯卡（Pa）</td>
+<td>N/m²</td>
+<td>kg/(m·s²)</td>
+</tr>
+<tr>
+<td>能量</td>
+<td>焦耳（J）</td>
+<td>N·m</td>
+<td>m²·kg/s²</td>
+</tr>
+<tr>
+<td>功率</td>
+<td>瓦特（W）</td>
+<td>J/s</td>
+<td>m²·kg/s³</td>
+</tr>
+</tbody>
+</table>
+<p>要处理的数经常极大或极小，标准<strong>词头</strong>（prefix）简化书写（表 1.4）：1 MW = 10⁶ W，1 μm = 10⁻⁶ m。</p>
+<p><strong>表 1.4 乘数词头</strong></p>
+<table>
+<thead>
+<tr>
+<th>词头</th>
+<th>缩写</th>
+<th>乘数</th>
+<th>词头</th>
+<th>缩写</th>
+<th>乘数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>femto</td>
+<td>f</td>
+<td>10⁻¹⁵</td>
+<td>hecto</td>
+<td>h</td>
+<td>10²</td>
+</tr>
+<tr>
+<td>pico</td>
+<td>p</td>
+<td>10⁻¹²</td>
+<td>kilo</td>
+<td>k</td>
+<td>10³</td>
+</tr>
+<tr>
+<td>nano</td>
+<td>n</td>
+<td>10⁻⁹</td>
+<td>mega</td>
+<td>M</td>
+<td>10⁶</td>
+</tr>
+<tr>
+<td>micro</td>
+<td>μ</td>
+<td>10⁻⁶</td>
+<td>giga</td>
+<td>G</td>
+<td>10⁹</td>
+</tr>
+<tr>
+<td>milli</td>
+<td>m</td>
+<td>10⁻³</td>
+<td>tera</td>
+<td>T</td>
+<td>10¹²</td>
+</tr>
+<tr>
+<td>centi</td>
+<td>c</td>
+<td>10⁻²</td>
+<td>peta</td>
+<td>P</td>
+<td>10¹⁵</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>exa</td>
+<td>E</td>
+<td>10¹⁸</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-传热问题的分析方法解题方法论">1.5 传热问题的分析方法：解题方法论<a class="headerlink" href="#15-传热问题的分析方法解题方法论" title="Permanent link">#</a></h2>
+<p>本书的一大目标是让你会解含传热过程的工程问题——每章末尾的习题就是干这个用的。解题时建议用一套有固定格式的系统流程；本书例题一贯采用，也要求学生照着做。步骤如下：</p>
+<ol>
+<li><strong>已知（Known）</strong>：细读题目后，简明扼要地写下已知条件。不要复读题干。</li>
+<li><strong>求（Find）</strong>：简明写出要求什么。</li>
+<li><strong>示意图（Schematic）</strong>：画出物理系统的示意图。若要应用守恒律，在图上用虚线画出控制表面；用标注清楚的箭头标出相关传热过程。</li>
+<li><strong>假设（Assumptions）</strong>：列出所有关键简化假设。</li>
+<li><strong>物性（Properties）</strong>：汇齐后续计算需要的物性数值，注明来源。</li>
+<li><strong>分析（Analysis）</strong>：从应用合适的守恒律开始，按需引入速率方程。<strong>在代入数值之前把分析推到底</strong>，再完成计算。</li>
+<li><strong>点评（Comments）</strong>：讨论结果——总结关键结论、审视原假设是否合理、通过 what-if 与参数敏感性计算推断趋势。</li>
+</ol>
+<p>第 1–4 步的重要性别低估：它们是动笔计算前的思考路线图。第 7 步鼓励你多做计算（可借助软件）获得额外洞见。</p>
+<p><strong>【例 1.9】红外灯固化涂层的温度控制</strong></p>
+<p><strong>已知（Known）</strong>：板上的涂层用红外灯固化，灯提供均匀投入辐射 2000 W/m²。涂层吸收投入辐射的 80%，发射率 0.5。涂层同时暴露在温度 20°C 的气流与温度 30°C 的大环境中。</p>
+<p><strong>求（Find）</strong>：1. <span class="arithmatex">\(h = 15\ \mathrm{W/(m^2 \cdot K)}\)</span> 时的固化温度；2. 气流系统可调风速、从而可调换热系数，工艺工程师需要知道温度随 <span class="arithmatex">\(h\)</span> 的变化：计算并画出 <span class="arithmatex">\(2 \le h \le 200\ \mathrm{W/(m^2 \cdot K)}\)</span> 范围内的表面温度曲线，并给出固化温度为 50°C 时所需的 <span class="arithmatex">\(h\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-9.png" class="lq-img" />
+  <figcaption>例 1.9 示意图：红外灯辐照下的涂层散热（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 板背面无热损失；3. 板是小物体处于大环境中，涂层对大环境辐射的吸收比 <span class="arithmatex">\(\alpha_{sur} = \varepsilon = 0.5\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>过程是稳态、背面无传热，所以板是等温的（<span class="arithmatex">\(T_s = T\)</span>）。把控制表面围住整块板，用式 (1.12c)（无生成，<span class="arithmatex">\(\dot E_g = 0\)</span>）：</li>
+</ol>
+<div class="arithmatex">\[
+\dot E_{\mathrm{in}} - \dot E_{\mathrm{out}} = 0, \qquad \dot E_{\mathrm{st}} = 0
+\]</div>
+<p>能量收入 = 涂层吸收的灯光投入辐射 <span class="arithmatex">\((\alpha G)_{\mathrm{lamp}}\)</span>；支出 = 对流 + 对大环境的净辐射：</p>
+<div class="arithmatex">\[
+(\alpha G)_{\mathrm{lamp}} - q_{\mathrm{conv}}'' - q_{\mathrm{rad}}'' = 0
+\]</div>
+<p>代入式 (1.3a) 与 (1.7)：</p>
+<div class="arithmatex">\[
+(\alpha G)_{\mathrm{lamp}} - h\,(T - T_\infty) - \varepsilon \sigma\,(T^4 - T_{sur}^4) = 0
+\]</div>
+<p>代数值（<span class="arithmatex">\(T_\infty = 293\ \mathrm{K}\)</span>，<span class="arithmatex">\(T_{sur} = 303\ \mathrm{K}\)</span>）：</p>
+<div class="arithmatex">\[
+0.8 \times 2000\ \mathrm{W/m^2} - 15\ \mathrm{W/(m^2 \cdot K)} \times (T - 293)\ \mathrm{K} - 0.5 \times 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (T^4 - 303^4)\ \mathrm{K^4} = 0
+\]</div>
+<p>试差求解得</p>
+<div class="arithmatex">\[
+T = 377\ \mathrm{K} = 104^\circ\mathrm{C}
+\]</div>
+<ol>
+<li>在规定范围内取一系列 <span class="arithmatex">\(h\)</span> 解同一方程并画图：曲线显示 <span class="arithmatex">\(h\)</span> 从 2 增到 200 W/(m²·K) 时，<span class="arithmatex">\(T\)</span> 从约 204°C 单调降到约 28°C。要固化温度 50°C，气流需提供的换热系数为</li>
+</ol>
+<div class="arithmatex">\[
+h\,(T = 50^\circ\mathrm{C}) = 51.0\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>降固化温度的手段：降低 <span class="arithmatex">\(T_\infty\)</span> 与 <span class="arithmatex">\(T_{sur}\)</span>、加大风速提高 <span class="arithmatex">\(h\)</span>。</li>
+<li>对流与辐射的相对贡献随 <span class="arithmatex">\(h\)</span> 剧烈变化：<span class="arithmatex">\(h = 2\ \mathrm{W/(m^2 \cdot K)}\)</span> 时 <span class="arithmatex">\(T = 204^\circ\mathrm{C}\)</span>，辐射主导（<span class="arithmatex">\(q_{\mathrm{rad}}'' \approx 1232\ \mathrm{W/m^2}\)</span>，<span class="arithmatex">\(q_{\mathrm{conv}}'' \approx 368\ \mathrm{W/m^2}\)</span>）；<span class="arithmatex">\(h = 200\ \mathrm{W/(m^2 \cdot K)}\)</span> 时 <span class="arithmatex">\(T = 28^\circ\mathrm{C}\)</span>，对流主导（<span class="arithmatex">\(q_{\mathrm{conv}}'' \approx 1606\ \mathrm{W/m^2}\)</span>，<span class="arithmatex">\(q_{\mathrm{rad}}'' \approx -6\ \mathrm{W/m^2}\)</span>）——此时板温略低于环境温度，净辐射其实是<strong>进</strong>板的。</li>
+</ol>
+<h2 id="16-传热的相关性">1.6 传热的相关性<a class="headerlink" href="#16-传热的相关性" title="Permanent link">#</a></h2>
+<p>学会传热有什么用？几个例子就能看出它的应用面有多宽。</p>
+<p><strong>能源挑战</strong>。人类需要足够的能源：驱动工业生产、为世界上大部分人提供安全饮水与食物、提供控制疾病的卫生条件。看美国的能流图（图 1.11a）：美国每年消耗近 110 EJ 能量，其中约 <strong>58%</strong> 以废热形式浪费掉；发电用能的近 <strong>70%</strong> 以热的形式损失；几乎完全依赖石油燃料的交通部门只利用了所耗能量的 <strong>21.5%</strong>，其余 78.5% 以热释放。工业与住宅/商业用能相对高效，但节能机会遍地都是。用热力学+传热学的"热工程"（thermal engineering）手段可以：(1) 提高能量生产与转换的效率；(2) 减少能量损失；(3) 回收更多废热。</p>
+<p>化石燃料（石油、天然气、煤）主导许多国家的能源结构。燃烧化石燃料产生海量二氧化碳：美国每年燃烧排放的 CO₂ 目前为 5.99 Eg（<span class="arithmatex">\(5.99 \times 10^{15}\ \mathrm{kg}\)</span>）。CO₂ 越排越多，大气中的辐射换热机制被改变，全球温度可能变化。在美国，发电与交通贡献了近 75% 的能源类 CO₂ 排放（图 1.11b）。</p>
+<figure>
+  <img src="../images/ch01/fig-1-11.png" class="lq-img" />
+  <figcaption>图 1.11 美国 2007 年能源消费与相关 CO₂ 排放的能流图：(a) 能源生产与消费；(b) 按燃料来源与终端用途的 CO₂ 排放。箭头宽度表示流量相对大小（截自原书）</figcaption>
+</figure>
+
+<p>工程师正怎么用传热学应对能源与环境问题？</p>
+<ul>
+<li><strong>燃气轮机</strong>：提高运行温度能显著提升燃气轮机效率。如今燃烧气体的温度远超制造叶片/叶轮的特种合金的熔点。安全运行靠三板斧（图 1.12）：第一，从叶片前缘小孔喷入较冷的气体，形成贴附叶片的气膜，把叶片与热燃气隔开；第二，叶片/叶轮表面喷涂极低导热系数的陶瓷<strong>热障涂层</strong>（thermal barrier coating），加一层隔热——用 10000 K 以上的等离子喷枪把熔融陶瓷粉末喷上去；第三，叶片内部设计精细的冷却通道，全由传热工程师操刀。</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-12.png" class="lq-img" />
+  <figcaption>图 1.12 燃气轮机叶片：(a) 外观，可见注入冷却气体的小孔；(b) X 射线透视图，可见内部冷却通道（截自原书）</figcaption>
+</figure>
+
+<ul>
+<li>
+<p><strong>可再生能源与氢燃料电池</strong>：风、太阳能发电的间歇性限制了大范围应用，急需把低谷期多余能量存起来的办法。燃料电池可以：白天把富余电+水解出氢，晚上把氢与氧复合发电、放出淡水。氢燃料电池普及的障碍是尺寸、重量与寿命——效率和燃气轮机一样随温度升高而提高，但高温与大温度梯度会让电池内娇贵的聚合物材料失效。更麻烦的是电池内一定有水：水一冻，聚合物材料报废、电池停摆；又因为必须用超纯水，防冻液这类常规手段不能用。哪些传热机制必须控制？内强制对流、蒸发、凝结的知识怎么用来控温、延长寿命？这一串问题等你学了后面的章节来答。</p>
+</li>
+<li>
+<p><strong>电子器件散热</strong>：过去二十年的信息技术革命离不开传热工程——从纳米级集成电路，到光盘这样的微米级存储介质，再到装满发热设备的大型数据中心，温控都是靠传热技术实现的。器件越来越快、功能越来越多，发热越来越多；同时体积越来越小。热流密度（W/m²）与体积能量生成率（W/m³）一路上涨，而器件工作温度必须压在低水平上保证可靠性。个人计算机的散热方案：高导热材料（通常是铝）做的<strong>散热肋片/热沉</strong>（heat sink）贴在微处理器上，小风扇强制对流吹过肋片（图 1.13）。全球仅仅"给 PC 风扇供电 + 制造热沉"两项耗能估计每年超过 10⁹ kW·h。能不能靠导热、对流、辐射的知识干掉风扇、把热沉做小？微处理器技术的下一步本来就卡在冷却能力上，政策制定者都点名要增强电子冷却传热。</p>
+</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-13.png" class="lq-img" />
+  <figcaption>图 1.13 肋片热沉+风扇组件（左）与微处理器（右），爆炸视图（截自原书）</figcaption>
+</figure>
+
+<ul>
+<li><strong>生物与医学传热</strong>。传热不仅属于工程系统，也属于自然界。温度调控并触发生命系统的一切生物响应，直接划出健康与疾病的边界：<strong>低体温症</strong>（hypothermia）源于人体过度散热，<strong>中暑</strong>（heat stroke）由湿热环境触发——两者都致命，都与核心体温越限有关，都直接关联人体表面的对流、辐射与蒸发过程、体内热输运以及体内体积性的代谢产热。生物医学工程的进展（如激光手术）也靠传热原理：接触高温物体造成烧伤，但<strong>热疗</strong>（hyperthermal treatment）可以有目的地摧毁癌变病灶；极低温造成冻伤，但<strong>冷冻手术</strong>（cryosurgery）的局部冷冻能选择性破坏病变组织。许多医疗设备与治疗流程的设计，都取决于预测与控制热疗过程中温度分布、化疗过程中化学组分分布的能力。哺乳动物组织的形态让处理变复杂（图 1.14）：治疗区域内静脉与毛细血管中的血流通过平流过程影响传热；成对分布的动、静脉血温不同、平流速率先不同，二者隔着固体组织形成<strong>逆流换热</strong>（counterflow heat exchange）结构；更细的毛细血管网通过血液灌流影响局部温度。后续章节的例题与习题会分析这些热系统。</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-14.png" class="lq-img" />
+  <figcaption>图 1.14 人体皮肤的形态结构（截自原书）</figcaption>
+</figure>
+
+<h2 id="17-小结">1.7 小结<a class="headerlink" href="#17-小结" title="Permanent link">#</a></h2>
+<p>学完本章，你应该对传热学有了整体图景：认识了几种传热模式及其物理起源。接下来你会花大量时间掌握计算传热的工具，但动手之前必须先有<strong>物理直觉</strong>——给定一个物理场景，能认出其中起作用的输运过程；培养这种能力的价值怎么估都不过分，本章例题就是起点。</p>
+<p><strong>速率方程</strong>必须记牢、会用——它们汇总在<strong>表 1.5</strong>。守恒定律同样重要，控制体要选得仔细：速率方程 + 守恒定律 = 大量传热问题可解。</p>
+<p><strong>表 1.5 传热过程汇总</strong></p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>机制</th>
+<th>速率方程</th>
+<th>物性/系数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>导热</td>
+<td>随机分子运动引起的能量扩散</td>
+<td><span class="arithmatex">\(q_x''\ \mathrm{(W/m^2)} = -k\,\dfrac{dT}{dx}\)</span>（式 1.1）</td>
+<td><span class="arithmatex">\(k\)</span> [W/(m·K)]</td>
+</tr>
+<tr>
+<td>对流</td>
+<td>随机分子运动（扩散）+ 整体运动（平流）的能量输运</td>
+<td><span class="arithmatex">\(q''\ \mathrm{(W/m^2)} = h\,(T_s - T_\infty)\)</span>（式 1.3a）</td>
+<td><span class="arithmatex">\(h\)</span> [W/(m²·K)]</td>
+</tr>
+<tr>
+<td>辐射</td>
+<td>电磁波（光子）输运的能量</td>
+<td><span class="arithmatex">\(q''\ \mathrm{(W/m^2)} = \varepsilon \sigma\,(T_s^4 - T_{sur}^4)\)</span>（式 1.7）；或 <span class="arithmatex">\(q\ \mathrm{(W)} = h_r A\,(T_s - T_{sur})\)</span>（式 1.8）</td>
+<td><span class="arithmatex">\(\varepsilon\)</span>；<span class="arithmatex">\(h_r\)</span> [W/(m²·K)]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【例 1.10】热咖啡容器：识别全部传热过程</strong></p>
+<p><strong>已知（Known）</strong>：装满热咖啡的密闭容器放在空气与墙壁温度恒定的房间里。咖啡与较冷的环境之间隔着塑料杯、空气夹层和塑料盖。</p>
+<p><strong>求（Find）</strong>：参与咖啡冷却的全部传热过程；讨论优秀容器设计应有什么特征。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch01/ex-1-10.png" class="lq-img" />
+  <figcaption>例 1.10 示意图：从咖啡到环境的 8 条传热路径（截自原书）</figcaption>
+</figure>
+
+<p><strong>分析（Analysis）</strong>：咖啡散出能量的路径共 8 条：</p>
+<ul>
+<li><span class="arithmatex">\(q_1\)</span>：咖啡 → 杯内壁，自然对流；</li>
+<li><span class="arithmatex">\(q_2\)</span>：穿过杯壁，导热；</li>
+<li><span class="arithmatex">\(q_3\)</span>：杯外壁 → 空气夹层，自然对流；</li>
+<li><span class="arithmatex">\(q_4\)</span>：空气夹层 → 杯盖，自然对流；</li>
+<li><span class="arithmatex">\(q_5\)</span>：杯外壁 ↔ 杯盖内表面，净辐射换热；</li>
+<li><span class="arithmatex">\(q_6\)</span>：穿过杯盖，导热；</li>
+<li><span class="arithmatex">\(q_7\)</span>：杯盖外表面 → 室内空气，自然对流；</li>
+<li><span class="arithmatex">\(q_8\)</span>：杯盖外表面 ↔ 环境，净辐射换热。</li>
+</ul>
+<p><strong>点评（Comments）</strong>：设计改进两条——(1) 杯与盖用镀铝（低发射率）表面，压低净辐射；(2) 抽掉空气夹层（真空）或塞入填充物，抑制自然对流。保温杯的两条核心设计，全是从这张过程清单推出来的。</p>
+<details class="note">
+<summary>原书章末自测问题（1.7 节复习用）</summary>
+<ol>
+<li>导热、对流、辐射各自的物理机制是什么？</li>
+<li>传热的驱动势是什么？对电荷输运而言，与之对应的类比量和"电流"是什么？（温度差 ↔ 电压，热流量 ↔ 电流，热阻 ↔ 电阻）</li>
+<li>热流密度与热流量的区别是什么？单位各是什么？</li>
+<li>温度梯度是什么？单位是什么？热流与温度梯度什么关系？</li>
+<li>导热系数是什么？单位是什么？它在传热中扮演什么角色？</li>
+<li>傅里叶定律是什么？能默写吗？</li>
+<li>稳态导热时：某瞬间的温度随位置变吗？某位置的温度随时间变吗？（前者变、后者不变）</li>
+<li>自然对流与强制对流的区别是什么？</li>
+<li>形成流动边界层需要什么条件？热边界层呢？两者之内各是什么量在变化？</li>
+<li>液/汽无相变的对流，传的是什么能量？有相变呢？（显热/内热能；潜热）</li>
+<li>牛顿冷却公式是什么？能默写吗？<span class="arithmatex">\(h\)</span> 在其中扮演什么角色？单位？</li>
+<li>表面对外（或对内）对流换热，对被表面包围的固体有什么影响？</li>
+<li>斯特藩–玻尔兹曼定律预言什么？必须配什么温度单位？能默写吗？</li>
+<li>发射率是什么？它在表面辐射特性表征中起什么作用？</li>
+<li>投入辐射是什么？单位是什么？</li>
+<li>不透明表面对入射辐射有哪两种响应？哪种影响表面所包介质的热能、怎么影响？用什么物性表征？</li>
+<li>使用辐射换热系数 <span class="arithmatex">\(h_r\)</span> 需要什么条件？</li>
+<li>能默写"小等温表面对大等温封闭腔"的净辐射换热公式吗？</li>
+<li>高温表面暴露于较冷环境时，四种接触方式（贴另一固体/暴露于液流/暴露于气流/置于真空腔）各按什么模式传热？</li>
+<li>在时间间隔上与在瞬时上应用能量守恒，本质区别是什么？</li>
+<li>热能储存与热能生成有什么区别？它们在表面能量平衡中扮演什么角色？（都不出现——表面无体积、无质量）</li>
+</ol>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：两处拼写</p>
+<p>原书第 1 章多个页面的页眉把 "Heat Transfer" 印成 "Heat Tranfer"（1.5、1.6 节页眉），1.3.2 节末段把 "thermodynamic principles" 印成 "thermodyamic principles"。均为排版笔误，不影响内容。</p>
+</div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>辐射计算必须用开尔文</strong>：凡是 <span class="arithmatex">\(T^4\)</span>（式 1.4、1.5、1.7、1.9）或单独出现 <span class="arithmatex">\(T\)</span> 的地方，温度必须是绝对温度 K；只有"温差"（式 1.2、1.3 的 <span class="arithmatex">\(\Delta T\)</span>）里 °C 与 K 才等价。例 1.2 点评 1、例 1.7 点评 1 反复强调。</li>
+<li><strong>傅里叶定律的负号是方向陈述</strong>：热量永远流向温度下降的方向。写出 <span class="arithmatex">\(q_x'' = -k\,dT/dx\)</span> 后，梯度为负、热流为正这件事自动成立；自己规定坐标方向时别再把负号"手动"加一遍或丢一遍。</li>
+<li><strong><span class="arithmatex">\(h\)</span> 不是物性</strong>：它是边界层过程的综合表现，随流动起因、几何、流速、流体物性而变，同一表面上还可以随位置和时间变化。表 1.1 只能当量级参考，不能当设计常数抄。</li>
+<li><strong>辐射是四次方关系</strong>：<span class="arithmatex">\(T\)</span> 翻倍，<span class="arithmatex">\(E_b = \sigma T^4\)</span> 变 16 倍。不要拿线性直觉外推辐射；线性化的 <span class="arithmatex">\(h_r\)</span>（式 1.9）本身就强烈依赖温度——温度变了要重算。</li>
+<li><strong>小 <span class="arithmatex">\(h\)</span> 场景里辐射常常不能省</strong>：例 1.7 中静空气下对流只带走 37 W，辐射带走 109 W——扔掉辐射项，总散热直接少 74%。凡是"气体 + 自然对流 + 温差不大不小"，先估一估 <span class="arithmatex">\(h_r\)</span>。</li>
+<li><strong>热流密度与热流量是两个量</strong>：<span class="arithmatex">\(q''\)</span> 单位 W/m²，<span class="arithmatex">\(q\)</span> 单位 W，差一个面积因子。式 (1.1)–(1.3) 出的是热流密度，乘面积才是热流量；例 1.1 点评专门提醒这一点。</li>
+<li><strong>贮能与生成别混</strong>：贮能 <span class="arithmatex">\(E_{st}\)</span> 是控制体内能量的存量变化，生成 <span class="arithmatex">\(E_g\)</span> 是其他能量形式在<strong>体内</strong>的转换（体积现象）；流入流出是<strong>表面上</strong>的过程。表面能量平衡（式 1.13、1.14）里前两项根本不出现——控制体没有体积。</li>
+<li><strong>效率与功率不是一回事</strong>：<span class="arithmatex">\(q_{\mathrm{in}} \to 0\)</span> 时 <span class="arithmatex">\(\eta_m \to \eta_C\)</span> 但 <span class="arithmatex">\(\dot W \to 0\)</span>（式 1.22）。比较热机方案时先问"比的是效率还是功率"，例 1.8 结垢损失 40 MW × $0.08/kW·h = $76 800/天，损失全在功率上。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>传热的定义：热量是因空间温度差而迁移的热能；有温度差就必然有传热。热力学管"量"，传热学管"率"。</li>
+<li>三种模式与速率方程：导热 <span class="arithmatex">\(q_x'' = -k\,dT/dx\)</span>（傅里叶定律，式 1.1）；对流 <span class="arithmatex">\(q'' = h(T_s - T_\infty)\)</span>（牛顿冷却公式，式 1.3a）；辐射 <span class="arithmatex">\(q'' = \varepsilon\sigma(T_s^4 - T_{sur}^4)\)</span>（灰体、大环境，式 1.7）。</li>
+<li>热流密度 <span class="arithmatex">\(q''\)</span>（W/m²）是单位面积的传热速率；乘垂直面积才是热流量 <span class="arithmatex">\(q\)</span>（W）。</li>
+<li>对流 = 壁面处分子扩散（<span class="arithmatex">\(y=0\)</span> 处流速为零，只有导热）+ 边界层内整体运动输运；<span class="arithmatex">\(h\)</span> 不是物性，量级见表 1.1（气体自然对流 2–25，液体相变对流 2500–100 000 W/(m²·K)）。</li>
+<li>黑体发射 <span class="arithmatex">\(E_b = \sigma T_s^4\)</span>（<span class="arithmatex">\(\sigma = 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}\)</span>）；实际表面乘发射率 <span class="arithmatex">\(\varepsilon\)</span>；吸收投入辐射用 <span class="arithmatex">\(\alpha G\)</span>；灰体 <span class="arithmatex">\(\alpha = \varepsilon\)</span>。</li>
+<li>辐射可线性化：<span class="arithmatex">\(q_{\mathrm{rad}} = h_r A (T_s - T_{sur})\)</span>，<span class="arithmatex">\(h_r = \varepsilon\sigma(T_s + T_{sur})(T_s^2 + T_{sur}^2)\)</span>，<span class="arithmatex">\(h_r\)</span> 强依赖温度。</li>
+<li>三模式统一形式 <span class="arithmatex">\(q = \Delta T / R_t\)</span>：导热热阻 <span class="arithmatex">\(R_{t,c} = L/(kA)\)</span>（式 1.11），电路类比是第 3 章的骨架工具。</li>
+<li>第一定律（速率式）：<span class="arithmatex">\(\dot E_{st} = \dot E_{in} - \dot E_{out} + \dot E_g\)</span>（式 1.12c）；表面能量平衡 <span class="arithmatex">\(\dot E_{in} - \dot E_{out} = 0\)</span>（式 1.13、1.14）。稳流简化 <span class="arithmatex">\(q = \dot m c_p (T_{out} - T_{in})\)</span>（式 1.12e）。</li>
+<li>热机：卡诺效率 <span class="arithmatex">\(\eta_C = 1 - T_c/T_h\)</span> 是上限；真实换热使热机"看到"的温差缩水，修正效率 <span class="arithmatex">\(\eta_m = 1 - T_c/(T_h - q_{in} R_{tot})\)</span>（式 1.21）；功率 <span class="arithmatex">\(\dot W = q_{in} \eta_m\)</span>（式 1.22），效率与功率要权衡。</li>
+<li>解题七步：已知 → 求 → 示意图（虚线控制表面 + 箭头标过程）→ 假设 → 物性 → 分析（先推完式子再代数）→ 点评。温度单位：差用 K/°C 皆可，绝对温度必须 K。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conduction</td>
+<td>导热</td>
+<td>静止介质中靠分子/晶格活动的能量扩散传热</td>
+</tr>
+<tr>
+<td>convection</td>
+<td>对流</td>
+<td>表面与运动流体间的换热 = 扩散 + 整体运动</td>
+</tr>
+<tr>
+<td>advection</td>
+<td>平流</td>
+<td>单指流体整体运动携带的能量输运</td>
+</tr>
+<tr>
+<td>thermal radiation</td>
+<td>热辐射</td>
+<td>非零温度物质以电磁波发射能量，不需介质</td>
+</tr>
+<tr>
+<td>heat flux</td>
+<td>热流密度</td>
+<td>单位面积、单位时间的传热速率，W/m²</td>
+</tr>
+<tr>
+<td>heat rate</td>
+<td>热流量</td>
+<td>单位时间的传热量，W；= 热流密度 × 面积</td>
+</tr>
+<tr>
+<td>temperature gradient</td>
+<td>温度梯度</td>
+<td>温度沿空间方向的变化率，K/m</td>
+</tr>
+<tr>
+<td>thermal conductivity</td>
+<td>导热系数</td>
+<td>材料输运热量的物性，W/(m·K)</td>
+</tr>
+<tr>
+<td>Fourier's law</td>
+<td>傅里叶定律</td>
+<td>导热速率方程 <span class="arithmatex">\(q_x'' = -k\,dT/dx\)</span>（式 1.1）</td>
+</tr>
+<tr>
+<td>convection heat transfer coefficient</td>
+<td>对流换热系数（表面传热系数）</td>
+<td>牛顿冷却公式的比例系数 <span class="arithmatex">\(h\)</span>，W/(m²·K)，不是物性</td>
+</tr>
+<tr>
+<td>Newton's law of cooling</td>
+<td>牛顿冷却公式</td>
+<td>对流速率方程 <span class="arithmatex">\(q'' = h(T_s - T_\infty)\)</span>（式 1.3a）</td>
+</tr>
+<tr>
+<td>hydrodynamic (velocity) boundary layer</td>
+<td>流动边界层（速度边界层）</td>
+<td>速度从壁面零值过渡到来流值的流体薄层</td>
+</tr>
+<tr>
+<td>thermal boundary layer</td>
+<td>热边界层</td>
+<td>温度从壁面 <span class="arithmatex">\(T_s\)</span> 过渡到 <span class="arithmatex">\(T_\infty\)</span> 的流体薄层</td>
+</tr>
+<tr>
+<td>forced convection</td>
+<td>强制对流</td>
+<td>流动由风扇、泵、风等外部手段驱动</td>
+</tr>
+<tr>
+<td>free (natural) convection</td>
+<td>自然对流</td>
+<td>流动由温度差导致的密度差（浮升力）诱发</td>
+</tr>
+<tr>
+<td>mixed convection</td>
+<td>混合对流</td>
+<td>强制与自然对流并存且都不可忽略</td>
+</tr>
+<tr>
+<td>boiling / condensation</td>
+<td>沸腾 / 凝结</td>
+<td>伴随液–汽相变潜热交换的对流过程</td>
+</tr>
+<tr>
+<td>blackbody</td>
+<td>黑体</td>
+<td>吸收一切入射辐射、发射功率最大的理想辐射体</td>
+</tr>
+<tr>
+<td>emissivity</td>
+<td>发射率</td>
+<td>实际表面与黑体发射能力之比，0–1</td>
+</tr>
+<tr>
+<td>irradiation</td>
+<td>投入辐射</td>
+<td>单位面积上入射的辐射速率 <span class="arithmatex">\(G\)</span>，W/m²</td>
+</tr>
+<tr>
+<td>absorptivity</td>
+<td>吸收比</td>
+<td>被吸收的投入辐射份额 <span class="arithmatex">\(\alpha\)</span>，0–1</td>
+</tr>
+<tr>
+<td>gray surface</td>
+<td>灰体</td>
+<td>辐射物性与波长无关的理想表面，<span class="arithmatex">\(\alpha = \varepsilon\)</span></td>
+</tr>
+<tr>
+<td>radiation heat transfer coefficient</td>
+<td>辐射换热系数</td>
+<td>线化辐射的系数 <span class="arithmatex">\(h_r\)</span>（式 1.9），强依赖温度</td>
+</tr>
+<tr>
+<td>thermal resistance</td>
+<td>热阻</td>
+<td><span class="arithmatex">\(R_t = \Delta T / q\)</span>，K/W，三种模式各有形式</td>
+</tr>
+<tr>
+<td>control volume / control surface</td>
+<td>控制体 / 控制表面</td>
+<td>能量守恒的分析区域及其边界</td>
+</tr>
+<tr>
+<td>energy advection</td>
+<td>能量平流</td>
+<td>质量穿越控制体边界时携带能量的过程</td>
+</tr>
+<tr>
+<td>flow work</td>
+<td>流动功</td>
+<td>压力推动流体穿越边界的功，单位质量 <span class="arithmatex">\(pv\)</span></td>
+</tr>
+<tr>
+<td>viscous dissipation</td>
+<td>黏性耗散</td>
+<td>黏性力把机械能转换为热能，高流速/高黏度才显著</td>
+</tr>
+<tr>
+<td>latent heat of fusion</td>
+<td>熔化潜热</td>
+<td>单位质量固体熔化所需能量 <span class="arithmatex">\(h_{sf}\)</span>，J/kg</td>
+</tr>
+<tr>
+<td>volumetric heat generation rate</td>
+<td>体积热生成率</td>
+<td>单位体积内的生成速率 <span class="arithmatex">\(\dot q\)</span>，W/m³</td>
+</tr>
+<tr>
+<td>heat engine</td>
+<td>热机</td>
+<td>连续/循环运行、把热转换为功的装置</td>
+</tr>
+<tr>
+<td>Carnot efficiency</td>
+<td>卡诺效率</td>
+<td>可逆热机效率上限 <span class="arithmatex">\(\eta_C = 1 - T_c/T_h\)</span></td>
+</tr>
+<tr>
+<td>heat sink</td>
+<td>热沉（散热器/肋片）</td>
+<td>电子器件散热用的高导热肋片结构</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
