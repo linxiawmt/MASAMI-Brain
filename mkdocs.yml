@@ -127,6 +127,9 @@ nav:
       - 第14章 傅里叶变换: opencv/ch14.md
       - 第15章 模板匹配: opencv/ch15.md
       - 第16章 霍夫变换: opencv/ch16.md
+      - 第17章 图像分割与提取: opencv/ch17.md
+      - 第18章 视频处理: opencv/ch18.md
+      - 第19章 绘图及交互: opencv/ch19.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
