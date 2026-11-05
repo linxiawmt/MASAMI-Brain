@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/holo/fourier/ch1/">
       
       
-        <link rel="prev" href="../../../opencv/ch01/">
+        <link rel="prev" href="../../../opencv/ch03/">
       
       
         <link rel="next" href="../ch2/">
@@ -1280,6 +1280,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1340,6 +1344,62 @@
     
   
     第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
   
 
     
@@ -1592,17 +1652,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#18-参考文献原书" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.8 参考文献（原书）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#坑与陷阱" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1629,17 +1678,6 @@
     <span class="md-ellipsis">
       
         术语速查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
       
     </span>
   </a>
@@ -2543,17 +2581,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#18-参考文献原书" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.8 参考文献（原书）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#坑与陷阱" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2586,17 +2613,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2619,14 +2635,9 @@
 
 <h1 id="第-1-章-解析傅里叶理论复习">第 1 章 解析傅里叶理论复习<a class="headerlink" href="#第-1-章-解析傅里叶理论复习" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：把全书要用的解析数学工具一次清点完毕——傅里叶变换的定义与约定、九条定理、六个基本函数及其变换对、线性空间不变系统框架。第 2 章立刻把这些工具搬进计算机，看采样和有限阵列带来什么新麻烦。
-本章是纯理论复习，<strong>原书没有 MATLAB 代码</strong>（第 3 章才 "Open MATLAB"）。笔记里的代码是我补充的数值验证脚本（MATLAB / Python 双实现），专门用来检验书上两张变换对表到底对不对——还真查出了两处问题，见 1.5 节的勘误。</p>
+<p><strong>本章解决</strong>：傅里叶光学所需的解析数学基础——傅里叶变换的定义与约定，线性、相似、位移、卷积、相关与 Parseval 等基本定理，rect、circ、高斯、chirp 等基本函数及其变换对，以及线性空间不变系统的卷积与传递函数表示。掌握这套语言后，衍射、成像与滤波可以统一写成"输入—系统—输出"的频域运算，并为后续离散实现提供连续域的对照标准。
+本栏目依据 David G. Voelz《Computational Fourier Optics: A MATLAB Tutorial》（SPIE Press, 2007）编写。</p>
 </blockquote>
-<p>本章覆盖（原书 1.2 节末尾的安排）：</p>
-<ul>
-<li>傅里叶变换的基本定义、定理、基本函数与变换对</li>
-<li>线性系统理论复习</li>
-</ul>
 <h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -3878,18 +3889,6 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
 </tbody>
 </table>
 </details>
-<h2 id="18-参考文献原书">1.8 参考文献（原书）<a class="headerlink" href="#18-参考文献原书" title="Permanent link">#</a></h2>
-<ol>
-<li>W. T. Rhodes, "History and evolution of the teaching of Fourier optics," <em>Proc. SPIE</em> 3572, 50–56 (1999).</li>
-<li>J. W. Goodman, <em>Introduction to Fourier Optics</em>, 3<sup>rd</sup> Ed., Roberts &amp; Company (2005).——本章记号与公式的蓝本</li>
-<li>R. Barakat, "The calculation of integrals encountered in optical diffraction theory," in <em>The Computer in Optical Research</em>, B. R. Frieden (ed.), Springer (1980).——数值积分路线</li>
-<li>J. D. Gaskill, <em>Linear Systems, Fourier Transforms, and Optics</em>, Wiley-Interscience (1978).</li>
-<li>O. K. Ersoy, <em>Diffraction, Fourier Optics and Imaging</em>, Wiley-Interscience (2006).</li>
-<li>C. A. Bennett, <em>Principles of Physical Optics</em>, Wiley (2008).</li>
-<li>E. G. Steward, <em>Fourier Optics: An Introduction</em>, 2<sup>nd</sup> Ed., Dover (2004).</li>
-<li>W. J. Smith, <em>Modern Optical Engineering</em>, 4<sup>th</sup> Ed., McGraw-Hill (2007).</li>
-<li>J. M. Geary, <em>Introduction to Lens Design with Practical ZEMAX Examples</em>, Willmann-Bell (2002).</li>
-</ol>
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">2π 约定错位</p>
@@ -4058,59 +4057,6 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>原书小节</th>
-<th>内容</th>
-<th>笔记位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.1 A Little History and Purpose</td>
-<td>历史、上机理由、FFT 伪影预警</td>
-<td>1.1</td>
-</tr>
-<tr>
-<td>1.2 The Realm of Computational Fourier Optics</td>
-<td>物理量约定、设计者困境、适用范围</td>
-<td>1.2</td>
-</tr>
-<tr>
-<td>1.3 Fourier Transform Definitions and Existence</td>
-<td>式 (1.1)(1.2)、存在条件、广义变换</td>
-<td>1.3</td>
-</tr>
-<tr>
-<td>1.4 Theorems and Separability</td>
-<td>表 1.1 九条定理、式 (1.3)(1.4)</td>
-<td>1.4</td>
-</tr>
-<tr>
-<td>1.5 Basic Functions and Transforms</td>
-<td>表 1.2、图 1.1/1.2、表 1.3、图 1.3</td>
-<td>1.5</td>
-</tr>
-<tr>
-<td>1.6 Linear and Space-Invariant Systems</td>
-<td>式 (1.5)–(1.13)、传递函数</td>
-<td>1.6</td>
-</tr>
-<tr>
-<td>1.7 Exercises</td>
-<td>习题 1.1–1.6</td>
-<td>1.7（含答案要点）</td>
-</tr>
-<tr>
-<td>1.8 References</td>
-<td>参考文献 9 条</td>
-<td>1.8</td>
-</tr>
-</tbody>
-</table>
-<p>代码文件：<code>matlab/fourier/ch1/</code>（ch1_basic_functions.m、ch1_verify_pairs_1d.m、ch1_verify_circ_jinc.m、ch1_lsi_demo.m）、<code>python/fourier/ch1/</code>（同名 .py），与页面内 tab 一致。</p>
 
 
 

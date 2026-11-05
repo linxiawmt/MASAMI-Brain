@@ -1280,6 +1280,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1340,6 +1344,62 @@
     
   
     第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
   
 
     
@@ -1854,17 +1914,6 @@
     <span class="md-ellipsis">
       
         9.4 习题（原书）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#95-参考文献原书" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.5 参考文献（原书）
       
     </span>
   </a>
@@ -2622,17 +2671,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#95-参考文献原书" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.5 参考文献（原书）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#坑与陷阱" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2687,10 +2725,8 @@
 
 <h1 id="第-9-章-部分相干仿真">第 9 章 部分相干仿真<a class="headerlink" href="#第-9-章-部分相干仿真" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>:前 8 章的光都是"单色完全相干"的——一幅场乘一个传播器。真实光源的谱有宽度(时间相干有限)、波前上不同点之间相关有限(空间相干有限),条纹和环纹会被"抹平"。本章把这两件事拆开各给一套实用仿真方案:时间相干 = 把谱离散成 N 条互不相干的谱线,逐条传播后按谱密度加权求和辐照度;空间相干 = 给确定性场乘 N 个随机相位屏,逐个传播后对辐照度做系综平均。两套方案共用一个思想——部分相干光是"互不相干的相干波叠加"。本章几乎没有新的传播器,全部积木来自第 5 章(propFF/propTF),但引入了统计光学的一组新语言:谱线型、复相干度、相干长度、相位屏。
-MATLAB / Python 双实现与数值验证照旧。本章书内代码 2 个脚本(pc_temp、pc_spatial)。本章发现原书 5 处笔误:式 (9.10) 与式 (9.27) 的 <span class="arithmatex">\(w^2\)</span> 均应为 <span class="arithmatex">\(w^4\)</span>(数值反证:按 <span class="arithmatex">\(w^2\)</span> 算出的中心辐照度比仿真大 6 个量级)、图 9.5 题注 "pb_temp" 应为 pc_temp、pc_temp 评注 (a) "span displayed in Fig. 9.2" 应为图 9.3、pc_spatial 评注 (e) 漏印 <span class="arithmatex">\(\sigma_r\)</span>,见正文标注。</p>
+<p><strong>本章解决</strong>：部分相干光的数值建模——时间相干用有限谱线叠加并按谱密度加权求和辐照度，空间相干用随机相位屏的系综平均，两者分别对应复时间相干度与互相干函数的统计描述。学完能估算相干长度、设置谱分量或相位屏数目，并判断仿真结果在何种参数范围内反映真实的相干退化。</p>
 </blockquote>
-<p>本章覆盖(原书 9.1–9.5 节):部分时间相干(准单色光、仿真方案、双光束延迟例子)、部分空间相干(随机透过屏、相位屏方案、例子)、可约性与谱分量数、习题、参考文献。参考文献 13 条;正文上标引用共 16 处,统计光学细节都推给 Goodman《Statistical Optics》(ref 1)。</p>
 <h2 id="90-本章导图">9.0 本章导图<a class="headerlink" href="#90-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -3328,22 +3364,6 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
 <p class="admonition-title">拓展:式 (9.33) 的 Δ 在说什么</p>
 <p><span class="arithmatex">\(\Delta\)</span> 是"高斯光束展宽因子":<span class="arithmatex">\(z = 0\)</span> 时 <span class="arithmatex">\(\Delta = 1\)</span>,GSM 光束回到源面尺寸。<span class="arithmatex">\(\ell_{cr}\to\infty\)</span>(完全相干)时式 (9.33) 退化为普通高斯光束的衍射展宽 <span class="arithmatex">\(\sqrt{1+(2z/kw_0^2)^2}\)</span>,这正是高斯光束的 <span class="arithmatex">\(1/e^2\)</span> 半径随 <span class="arithmatex">\(z\)</span> 的增长因子(瑞利距离 <span class="arithmatex">\(z_R = kw_0^2/2\)</span> 的归一化形式);空间相干越差(<span class="arithmatex">\(\ell_{cr}\)</span> 越小),括号里的 <span class="arithmatex">\(2w_0^2/\ell_{cr}^2\)</span> 越大,光束发散越快——本例 <span class="arithmatex">\(\ell_{cr} = 1\)</span> cm 让 <span class="arithmatex">\(z = 1\)</span> km 处的束宽比完全相干情形大 2.08 倍、峰值低 4.3 倍。部分相干光束"抗散斑、填充目标均匀",代价就是发散更快,这是激光通信选 GSM 光束时的基本权衡。</p>
 </div>
-<h2 id="95-参考文献原书">9.5 参考文献（原书）<a class="headerlink" href="#95-参考文献原书" title="Permanent link">#</a></h2>
-<ol>
-<li>J. W. Goodman, <em>Statistical Optics</em>, Wiley-Interscience, New York (1985).</li>
-<li>L. Mandel and E. Wolf, <em>Optical Coherence and Quantum Optics</em>, Cambridge University Press, Cambridge, U.K. (1995).</li>
-<li>B. E. A. Saleh and M. C. Teich, <em>Fundamentals of Photonics</em>, 2<sup>nd</sup> Ed., Wiley-Interscience, New York (2007).</li>
-<li>E. Hecht, <em>Optics</em>, 4<sup>th</sup> Ed., Addison-Wesley, Reading, MA (2002).</li>
-<li>K. K. Sharma, <em>Optics: Principles and Applications</em>, Academic, London (2006).</li>
-<li>J. W. Goodman, <em>Introduction to Fourier Optics</em>, 3<sup>rd</sup> Ed., Roberts &amp; Company, Greenwood Village, CO (2005).</li>
-<li>C. Rydberg and J. Bengtsson, "Efficient numerical representation of the optical field for the propagation of partially coherent radiation with a specified spatial and temporal coherence function," <em>J. Opt. Soc. Am. A</em>, <strong>23</strong>, 1616–1625 (2006).</li>
-<li>D. G. Voelz, K. A. Bush, and P. S. Idell, "Illumination coherence effects in laser-speckle imaging: Modeling and experimental demonstration," <em>Appl. Opt.</em>, <strong>36</strong>, 1781–1788 (1997).</li>
-<li>P. Polynkin, A. Peleg, L. Klein, T. Rhoadarmer, and J. Moloney, "Optimized multiemitter beams for free-space optical communications through turbulent atmosphere," <em>Opt. Lett.</em>, <strong>32</strong>, 885–887 (2007).</li>
-<li>X. Xiao and D. Voelz, "Wave optics simulation approach for partial spatially coherent beams," <em>Opt. Express</em>, <strong>14</strong>, 6986–6992 (2006).</li>
-<li>A. Papoulis and S. Unnikrishna Pillai, <em>Probability, Random Variables, and Stochastic Processes</em>, 4<sup>th</sup> Ed., McGraw-Hill, New York (2002).</li>
-<li>H. A. Makse, S. Havlin, M. Schwartz, and H. E. Stanley, "Method for generating long-range correlations for large systems," <em>Phys. Rev. E</em>, <strong>53</strong>, 5445–5449 (1996).</li>
-<li>J. C. Ricklin and F. M. Davidson, "Atmospheric optical communication with a Gaussian Schell beam," <em>J. Opt. Soc. Am. A</em>, <strong>20</strong>, 856–866 (2003).</li>
-</ol>
 <p>两套方案放在一起对照:</p>
 <table>
 <thead>
@@ -3570,7 +3590,6 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
 </tr>
 </tbody>
 </table>
-<p>代码文件:<code>matlab/fourier/ch9/</code>(pc_temp.m、pc_spatial.m、ch9_exercises.m)与页面内 tab 一致;<code>python/fourier/ch9/</code>(ch9_temporal.py、ch9_spatial.py、ch9_exercises.py)。公共积木复用 <code>python/fourier/common/base.py</code>(coords、circle、rect——坐标轴、圆盘、矩形线型全部由它生成),习题 9.6 的传播复用 <code>python/fourier/ch5/ch5_prop.py</code> 的 propTF。数值验证:ch9_temporal.py(7 s)、ch9_spatial.py(26 s)、ch9_exercises.py(11 s),machinelearn 环境实跑,输出 out_fig9_*.png 共 10 张(即笔记里的图 9-P1–9-P10)。</p>
 
 
 

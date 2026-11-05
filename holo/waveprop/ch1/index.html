@@ -1280,6 +1280,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1340,6 +1344,62 @@
     
   
     第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
   
 
     
@@ -2078,17 +2138,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2810,17 +2859,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2843,16 +2881,9 @@
 
 <h1 id="第-1-章-标量衍射理论基础">第 1 章 标量衍射理论基础<a class="headerlink" href="#第-1-章-标量衍射理论基础" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：从 Maxwell 方程组出发，把"光从源平面传到观察平面"这件事最终压缩成两条能在计算机里算的积分——菲涅耳衍射积分 (1.57) 与夫琅禾费衍射积分 (1.67)，路上顺便备好三个标准波源：平面波、球面波、高斯光束。第 2 章立刻把连续积分搬进离散网格，看采样与有限阵列会捅出什么娄子。
-原书本章是纯理论推导，没有 MATLAB 例程（矩形孔解析解的求值代码在附录 B）。笔记里的 4 组双语言仿真工程是我按本章公式补写的，每组内置数值验证，跑一遍就能对着打印结果核对公式；它们全部由你的 9 个旧稿脚本规范化重写而来，中文注释里的物理含义（水滴挡光、过冷水滴模型）原样保留，改掉的三处硬伤在 1.3.4 开头逐条列明。</p>
+<p><strong>本章解决</strong>：标量衍射理论的基础链条——从 Maxwell 方程组导出波动方程与亥姆霍兹方程，给出平面波、球面波与高斯光束三类标准解，并在标量近似下把传播问题化为菲涅耳与夫琅禾费衍射积分。学完能写出典型波源的场表达式，并判断在给定孔径与距离下应使用哪一级衍射近似。
+本栏目依据 Jason D. Schmidt《Numerical Simulation of Optical Wave Propagation with Examples in MATLAB》（SPIE Press, 2010）编写。</p>
 </blockquote>
-<p>本章覆盖：</p>
-<ul>
-<li>经典电动力学基础：场的源、Maxwell 方程组、本构关系（1.1）</li>
-<li>波动方程 → 亥姆霍兹方程；平面波、球面波、高斯光束三个闭式解（1.2）</li>
-<li>标量衍射理论：菲涅耳衍射积分、矩形孔解析解、夫琅禾费近似、双缝干涉（1.3）</li>
-<li>数值仿真工程：单缝/双缝图样、泊松斑、艾里斑与采样混叠、DFT 三步演化（1.3.4）</li>
-</ul>
 <h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -4716,54 +4747,6 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\,e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lamb
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>原书小节</th>
-<th>内容</th>
-<th>笔记位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>引言</td>
-<td>波粒二象性、几何光学的界限、本书路线</td>
-<td>1.1 开篇</td>
-</tr>
-<tr>
-<td>1.1 Basics of Classical Electrodynamics</td>
-<td>场的源 (1.1)、洛伦兹力与 Maxwell 方程 (1.2)–(1.18)、本构关系 (1.19)–(1.28)</td>
-<td>1.1</td>
-</tr>
-<tr>
-<td>1.2.1 Obtaining a wave equation</td>
-<td>波动方程 (1.29)–(1.41)、亥姆霍兹方程 (1.42)(1.43)、相量与单位</td>
-<td>1.2.1</td>
-</tr>
-<tr>
-<td>1.2.2 Simple traveling-wave fields</td>
-<td>平面波 (1.44)–(1.46) 图 1.1、球面波与傍轴 (1.47)–(1.52)、高斯光束 (1.53)–(1.56)</td>
-<td>1.2.2</td>
-</tr>
-<tr>
-<td>1.3 Scalar Diffraction Theory</td>
-<td>菲涅耳积分 (1.57)、矩形孔 (1.58)–(1.66)、夫琅禾费 (1.67)、双缝 (1.68)–(1.71)</td>
-<td>1.3（1.3.1–1.3.3）</td>
-</tr>
-<tr>
-<td>1.3（数值挑战与章节路线图）</td>
-<td>DFT 路线图、第 &#8532;/4/6–8 章预告</td>
-<td>1.3.2 + 1.3.4</td>
-</tr>
-<tr>
-<td>1.4 Problems</td>
-<td>习题 1–6（(1.72)(1.73)(1.74)(1.75)）</td>
-<td>1.4（含答案要点）</td>
-</tr>
-</tbody>
-</table>
-<p>代码文件：<code>matlab/waveprop/ch1/</code>（ch1_slit_diffraction.m、ch1_geom_vs_wave.m、ch1_circle_ft_aliasing.m、ch1_dft_three_steps.m）、<code>python/waveprop/ch1/</code>（同名 .py），与页面内 tab 内容一致。全部由用户旧稿 9 个脚本重写而来，对应关系见 1.3.4。</p>
 
 
 

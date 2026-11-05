@@ -1280,6 +1280,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1340,6 +1344,62 @@
     
   
     第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
   
 
     
@@ -2151,17 +2211,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2732,17 +2781,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2765,22 +2803,8 @@
 
 <h1 id="第-5-章-成像系统与像差">第 5 章 成像系统与像差<a class="headerlink" href="#第-5-章-成像系统与像差" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：第 4 章的透镜焦面是"完美透镜"的故事——一次 <code>ft2</code> 出精确傅里叶变换。真实光学系统有<strong>像差（aberration）</strong>：波前不再是球面，点物聚不成点像。本章回答三件事：像差用什么函数表示（Seidel 多项式与 Zernike 圆多项式）、像差怎么进入成像模型（广义光瞳 → 振幅扩散函数/PSF → ATF/OTF）、怎么用一个数评价成像好坏（Strehl 比与 Maréchal 公式）。全章只用到两件旧工具：第 2 章定标正确的 <code>ft2</code> 和第 3 章的离散卷积——"成像 = 物与脉冲响应卷积"。
-原书本章 5 段 MATLAB 代码（Listings 5.1–5.5）、7 幅插图（图 5.1–5.7）、2 张表（表 5.&#8533;.2）、6 道习题。笔记按 3 组工程组织（Zernike、成像、习题 1–6），Python 侧全部实跑验证：最小二乘投影精确恢复系数、正交性网格加密收敛、残差方差两种算法互证、ATF 逐点核对、OTF 双路线对照解析式、Strehl 四算法互查、六道习题的解析对照，实测数字都写进正文；复用《计算傅里叶光学》笔记的公共模块 <code>python/fourier/common/base.py</code>。原书发现 3 处笔误：式 (5.4) 的 m=0 分支缺 <span class="arithmatex">\(\sqrt{n+1}\)</span>、式 (5.7) 的 <span class="arithmatex">\(1/(2n+1)\)</span> 应为 <span class="arithmatex">\(1/(2(n+1))\)</span>、表 5.2 标题写"前 36 项"实列 37 项；另有 1 处疑似排印错误（习题 6 三孔坐标，正文注明）。</p>
+<p><strong>本章解决</strong>：含像差的成像系统模型——用 Seidel 多项式与 Zernike 圆多项式展开波前，经广义光瞳得到振幅扩散函数、点扩散函数与光学传递函数，并用 Strehl 比与 Maréchal 公式给出单一像质指标。学完能由波前系数计算成像系统的分辨率与像质，并比较不同像差组合的影响。</p>
 </blockquote>
-<p>本章覆盖：</p>
-<ul>
-<li>成像系统模型与广义光瞳函数 <span class="arithmatex">\(\mathcal{P} = P\,e^{i2\pi W}\)</span>（5.1，式 5.1）</li>
-<li>Seidel 像差多项式与六种命名（5.1.1，式 5.2 + 表 5.1）</li>
-<li>Noll 单指标 Zernike 圆多项式、前 37 项对照（5.1.2，式 5.3–5.5 + 表 5.2 + Listing 5.1）</li>
-<li>Zernike 级数、正交性、系数投影与矩阵形式（5.1.2，式 5.6–5.18 + Listing 5.2）</li>
-<li>模式受限波前与自适应光学（5.1.2.1，式 5.19–5.20 + Listing 5.3 + 图 5.&#8535;.4）</li>
-<li>RMS 波前差：方差 = 系数平方和（5.1.2.2，式 5.21–5.26）</li>
-<li>相干成像：ASF/ATF 与截频 <span class="arithmatex">\(f_0\)</span>（5.2.1，式 5.27–5.34 + Listing 5.4 + 图 5.5）</li>
-<li>非相干成像：PSF/OTF、圆孔闭式与截频 <span class="arithmatex">\(2f_0\)</span>（5.2.2，式 5.35–5.42 + Listing 5.5 + 图 5.6/5.7）</li>
-<li>Strehl 比与 Maréchal 公式（5.2.3，式 5.43–5.55）</li>
-<li>六道习题：BK7 色差焦斑、像散/球差加离焦、混合像差 Strehl、环形/稀疏孔径（5.3，式 5.56–5.60）</li>
-</ul>
 <h2 id="50-本章导图">5.0 本章导图<a class="headerlink" href="#50-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5741,84 +5765,6 @@ W(x, y) = 0.07\, Z_4 + 0.05\, Z_5 - 0.05\, Z_6 + 0.03\, Z_7 - 0.03\, Z_8,
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>原书小节 → 笔记位置对照</summary>
-<table>
-<thead>
-<tr>
-<th>原书内容</th>
-<th>笔记位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5.1 像差、图 5.1、式 (5.1)</td>
-<td>5.1 节开头</td>
-</tr>
-<tr>
-<td>5.1.1 Seidel 像差、式 (5.2)、表 5.1</td>
-<td>5.1.1 节</td>
-</tr>
-<tr>
-<td>5.1.2 Zernike 圆多项式、式 (5.3)–(5.9)、表 5.2、Listing 5.1、图 5.2</td>
-<td>5.1.2 节（含两处勘误 warning）</td>
-</tr>
-<tr>
-<td>Zernike 级数与投影、式 (5.10)–(5.18)、Listing 5.2</td>
-<td>5.1.2 节后半</td>
-</tr>
-<tr>
-<td>5.1.2.1 分解与模式去除、式 (5.19)–(5.20)、Listing 5.3、图 5.&#8535;.4</td>
-<td>5.1.2.1 节 + 图 5-8</td>
-</tr>
-<tr>
-<td>5.1.2.2 RMS 波前像差、式 (5.21)–(5.26)</td>
-<td>5.1.2.2 节</td>
-</tr>
-<tr>
-<td>工程 1（Listings 5.1–5.3 复现 + 数值验证）</td>
-<td>5.1 末尾工程 1</td>
-</tr>
-<tr>
-<td>5.2 引言（相干性决定线性量）</td>
-<td>5.2 节开头</td>
-</tr>
-<tr>
-<td>5.2.1 相干成像、式 (5.27)–(5.34)、Listing 5.4、图 5.5</td>
-<td>5.2.1 节</td>
-</tr>
-<tr>
-<td>5.2.2 非相干成像、式 (5.35)–(5.42)、Listing 5.5、图 5.6/5.7</td>
-<td>5.2.2 节 + 表 5.3 + 图 5-9</td>
-</tr>
-<tr>
-<td>5.2.3 Strehl 比、式 (5.43)–(5.55)</td>
-<td>5.2.3 节</td>
-</tr>
-<tr>
-<td>5.3 习题 1（Sellmeier、式 5.56–5.59）</td>
-<td>5.3 节习题 1 + 图 5-10</td>
-</tr>
-<tr>
-<td>5.3 习题 &#8532;（像散/球差 + 离焦）</td>
-<td>5.3 节习题 &#8532; + 图 5-11</td>
-</tr>
-<tr>
-<td>5.3 习题 4（式 5.60 的 Strehl）</td>
-<td>5.3 节习题 4</td>
-</tr>
-<tr>
-<td>5.3 习题 5（环形孔径）、习题 6（稀疏孔径）</td>
-<td>5.3 节习题 &#8538; + 图 5-12</td>
-</tr>
-<tr>
-<td>工程 3（习题 1–6 复现 + 数值验证）</td>
-<td>5.3 末尾工程 3</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 

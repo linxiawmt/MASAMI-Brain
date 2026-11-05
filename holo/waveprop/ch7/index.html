@@ -1280,6 +1280,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1340,6 +1344,62 @@
     
   
     第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
   
 
     
@@ -2185,17 +2245,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2688,17 +2737,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#覆盖自查" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        覆盖自查
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2721,7 +2759,7 @@
 
 <h1 id="第-7-章-菲涅耳衍射的采样要求">第 7 章 菲涅耳衍射的采样要求<a class="headerlink" href="#第-7-章-菲涅耳衍射的采样要求" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：第 6 章把四种真空传播器（单步/两步/角谱/ABCD）交到你手上，但没回答最实际的工程问题——<strong>网格参数（<span class="arithmatex">\(\delta_1, \delta_2, N\)</span>）怎么选才不会混叠</strong>。本章给出答案的两半：<strong>几何带宽判据</strong>（观测孔径物理上只能接收到有限的方向谱，这是 Coy 判据的核心，与采样无关）给出 <span class="arithmatex">\(\delta_1,\delta_2,N\)</span> 的下限；<strong>二次相位判据</strong>（FT 内部的啁啾必须按局部空间频率过 Nyquist）决定哪种传播器在什么距离范围内有效——结论：<strong>菲涅耳积分法适合长传播、角谱法适合短传播</strong>。这套选参流程是第 8 章湍流相位屏仿真、第 9 章系统级仿真的直接地基。</p>
+<p><strong>本章解决</strong>：菲涅耳传播的网格参数设计——由观测孔径的几何带宽确定源面、观察面采样间隔与阵列长度的下限，由变换核的局部空间频率给出 Nyquist 条件，从而界定单步法、两步法与角谱法各自的有效距离范围。学完能在给定波长、孔径与传播距离时选出一组不混叠的网格参数。</p>
 </blockquote>
 <h2 id="70-本章导图">7.0 本章导图<a class="headerlink" href="#70-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -5063,60 +5101,6 @@ D_1 \delta_2 + D_2 \delta_1 \le \lambda \Delta z.
 </tr>
 </tbody>
 </table>
-<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
-<details class="note">
-<summary>覆盖自查：原书 7.x → 笔记位置</summary>
-<table>
-<thead>
-<tr>
-<th>原书内容</th>
-<th>笔记位置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>7.1 施加带宽限制（式 7.1–7.7，图 7.1）</td>
-<td>§7.1（含倏逝波拓展）</td>
-</tr>
-<tr>
-<td>7.2 传播几何（式 7.8–7.20，图 7.2/7.3）</td>
-<td>§7.2（约束 &frac12;，含 α_k 的人话解释）</td>
-</tr>
-<tr>
-<td>7.3.1.1 单步固定采样（式 7.21–7.31）</td>
-<td>§7.3.1.1（含"贴边发散"拓展）</td>
-</tr>
-<tr>
-<td>7.3.1.2 避免混叠（式 7.32–7.43，Listing 7.1，图 7.4）</td>
-<td>§7.3.1.2（含 R 符号勘误）+ 工程 1 验证 0/1</td>
-</tr>
-<tr>
-<td>7.3.2 角谱传播（式 7.44–7.59，图 7.5，Listing 7.2，图 7.6）</td>
-<td>§7.3.2（含式 7.46/7.47 勘误、表 7-1）+ 工程 1 验证 &#8532;</td>
-</tr>
-<tr>
-<td>7.3.3 一般准则（式 7.60，图 7.7）</td>
-<td>§7.3.3（表 7-2 对比 + 决策流程图）+ 工程 1 验证 3</td>
-</tr>
-<tr>
-<td>7.4 习题 1–6（式 7.61/7.62）</td>
-<td>§7.4（题面 + 习题 4a/6 推导拓展）+ 工程 2（全部实跑）</td>
-</tr>
-<tr>
-<td>原书图 7.1–7.7</td>
-<td>§7.1（图 7.1）、§7.2（图 7.2/7.3）、§7.3.1.2（图 7.4）、§7.3.2（图 7.5/7.6）、§7.3.3（图 7.7）</td>
-</tr>
-<tr>
-<td>自绘仿真图 7-8/7-9/7-10</td>
-<td>工程 1 末尾</td>
-</tr>
-<tr>
-<td>自绘仿真图 7-11/7-12/7-13</td>
-<td>工程 2 末尾</td>
-</tr>
-</tbody>
-</table>
-</details>
 
 
 
