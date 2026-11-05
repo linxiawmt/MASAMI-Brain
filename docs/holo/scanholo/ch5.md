@@ -1,10 +1,8 @@
 # 第 5 章 光学扫描全息：进展
 
-> **本章解决**：ch3 把 OSH 装配成"记录机"、ch4 把它变成"应用机"，本章回到原理层做三件升级：**5.1 相干/非相干处理**——在双瞳处理器里加装傅里叶变换透镜 L2 与一块掩膜 \(M(x,y)\)，掩膜从"开"换到"针孔"，被处理的对象就从强度 \(\big|T\big|^2\) 变成振幅 \(T\) 本身（纯相位物体第一次在全息里"显形"，定量相位衬度的入口）；**5.2 单光束 vs 双光束扫描**——两种扫描构型在偏振/平面波要求上的利弊账（Swoger 等的高 NA 评估），顺带认祖归宗：扫描全息记录 ≈ 合成孔径雷达；**5.3 PSF 工程**——把 p2 换成"反向曲率球面波"，啁啾率翻倍，同一孔径下横向分辨率突破 Rayleigh 极限 2 倍（理论 2002、光学实验 2005 证实）。全书到此完结：原理（ch2~ch3）→ 应用（ch4）→ 原理升级与开放方向（本章）。
+> **本章解决**：OSH 原理层面的三项扩展——在双瞳处理器中加入傅里叶变换透镜与掩膜，使系统可在相干模式下处理振幅透过率而非仅有强度；单光束与双光束扫描构型在偏振与平面波要求上的取舍；以及通过改变扫描光束的曲率实现点扩散函数工程，在相同孔径下提高横向分辨率。学完能比较各构型的适用条件，并分析分辨率提升的代价与实现路径。
 
-原书本章结构：章引言（ch4 应用回顾 → 相干 3-D 成像的动机）；5.1 相干与非相干全息处理（式 5.1-1a~5.1-9，图 5.1，Example 5.1）；5.2 单光束扫描 vs 双光束扫描（图 5.2，Swoger 等的观察清单）；5.3 PSF 工程（式 5.3-1~5.3-7，图 5.3a/b）；References 5.1~5.13。（原书 Back Matter 只有索引与作者简介，无 MATLAB 附录；全书代码清单散见于各章 Table。）
-
-动机一句话：OSH 至今处理的全是**非相干**物体（荧光、遥感、打印文档）——因为标准双瞳处理器（图 3.11）的 PD 收全部透射光，做的是空间积分强度探测。但生物成像里还有一个大方向：**定量相位衬度成像**（quantitative phase-contrast imaging）[Cuche, Bevilacqua, and Depeursinge (1999)]——要处理的是物体的**振幅透过率** \(T(x,y;z)\)。本章 5.1 节回答：怎么改装处理器让它工作在**相干模式**。
+研究动机：OSH 至今处理的多是非相干物体（荧光、遥感、打印文档）——标准双瞳处理器的探测器接收全部透射光，做的是空间积分强度探测。生物成像中的定量相位衬度成像则需要处理物体的振幅透过率 \(T(x,y;z)\)；5.1 节讨论如何改装处理器，使其工作在相干模式。
 
 ## 5.0 本章导图
 
@@ -1006,39 +1004,3 @@ flowchart LR
 | diffractive optical element (DOE) | 衍射光学元件 | 合成任意复振幅光瞳的器件之一 |
 | super-resolution | 超分辨 | 叠加离轴全息突破目标物镜 Rayleigh 极限（Ref 5.8） |
 | low-Fresnel-number focal shift | 低菲涅尔数焦移 | N_F≈4 时会聚波焦点前移（Li & Wolf 效应，实跑 6512 vs 7040） |
-
-## 覆盖自查
-
-??? note "原书小节 → 笔记位置对照"
-
-    | 原书内容 | 笔记位置 |
-    | --- | --- |
-    | 章引言（ch4 回顾 → 相干 3-D 成像动机） | 章首 |
-    | 5.1 Coherent and Incoherent Holographic Processing（式 5.1-1a~5.1-7b；图 5.1） | 5.1.1~5.1.3（(5.1-7a/b) sin/cos 勘误；M=1 机制补证明在拓展注） |
-    | Example 5.1 Holographic Recording in Coherent Mode（式 5.1-8、5.1-9） | 5.1.4（代码双 tab + 实跑对比图） |
-    | 5.2 Single-Beam Scanning vs. Double-Beam Scanning（图 5.2） | 5.2（构型决策 mermaid；SAR 类比拓展注） |
-    | 5.3 PSF Engineering（式 5.3-1~5.3-7；图 5.3a/b） | 5.3.1~5.3.3（(5.3-4)/(5.3-5) 推导链补证明；代码双 tab + FWHM 实跑） |
-    | 5.3 末段（axicon、DOE/SLM、super-resolution） | 5.3.4（三旋钮总结拓展注） |
-    | References 5.1~5.13 | 见下 |
-
-??? note "原书 References 5.1~5.13"
-
-    5.1 Chien, W.-C., D. S. Dilworth, E. Liu, and E. N. Leith (2006). "Synthetic-aperture chirp confocal imaging," *Applied Optics* 45, 501-510.
-    5.2 Cuche, E., F. Bevilacqua, and C. Depeursinge (1999). "Digital holography for quantitative phase-contrast imaging," *Optics Letters* 24, 291-293.
-    5.3 Indebetouw, G. (2002). "Properties of a scanning holographic microscope: improved resolution, extended depth of focus, and/or optical sectioning," *Journal of Modern Optics* 49, 1479-1500.
-    5.4 Indebetouw, G., P. Klysubun, T. Kim, and T.-C. Poon (2000). "Imaging properties of scanning holographic microscopy," *Journal of the Optical Society of America A* 17, 380-390.
-    5.5 Indebetouw, G., A. El Maghnouji, and R. Foster (2005). "Scanning holographic microscopy with transverse resolution exceeding the Rayleigh limit and extended depth of focus," *Journal of the Optical Society of America A* 22, 829-898.
-    5.6 Indebetouw, G., Y. Tada, and J. Leacock (2006). "Quantitative phase imaging with scanning holographic microscopy: an experimental assessment," available at http://www.biomedical-engineering-online.com/content/5/1/63.
-    5.7 Indebetouw, G., W. Zhong, and D. Chamberlin-Long (2006). "Point-spread function synthesis in scanning holographic microscopy," *Journal of the Optical Society of America A* 23, 1708-1717.
-    5.8 Indebetouw, J., Y. Tada, J. Rosen, and G. Brooker (2007). "Scanning holographic microscopy with resolution exceeding the Rayleigh limit of the objective by superposition of off-axis holograms," *Applied Optics*, to appear.
-    5.9 Martinez-Corral, M. (2003). "Point spread function engineering in confocal scanning microscopy," *Proceedings of SPIE*, Vol. 5182, 112-122.
-    5.10 Poon, T.-C. and A. Korpel (1979). "Optical transfer function of an acousto-optic heterodyning image processor," *Optics Letters* 4, 317-319.
-    5.11 Poon, T.-C. (2004). "Recent progress in optical scanning holography," *Journal of Holography and Speckle* 1, 6-25.
-    5.12 Poon, T.-C. and G. Indebetouw (2003). "Three-dimensional point spread functions of an optical heterodyne scanning image processor," *Applied Optics* 42, 1485-1492.
-    5.13 Swoger, J., M. Martinez-Corral, J. Huisken, and E. H. K. Stelzer (2002). "Optical scanning holography as a technique for high-resolution three-dimensional biological microscopy," *Journal of the Optical Society of America A* 19, 1910-1918.
-
-    !!! warning "原书笔误/勘误（本章 3 处；全书 ch1~ch5 共计已各自标注）"
-        1. **(5.1-7a/b) sin/cos 印反**：书印 \(i_c\propto|i_{\Omega p}|\sin(\theta)\)、\(i_s\propto\cos(\theta)\)，与同页定义 \(\theta=\arg\{i_{\Omega p}\}\) 及图 5.1 框图标注（cosΩt→\(i_c\)、sinΩt→\(i_s\)）矛盾；应为 \(i_c\propto\cos\theta\)、\(i_s\propto\sin\theta\)（ch3 (3.2-3) 同套命名）。本笔记按修正后引用。
-        2. **Ref 5.5 页码可疑**：书印 *JOSA A* 22, 829-898——该文（Indebetouw, El Maghnouji, Foster 2005）实际页码为 892-898（"829"疑为"892"的数字对调）。引用时请以期刊原文为准。
-        3. **Ref 5.8 作者首字母**：书印 "Indebetouw, J."——按正文（"Indebetouw, Tada, Rosen and Brooker"）与作者全名 Gisele Indebetouw，应为 **G. Indebetouw**。
-        （另注：本笔记初版曾误报 (5.3-5) 为笔误——300 dpi 放大核对后确认原书印的正是 \(1/(f+z_i)+1/(f+z_0+z_1)=1/f\)，书本数字精确自洽，详见 5.3.2 拓展注与坑与陷阱第 5 条。）

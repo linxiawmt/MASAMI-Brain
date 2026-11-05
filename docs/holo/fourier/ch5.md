@@ -1,9 +1,6 @@
 # 第 5 章 传播仿真
 
-> **本章解决**:把第 4 章的衍射公式变成能跑的 MATLAB/Python 程序。第 4 章给了三套解析解(RS / Fresnel / Fraunhofer),本章把它们落成三个 FFT 传播器函数(propTF、propIR、propFF),再直面一个绕不开的问题——**离散采样什么时候会让仿真出错**:chirp 函数不带宽限,采样不当会产生尖刺、台阶、周期副本和假旁瓣。全章的核心资产是表 5.1 的采样判据(Δx 与 λz/L 的三种关系)和表 5.3 的仿真设计流程;第 6 章之后的透镜、PSF、成像仿真全部建立在这三个传播器上。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码 4 个文件(propTF、propIR、sqr_beam、propFF)+ 1 个改动版(sqr_beam_FF)。本章发现原书 2 处笔误("irradaince"、"negligable"),另有 1 处省略(sqr_beam_FF 改动清单缺 I2 重算行),见正文标注。
-
-本章覆盖(原书 5.1–5.8 节):Fresnel TF 传播器、Fresnel IR 传播器、方形光束例子、Fresnel 传播采样(regime 与判据、精度、设计步骤、split-step)、Fraunhofer 传播、编码效率、习题、参考文献。原书的参考文献 4 条列在 5.8 节,正文引用记号 1–4 对应 Voelz & Roggemann(2009)/ Schmidt(2010)/ Goodman / Roggemann & Welsh。
+> **本章解决**：把衍射积分实现为可执行的 FFT 传播器——菲涅耳传递函数法、菲涅耳冲激响应法与夫琅禾费变换法各自的适用条件与实现步骤；并给出离散采样失效的判据（采样间隔与波长、距离、孔径尺寸的关系），使仿真在设计阶段就能判断结果何时可信。
 
 ## 5.0 本章导图
 
@@ -956,13 +953,6 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 ??? note "5.9 提示"
     两步法(附录 B):先用球面波因子把场"折算"到中间面(距离 \(z_a\),边长按几何缩放),再做标准 TF 传播 \(z_b = z - z_a\),两段各自满足各自的采样判据;中间面边长与 \(\lambda z_a/\Delta x_1\) 同构(式 5.18)。检验点:临界情形 \(L_2 = 0.5\) m 时两步退化为一步(propTF 的 \(H(z)\) 分解精确);\(L_2\) 偏离时注意中间面 chirp 采样与观察面支撑的权衡——这正是附录 B 分析的内容。
 
-## 5.8 参考文献(原书)
-
-1. D. G. Voelz and M. C. Roggemann, "Digital simulation of scalar optical diffraction: Revisiting chirp function sampling criteria and consequences," Appl. Opt. 48, 6132–6142 (2009).
-2. J. D. Schmidt, *Numerical Simulation of Optical Wave Propagation with Examples in MATLAB*, SPIE Press, Bellingham, WA (2010). doi:10.1117/3.866274
-3. J. W. Goodman, *Introduction to Fourier Optics*, 3rd ed., Roberts & Company, Greenwood Village, CO (2005).
-4. M. C. Roggemann and B. M. Welsh, *Imaging Through Turbulence*, CRC, Boca Raton, FL (1996).
-
 ## 坑与陷阱
 
 !!! danger "TF 与 IR 的采样判据方向相反:记反全盘错"
@@ -1025,23 +1015,3 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 | wavefront | 波前 | 等相位面;unwrap 相位剖面即其形状 |
 | M-Lint / Profiler | MATLAB 静态检查 / 剖析器 | 找代码隐患 / 找耗时热点(5.6 节) |
 | power conservation | 功率守恒 | \(P=\iint I\,dxdy\) 源=观察(习题 5.3);采样体检表 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 5.1 Fresnel Transfer Function (TF) Propagator | 式 (5.1)/(5.2)、propTF 全码与注 a–g、记号混用 | 5.1 |
-| 5.2 Fresnel Impulse Response (IR) Propagator | 式 (5.3)/(5.4)、propIR 全码、dx² 定标 | 5.2 |
-| 5.3 Square Beam Example | sqr_beam 全码、图 5.1–5.3、unwrap 与波前解读、NF=2.6 | 5.3(含数值检查) |
-| 5.4.1 Square beam example results and artifacts | 图 5.4/5.5、四类 artifacts、sinc² 远场 | 5.4.1(含图 5-P1 复现) |
-| 5.4.2 Sampling regimes and criteria | 式 (5.5)–(5.8)、表 5.1、三 regime 详述 | 5.4.2(含判据推导拓展) |
-| 5.4.3 Criteria applied to square beam example | 式 (5.9)/(5.10)、表 5.2、四条观察 | 5.4.3(含 B1 数值复核拓展) |
-| 5.4.4 Propagator accuracy | 式 (5.11)–(5.13)、2500 点、mfun、图 5.6、三评注 | 5.4.4(含常数来历拓展 + 对拍表) |
-| 5.4.5 Sampling decisions | 表 5.3、式 (5.14)、相位屏冲突、试错艺术 | 5.4.5 |
-| 5.4.6 Split-step simulation, windowing, and expanding grids | 式 (5.15)、窗函数、两步法 | 5.4.6(含功率守恒拓展) |
-| 5.5 Fraunhofer Propagation | 式 (5.16)–(5.24)、propFF、sqr_beam_FF、图 5.7 | 5.5(含省略 warning 与实测)+ 5.5.1(三算子总对比,笔记自加) |
-| 5.6 Coding Efficiency | M-Lint、Profiler | 5.6(含 Python 对应) |
-| 5.7 Exercises | 习题 5.1–5.9 | 5.7(5.1/5.3/5.5/5.6 数值实跑) |
-| 5.8 References | Voelz & Roggemann / Schmidt / Goodman / Roggemann & Welsh | 5.8 |
-
-代码文件:`matlab/fourier/ch5/`(propTF.m、propIR.m、propFF.m、sqr_beam.m、sqr_beam_FF.m、ch5_exercises.m)、`python/fourier/ch5/`(ch5_prop.py、ch5_sqr_beam.py、ch5_sampling.py、ch5_fraunhofer.py、ch5_exercises.py)与页面内 tab 一致;公共积木复用 `python/fourier/common/base.py`(coords——propTF/propIR/propFF 的坐标轴全部由它生成)。

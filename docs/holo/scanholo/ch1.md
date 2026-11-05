@@ -1,9 +1,7 @@
 # 第 1 章 数学背景与线性系统
 
-> **本章解决**：全息术从头到尾都在用两套语言——傅里叶变换（把光场拆成平面波）和线性系统（把光波传播、成像看成"系统对输入的加工"）。本章把这两套语言一次备齐：二维傅里叶变换的定义、性质表、rect↔sinc 变换对、δ 函数；线性不变系统、卷积、PSF 与传递函数、卷积与相关。
-> 第 2 章的衍射、透镜、全息记录全部直接调用本章结论；第 3 章光学扫描全息（OSH）的双瞳传递函数也是 \(H(k_x,k_y)\) 语言。
-
-原书本章结构：1.1 傅里叶变换（例 1.1~1.3，代码 Table 1.2~1.4）+ 1.2 线性不变系统（1.2.1 线性与不变、1.2.2 卷积与相关，例 1.4~1.6，代码 Table 1.5）。注意这一章**没有**采样定理小节——δ 函数的"采样性质"（1.1 节）是它的数学根，我们会在拓展里点破。
+> **本章解决**：全息与光学信息处理所需的数学语言——二维傅里叶变换的定义、性质与基本变换对，δ 函数与卷积、相关运算，以及线性空间不变系统的冲激响应与传递函数描述。学完能把光场分解为平面波谱，并把传播与成像表示为线性滤波。
+> 本栏目依据 Ting-Chung Poon《Optical Scanning Holography with MATLAB》（Springer, 2007）编写。
 
 ## 1.0 本章导图
 
@@ -1139,33 +1137,3 @@ h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad
 | cross-correlation / auto-correlation | 互相关 / 自相关 | 两图比相似 / 自己比自己 |
 | pattern recognition | 图案识别 | 用相关峰（中心亮斑）判断匹配 |
 | traveling-wave convention | 行波约定 | \(e^{j\omega t-j\mathbf{k}\cdot\mathbf{r}}\)，本书 +j 前向变换的来源 |
-
-## 覆盖自查
-
-??? note "原书小节 → 笔记位置对照"
-    | 原书内容 | 笔记位置 |
-    | --- | --- |
-    | 1.1 Fourier Transformation（式 1.1-1a/1b、1.1-2a/2b） | 1.1.1 |
-    | Table 1.1 二维傅里叶变换性质与例子（10 条） | 1.1.2（重排表） |
-    | Example 1.1 rect 的 FT + MATLAB（式 1.1-3a/3b、1.1-4~1.1-8b；Table 1.2、1.3；图 1.1~1.3） | 1.1.3 |
-    | Example 1.2 位图图像的 FT（Table 1.4；图 1.4） | 1.1.4 |
-    | Example 1.3 δ 函数及其变换（式 1.1-9、1.1-10a/10b/10c；图 1.5~1.7） | 1.1.5 |
-    | 1.2 Linear and Invariant Systems — 1.2.1 Linearity and Invariance（式 1.2-1、1.2-2、1.2-3a/3b；图 1.8~1.11） | 1.2.1 |
-    | Example 1.4 卷积的傅里叶变换证明 | 1.2.1 拓展注 |
-    | 1.2.2 Convolution and Correlation Concept（式 1.2-4；图 1.12、1.13） | 1.2.2 |
-    | Example 1.5 相关与卷积的关系（式 1.2-5） | 1.2.2 |
-    | 互相关/自相关与 (1.2-6)；Vander Lugt、Weaver & Goodman、Poon & Qi 文献 | 1.2.2 |
-    | Example 1.6 MATLAB 图案识别（式 1.2-7、1.2-8；Table 1.5；图 1.14、1.15） | 1.2.2 |
-    | References 1.1~1.6 | 见下 |
-    | （编者）自由空间 LSI / 菲涅耳衍射实战 | 1.2.3（拓展） |
-
-??? note "原书 References 1.1~1.6"
-    1.1 Banerjee, P.P. and T.-C. Poon (1991). *Principles of Applied Optics*. Irwin, Illinois.
-    1.2 Poon, T.-C. and P. P. Banerjee (2001). *Contemporary Optical Image Processing with MATLAB*. Elsevier, Oxford, UK.
-    1.3 Poon, T.-C. and Y. Qi (2003). "Novel real-time joint-transform correlation by use of acousto-optic heterodyning," *Applied Optics*, 42, 4663-4669.
-    1.4 VanderLugt, A. (1964). "Signal detection by complex spatial filter," *IEEE Trans. Inf. Theory*, IT-10, 139-146.
-    1.5 Weaver, C.S. and J. W. Goodman (1969). "A technique for optically convolving two functions," *Applied Optics*, 5, 1248-1249.
-    1.6 Yu, F.T.S. and S. Jutamulia, ed. (1998). *Optical Pattern Recognition*. Cambridge University Press, Cambridge, UK.
-
-    !!! warning "原书笔误：Weaver & Goodman 的年份"
-        原书正文写 Weaver 和 Goodman [1966]，参考文献表却标 (1969)。查该论文（Applied Optics 第 5 卷 1248-1249 页）实际发表于 **1966** 年——参考文献表里的 "(1969)" 是笔误，正文 [1966] 是对的。上表按原书原样抄录，引用时以 1966 为准。

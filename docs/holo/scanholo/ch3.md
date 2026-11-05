@@ -1,10 +1,8 @@
 # 第 3 章 光学扫描全息：原理
 
-> **本章解决**：第 2 章末尾留下的难题——数字全息要保相位，直接探测却只测强度，离轴载频又扛不住记录介质分辨率。本章给出 Poon 的答案：**光学扫描全息（OSH）**。用两束频差为 Ω 的激光（双瞳：一个点源 + 一个平面波）合成一张"会跑的 FZP"去光栅扫描 3-D 物体，光电探测器接收到的是**外差电流**——全息信息被编码成实电流的幅度与相位；电子学 lock-in 解调一次扫描同时得到 sin/cos 两张全息图，复数相加即得**无孪生像**的复 FZP 全息图。3.1 光学扫描、3.2 外差、3.3 声光频移是三块积木，3.4 双瞳处理器给出 OTF，3.5 装配成扫描全息，3.6 补物理直觉。应用（显微、识别、遥感、加密）在第 4 章，进展在第 5 章。
+> **本章解决**：光学扫描全息（OSH）的记录原理——用两束频差为 Ω 的光形成时变菲涅耳波带片并对物体做二维扫描，光电探测器输出携带振幅与相位信息的外差电流，经锁相解调得到正弦与余弦全息图，合成无孪生像的复全息图。学完能写出双瞳处理器的光瞳函数与光学传递函数，并说明扫描、外差与声光移频各自的作用。
 
-原书本章结构：3.1 光学扫描原理（Fig 3.1~3.4）；3.2 光学外差（Fig 3.5、3.6）；3.3 声光频移（Fig 3.7~3.9）；3.4 双瞳光学外差扫描图像处理器（式 3.4-1~3.4-15，Fig 3.10、3.11）；3.5 扫描全息（式 3.5-1~3.5-10，Fig 3.12~3.15，Example 3.1 + Table 3.1 OSH.m）；3.6 物理直觉：TDFZP（式 3.6-1~3.6-4，Fig 3.16，Table 3.2 TDFZP.m）。
-
-OSH 的出身：Poon 和 Korpel 在声光外差图像处理器上做双极性非相干图像处理时首次提出雏形 [Poon and Korpel (1979)]，理论化后叫 scanning holography [Poon (1985)]；Duncan 和 Poon 用主动光学扫描做出第一个实验结果，从此定名 optical scanning holography [Duncan and Poon (1992)]。它是**电子（数字）、实时**的全息技术：一次 2-D 光学扫描获取 3-D 物体全息信息。应用清单：扫描全息显微 [Poon, Doh, Schilling, Wu, Shinoda, and Suzuki (1995)]（迄今最成熟，且能对**荧光样品**做 3-D 全息——别的全息显微做不到）、3-D 图像识别 [Poon and Kim (1999)]、3-D 光学遥感 [Kim and Poon (1999)]、3-D 电视 [Poon (2002a)]、3-D 加密 [Poon, Kim, and Doh (2003)]。荧光全息显微已做到亚微米分辨率 [Indebetouw and Zhong (2006)]。
+OSH 由声光外差图像处理发展而来：Poon 与 Korpel 在双极性非相干图像处理中提出雏形，Poon 将其理论化为扫描全息，Duncan 与 Poon 用主动光学扫描完成首个实验。它是电子式、实时的全息技术——一次二维光学扫描即可获取三维物体的全息信息；主要应用包括扫描全息显微（可对荧光样品做三维全息）、三维图像识别、三维光学遥感、三维电视与三维加密。
 
 ## 3.0 本章导图
 
@@ -1618,55 +1616,3 @@ I_{scan}(x,y;z_0,t)=E^2+F^2+EF\sin\Big[\frac{k_0}{2z_0}(x^2+y^2)-\Omega t\Big]
 | TDFZP | 时间依赖菲涅耳波带片 | \(\sin[k_0r^2/2z_0+\Omega t]\)，会跑的 FZP（3.6-1） |
 | running fringes | 运行条纹 | TDFZP 圆环随 t 向中心收缩；换瞳向外（3.6-4） |
 | homodyning | 零差 | Ω=0 的外差；配三步相移解孪生像（Rosen 2006） |
-
-## 覆盖自查
-
-??? note "原书小节 → 笔记位置对照"
-    | 原书内容 | 笔记位置 |
-    | --- | --- |
-    | 章引言（OSH 出身、应用清单、荧光显微亚微米分辨率） | 章首 |
-    | 3.1 Principle of Optical Scanning（式 3.1-1~3.1-5；图 3.1~3.4） | 3.1 |
-    | 3.2 Optical Heterodyning（式 3.2-1~3.2-4；图 3.5、3.6） | 3.2（mermaid 流程图 + 代码双 tab + 运行图） |
-    | 3.3 Acousto-Optic Frequency Shifting（式 3.3-1~3.3-5；图 3.7~3.9；AOM-40 数值例） | 3.3（数值账在拓展注） |
-    | 3.4 Two-Pupil Optical Heterodyne Scanning Image Processor（式 3.4-1~3.4-15；图 3.10、3.11） | 3.4（(3.4-10) 三要点在拓展注；(3.4-14b) 勘误） |
-    | 3.5 Scanning Holography（式 3.5-1~3.5-6；图 3.12~3.14） | 3.5.1~3.5.3（mermaid 记录-解码流程图 + 数值验证拓展注） |
-    | Example 3.1 + Table 3.1 OSH.m（式 3.5-7~3.5-10；图 3.15） | 3.5.4（代码双 tab + 运行图；(3.5-9) 勘误） |
-    | （编者）背景相除法对照实验 | 3.5.5 拓展实战 |
-    | 3.6 Physical Intuition（式 3.6-1~3.6-4；图 3.16；Table 3.2 TDFZP.m；homodyning） | 3.6（零差拓展注 + 代码双 tab + 运行图） |
-    | References 3.1~3.26 | 见下 |
-
-??? note "原书 References 3.1~3.26"
-    3.1 Duncan, B.D. and T.-C. Poon (1992). "Gaussian beam analysis of optical scanning holography," *Journal of the Optical Society of America A* 9, 229-236.
-    3.2 Doh, K., T.-C. Poon, M. Wu, K. Shinoda, and Y. Suzuki (1996). "Twin-image elimination in optical scanning holography," *Laser & Optics Technology* 28, 135-141.
-    3.3 General Scanning. http://www.gsig.com/scanners/
-    3.4 Indebetouw, G. and T.-C. Poon (1992). "Novel approaches of incoherent image processing with emphasis on scanning methods," *Optical Engineering* 31, 2159-2167.
-    3.5 Indebetouw, G., P. Klysubun, T. Kim, and T.-C. Poon (2000). "Imaging properties of scanning holographic microscopy," *Journal of the Optical Society of America A* 17, 380-390.
-    3.6 Indebetouw, G and W. Zhong (2006). "Scanning holographic microscopy of three-dimensional fluorescent specimens," *Journal of the Optical Society of America A* 23, 1699-1707.
-    3.7 IntraAction Corp. http://www.intraaction.com/
-    3.8 Kim, T and T.-C. Poon (1999). "Extraction of 3-D location of matched 3-D object using power fringe-adjusted filtering and Wigner analysis," *Optical Engineering* 38, 2176-2183.
-    3.9 Korpel, A. (1981). "Acousto-optics—a review of fundamentals," *Proceedings of the IEEE* 69, 48-53.
-    3.10 Kreis, T. (2005). *Handbook of Holographic Interferometry*. Wiley-VCH GmbH & Co. KGaA, Weinheim.
-    3.11 Lohmann, A.W. and W.T. Rhodes (1978). "Two-pupil synthesis of optical transfer functions," *Applied Optics* 17, 1141-1150.
-    3.12 Poon, T.-C. (1985). "Scanning holography and two-dimensional image processing by acousto-optic two-pupil synthesis," *Journal of the Optical Society of America A* 4, 521-527.
-    3.13 Poon, T.-C. (2002a). "Three-dimensional television using optical scanning holography," *Journal of Information Display* 3, 12-16.
-    3.14 Poon, T.-C. (2002b). "Acousto-Optics," *Encyclopedia of Physical Science and Technology*, Academic Press.
-    3.15 Poon, T.-C. (2004). "Recent progress in optical scanning holography," *Journal of Holography and Speckle* 1, 6-25.
-    3.16 Poon, T.-C. (2006). "Horizontal-parallax-only optical scanning holography," in chapter 10 of *Digital Holography and Three-Dimensional Display: Principles and Applications*, T.-C. Poon ed., Springer, New York, USA.
-    3.17 Poon, T.-C. and A. Korpel (1979). "Optical transfer function of an acousto-optic heterodyning image processor," *Optics Letters* 4, 317-319.
-    3.18 Poon, T.-C., K. Doh, B. Schilling, M. Wu, K. Shinoda, and Y. Suzuki (1995). "Three-dimensional microscopy by optical scanning holography," *Optical Engineering* 34, 1338-1344.
-    3.19 Poon, T.-C. and T. Kim (1999). "Optical image recognition of three-dimensional objects," *Applied Optics* 38, 370-381.
-    3.20 Poon, T.-C., T. Kim, G. Indebetouw, B.W. Schilling, M.H. Wu, K. Shinoda, and Y. Suzuki (2000). "Twin-image elimination experiments for three-dimensional images in optical scanning holography," *Optics Letters* 25, 215-217.
-    3.21 Poon, T.-C. and P.P. Banerjee (2001). *Contemporary Optical Image Processing with MATLAB*. Elsevier, Oxford, UK.
-    3.22 Poon, T.-C., T. Kim, and K. Doh (2003). "Optical scanning cryptography for secure wireless transmission," *Applied Optics* 42, 6496-6503.
-    3.23 Poon, T.-C. and T. Kim (2006). *Engineering Optics with MATLAB*. World Scientific Publishing Co., Singapore.
-    3.24 Pratt, W.K. (1969). *Laser Communications Systems*, John Wiley & Sons.
-    3.25 Rosen, J., G. Indebetouw, and G. Brooker. "Homodyne scanning holography," *Optics Express* 14, 4280-4285.
-    3.26 Yamaguchi, I. and T. Zhang (1997). "Phase-shifting digital holography," *Optics Letters* 22, 1268-1270.
-
-    !!! warning "原书笔误/勘误（本章 4 处，与 ch1/ch2 的 3 处相互独立）"
-        1. **(3.4-14b)/(3.4-15d)/(3.5-7b)/(3.5-8b) 的 Im 符号**：电子学定义（式 3.2-3b：\(i_s\) = 乘 \(\sin\Omega t\) 后低通）给出 \(i_s=-\mathrm{Im}\{i_{\Omega_p}\}\)（差负号）。书直接写 \(\mathrm{Im}\)，却又在 (3.5-3b) 取 \(+\cos\)、(3.5-5) 定义 \(H_{c\pm}=H_{\cos}\pm jH_{\sin}\)——两者相差一个共轭。本笔记以电子学/TDFZP 时域推导（(3.6-1)→(3.6-3)）为准：\(H_{\cos}=-\mathrm{Im}\{i_{\Omega_p}\}\)，并经数值验证（3.5.4 拓展注）。
-        2. **(3.5-9) 差全局相位因子 j**：由 (3.5-8a/b) 的定义，\(\mathcal{F}^{-1}\{\mathcal{F}\{I\}OTF_{osh}\}=H_{\sin}-jH_{\cos}=-j(H_{\cos}+jH_{\sin})\)。书 (3.5-9) 直接写等号，缺全局因子 \(-j\)（或等价地，sin/cos 在实/虚部的归属与 (3.5-5) 相反）。不影响强度类结果；OSH.m 的实现（complex = real + j·imag）本身自洽。
-        3. **OSH.m 代码注释引用错编号**：Table 3.1 中 `FRSINEH=fft2(real(H)).*conj(OTFosh); %Eq. (2.5-10)`——第 2 章并无式 (2.5-10)，应为本章的 **(3.5-10)**。
-        4. **图 3.14 图注卷号**：图注写 "Optics Letters 5, 215, (2000)"，正确卷号是 **25**（该书自己的参考文献 3.20 即写 25, 215-217）。
-
-

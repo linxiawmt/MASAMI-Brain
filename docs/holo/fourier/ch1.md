@@ -1,12 +1,7 @@
 # 第 1 章 解析傅里叶理论复习
 
-> **本章解决**：把全书要用的解析数学工具一次清点完毕——傅里叶变换的定义与约定、九条定理、六个基本函数及其变换对、线性空间不变系统框架。第 2 章立刻把这些工具搬进计算机，看采样和有限阵列带来什么新麻烦。
-> 本章是纯理论复习，**原书没有 MATLAB 代码**（第 3 章才 "Open MATLAB"）。笔记里的代码是我补充的数值验证脚本（MATLAB / Python 双实现），专门用来检验书上两张变换对表到底对不对——还真查出了两处问题，见 1.5 节的勘误。
-
-本章覆盖（原书 1.2 节末尾的安排）：
-
-- 傅里叶变换的基本定义、定理、基本函数与变换对
-- 线性系统理论复习
+> **本章解决**：傅里叶光学所需的解析数学基础——傅里叶变换的定义与约定，线性、相似、位移、卷积、相关与 Parseval 等基本定理，rect、circ、高斯、chirp 等基本函数及其变换对，以及线性空间不变系统的卷积与传递函数表示。掌握这套语言后，衍射、成像与滤波可以统一写成"输入—系统—输出"的频域运算，并为后续离散实现提供连续域的对照标准。
+> 本栏目依据 David G. Voelz《Computational Fourier Optics: A MATLAB Tutorial》（SPIE Press, 2007）编写。
 
 ## 1.0 本章导图
 
@@ -1182,18 +1177,6 @@ graph LR
     | (e) 局部平均 | 是 | 是 | 积分对 \(g\) 线性；窗口形状固定、跟着 \((x,y)\) 走，只看相对位置 |
     重点体会 (d)：**线性与空间不变是两个独立维度**——它线性却不空不变，所以不能用式 (1.13) 的传递函数方法。
 
-## 1.8 参考文献（原书）
-
-1. W. T. Rhodes, "History and evolution of the teaching of Fourier optics," *Proc. SPIE* 3572, 50–56 (1999).
-2. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company (2005).——本章记号与公式的蓝本
-3. R. Barakat, "The calculation of integrals encountered in optical diffraction theory," in *The Computer in Optical Research*, B. R. Frieden (ed.), Springer (1980).——数值积分路线
-4. J. D. Gaskill, *Linear Systems, Fourier Transforms, and Optics*, Wiley-Interscience (1978).
-5. O. K. Ersoy, *Diffraction, Fourier Optics and Imaging*, Wiley-Interscience (2006).
-6. C. A. Bennett, *Principles of Physical Optics*, Wiley (2008).
-7. E. G. Steward, *Fourier Optics: An Introduction*, 2nd Ed., Dover (2004).
-8. W. J. Smith, *Modern Optical Engineering*, 4th Ed., McGraw-Hill (2007).
-9. J. M. Geary, *Introduction to Lens Design with Practical ZEMAX Examples*, Willmann-Bell (2002).
-
 ## 坑与陷阱
 
 !!! danger "2π 约定错位"
@@ -1259,18 +1242,3 @@ graph LR
 | transfer function | 传递函数 | 冲激响应的傅里叶变换 \(H\)，频域滤波器 |
 | point spread function (PSF) | 点扩散函数 | 点光源经系统成的模糊斑 |
 | FFT | 快速傅里叶变换 | 离散傅里叶变换的 \(O(N\log N)\) 算法 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 1.1 A Little History and Purpose | 历史、上机理由、FFT 伪影预警 | 1.1 |
-| 1.2 The Realm of Computational Fourier Optics | 物理量约定、设计者困境、适用范围 | 1.2 |
-| 1.3 Fourier Transform Definitions and Existence | 式 (1.1)(1.2)、存在条件、广义变换 | 1.3 |
-| 1.4 Theorems and Separability | 表 1.1 九条定理、式 (1.3)(1.4) | 1.4 |
-| 1.5 Basic Functions and Transforms | 表 1.2、图 1.1/1.2、表 1.3、图 1.3 | 1.5 |
-| 1.6 Linear and Space-Invariant Systems | 式 (1.5)–(1.13)、传递函数 | 1.6 |
-| 1.7 Exercises | 习题 1.1–1.6 | 1.7（含答案要点） |
-| 1.8 References | 参考文献 9 条 | 1.8 |
-
-代码文件：`matlab/fourier/ch1/`（ch1_basic_functions.m、ch1_verify_pairs_1d.m、ch1_verify_circ_jinc.m、ch1_lsi_demo.m）、`python/fourier/ch1/`（同名 .py），与页面内 tab 一致。

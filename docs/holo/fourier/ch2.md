@@ -1,9 +1,6 @@
 # 第 2 章 采样函数与离散傅里叶变换
 
-> **本章解决**：把连续函数搬进计算机，要过四道关——"采多密"（采样定理与有效带宽）、"变换结果怎么定标"（从连续 FT 推出 DFT）、"数组怎么摆"（居中/移位排列与 fftshift）、"FFT 结果和解析世界差在哪"（周期延拓与周期卷积）。第 1 章的解析定理在这里逐条落成代码约定，第 3 章开始在 MATLAB 里把这些约定写成函数。
-> 这一章是**全书代码的地基**：\(L_X = M\Delta x\)、\(\Delta f_X = 1/L_X\)、`ifftshift → fft → fftshift` 这套动作在第 3 章以后的每一页都会出现。MATLAB / Python 双实现与数值验证照旧；本章没有发现原书笔误，但表 2.1 的 circ 行再次踩中第 1 章勘误 1 的半径约定坑（2.2 节有数值实锤）。
-
-本章覆盖（原书 2.1–2.8 节）：采样与 Shannon–Nyquist 定理、有效带宽、从连续变换推导 DFT、坐标/索引/居中/移位、周期延拓、周期卷积、习题。
+> **本章解决**：连续傅里叶变换如何在有限离散网格上可靠实现——采样定理与有效带宽决定网格密度，连续积分到 DFT 的定标关系决定幅值，坐标与数组索引的居中、移位约定决定相位，周期延拓与周期卷积决定边界行为。学完能够针对一个解析变换选择采样间隔、阵列长度与移位顺序，并判断离散结果在何种条件下与连续解一致。
 
 ## 2.0 本章导图
 
@@ -1321,13 +1318,6 @@ g_2(x,y) = \mathrm{circ}\!\left(\sqrt{x^2+y^2}\middle/2d\right).
     (a) 式 (2.27)：\(D_1 + D_2 = 4d < L\) → 最小边长略大于 \(4d\)（工程上报 \(4d\)，留点余量更稳）；
     (b) 自相关的支撑 = 直径的两倍 = \(4d\) → 同样 \(4d\)。想起第 1 章"实偶函数的卷积 = 自相关"，(b) 与 (a) 同答案就不奇怪了。
 
-## 2.8 参考文献（原书）
-
-1. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company, Greenwood Village, CO (2005).——约定蓝本
-2. R. M. Gray and J. W. Goodman, *Fourier Transforms: An Introduction for Engineers*, Kluwer Academic, Boston (1995).
-3. A. V. Oppenheim and R. W. Schafer, *Discrete-Time Signal Processing*, 3rd Ed., Prentice-Hall, Upper Saddle River, NJ (2009).
-4. E. Brigham, *The Fast Fourier Transform and its Applications*, Prentice-Hall, Upper Saddle River, NJ (1988).——周期延拓的深入参考
-
 ## 坑与陷阱
 
 !!! danger "FFT 前必须 ifftshift，忘了就整体错位"
@@ -1389,18 +1379,3 @@ g_2(x,y) = \mathrm{circ}\!\left(\sqrt{x^2+y^2}\middle/2d\right).
 | periodic extension | 周期延拓 | FFT 隐含把样本数组首尾相接无限复制 |
 | periodic convolution | 周期卷积 | 两个周期延拓的循环卷积，要求 \(D_1+D_2<L\) |
 | zero padding | 零填充 | 补零拉开周期副本，修复线性卷积 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 2.1 Sampling and the Shannon–Nyquist Sampling Theorem | 式 (2.1)–(2.6)、支撑/带宽/奈奎斯特、图 2.1/2.2 | 2.1 |
-| 2.2 Effective Bandwidth | 式 (2.7)–(2.12)、表 2.1、图 2.3、98% 判据 | 2.2（含数值验证 + circ 约定 warning） |
-| 2.3 Discrete Fourier Transform from the Continuous Transform | 式 (2.13)–(2.20)、1/MN 讨论、FFT 效率 | 2.3 |
-| 2.4 Coordinates, Indexing, Centering, and Shifting | 式 (2.21)(2.22)、三种排列、图 2.4/2.5、行列索引 | 2.4（含 mermaid 建网格流程 + MATLAB/Python 对照表） |
-| 2.5 Periodic Extension | 式 (2.23)–(2.26)、图 2.6 | 2.5（含数值复现） |
-| 2.6 Periodic Convolution | 式 (2.27)、图 2.7 | 2.6（含两种修复路线验证） |
-| 2.7 Exercises | 习题 2.1–2.5 | 2.7（含答案要点） |
-| 2.8 References | 参考文献 4 条 | 2.8 |
-
-代码文件：`matlab/fourier/ch2/`（ch2_eff_bandwidth.m、ch2_dft_scaling.m、ch2_grid_shift_demo.m、ch2_periodic_conv.m）、`python/fourier/ch2/`（同名 .py）与页面内 tab 一致；公共积木在 `python/fourier/common/base.py`（rect/tri/sinc/gauss/circle/jinc、coords、ft1/ft2_centered），自 ch1 验证脚本上移，第 3 章起复用。

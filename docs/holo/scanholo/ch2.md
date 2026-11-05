@@ -1,8 +1,6 @@
 # 第 2 章 波动光学与全息
 
-> **本章解决**：第 1 章备好了傅里叶变换和线性系统两套语言，本章把它们"焊"到光上：从麦克斯韦方程推出波动方程，取标量近似后解出平面波和球面波；再用传递函数/冲激响应语言推出菲涅耳衍射公式，顺手把透镜变成一个相位屏、把成像系统变成一个光瞳函数。最后进入正题——全息：点源的全息图就是一张正弦菲涅耳波带片（FZP），任意 3-D 物体就是一堆 FZP 的叠加；离轴参考光解决孪生像问题，数字化记录/重构引出第 3 章的光学扫描全息（OSH）。
-
-原书本章结构：2.1 麦克斯韦方程组与齐次矢量波动方程（例 2.1）；2.2 三维标量波动方程（2.2.1 平面波、2.2.2 球面波）；2.3 标量衍射理论（例 2.2、2.3；2.3.1 菲涅耳衍射 + 例 2.4、2.5；2.3.2 方孔衍射 + 代码 Table 2.1）；2.4 理想透镜、成像系统、光瞳函数与传递函数（2.4.1 光学傅里叶变换 + 例 2.5；2.4.2 相干图像处理；2.4.3 非相干图像处理 + 例 2.6）；2.5 全息（2.5.1 FZP 即点源全息图 + 代码 Table 2.2；2.5.2 离轴全息；2.5.3 数字全息）。
+> **本章解决**：从波动方程到全息记录的物理链条——标量近似下的平面波与球面波、菲涅耳衍射、透镜的相位变换与成像系统的光瞳描述，以及全息图的形成：点源全息图即正弦菲涅耳波带片，三维物体的全息图是其各点全息图的叠加，离轴参考光可分离孪生像。学完能解释全息记录与重建的相位关系，并判断数字记录面临的分辨率与孪生像限制。
 
 ## 2.0 本章导图
 
@@ -1845,57 +1843,3 @@ flowchart LR
 | off-axis holography | 离轴全息 | 斜参考光把零级/实像/虚像分家 |
 | digital (electronic) holography | 数字（电子）全息 | CCD 记录 + 数字菲涅耳重构，或 SLM 实时再现 |
 | spatial light modulator (SLM) | 空间光调制器 | 可实时刷新的"电子透明片"（如 LCTV） |
-
-## 覆盖自查
-
-??? note "原书小节 → 笔记位置对照"
-    | 原书内容 | 笔记位置 |
-    | --- | --- |
-    | 2.1 Maxwell's Equations and Homogeneous Vector Wave Equation（式 2.1-1~2.1-14；图 2.1） | 2.1（例 2.1 推导在拓展注） |
-    | 2.2 3-D Scalar Wave Equation（式 2.2-1~2.2-4） | 2.2 |
-    | 2.2.1 Plane Wave Solution（式 2.2-5~2.2-9；图 2.2、2.3） | 2.2.1 |
-    | 2.2.2 Spherical Wave Solution（式 2.2-10~2.2-13；图 2.4、2.5） | 2.2.2 |
-    | 图 2.6 平面波/球面波的实验室实现 | 2.2.2 末 |
-    | 2.3 Scalar Diffraction Theory（式 2.3-1~2.3-5；图 2.7、2.8） | 2.3.1 前半 |
-    | Example 2.2 亥姆霍兹方程推导 | 2.3.1 拓展注 |
-    | Example 2.3 式 (2.3-3) 的解（式 2.3-6~2.3-8） | 2.3.1 正文（并入 2.3-8 前后） |
-    | 空间冲激响应 G（式 2.3-9、2.3-10） | 2.3.1 正文 + 拓展注（RS 核、数值验证） |
-    | 2.3.1 Fresnel Diffraction（式 2.3-11~2.3-14；图 2.9） | 2.3.1 |
-    | Example 2.4 点源衍射（式 2.3-15、2.3-16） | 2.3.1（数值验证） |
-    | Example 2.5 平面波衍射 | 2.3.1 末 |
-    | 2.3.2 Diffraction of a Square Aperture（图 2.10、2.11；Table 2.1） | 2.3.2（代码双 tab + 运行图） |
-    | （编者）角谱法 ASM 严格实现（式 2.3-5 的用法） | 2.3.2 拓展实战 |
-    | 2.4.1 Ideal Lens and Optical Fourier Transformation（式 2.4-1~2.4-3；图 2.12） | 2.4.1 |
-    | Example 2.5（实为 2.6）Transparency in front of a Lens（式 2.4-4~2.4-6；图 2.13） | 2.4.1（含采样提醒 + 代码双 tab + 运行图） |
-    | 2.4.2 Coherent Image Processing（式 2.4-7~2.4-11；图 2.14） | 2.4.2 |
-    | 2.4.3 Incoherent Image Processing（式 2.4-12~2.4-15） | 2.4.3 |
-    | Example 2.6（实为 2.7）Coherent Transfer Functions and OTFs（式 2.4-16；图 2.15、2.16） | 2.4.3 |
-    | 2.5.1 Fresnel Zone Plate as a Point-Source Hologram（式 2.5-1~2.5-6a/b/c；图 2.17~2.22；Table 2.2） | 2.5.1（代码双 tab + 运行图 + mermaid 流程图） |
-    | 2.5.2 Off-Axis Holography（式 2.5-7、2.5-8a/b/c；图 2.23、2.24） | 2.5.2（代码双 tab + 运行图） |
-    | 2.5.3 Digital Holography（式 2.5-9；图 2.25） | 2.5.3（mermaid 流程图） |
-    | References 2.1~2.18 | 见下 |
-
-??? note "原书 References 2.1~2.18"
-    2.1 Banerjee, P.P. and T.-C. Poon (1991). *Principles of Applied Optics*. Irwin, Illinois.
-    2.2 Gabor, D. (1948). "A new microscopic principle," *Nature* 161, 777-778.
-    2.3 Goodman, J.W. and R.W. Lawrence (1967). "Digital image formation from electronically detected holograms," *Applied Physics Letters* 11, 77-79.
-    2.4 Goodman, J.W. (2005). *Introduction to Fourier Optics*. 3rd. ed., Roberts and Company Publishers, Englewood, Colorado.
-    2.5 Indebetouw, G. and T.-C. Poon (1992). "Novel approaches of incoherent image processing with emphasis on scanning methods," *Optical Engineering* 31, 2159-2167.
-    2.6 Leith, E.N. and J. Upatnieks (1962). "Reconstructed wavefronts and communication theory," *Journal of the Optical Society of America* 52, 1123-1130.
-    2.7 Lohmann, A.W. and W.T. Rhodes (1978). "Two-pupil synthesis of optical transfer functions," *Applied Optics* 17, 1141-1150.
-    2.8 Lukosz, W. (1962). "Properties of linear low pass filters for non-negative signals," *Journal of the Optical Society of America* 52, 827-829.
-    2.9 Mait, J.N. (1987). "Pupil-function design for complex incoherent spatial filtering," *Journal of the Optical Society of America A* 4, 1185-1193.
-    2.10 Piestun R., J. Shamir, B. Wekamp, and O. Bryngdahl (1997). "On-axis computer-generated holograms for three-dimensional display," *Optics Letters* 22, 922-924.
-    2.11 Poon, T.-C. and A. Korpel (1979). "Optical transfer function of an acousto-optic heterodyning image processor," *Optics Letters* 4, 317-319.
-    2.12 Poon, T.-C., T. Kim, G. Indebetouw, B.W. Schilling, M.H. Wu, K. Shinoda, and Y. Suzuki (2000). "Twin-image elimination experiments for three-dimensional images in optical scanning holography," *Optics Letters* 25, 215-217.
-    2.13 Poon, T.-C. and P.P. Banerjee (2001). *Contemporary Optical Image Processing with MATLAB®*. Elsevier, Oxford, UK.
-    2.14 Poon, T.-C., ed., (2006). *Digital Holography and Three-Dimensional Display: Principles and Applications*. Springer, New York, USA.
-    2.15 Rogers, G.L. (1950). "The black and white holograms," *Nature* 166, 1027.
-    2.16 Siemens-Wapniarski, W.J. and M. Parker Givens (1968). "The experimental production of synthetic holograms," *Applied Optics* 7, 535-538.
-    2.17 Stoner, W. (1978). "Incoherent optical processing via spatially offset pupil masks," *Applied Optics* 17, 2454-2466.
-    2.18 Schnars, U. and W.P.O. Juptner (2002). "Digital recording and numerical reconstruction of holograms," *Meas. Sci. Technol.* 13, R85-R101.
-
-    !!! warning "原书笔误/勘误（本章 3 处）"
-        1. **例题编号重复**：2.3.1 末尾已有 "Example 2.5 Diffraction of a Plane Wave"，2.4.1 又出现 "Example 2.5 Transparency in front of a Lens"，随后还有 "Example 2.6 Coherent Transfer Functions and OTFs"。按顺序第二个 2.5 应为 **2.6**、最后一个应为 **2.7**——本笔记按原书编号照录并在此更正。
-        2. **Leith & Upatnieks 年份不一致**：正文写离轴全息由 Leith 和 Upatnieks **[1964]** 提出，参考文献表 2.6 却列的是他们 **(1962)** 的 "Reconstructed wavefronts and communication theory"（JOSA 52, 1123-1130）。1964 年那篇 "Wavefront reconstruction with diffused illumination and three-dimensional objects"（JOSA 54, 1295-1301）才是离轴全息的原始文献；引用时注意区分。
-        3. **参考文献 2.2 的卷页信息**：正文引用 Gabor [1948]，参考文献表在原书 PDF 中卷页字段错位（与 Lohmann & Rhodes 的条目互相穿插）。Gabor 1948 正确出处是 *Nature* 161, 777-778；Lohmann & Rhodes 1978 是 *Applied Optics* 17, 1141-1150。上表已按正确出处整理。

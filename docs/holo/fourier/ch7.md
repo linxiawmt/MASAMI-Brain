@@ -1,9 +1,6 @@
 # 第 7 章 成像与衍射限成像仿真
 
-> **本章解决**:第 6 章会算"透镜焦面上的夫琅禾费图样"了,这一章把镜头装成**成像系统**——物面到像面,复现的不是斑,是一幅图。核心只有两条卷积:相干成像对**场**线性(\(U_i = h\circledast U_g\),式 7.4),非相干成像对**辐照度**线性(\(I_i = |h|^2 \circledast I_g\),式 7.23);两条传递函数 \(H\) 与 OTF 都是**出瞳函数的缩放反转/自相关**。采样判据 \(2f_0 \leq f_N\)(式 7.17)决定了"衍射限仿真"只能覆盖很小的像面。第 8 章的像差与 MTF 就在 \(P(x,y)\) 里加东西,本章的瞳是一块干净的"饼干模"。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码 2 个脚本(coh_image、incoh_image)+ 1 行改动(粗糙物体)。笔记用程序生成的 USAF 式分辨率板替代已失效的原书下载 PNG(锚定组-2/单元6 = 1e5 cyc/m,与书判读一致);发现原书 2 处代码标注不一致(surf 的 fu/fv 轴标签互换、MATLAB 7.1 的 \(*0.99\) 显示补丁)、1 处依赖下载的图表口径问题,见正文标注。
-
-本章覆盖(原书 7.1–7.5 节):几何成像概念、相干成像(理论、传递函数例子、衍射限仿真、粗糙物体)、非相干成像(理论、OTF 例子、衍射限仿真)、习题 10 道、参考文献 7 条。正文上标引文:式 (7.4)/(7.7)、式 (7.23) 等处都指向 Goodman[4]。
+> **本章解决**：相干与非相干成像的线性系统模型——相干成像对复振幅、非相干成像对辐照度分别满足卷积关系，对应的传递函数与光学传递函数由出瞳函数的缩放、反转或自相关给出；同时给出衍射限成像仿真的采样判据。学完能由光瞳参数计算点扩散函数与调制传递函数，并完成一幅图像的成像仿真。
 
 ## 7.0 本章导图
 
@@ -871,16 +868,6 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
   <figcaption>图 7-P16 习题 7.10:胶片 log|FFT|²(左)、回放场 log 显示(中)与 sqrt 显示(右)——真像(-3.5 mm)、自相关包络(中央)、共轭像(+3.5 mm,翻转)(笔记自制)</figcaption>
 </figure>
 
-## 7.5 参考文献(原书)
-
-1. E. Dereniak and T. D. Dereniak, *Geometrical and Trigonometric Optics*, Cambridge University Press, Cambridge, U.K. (2008).
-2. W. J. Smith, *Modern Optical Engineering*, 4th Ed., McGraw-Hill Professional, New York (2007).
-3. J. M. Geary, *Introduction to Lens Design with Practical ZEMAX® Examples*, Willmann-Bell, Richmond, VA (2002).
-4. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company, Greenwood Village, CO (2005).
-5. J. W. Goodman, *Speckle Phenomena in Optics*, Roberts & Company, Greenwood Village, CO (2007).
-6. O. K. Ersoy, *Diffraction, Fourier Optics, and Imaging*, Wiley-Interscience, New York (2006).
-7. E. Hecht, *Optics*, 4th Ed., Addison-Wesley, Reading, MA (2002).
-
 ## 坑与陷阱
 
 !!! danger "circ 的两套约定:式 (7.11) 按 Goodman,表 1.2 差 2 倍"
@@ -947,20 +934,3 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
 | Fourier hologram | 傅里叶全息图 | 记录 \|FFT(物+参考点)\|²,回放 IFFT;= 自相关定理(习题 7.10) |
 | conjugate image | 共轭像 | 全息回放里 180° 翻转的复共轭像(±x₀ 两阶) |
 | udelta | 单位样本 delta | 坐标整值处置 1(附录 C.6);点源用 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 7.1 Geometrical Imaging Concepts | 式 (7.1)-(7.3)、主面/瞳/光阑、图 7.1-7.3 | 7.1(含工作 f/# 拓展) |
-| 7.2.1 Coherent imaging theory | 式 (7.4)-(7.7)、图 7.4、评注 a-c | 7.2.1(含"瞳的缩放反转"拓展) |
-| 7.2.2 Coherent transfer function examples | 式 (7.8)-(7.15)、方/圆瞳、辐照度倍频 | 7.2.2(含 circ 约定勘误) |
-| 7.2.3 Diffraction-limited coherent imaging simulation | 式 (7.16)-(7.22)、coh_image、图 7.5-7.9 | 7.2.3(含图 7-P1-P5 与谱支撑/振铃实测、7.17 免缠绕拓展) |
-| 7.2.4 Rough object | rand 相位、speckle、图 7.10 | 7.2.4(含对比度 C 实测) |
-| 7.3.1 Incoherent imaging theory | 式 (7.23)-(7.26)、PSF/OTF | 7.3.1(含"平方→自相关"拓展) |
-| 7.3.2 Optical transfer function examples | 式 (7.27)-(7.32)、方瞳 ΛΛ/圆瞳圆冠 | 7.3.2(含 (u,v) 记号注与圆冠几何推导) |
-| 7.3.3 Diffraction-limited incoherent imaging simulation | 式 (7.33)、incoh_image、图 7.11-7.14 | 7.3.3(含图 7-P7-P10 与 OTF 解析对拍 + 相干/非相干对比表 + 决策流程图) |
-| 7.4 Exercises | 习题 7.1-7.10 | 7.4(7.3/7.4/7.5/7.6/7.7/7.9/7.10 数值实跑,图 7-P11-P16) |
-| 7.5 References | 7 条文献 | 7.5 |
-
-代码文件:`matlab/fourier/ch7/`(circ.m、udelta.m、make_usaf_chart.m、coh_image.m、incoh_image.m、coh_image_rough.m、image_fseries.m、otf_check.m、ch7_exercises.m)与页面内 tab 一致;`python/fourier/ch7/`(ch7_usaf_chart.py、ch7_imaging.py、ch7_coh_image.py、ch7_incoh_image.py、ch7_fseries.py、ch7_rough_speckle.py、ch7_exercises.py)。公共积木复用 `python/fourier/common/base.py`(coords 频率/空间坐标、circle 圆瞳、rect 方/矩瞳、ft2_centered——习题 7.6 的 PSF 数值变换由它定标),传播与成像管线在 `ch7_imaging.py`(H_circ/H_square/H_rect/H_annulus、coh_image、otf_from_H、incoh_image、otf 解析式、udelta)。

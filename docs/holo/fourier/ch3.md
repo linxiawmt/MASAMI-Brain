@@ -1,9 +1,6 @@
 # 第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
 
-> **本章解决**：把第 2 章的"约定"变成"动作"——如何写函数 M 文件（rect、circ）、如何建坐标向量、如何做 FFT 并定标显示、如何用 FFT 做卷积、如何扩展到二维，外加一袋编程提示。第 2 章的三条命脉公式（\(L=M\Delta x\)、\(\Delta f=1/L\)、`移位 → FFT → 移位`）在这一章第一次落到代码里，第 4 章起的所有仿真都建立在这套动作上。
-> MATLAB / Python 双实现与数值验证照旧。本章发现原书 1 处笔误（习题 3.1 的变量名 ask/mask 混用）；另有一处原书没点破的现象值得单独讲：书图 3.11(b) 的峰值 0.023 不是 0.02——它是"奇数样本"约定的离散面积，3.7 节有数值实锤。
-
-本章覆盖（原书 3.1–3.9 节）：定义函数、创建向量、FFT 前移位、计算与显示 FFT、与解析结果对比、FFT 卷积、二维、编程提示、习题。原书用 MATLAB 7.1 截图讲解界面，界面细节今日已不同，但语言机制全部未变。
+> **本章解决**：把傅里叶变换的离散约定落实为可复用的程序结构——函数文件与坐标向量的组织、FFT 前的移位顺序与幅值定标、频谱的显示方式，以及基于 FFT 的一维、二维卷积实现。学完能独立编写 rect、circ 等基本函数，并用统一的坐标与定标流程完成变换、卷积与结果核对。
 
 ## 3.0 本章导图
 
@@ -1382,19 +1379,3 @@ out=T.*mask;
 | axis xy / square | 轴方向 / 方形边框 | y 自下而上 / 图窗边框正方形 |
 | surf | 曲面图 | 二维阵列的 3D 展示（Python `plot_surface`） |
 | nthroot(g,n) | n 次方根 | 对比度拉伸技巧，看暗部特征 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 3.1 Defining Functions | MATLAB 桌面、M 文件两种、rect 逐行、奇数样本约定、图 3.1 | 3.1（含 rect 编码约定 warning） |
-| 3.2 Creating Vectors | 参数四件套、坐标向量、plot 选项、宽度解读、图 3.2/3.3 | 3.2 |
-| 3.3 Shift for FFT | 索引视图、fftshift、奇偶评论、线性相位、图 3.4/3.5 | 3.3（含 fftshift/ifftshift 细节 note） |
-| 3.4 Computing the FFT and Displaying Results | fft×dx、abs/angle、相位解读、居中与频率坐标、图 3.6/3.7 | 3.4（含"每 18 个点"拓展） |
-| 3.5 Comparison with Analytic Results | 解析对 (3.1)、sinc 内置函数、图 3.8、完整 fft_example 脚本 | 3.5（含数值验证） |
-| 3.6 Convolution Example | 两高斯 FFT 卷积、不移位技巧、支撑判据、conv/conv2、图 3.9、式 (3.2) | 3.6（含相位账与机器精度两个拓展 + 数值验证） |
-| 3.7 Two Dimensions | meshgrid、imagesc、切片、fft2×dx²、surf、图 3.10/3.11、完整 fft2_example 脚本 | 3.7（含 0.023 离散面积实锤 warning） |
-| 3.8 Miscellaneous Hints | clear/close、复数显示、对比度、点号、fft2 | 3.8（每条配 Python 对应） |
-| 3.9 Exercises | 习题 3.1–3.3（含 ask/mask 笔误） | 3.9（含参考答案与完整习题脚本） |
-
-代码文件：`matlab/fourier/ch3/`（rect.m、circ.m、ch3_fft_example.m、ch3_conv_example.m、ch3_fft2_example.m、ch3_exercises.m）、`python/fourier/ch3/`（同名 .py，去 rect/circ——其语义由脚本内 `rect_book` 与公共模块 `base.circle` 承担）与页面内 tab 一致；公共积木在 `python/fourier/common/base.py`，本章起新增使用 `tri`/`circle`/`jinc`。

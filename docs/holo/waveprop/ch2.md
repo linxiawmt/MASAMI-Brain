@@ -1,16 +1,6 @@
 # 第 2 章 数字傅里叶变换
 
-> **本章解决**：第 1 章把"光从源平面传到观察平面"压缩成两条能在纸面上写的积分（菲涅耳衍射积分 (1.57) 与夫琅禾费积分 (1.67)），但计算机里没有连续积分，只有有限个离散的数。本章回答三个朴素的问题：连续傅里叶变换怎么定标着搬进计算机、采样间隔和网格宽度怎么选、搬进来之后丢了什么又怎么补救。第 3 章直接用这套工具算卷积与相关，第 6 章起算真正的衍射，第 7 章把本章的采样判据落到菲涅耳衍射的网格设计上。
-> 原书本章自带 6 段 MATLAB 例程（`ft`/`ift`、两个高斯示例脚本、`ft2`/`ift2`）。笔记里 5 组双语言工程与原书参数一一对应（网格、采样间隔、信号全部照抄），全部用 numpy.fft 实跑验证并汇报数字；复用了你仓库里《计算傅里叶光学》笔记的公共模块 `python/fourier/common/base.py`（`sinc`/`gauss`/`tri`/`coords`），import 路径写在每个脚本头部。发现原书两处笔误，正文用警告框标出并数值复现。
-
-本章覆盖：
-
-- DFT 三步推导：黎曼和 → 固定采样间隔 → 正索引重排，定标因子 δ 与 Nδ（2.1）
-- 奈奎斯特采样判据与混叠：6 m⁻¹ 的余弦欠采样后看起来就是 2 m⁻¹（2.2）
-- DFT 与连续 FT 的三种失真：混叠、波纹、虚拟周期延拓（2.3）
-- 三个旋钮（δ、L、N）的拉锯与两条采样判据 (2.20)(2.21)（2.4）
-- 三个案例研究：sinc（硬限带）、高斯（软限带）、二次相位高斯（b 拉宽带宽）（2.5）
-- 二维 DFT 与 `ft2`/`ift2`：全书后续章节的主力函数（2.6）
+> **本章解决**：连续傅里叶变换的离散实现——DFT 的定标关系、采样间隔与网格宽度的选取、混叠与周期延拓等离散化失真，以及二维 DFT 的坐标组织。学完能把解析变换正确地映射到有限网格，并用中心值、能量等守恒关系检验数值结果。
 
 ## 2.0 本章导图
 
@@ -2174,22 +2164,3 @@ G(f_x,f_y) = D^2\,\mathrm{sinc}(Df_x)\,\mathrm{sinc}(Df_y).
 | p-level criterion | p 电平准则 | 谱降到峰值 \(p\) 倍处当带宽，混叠残渣 ≤ p |
 | quadratic phase | 二次相位 | \(e^{i\pi(bx)^2}\)，波前曲率的频域 fingerprint |
 | Parseval's theorem | Parseval 定理 | 两个域算出的能量相等，定标正确性的自检工具 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 引言 | 线性系统视角、数值仿真的必要性 | 2.1 开篇 |
-| 2.1.1 Fourier transforms: from analytic to numerical | 式 (2.1)–(2.6)、图 2.1、重排勘误 | 2.1.1 |
-| 2.1.2 Inverse Fourier transforms | 式 (2.7)–(2.9)、Listing 2.1/2.2（`ft`/`ift`） | 2.1.2 |
-| 2.1.3 Performing DFTs in software | `fft`/FFTW、Listing 2.3/2.4、图 2.2/2.3 | 2.1.3（工程 1） |
-| 2.2 Sampling Pure-Frequency Functions | 式 (2.10)、奈奎斯特判据、图 2.4/2.5 | 2.2 |
-| 2.3 Discrete vs Continuous FT | 式 (2.11)–(2.18)、图 2.6、三失真表 | 2.3 |
-| 2.4 Alleviating Effects of Discretization | 式 (2.19)–(2.21)、图 2.7/2.8/2.9、量化表 + mermaid 流程 | 2.4（工程 2） |
-| 2.5.1 Sinc signals | 式 (2.22)、图 2.10 | 2.5.1（工程 3） |
-| 2.5.2 Gaussian signals | 式 (2.23)–(2.27)、图 2.11/2.12 | 2.5.2（工程 3） |
-| 2.5.3 Gaussian signals with quadratic phase | 式 (2.28)–(2.31)、图 2.13/2.14/2.15、勘误 1.96 | 2.5.3（工程 3） |
-| 2.6 Two-Dimensional DFTs | 式 (2.32)–(2.40)、Listing 2.5/2.6（`ft2`/`ift2`）、方孔演示 | 2.6（工程 4） |
-| 2.7 Problems | 习题 1–5 | 2.7（工程 5，含答案要点） |
-
-代码文件：`matlab/waveprop/ch2/`（ch2_ft_basics.m、ch2_discretization.m、ch2_case_studies.m、ch2_ft2_2d.m、ch2_problems.m）与 `python/waveprop/ch2/`（同名 .py），与页面内 tab 内容一致。Python 侧复用《计算傅里叶光学》公共模块 `python/fourier/common/base.py`（`sinc`/`gauss`/`tri`/`coords`），import 路径见各脚本头部注释；五个 Python 工程全部 numpy.fft 实跑验证，关键数字汇总在各工程的"实跑输出"段。

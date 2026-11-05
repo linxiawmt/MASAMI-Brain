@@ -1,9 +1,6 @@
 # 第 6 章 透过率函数、透镜与光栅
 
-> **本章解决**:第 5 章的源场都是"实函数孔径 + 平面波"——零相位分量、没有任何"动作"。本章给场加料:乘一个复指数让波前**倾斜(tilt)**、乘一个 chirp 让波前**聚焦(focus)**、配上瞳函数就是**透镜(lens)**、乘一个周期结构就是**光栅(grating)**。全部透过率都是"乘进入场"的矩阵运算,但每一种都自带一条采样判据(倾斜带进 \(\tan\alpha/\lambda\) 的频谱平移、聚焦带进 \(D_1/2\lambda|z_f|\) 的带宽、方波光栅要求每周期整数个样本)。第 7 章的成像仿真把这些元件搬进瞳面,本章的 tilt/focus/透镜就是那里的全部积木。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码 2 个函数(tilt、focus)+ 4 个脚本(sqr_beam_tilt、sqr_beam_focus、grating_cos、grating_sqr)+ 1 个一维改写(grating_sqr1D)。本章发现原书 6 处笔误/前后不一致:B₁≈98 与式 (5.10) 的 117.3 矛盾、图 6.6 两个子图都标 (b)、"sqr_grating" 应为 grating_sqr、"Fig. 6.11(b)" 应为图 6.14(b)、习题 6.5(a) 引错式号、分数功率的正文口径与代码矛盾,见正文标注。
-
-本章覆盖(原书 6.1–6.6 节):倾斜、聚焦、透镜、光栅与周期函数(余弦振幅例、方波振幅例、一维模型、无限周期模型)、习题、参考文献。参考文献只有 Goodman 一条,正文上标 1 处(式 6.12、6.19)都指向它。
+> **本章解决**：常用光学元件如何以复振幅透过率进入传播模型——波前倾斜、二次相位聚焦、薄透镜以及振幅与相位光栅的数学表示，以及它们各自引入的频谱搬移与带宽变化。学完能把元件写成乘性相位或振幅因子，并依据其局部空间频率确定必要的采样密度。
 
 ## 6.0 本章导图
 
@@ -970,10 +967,6 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
   <figcaption>图 6-P8 习题 6.8:三角波光栅(500 lines/mm)一维夫琅禾费图样,数值(实线)vs sinc²(n/2) 解析(虚线),阶位 0、±125、±375 mm(笔记自制)</figcaption>
 </figure>
 
-## 6.6 参考文献(原书)
-
-1. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company, Greenwood Village, CO (2005).
-
 ## 坑与陷阱
 
 !!! danger "circ 的两套约定:式 (6.13)/(6.29) 按 Goodman,表 1.2 按半角"
@@ -1036,19 +1029,3 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
 | phase grating | 相位光栅 | 只改相位不吸收:总透射 1,零阶 \(J_0(m)^2\) |
 | diffraction efficiency | 衍射效率 | 分到某阶的功率分数;先问归一到入射还是透射 |
 | shift theorem | 移位定理 | 线性相位 ↔ 频谱平移(式 6.4);tilt 的全部原理 |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 6.1 Tilt | 式 (6.1)–(6.6)、tilt 函数、sqr_beam_tilt、图 6.1–6.3、B₁=98 口径 | 6.1(含图 6-P1 与频谱/质心验证) |
-| 6.2 Focus | 式 (6.7)–(6.11)、focus 函数、sqr_beam_focus、图 6.4–6.6 | 6.2(含图 6-P2、propFF 对拍 5e-16) |
-| 6.3 Lens | 式 (6.12)–(6.19)、f/# 判据、Airy、图 6.7/6.8、circ 约定 | 6.3(含图 6-P3、渐晕与相位拓展) |
-| 6.4.1 Cosine magnitude example | 式 (6.20)–(6.24)、grating_cos、图 6.9–6.11 | 6.4.1(含图 6-P4、双波长网格提醒) |
-| 6.4.2 Square-wave magnitude example | 式 (6.25)–(6.27)、grating_sqr、ucomb、图 6.12/6.13 | 6.4.2(含 ucomb 双 tab、图 6-P5) |
-| 6.4.3 One-dimensional model | 一维夫琅禾费、grating_sqr1D、图 6.14 | 6.4.3(含 1/√(λf) 前导与勘误) |
-| 6.4.4 Periodic model | 式 (6.28)、Fpwr、图 6.15/6.16 | 6.4.4(含口径勘误与习题 6.6 数值)+ 三模型对比表 |
-| 6.5 Exercises | 习题 6.1–6.8 | 6.5(6.2/6.3/6.4/6.5/6.6/6.7/6.8 数值实跑,图 6-P6–6-P8) |
-| 6.6 References | Goodman | 6.6 |
-
-代码文件:`matlab/fourier/ch6/`(tilt.m、focus.m、ucomb.m、sqr_beam_tilt.m、sqr_beam_focus.m、airy_lens.m、grating_cos.m、grating_sqr.m、grating_sqr1D.m、grating_cos_periodic.m、ch6_exercises.m)与页面内 tab 一致;`python/fourier/ch6/`(ch6_transmittance.py、ch6_sqr_beam_tilt.py、ch6_sqr_beam_focus.py、ch6_lens_airy.py、ch6_gratings.py、ch6_exercises.py)。公共积木复用 `python/fourier/common/base.py`(coords、sinc、circle、ft2_centered——tilt/focus 的坐标轴、圆瞳、波带片圆盘、频谱平移验证全部由它生成),传播器复用 `python/fourier/ch5/ch5_prop.py`(propTF/propFF)。

@@ -1,9 +1,6 @@
 # 第 9 章 部分相干仿真
 
-> **本章解决**:前 8 章的光都是"单色完全相干"的——一幅场乘一个传播器。真实光源的谱有宽度(时间相干有限)、波前上不同点之间相关有限(空间相干有限),条纹和环纹会被"抹平"。本章把这两件事拆开各给一套实用仿真方案:时间相干 = 把谱离散成 N 条互不相干的谱线,逐条传播后按谱密度加权求和辐照度;空间相干 = 给确定性场乘 N 个随机相位屏,逐个传播后对辐照度做系综平均。两套方案共用一个思想——部分相干光是"互不相干的相干波叠加"。本章几乎没有新的传播器,全部积木来自第 5 章(propFF/propTF),但引入了统计光学的一组新语言:谱线型、复相干度、相干长度、相位屏。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码 2 个脚本(pc_temp、pc_spatial)。本章发现原书 5 处笔误:式 (9.10) 与式 (9.27) 的 \(w^2\) 均应为 \(w^4\)(数值反证:按 \(w^2\) 算出的中心辐照度比仿真大 6 个量级)、图 9.5 题注 "pb_temp" 应为 pc_temp、pc_temp 评注 (a) "span displayed in Fig. 9.2" 应为图 9.3、pc_spatial 评注 (e) 漏印 \(\sigma_r\),见正文标注。
-
-本章覆盖(原书 9.1–9.5 节):部分时间相干(准单色光、仿真方案、双光束延迟例子)、部分空间相干(随机透过屏、相位屏方案、例子)、可约性与谱分量数、习题、参考文献。参考文献 13 条;正文上标引用共 16 处,统计光学细节都推给 Goodman《Statistical Optics》(ref 1)。
+> **本章解决**：部分相干光的数值建模——时间相干用有限谱线叠加并按谱密度加权求和辐照度，空间相干用随机相位屏的系综平均，两者分别对应复时间相干度与互相干函数的统计描述。学完能估算相干长度、设置谱分量或相位屏数目，并判断仿真结果在何种参数范围内反映真实的相干退化。
 
 ## 9.0 本章导图
 
@@ -784,22 +781,6 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
 !!! note "拓展:式 (9.33) 的 Δ 在说什么"
     \(\Delta\) 是"高斯光束展宽因子":\(z = 0\) 时 \(\Delta = 1\),GSM 光束回到源面尺寸。\(\ell_{cr}\to\infty\)(完全相干)时式 (9.33) 退化为普通高斯光束的衍射展宽 \(\sqrt{1+(2z/kw_0^2)^2}\),这正是高斯光束的 \(1/e^2\) 半径随 \(z\) 的增长因子(瑞利距离 \(z_R = kw_0^2/2\) 的归一化形式);空间相干越差(\(\ell_{cr}\) 越小),括号里的 \(2w_0^2/\ell_{cr}^2\) 越大,光束发散越快——本例 \(\ell_{cr} = 1\) cm 让 \(z = 1\) km 处的束宽比完全相干情形大 2.08 倍、峰值低 4.3 倍。部分相干光束"抗散斑、填充目标均匀",代价就是发散更快,这是激光通信选 GSM 光束时的基本权衡。
 
-## 9.5 参考文献（原书）
-
-1. J. W. Goodman, *Statistical Optics*, Wiley-Interscience, New York (1985).
-2. L. Mandel and E. Wolf, *Optical Coherence and Quantum Optics*, Cambridge University Press, Cambridge, U.K. (1995).
-3. B. E. A. Saleh and M. C. Teich, *Fundamentals of Photonics*, 2nd Ed., Wiley-Interscience, New York (2007).
-4. E. Hecht, *Optics*, 4th Ed., Addison-Wesley, Reading, MA (2002).
-5. K. K. Sharma, *Optics: Principles and Applications*, Academic, London (2006).
-6. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company, Greenwood Village, CO (2005).
-7. C. Rydberg and J. Bengtsson, "Efficient numerical representation of the optical field for the propagation of partially coherent radiation with a specified spatial and temporal coherence function," *J. Opt. Soc. Am. A*, **23**, 1616–1625 (2006).
-8. D. G. Voelz, K. A. Bush, and P. S. Idell, "Illumination coherence effects in laser-speckle imaging: Modeling and experimental demonstration," *Appl. Opt.*, **36**, 1781–1788 (1997).
-9. P. Polynkin, A. Peleg, L. Klein, T. Rhoadarmer, and J. Moloney, "Optimized multiemitter beams for free-space optical communications through turbulent atmosphere," *Opt. Lett.*, **32**, 885–887 (2007).
-10. X. Xiao and D. Voelz, "Wave optics simulation approach for partial spatially coherent beams," *Opt. Express*, **14**, 6986–6992 (2006).
-11. A. Papoulis and S. Unnikrishna Pillai, *Probability, Random Variables, and Stochastic Processes*, 4th Ed., McGraw-Hill, New York (2002).
-12. H. A. Makse, S. Havlin, M. Schwartz, and H. E. Stanley, "Method for generating long-range correlations for large systems," *Phys. Rev. E*, **53**, 5445–5449 (1996).
-13. J. C. Ricklin and F. M. Davidson, "Atmospheric optical communication with a Gaussian Schell beam," *J. Opt. Soc. Am. A*, **20**, 856–866 (2003).
-
 两套方案放在一起对照:
 
 | | **时间相干**(9.1) | **空间相干**(9.2) |
@@ -877,5 +858,3 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
 | Gaussian Schell-model beam | 高斯谢尔模型光束 | 高斯包络 + 高斯相关的典型部分相干光束(式 9.32) |
 | beam expander factor \(\Delta\) | 展宽因子 | 式 (9.33);\(\ell_{cr}\) 越小发散越快 |
 | spectral components | 谱分量 | 离散谱线条数 \(N\);与屏数一样实验选定(9.3 节) |
-
-代码文件:`matlab/fourier/ch9/`(pc_temp.m、pc_spatial.m、ch9_exercises.m)与页面内 tab 一致;`python/fourier/ch9/`(ch9_temporal.py、ch9_spatial.py、ch9_exercises.py)。公共积木复用 `python/fourier/common/base.py`(coords、circle、rect——坐标轴、圆盘、矩形线型全部由它生成),习题 9.6 的传播复用 `python/fourier/ch5/ch5_prop.py` 的 propTF。数值验证:ch9_temporal.py(7 s)、ch9_spatial.py(26 s)、ch9_exercises.py(11 s),machinelearn 环境实跑,输出 out_fig9_*.png 共 10 张(即笔记里的图 9-P1–9-P10)。

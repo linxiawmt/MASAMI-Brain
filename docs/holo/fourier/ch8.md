@@ -1,9 +1,6 @@
 # 第 8 章 波前像差(Wavefront Aberrations)
 
-> **本章解决**:第 7 章的衍射限成像把瞳函数定义成"理想会聚球面波"——那是现实中不存在的系统。本章给瞳函数加上**波前偏差** \(W(x,y)\)(光程差,OPD):用 Seidel 多项式写出五种初级像差 + 离焦,把它变成相位 \(e^{-jkW}\) 乘进出瞳,然后重建整条成像链——相干传递函数 → PSF → MTF → 全图仿真。两个新东西:一是**像质指标**(PSF 宽度、MTF 曲线、Strehl 比),二是**空间变成像**(PSF 随像点位置变,卷积失效,只能叠加)。第 7 章的瞳函数是本章 \(W=0\) 的特例;本章的 Zernike 多项式(习题 8.6)是本栏目 Book2(Schmidt《Numerical Simulation of Optical Wave Propagation》)讨论大气湍流相位的起点。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码 1 个函数(seidel_5)+ 3 个脚本(lens_psfmtf、psf_map、image_super)+ 习题 4 个改写方向。本章发现原书 4 处笔误/编号冲突 + 1 处公式与代码口径不一致:lens_psfmtf 评注 (b) 引错表号(8.1→8.2)、正文残留旧脚本名 psf_pt_array、习题 8.4 的插图编号 8.10 与 8.7.2 的测试图重复(笔记按 8.11 处理)、习题 8.8(d) 的 \(\sigma^2\) 公式漏了平方;式 (8.17) 印刷版没有位移宗量,与步骤 (3)/代码的 circshift 不一致,见正文标注。
-
-本章覆盖(原书 8.1–8.9 节):波前 OPD、Seidel 多项式(定义 + seidel_5)、瞳函数与传递函数、像质指标(PSF/MTF)、f/5 平凸透镜实例、波前采样判据、叠加成像实例(PSF 图 + 图像仿真 + 实用路线)、习题、参考文献。参考文献 7 条,正文上标引用处:式 (8.1) 引 1,2;W 符号约定引 1;式 (8.6) 截止不变引 5;习题 8.3/8.8 引 2;Zernike 拟合引 1,6;湍流引 6,7。
+> **本章解决**：波前像差如何进入成像链——用 Seidel 多项式与 Zernike 多项式描述波前光程差，以相位因子 \(e^{-jkW}\) 修改出瞳函数，再由此计算点扩散函数、调制传递函数与 Strehl 比等像质指标；并处理点扩散函数随像点位置变化的空间变化成像。学完能对给定像差给出成像质量评估与全图仿真。
 
 ## 8.0 本章导图
 
@@ -1096,16 +1093,6 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
 
     **结果一致性**:\(W_{040} \lesssim 0.5\lambda\)(rms \(\lesssim 0.15\lambda\))两者几乎重合;再大,Marechal 只能跟趋势(0.75λ/1λ 处因子 1.5~3 内)。这就是 Marechal 判据"rms 波前误差 \(\le \lambda/14\) → S ≥ 0.8"的适用域来源。(e) f/5 例镜轴上(\(W_{040}=4.963\lambda\) 等 5 项,只有球差进轴上波前):数值 **S = 0.0212**;Marechal 给 \(\exp(-86)\approx4\times10^{-38}\)——5 波远超适用域,Marechal 完全失效,只能数值算。(小像差渐近可自查:轴上纯球差的 PSF 峰是菲涅尔积分 \(\left|\int_0^1 e^{j\alpha u^2}du\right|^2\),大 \(\alpha\) 时趋于 \(\pi/(4\alpha)\),对 4.963λ 给 ≈0.025,与实测 0.021 同量级——峰值落点还依赖 \(\alpha\) 的振荡相位,这就是为什么系数差 0.1 波、S 可能差几倍。)
 
-## 8.9 参考文献(原书)
-
-1. J. C. Wyant and K. Creath, Basic Wavefront aberration theory for optical metrology, in *Applied Optics and Optical Engineering*, Vol. XI, R. R. Shannon and J. C. Wyant, (eds.), Academic, New York (1992).
-2. J. M. Geary, *Introduction to Lens Design with Practical ZEMAX® Examples*, Willmann-Bell, Richmond, VA (2002).
-3. E. Dereniak and T. D. Dereniak, *Geometrical and Trigonometric Optics*, Cambridge University Press, Cambridge, U.K. (2008).
-4. W. J. Smith, *Modern Optical Engineering*, 4th Ed., McGraw-Hill Professional, New York (2007).
-5. J. W. Goodman, *Introduction to Fourier Optics*, 3rd Ed., Roberts & Company, Greenwood Village, CO (2005).
-6. J. D. Schmidt, *Numerical Simulation of Optical Wave Propagation with Examples in MATLAB®*, SPIE Press, Bellingham, WA (2010). doi:[10.1117/3.866274].
-7. M. C. Roggeman and B. M. Welsh, *Imaging Through Turbulence*, CRC, Boca Raton, FL (1996).
-
 ## 坑与陷阱
 
 !!! danger "两条采样判据,缺一不可"
@@ -1173,24 +1160,3 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
 | superposition integral | 叠加积分 | 空间变成像的通用式(式 8.17);PSF 需平移 + 体积归一 |
 | PSF map | PSF 分布图 | 像面上按位置摆放 PSF(8.7.1);非仿真 |
 | tiles | 分块 | 每块一个代表 PSF 做卷积再拼图(8.7.3) |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 8.1 Wavefront OPD | 图 8.1、像差来源、Seidel/Zernike 定位 | 8.1(含符号约定与两套多项式对比表) |
-| 8.2.1 Definition and primary aberrations | 式 (8.1)/(8.2)、图 8.2、表 8.1 | 8.2.1(含三项结构拓展) |
-| 8.2.2 MATLAB function | seidel_5、曲面绘制代码、图 8.3 | 8.2.2(双 tab) |
-| 8.3.1 Pupil function | 式 (8.3)、符号约定 | 8.3.1(含 −jkW 推导拓展) |
-| 8.3.2 Imaging transfer functions | 式 (8.4)-(8.6)、截止不变 | 8.3.2(含自相关支撑证明) |
-| 8.4.1 Point spread function | 式 (8.7)、空间变 | 8.4.1 |
-| 8.4.2 Modulation transfer function | 式 (8.8)/(8.9) | 8.4.2 |
-| 8.5 Lens Example | 图 8.4-8.8、表 8.2、lens_psfmtf | 8.5(含勘误 + Python 数值验证 + 图 8-P1) |
-| 8.6 Wavefront Sampling | 式 (8.10)-(8.16) | 8.6(含式 8.11 一行推导) |
-| 8.7.1 Image plane PSF map | psf_map、图 8.9 | 8.7.1(含评注与勘误 + 图 8-P2) |
-| 8.7.2 Image simulation | 式 (8.17)、image_super、图 8.10 | 8.7.2(含位移口径 warning + M=250/100 双档实跑) |
-| 8.7.3 Practical image simulation | 复用/欠采样/分块 | 8.7.3(三路线对比表 + 决策流程图) |
-| 8.8 Exercises | 习题 8.1-8.8、表 8.3/8.4、图 8.11 | 8.8(8.2/8.3/8.4/8.5/8.6/8.7/8.8 数值实跑,图 8-P4–8-P9) |
-| 8.9 References | 参考文献 7 条 | 8.9 |
-
-代码文件:`matlab/fourier/ch8/`(seidel_5.m、lens_psfmtf.m、psf_map.m、image_super.m、ch8_exercises.m)与页面内 tab 一致;`python/fourier/ch8/`(ch8_aberrations.py、ch8_lens_psfmtf.py、ch8_psf_map.py、ch8_image_super.py、ch8_exercises.py)。公共积木复用 `python/fourier/common/base.py`(coords 生成空间/频率坐标、circle 画瞳与频率域圆、rect 截断解析 MTF——本章所有 circ/坐标网格都由它生成);本章无传播器依赖(PSF 由传递函数逆变换直接得到)。

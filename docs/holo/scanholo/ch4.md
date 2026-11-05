@@ -1,10 +1,8 @@
 # 第 4 章 光学扫描全息：应用
 
-> **本章解决**：第 3 章造好了 OSH 这台"记录机"（一次 2-D 扫描得 sin/cos 两张全息图、复 FZP 全息图无孪生像），本章回答"它有什么用"。三个方向：**4.1 扫描全息显微（SHM）**——不需要轴向扫描就能拿 3-D 信息，而且打破了"全息拍不了荧光"的魔咒；**4.2 3-D 全息电视与显示**——OSH 记录 + SLM（EBSLM）重建的完整链路，顺带算清视角/像素/带宽三笔账（结论：全视差是科幻，HPO 是工程可行）；**4.3 光学扫描加密（OSC）**——把"加密密钥"插进双瞳处理器的光瞳里，密文是 Riding 在射频载波上的外差电流，天生适合无线传输。3.4 的双瞳处理器、3.5 的复全息图在本章全部变现；ch5 再回到原理层讲相干模式与最新进展。
+> **本章解决**：OSH 的三类应用——扫描全息显微（无需轴向扫描即可获取三维信息，并可对荧光样品成像）、三维全息电视与显示（OSH 记录加空间光调制器重建，含视差、像素数与数据率的工程约束）、光学扫描加密（把密钥写入双瞳处理器的光瞳，密文为射频外差电流）。学完能分析各应用的成像链路、分辨率与信息量限制，并判断其工程可行性。
 
-原书本章结构：章引言（五大应用领域，本章讲三个）；4.1 扫描全息显微（式 4.1-1~4.1-5，图 4.1~4.7）；4.2 3-D 全息电视与 3-D 显示（图 4.8~4.14，Table 4.1，Example 4.1 式 4.2-1~4.2-5）；4.3 光学扫描加密（图 4.15、4.16，式 4.3-1~4.3-12，Example 4.2 + Table 4.2 Cryptography.m，图 4.17、4.18）；References 4.1~4.46。
-
-OSH 迄今的五大应用领域：扫描全息显微 [Poon, Doh, Schilling, Wu, Shinoda, and Suzuki (1995)]、3-D 图像识别 [Poon and Kim (1999)]、3-D 光学遥感 [Kim and Poon (1999)]、3-D 全息电视与 3-D 显示 [Poon (2002a)]、3-D 加密 [Poon, Kim, and Doh (2003)]。本章只讲显微、电视、加密三个（识别与遥感在书章 [Poon (2002b), Poon (2005)] 中有综述）。
+OSH 迄今的主要应用领域包括扫描全息显微、三维图像识别、三维光学遥感、三维全息电视与显示、三维加密；本章讨论显微、电视与加密三个方向。
 
 ## 4.0 本章导图
 
@@ -1803,71 +1801,3 @@ flowchart LR
 | digital decryption unit (DDU) | 数字解密单元 | \(\mathcal{F}\{i_{enc}\}\times\mathcal{F}\{i_{dec}\}\to\mathcal{F}^{-1}\to|\cdot|\)（图 4.16） |
 | double-random phase encoding | 双随机相位编码 | 输入面+傅里叶面各一块随机相位板（Refregier-Javidi 1995；OSC 版 4.3-11） |
 | RFID | 射频识别 | OSC 密文骑载频可直接无线辐射的目标应用 |
-
-## 覆盖自查
-
-??? note "原书小节 → 笔记位置对照"
-    | 原书内容 | 笔记位置 |
-    | --- | --- |
-    | 章引言（五大应用领域，本章讲三个） | 章首 |
-    | 4.1 Scanning Holographic Microscopy（式 4.1-1~4.1-5；图 4.1~4.7） | 4.1.1~4.1.3（(4.1-5) 记号勘误；数值账在拓展注） |
-    | （编者）振幅 vs 相位物体成像对照 | 4.1.4 拓展实战 |
-    | 4.2 3-D Holographic TV and 3-D Display（图 4.8~4.13） | 4.2.1~4.2.2（mermaid 链路图） |
-    | Example 4.1 Holographic Magnification（式 4.2-1~4.2-5） | 4.2.3（代码双 tab + 实跑验证 + 波长方向易错点） |
-    | 4.2 三大瓶颈 A/B/C（式 4.2-6~4.2-10；图 4.14；Table 4.1；HPO） | 4.2.4（HPO 公式勘误；视角/像素账在拓展注 + 代码双 tab） |
-    | 4.3 Optical Scanning Cryptography（式 4.3-1~4.3-9；图 4.15、4.16） | 4.3.2~4.3.4（约定衔接在拓展注） |
-    | Example 4.2 + Table 4.2 Cryptography.m（式 4.3-10~4.3-13；图 4.17、4.18） | 4.3.5（(4.3-12) 编号勘误；代码双 tab + 实跑 cc） |
-    | References 4.1~4.46 | 见下 |
-
-??? note "原书 References 4.1~4.46"
-    4.1 Agard, D. A. (1984). "Optical sectioning microscopy: cellular architecture in three dimensions," *Ann. Rev. Biophys. Bioeng.* 13, 191-219.
-    4.2 Benton, S.A. (1991). "Experiments in holographic video," *Proc. SPIE* IS-08, 247-267.
-    4.3 Brown, H. B., S.C. Noble and B.V. Markevitch (1983). "Three-dimensional television system using holographic technique," U.S. Patent # 4,376,950.
-    4.4 Corle, T. R. and G. S. Kino (1996). *Confocal Scanning Optical Microscopy and Related Imaging Systems*, Academic Press, San Diego, CA.
-    4.5 Enloe, L. H., J.A. Murphy, and C. B. Rubinstein (1966). "Hologram transmission via television," *Bell Syst. Techn. J.* 45, 333-335.
-    4.6 Gabor, D. (1949). "Microscopy by reconstructed wavefronts," *Proc. Roy. Soc.*, ser. A, 197, 454-487.
-    4.7 Hamamatsu Photonics K.K., Japan, and Hamamatsu Corp., Bridgewater, NJ. Image Processing and Measuring System (IPMS), Model DVS-3010/SS.
-    4.8 Hamamatsu Photonics K.K., Japan, and Hamamatsu Corp., Bridgewater, NJ. Product information sheet for EBSLM model X3636.
-    4.9 Huang, D., E.A. Swanson, C. P. Lin, J.S. Shuman, W.G. Stinson, W. Chang, M.R. Hee, T. Flotte, K. Gregory, C.A. Puliafito, and J. G. Fujimoto (1991). "Optical coherent tomography," *Science*, Vol. 254, 1178-1181.
-    4.10 Indebetouw, G. (2002). "Properties of a scanning holographic microscope: improved resolution, extended depth of focus, and/or optical sectioning," *Journal of Modern Optics* 49, 1479-1500.
-    4.11 Indebetouw, G., T. Kim, T.-C. Poon, and B. Schilling (1998). "Three-dimensional location of fluorescent inhomogeneities in turbid media using scanning heterodyne holography," *Optics Letters* 23, 135-137.
-    4.12 Indebetouw, G. and W. Zhong (2006). "Scanning holographic microscopy of three-dimensional fluorescent specimens," *Journal of the Optical Society of America A* 23, 1699-1707.
-    4.13 Kim, M (2000). "Tomographic three-dimensional imaging of a biological specimen using wave-scanning digital interference holography," *Optics Express* 7, 305-310.
-    4.14 Kim, T and T.-C. Poon (1999). "Extraction of 3-D location of matched 3-D object using power fringe-adjusted filtering and Wigner analysis," *Optical Engineering* 38, 2176-2183.
-    4.15 Kirk, R. L. (1984). "Electronically generated holography," International Patent No. WO 84/00070.
-    4.16 Lai, S. and M. A. Neifeld (2000). "Digital wavefront reconstruction and its applications to image encryption," *Optics Communications* 178, 283-289.
-    4.17 Lohmann, A.W., W. Stork, and G. Stucke (1986). "Optical perfect shuffle," *Applied Optics* 25, 1530-1531.
-    4.18 Macovski, A. (1971). "Considerations of television holography," *Optica Acta* 18, 31-39.
-    4.19 Magensen, P.C. and J. Gluckstad (2001). "Phase-only optical decryption of a fixed mask," *Applied Optics* 8, 1226-1235.
-    4.20 Minsky, M. (1961). "Microscopy Apparatus," US Patent # 3,013,467.
-    4.21 Pawley, J. ed. (1995). *Handbook of Biological Confocal Microscopy*, 2nd ed., Plenum Press.
-    4.22 Poon, T.-C. (2002a). "Three-dimensional television using optical scanning holography," *Journal of Information Display* 3, 12-16.
-    4.23 Poon, T.-C. (2002b). "Optical scanning holography: principles and applications," in *Three-Dimensional Holographic Imaging*, C.J. Kuo and M. H. Tsai, ed., John Wiley & Sons, Inc.
-    4.24 Poon, T.-C. (2005). "Three-dimensional optical remote sensing by optical scanning holography," in *Current Research on Image Processing for 3D information displays*, V. Petrov, ed., *Proc. SPIE* Vol. 5821, 41-59.
-    4.25 Poon, T.-C. (2006). "Horizontal-parallax-only optical scanning holography," in chapter 10 of *Digital Holography and Three-Dimensional Display: Principles and Applications*, T.-C. Poon ed., Springer, New York, USA.
-    4.26 Poon, T.-C, K. Doh, B. Schilling, M. Wu, K. Shinoda, and Y. Suzuki (1995). "Three-dimensional microscopy by optical scanning holography," *Optical Engineering* 34, 1338-1344.
-    4.27 Poon, T.-C., K. Doh, B. Schilling, K. Shinoda, Y. Suzuki, and M. Wu (1997). "Holographic three-dimensional display using an electron-beam-addressed spatial-light-modulator," *Optical Review* 4, 567-571.
-    4.28 Poon, T.-C. and T. Kim (1999). "Optical image recognition of three-dimensional objects," *Applied Optics* 38, 370-381.
-    4.29 Poon, T.-C., B. D. Schilling, G. Indebetouw, and B. Storrie (2000). "Three-dimensional holographic fluorescence microscopy," U.S. Patent # 6,038,041.
-    4.30 Poon, T.-C., T. Kim, and K. Doh (2003). "Optical scanning cryptography for secure wireless transmission," *Applied Optics* 42, 6496-6503.
-    4.31 Poon, T.-C., T. Akin, G. Indebetouw and T. Kim (2005). "Horizontal-parallax-only electronic holography," *Optics Express* 13, 2427-2432.
-    4.32 Poon, T.-C. and T. Kim (2006). *Engineering Optics with MATLAB®*, World Scientific, Singapore.
-    4.33 "Radio Frequency Identification Technologies: A Workshop Summary" (2004). The National Academies Press, Washington, D.C.
-    4.34 Refregier, P. and B. Javidi (1995). "Optical image encryption using input plane and Fourier plane random phase encoding," *Optics Letters* 20, 767-769.
-    4.35 Schilling, B. W. and T.-C. Poon (1995). "Real-time pre-processing of holographic information," *Optical Engineering* 34, 3174-3180.
-    4.36 Schilling, B. W. (1997). *Three-dimensional fluorescence microscopy by optical scanning holography*, Ph.D. dissertation, Virginia Tech.
-    4.37 Schilling, B., T.-C. Poon, G. Indebetouw, B. Storrie, K. Shinoda, and M. Wu (1997). "Three-dimensional holographic fluorescence microscopy," *Optics Letters* 22, 1506-1508.
-    4.38 Schilling, B.W. and T.-C. Poon (2004). "Multicolor electronic holography and 3-D image projection system," U.S. Patent # 6760134.
-    4.39 Shinoda, K., Y. Suzuki, M. Wu and T.-C. Poon (1991). "Optical heterodyne scanning type holography device," U.S. Patent # 5064257.
-    4.40 St. Hilaire, P., S. A. Benton, M. Lucente, M. Jepsen, J. Kollin, H. Yoshikawa, and J. Underkoffler (1990). "Electronic display system for computational holography," *Proc. SPIE*, vol. 1212, 174-182.
-    4.41 St. Hilaire, P., S. A. Benton, and M. Lucente (1992). "Synthetic aperture holography: a novel approach to three-dimensional displays," *Journal of the Optical Society of America A* 9, 1969-1977.
-    4.42 Sun, P and J.-H. Xie (2004). "Method for reduction of background artifacts of images in scanning holography with a Fresnel-zone-plate coded aperture," *Applied Optics* 43, 4214-4218.
-    4.43 Tajahuerce, E., J. Lancis, B. Javidi, and P. Andres (2001). "Optical security and encryption with totally incoherent light," *Applied Optics* 26, 678-680.
-    4.44 Wang, B, C.-C. Sun, W.-C. Su, and A. Chiou (2000). "Shift-tolerance property of an optical double-random phase-encoding encryption system," *Applied Optics* 39, 4788-4793.
-    4.45 Wilson, T. and C. Sheppard (1984). *Theory and Practice of Scanning Optical Microscopy*, Academic Press.
-    4.46 Zhang, T. and I. Yamaguchi (1998). "Three-dimensional microscopy with phase-shifting digital holography," *Optics Letters* 23, 1221-1223.
-
-    !!! warning "原书笔误/勘误（本章 3 处，与 ch1~ch3 独立）"
-        1. **(4.3-12) 编号重复**：DDU 输出式（"Eqs. (4.3-11) and (4.3-12) are the inputs of the DDU" 之后那式）又印作 "(4.3-12)"，与解密端扫描输出式撞号——按上下文应为 **(4.3-13)**。本笔记按 (4.3-13) 引用。
-        2. **HPO 像素公式多一个因子 2**：书印 \(512\times(2l\times 2NA/\lambda_0)\) 代入得 3240 万，与书自己给的 "approximately 17 million" 矛盾；自洽式为 \(512\times(2l\cdot NA/\lambda_0)\approx 1620\) 万 ≈ 17 million（数据率 4 Gbit/s 才对上）。实算见 4.2.4 代码。
-        3. **4.1 节 λ/λ0/n0 记号混用**：(4.1-2) 的 λ（空气波长）与 (4.1-4) 的 \(2n_0\lambda/NA^2\) 代入后 (4.1-5) 左端应为 \(\lambda/(2n_0)\)，书印 \(\lambda_0/2\) 隐含 \(n_0=1\)。不影响"分辨率×2 ⇒ 景深÷4"的标度结论。（另：实验数值 Δr≈18.5 µm/Δz≈1028.4 µm 与 NA≈0.033 的自洽重算 15.4 µm/0.93 mm 有 ~15% 出入，属书内舍入不一致，见 4.1.1 拓展注。）

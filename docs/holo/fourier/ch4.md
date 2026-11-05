@@ -1,9 +1,6 @@
 # 第 4 章 标量衍射与传播解
 
-> **本章解决**：光场从一个平面传到另一个平面之后长什么样。第 2、3 章把傅里叶变换变成了可执行的动作，本章回答"变换之外还要什么"——衍射。全章是标量衍射理论的总结：一套假设（4.1–4.3 节）配上三级精度的解析解（Rayleigh–Sommerfeld → Fresnel → Fraunhofer，4.4 节），再用一个圆孔的 Airy 图样把解析式落到代码（4.5 节）。第 5 章的所有计算机仿真，就建立在这三套公式上。
-> MATLAB / Python 双实现与数值验证照旧。本章书内代码只有两个文件（jinc、fraun_circ），是全书前半最"解析"的一章。本章发现原书 1 处笔误（"isotroptic"）；另有第 1 章勘误 1 的 circ 约定冲突在式 (4.32) 再现，见正文 warning。
-
-本章覆盖（原书 4.1–4.7 节）：标量衍射、单色场与辐照度、光程与相位表示、解析衍射解（RS I / Fresnel / Fraunhofer）、圆孔夫琅禾费例子（Airy 图样）、习题、参考文献。原书的参考文献 4 条列在 4.7 节，正文引用记号 1–4 对应 Goodman / Gaskill / Ersoy / Hecht。
+> **本章解决**：光场经自由空间传播后的复振幅分布——标量衍射理论的基本假设，Rayleigh–Sommerfeld、Fresnel 与 Fraunhofer 三级近似的解析形式与适用条件，以及圆孔衍射的 Airy 图样。学完能根据波长、孔径尺度与传播距离判断应采用哪一级近似，并写出对应的场分布与辐照度。
 
 ## 4.0 本章导图
 
@@ -1340,19 +1337,3 @@ I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \mathrm{jinc}^2\!\left(\frac{w\r
 | jinc | jinc 函数 | 本书记法 \(J_1(2\pi x)/x\)，jinc(0)=π，第一零点 0.61 |
 | leading / lagging phase | 相位超前 / 滞后 | 在 \(\exp(-j2\pi\nu t)\) 约定下，更负 = 超前 |
 | visibility | 可见度 | 条纹对比度 \(2A_1A_2/(A_1^2+A_2^2)\)（习题 4.5） |
-
-## 覆盖自查
-
-| 原书小节 | 内容 | 笔记位置 |
-| --- | --- | --- |
-| 4.1 Scalar Diffraction | 衍射定义、五条介质假设、FSO、标量近似适用域 | 4.1（含 isotroptic 笔误 warning + 拓展） |
-| 4.2 Monochromatic Fields and Irradiance | 式 (4.1)–(4.8)、相量、相干性、irradiance 记账 \(1/(2\eta)\) | 4.2（含时间平均拓展） |
-| 4.3 Optical Path Length and Field Phase Representation | OPL、玻璃波长、chirp（图 4.1）、超前/滞后 | 4.3（含符号约定拓展） |
-| 4.4.1 Rayleigh–Sommerfeld solution I | 式 (4.12)–(4.19)、惠更斯–菲涅耳、h/H、传播波条件（图 4.2） | 4.4.1（含倾斜因子与倏逝波拓展） |
-| 4.4.2 Fresnel approximation | 式 (4.20)–(4.28)、脉冲响应/传递函数、FT 形式、\(N_F\) 判据 | 4.4.2（含图 4-P1 对比 + 拓展 + 代码块） |
-| 4.4.3 Fraunhofer approximation | 式 (4.29)–(4.31)、远场、无传递函数 | 4.4.3（含透镜拓展） |
-| 4.5 Fraunhofer Diffraction Example | 式 (4.32)–(4.37)、jinc.m、fraun_circ.m、Airy（图 4.3） | 4.5（含 circ 约定 warning、1.22 拓展、数值验证） |
-| 4.6 Exercises | 习题 4.1–4.5（图 4.4/4.5） | 4.6（含参考答案、图 4-P3/P4/P5 与数值验证） |
-| 4.7 References | Goodman / Gaskill / Ersoy / Hecht | 章首覆盖段 |
-
-代码文件：`matlab/fourier/ch4/`（jinc.m、fraun_circ.m、ch4_transfer_compare.m、ch4_exercises.m）、`python/fourier/ch4/`（ch4_fraun_circ.py、ch4_transfer_compare.py、ch4_exercises.py）与页面内 tab 一致；公共积木在 `python/fourier/common/base.py`（本章用 coords、sinc、jinc——jinc_book 即 `jinc(u, R=1.0)`）。

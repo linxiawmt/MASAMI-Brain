@@ -112,6 +112,8 @@ nav:
       - 第10章 视觉嵌入: dl4vs/ch10.md
   - OpenCV轻松入门:
       - 第1章 OpenCV入门: opencv/ch01.md
+      - 第2章 图像处理基础: opencv/ch02.md
+      - 第3章 图像运算: opencv/ch03.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
