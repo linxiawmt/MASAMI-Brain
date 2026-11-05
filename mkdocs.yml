@@ -114,6 +114,7 @@ nav:
       - 第1章 OpenCV入门: opencv/ch01.md
       - 第2章 图像处理基础: opencv/ch02.md
       - 第3章 图像运算: opencv/ch03.md
+      - 第4章 色彩空间类型转换: opencv/ch04.md
   - 计算傅里叶光学:
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
