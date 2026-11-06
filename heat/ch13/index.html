@@ -1,0 +1,5132 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/heat/ch13/">
+      
+      
+        <link rel="prev" href="../ch12/">
+      
+      
+        <link rel="next" href="../ch14/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第13章 表面间的辐射换热 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-13-章-表面间的辐射换热" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第13章 表面间的辐射换热
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../numana/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../opencv/ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/ch1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#130-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131-视角系数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 视角系数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 视角系数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311-视角系数积分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 视角系数积分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312-视角系数关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 视角系数关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-黑体表面间的辐射交换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 黑体表面间的辐射交换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-封闭腔内不透明漫灰表面间的辐射交换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 封闭腔内不透明漫灰表面间的辐射交换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 封闭腔内不透明漫灰表面间的辐射交换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331-表面处的净辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 表面处的净辐射换热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-表面之间的辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 表面之间的辐射换热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-两表面封闭腔" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 两表面封闭腔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1334-防辐射屏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.4 防辐射屏
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1335-再辐射面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.5 再辐射面
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-多模式换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 多模式换热
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-简化假定的适用性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 简化假定的适用性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#136-与参与性介质的辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 与参与性介质的辐射换热
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.6 与参与性介质的辐射换热">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1361-体积吸收" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6.1 体积吸收
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1362-气体的发射与吸收" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6.2 气体的发射与吸收
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#137-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#130-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131-视角系数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 视角系数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 视角系数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311-视角系数积分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 视角系数积分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312-视角系数关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 视角系数关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-黑体表面间的辐射交换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 黑体表面间的辐射交换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-封闭腔内不透明漫灰表面间的辐射交换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 封闭腔内不透明漫灰表面间的辐射交换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 封闭腔内不透明漫灰表面间的辐射交换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331-表面处的净辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 表面处的净辐射换热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-表面之间的辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 表面之间的辐射换热
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-两表面封闭腔" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 两表面封闭腔
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1334-防辐射屏" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.4 防辐射屏
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1335-再辐射面" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.5 再辐射面
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-多模式换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 多模式换热
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-简化假定的适用性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 简化假定的适用性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#136-与参与性介质的辐射换热" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 与参与性介质的辐射换热
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.6 与参与性介质的辐射换热">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1361-体积吸收" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6.1 体积吸收
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1362-气体的发射与吸收" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6.2 气体的发射与吸收
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#137-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-13-章-表面间的辐射换热">第 13 章 表面间的辐射换热<a class="headerlink" href="#第-13-章-表面间的辐射换热" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：第 12 章回答了"一个表面怎样发射、吸收、反射辐射"，这一章回答"多个表面之间怎么算总账"。两块表面能互相"看见"多少，由视角系数（view factor）这个纯几何量描述——它有互易关系与求和规则两条恒等式，配合图表和代数运算就能把常见几何的视角系数凑齐。真实表面按漫灰体处理：给每个表面配一个表面热阻、给每对表面配一个空间热阻，封闭腔内的辐射换热就变成一张纯电阻网络——两表面封闭腔有现成公式，三表面、再辐射面、防辐射屏各有标准的网络化简套路，对流与导热加入时在同一节点上做能量平衡。最后补两块：这套简化假定的适用边界，以及气体这类参与性介质的发射与吸收（比尔定律与 Hottel 图算法）。</p>
+</blockquote>
+<h2 id="130-本章导图">13.0 本章导图<a class="headerlink" href="#130-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">表面间的辐射换热</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">视角系数</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">定义：离开 i 的辐射被 j 截住的份额</span>
+          <span class="brleaf">双重积分与漫射均匀前提</span>
+          <span class="brleaf">互易关系与求和规则两条恒等式</span>
+          <span class="brleaf">视角系数代数与复合面拆分</span>
+          <span class="brleaf">典型几何公式表与三张图表</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">黑体封闭腔</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">黑面无反射、来者不拒</span>
+          <span class="brleaf">净交换等于四次方差乘视角系数</span>
+          <span class="brleaf">多黑面封闭腔逐面对账</span>
+          <span class="brleaf">开口按环境温度的黑假想面处理</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">漫灰表面网络法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">表面热阻与空间热阻</span>
+          <span class="brleaf">有效辐射节点与基尔霍夫电流定律</span>
+          <span class="brleaf">直接法解线性方程组</span>
+          <span class="brleaf">大腔壁与黑面一样热阻为零</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">两表面封闭腔</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">串联三热阻的通式</span>
+          <span class="brleaf">平行平板、同心圆柱与球</span>
+          <span class="brleaf">大腔内小物体只看自身发射率</span>
+          <span class="brleaf">防辐射屏成倍加大热阻</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">再辐射面</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">净辐射为零的绝热面</span>
+          <span class="brleaf">串联并联混合网络化简</span>
+          <span class="brleaf">温度与自身发射率无关</span>
+          <span class="brleaf">工业炉窑的标准近似</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">多模式与气体介质</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">表面能量平衡并入网络</span>
+          <span class="brleaf">辐射对流导热联立求解</span>
+          <span class="brleaf">比尔定律描述体积吸收</span>
+          <span class="brleaf">Hottel 图算法与平均射线行程</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="131-视角系数">13.1 视角系数<a class="headerlink" href="#131-视角系数" title="Permanent link">#</a></h2>
+<p>到目前为止我们只盯着<strong>一个</strong>表面看辐射。现在的问题是：两个（或更多）表面之间到底交换多少辐射？答案强烈依赖表面的几何与朝向，也依赖各自的辐射物性和温度。本章先假设表面之间隔着<strong>不参与性介质</strong>（nonparticipating medium）——它既不发射、不吸收、也不散射辐射，对表面间的辐射换热毫无影响。真空严格满足这个要求，大多数气体也是极好的近似。</p>
+<p>第一个目标就是把"几何"这一半量化，工具叫<strong>视角系数</strong>（view factor），又称构形因子或形状因子（configuration or shape factor），国内教材多称<strong>角系数</strong>。</p>
+<h3 id="1311-视角系数积分">13.1.1 视角系数积分<a class="headerlink" href="#1311-视角系数积分" title="Permanent link">#</a></h3>
+<p><strong>视角系数</strong> <span class="arithmatex">\(F_{ij}\)</span> 的定义一句话：<strong>离开表面 i 的辐射中被表面 j 截住的份额</strong>。</p>
+<p>要推出它的一般表达式，看图 13.1：两个任意朝向的表面 <span class="arithmatex">\(A_i\)</span>、<span class="arithmatex">\(A_j\)</span>，各取微元面 <span class="arithmatex">\(dA_i\)</span>、<span class="arithmatex">\(dA_j\)</span>，二者相距 <span class="arithmatex">\(R\)</span>，连线与两个表面法线 <span class="arithmatex">\(n_i\)</span>、<span class="arithmatex">\(n_j\)</span> 的夹角分别是 <span class="arithmatex">\(\theta_i\)</span>、<span class="arithmatex">\(\theta_j\)</span>。<span class="arithmatex">\(R\)</span>、<span class="arithmatex">\(\theta_i\)</span>、<span class="arithmatex">\(\theta_j\)</span> 都随微元面位置变化。</p>
+<figure>
+  <img src="../images/ch13/fig-13-1.png" class="lq-img" />
+  <figcaption>图 13.1 两个微元表面之间辐射换热的视角系数（截自原书）</figcaption>
+</figure>
+
+<p>离开 <span class="arithmatex">\(dA_i\)</span>、被 <span class="arithmatex">\(dA_j\)</span> 截住的辐射速率，用第 12 章的辐射强度定义（式 12.11）写出：</p>
+<div class="arithmatex">\[
+dq_{i \to j} = I_{e+r,i}\, \cos\theta_i\, dA_i\, d\omega_{j-i}
+\]</div>
+<p>其中 <span class="arithmatex">\(I_{e+r,i}\)</span> 是表面 i 因发射加反射而离开的辐射强度，<span class="arithmatex">\(d\omega_{j-i}\)</span> 是从 <span class="arithmatex">\(dA_i\)</span> 看 <span class="arithmatex">\(dA_j\)</span> 所张的立体角。立体角的几何由式 (12.7) 给出：<span class="arithmatex">\(d\omega_{j-i} = (\cos\theta_j\, dA_j)/R^2\)</span>，代进来：</p>
+<div class="arithmatex">\[
+dq_{i \to j} = I_{e+r,i}\, \frac{\cos\theta_i \cos\theta_j}{R^2}\, dA_i\, dA_j
+\]</div>
+<p>再假设表面 i 是<strong>漫发射、漫反射</strong>的，由式 (12.27)，<span class="arithmatex">\(I_{e+r,i} = J_i/\pi\)</span>（有效辐射除以 π），于是：</p>
+<div class="arithmatex">\[
+dq_{i \to j} = J_i\, \frac{\cos\theta_i \cos\theta_j}{R^2}\, dA_i\, dA_j
+\]</div>
+<p>把两个表面都积分，就得到离开 i、被 j 截住的总速率（假设有效辐射 <span class="arithmatex">\(J_i\)</span> 在 <span class="arithmatex">\(A_i\)</span> 上均匀）：</p>
+<div class="arithmatex">\[
+q_{i \to j} = J_i \iint_{A_i A_j} \frac{\cos\theta_i \cos\theta_j}{R^2}\, dA_i\, dA_j
+\]</div>
+<p>按定义，视角系数是这个总速率占离开 i 的全部辐射 <span class="arithmatex">\(A_iJ_i\)</span> 的份额：</p>
+<div class="arithmatex">\[
+F_{ij} = \frac{q_{i \to j}}{A_i J_i} = \frac{1}{A_i} \iint_{A_i} \iint_{A_j} \frac{\cos\theta_i \cos\theta_j}{\pi R^2}\, dA_i\, dA_j
+\tag{13.1}
+\]</div>
+<p>同样地，<span class="arithmatex">\(F_{ji}\)</span> 是离开 <span class="arithmatex">\(A_j\)</span> 的辐射被 <span class="arithmatex">\(A_i\)</span> 截住的份额，同一路数推出来：</p>
+<div class="arithmatex">\[
+F_{ji} = \frac{1}{A_j} \iint_{A_i} \iint_{A_j} \frac{\cos\theta_i \cos\theta_j}{\pi R^2}\, dA_i\, dA_j
+\tag{13.2}
+\]</div>
+<p>式 (13.1)、(13.2) 对任何两个<strong>漫发射、漫反射且有效辐射均匀</strong>的表面都成立——这是整章视角系数计算的物理前提。</p>
+<h3 id="1312-视角系数关系">13.1.2 视角系数关系<a class="headerlink" href="#1312-视角系数关系" title="Permanent link">#</a></h3>
+<p>真正让视角系数"能算"的，是下面几条恒等式。</p>
+<p><strong>互易关系（reciprocity relation）</strong>。式 (13.1) 和 (13.2) 的双重积分一模一样，让它们相等立刻得到：</p>
+<div class="arithmatex">\[
+A_i F_{ij} = A_j F_{ji}
+\tag{13.3}
+\]</div>
+<p>知道一个视角系数，就能换出对面那个。注意互换的是<strong>乘积</strong> <span class="arithmatex">\(AF\)</span>，不是 <span class="arithmatex">\(F\)</span> 本身。</p>
+<p><strong>求和规则（summation rule）</strong>。考虑由 <span class="arithmatex">\(N\)</span> 个表面围成的<strong>封闭腔</strong>（enclosure）（图 13.2）。离开表面 i 的辐射必须全部落到封闭腔的某个表面上——这是能量守恒的几何版本：</p>
+<div class="arithmatex">\[
+\sum_{j=1}^{N} F_{ij} = 1
+\tag{13.4}
+\]</div>
+<p>求和里的 <span class="arithmatex">\(F_{ii}\)</span> 是离开表面 i 又直接落回自身的份额：<strong>凹面</strong>能"看见"自己，<span class="arithmatex">\(F_{ii} \ne 0\)</span>；<strong>平面或凸面</strong>看不见自己，<span class="arithmatex">\(F_{ii} = 0\)</span>。</p>
+<figure>
+  <img src="../images/ch13/fig-13-2.png" class="lq-img" />
+  <figcaption>图 13.2 封闭腔内的辐射换热（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：凹面自己能看见自己</p>
+<p><span class="arithmatex">\(F_{ii}\)</span> 是初学者最容易忽略的一项。凹面（比如碗的内壁、圆管内表面、环形空腔的内侧）发出的一部分辐射会直接打到自己身上。举个例子：无限长同心圆柱之间的环形空腔，内柱外表面是凸面 <span class="arithmatex">\(F_{11} = 0\)</span>，外柱内表面是凹面，它发出的辐射有一部分直接落回外柱——所以外柱内表面的 <span class="arithmatex">\(F_{22} &lt; 1\)</span>，两表面封闭腔里 <span class="arithmatex">\(F_{22} = 1 - A_1F_{12}/A_2\)</span>（见下面的两球例子）。做求和规则时先问一句：这个面是凹的还是凸的？</p>
+</div>
+<p><strong>数数：需要直接确定几个视角系数？</strong> 对 <span class="arithmatex">\(N\)</span> 个表面的封闭腔，配对数共 <span class="arithmatex">\(N^2\)</span> 个（排成 <span class="arithmatex">\(N \times N\)</span> 矩阵）。但不必都硬算：</p>
+<ul>
+<li>求和规则给 <span class="arithmatex">\(N\)</span> 条方程，解出 <span class="arithmatex">\(N\)</span> 个视角系数；</li>
+<li>互易关系可应用 <span class="arithmatex">\(N(N-1)/2\)</span> 次，换出 <span class="arithmatex">\(N(N-1)/2\)</span> 个；</li>
+<li>剩下要<strong>直接确定</strong>的只有 <span class="arithmatex">\(N^2 - N - N(N-1)/2 = N(N-1)/2\)</span> 个。</li>
+</ul>
+<p>比如三表面封闭腔：只需直接定 <span class="arithmatex">\(3(3-1)/2 = 3\)</span> 个，其余六个由三条求和规则加三条互易关系解出。</p>
+<p><strong>两个球组成的封闭腔</strong>（图 13.3）是这套流程的最小演示：内球面 1、外球壳内表面 2。离开内球的辐射全部打在外壳上，一看便知 <span class="arithmatex">\(F_{12} = 1\)</span>；互易关系给出 <span class="arithmatex">\(F_{21} = (A_1/A_2)F_{12} = A_1/A_2\)</span>；求和规则给 <span class="arithmatex">\(F_{11} + F_{12} = 1\)</span>（<span class="arithmatex">\(F_{11} = 0\)</span>，凸面）和 <span class="arithmatex">\(F_{21} + F_{22} = 1\)</span>，于是 <span class="arithmatex">\(F_{22} = 1 - A_1/A_2\)</span>。四个视角系数一个积分都没做。</p>
+<figure>
+  <img src="../images/ch13/fig-13-3.png" class="lq-img" />
+  <figcaption>图 13.3 两球封闭腔的视角系数（截自原书）</figcaption>
+</figure>
+
+<p><strong>公式表与图表</strong>。更复杂的几何要动用式 (13.1) 的双重积分。很多常见构形的积分结果已经做成公式表和图表（表 13.1、表 13.2 与图 13.4—13.6）。表 13.1 的构形都在垂直于纸面的方向上无限长（二维问题），表 13.2 与图 13.4—13.6 是三维构形。</p>
+<p><strong>表 13.1 二维几何的视角因子（View Factors for Two-Dimensional Geometries，截自原书 Table 13.1）</strong></p>
+<table>
+<thead>
+<tr>
+<th>几何</th>
+<th>关系式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中线由垂直线相连的两平行长板（宽 <span class="arithmatex">\(w_i\)</span>、<span class="arithmatex">\(w_j\)</span>，间距 <span class="arithmatex">\(L\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = \dfrac{[(W_i + W_j)^2 + 4]^{1/2} - [(W_j - W_i)^2 + 4]^{1/2}}{2W_i}\)</span>，<span class="arithmatex">\(W_i = w_i/L\)</span>，<span class="arithmatex">\(W_j = w_j/L\)</span></td>
+</tr>
+<tr>
+<td>等宽、共边的倾斜长板（夹角 <span class="arithmatex">\(\alpha\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = 1 - \sin(\alpha/2)\)</span></td>
+</tr>
+<tr>
+<td>共边的两块垂直长板（宽 <span class="arithmatex">\(w_i\)</span>、<span class="arithmatex">\(w_j\)</span>，远端连线 <span class="arithmatex">\(w_k\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = \dfrac{1 + (w_j/w_i) - [1 + (w_j/w_i)^2]^{1/2}}{2}\)</span></td>
+</tr>
+<tr>
+<td>三面封闭腔（边长 <span class="arithmatex">\(w_i\)</span>、<span class="arithmatex">\(w_j\)</span>、<span class="arithmatex">\(w_k\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = \dfrac{w_i + w_j - w_k}{2w_i}\)</span></td>
+</tr>
+<tr>
+<td>不同半径的平行长圆柱（半径 <span class="arithmatex">\(r_i\)</span>、<span class="arithmatex">\(r_j\)</span>，轴间距 <span class="arithmatex">\(s\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = \dfrac{1}{2\pi}\Big\{\pi + [C^2 - (R+1)^2]^{1/2} - [C^2 - (R-1)^2]^{1/2} + (R-1)\cos^{-1}\Big[\dfrac{R-1}{C}\Big] - (R+1)\cos^{-1}\Big[\dfrac{R+1}{C}\Big]\Big\}\)</span>，<span class="arithmatex">\(R = r_j/r_i\)</span>，<span class="arithmatex">\(S = s/r_i\)</span>，<span class="arithmatex">\(C = 1 + R + S\)</span></td>
+</tr>
+<tr>
+<td>长圆柱与平行的长矩形（半径 <span class="arithmatex">\(r\)</span>，距离 <span class="arithmatex">\(L\)</span>，两端距 <span class="arithmatex">\(s_1\)</span>、<span class="arithmatex">\(s_2\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = \dfrac{r}{s_1 - s_2}\Big[\tan^{-1}\dfrac{s_1}{L} - \tan^{-1}\dfrac{s_2}{L}\Big]\)</span></td>
+</tr>
+<tr>
+<td>无限大平板与一排长圆柱（直径 <span class="arithmatex">\(D\)</span>，间距 <span class="arithmatex">\(s\)</span>）</td>
+<td><span class="arithmatex">\(F_{ij} = 1 - \Big[1 - \dfrac{D}{s}\Big]^{1/2} + \dfrac{D}{s}\tan^{-1}\Big[\Big(\dfrac{s^2 - D^2}{D^2}\Big)^{1/2}\Big]\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 13.2 三维几何的视角因子（View Factors for Three-Dimensional Geometries，截自原书 Table 13.2）</strong></p>
+<table>
+<thead>
+<tr>
+<th>几何</th>
+<th>关系式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对齐的平行矩形（边 <span class="arithmatex">\(X \times Y\)</span>，间距 <span class="arithmatex">\(Z\)</span>；图 13.4）</td>
+<td>记 <span class="arithmatex">\(\bar{X} = X/L\)</span>，<span class="arithmatex">\(\bar{Y} = Y/L\)</span>：<span class="arithmatex">\(F_{ij} = \dfrac{2}{\pi \bar{X}\bar{Y}}\Big\{\ln\Big[\dfrac{(1+\bar{X}^2)(1+\bar{Y}^2)}{1+\bar{X}^2+\bar{Y}^2}\Big]^{1/2} + \bar{X}(1+\bar{Y}^2)^{1/2}\tan^{-1}\dfrac{\bar{X}}{(1+\bar{Y}^2)^{1/2}} + \bar{Y}(1+\bar{X}^2)^{1/2}\tan^{-1}\dfrac{\bar{Y}}{(1+\bar{X}^2)^{1/2}} - \bar{X}\tan^{-1}\bar{X} - \bar{Y}\tan^{-1}\bar{Y}\Big\}\)</span></td>
+</tr>
+<tr>
+<td>共轴平行圆盘（半径 <span class="arithmatex">\(r_i\)</span>、<span class="arithmatex">\(r_j\)</span>，间距 <span class="arithmatex">\(L\)</span>；图 13.5）</td>
+<td>记 <span class="arithmatex">\(R_i = r_i/L\)</span>，<span class="arithmatex">\(R_j = r_j/L\)</span>，<span class="arithmatex">\(S = 1 + \dfrac{1 + R_j^2}{R_i^2}\)</span>：<span class="arithmatex">\(F_{ij} = \dfrac{1}{2}\Big\{S - [S^2 - 4(r_j/r_i)^2]^{1/2}\Big\}\)</span></td>
+</tr>
+<tr>
+<td>共边的两块垂直矩形（<span class="arithmatex">\(X \times Z\)</span> 与 <span class="arithmatex">\(Y \times Z\)</span>；图 13.6）</td>
+<td>记 <span class="arithmatex">\(H = Z/X\)</span>，<span class="arithmatex">\(W = Y/X\)</span>：<span class="arithmatex">\(F_{ij} = \dfrac{1}{\pi W}\Big\{W\tan^{-1}\dfrac{1}{W} + H\tan^{-1}\dfrac{1}{H} - (H^2+W^2)^{1/2}\tan^{-1}\dfrac{1}{(H^2+W^2)^{1/2}} + \dfrac{1}{4}\ln\Big[\dfrac{(1+W^2)(1+H^2)}{1+W^2+H^2}\Big(\dfrac{W^2(1+W^2+H^2)}{(1+W^2)(W^2+H^2)}\Big)^{W^2}\Big(\dfrac{H^2(1+H^2+W^2)}{(1+H^2)(H^2+W^2)}\Big)^{H^2}\Big]\Big\}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>三张图表配这三个公式用——公式表落不了图的，查曲线：</p>
+<figure>
+  <img src="../images/ch13/fig-13-4.png" class="lq-img" />
+  <figcaption>图 13.4 对齐平行矩形的视角系数（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-5.png" class="lq-img" />
+  <figcaption>图 13.5 共轴平行圆盘的视角系数（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-6.png" class="lq-img" />
+  <figcaption>图 13.6 共边垂直矩形的视角系数（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：表 13.1 的公式从哪来——交叉弦法</p>
+<p>表 13.1 里那些二维构形的公式，几乎全部出自 Hottel 的<strong>交叉弦法</strong>（crossed-strings method）：对两个二维表面（都垂直纸面无限长），把"看得见"的两条交叉连线与四个端点连成一组"弦"，视角系数就是几条弦长的代数组合除以 <span class="arithmatex">\(2w_i\)</span>。它本质上是二维情形下互易关系与能量守恒的几何解。更全的视角系数库可以查 Howell 的《A Catalog of Radiation Configuration Factors》——原书表 13.1、13.2 的出处就是它。</p>
+</div>
+<p><strong>视角系数代数：复合面拆分</strong>。图 13.4—13.6 的结果还能"拆开"用。第一条关系：接收面是复合面时的可加性。看图 13.7，表面 j 被分成 <span class="arithmatex">\(n\)</span> 块，从 i 到 j 的辐射显然等于到各块之和：</p>
+<div class="arithmatex">\[
+F_{i(j)} = \sum_{k=1}^{n} F_{ik}
+\tag{13.5}
+\]</div>
+<p>下标加括号表示复合面，<span class="arithmatex">\((j)\)</span> 等价于 <span class="arithmatex">\((1, 2, \dots, k, \dots, n)\)</span>。这就是"到达整体 = 到达各部分之和"。</p>
+<figure>
+  <img src="../images/ch13/fig-13-7.png" class="lq-img" />
+  <figcaption>图 13.7 说明视角系数关系的各面积（截自原书）</figcaption>
+</figure>
+
+<p>第二条关系处理<strong>发射面是复合面</strong>的情形。给式 (13.5) 两边乘 <span class="arithmatex">\(A_i\)</span>，对每一项用互易关系 <span class="arithmatex">\(A_iF_{ik} = A_kF_{ki}\)</span>：</p>
+<div class="arithmatex">\[
+A_j F_{(j)i} = \sum_{k=1}^{n} A_k F_{ki}
+\tag{13.6}
+\]</div>
+<div class="arithmatex">\[
+F_{(j)i} = \frac{\sum_{k=1}^{n} A_k F_{ki}}{\sum_{k=1}^{n} A_k}
+\tag{13.7}
+\]</div>
+<p>式 (13.6)、(13.7) 用于"发射面由几块拼成"的场合——复合面对 i 的视角系数，是各部分对 i 的视角系数按面积加权平均。</p>
+<p><strong>数值视角系数的对账</strong>。复杂几何下式 (13.1) 可能积不出来，只能数值计算；几百上千个辐射面的结构，数值视角系数本身会带误差。这时候：用式 (13.3) 逐对检查互易关系是否满足，用式 (13.4) 检查能量守恒是否成立——两条恒等式就是你的"对账单"。</p>
+<p><strong>【例 13.1】小平面正对圆盘的视角系数</strong></p>
+<p><strong>已知（Known）</strong>：一块直径 <span class="arithmatex">\(D\)</span>、面积 <span class="arithmatex">\(A_j\)</span> 的漫射圆盘，与一块 <span class="arithmatex">\(A_i \ll A_j\)</span> 的平面漫射表面平行；<span class="arithmatex">\(A_i\)</span> 位于圆盘中心轴上、距圆盘中心 <span class="arithmatex">\(L\)</span> 处。</p>
+<p><strong>求（Find）</strong>：<span class="arithmatex">\(A_i\)</span> 对圆盘的视角系数 <span class="arithmatex">\(F_{ij}\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-1.png" class="lq-img" />
+  <figcaption>例 13.1 示意图：小平面与平行圆盘（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 漫射表面；2. <span class="arithmatex">\(A_i \ll A_j\)</span>；3. 表面 <span class="arithmatex">\(A_i\)</span> 上有效辐射均匀。</p>
+<p><strong>分析（Analysis）</strong>：从式 (13.1) 出发：</p>
+<div class="arithmatex">\[
+F_{ij} = \frac{1}{A_i} \iint_{A_i} \iint_{A_j} \frac{\cos\theta_i \cos\theta_j}{\pi R^2}\, dA_i\, dA_j
+\]</div>
+<p>因为 <span class="arithmatex">\(A_i\)</span> 很小，<span class="arithmatex">\(\theta_i\)</span>、<span class="arithmatex">\(\theta_j\)</span>、<span class="arithmatex">\(R\)</span> 在 <span class="arithmatex">\(A_i\)</span> 上几乎不随位置变化，对 <span class="arithmatex">\(dA_i\)</span> 的积分直接变成乘 <span class="arithmatex">\(A_i\)</span>：</p>
+<div class="arithmatex">\[
+F_{ij} = \int_{A_j} \frac{\cos^2\theta}{\pi R^2}\, dA_j
+\]</div>
+<p>其中用了 <span class="arithmatex">\(\theta_i = \theta_j = \theta\)</span>（两点连线对双方法线的夹角相同）。在圆盘上取半径 <span class="arithmatex">\(r\)</span> 处的环带：<span class="arithmatex">\(R^2 = r^2 + L^2\)</span>，<span class="arithmatex">\(\cos\theta = L/R\)</span>，<span class="arithmatex">\(dA_j = 2\pi r\, dr\)</span>，于是</p>
+<div class="arithmatex">\[
+F_{ij} = 2L^2 \int_0^{D/2} \frac{r\, dr}{(r^2 + L^2)^2} = \frac{D^2}{D^2 + 4L^2}
+\tag{13.8}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>式 (13.8) 可以定量描述图 13.5 中 <span class="arithmatex">\(r_i \to 0\)</span>（下圆盘缩成一点）时曲线的渐近行为。</li>
+<li>这是能用式 (13.1) 亲手积出视角系数的最简单几何之一；积分更繁琐的构形见视角系数手册。</li>
+</ol>
+<p><strong>【例 13.2】三个几何的视角系数</strong></p>
+<p><strong>已知（Known）</strong>：三个几何：(1) 直径 <span class="arithmatex">\(D\)</span> 的球放在边长 <span class="arithmatex">\(L = D\)</span> 的立方箱内；(2) 长方形截面 duct 内对角隔板的一侧；(3) 长度与直径相等的圆管。</p>
+<p><strong>求（Find）</strong>：各几何的 <span class="arithmatex">\(F_{12}\)</span> 与 <span class="arithmatex">\(F_{21}\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-2.png" class="lq-img" />
+  <figcaption>例 13.2 示意图：(1) 立方箱中的球；(2) 方 duct 中的对角隔板；(3) 圆管（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：漫射表面，有效辐射各自均匀。</p>
+<p><strong>分析（Analysis）</strong>：视角系数可以靠观察、互易关系、求和规则和图表拼出来。</p>
+<ol>
+<li><strong>立方箱中的球</strong>：观察得</li>
+</ol>
+<div class="arithmatex">\[
+F_{12} = 1
+\]</div>
+<p>由互易关系（<span class="arithmatex">\(A_1 = \pi D^2\)</span> 球面，<span class="arithmatex">\(A_2 = 6L^2\)</span> 箱内壁）：</p>
+<div class="arithmatex">\[
+F_{21} = \frac{A_1}{A_2}F_{12} = \frac{\pi D^2}{6L^2} \times 1 = \frac{\pi}{6}
+\]</div>
+<ol>
+<li><strong>方 duct 中的对角隔板</strong>：表面 1 是隔板朝右下面（三角形腔）的一侧，<span class="arithmatex">\(A_1 = L\sqrt{2}\)</span>；表面 2、3 是这个三角形腔的两段壁，<span class="arithmatex">\(A_2 = A_3 = L\)</span>（单位管长）。求和规则：</li>
+</ol>
+<div class="arithmatex">\[
+F_{11} + F_{12} + F_{13} = 1, \qquad F_{11} = 0
+\]</div>
+<p>对称性给 <span class="arithmatex">\(F_{12} = F_{13}\)</span>，于是</p>
+<div class="arithmatex">\[
+F_{12} = 0.50
+\]</div>
+<p>由互易关系：</p>
+<div class="arithmatex">\[
+F_{21} = \frac{A_1}{A_2}F_{12} = \frac{\sqrt{2}L}{L} \times 0.5 = 0.71
+\]</div>
+<ol>
+<li><strong>圆管</strong>：表面 1 是管端圆盘，表面 2 是管侧面，表面 3 是另一端。查表 13.2 或图 13.5（共轴平行圆盘），取 <span class="arithmatex">\(r_3/L = 0.5\)</span>、<span class="arithmatex">\(L/r_1 = 2\)</span>：</li>
+</ol>
+<div class="arithmatex">\[
+F_{13} = 0.172
+\]</div>
+<p>求和规则（<span class="arithmatex">\(F_{11} = 0\)</span>）：</p>
+<div class="arithmatex">\[
+F_{11} + F_{12} + F_{13} = 1 \quad \Rightarrow \quad F_{12} = 1 - F_{13} = 0.828
+\]</div>
+<p>由互易关系（<span class="arithmatex">\(A_1 = \pi D^2/4\)</span>，<span class="arithmatex">\(A_2 = \pi DL\)</span>）：</p>
+<div class="arithmatex">\[
+F_{21} = \frac{A_1}{A_2}F_{12} = \frac{\pi D^2/4}{\pi DL} \times 0.828 = \frac{D}{4L} \times 0.828 = 0.207
+\]</div>
+<p><strong>点评（Comments）</strong>：真实几何表面未必有均匀的有效辐射；非均匀有效辐射的后果在例 13.3 里展开讨论。</p>
+<h2 id="132-黑体表面间的辐射交换">13.2 黑体表面间的辐射交换<a class="headerlink" href="#132-黑体表面间的辐射交换" title="Permanent link">#</a></h2>
+<p>一般情况下，离开表面的辐射既有发射也有反射，到达第二个表面后还会被反射和吸收。但<strong>黑体</strong>把问题大幅简化：没有反射——离开只靠发射，来的全部吸收。</p>
+<p>看图 13.8 的两个任意形状黑表面。记 <span class="arithmatex">\(q_{i \to j}\)</span> 为离开表面 i、被表面 j 截住的速率：</p>
+<figure>
+  <img src="../images/ch13/fig-13-8.png" class="lq-img" />
+  <figcaption>图 13.8 可按黑体处理的两个表面之间的辐射传递（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+q_{i \to j} = (A_i J_i)F_{ij}
+\tag{13.9}
+\]</div>
+<p>黑面的有效辐射就是发射功率（<span class="arithmatex">\(J_i = E_{bi}\)</span>），所以</p>
+<div class="arithmatex">\[
+q_{i \to j} = A_i F_{ij} E_{bi}
+\tag{13.10}
+\]</div>
+<div class="arithmatex">\[
+q_{j \to i} = A_j F_{ji} E_{bj}
+\tag{13.11}
+\]</div>
+<p>两表面间的<strong>净</strong>辐射交换定义为二者之差：</p>
+<div class="arithmatex">\[
+q_{ij} = q_{i \to j} - q_{j \to i} = A_i F_{ij} E_{bi} - A_j F_{ji} E_{bj}
+\tag{13.12}
+\]</div>
+<p>代入 <span class="arithmatex">\(E_b = \sigma T^4\)</span>（式 12.32）并用互易关系 <span class="arithmatex">\(A_jF_{ji} = A_iF_{ij}\)</span>，四项并成一项：</p>
+<div class="arithmatex">\[
+q_{ij} = A_i F_{ij} \sigma\,(T_i^4 - T_j^4)
+\tag{13.13}
+\]</div>
+<p>这就是 i 与 j 互动的结果：i 净流出的速率等于 j 净流入的速率。</p>
+<p>对 <span class="arithmatex">\(N\)</span> 个黑表面围成的封闭腔，表面 i 的净辐射流出等于它与其余各面交换之和：</p>
+<div class="arithmatex">\[
+q_i = \sum_{j=1}^{N} A_i F_{ij} \sigma\,(T_i^4 - T_j^4)
+\tag{13.14}
+\]</div>
+<p>一个记号说明：第 1、12 章把净辐射热流密度写作 <span class="arithmatex">\(q''_{\mathrm{rad}}\)</span>，本章为了简洁把下标 rad 省掉。</p>
+<p><strong>【例 13.3】圆筒形炉腔的电功率分配</strong></p>
+<p><strong>已知（Known）</strong>：一个炉腔，直径 50 mm、长 150 mm 的圆筒形，一端敞开，对 27°C 的大环境开放。腔底面独立加热，侧壁由三段环带独立加热。腔内所有表面近似黑体并维持 1650°C。电加热面的背面隔热良好。</p>
+<p><strong>求（Find）</strong>：底面需要输入的电功率；侧壁上、中、下三段各自的电功率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-3.png" class="lq-img" />
+  <figcaption>例 13.3 示意图：圆筒形炉腔，A1 为底面，A2—A4 为三段侧壁，A5 为开口（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 腔内各表面按黑体处理，有效辐射与投入辐射均匀；2. 对流换热忽略；3. 电加热面背面绝热。</p>
+<p><strong>分析（Analysis）</strong>：在上述假设下，炉子的唯一散热途径是经开口的辐射。大环境足够大，其投入辐射等于 <span class="arithmatex">\(T_{sur}\)</span> 下的黑体发射（12.7 节的结论）；而且炉腔与大环境的辐射交换必须穿过开口，所以可以把"炉腔对环境"的交换当成"炉腔对一个位于开口处的假想黑表面 5"的交换，<span class="arithmatex">\(T_5 = T_{sur}\)</span>。每个面的电功率平衡掉它对应的辐射损失，损失由式 (13.14) 算。用互易关系把各式换成从假想面 5 出发的形式：</p>
+<div class="arithmatex">\[
+q_1 = A_1F_{15}\sigma(T_1^4 - T_5^4) = A_5F_{51}\sigma(T_1^4 - T_5^4)
+\]</div>
+<div class="arithmatex">\[
+q_2 = A_5F_{52}\sigma(T_2^4 - T_5^4), \qquad q_3 = A_5F_{53}\sigma(T_3^4 - T_5^4), \qquad q_4 = A_5F_{54}\sigma(T_4^4 - T_5^4)
+\]</div>
+<p>视角系数用两个假想面 <span class="arithmatex">\(A'\)</span>（底面 + 下段侧壁的延长圆盘）和 <span class="arithmatex">\(A''\)</span>（底面 + 下中两段侧壁的延长圆盘）搭桥，全部由表 13.2 的共轴圆盘公式（可加性拆分）给出：</p>
+<ul>
+<li>以 <span class="arithmatex">\(r_i/L = r_j/L = 0.025/0.150 = 0.167\)</span> 查得 <span class="arithmatex">\(F_{51} = 0.0263\)</span>；</li>
+<li>以 <span class="arithmatex">\(r_i/L = r_j/L = 0.025/0.100 = 0.25\)</span> 查得 <span class="arithmatex">\(F_{5A'} = 0.0557\)</span>，则 <span class="arithmatex">\(F_{52} = F_{5A'} - F_{51} = 0.0557 - 0.0263 = 0.0294\)</span>；</li>
+<li>以 <span class="arithmatex">\(r_i/L = r_j/L = 0.025/0.050 = 0.5\)</span> 查得 <span class="arithmatex">\(F_{5A''} = 0.172\)</span>，则 <span class="arithmatex">\(F_{53} = F_{5A''} - F_{5A'} = 0.172 - 0.0557 = 0.1163\)</span>；</li>
+<li>最后 <span class="arithmatex">\(F_{54} = 1 - F_{5A''} = 1 - 0.172 = 0.828\)</span>。</li>
+</ul>
+<p>开口面积 <span class="arithmatex">\(A_5 = \pi D^2/4 = \pi(0.05\ \mathrm{m})^2/4 = 0.00196\ \mathrm{m^2}\)</span>，<span class="arithmatex">\(\sigma(T_1^4 - T_5^4) = 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 7.75 \times 10^5\ \mathrm{W/m^2}\)</span>（<span class="arithmatex">\(T_1 = 1650^\circ\mathrm{C} = 1923\ \mathrm{K}\)</span>，<span class="arithmatex">\(T_5 = 300\ \mathrm{K}\)</span>）。逐面算功率：</p>
+<div class="arithmatex">\[
+q_1 = 0.00196 \times 0.0263 \times 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 39.9\ \mathrm{W}
+\]</div>
+<div class="arithmatex">\[
+q_2 = 0.00196 \times 0.0294 \times 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 44.7\ \mathrm{W}
+\]</div>
+<div class="arithmatex">\[
+q_3 = 0.00196 \times 0.1163 \times 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 177\ \mathrm{W}
+\]</div>
+<div class="arithmatex">\[
+q_4 = 0.00196 \times 0.828 \times 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 1260\ \mathrm{W}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>把面 5 的视角系数加起来：<span class="arithmatex">\(F_{51} + F_{52} + F_{53} + F_{54} + F_{55} = 0.0263 + 0.0294 + 0.1163 + 0.828 + 0 = 1\)</span>，求和规则（式 13.4）满足，说明视角系数算对了。（其实也可以反过来用求和规则定其中一个系数。）</li>
+<li>炉子总辐射热损失 <span class="arithmatex">\(q_{tot} = q_1 + q_2 + q_3 + q_4 = 1522\ \mathrm{W} = 1.522\ \mathrm{kW}\)</span>。如果把整个炉腔当成单一表面 f，损失可以一步算出：<span class="arithmatex">\(q_{tot} = A_5F_{5f}\sigma(T_f^4 - T_{sur}^4) = 0.00196 \times 1 \times 5.67 \times 10^{-8} \times (1923^4 - 300^4) = 1.522\ \mathrm{kW}\)</span>——结果相同，因为 <span class="arithmatex">\(F_{5f} = 1 = F_{51} + F_{52} + F_{53} + F_{54} + F_{55}\)</span>。</li>
+<li>我们假设了每个表面等温、有效辐射与投入辐射均匀。黑体等温壁下 <span class="arithmatex">\(J_i = E_{bi}\)</span>，均匀有效辐射的假设成立；但投入辐射并不均匀——例如环境那个"冷"开口对环带上部的影响比下部大。想知道侧壁的<strong>局部</strong>热流分布，就在侧壁上取环带微元 <span class="arithmatex">\(dA = \pi D\, dx\)</span>，把式 (13.13) 两边除以 <span class="arithmatex">\(dA\)</span>：</li>
+</ol>
+<div class="arithmatex">\[
+q''(x) = F_{dA \to A_5}\, \sigma\,(T_f^4 - T_{sur}^4)
+\]</div>
+<p>其中环带对开口的视角系数为</p>
+<div class="arithmatex">\[
+F_{dA \to A_5} = \frac{(x/D)^2 + 1/2}{[1 + (x/D)^2]^{1/2}} - \frac{x}{D}
+\]</div>
+<p>（<span class="arithmatex">\(x\)</span> 从开口平面量起。）代入后得到下面这条热流分布曲线，并标出三段侧壁的平均热流 <span class="arithmatex">\(q''_2 = q_2/(\pi DL/3) = 5.69\ \mathrm{kW/m^2}\)</span>、<span class="arithmatex">\(q''_3 = 22.5\ \mathrm{kW/m^2}\)</span>、<span class="arithmatex">\(q''_4 = 160\ \mathrm{kW/m^2}\)</span>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-3flux.png" class="lq-img" />
+  <figcaption>例 13.3 侧壁局部热流分布与三段平均热流（截自原书）</figcaption>
+</figure>
+
+<p>由于投入辐射沿侧壁不均匀，局部热流高度不均匀，最大值紧挨开口。要算局部温度或局部热流，就得把几何面细分成更多辐射面——解析细分如上，或数值细分；即使这么简单的几何，计算局部量也可能涉及成百上千个辐射面。</p>
+<h2 id="133-封闭腔内不透明漫灰表面间的辐射交换">13.3 封闭腔内不透明漫灰表面间的辐射交换<a class="headerlink" href="#133-封闭腔内不透明漫灰表面间的辐射交换" title="Permanent link">#</a></h2>
+<p>一般的不透明表面离开的辐射既有发射也有反射，到达第二个不透明表面后又被反射、吸收。在图 13.9a 这样的封闭腔里，辐射会在所有表面之间<strong>多次反射</strong>，每次都有一部分被吸收。直接追踪每一根射线的反射链条是不现实的——简化假定登场：</p>
+<ul>
+<li>腔内每个表面<strong>等温</strong>，有效辐射与投入辐射各自均匀；</li>
+<li>表面<strong>不透明</strong>（<span class="arithmatex">\(\tau = 0\)</span>），发射率、吸收比、反射比与方向无关（<strong>漫射</strong>）、与波长无关（<strong>灰体</strong>）；</li>
+<li>由 12.8 节，这些条件下基尔霍夫定律给出 <span class="arithmatex">\(\varepsilon = \alpha\)</span>；</li>
+<li>腔内介质不参与辐射。</li>
+</ul>
+<p>问题通常是：每个表面的温度 <span class="arithmatex">\(T_i\)</span> 或净辐射热流 <span class="arithmatex">\(q''_i\)</span> 二者之一已知，求其余的未知热流与温度。</p>
+<figure>
+  <img src="../images/ch13/fig-13-9.png" class="lq-img" />
+  <figcaption>图 13.9 不参与介质中漫灰表面的封闭腔：(a) 封闭腔示意；(b) 式 (13.15) 的辐射平衡；(c) 式 (13.17) 的辐射平衡；(d) 表示表面净辐射换热的热阻（截自原书）</figcaption>
+</figure>
+
+<h3 id="1331-表面处的净辐射换热">13.3.1 表面处的净辐射换热<a class="headerlink" href="#1331-表面处的净辐射换热" title="Permanent link">#</a></h3>
+<p><span class="arithmatex">\(q_i\)</span> 是离开表面 i 的净辐射速率——表面辐射收支的总效果（图 13.9b）。物理上它是"要让表面维持恒温，其他机制必须补给它的速率"。它是有效辐射与投入辐射之差，由式 (12.5)：</p>
+<div class="arithmatex">\[
+q_i = A_i(J_i - G_i)
+\tag{13.15}
+\]</div>
+<p>用有效辐射的定义（式 12.4，<span class="arithmatex">\(J_i = E_i + \rho_i G_i\)</span>），并把不透明表面的 <span class="arithmatex">\(\rho_i = 1 - \alpha_i\)</span> 代进去：</p>
+<div class="arithmatex">\[
+q_i = A_i(E_i - \alpha_i G_i)
+\tag{13.17}
+\]</div>
+<p>（这就是式 12.6 的速率版本，图 13.9c。）对不透明漫灰表面，<span class="arithmatex">\(E_i = \varepsilon_iE_{bi}\)</span>、<span class="arithmatex">\(\alpha_i = \varepsilon_i\)</span>，于是有效辐射可以写成：</p>
+<div class="arithmatex">\[
+J_i = \varepsilon_i E_{bi} + (1 - \varepsilon_i)G_i
+\tag{13.18}
+\]</div>
+<p>解出 <span class="arithmatex">\(G_i\)</span> 代回式 (13.15)：</p>
+<div class="arithmatex">\[
+q_i = \frac{E_{bi} - J_i}{(1 - \varepsilon_i)/(\varepsilon_i A_i)}
+\tag{13.19}
+\]</div>
+<p>式 (13.19) 是表面净辐射换热的<strong>标准形态</strong>（图 13.9d）：驱动势 <span class="arithmatex">\(E_{bi} - J_i\)</span>，<strong>表面辐射热阻</strong>（surface radiative resistance）<span class="arithmatex">\((1 - \varepsilon_i)/(\varepsilon_i A_i)\)</span>。黑体发射功率大于有效辐射，净换热流出表面；反之流入。</p>
+<p>一个重要特例：<strong>某表面比其余表面大得多</strong>。比如小表面们待在一个大房间里，大表面的面积 effectively 无穷大（<span class="arithmatex">\(A_i \to \infty\)</span>），它的表面热阻 <span class="arithmatex">\((1-\varepsilon_i)/(\varepsilon_iA_i) \to 0\)</span>——和黑表面（<span class="arithmatex">\(\varepsilon_i = 1\)</span>）一样。于是 <span class="arithmatex">\(J_i = E_{bi}\)</span>：<strong>相对巨大的表面可以直接当黑体处理</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么大腔壁可以当黑体</p>
+<p>12.7 节用物理图像论证过，现在网络法又从灰体交换的角度确认了它：大壁面虽然会反射一部分投入辐射，但它太大了，被反射的辐射大概率打到<strong>同一大壁面的另一点</strong>上，再被反射……多次反射之后，原来投到大壁面上的辐射全部被它自己吸收，一点也轮不到那些小表面。所以小表面面对的投入辐射就是大壁面温度下的黑体发射，大壁面的"有效黑度"与它自己的 <span class="arithmatex">\(\varepsilon\)</span> 无关。例 13.3 里对大环境的处理正是这一结论。</p>
+</div>
+<h3 id="1332-表面之间的辐射换热">13.3.2 表面之间的辐射换热<a class="headerlink" href="#1332-表面之间的辐射换热" title="Permanent link">#</a></h3>
+<p>要用式 (13.19)，得先知道有效辐射 <span class="arithmatex">\(J_i\)</span>。它由封闭腔内各表面之间的交换决定。</p>
+<p>表面 i 的投入辐射可以用腔内<strong>所有</strong>表面的有效辐射表示：从视角系数的定义出发，到达 i 的总速率为 <span class="arithmatex">\(A_iG_i = \sum_j F_{ji}A_jJ_j\)</span>（包括 i 自己），用互易关系换成 <span class="arithmatex">\(\sum_j A_iF_{ij}J_j\)</span>，除以 <span class="arithmatex">\(A_i\)</span>：</p>
+<div class="arithmatex">\[
+G_i = \sum_{j=1}^{N} F_{ij}J_j
+\]</div>
+<p>代回式 (13.15)，再用求和规则 <span class="arithmatex">\(\sum_j F_{ij} = 1\)</span> 把 <span class="arithmatex">\(\sum_j F_{ij}J_i\)</span> 拆出来：</p>
+<div class="arithmatex">\[
+q_i = A_i\Big[J_i - \sum_{j=1}^{N} F_{ij}J_j\Big] = \sum_{j=1}^{N} A_iF_{ij}(J_i - J_j) = \sum_{j=1}^{N} q_{ij}
+\tag{13.20}
+\]</div>
+<p><strong>辐射网络法（radiation network approach）</strong>。式 (13.20) 把 <span class="arithmatex">\(q_i\)</span> 写成 i 与各面之间分量 <span class="arithmatex">\(q_{ij}\)</span> 之和。每个分量对应一个网络元件：驱动势 <span class="arithmatex">\((J_i - J_j)\)</span>，<strong>空间热阻</strong>（space or geometrical resistance）<span class="arithmatex">\((A_iF_{ij})^{-1}\)</span>（图 13.10）。把式 (13.19) 和 (13.20) 拼在一起：</p>
+<div class="arithmatex">\[
+\frac{E_{bi} - J_i}{(1 - \varepsilon_i)/(\varepsilon_iA_i)} = \sum_{j=1}^{N} \frac{J_i - J_j}{(A_iF_{ij})^{-1}}
+\tag{13.21}
+\]</div>
+<figure>
+  <img src="../images/ch13/fig-13-10.png" class="lq-img" />
+  <figcaption>图 13.10 表面 i 与封闭腔其余表面之间辐射换热的网络表示（截自原书）</figcaption>
+</figure>
+
+<p>这就是有效辐射节点 i 处的<strong>辐射平衡</strong>：经表面热阻流入节点的"电流"，等于经各空间热阻从节点流出到所有其他表面的"电流"之和。</p>
+<p>式 (13.21) 在表面温度 <span class="arithmatex">\(T_i\)</span>（从而 <span class="arithmatex">\(E_{bi}\)</span>）已知时最好用。但也常有反过来已知 <span class="arithmatex">\(q_i\)</span>、求 <span class="arithmatex">\(T_i\)</span> 的场合，那时把式 (13.20) 重排成平衡式更顺手：</p>
+<div class="arithmatex">\[
+q_i = \sum_{j=1}^{N} \frac{J_i - J_j}{(A_iF_{ij})^{-1}}
+\tag{13.22}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：辐射网络法的来历</p>
+<p>把辐射交换画成电阻网络是 Oppenheim 在 1956 年提出的。它与第 3 章导热热阻的电路类比一脉相承：<span class="arithmatex">\(E_b = \sigma T^4\)</span> 是"电源电位"，<span class="arithmatex">\(J\)</span> 是节点电位，表面热阻 <span class="arithmatex">\((1-\varepsilon)/\varepsilon A\)</span> 接在电源与节点之间，空间热阻 <span class="arithmatex">\(1/(AF)\)</span> 接在节点与节点之间。电位、电流、欧姆定律全套照搬——复杂封闭腔一画网络就清晰。</p>
+</div>
+<p><strong>直接法（direct approach）</strong>。另一条路不画网络：对每个已知 <span class="arithmatex">\(T_i\)</span> 的表面写式 (13.21)，对每个已知 <span class="arithmatex">\(q_i\)</span> 的表面写式 (13.22)，得到 <span class="arithmatex">\(N\)</span> 个线性代数方程，解出 <span class="arithmatex">\(J_1, \dots, J_N\)</span>；再用式 (13.19) 求已知温度表面的 <span class="arithmatex">\(q_i\)</span> 或已知热流表面的 <span class="arithmatex">\(T_i\)</span>。任意 <span class="arithmatex">\(N\)</span> 的方程组都可以用第 4 章和附录 D 的迭代法或矩阵求逆解。</p>
+<p><strong>【例 13.4】红外加热器固化太阳能吸收板</strong></p>
+<p><strong>已知（Known）</strong>：制造中，一块曲面太阳能吸收板（面积 <span class="arithmatex">\(A_2 = 15\ \mathrm{m^2}\)</span>）上的特种涂层用红外加热器固化。加热器宽 <span class="arithmatex">\(W = 1\ \mathrm{m}\)</span>，与吸收板各长 <span class="arithmatex">\(L = 10\ \mathrm{m}\)</span>，相距 <span class="arithmatex">\(H = 1\ \mathrm{m}\)</span>。吸收板上表面与加热器下表面均绝热。加热器 <span class="arithmatex">\(T_1 = 1000\ \mathrm{K}\)</span>、<span class="arithmatex">\(\varepsilon_1 = 0.9\)</span>；吸收板 <span class="arithmatex">\(T_2 = 600\ \mathrm{K}\)</span>、<span class="arithmatex">\(\varepsilon_2 = 0.5\)</span>。系统放在大房间里，房间壁面 300 K。</p>
+<p><strong>求（Find）</strong>：吸收板表面的净换热速率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-4.png" class="lq-img" />
+  <figcaption>例 13.4 示意图：红外加热器与曲面吸收板构成三表面封闭腔（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态；2. 对流忽略；3. 加热板与吸收板漫灰，投入辐射与有效辐射各自均匀；4. 周围房间很大，按黑体处理。</p>
+<p><strong>分析（Analysis）</strong>：把系统看成<strong>三表面封闭腔</strong>：第三个表面就是 behaving 黑体的大房间。用网络法和直接法各解一遍。</p>
+<p><strong>网络法</strong>：先给每个表面立有效辐射节点（下图第 1 步），再把节点两两用空间热阻连起来（第 2 步），最后把各表面的黑体发射功率经表面热阻接到自己的节点上（第 3 步）。</p>
+<figure>
+  <img src="../images/ch13/ex-13-4net.png" class="lq-img" />
+  <figcaption>例 13.4 辐射网络的搭建三步：立节点、连空间热阻、接表面热阻（截自原书）</figcaption>
+</figure>
+
+<p>大房间的面积不确定，空间热阻 <span class="arithmatex">\((A_3F_{31})^{-1}\)</span>、<span class="arithmatex">\((A_3F_{32})^{-1}\)</span> 不好写——好在互易关系允许换成 <span class="arithmatex">\(A_3F_{31} = A_1F_{13}\)</span>、<span class="arithmatex">\(A_3F_{32} = A_2F_{23}\)</span>，这两个都好求。由假设 4，表面 3 的表面热阻为零，<span class="arithmatex">\(J_3 = E_{b3} = \sigma T_3^4 = 459\ \mathrm{W/m^2}\)</span>。</p>
+<p>视角系数：<span class="arithmatex">\(F_{12} = F_{12'}\)</span>，其中 <span class="arithmatex">\(A_2'\)</span> 是吸收板的矩形基底（<span class="arithmatex">\(1\ \mathrm{m} \times 10\ \mathrm{m}\)</span>）。查图 13.4 或表 13.2，取 <span class="arithmatex">\(Y/L = 10/1 = 10\)</span>、<span class="arithmatex">\(X/L = 1/1 = 1\)</span>：</p>
+<div class="arithmatex">\[
+F_{12} = 0.39
+\]</div>
+<p>求和规则（<span class="arithmatex">\(F_{11} = 0\)</span>）：</p>
+<div class="arithmatex">\[
+F_{13} = 1 - F_{12} = 1 - 0.39 = 0.61
+\]</div>
+<p>从表面 2 到表面 3 的辐射必须穿过假想面 <span class="arithmatex">\(A_2'\)</span>，于是 <span class="arithmatex">\(A_2F_{23} = A_2'F_{2'3}\)</span>，对称性 <span class="arithmatex">\(F_{2'3} = F_{13}\)</span>：</p>
+<div class="arithmatex">\[
+F_{23} = \frac{A_2'}{A_2}F_{13} = \frac{10\ \mathrm{m^2}}{15\ \mathrm{m^2}} \times 0.61 = 0.41
+\]</div>
+<p>在 <span class="arithmatex">\(J_1\)</span> 节点汇总电流（两边除以 <span class="arithmatex">\(A_1\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{\sigma T_1^4 - J_1}{(1 - \varepsilon_1)/\varepsilon_1} = \frac{J_1 - J_2}{1/F_{12}} + \frac{J_1 - \sigma T_3^4}{1/F_{13}}
+\]</div>
+<p>代入 <span class="arithmatex">\(E_{b1} = \sigma T_1^4 = 56{,}700\ \mathrm{W/m^2}\)</span>：</p>
+<div class="arithmatex">\[
+\frac{56{,}700 - J_1}{(1 - 0.9)/0.9} = \frac{J_1 - J_2}{1/0.39} + \frac{J_1 - 459}{1/0.61}
+\]</div>
+<div class="arithmatex">\[
+10J_1 - 0.39J_2 = 510{,}582
+\tag{3}
+\]</div>
+<p>在 <span class="arithmatex">\(J_2\)</span> 节点同样处理（除以 <span class="arithmatex">\(A_2\)</span>，<span class="arithmatex">\(E_{b2} = \sigma T_2^4 = 7348\ \mathrm{W/m^2}\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{\sigma T_2^4 - J_2}{(1 - \varepsilon_2)/\varepsilon_2} = \frac{J_2 - J_1}{1/F_{21}} + \frac{J_2 - \sigma T_3^4}{1/F_{23}}
+\]</div>
+<p>其中 <span class="arithmatex">\(F_{21} = A_1F_{12}/A_2 = 10 \times 0.39/15 = 0.26\)</span>：</p>
+<div class="arithmatex">\[
+\frac{7348 - J_2}{(1 - 0.5)/0.5} = \frac{J_2 - J_1}{15/(10 \times 0.39)} + \frac{J_2 - 459}{1/0.41}
+\]</div>
+<div class="arithmatex">\[
+-0.26J_1 + 1.67J_2 = 7536
+\tag{4}
+\]</div>
+<p>联立式 (3)、(4) 解得 <span class="arithmatex">\(J_2 = 12{,}487\ \mathrm{W/m^2}\)</span>。从网络上一眼读出吸收板的净换热速率：</p>
+<div class="arithmatex">\[
+q_2 = \frac{\sigma T_2^4 - J_2}{(1 - \varepsilon_2)/(\varepsilon_2A_2)} = \frac{(7348 - 12{,}487)\ \mathrm{W/m^2}}{(1 - 0.5)/(0.5 \times 15\ \mathrm{m^2})} = -77.1\ \mathrm{kW}
+\]</div>
+<p>净换热流入吸收板的速率为 <span class="arithmatex">\(q_{net} = -q_2 = 77.1\ \mathrm{kW}\)</span>。</p>
+<p><strong>直接法</strong>：对三个表面各写式 (13.21)，用互易关系改写空间热阻、消去 <span class="arithmatex">\(A_3\)</span>：</p>
+<div class="arithmatex">\[
+\frac{\sigma T_1^4 - J_1}{(1 - \varepsilon_1)/(\varepsilon_1A_1)} = \frac{J_1 - J_2}{(A_1F_{12})^{-1}} + \frac{J_1 - J_3}{(A_1F_{13})^{-1}}
+\tag{5}
+\]</div>
+<div class="arithmatex">\[
+\frac{\sigma T_2^4 - J_2}{(1 - \varepsilon_2)/(\varepsilon_2A_2)} = \frac{J_2 - J_1}{(A_2F_{21})^{-1}} + \frac{J_2 - J_3}{(A_2F_{23})^{-1}}
+\tag{6}
+\]</div>
+<div class="arithmatex">\[
+\frac{\sigma T_3^4 - J_3}{(1 - \varepsilon_3)/(\varepsilon_3A_3)} = \frac{J_3 - J_1}{(A_3F_{31})^{-1}} + \frac{J_3 - J_2}{(A_3F_{32})^{-1}}
+\tag{7}
+\]</div>
+<p>代面积、温度、发射率与视角系数，联立解得 <span class="arithmatex">\(J_1 = 51{,}541\ \mathrm{W/m^2}\)</span>、<span class="arithmatex">\(J_2 = 12{,}487\ \mathrm{W/m^2}\)</span>、<span class="arithmatex">\(J_3 = 459\ \mathrm{W/m^2}\)</span>。对表面 2 写式 (13.19)：</p>
+<div class="arithmatex">\[
+q_2 = \frac{\sigma T_2^4 - J_2}{(1 - \varepsilon_2)/(\varepsilon_2A_2)}
+\]</div>
+<p>与网络法结果完全一致，<span class="arithmatex">\(q_2 = -77.1\ \mathrm{kW}\)</span>。</p>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>联立求解式 (5)—(7) 时必须先把式 (7) 两边乘 <span class="arithmatex">\((1-\varepsilon_3)/(\varepsilon_3A_3) = 0\)</span> 避免除零，得到简化形式 <span class="arithmatex">\(J_3 = \sigma T_3^4\)</span>。</li>
+<li>把 <span class="arithmatex">\(J_3 = \sigma T_3^4\)</span> 代回式 (5)、(6)，它们与式 (1)、(2)（网络法的节点方程）逐字相同。</li>
+<li>表面数 <span class="arithmatex">\(N \ge 4\)</span> 时推荐直接法——网络画起来太复杂。</li>
+<li>13.4 节会看到：当表面还有导热/对流换热时，网络法特别好用——那些能量就是进出节点的额外电流。</li>
+<li>记住<strong>假想表面</strong>（<span class="arithmatex">\(A_2'\)</span>）的妙用：它能大大简化视角系数的求取。</li>
+<li>换个思路也行：离开表面 1 的辐射必须穿过开口（假想面 <span class="arithmatex">\(3'\)</span>）才能到达大环境，于是 <span class="arithmatex">\(A_1F_{13} = A_1F_{13'} = A_{3'}F_{3'1}\)</span>；对表面 2 同理 <span class="arithmatex">\(A_2F_{23} = A_{3'}F_{3'2}\)</span>。用假想面 <span class="arithmatex">\(3'\)</span> 的空间热阻替换连接节点 3 的空间热阻，网络不变、阻值相同，但视角系数可能更好查。表面 3 的表面热阻为零时，结论是：<strong>与大环境交换辐射的封闭腔开口，可以当作温度等于 <span class="arithmatex">\(T_{sur}\)</span> 的不反射黑表面</strong>（<span class="arithmatex">\(\varepsilon_3 = 1\)</span>）来处理。</li>
+<li>加热器与吸收板上的投入辐射、有效辐射分布其实并不均匀。想检验结果，可以把它们再细分后重算。</li>
+</ol>
+<h3 id="1333-两表面封闭腔">13.3.3 两表面封闭腔<a class="headerlink" href="#1333-两表面封闭腔" title="Permanent link">#</a></h3>
+<p>最简单的封闭腔：两个表面只与彼此交换辐射（图 13.11a）。此时离开表面 1 的净辐射必等于进入表面 2 的净辐射，二者都等于 1、2 之间的净交换：</p>
+<div class="arithmatex">\[
+q_1 = -q_2 = q_{12}
+\]</div>
+<figure>
+  <img src="../images/ch13/fig-13-11.png" class="lq-img" />
+  <figcaption>图 13.11 两表面封闭腔：(a) 示意；(b) 网络表示（截自原书）</figcaption>
+</figure>
+
+<p>从网络（图 13.11b）看，1 到 2 的总热阻 = 表面热阻 + 空间热阻 + 表面热阻，三项串联。代入 <span class="arithmatex">\(E_b = \sigma T^4\)</span>：</p>
+<div class="arithmatex">\[
+q_{12} = q_1 = -q_2 = \frac{\sigma(T_1^4 - T_2^4)}{\dfrac{1 - \varepsilon_1}{\varepsilon_1A_1} + \dfrac{1}{A_1F_{12}} + \dfrac{1 - \varepsilon_2}{\varepsilon_2A_2}}
+\tag{13.23}
+\]</div>
+<p>任何"两个等温漫灰表面组成封闭腔、各自有效辐射与投入辐射均匀"的场合都适用。重要的特例汇总在表 13.3。</p>
+<p><strong>表 13.3 特殊的漫灰两表面封闭腔（Special Diffuse, Gray, Two-Surface Enclosures，截自原书 Table 13.3）</strong></p>
+<table>
+<thead>
+<tr>
+<th>几何</th>
+<th>面积比与视角系数</th>
+<th>净换热公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大（无限大）平行平板</td>
+<td><span class="arithmatex">\(A_1 = A_2 = A\)</span>；<span class="arithmatex">\(F_{12} = 1\)</span></td>
+<td><span class="arithmatex">\(q_{12} = \dfrac{A\sigma(T_1^4 - T_2^4)}{1/\varepsilon_1 + 1/\varepsilon_2 - 1}\)</span>（式 13.24）</td>
+</tr>
+<tr>
+<td>长（无限长）同心圆柱</td>
+<td><span class="arithmatex">\(A_1/A_2 = r_1/r_2\)</span>；<span class="arithmatex">\(F_{12} = 1\)</span></td>
+<td><span class="arithmatex">\(q_{12} = \dfrac{\sigma A_1(T_1^4 - T_2^4)}{1/\varepsilon_1 + \dfrac{1-\varepsilon_2}{\varepsilon_2}\Big(\dfrac{r_1}{r_2}\Big)}\)</span>（式 13.25）</td>
+</tr>
+<tr>
+<td>同心球</td>
+<td><span class="arithmatex">\(A_1/A_2 = r_1^2/r_2^2\)</span>；<span class="arithmatex">\(F_{12} = 1\)</span></td>
+<td><span class="arithmatex">\(q_{12} = \dfrac{\sigma A_1(T_1^4 - T_2^4)}{1/\varepsilon_1 + \dfrac{1-\varepsilon_2}{\varepsilon_2}\Big(\dfrac{r_1}{r_2}\Big)^2}\)</span>（式 13.26）</td>
+</tr>
+<tr>
+<td>大腔内的小凸物体</td>
+<td><span class="arithmatex">\(A_1/A_2 \approx 0\)</span>；<span class="arithmatex">\(F_{12} = 1\)</span></td>
+<td><span class="arithmatex">\(q_{12} = \sigma A_1\varepsilon_1(T_1^4 - T_2^4)\)</span>（式 13.27）</td>
+</tr>
+</tbody>
+</table>
+<p>注意式 (13.27)：小物体面对大腔时，交换速率与<strong>大腔的发射率 <span class="arithmatex">\(\varepsilon_2\)</span> 无关</strong>——正是 13.3.1 节"大表面即黑体"的直接推论。</p>
+<h3 id="1334-防辐射屏">13.3.4 防辐射屏<a class="headerlink" href="#1334-防辐射屏" title="Permanent link">#</a></h3>
+<p>低发射率（高反射率）材料做的<strong>防辐射屏</strong>（radiation shield，国内教材亦称遮热板）可以压低两表面之间的净辐射换热。看图 13.12a：在两块大平行平板之间插一块屏（表面 3）。没有屏时，换热由式 (13.24) 给出；插入屏后多了两层阻力（图 13.12b），换热被压低。屏两侧的发射率可以不同（<span class="arithmatex">\(\varepsilon_{3,1} \ne \varepsilon_{3,2}\)</span>，两侧的有效辐射当然也不同）。把所有热阻串起来（<span class="arithmatex">\(F_{13} = F_{32} = 1\)</span>）：</p>
+<div class="arithmatex">\[
+q_{12} = \frac{A_1\sigma(T_1^4 - T_2^4)}{\dfrac{1}{\varepsilon_1} + \dfrac{1}{\varepsilon_2} + \dfrac{1 - \varepsilon_{3,1}}{\varepsilon_{3,1}} + \dfrac{1 - \varepsilon_{3,2}}{\varepsilon_{3,2}}}
+\tag{13.28}
+\]</div>
+<figure>
+  <img src="../images/ch13/fig-13-12.png" class="lq-img" />
+  <figcaption>图 13.12 大平行平板之间加防辐射屏的辐射换热：(a) 示意；(b) 网络表示（截自原书）</figcaption>
+</figure>
+
+<p>注意：<span class="arithmatex">\(\varepsilon_{3,1}\)</span>、<span class="arithmatex">\(\varepsilon_{3,2}\)</span> 很小时，屏的热阻变得非常大——这正是"低发射率屏"的价值所在。</p>
+<p>式 (13.28) 在 <span class="arithmatex">\(T_1\)</span>、<span class="arithmatex">\(T_2\)</span> 已知时给出 <span class="arithmatex">\(q_{12}\)</span>；再由 <span class="arithmatex">\(q_{12} = q_{13} = q_{32}\)</span>，对 <span class="arithmatex">\(q_{13}\)</span> 或 <span class="arithmatex">\(q_{32}\)</span> 写式 (13.24)，就能解出屏温 <span class="arithmatex">\(T_3\)</span>。</p>
+<p>多块屏照此办理。所有发射率都相等的特殊情形下，<span class="arithmatex">\(N\)</span> 块屏时：</p>
+<div class="arithmatex">\[
+(q_{12})_N = \frac{1}{N + 1}(q_{12})_0
+\tag{13.29}
+\]</div>
+<p>其中 <span class="arithmatex">\((q_{12})_0\)</span> 是无屏（<span class="arithmatex">\(N = 0\)</span>）时的换热速率。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：从遮热板到多层隔热</p>
+<p>式 (13.29) 的 <span class="arithmatex">\(1/(N+1)\)</span> 是多层隔热的理想极限：真空多层绝热（MLI，航天器与低温杜瓦里那种"金灿灿的包裹"）就是堆很多层镀铝薄膜，把辐射热流压到无屏时的几十分之一。两点提醒：一是理想公式要求各层发射率全等、层间真空且忽略层间导热，实际效果要打折扣；二是屏材料要<strong>低发射率、高反射率</strong>——吸收比大的屏会把自己晒热，再把热量发出去，屏蔽效果差。</p>
+</div>
+<p><strong>【例 13.5】低温流体的辐射得热与遮热屏</strong></p>
+<p><strong>已知（Known）</strong>：低温流体流过一根长管，管外径 20 mm，外表面漫灰，<span class="arithmatex">\(\varepsilon_1 = 0.02\)</span>，<span class="arithmatex">\(T_1 = 77\ \mathrm{K}\)</span>。它与一根 50 mm 直径的管同心，内表面漫灰，<span class="arithmatex">\(\varepsilon_2 = 0.05\)</span>，<span class="arithmatex">\(T_2 = 300\ \mathrm{K}\)</span>。两管之间抽真空。再在两管正中间插入一块直径 35 mm 的薄遮热屏，两侧 <span class="arithmatex">\(\varepsilon_3 = 0.02\)</span>。</p>
+<p><strong>求（Find）</strong>：1. 低温流体单位管长的辐射得热；2. 插入遮热屏后得热的百分比变化。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-5.png" class="lq-img" />
+  <figcaption>例 13.5 示意图：同心管不带屏（左）与带屏（右）（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 表面漫灰，投入辐射与有效辐射各自均匀；2. 管间抽真空；3. 遮热屏的导热热阻忽略；4. 同心管构成两表面封闭腔（端部效应忽略）。</p>
+<p><strong>物性（Properties）</strong>：题给 <span class="arithmatex">\(\varepsilon_1 = 0.02\)</span>、<span class="arithmatex">\(\varepsilon_2 = 0.05\)</span>、<span class="arithmatex">\(\varepsilon_3 = 0.02\)</span>（屏两侧相同）。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li><strong>无屏</strong>：网络就是图 13.11 的三热阻串联，用式 (13.25)（<span class="arithmatex">\(F_{12} = 1\)</span>，<span class="arithmatex">\(A_1/A_2 = D_1/D_2\)</span>）：</li>
+</ol>
+<div class="arithmatex">\[
+q' = \frac{q}{L} = \frac{\sigma(\pi D_1)(T_1^4 - T_2^4)}{\dfrac{1}{\varepsilon_1} + \dfrac{1 - \varepsilon_2}{\varepsilon_2}\Big(\dfrac{D_1}{D_2}\Big)}
+\]</div>
+<div class="arithmatex">\[
+q' = \frac{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (\pi \times 0.02\ \mathrm{m}) \times [(77\ \mathrm{K})^4 - (300\ \mathrm{K})^4]}{\dfrac{1}{0.02} + \dfrac{1 - 0.05}{0.05}\Big(\dfrac{0.02\ \mathrm{m}}{0.05\ \mathrm{m}}\Big)} = -0.50\ \mathrm{W/m}
+\]</div>
+<p>负号表示热量流入内管（低温流体单位管长得热 0.50 W/m）。</p>
+<ol>
+<li><strong>带屏</strong>：网络是图 13.12 的五热阻串联：</li>
+</ol>
+<div class="arithmatex">\[
+q' = \frac{\sigma(T_1^4 - T_2^4)}{R_{tot}'}
+\]</div>
+<div class="arithmatex">\[
+R_{tot}' = \frac{1 - \varepsilon_1}{\varepsilon_1(\pi D_1)} + \frac{1}{\pi D_1F_{13}} + 2\,\frac{1 - \varepsilon_3}{\varepsilon_3(\pi D_3)} + \frac{1}{\pi D_3F_{32}} + \frac{1 - \varepsilon_2}{\varepsilon_2(\pi D_2)}
+\]</div>
+<p>同心几何下 <span class="arithmatex">\(F_{13} = F_{32} = 1\)</span>，逐项代入：</p>
+<div class="arithmatex">\[
+R_{tot}' = \frac{1}{L}\Big[\frac{1 - 0.02}{0.02(\pi \times 0.02\ \mathrm{m})} + \frac{1}{\pi \times 0.02\ \mathrm{m}} + 2\,\frac{1 - 0.02}{0.02(\pi \times 0.035\ \mathrm{m})} + \frac{1}{\pi \times 0.035\ \mathrm{m}} + \frac{1 - 0.05}{0.05(\pi \times 0.05\ \mathrm{m})}\Big]
+\]</div>
+<div class="arithmatex">\[
+R_{tot}' = \frac{779.9 + 15.9 + 891.3 + 9.1 + 121.0}{L\ \mathrm{m^2}} = \frac{1817}{L\ \mathrm{m^2}}
+\]</div>
+<div class="arithmatex">\[
+q' = \frac{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times [(77\ \mathrm{K})^4 - (300\ \mathrm{K})^4]}{1817\ (1/\mathrm{m^2})} = -0.25\ \mathrm{W/m}
+\]</div>
+<p>得热变化的百分比：</p>
+<div class="arithmatex">\[
+\frac{q'_w - q'_{wo}}{q'_{wo}} \times 100 = \frac{(-0.25\ \mathrm{W/m}) - (-0.50\ \mathrm{W/m})}{-0.50\ \mathrm{W/m}} \times 100 = -50\%
+\]</div>
+<p>一块屏把低温流体的辐射得热砍掉一半。</p>
+<p><strong>点评（Comments）</strong>：几何同心、发射率与温度在各自表面上均匀，因此每个表面的投入辐射与有效辐射分布均匀——把圆柱面再细分重算，结果不会变。（这正是表 13.3 类问题可以放心套公式的前提。）</p>
+<h3 id="1335-再辐射面">13.3.5 再辐射面<a class="headerlink" href="#1335-再辐射面" title="Permanent link">#</a></h3>
+<p><strong>再辐射面</strong>（reradiating surface）是很多工业应用里的常用理想化：净辐射换热为零（<span class="arithmatex">\(q_i = 0\)</span>）的表面。真实的背面良好隔热、正面（辐射面）对流又可忽略的表面就非常接近它。由式 (13.15) 和 (13.19)，<span class="arithmatex">\(q_i = 0\)</span> 立刻给出：</p>
+<div class="arithmatex">\[
+G_i = J_i = E_{bi}
+\]</div>
+<p>即：再辐射面的有效辐射已知时，温度随手可得；它的平衡温度由腔内其他表面决定，<strong>与它自己的发射率无关</strong>。</p>
+<p>三表面封闭腔、第三个表面 R 再辐射的情形见图 13.13。表面 R 背面绝热、正面无对流，<span class="arithmatex">\(q_R = 0\)</span>，于是表面 1 的净辐射流出必等于流入表面 2 的净辐射。网络是简单的串—并联结构（图 13.13b），化简后：</p>
+<div class="arithmatex">\[
+q_1 = -q_2 = \frac{E_{b1} - E_{b2}}{\dfrac{1 - \varepsilon_1}{\varepsilon_1A_1} + \dfrac{1}{A_1F_{12} + \big[(1/A_1F_{1R}) + (1/A_2F_{2R})\big]^{-1}} + \dfrac{1 - \varepsilon_2}{\varepsilon_2A_2}}
+\tag{13.30}
+\]</div>
+<p>注意分母中间那一项：<span class="arithmatex">\(J_1\)</span> 到 <span class="arithmatex">\(J_2\)</span> 有两条并联通道——直接通道 <span class="arithmatex">\(1/(A_1F_{12})\)</span>，和经 <span class="arithmatex">\(J_R\)</span> 中转的通道 <span class="arithmatex">\((1/A_1F_{1R}) + (1/A_2F_{2R})\)</span>。</p>
+<figure>
+  <img src="../images/ch13/fig-13-13.png" class="lq-img" />
+  <figcaption>图 13.13 含一个再辐射面的三表面封闭腔：(a) 示意；(b) 网络表示（截自原书）</figcaption>
+</figure>
+
+<p>知道 <span class="arithmatex">\(q_1 = -q_2\)</span> 后，对表面 1、2 用式 (13.19) 定出 <span class="arithmatex">\(J_1\)</span>、<span class="arithmatex">\(J_2\)</span>；再由再辐射面的辐射平衡（流入 = 流出）：</p>
+<div class="arithmatex">\[
+\frac{J_1 - J_R}{(1/A_1F_{1R})} - \frac{J_R - J_2}{(1/A_2F_{2R})} = 0
+\tag{13.31}
+\]</div>
+<p>解出 <span class="arithmatex">\(J_R\)</span>，温度由 <span class="arithmatex">\(\sigma T_R^4 = J_R\)</span> 确定。</p>
+<p>13.3.2 节的一般流程同样适用于含再辐射面的封闭腔：对每个再辐射面用式 (13.22) 且令 <span class="arithmatex">\(q_i = 0\)</span> 即可。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：再辐射面的温度为什么与发射率无关</p>
+<p>直觉是这样的：<span class="arithmatex">\(q_R = 0\)</span> 要求"进 = 出"，即 <span class="arithmatex">\(G_R = J_R\)</span>；而 <span class="arithmatex">\(J_R = \varepsilon_RE_{bR} + (1-\varepsilon_R)G_R\)</span>，两条联立立刻逼出 <span class="arithmatex">\(J_R = E_{bR}\)</span>——发射率 <span class="arithmatex">\(\varepsilon_R\)</span> 在推导中自我消掉了。物理上，一个绝热面不管反射多强、发射多弱，它最终都会热到这样一个温度：它"转发"（反射 + 发射）出去的辐射恰好等于收到的辐射。这个温度由网络里别的表面"投票"决定（式 13.31），与它自己的物性无关。</p>
+</div>
+<p><strong>【例 13.6】喷漆烘干炉：加热面功率与绝热面温度</strong></p>
+<p><strong>已知（Known）</strong>：喷漆烘干炉是一个长三角形截面 duct：一个加热面维持 1200 K，另一个面绝热，第三个面是维持 500 K 的喷漆板。三角形边长 <span class="arithmatex">\(W = 1\ \mathrm{m}\)</span>（等边）。加热面与绝热面发射率 0.8，喷漆板发射率 0.4。稳态运行。</p>
+<p><strong>求（Find）</strong>：1. 每单位 duct 长度需要向加热面供给的能量速率；2. 绝热面的温度。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-6.png" class="lq-img" />
+  <figcaption>例 13.6 示意图：等边三角形 duct（左）与含再辐射面的网络（右）（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态；2. 所有表面不透明、漫灰，有效辐射与投入辐射各自均匀；3. 对流忽略；4. 表面 R 再辐射；5. 端部效应忽略。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>系统是"三表面封闭腔 + 一个再辐射面"。由对称性，<span class="arithmatex">\(F_{12} = F_{1R} = F_{2R} = 0.5\)</span>；<span class="arithmatex">\(A_1 = A_2 = W \cdot L\)</span>（<span class="arithmatex">\(L\)</span> 为 duct 长）。加热功率由式 (13.30) 给出：</li>
+</ol>
+<div class="arithmatex">\[
+q_1 = \frac{E_{b1} - E_{b2}}{\dfrac{1 - \varepsilon_1}{\varepsilon_1A_1} + \dfrac{1}{A_1F_{12} + \big[(1/A_1F_{1R}) + (1/A_2F_{2R})\big]^{-1}} + \dfrac{1 - \varepsilon_2}{\varepsilon_2A_2}}
+\]</div>
+<div class="arithmatex">\[
+q_1' = \frac{q_1}{L} = \frac{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (1200^4 - 500^4)\ \mathrm{K^4}}{\dfrac{1 - 0.8}{0.8 \times 1\ \mathrm{m}} + \dfrac{1}{1\ \mathrm{m} \times 0.5 + (2 + 2)^{-1}\ \mathrm{m}} + \dfrac{1 - 0.4}{0.4 \times 1\ \mathrm{m}}}
+\]</div>
+<p>分母三项分别为 0.25 m、1.333 m（<span class="arithmatex">\(= 1/[0.5 + 0.25]\)</span>）、1.5 m（单位管长），合计 3.083 m：</p>
+<div class="arithmatex">\[
+q_1' = 37\ \mathrm{kW/m} = -q_2'
+\]</div>
+<ol>
+<li>绝热面温度由 <span class="arithmatex">\(J_R = E_{bR}\)</span> 确定，<span class="arithmatex">\(J_R\)</span> 由式 (13.31) 求出——但这要先知道 <span class="arithmatex">\(J_1\)</span>、<span class="arithmatex">\(J_2\)</span>。对表面 1、2 写表面能量平衡式 (13.19)：</li>
+</ol>
+<div class="arithmatex">\[
+J_1 = E_{b1} - \frac{1 - \varepsilon_1}{\varepsilon_1W}\, q_1' = 5.67 \times 10^{-8} \times (1200\ \mathrm{K})^4 - \frac{1 - 0.8}{0.8 \times 1\ \mathrm{m}} \times 37{,}000\ \mathrm{W/m} = 108{,}323\ \mathrm{W/m^2}
+\]</div>
+<div class="arithmatex">\[
+J_2 = E_{b2} - \frac{1 - \varepsilon_2}{\varepsilon_2W}\, q_2' = 5.67 \times 10^{-8} \times (500\ \mathrm{K})^4 - \frac{1 - 0.4}{0.4 \times 1\ \mathrm{m}} \times (-37{,}000\ \mathrm{W/m}) = 59{,}043\ \mathrm{W/m^2}
+\]</div>
+<p>代入式 (13.31)（两块空间热阻都是 <span class="arithmatex">\(1/(W \cdot 0.5) = 2\ \mathrm{m^{-1}}\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{108{,}323 - J_R}{1/(W \cdot 0.5)} - \frac{J_R - 59{,}043}{1/(W \cdot 0.5)} = 0
+\]</div>
+<div class="arithmatex">\[
+J_R = 83{,}683\ \mathrm{W/m^2} = E_{bR} = \sigma T_R^4
+\]</div>
+<div class="arithmatex">\[
+T_R = \left[\frac{83{,}683\ \mathrm{W/m^2}}{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}}\right]^{1/4} = 1102\ \mathrm{K}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>直觉上，再辐射面靠近表面 1 的区域应当更热、靠近表面 2 的区域更冷——直觉对应的事实是投入辐射与有效辐射分布并不均匀，这也动摇了假设 2。想算再辐射面的温度分布，得按例 13.3 点评 3 的思路细分。不过若每个几何面细分成 10 块，视角系数就要 <span class="arithmatex">\((3 \times 10)^2 = 900\)</span> 个——精度与计算量之间要权衡。</li>
+<li>结果与 <span class="arithmatex">\(\varepsilon_R\)</span> 的取值无关。</li>
+<li>本题也能用直接法：先解三个未知有效辐射 <span class="arithmatex">\(J_1\)</span>、<span class="arithmatex">\(J_2\)</span>、<span class="arithmatex">\(J_R\)</span>。控制方程是对已知温度的表面 1、2 写式 (13.21)，对再辐射面写式 (13.22)（<span class="arithmatex">\(q_R = 0\)</span>）：</li>
+</ol>
+<div class="arithmatex">\[
+\frac{117{,}573 - J_1}{0.25} = \frac{J_1 - J_2}{2} + \frac{J_1 - J_R}{2} \quad \Rightarrow \quad 10J_1 - J_2 - J_R = 940{,}584
+\tag{1}
+\]</div>
+<div class="arithmatex">\[
+\frac{3544 - J_2}{1.50} = \frac{J_2 - J_1}{2} + \frac{J_2 - J_R}{2} \quad \Rightarrow \quad -J_1 + 3.33J_2 - J_R = 4725
+\tag{2}
+\]</div>
+<div class="arithmatex">\[
+0 = \frac{J_R - J_1}{2} + \frac{J_R - J_2}{2} \quad \Rightarrow \quad -J_1 - J_2 + 2J_R = 0
+\tag{3}
+\]</div>
+<p>（表面热阻：<span class="arithmatex">\((1-0.8)/(0.8 \times 1) = 0.25\ \mathrm{m^{-1}}\)</span>、<span class="arithmatex">\((1-0.4)/(0.4 \times 1) = 1.5\ \mathrm{m^{-1}}\)</span>；空间热阻：<span class="arithmatex">\(1/(A_iF_{ij}) = 1/(1 \times 0.5) = 2\ \mathrm{m^{-1}}\)</span>；<span class="arithmatex">\(E_{b1} = \sigma T_1^4 = 117{,}573\ \mathrm{W/m^2}\)</span>、<span class="arithmatex">\(E_{b2} = 3544\ \mathrm{W/m^2}\)</span>。）联立解得</p>
+<div class="arithmatex">\[
+J_1 = 108{,}328\ \mathrm{W/m^2}, \qquad J_2 = 59{,}018\ \mathrm{W/m^2}, \qquad J_R = 83{,}673\ \mathrm{W/m^2}
+\]</div>
+<p>由 <span class="arithmatex">\(\sigma T_R^4 = J_R\)</span>：</p>
+<div class="arithmatex">\[
+T_R = \left[\frac{83{,}673\ \mathrm{W/m^2}}{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)}}\right]^{1/4} = 1102\ \mathrm{K}
+\]</div>
+<p>两种方法结果一致（中间值的细微差别来自把 <span class="arithmatex">\(q_1'\)</span> 圆整成 37 kW/m）。</p>
+<h2 id="134-多模式换热">13.4 多模式换热<a class="headerlink" href="#134-多模式换热" title="Permanent link">#</a></h2>
+<p>到目前为止，封闭腔里的辐射换热都是在导热、对流可忽略的前提下算的。但很多应用中，对流和/或导热与辐射同量级，必须一起分析。</p>
+<p>看图 13.14a 的一般表面条件：除了与封闭腔其他表面的辐射交换，表面可能还有外部加热（比如电加热），同时以对流和导热的方式传出热量。表面能量平衡给出：</p>
+<div class="arithmatex">\[
+q_{i,ext} = q_{i,rad} + q_{i,conv} + q_{i,cond}
+\tag{13.32}
+\]</div>
+<p>其中 <span class="arithmatex">\(q_{i,rad}\)</span>（离开表面的净辐射速率）用本章的标准流程确定：一般情形用式 (13.19) 或 (13.20)；特例如两表面封闭腔用式 (13.23)、三表面含再辐射面用式 (13.30)。辐射网络里的表面元件相应改成图 13.14b：<span class="arithmatex">\(q_{i,ext}\)</span>、<span class="arithmatex">\(q_{i,cond}\)</span>、<span class="arithmatex">\(q_{i,conv}\)</span> 是进出表面节点的额外电流。注意区别：<span class="arithmatex">\(q_{i,cond}\)</span>、<span class="arithmatex">\(q_{i,conv}\)</span> 与<strong>温差</strong>成正比，<span class="arithmatex">\(q_{i,rad}\)</span> 与<strong>四次方差</strong>成正比。表面背面绝热时 <span class="arithmatex">\(q_{i,cond} = 0\)</span>；没有外部加热、对流又可忽略时，这个面就是再辐射面。</p>
+<figure>
+  <img src="../images/ch13/fig-13-14.png" class="lq-img" />
+  <figcaption>图 13.14 封闭腔中表面的多模式换热：(a) 表面能量平衡；(b) 电路表示（截自原书）</figcaption>
+</figure>
+
+<p><strong>【例 13.7】半圆管空气加热器</strong></p>
+<p><strong>已知（Known）</strong>：一台空气加热器由半圆形管组成：平面（切面）维持在 1000 K，曲面绝热良好。管半径 20 mm，两表面发射率均为 0.8。1 atm 的空气以 <span class="arithmatex">\(\dot m = 0.01\ \mathrm{kg/s}\)</span>、<span class="arithmatex">\(T_m = 400\ \mathrm{K}\)</span> 流过管内。</p>
+<p><strong>求（Find）</strong>：维持平面表面 1000 K 所需的单位长度供热速率；绝热面温度。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch13/ex-13-7.png" class="lq-img" />
+  <figcaption>例 13.7 示意图：半圆管空气加热器（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态；2. 漫灰表面，投入辐射与有效辐射各自均匀；3. 管端部效应与气体温度的轴向变化忽略；4. 充分发展流动。</p>
+<p><strong>物性（Properties）</strong>：表 A.4，空气（1 atm，400 K）：<span class="arithmatex">\(k = 0.0338\ \mathrm{W/(m \cdot K)}\)</span>，<span class="arithmatex">\(\mu = 230 \times 10^{-7}\ \mathrm{kg/(s \cdot m)}\)</span>，<span class="arithmatex">\(c_p = 1014\ \mathrm{J/(kg \cdot K)}\)</span>，<span class="arithmatex">\(Pr = 0.69\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：半圆曲面绝热又无外部加热，它的表面能量平衡只剩两项：</p>
+<div class="arithmatex">\[
+-q_{2,rad} = q_{2,conv}
+\]</div>
+<p>管子构成两表面封闭腔，<span class="arithmatex">\(q_{2,rad}\)</span> 用式 (13.23) 算，其中 <span class="arithmatex">\(F_{12} = 1\)</span>；单位管长 <span class="arithmatex">\(A_1 = 2r_o\)</span>（平面）、<span class="arithmatex">\(A_2 = \pi r_o\)</span>（半圆面）。把表面 2 的能量平衡两边除以 <span class="arithmatex">\(A_1\)</span>：</p>
+<div class="arithmatex">\[
+\frac{\sigma(T_1^4 - T_2^4)}{\dfrac{1 - \varepsilon_1}{\varepsilon_1} + 1 + \dfrac{1 - \varepsilon_2}{\varepsilon_2}\dfrac{A_1}{A_2}} = h\,\frac{A_2}{A_1}(T_2 - T_m)
+\]</div>
+<p>水力直径 <span class="arithmatex">\(D_h = 4A_c/P = 2\pi r_o/(\pi + 2) = 0.0244\ \mathrm{m}\)</span>，雷诺数</p>
+<div class="arithmatex">\[
+Re_D = \frac{\dot m D_h}{A_c\,\mu} = \frac{0.01\ \mathrm{kg/s} \times 0.0244\ \mathrm{m}}{(\pi/2)(0.02\ \mathrm{m})^2 \times 230 \times 10^{-7}\ \mathrm{kg/(s \cdot m)}} = 16{,}900
+\]</div>
+<p>由 Dittus–Boelter 关联式：</p>
+<div class="arithmatex">\[
+Nu_D = 0.023\, Re_D^{4/5}\, Pr^{0.4} = 0.023 \times (16{,}900)^{4/5} \times (0.69)^{0.4} = 47.8
+\]</div>
+<div class="arithmatex">\[
+h = Nu_D\,\frac{k}{D_h} = \frac{0.0338\ \mathrm{W/(m \cdot K)}}{0.0244\ \mathrm{m}} \times 47.8 = 66.2\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>代回能量平衡（<span class="arithmatex">\(A_1/A_2 = 2/\pi\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times [(1000)^4 - T_2^4]\ \mathrm{K^4}}{\dfrac{1 - 0.8}{0.8} + 1 + \dfrac{1 - 0.8}{0.8} \times \dfrac{2}{\pi}} = 66.2 \times \frac{\pi}{2}\,(T_2 - 400)\ \mathrm{W/m^2}
+\]</div>
+<div class="arithmatex">\[
+5.67 \times 10^{-8}\, T_2^4 + 146.5\, T_2 - 115{,}313 = 0
+\]</div>
+<p>试差解得</p>
+<div class="arithmatex">\[
+T_2 = 696\ \mathrm{K}
+\]</div>
+<p>再对加热面做能量平衡：</p>
+<div class="arithmatex">\[
+q_{1,ext} = q_{1,rad} + q_{1,conv} = q_{2,conv} + q_{1,conv}
+\]</div>
+<p>单位管长：</p>
+<div class="arithmatex">\[
+q_{1,ext}' = h\,\pi r_o\,(T_2 - T_m) + h \cdot 2r_o\,(T_1 - T_m)
+\]</div>
+<div class="arithmatex">\[
+q_{1,ext}' = 66.2 \times 0.02\,\big[\pi(696 - 400) + 2(1000 - 400)\big]\ \mathrm{W/m} = (1231 + 1589)\ \mathrm{W/m} = 2820\ \mathrm{W/m}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>各表面的投入辐射、有效辐射与对流热流密度沿表面并不均匀——绝热面靠近平面角落的区域会更热、拱顶更冷。要算分布就得细分表面、做多辐射面分析。</li>
+<li>对空气微元控制体做能量平衡：<span class="arithmatex">\(dT_m/dx = q_1'/(\dot m c_p) = 2820\ \mathrm{W/m}/[0.01\ \mathrm{kg/s} \times 1014\ \mathrm{J/(kg \cdot K)}] = 278\ \mathrm{K/m}\)</span>——空气温升显著。更合理的分析应沿轴向分区，允许各区空气温度与绝热面温度不同；那时两表面封闭腔的辐射分析也不再适用。</li>
+</ol>
+<h2 id="135-简化假定的适用性">13.5 简化假定的适用性<a class="headerlink" href="#135-简化假定的适用性" title="Permanent link">#</a></h2>
+<p>我们已经建立起预测表面间辐射换热的手段，但必须清楚这套分析的固有局限。回顾一下本章分析的理想化表面：<strong>等温、不透明、灰体、漫发射漫反射、有效辐射与投入辐射分布均匀</strong>；封闭腔内的介质<strong>不参与辐射</strong>——不吸收、不散射表面辐射，自身也不发射。</p>
+<p>实际用起来：这些技术在很多场合能给出足够好的一估（first estimates），甚至就是够准的结果；但假定不合适时，就需要更精细的预测方法——那超出了本书范围，见更高级的辐射传热专著。</p>
+<p>需要警惕的典型失效场景：表面温度或热流密度沿表面变化大（例 13.3、13.6、13.7 的点评都撞上了）、发射率随波长变化剧烈（选择性表面）、腔内介质参与辐射（下一节）。</p>
+<h2 id="136-与参与性介质的辐射换热">13.6 与参与性介质的辐射换热<a class="headerlink" href="#136-与参与性介质的辐射换热" title="Permanent link">#</a></h2>
+<p>除了 12.9 节的环境辐射，我们对气体辐射一直避而不谈，只处理不透明固液表面的辐射。对<strong>非极性分子</strong>（nonpolar gases）如 <span class="arithmatex">\(\mathrm{O_2}\)</span>、<span class="arithmatex">\(\mathrm{N_2}\)</span>，这种忽略完全正当：它们不发射辐射，对入射热辐射也基本透明。但<strong>极性分子</strong>（polar molecules）如 <span class="arithmatex">\(\mathrm{CO_2}\)</span>、<span class="arithmatex">\(\mathrm{H_2O}\)</span>（蒸气）、<span class="arithmatex">\(\mathrm{NH_3}\)</span> 和碳氢气体，在很宽的温度范围内发射并吸收辐射。这类气体带来两个新麻烦：一是辐射不像固液那样随波长连续分布，而是集中在特定的<strong>波段</strong>（bands）里；二是气体辐射<strong>不是表面现象，而是体积现象</strong>。</p>
+<h3 id="1361-体积吸收">13.6.1 体积吸收<a class="headerlink" href="#1361-体积吸收" title="Permanent link">#</a></h3>
+<p>光谱辐射在气体（或半透明液体、固体）中的吸收由<strong>吸收系数</strong>（absorption coefficient）<span class="arithmatex">\(\kappa_\lambda\)</span>（单位 1/m）和介质厚度 <span class="arithmatex">\(L\)</span> 决定（图 13.15）。强度 <span class="arithmatex">\(I_{\lambda,0}\)</span> 的单色光束入射到介质上，穿越厚 <span class="arithmatex">\(dx\)</span> 的无穷薄层后强度的衰减为：</p>
+<div class="arithmatex">\[
+dI_\lambda(x) = -\kappa_\lambda I_\lambda(x)\, dx
+\tag{13.33}
+\]</div>
+<figure>
+  <img src="../images/ch13/fig-13-15.png" class="lq-img" />
+  <figcaption>图 13.15 气体或液体层中的吸收（截自原书）</figcaption>
+</figure>
+
+<p>分离变量、对整层积分（设 <span class="arithmatex">\(\kappa_\lambda\)</span> 与 <span class="arithmatex">\(x\)</span> 无关）：</p>
+<div class="arithmatex">\[
+\frac{I_{\lambda,L}}{I_{\lambda,0}} = e^{-\kappa_\lambda L}
+\tag{13.34}
+\]</div>
+<p>这种指数衰减叫<strong>比尔定律</strong>（Beer's law），是近似辐射分析里的趁手工具。定义光谱透射比：</p>
+<div class="arithmatex">\[
+\tau_\lambda = \frac{I_{\lambda,L}}{I_{\lambda,0}} = e^{-\kappa_\lambda L}
+\tag{13.35}
+\]</div>
+<p>则光谱吸收比为：</p>
+<div class="arithmatex">\[
+\alpha_\lambda = 1 - \tau_\lambda = 1 - e^{-\kappa_\lambda L}
+\tag{13.36}
+\]</div>
+<p>若基尔霍夫定律可用（<span class="arithmatex">\(\varepsilon_\lambda = \alpha_\lambda\)</span>），式 (13.36) 同时给出介质的光谱发射率。</p>
+<h3 id="1362-气体的发射与吸收">13.6.2 气体的发射与吸收<a class="headerlink" href="#1362-气体的发射与吸收" title="Permanent link">#</a></h3>
+<p>一个常见的工程计算是"气体向相邻表面发多少辐射"。这类计算本该纠缠于光谱与方向效应，但 Hottel 提出了一套简化流程：考虑一个温度 <span class="arithmatex">\(T_g\)</span> 的<strong>半球形气体质量</strong>，向其底面中心处的表面微元 <span class="arithmatex">\(dA_1\)</span> 发射。单位表面积上的气体发射为：</p>
+<div class="arithmatex">\[
+E_g = \varepsilon_g\, \sigma T_g^4
+\tag{13.37}
+\]</div>
+<p>其中气体发射率 <span class="arithmatex">\(\varepsilon_g\)</span> 由实验数据关联得到——它是气体温度 <span class="arithmatex">\(T_g\)</span>、总压 <span class="arithmatex">\(p\)</span>、辐射组分分压 <span class="arithmatex">\(p_g\)</span>、半球半径 <span class="arithmatex">\(L\)</span> 的函数。</p>
+<p>水蒸气的发射率见图 13.16（总压 1 atm、不同 <span class="arithmatex">\(p_w L\)</span> 乘积值下对 <span class="arithmatex">\(T_g\)</span> 作图）。总压不是 1 atm 时，查出的发射率要乘图 13.17 的修正因子 <span class="arithmatex">\(C_w\)</span>。二氧化碳的结果类似，见图 13.18 与 13.19。</p>
+<figure>
+  <img src="../images/ch13/fig-13-16.png" class="lq-img" />
+  <figcaption>图 13.16 与不辐射气体混合的水蒸气在 1 atm 总压、半球形气体的发射率（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-17.png" class="lq-img" />
+  <figcaption>图 13.17 水蒸气发射率的压强修正因子（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-18.png" class="lq-img" />
+  <figcaption>图 13.18 与不辐射气体混合的二氧化碳在 1 atm 总压、半球形气体的发射率（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-19.png" class="lq-img" />
+  <figcaption>图 13.19 二氧化碳发射率的压强修正因子（截自原书）</figcaption>
+</figure>
+
+<p>以上是水蒸气、二氧化碳<strong>分别</strong>与非辐射气体混合的结果。两者同时出现在混合气里时，总气体发射率为：</p>
+<div class="arithmatex">\[
+\varepsilon_g = \varepsilon_w + \varepsilon_c - \Delta\varepsilon
+\tag{13.38}
+\]</div>
+<p>修正因子 <span class="arithmatex">\(\Delta\varepsilon\)</span> 查图 13.20（按气体温度和 <span class="arithmatex">\(L(p_w + p_c)\)</span> 取值），它补偿两组分互相吸收造成的发射减少。</p>
+<figure>
+  <img src="../images/ch13/fig-13-20.png" class="lq-img" />
+  <figcaption>图 13.20 水蒸气与二氧化碳混合物的修正因子（截自原书）</figcaption>
+</figure>
+
+<p>上面都默认半球形气体（半径 <span class="arithmatex">\(L\)</span>）向底面中心发射。其他气体几何用<strong>平均射线行程</strong>（mean beam length）<span class="arithmatex">\(L_e\)</span> 换算：<span class="arithmatex">\(L_e\)</span> 是"与所论几何发射率等效的半球半径"，一个参数同时概括几何的尺寸与形状对发射的影响。常见几何的 <span class="arithmatex">\(L_e\)</span> 列在表 13.4；把图 13.16—13.20 里的 <span class="arithmatex">\(L\)</span> 换成 <span class="arithmatex">\(L_e\)</span> 就能用了。</p>
+<p><strong>表 13.4 各种气体几何的平均射线行程 <span class="arithmatex">\(L_e\)</span>（截自原书 Table 13.4）</strong></p>
+<table>
+<thead>
+<tr>
+<th>几何特征</th>
+<th>特征长度</th>
+<th><span class="arithmatex">\(L_e\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>球（对表面辐射）</td>
+<td>直径 <span class="arithmatex">\(D\)</span></td>
+<td><span class="arithmatex">\(0.65D\)</span></td>
+</tr>
+<tr>
+<td>无限长圆柱（对曲面辐射）</td>
+<td>直径 <span class="arithmatex">\(D\)</span></td>
+<td><span class="arithmatex">\(0.95D\)</span></td>
+</tr>
+<tr>
+<td>半无限长圆柱（对底面辐射）</td>
+<td>直径 <span class="arithmatex">\(D\)</span></td>
+<td><span class="arithmatex">\(0.65D\)</span></td>
+</tr>
+<tr>
+<td>高与直径相等的圆柱（对整个表面辐射）</td>
+<td>直径 <span class="arithmatex">\(D\)</span></td>
+<td><span class="arithmatex">\(0.60D\)</span></td>
+</tr>
+<tr>
+<td>无限大平行平板（对平板辐射）</td>
+<td>板间距 <span class="arithmatex">\(L\)</span></td>
+<td><span class="arithmatex">\(1.80L\)</span></td>
+</tr>
+<tr>
+<td>立方体（对任意表面辐射）</td>
+<td>边长 <span class="arithmatex">\(L\)</span></td>
+<td><span class="arithmatex">\(0.66L\)</span></td>
+</tr>
+<tr>
+<td>体积 <span class="arithmatex">\(V\)</span> 的任意形状（对面积 <span class="arithmatex">\(A\)</span> 的表面辐射）</td>
+<td>体积面积比 <span class="arithmatex">\(V/A\)</span></td>
+<td><span class="arithmatex">\(3.6V/A\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>有了 <span class="arithmatex">\(L_e\)</span> 和图 13.16—13.20，就能算气体发射带给相邻表面的辐射热流：</p>
+<div class="arithmatex">\[
+q = \varepsilon_g A_s\, \sigma T_g^4
+\tag{13.39}
+\]</div>
+<p><span class="arithmatex">\(A_s\)</span> 是表面积。黑表面当然全部吸收这份辐射，但它自己也发射，所以黑表面与气体（<span class="arithmatex">\(T_s\)</span>、<span class="arithmatex">\(T_g\)</span>）之间的<strong>净</strong>交换速率为：</p>
+<div class="arithmatex">\[
+q_{net} = A_s\,\sigma\,(\varepsilon_g T_g^4 - \alpha_g T_s^4)
+\tag{13.40}
+\]</div>
+<p>水蒸气与二氧化碳的气体吸收比 <span class="arithmatex">\(\alpha_g\)</span> 由发射率按下面的式子折算：</p>
+<p>水蒸气：</p>
+<div class="arithmatex">\[
+\alpha_w = C_w\,\Big(\frac{T_g}{T_s}\Big)^{0.45}\, \varepsilon_w\Big[T_s,\ p_wL_e\Big(\frac{T_s}{T_g}\Big)\Big]
+\tag{13.41}
+\]</div>
+<p>二氧化碳：</p>
+<div class="arithmatex">\[
+\alpha_c = C_c\,\Big(\frac{T_g}{T_s}\Big)^{0.65}\, \varepsilon_c\Big[T_s,\ p_cL_e\Big(\frac{T_s}{T_g}\Big)\Big]
+\tag{13.42}
+\]</div>
+<p><span class="arithmatex">\(\varepsilon_w\)</span>、<span class="arithmatex">\(\varepsilon_c\)</span> 仍查图 13.16、13.18，<span class="arithmatex">\(C_w\)</span>、<span class="arithmatex">\(C_c\)</span> 查图 13.17、13.19——但注意：查图时把 <span class="arithmatex">\(T_g\)</span> 换成 <span class="arithmatex">\(T_s\)</span>，把 <span class="arithmatex">\(p_wL_e\)</span>、<span class="arithmatex">\(p_cL_e\)</span> 换成 <span class="arithmatex">\(p_wL_e(T_s/T_g)\)</span>、<span class="arithmatex">\(p_cL_e(T_s/T_g)\)</span>。两组分同时在时：</p>
+<div class="arithmatex">\[
+\alpha_g = \alpha_w + \alpha_c - \Delta\alpha
+\tag{13.43}
+\]</div>
+<p><span class="arithmatex">\(\Delta\alpha = \Delta\varepsilon\)</span> 由图 13.20 取。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么 O2 与 N2 透明，CO2 与 H2O 参与</p>
+<p>分光镜下看分子：非极性的 <span class="arithmatex">\(\mathrm{O_2}\)</span>、<span class="arithmatex">\(\mathrm{N_2}\)</span> 是对称双原子分子，振动时正负电荷中心不分离、没有电偶极矩变化，与电磁波几乎不耦合——既不发射也不吸收热辐射。极性分子（<span class="arithmatex">\(\mathrm{CO_2}\)</span>、<span class="arithmatex">\(\mathrm{H_2O}\)</span>、<span class="arithmatex">\(\mathrm{NH_3}\)</span>、碳氢气体）的振动与转动模式伴随电偶极矩变化，能在特定波长上发射和吸收光子——这就是"波段"的来源。工程后果：空气（<span class="arithmatex">\(\mathrm{N_2} + \mathrm{O_2}\)</span>）可以当不参与介质；燃烧产物（含 <span class="arithmatex">\(\mathrm{CO_2}\)</span>、<span class="arithmatex">\(\mathrm{H_2O}\)</span>）不行，炉膛与燃气轮机的辐射换热必须计入气体辐射。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：平均射线行程为什么好用</p>
+<p>气体是体积现象，发射率本该取决于射线在气体里穿过的"平均路程"。Hottel 的聪明之处在于：对任意形状的气体团，总能找到一个半球半径 <span class="arithmatex">\(L_e\)</span>，让"半球气体向底面中心发射"的公式直接套用——几何的复杂性被一个数打包。通用近似 <span class="arithmatex">\(L_e = 3.6V/A\)</span> 对任意凸形气体团都够用（表 13.4 最后一行），比如边长 <span class="arithmatex">\(L\)</span> 的立方体：<span class="arithmatex">\(3.6L^3/(6L^2) = 0.6L\)</span>，与精确值 <span class="arithmatex">\(0.66L\)</span> 相近。</p>
+</div>
+<h2 id="137-小结">13.7 小结<a class="headerlink" href="#137-小结" title="Permanent link">#</a></h2>
+<p>本章专注一件事：<strong>封闭腔各表面之间的辐射换热怎么算</strong>。核心工具是视角系数——它是决定任意两个漫射表面之间辐射交换的几何量，必须熟练掌握它的求取手段：观察、互易关系、求和规则、视角系数代数、公式表与图表。对等温、不透明、漫灰、有效辐射与投入辐射均匀的表面构成的封闭腔，你要会用两种方法做辐射计算：辐射网络法（Oppenheim 网络）与直接法（<span class="arithmatex">\(N\)</span> 元线性方程组）。三块现成结论要随取随用：黑表面封闭腔（式 13.13、13.14）、两表面封闭腔（式 13.23 及表 13.3）、含再辐射面的三表面封闭腔（式 13.30）。防辐射屏把热阻成倍垫高（式 13.28、13.29）。最后记住：有效辐射或投入辐射分布不均匀时，需要细分成很多表面才能算出局部温度与局部热流——均匀性假定是整套方法的地基。</p>
+<details class="note">
+<summary>原书章末自测问题（13.7 节复习用）</summary>
+<ol>
+<li>什么是视角系数？计算两表面间的视角系数通常伴随哪些假定？</li>
+<li>视角系数的互易关系是什么？求和规则是什么？</li>
+<li>表面对自身的视角系数可能非零吗？什么样的表面会这样？</li>
+<li>什么是不参与性介质？</li>
+<li>把封闭腔内不能按黑体处理的表面之间的辐射交换列式时，隐含了哪些假定？这些假定的合理性如何、最容易在哪里失效？</li>
+<li>封闭腔中某表面的辐射热阻如何定义？把它与表面净辐射换热速率联系起来的驱动势是什么？表面可按黑体处理时该热阻是多少？</li>
+<li>封闭腔中两表面之间的几何（空间）热阻如何定义？与它配套的驱动势是什么？</li>
+<li>什么是防辐射屏？介入一块屏对两表面间的净辐射换热有什么影响？屏的表面吸收比大有利还是反射比大有利？</li>
+<li>什么是再辐射面？什么条件下一个表面可以近似为再辐射面？再辐射面的有效辐射、黑体发射功率与投入辐射之间是什么关系？这种表面的温度依赖它自己的辐射物性吗？</li>
+<li>封闭腔中某表面的净辐射换热恰好被它对腔内气体的对流换热所平衡——对此能说什么？这个面是再辐射面吗？它的背面绝热吗？</li>
+<li>封闭腔中某表面的净辐射流出大于它对腔内气体的对流换热——表面上还必然发生哪些过程（独立或联合）？</li>
+<li>分子的哪些特征使气体不发射、不吸收辐射？哪些特征让气体能发射和吸收辐射？</li>
+<li>气体的发射与吸收和不透明固体相比，有哪些不同？</li>
+<li>辐射在半透明介质中传播时，强度随传播距离如何变化？吸收系数很大时能说什么？很小时呢？</li>
+</ol>
+</details>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>互易关系互换的是 <span class="arithmatex">\(AF\)</span>，不是 <span class="arithmatex">\(F\)</span></strong>：<span class="arithmatex">\(A_iF_{ij} = A_jF_{ji}\)</span>，两个表面的视角系数一般不相等。例 13.4 里大房间的 <span class="arithmatex">\((A_3F_{31})^{-1}\)</span> 写不出来，正是靠互易换成 <span class="arithmatex">\(1/(A_1F_{13})\)</span> 才落地——列空间热阻时先问一句"哪一对 <span class="arithmatex">\(AF\)</span> 是已知的"。</li>
+<li><strong>求和规则只对封闭腔成立</strong>：<span class="arithmatex">\(\sum_j F_{ij} = 1\)</span> 的前提是"离开 i 的辐射全部被腔内表面接住"。开口必须补一个 <span class="arithmatex">\(T = T_{sur}\)</span> 的黑假想面才能凑成封闭腔（例 13.3、13.4 的标准操作）；对孤立表面硬写 <span class="arithmatex">\(\sum F = 1\)</span> 是错的。</li>
+<li><strong>两表面封闭腔别漏中间那项</strong>：式 (13.23) 是三个热阻串联——两个表面热阻 <span class="arithmatex">\((1-\varepsilon)/(\varepsilon A)\)</span> 加一个空间热阻 <span class="arithmatex">\(1/(A_1F_{12})\)</span>。只记得"平行平板公式 <span class="arithmatex">\(1/\varepsilon_1 + 1/\varepsilon_2 - 1\)</span>"就到处套，同心几何（式 13.25、13.26）会立刻出错——那里是 <span class="arithmatex">\((1-\varepsilon_2)/\varepsilon_2 \times (r_1/r_2)\)</span> 或其平方，没有 <span class="arithmatex">\(-1\)</span>。</li>
+<li><strong>遮热屏贡献两个热阻</strong>：屏两侧发射率不同（<span class="arithmatex">\(\varepsilon_{3,1} \ne \varepsilon_{3,2}\)</span>）时，屏提供 <span class="arithmatex">\((1-\varepsilon_{3,1})/(\varepsilon_{3,1}A_3) + (1-\varepsilon_{3,2})/(\varepsilon_{3,2}A_3)\)</span> 两项（式 13.28）。"<span class="arithmatex">\(N\)</span> 块屏降为 <span class="arithmatex">\(1/(N+1)\)</span>"（式 13.29）只在所有发射率全等的理想条件下成立，别拿它硬算两表面发射率不同的组合。</li>
+<li><strong>再辐射面不是"不参与"</strong>：<span class="arithmatex">\(q_R = 0\)</span> 只说明净流量为零，它照样参与辐射平衡并改变 <span class="arithmatex">\(q_{12}\)</span>——式 (13.30) 的并联支路就是它架起来的。它的温度 <span class="arithmatex">\(T_R = (J_R/\sigma)^{1/4}\)</span> 由别的表面决定，与自身 <span class="arithmatex">\(\varepsilon_R\)</span> 无关（例 13.6 点评 2）。</li>
+<li><strong>网络方程线性，驱动势却是 <span class="arithmatex">\(T^4\)</span></strong>：未知量是 <span class="arithmatex">\(J\)</span>（线性方程好解），但 <span class="arithmatex">\(E_b = \sigma T^4\)</span> 是四次方。混合边界条件（有的面已知 <span class="arithmatex">\(T\)</span>、有的面已知 <span class="arithmatex">\(q\)</span>）要分别用式 (13.21) 与 (13.22)；<span class="arithmatex">\(\varepsilon = 1\)</span> 的表面会让式 (13.21) 出现 0/0——两边乘 <span class="arithmatex">\((1-\varepsilon)/(\varepsilon A) = 0\)</span> 化简成 <span class="arithmatex">\(J = E_b\)</span>（例 13.4 点评 1）。</li>
+<li><strong>查图表先换无量纲参数</strong>：图 13.4—13.6 的横轴与曲线参数是 <span class="arithmatex">\(X/L\)</span>、<span class="arithmatex">\(r_j/L\)</span> 这类无量纲组合，落点在两条曲线之间要插值。复合几何要像例 13.4 那样先用假想面查 <span class="arithmatex">\(F_{12'}\)</span>，再用面积比换算 <span class="arithmatex">\(F_{23}\)</span>——直接对着曲面查是查不到的。</li>
+<li><strong>气体辐射不是表面现象</strong>：发射率随 <span class="arithmatex">\(p_gL_e\)</span>（分压 × 行程）增大， Beer 定律的 <span class="arithmatex">\(\kappa_\lambda\)</span> 单位是 1/m；Hottel 图查出 <span class="arithmatex">\(\varepsilon\)</span> 后别忘总压修正 <span class="arithmatex">\(C_w\)</span>、<span class="arithmatex">\(C_c\)</span> 与混合修正 <span class="arithmatex">\(\Delta\varepsilon\)</span>；算吸收比 <span class="arithmatex">\(\alpha_g\)</span> 时图上查的是 <span class="arithmatex">\(T_s\)</span> 与 <span class="arithmatex">\(p_gL_e(T_s/T_g)\)</span>——两把温度尺子别拿混。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>视角系数 <span class="arithmatex">\(F_{ij}\)</span>：离开 i 的辐射被 j 截住的份额；由式 (13.1) 的双重积分定义，前提是漫发射、漫反射、有效辐射均匀。</li>
+<li>两条恒等式：互易 <span class="arithmatex">\(A_iF_{ij} = A_jF_{ji}\)</span>；封闭腔求和 <span class="arithmatex">\(\sum_{j=1}^N F_{ij} = 1\)</span>。<span class="arithmatex">\(N\)</span> 表面共 <span class="arithmatex">\(N^2\)</span> 个视角系数，只需直接确定 <span class="arithmatex">\(N(N-1)/2\)</span> 个。</li>
+<li>可加性：<span class="arithmatex">\(F_{i(j)} = \sum_k F_{ik}\)</span>（接收面拆分）；<span class="arithmatex">\(A_jF_{(j)i} = \sum_k A_kF_{ki}\)</span>（发射面拆分，按面积加权）。</li>
+<li>黑体交换：<span class="arithmatex">\(q_{ij} = A_iF_{ij}\sigma(T_i^4 - T_j^4)\)</span>（式 13.13）；黑体封闭腔 <span class="arithmatex">\(q_i = \sum_j A_iF_{ij}\sigma(T_i^4 - T_j^4)\)</span>（式 13.14）。</li>
+<li>两大热阻：表面热阻 <span class="arithmatex">\((1-\varepsilon_i)/(\varepsilon_iA_i)\)</span>（驱动势 <span class="arithmatex">\(E_{bi} - J_i\)</span>）；空间热阻 <span class="arithmatex">\((A_iF_{ij})^{-1}\)</span>（驱动势 <span class="arithmatex">\(J_i - J_j\)</span>）。节点方程：式 (13.21)（已知 <span class="arithmatex">\(T_i\)</span>）与 (13.22)（已知 <span class="arithmatex">\(q_i\)</span>）。</li>
+<li>黑面与大面：<span class="arithmatex">\(\varepsilon = 1\)</span> 或 <span class="arithmatex">\(A_i \to \infty\)</span> 时表面热阻为零、<span class="arithmatex">\(J_i = E_{bi}\)</span>；大腔内小物体 <span class="arithmatex">\(q = \sigma A_1\varepsilon_1(T_1^4 - T_2^4)\)</span>，与 <span class="arithmatex">\(\varepsilon_2\)</span> 无关（式 13.27）。</li>
+<li>两表面封闭腔（式 13.23）：平行平板、同心圆柱、同心球、小物体对大腔四个特例见表 13.3。</li>
+<li>防辐射屏：两侧发射率可不同，屏贡献两项热阻（式 13.28）；<span class="arithmatex">\(N\)</span> 块等发射率屏把换热压到 <span class="arithmatex">\(1/(N+1)\)</span>（式 13.29）。</li>
+<li>再辐射面：<span class="arithmatex">\(q_i = 0 \Rightarrow G_i = J_i = E_{bi}\)</span>；三表面封闭腔化简成式 (13.30)，<span class="arithmatex">\(J_R\)</span> 由式 (13.31) 定，<span class="arithmatex">\(T_R = (J_R/\sigma)^{1/4}\)</span> 与 <span class="arithmatex">\(\varepsilon_R\)</span> 无关。</li>
+<li>多模式与气体：表面能量平衡 <span class="arithmatex">\(q_{i,ext} = q_{i,rad} + q_{i,conv} + q_{i,cond}\)</span>（式 13.32）；气体吸收 <span class="arithmatex">\(I_\lambda = I_{\lambda,0}e^{-\kappa_\lambda L}\)</span>（比尔定律）；Hottel 法 <span class="arithmatex">\(\varepsilon_g = \varepsilon_w + \varepsilon_c - \Delta\varepsilon\)</span>，几何用平均射线行程 <span class="arithmatex">\(L_e\)</span> 换算（表 13.4），黑面与气体净交换 <span class="arithmatex">\(q_{net} = A_s\sigma(\varepsilon_gT_g^4 - \alpha_gT_s^4)\)</span>。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>view factor (configuration / shape factor)</td>
+<td>视角系数（角系数、构形因子）</td>
+<td>离开表面 i 的辐射被表面 j 截住的份额 <span class="arithmatex">\(F_{ij}\)</span></td>
+</tr>
+<tr>
+<td>view factor integral</td>
+<td>视角系数积分</td>
+<td>式 (13.1) 的双重面积分，几何量的源头</td>
+</tr>
+<tr>
+<td>reciprocity relation</td>
+<td>互易关系</td>
+<td><span class="arithmatex">\(A_iF_{ij} = A_jF_{ji}\)</span>，互换的是面积加权乘积</td>
+</tr>
+<tr>
+<td>summation rule</td>
+<td>求和规则</td>
+<td>封闭腔内 <span class="arithmatex">\(\sum_j F_{ij} = 1\)</span>，能量守恒的几何表述</td>
+</tr>
+<tr>
+<td>enclosure</td>
+<td>封闭腔</td>
+<td>由若干表面围成、辐射跑不出去的分析区域</td>
+</tr>
+<tr>
+<td>self view factor <span class="arithmatex">\(F_{ii}\)</span></td>
+<td>自视角系数</td>
+<td>凹面能看见自己，平面与凸面为零</td>
+</tr>
+<tr>
+<td>nonparticipating medium</td>
+<td>不参与性介质</td>
+<td>不发射、不吸收、不散射辐射的介质（真空、多数气体）</td>
+</tr>
+<tr>
+<td>participating medium</td>
+<td>参与性介质</td>
+<td>与辐射相互作用的介质（<span class="arithmatex">\(\mathrm{CO_2}\)</span>、<span class="arithmatex">\(\mathrm{H_2O}\)</span> 等极性气体）</td>
+</tr>
+<tr>
+<td>radiosity</td>
+<td>有效辐射</td>
+<td>离开表面的全部辐射 <span class="arithmatex">\(J\)</span>，网络节点电位（第 12 章定义）</td>
+</tr>
+<tr>
+<td>surface radiative resistance</td>
+<td>表面辐射热阻</td>
+<td><span class="arithmatex">\((1-\varepsilon_i)/(\varepsilon_iA_i)\)</span>，接在 <span class="arithmatex">\(E_{bi}\)</span> 与 <span class="arithmatex">\(J_i\)</span> 之间</td>
+</tr>
+<tr>
+<td>space (geometrical) resistance</td>
+<td>空间热阻（几何热阻）</td>
+<td><span class="arithmatex">\((A_iF_{ij})^{-1}\)</span>，接在两个有效辐射节点之间</td>
+</tr>
+<tr>
+<td>radiation network</td>
+<td>辐射网络</td>
+<td>Oppenheim 提出的电阻网络类比，封闭腔求解工具</td>
+</tr>
+<tr>
+<td>direct approach</td>
+<td>直接法</td>
+<td>对各表面列式 (13.21)/(13.22)，联立解 <span class="arithmatex">\(N\)</span> 元线性方程组</td>
+</tr>
+<tr>
+<td>two-surface enclosure</td>
+<td>两表面封闭腔</td>
+<td>三热阻串联，式 (13.23)；特例见表 13.3</td>
+</tr>
+<tr>
+<td>radiation shield</td>
+<td>防辐射屏（遮热板）</td>
+<td>低发射率薄板，垫高热阻压低净辐射，式 (13.28)、(13.29)</td>
+</tr>
+<tr>
+<td>reradiating surface</td>
+<td>再辐射面</td>
+<td>净辐射为零的绝热面，<span class="arithmatex">\(G_i = J_i = E_{bi}\)</span>，温度与自身 <span class="arithmatex">\(\varepsilon\)</span> 无关</td>
+</tr>
+<tr>
+<td>multimode heat transfer</td>
+<td>多模式换热（复合换热）</td>
+<td>辐射与对流、导热在同一表面节点上做能量平衡</td>
+</tr>
+<tr>
+<td>hypothetical surface</td>
+<td>假想表面</td>
+<td>为凑封闭腔或拆复合面而虚构的面，常按黑体处理开口</td>
+</tr>
+<tr>
+<td>absorption coefficient</td>
+<td>吸收系数</td>
+<td><span class="arithmatex">\(\kappa_\lambda\)</span>（1/m），表征介质对光谱辐射的体积吸收能力</td>
+</tr>
+<tr>
+<td>Beer's law</td>
+<td>比尔定律</td>
+<td><span class="arithmatex">\(I_{\lambda,L} = I_{\lambda,0}e^{-\kappa_\lambda L}\)</span>，辐射穿越介质的指数衰减</td>
+</tr>
+<tr>
+<td>band</td>
+<td>波段</td>
+<td>气体发射/吸收集中的特定波长区间</td>
+</tr>
+<tr>
+<td>gas emissivity</td>
+<td>气体发射率</td>
+<td><span class="arithmatex">\(\varepsilon_g\)</span>，半球气体团发射 <span class="arithmatex">\(E_g = \varepsilon_g\sigma T_g^4\)</span> 中的系数</td>
+</tr>
+<tr>
+<td>mean beam length</td>
+<td>平均射线行程</td>
+<td><span class="arithmatex">\(L_e\)</span>，与任意几何气体团等效的半球半径</td>
+</tr>
+<tr>
+<td>Hottel's method</td>
+<td>霍特尔方法</td>
+<td>查图确定 <span class="arithmatex">\(\varepsilon_g\)</span>、<span class="arithmatex">\(\alpha_g\)</span> 的气体辐射工程算法</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
