@@ -315,3 +315,138 @@ body.is-home .md-content__inner { padding-top: 0.5rem; }
   text-decoration: none;
 }
 .pdf-note a:hover { color: var(--md-accent-fg-color); }
+
+/* ===== 全站导航与界面美化（目录优化）===== */
+:root {
+  --ui-grad: linear-gradient(135deg, #ff6ec4 0%, #7873f5 100%);
+}
+/* 品牌色与首页渐变呼应：顶栏深藏青，强调色偏紫 */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #191c30;
+  --md-primary-fg-color--light: #4d5170;
+  --md-primary-fg-color--dark: #10121f;
+  --md-accent-fg-color: #9a4ff0;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #131627;
+  --md-primary-fg-color--light: #585d7d;
+  --md-primary-fg-color--dark: #0d0f1c;
+  --md-accent-fg-color: #c47ef7;
+}
+
+/* 顶栏：细阴影 + 毛玻璃 */
+.md-header {
+  background: linear-gradient(180deg, rgba(25, 28, 48, 0.97), rgba(25, 28, 48, 0.9));
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: 0 2px 20px rgba(8, 10, 26, 0.35);
+}
+.md-header__title { font-weight: 700; letter-spacing: 0.02em; }
+
+/* 顶部栏目 tabs：胶囊下划线动效 */
+.md-tabs {
+  background: transparent;
+  box-shadow: none;
+}
+.md-tabs__link {
+  position: relative;
+  padding-block: 0.55rem;
+  font-weight: 600;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+.md-tabs__link:hover { opacity: 1; }
+.md-tabs__link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(72%, 88px);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--ui-grad);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.md-tabs__item--active .md-tabs__link { opacity: 1; }
+.md-tabs__item--active .md-tabs__link::after { transform: translateX(-50%) scaleX(1); }
+
+/* 左侧目录：分组标签 + 章节条目 */
+.md-nav__item--section > .md-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--md-default-fg-color--light) !important;
+}
+.md-nav__item--section > .md-nav__link::before {
+  content: "";
+  flex: none;
+  width: 4px;
+  height: 13px;
+  border-radius: 2px;
+  background: var(--ui-grad);
+}
+.md-nav__link {
+  border-radius: 8px;
+  padding: 3px 8px;
+  margin: 1px 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.md-nav__link:hover {
+  background: rgba(120, 115, 245, 0.1);
+  color: var(--md-accent-fg-color) !important;
+}
+.md-nav__item--active > .md-nav__link,
+.md-nav__link--active {
+  background: linear-gradient(90deg, rgba(255, 110, 196, 0.13), rgba(120, 115, 245, 0.13));
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 0 #ff6ec4;
+}
+
+/* 侧栏滚动条纤细 */
+.md-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 115, 245, 0.4) transparent;
+}
+.md-sidebar::-webkit-scrollbar { width: 6px; }
+.md-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(120, 115, 245, 0.35);
+  border-radius: 999px;
+}
+.md-sidebar::-webkit-scrollbar-track { background: transparent; }
+
+/* 右侧本页目录：渐变游标 */
+.md-nav--secondary .md-nav__link {
+  border-left: 2px solid transparent;
+  border-radius: 0 8px 8px 0;
+}
+.md-nav--secondary .md-nav__link:hover {
+  border-left-color: #7873f5;
+  background: linear-gradient(90deg, rgba(120, 115, 245, 0.1), transparent);
+}
+.md-nav--secondary .md-nav__item--active > .md-nav__link {
+  border-left-color: #ff6ec4;
+  background: linear-gradient(90deg, rgba(255, 110, 196, 0.12), transparent);
+}
+
+/* 回到顶部按钮：渐变胶囊 */
+.md-top {
+  background: var(--ui-grad);
+  color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(255, 110, 196, 0.4);
+}
+.md-top:hover { background: var(--ui-grad); color: #fff; }
+
+/* 章标题：底部小渐变条，压住页面开场 */
+.md-typeset h1 {
+  padding-bottom: 0.4rem;
+  background-image: var(--ui-grad);
+  background-repeat: no-repeat;
+  background-size: 72px 4px;
+  background-position: 0 100%;
+}
