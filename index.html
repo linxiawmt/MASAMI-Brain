@@ -79,7 +79,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
       
@@ -196,14 +198,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -388,7 +384,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -3327,7 +3329,7 @@
 <div class="glass home-hero">
   <div class="home-kicker">STUDY · NOTES · GROWING</div>
   <div class="home-title">MASAMI 的外置大脑</div>
-  <div class="home-sub">深度学习 · 计算机视觉 · 学习笔记</div>
+  <div class="home-sub">深度学习 · 计算机视觉 · 计算光学 · 传热学 —— 七大板块持续更新</div>
   <div class="home-btns">
     <a class="gbtn" href="dl4vs/">进入第一个项目</a>
     <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub 仓库</a>
@@ -3336,16 +3338,21 @@
 
 <div class="home-cols">
   <div class="glass home-card">
-    <div class="hc-title">PROJECTS</div>
-    <div class="hc-item"><a href="dl4vs/">深度学习视觉系统 —— 《Deep Learning for Vision Systems》全书 10 章精读</a></div>
+    <div class="hc-title">PROJECTS · 七大板块</div>
+    <div class="hc-item"><a href="dl4vs/">深度学习视觉系统 —— 《Deep Learning for Vision Systems》全书 10 章精读（PyTorch）</a></div>
+    <div class="hc-item"><a href="numana/ch01/">数值分析方法 —— 全 13 章：误差、方程、插值、积分与微分方程（MATLAB）</a></div>
     <div class="hc-item"><a href="holo/fourier/ch1/">计算傅里叶光学 —— Voelz (SPIE TT89) · 9 章</a></div>
-    <div class="hc-item"><a href="holo/waveprop/ch1/">光波传播数值模拟 —— Schmidt (SPIE PM199)</a></div>
-    <div class="hc-item"><a href="holo/scanholo/ch1/">光学扫描全息 —— Poon (Springer)</a></div>
-    <div class="hc-item muted">MATLAB / Python 双语言实现，代码与笔记内 tab 一致</div>
+    <div class="hc-item"><a href="holo/waveprop/ch1/">光波传播数值模拟 —— Schmidt (SPIE PM199) · 9 章</a></div>
+    <div class="hc-item"><a href="holo/scanholo/ch1/">光学扫描全息 —— Poon (Springer) · 5 章</a></div>
+    <div class="hc-item"><a href="opencv/ch01/">OpenCV 轻松入门 —— 李立宗 · 19 章 + 逐章跟随代码</a></div>
+    <div class="hc-item"><a href="heat/ch01/">传热学 —— Incropera《Fundamentals of Heat and Mass Transfer》(7th ed.) · 14 章</a></div>
+    <div class="hc-item muted">全息三书 MATLAB / Python 双语言实现，代码与笔记内 tab 一致</div>
   </div>
   <div class="glass home-card">
     <div class="hc-title">HOW TO USE</div>
-    <div class="hc-item">每章两件套：网页精读笔记 + 代码实战 notebook</div>
+    <div class="hc-item">代码书：网页精读笔记 + 代码实战 notebook 双件套</div>
+    <div class="hc-item">理论书：完整公式推导 + 例题全解，专业术语中英对照</div>
+    <div class="hc-item">顶部栏目切换 · 左侧章节目录 · 右侧本页提纲</div>
     <div class="hc-item">右上角搜索全文 · 深浅色随心切</div>
   </div>
 </div>
@@ -3411,7 +3418,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.c21346df.min.js"></script>
