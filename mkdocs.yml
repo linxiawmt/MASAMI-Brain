@@ -87,6 +87,7 @@ extra_css:
 nav:
   - 首页: index.md
   - 数值分析方法:
+      - numana/index.md
       - 第1章 引言：误差与算法: numana/ch01.md
       - 第2章 单变量方程求根: numana/ch02.md
       - 第3章 非线性方程组: numana/ch03.md
@@ -113,6 +114,7 @@ nav:
       - 第9章 DeepDream与神经风格迁移: dl4vs/ch09.md
       - 第10章 视觉嵌入: dl4vs/ch10.md
   - OpenCV轻松入门:
+      - opencv/index.md
       - 第1章 OpenCV入门: opencv/ch01.md
       - 第2章 图像处理基础: opencv/ch02.md
       - 第3章 图像运算: opencv/ch03.md
@@ -133,6 +135,7 @@ nav:
       - 第18章 视频处理: opencv/ch18.md
       - 第19章 绘图及交互: opencv/ch19.md
   - 计算傅里叶光学:
+      - holo/fourier/index.md
       - holo/fourier/ch1.md
       - holo/fourier/ch2.md
       - holo/fourier/ch3.md
@@ -143,6 +146,7 @@ nav:
       - holo/fourier/ch8.md
       - holo/fourier/ch9.md
   - 光波传播数值模拟:
+      - holo/waveprop/index.md
       - holo/waveprop/ch1.md
       - holo/waveprop/ch2.md
       - holo/waveprop/ch3.md
@@ -153,12 +157,14 @@ nav:
       - holo/waveprop/ch8.md
       - holo/waveprop/ch9.md
   - 光学扫描全息:
+      - holo/scanholo/index.md
       - holo/scanholo/ch1.md
       - holo/scanholo/ch2.md
       - holo/scanholo/ch3.md
       - holo/scanholo/ch4.md
       - holo/scanholo/ch5.md
   - 传热学:
+      - heat/index.md
       - 第1章 引言: heat/ch01.md
       - 第2章 导热引论: heat/ch02.md
       - 第3章 一维稳态导热: heat/ch03.md

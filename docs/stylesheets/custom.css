@@ -450,3 +450,64 @@ body.is-home .md-content__inner { padding-top: 0.5rem; }
   background-size: 72px 4px;
   background-position: 0 100%;
 }
+
+/* ===== 卡片网格与栏目入口页（借鉴 Material Grids / hello-algo / OI Wiki）===== */
+/* 卡片悬停：上浮 + 紫描边 + 柔和投影，呼应首页玻璃语言 */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > li {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(120, 115, 245, 0.18);
+  border-color: rgba(120, 115, 245, 0.5);
+}
+/* 卡片内的箭头链接：默认弱化，悬停点亮成渐变色 */
+.md-typeset .grid.cards a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.md-typeset .grid.cards a:hover { color: var(--md-accent-fg-color); }
+
+/* 首页统计胶囊 */
+.home-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 720px;
+  margin: 0 0 16px auto;
+}
+@media (max-width: 900px) { .home-stats { max-width: none; } }
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.stat-chip .twemoji, .stat-chip .lg-middle { height: 1em; }
+
+/* 首页栏目导航卡（玻璃容器里的 grid cards 改透明底白字） */
+.home-projects { padding: 1.3rem 1.6rem; margin-bottom: 18px; }
+.home-projects .grid.cards > ul > li,
+.home-projects .grid.cards > li {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.home-projects .grid.cards > ul > li:hover,
+.home-projects .grid.cards > li:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.home-projects .grid.cards code { background: rgba(255,255,255,0.12); color:#fff; }
+
+/* 栏目入口页顶部的图标章 */
+.md-typeset h1 { letter-spacing: 0.01em; }

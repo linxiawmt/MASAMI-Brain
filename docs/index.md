@@ -17,18 +17,80 @@ hide:
   </div>
 </div>
 
+<div class="home-stats" markdown>
+<span class="stat-chip">:fontawesome-solid-layer-group: **7 大板块**</span>
+<span class="stat-chip">:fontawesome-solid-book: **78 章在线**</span>
+<span class="stat-chip">:fontawesome-solid-code: **MATLAB / Python / PyTorch**</span>
+<span class="stat-chip">:fontawesome-solid-circle-half-stroke: **深浅双主题**</span>
+</div>
+
+<div class="glass home-card home-projects" markdown>
+  <div class="hc-title">PROJECTS · 栏目导航</div>
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-eye:{ .lg .middle } **深度学习视觉系统**
+
+    ---
+
+    《Deep Learning for Vision System》全书 10 章精读，PyTorch 重写全部示例。
+
+    [:octicons-arrow-right-24: 进入](dl4vs/index.md)
+
+-   :fontawesome-solid-calculator:{ .lg .middle } **数值分析方法**
+
+    ---
+
+    误差、方程、插值、积分到微分方程，13 章理论推导 + MATLAB 内联。
+
+    [:octicons-arrow-right-24: 进入](numana/index.md)
+
+-   :fontawesome-solid-wave-square:{ .lg .middle } **计算傅里叶光学**
+
+    ---
+
+    Voelz (SPIE TT89) 全 9 章，衍射、透镜、成像与部分相干仿真。
+
+    [:octicons-arrow-right-24: 进入](holo/fourier/index.md)
+
+-   :fontawesome-solid-wind:{ .lg .middle } **光波传播数值模拟**
+
+    ---
+
+    Schmidt (SPIE PM199)，采样判据、部分传播与大气湍流相位屏。
+
+    [:octicons-arrow-right-24: 进入](holo/waveprop/index.md)
+
+-   :fontawesome-solid-camera-retro:{ .lg .middle } **光学扫描全息**
+
+    ---
+
+    Poon (Springer) 全 5 章，OSH 原理、应用与进展。
+
+    [:octicons-arrow-right-24: 进入](holo/scanholo/index.md)
+
+-   :fontawesome-solid-images:{ .lg .middle } **OpenCV 轻松入门**
+
+    ---
+
+    李立宗全书 19 章，逐章跟随代码 + 实跑效果图。
+
+    [:octicons-arrow-right-24: 进入](opencv/index.md)
+
+-   :fontawesome-solid-fire:{ .lg .middle } **传热学**
+
+    ---
+
+    Incropera《Fundamentals of Heat and Mass Transfer》7th ed. 全 14 章精解。
+
+    [:octicons-arrow-right-24: 进入](heat/index.md)
+
+</div>
+
+  <div class="hc-item muted">全息三书 MATLAB / Python 双语言实现，代码与笔记内 tab 一致</div>
+</div>
+
 <div class="home-cols">
-  <div class="glass home-card">
-    <div class="hc-title">PROJECTS · 七大板块</div>
-    <div class="hc-item"><a href="dl4vs/">深度学习视觉系统 —— 《Deep Learning for Vision Systems》全书 10 章精读（PyTorch）</a></div>
-    <div class="hc-item"><a href="numana/ch01/">数值分析方法 —— 全 13 章：误差、方程、插值、积分与微分方程（MATLAB）</a></div>
-    <div class="hc-item"><a href="holo/fourier/ch1/">计算傅里叶光学 —— Voelz (SPIE TT89) · 9 章</a></div>
-    <div class="hc-item"><a href="holo/waveprop/ch1/">光波传播数值模拟 —— Schmidt (SPIE PM199) · 9 章</a></div>
-    <div class="hc-item"><a href="holo/scanholo/ch1/">光学扫描全息 —— Poon (Springer) · 5 章</a></div>
-    <div class="hc-item"><a href="opencv/ch01/">OpenCV 轻松入门 —— 李立宗 · 19 章 + 逐章跟随代码</a></div>
-    <div class="hc-item"><a href="heat/ch01/">传热学 —— Incropera《Fundamentals of Heat and Mass Transfer》(7th ed.) · 14 章</a></div>
-    <div class="hc-item muted">全息三书 MATLAB / Python 双语言实现，代码与笔记内 tab 一致</div>
-  </div>
   <div class="glass home-card">
     <div class="hc-title">HOW TO USE</div>
     <div class="hc-item">代码书：网页精读笔记 + 代码实战 notebook 双件套</div>
