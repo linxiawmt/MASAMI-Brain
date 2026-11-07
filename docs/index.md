@@ -85,9 +85,17 @@ hide:
 
     [:octicons-arrow-right-24: 进入](heat/index.md)
 
+-   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
+
+    ---
+
+    GitHub 精选学习资源小仓库：浙大专属 · CS 自学 · AI · 专业课工具（与课程笔记分开维护）。
+
+    [:octicons-arrow-right-24: 进入](resources/index.md)
+
 </div>
 
-  <div class="hc-item muted">全息三书 MATLAB / Python 双语言实现，代码与笔记内 tab 一致</div>
+  <div class="hc-item muted">前七项为课程笔记板块；「学习资源导航」是独立小板块，只收录外部链接</div>
 </div>
 
 <div class="home-cols">
