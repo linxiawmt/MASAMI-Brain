@@ -3966,11 +3966,11 @@
 </figure>
 
 <figure>
-  <img src="../images/ch08/fig-8-6.png" class="lq-img" />
-  <figcaption>图 8.6 腐蚀结果：左原图，右腐蚀结果，毛刺被腐蚀掉（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-6.png" class="lq-img" />
+  <figcaption>图 8.6 【例 8.2】运行结果：左原图，右腐蚀结果——笔画变细、边缘毛刺被吃掉，上方墨点缩小（picture7 代码实跑）</figcaption>
 </figure>
 
-<p>从图 8.6 可以看到，腐蚀操作将原始图像内的毛刺腐蚀掉了。</p>
+<p>从图 8.6 可以看到，腐蚀操作将原始图像内字母 j 笔画边缘的毛刺腐蚀掉了，笔画整体变细，上方的墨点也缩小了一圈。</p>
 <p>【例 8.3】调节函数 <code>cv2.erode()</code> 的参数，观察不同参数控制下的图像腐蚀效果。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 8.1 例 8.3：调大核 + 多次迭代 =====</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -3985,11 +3985,11 @@
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-7.png" class="lq-img" />
-  <figcaption>图 8.7 调节参数后的腐蚀结果：更大核 + 更多迭代，腐蚀更严重（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-7.png" class="lq-img" />
+  <figcaption>图 8.7 【例 8.3】调节参数后的腐蚀结果：9×9 核迭代 5 次，字母 j 被整个腐蚀掉，结果全黑（picture7 代码实跑）</figcaption>
 </figure>
 
-<p>本例做了两个调整：核的尺寸变为 9×9；<code>iterations=5</code> 让腐蚀重复 5 次。图像被腐蚀得更严重——前景持续收缩，细小结构直接消失。核越大、迭代越多，腐蚀越猛，二者可以互相叠加。</p>
+<p>本例做了两个调整：核的尺寸变为 9×9；<code>iterations=5</code> 让腐蚀重复 5 次。图像被腐蚀得更严重——前景持续收缩，细小结构直接消失：实测 picture7 的白色前景像素从 41 726 个收缩到 0，整个字母 j 被吃光。核越大、迭代越多，腐蚀越猛，二者可以互相叠加。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：灰度图上的腐蚀就是邻域最小值</p>
 <p>"核完全落入前景"是二值图的集合规则。图像不是二值时，OpenCV 按灰度形态学处理：<strong>腐蚀 = 核覆盖区内的最小值</strong>，膨胀 = 最大值；彩色图逐通道独立进行。实测：把 0/255 二值数组交给 <code>cv2.erode</code>，结果与手工逐点取邻域最小值完全一致。所以灰度图的腐蚀会把"亮区"收缩——只要记住 <strong>OpenCV 形态学里亮值是前景</strong>，二值与灰度的规则就统一了。</p>
@@ -4100,11 +4100,11 @@
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-12.png" class="lq-img" />
-  <figcaption>图 8.12 【例 8.5】对应的膨胀结果：9×9 核把 J"变粗"（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-12.png" class="lq-img" />
+  <figcaption>图 8.12 【例 8.5】对应的膨胀结果：9×9 核把 j"变粗"（picture7 代码实跑）</figcaption>
 </figure>
 
-<p>膨胀操作将原始图像"变粗"了。</p>
+<p>膨胀操作将原始图像"变粗"了：白色前景像素从 41 726 个涨到 52 185 个。</p>
 <p>【例 8.6】调节函数 <code>cv2.dilate()</code> 的参数，观察不同参数控制下的图像膨胀效果。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 8.2 例 8.6：小核 + 多次迭代 =====</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -4119,11 +4119,11 @@
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-13.png" class="lq-img" />
-  <figcaption>图 8.13 【例 8.6】对应的膨胀结果：5×5 核迭代 9 次，J 明显"生长"（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-13.png" class="lq-img" />
+  <figcaption>图 8.13 【例 8.6】对应的膨胀结果：5×5 核迭代 9 次，j 明显"生长"（picture7 代码实跑）</figcaption>
 </figure>
 
-<p>核变小了，但重复 9 次，图像被膨胀得更严重——前景实现了"生长"。</p>
+<p>核变小了，但重复 9 次，图像被膨胀得更严重——前景实现了"生长"：白色前景像素从 41 726 个涨到 90 572 个。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：腐蚀与膨胀互为对偶</p>
 <p>对偶性（<strong>duality</strong>）：对前景做腐蚀，等价于先对整幅图取反、对背景做膨胀、再取反——<span class="arithmatex">\(255 - \text{dilate}(255 - A) = \text{erode}(A)\)</span>，把 erode 与 dilate 互换同样成立（实测 cv2 4.13 上逐像素相等，含边界）。这就是"OpenCV 把亮值当前景"的数学根源：想腐蚀暗色物体（白底黑字），必须先取反变成黑底白字再动手，否则"腐蚀"收缩的是白色背景。</p>
@@ -4208,6 +4208,13 @@ A \circ B = (A \ominus B) \oplus B
 A \bullet B = (A \oplus B) \ominus B
 \]</div>
 <p>本节其余组合都是这两个式子的加减变形。实测（cv2 4.13，随机 0/255 数组 + 5×5 核）：<code>MORPH_OPEN</code> 的输出与 <code>dilate(erode(src))</code> 逐像素相等，<code>CLOSE</code>、<code>GRADIENT</code>、<code>TOPHAT</code>、<code>BLACKHAT</code> 四种 op 的组合关系也全部逐像素验证通过。</p>
+<p>同一幅二值图能把表 8-2 全部八种 op 的差异一眼看全：把 picture13 灰度化后用 OTSU 阈值二值化（硬币为白前景），换 15×15 核把八种 op 逐个跑一遍：</p>
+<figure>
+  <img src="../images/ch08/out-8-30.png" class="lq-img" />
+  <figcaption>图 8.30 同一二值图上八种形态学 op 的九宫格对比（代码实跑）：中心 (e) 为 OTSU 二值化原图，其余为 15×15 核的各 op 结果；(i) 击中击不中用 3×3 角点模板，命中的 186 个像素以红点标在调暗的原图上</figcaption>
+</figure>
+
+<p>九宫格里能直接读出各 op 的分工：(a) 腐蚀收缩前景、(b) 膨胀撑大并粘连相邻硬币、&copy; 开抹平亮斑、(d) 闭填平暗纹并把断开处连上、(f) 梯度只留轮廓、(g) 顶帽留下被开运算去掉的亮结构、(h) 黑帽留下被闭运算填掉的暗结构。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：击中击不中变换（Hit-or-Miss Transform）</p>
 <p>击中击不中不做"收缩/扩张"，而是拿核当模板匹配形状：核里可以写三种值——1 表示该位置必须是前景，−1 表示该位置必须是背景，0 表示无所谓。输出图在"前景背景同时命中"的位置置 1。典型用途：检测角点、孤立点等特定形状，也是细化、骨架提取类算法的基础。两个限制（实测 cv2 4.13）：输入仅支持 CV_8UC1 单通道 8 位图，传 3 通道直接断言报错；核里的 −1 用 <code>np.int8</code> 存（uint8 装不下负数）。例如孤立点检测核 <code>np.array([[-1,-1,-1],[-1,1,-1],[-1,-1,-1]], np.int8)</code>，实测只留下周围没有邻居的白点。</p>
@@ -4247,8 +4254,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-16.png" class="lq-img" />
-  <figcaption>图 8.16 【例 8.7】对应的开运算结果：(a)(c) 原图，(b)(d) 开运算结果（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-16.png" class="lq-img" />
+  <figcaption>图 8.16 【例 8.7】对应的开运算结果：(a)(c) 原图，(b)(d) 开运算结果——picture9 的大矩形远大于核、原样保留，picture13 硬币表面的细小亮纹被抹平（代码实跑）</figcaption>
 </figure>
 
 <p>实测验证：在 0/255 数组上放一个 15×15 白方块和三个孤立白点，用 3×3 核做开运算——三个白点全部消失，方块区域逐像素原样保留。开运算"去小留大"的效果与手算规则完全一致。</p>
@@ -4291,8 +4298,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-19.png" class="lq-img" />
-  <figcaption>图 8.19 【例 8.8】对应的闭运算结果：(a)(c) 原图，(b)(d) 闭运算结果（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-19.png" class="lq-img" />
+  <figcaption>图 8.19 【例 8.8】对应的闭运算结果：(a)(c) 原图，(b)(d) 闭运算结果——picture13 硬币表面的暗纹被填平、相邻硬币连成一片，picture9 大矩形基本不变（代码实跑）</figcaption>
 </figure>
 
 <p>实测验证：在 0/255 数组上放一个 20×20 白方块，内部挖 3×3 小孔、8×8 大孔各一个，用 5×5 核做闭运算——3×3 小孔被完全填上，8×8 大孔原样保留。闭运算只填"小于核"的洞。</p>
@@ -4321,8 +4328,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-21.png" class="lq-img" />
-  <figcaption>图 8.21 【例 8.9】程序的运行结果：左原图，右梯度结果——只剩前景边缘（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-21.png" class="lq-img" />
+  <figcaption>图 8.21 【例 8.9】程序的运行结果：左原图，右梯度结果——只剩前景边缘（picture7 代码实跑）</figcaption>
 </figure>
 
 <p>实测验证：随机 0/255 数组上，<code>MORPH_GRADIENT</code> 的输出与 <code>dilate(src) − erode(src)</code> 逐像素相等。</p>
@@ -4330,6 +4337,12 @@ A \bullet B = (A \oplus B) \ominus B
 <p class="admonition-title">拓展：标准梯度、内梯度与外梯度</p>
 <p>上面的 MORPH_GRADIENT 是标准梯度（<strong>standard gradient</strong>），边缘最粗。另有两个变体：内梯度（<strong>internal gradient</strong>）= 原图 − 腐蚀图，边缘贴着前景内侧；外梯度（<strong>external gradient</strong>）= 膨胀图 − 原图，边缘贴着前景外侧。三者满足"标准梯度 = 内梯度 + 外梯度"（实测逐像素成立）。只要边缘轮廓、不要前景内部时，内外梯度给出的线更细，常用于快速勾边。</p>
 </div>
+<p>三种梯度在 picture1（灰度）上的实跑对比，内、外梯度逐像素相加与标准梯度完全相等：</p>
+<figure>
+  <img src="../images/ch08/out-8-31.png" class="lq-img" />
+  <figcaption>图 8.31 标准梯度 / 内梯度 / 外梯度对比：picture1 灰度、5×5 核（代码实跑）——内梯度边缘贴前景内侧，外梯度贴外侧，相加即标准梯度</figcaption>
+</figure>
+
 <h2 id="87-礼帽运算">8.7 礼帽运算<a class="headerlink" href="#87-礼帽运算" title="Permanent link">#</a></h2>
 <p>礼帽运算是用原始图像减去其开运算图像的操作。礼帽运算能够获取图像的噪声信息，或者得到比原始图像的边缘更亮的边缘信息。礼帽运算也叫顶帽运算。</p>
 <figure>
@@ -4364,8 +4377,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-24.png" class="lq-img" />
-  <figcaption>图 8.24 【例 8.10】程序的运行结果：(a)(b) 原图，(c)(d) 礼帽结果（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-24.png" class="lq-img" />
+  <figcaption>图 8.24 【例 8.10】程序的运行结果：(a)(b) 原图，(c)(d) 礼帽结果——picture1 的亮边缘、亮纹理被提出；picture7 是干净二值大块，5×5 开运算不改变它，礼帽输出全黑（代码实跑）</figcaption>
 </figure>
 
 <p>实测验证：灰度 100 的背景上放一块 3×3、灰度 220 的亮斑和一块灰度 30 的暗斑，用 7×7 核做礼帽——亮斑位置输出 <span class="arithmatex">\(220-100=120\)</span>，暗斑位置输出 0。礼帽只提取"比周围亮"的结构。</p>
@@ -4403,8 +4416,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-27.png" class="lq-img" />
-  <figcaption>图 8.27 【例 8.11】程序的运行结果：(a)(b) 原图，(c)(d) 黑帽结果（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-27.png" class="lq-img" />
+  <figcaption>图 8.27 【例 8.11】程序的运行结果：(a)(b) 原图，(c)(d) 黑帽结果——picture1 的暗边缘被提出；picture7 上闭运算填不掉任何暗块，黑帽几乎全黑（整幅仅 5 个非零像素）（代码实跑）</figcaption>
 </figure>
 
 <p>实测验证：同样的背景与亮暗斑，黑帽在暗斑位置输出 <span class="arithmatex">\(100-30=70\)</span>，亮斑位置输出 0；对素材里的血细胞图（picture11.jpg，亮背景暗斑点）做 15×15 黑帽，暗斑点全部被提出（输出非零且逐像素等于"闭运算 − 原图"）。</p>
@@ -4502,8 +4515,8 @@ A \bullet B = (A \oplus B) \ominus B
 <a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch08/fig-8-28.png" class="lq-img" />
-  <figcaption>图 8.28 【例 8.13】程序的运行结果：(a) 原图，(b) 矩形核、(c) 十字核、(d) 椭圆核的膨胀结果（截自原书）</figcaption>
+  <img src="../images/ch08/out-8-28.png" class="lq-img" />
+  <figcaption>图 8.28 【例 8.13】程序的运行结果：(a) 原图，(b) 矩形核、(c) 十字核、(d) 椭圆核的膨胀结果（picture9 代码实跑）</figcaption>
 </figure>
 
 <p>同样是 59×59 的膨胀，形状完全不同：矩形核把边界推出直角；十字核只在横竖四个方向扩张，斜向不动；椭圆核边界圆滑。核的形状就是膨胀（或腐蚀）的"脚印"，选形状等于选边缘风格。</p>

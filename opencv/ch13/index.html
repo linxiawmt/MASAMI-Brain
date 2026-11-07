@@ -4225,8 +4225,8 @@
 </code></pre></div>
 <p>运行结果见图 13.8：左图是原始图像，右图是对应的直方图。注意 <code>o.ravel()</code> 把三通道一起拉平，统计的是 B、G、R 全部像素值的混合分布。</p>
 <figure>
-  <img src="../images/ch13/fig-13-8.png" class="lq-img" />
-  <figcaption>图 13.8 【例 13.1】运行结果：原图（左）与其直方图（右）（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-8.png" class="lq-img" />
+  <figcaption>图 13.8 【例 13.1】运行结果：原图（左）与其直方图（右）（代码实跑）</figcaption>
 </figure>
 
 <p>【例 13.2】把灰度级划分为 16 组后绘制直方图。</p>
@@ -4239,8 +4239,8 @@
 </code></pre></div>
 <p>结果见图 13.9：整个灰度级被分成 16 个子集，每根柱子对应一个 16 级宽的区间。</p>
 <figure>
-  <img src="../images/ch13/fig-13-9.png" class="lq-img" />
-  <figcaption>图 13.9 BINS 值为 16 的直方图（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-9.png" class="lq-img" />
+  <figcaption>图 13.9 BINS 值为 16 的直方图（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4335,8 +4335,8 @@
 </code></pre></div>
 <p>程序输出见图 13.10。返回值类型是 <strong>ndarray</strong>，shape 为 (256, 1)——256 行 1 列；size 为 256——恰好对应 256 个灰度级各自出现的次数。前 6 条数据就是灰度级 0~5 的像素个数。</p>
 <figure>
-  <img src="../images/ch13/fig-13-10.png" class="lq-img" />
-  <figcaption>图 13.10 【例 13.3】程序输出：返回值类型、形状与数据（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-10.png" class="lq-img" />
+  <figcaption>图 13.10 【例 13.3】程序输出：返回值类型、形状与数据（代码实跑）</figcaption>
 </figure>
 
 <p>用一个手算就能核对的小数组验证 <code>calcHist</code> 的计数逻辑（就是图 13.1 那幅 9 像素小图）：</p>
@@ -4384,10 +4384,10 @@
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>             <span class="c1"># color='r'：red，红色曲线</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">)</span>             <span class="c1"># color='g'：green，绿色曲线</span>
 </code></pre></div>
-<p><code>color='r'</code> 把曲线颜色设为红色，<code>color='g'</code> 设为绿色，按需要可换任意颜色。结果见图 13.13（印刷无法显色，曲线上机运行可见红绿两色）。</p>
+<p><code>color='r'</code> 把曲线颜色设为红色，<code>color='g'</code> 设为绿色，按需要可换任意颜色。结果见图 13.13：一条红色曲线、一条绿色曲线。</p>
 <figure>
-  <img src="../images/ch13/fig-13-13.png" class="lq-img" />
-  <figcaption>图 13.13 【例 13.6】运行结果：两条不同颜色的曲线（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-13.png" class="lq-img" />
+  <figcaption>图 13.13 【例 13.6】运行结果：两条不同颜色的曲线（代码实跑）</figcaption>
 </figure>
 
 <h4 id="3绘制统计直方图">3．绘制统计直方图<a class="headerlink" href="#3绘制统计直方图" title="Permanent link">#</a></h4>
@@ -4404,8 +4404,8 @@
 </code></pre></div>
 <p>运行结果见图 13.14。流程就两步：<code>calcHist</code> 出数据，<code>plot</code> 画数据。</p>
 <figure>
-  <img src="../images/ch13/fig-13-14.png" class="lq-img" />
-  <figcaption>图 13.14 使用 plot() 绘制的直方图（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-14.png" class="lq-img" />
+  <figcaption>图 13.14 使用 plot() 绘制的直方图（代码实跑）</figcaption>
 </figure>
 
 <p>【例 13.8】把彩色图像 B、G、R 三个通道的直方图画进同一个窗口。</p>
@@ -4424,8 +4424,8 @@
 </code></pre></div>
 <p>先分别统计 <code>[0]</code>、<code>[1]</code>、<code>[2]</code> 三个通道（即 B、G、R）的直方图数据，再依次画进同一窗口，结果见图 13.15。三条曲线叠在一起，各通道的亮度分布差异一眼可见。</p>
 <figure>
-  <img src="../images/ch13/fig-13-15.png" class="lq-img" />
-  <figcaption>图 13.15 绘制彩色图像各个通道的直方图（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-15.png" class="lq-img" />
+  <figcaption>图 13.15 绘制彩色图像各个通道的直方图（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1323-使用掩模绘制直方图">13.2.3 使用掩模绘制直方图<a class="headerlink" href="#1323-使用掩模绘制直方图" title="Permanent link">#</a></h3>
@@ -4511,6 +4511,12 @@
 </tbody>
 </table>
 <p>把原始图像 O 与掩模图像 M 逐位置做与运算：掩模中值为 1 的位置，原图的值被保留；掩模中值为 0 的位置，原图的值被处理为 0。也就是原图中只有掩模白色（值为 1）区域里的内容被保留下来。</p>
+<p>在实际图像上跑一遍（灰度 picture2.png，掩模为中心 200×200 的白块），效果见图 13.40：掩模白色区域的内容原样保留，黑色区域全部置黑。</p>
+<figure>
+  <img src="../images/ch13/out-13-40.png" class="lq-img" />
+  <figcaption>图 13.40 掩模处理实测：灰度原图（左）、掩模（中）、按位与结果（右）（代码实跑）</figcaption>
+</figure>
+
 <p>直接用 0/1 做与运算理解方便，实际处理中更常用<strong>按位与（bitwise AND）</strong>：先把两个像素值转成二进制，再逐位做与运算。OpenCV 提供了 <code>cv2.bitwise_and</code> 函数做这件事。例如像素值 A = 35、B = 126：</p>
 <table>
 <thead>
@@ -4570,8 +4576,8 @@
 </code></pre></div>
 <p>生成的掩模图像见图 13.20：黑底中央一块 200×200 的白方块。</p>
 <figure>
-  <img src="../images/ch13/fig-13-20.png" class="lq-img" />
-  <figcaption>图 13.20 【例 13.9】生成的掩模图像（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-20.png" class="lq-img" />
+  <figcaption>图 13.20 【例 13.9】生成的掩模图像（代码实跑）</figcaption>
 </figure>
 
 <h4 id="3使用掩模绘制直方图">3．使用掩模绘制直方图<a class="headerlink" href="#3使用掩模绘制直方图" title="Permanent link">#</a></h4>
@@ -4597,8 +4603,8 @@
 </code></pre></div>
 <p>结果见图 13.21：上方的曲线是原始图像的直方图，下方的是掩模区域的直方图——后者只统计了那 200×200 的小块。</p>
 <figure>
-  <img src="../images/ch13/fig-13-21.png" class="lq-img" />
-  <figcaption>图 13.21 掩模结果图像的直方图：整图曲线与掩模曲线（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-21.png" class="lq-img" />
+  <figcaption>图 13.21 掩模结果图像的直方图：整图曲线与掩模曲线（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4609,14 +4615,14 @@
 <p>如果一幅图像拥有全部可能的灰度级，且像素灰度均匀分布，它就有高对比度和多变的灰度色调，灰度级丰富、覆盖范围大，外观上不过暗也不过亮。直方图均衡化（<strong>histogram equalization</strong>）做的就是这件事：把挤在一起的灰度级摊开。</p>
 <p>图 13.22 是均衡化前后的对比：左图整体偏暗，右图色彩均衡。</p>
 <figure>
-  <img src="../images/ch13/fig-13-22.png" class="lq-img" />
-  <figcaption>图 13.22 直方图均衡化前后图像的显示效果对比（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-22.png" class="lq-img" />
+  <figcaption>图 13.22 直方图均衡化前后图像的显示效果对比（代码实跑）</figcaption>
 </figure>
 
-<p>从直方图看更清楚（图 13.23）：左图（原始图像）的灰度级集中在中间，没有较暗和较亮的像素；右图（均衡化后）像素分布更均衡。</p>
+<p>从直方图看更清楚（图 13.23）：左图（原始图像）的像素几乎全挤在低灰度区，较亮的像素很少，所以图像偏暗；右图（均衡化后）像素铺满整个灰度空间，分布更均衡。</p>
 <figure>
-  <img src="../images/ch13/fig-13-23.png" class="lq-img" />
-  <figcaption>图 13.23 图像均衡化前后的直方图对比（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-23.png" class="lq-img" />
+  <figcaption>图 13.23 图像均衡化前后的直方图对比（代码实跑）</figcaption>
 </figure>
 
 <p>均衡化的主要目的是把原始图像的灰度级均匀地映射到整个灰度级范围内，得到灰度级分布均匀的图像。这种均衡包含两层：</p>
@@ -4949,21 +4955,27 @@ s_k = T(r_k) = (L-1)\sum_{j=0}^{k} P(r_j) = \frac{L-1}{N}\sum_{j=0}^{k} n_j \qqu
 </code></pre></div>
 <p>运行结果见图 13.28：(a) 原始图像，(b) 均衡化后的图像，&copy; 原始图像的直方图，(d) 均衡化后图像的直方图。</p>
 <figure>
-  <img src="../images/ch13/fig-13-28.png" class="lq-img" />
-  <figcaption>图 13.28 【例 13.11】运行结果：(a) 原图、(b) 均衡化结果、(c)(d) 对应直方图（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-28.png" class="lq-img" />
+  <figcaption>图 13.28 【例 13.11】运行结果：(a) 原图、(b) 均衡化结果、(c)(d) 对应直方图（代码实跑）</figcaption>
 </figure>
 
 <p>对比很明显：均衡化之前图像整体偏暗，均衡化以后亮度变得均衡。但两幅直方图的对比不那么直观——这正是"统计概率 + HVS"综合均衡的体现：</p>
 <ul>
-<li>原始图像的直方图大部分像素集中在右侧（线条密集），说明 <span class="arithmatex">\([200, 255]\)</span> 区间的像素很多，图像偏亮；</li>
-<li>均衡化后的直方图左侧密、右侧疏。人眼感受不到像素值的细微差别，把相近的像素值看成同一个值之后，直方图就近似均衡了；</li>
-<li>换个角度看 (d) 图：左侧线条密但整体矮，右侧线条疏但整体高——较小的灰度级上每级都有像素但个数少，较大的灰度级分布稀疏、部分灰度级没出现，但出现了的级像素个数多。把灰度级按区间划分，<span class="arithmatex">\([0, 50]\)</span>、<span class="arithmatex">\([51, 100]\)</span>、<span class="arithmatex">\([101, 150]\)</span>、<span class="arithmatex">\([151, 200]\)</span>、<span class="arithmatex">\([201, 255]\)</span> 各区间内的像素个数大体一致——按区间看，它就是均衡的直方图。</li>
+<li>原始图像的直方图（c）：像素几乎全挤在左侧低灰度区，<span class="arithmatex">\([100, 255]\)</span> 段近乎空白——图像偏暗；</li>
+<li>均衡化后的直方图（d）：分布铺满整个 <span class="arithmatex">\([0, 255]\)</span>，整体近似"每个区间等高"，但曲线呈梳状尖峰——大量像素被映射到相邻的少数灰度级上，形成一根根细高的尖峰；</li>
+<li>人眼感受不到像素值的细微差别，把相近的像素值看成同一个值之后，直方图就近似均衡了。换个角度，把灰度级按区间划分，<span class="arithmatex">\([0, 50]\)</span>、<span class="arithmatex">\([51, 100]\)</span>、<span class="arithmatex">\([101, 150]\)</span>、<span class="arithmatex">\([151, 200]\)</span>、<span class="arithmatex">\([201, 255]\)</span> 各区间内的像素个数大体一致——按区间看，它就是均衡的直方图。</li>
 </ul>
 <p>实测验证这个"按区间大体一致"的说法（picture12.jpg）：均衡化前像素在上述五个区间的占比为 0.532、0.355、0.068、0.034、0.011，几乎全挤在低灰度区；均衡化后变为 0.196、0.192、0.202、0.192、0.218——每个区间都在 0.2 附近，分布均衡。</p>
 <div class="admonition warning">
 <p class="admonition-title">equalizeHist 只接受 8 位单通道</p>
 <p>对彩色图直接调用会报错（实测）：<code>error: (-215:Assertion failed) _src.type() == CV_8UC1 in function 'cv::equalizeHist'</code>。要均衡彩色图，要么拆成 B、G、R 三个通道分别均衡再合并，要么转到 HSV 色彩空间只均衡 V 通道（亮度），避免色度被破坏。</p>
 </div>
+<p>拆通道方案的实跑效果见图 13.41（picture12.jpg）：暗图整体提亮，对比度明显增强。</p>
+<figure>
+  <img src="../images/ch13/out-13-41.png" class="lq-img" />
+  <figcaption>图 13.41 彩色图均衡化：B、G、R 三通道分别 equalizeHist 后合并（代码实跑）</figcaption>
+</figure>
+
 <div class="admonition note">
 <p class="admonition-title">拓展：直方图对比与反向投影（本书未涉及）</p>
 <p>OpenCV 还有两个以直方图为基础的工具本章没有展开：<code>cv2.compareHist()</code> 用于比较两个直方图的相似度，提供相关性（Correlation）、卡方（Chi-Square）、交叉（Intersection）、巴氏距离（Bhattacharyya distance）等多种度量，常用于图像匹配；<code>cv2.calcBackProject()</code> 反向投影（<strong>back projection</strong>）把直方图映射回图像，突出符合目标分布的像素，是均值漂移跟踪等算法的基础。</p>
@@ -5031,8 +5043,8 @@ s_k = T(r_k) = (L-1)\sum_{j=0}^{k} P(r_j) = \frac{L-1}{N}\sum_{j=0}^{k} n_j \qqu
 </code></pre></div>
 <p>语句 <code>plt.axis('off')</code> 表示关闭坐标轴的显示。结果见图 13.32：左图直接用默认色彩空间显示，颜色不对——<code>cv2.imread()</code> 读到的图像是 BGR 模式，而 <code>imshow()</code> 按 RGB 模式解释，通道顺序错乱，无法正常显示；右图先经 <code>cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</code> 转成 RGB 再显示，正常。</p>
 <figure>
-  <img src="../images/ch13/fig-13-32.png" class="lq-img" />
-  <figcaption>图 13.32 【例 13.13】运行结果：BGR 直接显示乱色（左），转 RGB 后正常（右）（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-32.png" class="lq-img" />
+  <figcaption>图 13.32 【例 13.13】运行结果：BGR 直接显示乱色（左），转 RGB 后正常（右）（代码实跑）</figcaption>
 </figure>
 
 <p>【例 13.14】用不同形式显示灰度图像，观察哪种能正常显示。</p>
@@ -5061,8 +5073,8 @@ s_k = T(r_k) = (L-1)\sum_{j=0}^{k} P(r_j) = \frac{L-1}{N}\sum_{j=0}^{k} n_j \qqu
 <li>右下：灰度图 + <code>cmap=plt.cm.gray</code>，正常显示灰度图像。</li>
 </ul>
 <figure>
-  <img src="../images/ch13/fig-13-33.png" class="lq-img" />
-  <figcaption>图 13.33 【例 13.14】运行结果：四种显示方式中只有右下角正常（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-33.png" class="lq-img" />
+  <figcaption>图 13.33 【例 13.14】运行结果：四种显示方式中只有右下角正常（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -5085,8 +5097,8 @@ s_k = T(r_k) = (L-1)\sum_{j=0}^{k} P(r_j) = \frac{L-1}{N}\sum_{j=0}^{k} n_j \qqu
 </code></pre></div>
 <p>cmap 参数值 <code>plt.cm.gray_r</code> 及 <code>gray_r</code> 中的 r 是英文 reverse（逆转）的缩写，显示效果黑白对调。运行结果见图 13.34。</p>
 <figure>
-  <img src="../images/ch13/fig-13-34.png" class="lq-img" />
-  <figcaption>图 13.34 【例 13.15】运行结果：gray 与 gray_r 黑白反转对照（截自原书）</figcaption>
+  <img src="../images/ch13/out-13-34.png" class="lq-img" />
+  <figcaption>图 13.34 【例 13.15】运行结果：gray 与 gray_r 黑白反转对照（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">

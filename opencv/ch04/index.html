@@ -3946,7 +3946,7 @@
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">运行环境约定</p>
-<p>本章代码引用本目录根下的素材（<code>picture1.jpg</code>、<code>picture2.png</code>、<code>picture3.jpg</code>），路径写作相对路径。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，否则 <code>imread</code> 返回 None。原书用 <code>lenacolor.png</code>（例 4.4、4.5、4.13）、<code>opencv.jpg</code>（例 4.9 的 OpenCV logo）、<code>lesson2.jpg</code>（例 4.10 人像）、<code>barbara.bmp</code>（例 4.11）演示，本章统一换成：<code>picture1.jpg</code>（1080×1920×3）顶替 lena 与 barbara，<code>picture3.jpg</code>（1110×736×3 人像）顶替 lesson2。例 4.9 的 logo 图素材缺失（跟随代码用的 <code>picture4.jpg</code> 同样不在素材目录），运行前自备一张彩色 logo 图，或换 <code>picture1.jpg</code>——阈值命中比例随图而变，代码逻辑不变。另外，跟随代码 ipynb 里用的 <code>cv_show</code> 是未给出定义的辅助函数，运行 ipynb 前先补一句 <code>def cv_show(name, img): cv2.imshow(name, img); cv2.waitKey()</code>。控制台打印的具体数值随图片不同而不同；随机数组的例题沿用原书数组，输出与原书一致。</p>
+<p>本章代码引用本目录根下的素材（<code>picture1.jpg</code>、<code>picture2.png</code>、<code>picture3.jpg</code>），路径写作相对路径。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，否则 <code>imread</code> 返回 None。原书用 <code>lenacolor.png</code>（例 4.4、4.5、4.13）、<code>opencv.jpg</code>（例 4.9 的 OpenCV logo）、<code>lesson2.jpg</code>（例 4.10 人像）、<code>barbara.bmp</code>（例 4.11）演示，本章统一换成：<code>picture1.jpg</code>（1080×1920×3）顶替 lena 与 barbara，<code>picture3.jpg</code>（1110×736×3 人像）顶替 lesson2。例 4.9 的 logo 图素材缺失（跟随代码用的 <code>picture4.jpg</code> 同样不在素材目录），本章实跑用 <code>picture1.jpg</code> 顶替（蓝/绿/红掩码命中率分别约 2.08%、0.06%、5.02%），自备一张彩色 logo 图或换其他素材同样可行——阈值命中比例随图而变，代码逻辑不变。另外，跟随代码 ipynb 里用的 <code>cv_show</code> 是未给出定义的辅助函数，运行 ipynb 前先补一句 <code>def cv_show(name, img): cv2.imshow(name, img); cv2.waitKey()</code>。控制台打印的具体数值随图片不同而不同；随机数组的例题沿用原书数组，输出与原书一致。</p>
 </div>
 <h2 id="40-本章导图">4.0 本章导图<a class="headerlink" href="#40-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -4427,6 +4427,12 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <li>CIEL*a*b* 的 a、b 通道范围是 <span class="arithmatex">\([-127, 127]\)</span>，为适应 <span class="arithmatex">\([0, 255]\)</span>，每个值要<strong>加上 127</strong>。</li>
 </ul>
 <p>由于计算过程存在四舍五入，转换过程<strong>并不是精准可逆的</strong>。</p>
+<p>实测 <code>picture1.jpg</code> 走 BGR→HSV→BGR 往返：55.0% 的像素与原图存在差异，单通道最大差 4。肉眼几乎看不出 (a) 与 (b) 的区别，图 4.31 &copy; 把通道差异放大 50 倍后可视化——高饱和彩色区域、强边缘附近差异最明显，白背景、灰云等低饱和区域基本为 0。</p>
+<figure>
+  <img src="../images/ch04/out-4-31.png" class="lq-img" />
+  <figcaption>图 4.31 BGR→HSV→BGR 往返：(a) 原图，(b) 往返图，(c) 通道差异放大 50 倍（代码实跑）</figcaption>
+</figure>
+
 <h2 id="43-类型转换实例">4.3 类型转换实例<a class="headerlink" href="#43-类型转换实例" title="Permanent link">#</a></h2>
 <p>本节介绍几种常用的色彩空间转换实例，帮助理解 <code>cv2.cvtColor()</code> 的用法。</p>
 <h3 id="431-通过数组观察转换效果">4.3.1 通过数组观察转换效果<a class="headerlink" href="#431-通过数组观察转换效果" title="Permanent link">#</a></h3>
@@ -4581,11 +4587,11 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch04/fig-4-3.png" class="lq-img" />
-  <figcaption>图 4.3 【例 4.5】运行结果：左图 BGR 正常显示，右图按 RGB 顺序显示偏浅蓝色（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-3.png" class="lq-img" />
+  <figcaption>图 4.3 【例 4.5】运行结果：左图 BGR 正常显示，右图按 RGB 顺序显示红蓝互换、整体偏蓝紫（代码实跑，素材 picture1.jpg）</figcaption>
 </figure>
 
-<p>左图是 BGR 通道顺序的图像，正常显示；右图换成 RGB 通道顺序后呈现浅蓝色（红蓝互换）。第 2 章"merge 通道顺序一换颜色就变"的现象，这里是第 3 种触发方式。</p>
+<p>左图是 BGR 通道顺序的图像，正常显示；右图换成 RGB 通道顺序后红色蝴蝶结变成蓝色、头发偏黄，整体偏蓝紫（红蓝互换）。第 2 章"merge 通道顺序一换颜色就变"的现象，这里是第 3 种触发方式。</p>
 <h2 id="44-HSV-色彩空间讨论">4.4 HSV 色彩空间讨论<a class="headerlink" href="#44-HSV-色彩空间讨论" title="Permanent link">#</a></h2>
 <p>RGB 是被广泛接受的色彩空间，但过于抽象——不能直接通过数值感知具体色彩。我们更习惯用直观的方式感知颜色，HSV 提供了这种方式：通过色调、饱和度、亮度来感知颜色。除 HSV 外，本章讨论的其他大多数色彩空间都不方便人们对颜色理解和解释——现实中不可能用"每种颜料的百分比"（RGB 色彩空间）来形容一件衣服的颜色。</p>
 <h3 id="441-基础知识">4.4.1 基础知识<a class="headerlink" href="#441-基础知识" title="Permanent link">#</a></h3>
@@ -4650,6 +4656,12 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <p>转换到 8 位图时，饱和度 S 同样要从 <span class="arithmatex">\([0,1]\)</span> 映射到 <span class="arithmatex">\([0,255]\)</span>。</p>
 <p><strong>3．亮度 V</strong></p>
 <p>亮度的范围与饱和度一致，都是 <span class="arithmatex">\([0, 1]\)</span>，在 OpenCV 内同样映射到 <span class="arithmatex">\([0, 255]\)</span>。亮度值越大图像越亮，亮度值越低图像越暗；亮度值为 0 时图像是纯黑色。</p>
+<p>把 <code>picture1.jpg</code> 转到 HSV 后按通道拆开（图 4.30），三个分量各管一件事：H 通道里彩色区域随色调不同呈不同灰度，而白背景等低饱和像素的色调不可靠，直接落成 0（黑）；S 通道里越鲜艳的区域越亮，白、灰区域接近 0；V 通道则是一幅亮度图。</p>
+<figure>
+  <img src="../images/ch04/out-4-30.png" class="lq-img" />
+  <figcaption>图 4.30 picture1.jpg 转 HSV 后的三通道分解：H 色调、S 饱和度、V 亮度（代码实跑）</figcaption>
+</figure>
+
 <h3 id="442-获取指定颜色">4.4.2 获取指定颜色<a class="headerlink" href="#442-获取指定颜色" title="Permanent link">#</a></h3>
 <p>获取 RGB 颜色在 HSV 内对应值的方式有多种，例如用图像编辑软件或在线网站。注意：OpenCV 转换 HSV 时为了满足 8 位图要求做了映射处理，软件或网站给出的 HSV 值还要<strong>进一步映射</strong>，才能与 OpenCV 内的值一致。</p>
 <p>本节用程序直接查看 OpenCV 内 RGB 转 HSV 后各分量的值。</p>
@@ -4806,7 +4818,7 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># ===== 4.4.3 例 4.9：inRange + 掩码按位与，抠出蓝/绿/红 =====</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">opencv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture4.jpg"</span><span class="p">)</span>     <span class="c1"># 原书 opencv.jpg（OpenCV logo）；素材缺失，自备 logo 图</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">opencv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture1.jpg"</span><span class="p">)</span>     <span class="c1"># 原书 opencv.jpg（OpenCV logo）素材缺失，实跑用 picture1.jpg 顶替</span>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">opencv</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'opencv'</span><span class="p">,</span> <span class="n">opencv</span><span class="p">)</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">#=============指定蓝色值的范围=============</span>
@@ -4837,11 +4849,11 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch04/fig-4-4.png" class="lq-img" />
-  <figcaption>图 4.4 【例 4.9】运行结果：(a) 原图，(b) 提取蓝色，(c) 提取绿色，(d) 提取红色（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-4.png" class="lq-img" />
+  <figcaption>图 4.4 【例 4.9】运行结果：(a) 原图，(b) 提取蓝色，(c) 提取绿色，(d) 提取红色（代码实跑，素材 picture1.jpg）</figcaption>
 </figure>
 
-<p>图 (a) 是原始图像；(b)、&copy;、(d) 分别是从图 (a) 中提取出的蓝色、绿色、红色部分——每个窗口里只留下目标颜色的区域，其余全黑。三段代码结构完全一样，只有阈值不同：<strong>提取哪种颜色 = 换一组 [H±10, S下界, V下界] ~ [H+10, 255, 255]</strong>。</p>
+<p>图 (a) 是原始图像；(b)、&copy;、(d) 分别是从图 (a) 中提取出的蓝色、绿色、红色部分——每个窗口里只留下目标颜色的区域，其余全黑。实跑 <code>picture1.jpg</code> 的掩码命中率：蓝 2.08%、绿 0.06%、红 5.02%——这张图几乎不含 H 落在 <span class="arithmatex">\([50, 70]\)</span> 的绿色，&copy; 接近全黑；若换成原书的 OpenCV logo 一类色块分明的素材，三个通道都会像书图一样明亮成块。三段代码结构完全一样，只有阈值不同：<strong>提取哪种颜色 = 换一组 [H±10, S下界, V下界] ~ [H+10, 255, 255]</strong>。</p>
 <h3 id="444-标记肤色">4.4.4 标记肤色<a class="headerlink" href="#444-标记肤色" title="Permanent link">#</a></h3>
 <p>在标记特定颜色的基础上，可以把标注范围推广到特定对象上。通过分析估算出肤色在 HSV 色彩空间内的范围值，再在 HSV 空间内筛选出该范围内的值，就能把图像内包含肤色的部分提取出来。这里划定的肤色范围：</p>
 <ul>
@@ -4868,11 +4880,11 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch04/fig-4-5.png" class="lq-img" />
-  <figcaption>图 4.5 【例 4.10】运行结果：左原图（白背景），右提取结果，仅保留人像肤色部分（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-5.png" class="lq-img" />
+  <figcaption>图 4.5 【例 4.10】运行结果：左原图，右 H 掩码与 S 掩码相与后的提取结果（代码实跑，素材 picture3.jpg）</figcaption>
 </figure>
 
-<p>程序把人像从背景中分离出来：左侧原图背景是白色的，右侧提取结果仅保留人像肤色（含衣服）部分，背景为黑色。与例 4.9 的区别在于用了<strong>两个通道各做一个掩码再相与</strong>（<code>hueMask &amp; satMask</code>）：色调落在肤色区间、饱和度也落在肤色区间，两个条件同时满足才算肤色。实测 <code>picture3.jpg</code> 上该掩码命中 75.14% 的像素。</p>
+<p>程序只保留掩码命中的像素，其余置黑：右侧结果里面部肤色、头发等大片偏暖（H 在肤色区间内）的区域被保留，低饱和的白牙、高光与部分冷色、深色像素被置黑。与例 4.9 的区别在于用了<strong>两个通道各做一个掩码再相与</strong>（<code>hueMask &amp; satMask</code>）：色调落在肤色区间、饱和度也落在肤色区间，两个条件同时满足才算命中。实测 <code>picture3.jpg</code> 上该掩码命中 75.14% 的像素——可见 <span class="arithmatex">\([5, 170]\)</span>×<span class="arithmatex">\([25, 166]\)</span> 是个很宽的估计区间，想抠得更准就得按图片收紧阈值。</p>
 <h3 id="445-实现艺术效果">4.4.5 实现艺术效果<a class="headerlink" href="#445-实现艺术效果" title="Permanent link">#</a></h3>
 <p>在 HSV 色彩空间内调整分量值能生成有趣的效果，一些图像处理软件正是靠调 HSV 实现各种艺术效果的。本节把 H 通道和 S 通道保持不变，将 V 通道的值全部调成 255（最亮），观察效果。</p>
 <p>【例 4.11】调整 HSV 色彩空间内 V 通道的值。</p>
@@ -4890,11 +4902,11 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch04/fig-4-6.png" class="lq-img" />
-  <figcaption>图 4.6 艺术效果：左原图，右 V 通道置 255 后的画面（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-6.png" class="lq-img" />
+  <figcaption>图 4.6 艺术效果：左原图，右 V 通道置 255 后的画面（代码实跑，素材 picture1.jpg）</figcaption>
 </figure>
 
-<p>左侧是原始图像，右侧是艺术效果。流程值得记：<strong>拆通道 → 改某一通道 → merge 回去 → 转回 BGR</strong>。实测 <code>picture1.jpg</code> 全图平均亮度从 187.4 提到 232.0。改成其他值是别的味道——跟随代码里把 V 置 120，得到的就是压暗版。也可以试着改 H 或 S，比如 H 整体平移做出换色调效果。</p>
+<p>左侧是原始图像，右侧是艺术效果——暗部整体提亮、高光区接近泛白，像蒙了一层亮纱。流程值得记：<strong>拆通道 → 改某一通道 → merge 回去 → 转回 BGR</strong>。实测 <code>picture1.jpg</code> 全图灰度均值从 186.9 提到 230.3。改成其他值是别的味道——跟随代码里把 V 置 120，得到的就是压暗版。也可以试着改 H 或 S，比如 H 整体平移做出换色调效果。</p>
 <h2 id="45-alpha-通道">4.5 alpha 通道<a class="headerlink" href="#45-alpha-通道" title="Permanent link">#</a></h2>
 <p>在 RGB 三个通道的基础上加一个 A 通道（<strong>alpha 通道</strong>，表示透明度），就得到四通道的 RGBA 色彩空间。PNG 图像是一种典型的 4 通道图像。alpha 通道的赋值范围是 <span class="arithmatex">\([0, 1]\)</span> 或 <span class="arithmatex">\([0, 255]\)</span>，表示从透明到不透明。</p>
 <p>【例 4.12】分析 alpha 通道的值。</p>
@@ -4963,16 +4975,16 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 </code></pre></div>
 <p>程序先把图像由 BGR 转到 BGRA（为 lena 添加 alpha 通道），再分别把 alpha 置 125、0，合并得到 bgra125、bgra0，最后把三幅 BGRA 图像保存到当前目录。</p>
 <figure>
-  <img src="../images/ch04/fig-4-7.png" class="lq-img" />
-  <figcaption>图 4.7 【例 4.13】运行结果：(a) 原图，(b) bgra，(c) bgra125，(d) bgra0——alpha 不同，显示无差别（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-7.png" class="lq-img" />
+  <figcaption>图 4.7 【例 4.13】运行结果：(a) 原图，(b) bgra，(c) bgra125，(d) bgra0——alpha 不同，显示无差别（代码实跑，素材 picture3.jpg）</figcaption>
 </figure>
 
 <figure>
-  <img src="../images/ch04/fig-4-8.png" class="lq-img" />
-  <figcaption>图 4.8 保存的三幅图像：(a) bgra（alpha=255），(b) bgra125，(c) bgra0（截自原书）</figcaption>
+  <img src="../images/ch04/out-4-8.png" class="lq-img" />
+  <figcaption>图 4.8 保存后的三幅 PNG：上排白底预览 (a) bgra、(b) bgra125、(c) bgra0，下排对应 alpha 通道灰度图（代码实跑）</figcaption>
 </figure>
 
-<p>各图像的 alpha 通道值虽然不同，但<strong>在显示时是没有差别的</strong>（图 4.7 四个窗口看起来一样）。区别在保存之后（图 4.8）：bgra0 在预览模式下看起来可能是一幅黑色的图像，打开后会看到它实际上是纯色透明的。</p>
+<p>各图像的 alpha 通道值虽然不同，但<strong>在显示时是没有差别的</strong>（图 4.7 四个面板看起来一样，imshow 只认前三个通道）。区别在保存之后（图 4.8）：白底预览里 bgra 与原图一致，bgra125 像蒙了一层白雾（每个像素与白色按 125/255 混合），bgra0 整幅全白——它其实是完全透明的，衬白底显白、衬黑底显黑。下排把三幅图的 alpha 通道单独画出来，255、125、0 的差别一目了然。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：alpha 要看支持它的格式才存得下</p>
 <p><code>imwrite</code> 存 <strong>PNG</strong> 能完整保留 4 通道——实测把 alpha=125 的图存成 PNG 再读回，shape 仍是 (行, 列, 4)，alpha 全为 125。存成 <strong>JPEG</strong> 则直接丢掉 alpha——同一幅图存 .jpg 再读回只剩 3 通道。所以"透明"必须配 PNG 一类的格式；另见表 4-2 中 <code>cv2.COLOR_RGBA2mRGBA</code>（Alpha 预乘，把 alpha 乘进各颜色分量，供合成时免除非预乘纹理的额外处理）。</p>
@@ -4986,7 +4998,7 @@ v = 13 \cdot L \cdot (v' - v_n), \quad v_n = 0.46831096
 <li><strong><code>inRange</code> 必须作用在 HSV 图上</strong>：上下界按 (H, S, V) 顺序排。把 BGR 图直接丢进去 <code>cv2.inRange(bgr, (110,100,100), (130,255,255))</code>，比较的是 B、G、R 三个通道，得到的掩码与"提取蓝色"毫无关系。</li>
 <li><strong>S、V 下界别写 0</strong>：饱和度、亮度太低时算出的色调不可靠。正文建议 S、V 取 <span class="arithmatex">\([100,255]\)</span>；例 4.9 代码用了 50，例 4.10 的饱和度下界更是 25——按实际图片效果调，下界越低混进来的"假色"越多。</li>
 <li><strong>红色横跨 H=0 两侧</strong>：<span class="arithmatex">\([0,10]\)</span> 只罩住 0° 附近的红，<span class="arithmatex">\([170,180)\)</span> 段还有一半。只写一段漏一半，两段各 <code>inRange</code> 一次再做或运算。</li>
-<li><strong>转换不是精准可逆</strong>：8 位量化加四舍五入。实测 <code>picture1.jpg</code> 走 BGR→HSV→BGR，55% 的像素有差异、最大差 5。别用 <code>==</code> 验证往返，也别指望转一圈回来一字不差。</li>
+<li><strong>转换不是精准可逆</strong>：8 位量化加四舍五入。实测 <code>picture1.jpg</code> 走 BGR→HSV→BGR，55.0% 的像素有差异、单通道最大差 4（图 4.31）。别用 <code>==</code> 验证往返，也别指望转一圈回来一字不差。</li>
 <li><strong>alpha 显示无差别，存储才见真章</strong>：alpha 为 255、125、0 的三幅图 <code>imshow</code> 看起来一样；存 PNG 保留 4 通道，存 JPEG 直接丢 alpha（读回 3 通道）。<code>bgra0</code> 预览发黑不是 bug，是透明像素被衬成黑底。</li>
 <li><strong>GRAY→BGR 复原不了颜色</strong>：三个通道填同一个灰度值，出来仍是"灰度样"的图。颜色信息在 BGR→GRAY 那一步就永久丢了，别指望转回去。</li>
 </ol>

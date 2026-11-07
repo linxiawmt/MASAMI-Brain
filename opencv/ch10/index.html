@@ -3789,8 +3789,14 @@ B = \frac{1}{159} \begin{bmatrix} 2 &amp; 4 &amp; 5 &amp; 4 &amp; 2 \\ 4 &amp; 9
 </ul>
 <div class="admonition note">
 <p class="admonition-title">拓展：cv2.Canny 并不包含去噪这一步</p>
-<p>四步里的第 1 步要自己做：<code>cv2.Canny()</code> 内部不会自动做高斯滤波。实测给 <code>picture1.jpg</code> 加标准差 25 的高斯噪声后直接 <code>Canny(100, 200)</code>，边缘像素从 108 954 暴涨到 582 910（噪声点全部成了假边缘）；先 <code>cv2.GaussianBlur(noisy, (5, 5), 0)</code> 再 Canny，边缘像素回落到 85 722。噪声大的图，Canny 前加一行 <code>GaussianBlur</code> 是标准动作。</p>
+<p>四步里的第 1 步要自己做：<code>cv2.Canny()</code> 内部不会自动做高斯滤波。实测给 <code>picture1.jpg</code> 加标准差 25 的高斯噪声（np.random.seed(0) 固定种子）后直接 <code>Canny(100, 200)</code>，边缘像素从 108 954 暴涨到 581 358（噪声点全部成了假边缘）；先 <code>cv2.GaussianBlur(noisy, (5, 5), 0)</code> 再 Canny，边缘像素回落到 85 834。噪声大的图，Canny 前加一行 <code>GaussianBlur</code> 是标准动作。</p>
 </div>
+<p>图 10-30 把这组实测放在一起：干净图 Canny 后是疏朗的边缘线，噪声图直接 Canny 则满屏假边缘（边缘像素涨到约 5.3 倍），先做一次 5×5 高斯滤波再 Canny，画面基本回到干净图的水平。</p>
+<figure>
+  <img src="../images/ch10/out-10-30.png" class="lq-img" />
+  <figcaption>图 10.30 噪声对 Canny 的影响与高斯去噪的作用：(a) 干净图直接 Canny(100, 200)；(b) 加标准差 25 的高斯噪声；(c) 噪声图直接 Canny，噪声点全成假边缘；(d) 先 GaussianBlur(5, 5) 再 Canny（代码实跑）</figcaption>
+</figure>
+
 <h3 id="1012-步骤-2计算梯度的幅度与方向">10.1.2 步骤 2：计算梯度的幅度与方向<a class="headerlink" href="#1012-步骤-2计算梯度的幅度与方向" title="Permanent link">#</a></h3>
 <p>第 9 章介绍过如何计算图像梯度的幅度，这里关注<strong>梯度的方向</strong>：梯度的方向与边缘的方向是<strong>垂直</strong>的。</p>
 <p>边缘检测算子返回水平方向的 <span class="arithmatex">\(G_x\)</span> 和垂直方向的 <span class="arithmatex">\(G_y\)</span>。梯度的幅度 <span class="arithmatex">\(G\)</span> 和方向 <span class="arithmatex">\(\Theta\)</span>（用角度值表示）为：</p>
@@ -3878,8 +3884,8 @@ G = \sqrt{G_x^2 + G_y^2}
 </ul>
 <p>注意：高阈值 maxVal 和低阈值 minVal <strong>不是固定的</strong>，需要针对不同的图像进行定义。</p>
 <figure>
-  <img src="../images/ch10/fig-10-8.png" class="lq-img" />
-  <figcaption>图 10.8 Canny 边缘检测效果示例（截自原书）</figcaption>
+  <img src="../images/ch10/out-10-8.png" class="lq-img" />
+  <figcaption>图 10.8 Canny 边缘检测效果示例：(a) 原始图像，(b) Canny(100, 200) 检出的边缘（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -3977,8 +3983,8 @@ G = \sqrt{G_x^2 + G_y^2}
 <li>&copy; 图是参数 threshold1 为 32、threshold2 为 128 时的边缘检测结果。</li>
 </ul>
 <figure>
-  <img src="../images/ch10/fig-10-9.png" class="lq-img" />
-  <figcaption>图 10.9 不同参数设置的边缘检测结果：(a) 原图，(b) 阈值 (128, 200)，(c) 阈值 (32, 128)（截自原书）</figcaption>
+  <img src="../images/ch10/out-10-9.png" class="lq-img" />
+  <figcaption>图 10.9 不同参数设置的边缘检测结果：(a) 原图，(b) 阈值 (128, 200)，(c) 阈值 (32, 128)（代码实跑）</figcaption>
 </figure>
 
 <p>从程序运行结果可知：当 <code>cv2.Canny()</code> 的参数 threshold1 和 threshold2 的值<strong>较小时，能够捕获更多的边缘信息</strong>。</p>
@@ -4023,11 +4029,17 @@ G = \sqrt{G_x^2 + G_y^2}
 </table>
 <p>从 (128, 200) 到 (16, 64)，边缘像素数接近翻倍。边缘多了不只意味着"细节多"，也意味着噪声更容易混进来——调参时要在"提全"和"提净"之间权衡。</p>
 </div>
+<p>图 10-31 把表中四组阈值的边缘图放在一起，可以直观看到：阈值逐级降低时，边缘从主轮廓逐步"长出"细节，密度一路增加。</p>
+<figure>
+  <img src="../images/ch10/out-10-31.png" class="lq-img" />
+  <figcaption>图 10.31 四组阈值组合的边缘对比：(a) (128, 200)；(b) (64, 160)；(c) (32, 128)；(d) (16, 64)——阈值越低捕获的边缘越密（代码实跑）</figcaption>
+</figure>
+
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">7 个容易踩的坑</p>
 <ol>
-<li><strong><code>cv2.Canny</code> 不会自动去噪</strong>：四步中的高斯滤波要自己做。实测给图加标准差 25 的高斯噪声后直接 Canny(100, 200)，边缘像素从 108 954 涨到 582 910，全是假边缘；先 <code>cv2.GaussianBlur</code> 再 Canny 是标准流程。</li>
+<li><strong><code>cv2.Canny</code> 不会自动去噪</strong>：四步中的高斯滤波要自己做。实测给图加标准差 25 的高斯噪声后直接 Canny(100, 200)，边缘像素从 108 954 涨到 581 358，全是假边缘；先 <code>cv2.GaussianBlur</code> 再 Canny 是标准流程。</li>
 <li><strong>threshold1、threshold2 没有先后玄机</strong>：OpenCV 内部取小者作 minVal、大者作 maxVal，<code>Canny(img, 32, 128)</code> 与 <code>Canny(img, 128, 32)</code> 逐像素相同（实测 True）。别把"第一个阈值"当成"低阈值"的记忆负担——顺序真无所谓。</li>
 <li><strong>阈值没有万能值</strong>：maxVal、minVal 不是固定值，要按图调；高低调之比建议 2:1~3:1。阈值越小边缘越多，但噪声混入也越多；边缘出现断线时优先降 minVal，让虚边缘有机会被强边缘连上。</li>
 <li><strong>输入要 8 位、常规做法先灰度化</strong>：原书规定 image 为 8 位输入图像，例题全部读成灰度图。浮点图直接进 Canny 会报错；彩色图在旧版 OpenCV 直接断言失败，新版（实测 4.13）虽不报错，但返回的单通道边缘图与"先转灰度再 Canny"并不相同——拿不准就先 <code>cv2.cvtColor</code> 或按 <code>IMREAD_GRAYSCALE</code> 读入。</li>

@@ -3874,25 +3874,27 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">o</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture9.jpg"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_UNCHANGED</span><span class="p">)</span>  <span class="c1"># 原书 my.bmp：黑底白色图形</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>      <span class="c1"># 5×5 全 1 结构元</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">e</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>                <span class="c1"># 腐蚀：前景整体向内收缩一圈</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">b</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>             <span class="c1"># 原图减腐蚀图：差集就是一圈边界</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                   <span class="c1"># 1 行 3 列的第 1 幅</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>                      <span class="c1"># 原始图像</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                      <span class="c1"># 腐蚀结果</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>                      <span class="c1"># 边界图像</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                         <span class="c1"># 显示画布</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">o</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>    <span class="c1"># 素材适配：picture9.jpg 实为 4 通道 BGRA（扩展名 jpg 的 PNG），</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">o</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGRA2BGR</span><span class="p">)</span>   <span class="c1"># 减法会把 alpha 一并清零致边界显示不出来，先转 3 通道</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>      <span class="c1"># 5×5 全 1 结构元</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">e</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>                <span class="c1"># 腐蚀：前景整体向内收缩一圈</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">b</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>             <span class="c1"># 原图减腐蚀图：差集就是一圈边界</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                   <span class="c1"># 1 行 3 列的第 1 幅</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>                      <span class="c1"># 原始图像</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                      <span class="c1"># 腐蚀结果</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>                      <span class="c1"># 边界图像</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                         <span class="c1"># 显示画布</span>
 </code></pre></div>
 <p>运行程序，左图是原始图像，中间是对其腐蚀的结果，右图是原始图像减去腐蚀图像后得到的边界图像——比较准确地显示出前景对象的边界。</p>
 <figure>
-  <img src="../images/ch17/fig-17-8.png" class="lq-img" />
-  <figcaption>图 17.8 利用形态学变换获取图像边界（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-8.png" class="lq-img" />
+  <figcaption>图 17.8 利用形态学变换获取图像边界：picture9.jpg 原图、腐蚀结果、二者相减得到的边界（代码实跑）</figcaption>
 </figure>
 
 <p>形态学操作只适用于比较简单的图像。如果图像内的前景对象存在连接，形态学操作就无法准确获取各个子图像的边界了。</p>
@@ -4041,8 +4043,8 @@
 </code></pre></div>
 <p>左图是原始图像，中间是距离变换得到的距离图像，右图是对距离图像阈值化后的结果。右图比较准确地显示出左图内的"<strong>确定前景</strong>"（<strong>sure foreground</strong>）——通常指前景对象的中心。之所以认为这些点是确定前景，是因为它们距离背景点足够远，都是距离大于固定阈值（0.7×dist_transform.max()）的点。</p>
 <figure>
-  <img src="../images/ch17/fig-17-9.png" class="lq-img" />
-  <figcaption>图 17.9 距离变换与阈值化得到确定前景（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-9.png" class="lq-img" />
+  <figcaption>图 17.9 距离变换与阈值化得到确定前景：15 枚硬币各自得到一个亮斑（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4103,8 +4105,8 @@ UN = (O - B) - F
 </code></pre></div>
 <p>左上角是原始图像 ishow；右上角是对 ishow 膨胀后得到的 bg，其背景部分是确定背景，前景部分是"原始图像 − 确定背景"；左下角是确定前景 fore；右下角中的小圆环就是未知区域 un，由 bg 与 fore 相减得到。</p>
 <figure>
-  <img src="../images/ch17/fig-17-10.png" class="lq-img" />
-  <figcaption>图 17.10 确定背景、确定前景与未知区域（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-10.png" class="lq-img" />
+  <figcaption>图 17.10 确定背景、确定前景与未知区域：右下角小圆环即未知区域（代码实跑）</figcaption>
 </figure>
 
 <p>注意右上角图像 bg 中：前景的一个个小圆是"原始图像 − 确定背景"部分，而<strong>不是</strong>"确定背景"；其背景部分才是"确定背景"。</p>
@@ -4176,8 +4178,8 @@ UN = (O - B) - F
 </code></pre></div>
 <p>左图是原始图像 ishow，中间是距离变换得到的前景中心点图像 fore，右图是对中心点图像标注后的结果 markers——每个确定前景的中心被标成不同的颜色（不同数值）。</p>
 <figure>
-  <img src="../images/ch17/fig-17-11.png" class="lq-img" />
-  <figcaption>图 17.11 用 connectedComponents 标注确定前景（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-11.png" class="lq-img" />
+  <figcaption>图 17.11 用 connectedComponents 标注确定前景：ret=16（含背景），15 个中心各得一色（代码实跑）</figcaption>
 </figure>
 
 <p>函数 <code>cv2.connectedComponents()</code> 标注时，数值对应关系为：</p>
@@ -4234,10 +4236,10 @@ UN = (O - B) - F
 <a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>左图是直接标注的结果，右图是修正后的标注结果。对比可见，右图在前景边缘（未知区域）做了标注，每个确定前景都有一个黑色边缘——这个边缘就是被标注的未知区域。受对比度影响，纸质书上可能不明显，运行代码在屏幕上观察更清楚。</p>
+<p>左图是直接标注的结果，右图是修正后的标注结果。对比可见，右图在前景边缘（未知区域）做了标注，每个确定前景都有一个黑色边缘——这个边缘就是被标注的未知区域。受对比度影响，插图上可能不明显，运行代码在屏幕上观察更清楚。</p>
 <figure>
-  <img src="../images/ch17/fig-17-12.png" class="lq-img" />
-  <figcaption>图 17.12 标注修正前后的对比（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-12.png" class="lq-img" />
+  <figcaption>图 17.12 标注修正前后的对比：右图每个确定前景外圈多出一圈被置 0 的未知区域（代码实跑）</figcaption>
 </figure>
 
 <h4 id="5-函数-cv2watershed">5. 函数 cv2.watershed()<a class="headerlink" href="#5-函数-cv2watershed" title="Permanent link">#</a></h4>
@@ -4267,8 +4269,8 @@ UN = (O - B) - F
 <p>原书语法说明最后写"markers 可以省略"。在 OpenCV 的 Python 接口中 <code>cv2.watershed(image, markers)</code> 的两个参数都是必填的，不存在省略 markers 的调用方式；markers（32 位单通道标注图）正是算法赖以工作的种子输入。</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">拓展：-1 边界只出现在区域之间</p>
-<p>watershed 返回后，-1 只写在<strong>不同分割区域交界处</strong>的像素上：相邻两个种子泛洪相遇的地方。背景最外圈、以及某个区域自己独占的边缘不会有 -1。所以 <code>img[markers == -1] = [0, 255, 0]</code> 画出的是"区域之间的分界线"，而不是整个轮廓。另外 watershed 会直接修改传入的 markers 数组（就地写入），返回值与传入值是同一个数组。</p>
+<p class="admonition-title">拓展：-1 边界写在哪里</p>
+<p>watershed 返回后，-1 写在两处：一是<strong>不同分割区域交界处</strong>的像素（相邻两个种子泛洪相遇的地方）；二是<strong>图像最外圈的一像素框</strong>——OpenCV 把图像外侧当作一个虚拟区域参与泛洪，实测（OpenCV 4.13）最外圈像素全部被写成 -1，所以 <code>img[markers == -1] = [0, 255, 0]</code> 的结果自带一圈绿色外框。某个区域自己独占的普通边缘（不与其他区域相邻）不会有 -1。另外 watershed 会直接修改传入的 markers 数组（就地写入），返回值与传入值是同一个数组。</p>
 </div>
 <h3 id="1713-分水岭算法图像分割实例">17.1.3 分水岭算法图像分割实例<a class="headerlink" href="#1713-分水岭算法图像分割实例" title="Permanent link">#</a></h3>
 <p>结合前面的知识，用分水岭算法做图像分割。基本步骤为：</p>
@@ -4334,8 +4336,14 @@ UN = (O - B) - F
 </ul>
 </div>
 <figure>
-  <img src="../images/ch17/fig-17-13.png" class="lq-img" />
-  <figcaption>图 17.13 利用分水岭算法进行图像分割（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-13.png" class="lq-img" />
+  <figcaption>图 17.13 利用分水岭算法进行图像分割：15 枚硬币各自成区，绿色为分割线（代码实跑）</figcaption>
+</figure>
+
+<p>把上述七步的中间结果横向排在一起，便于逐环节对照检查：</p>
+<figure>
+  <img src="../images/ch17/out-17-30.png" class="lq-img" />
+  <figcaption>图 17.30 拓展实跑：分水岭流水线七步中间结果——原图、Otsu+闭运算填洞、开运算去噪、膨胀得确定背景、距离变换、0.7×max 阈值化得确定前景、未知区域、最终分割出 15 个区域（代码实跑）</figcaption>
 </figure>
 
 <h2 id="172-交互式前景提取">17.2 交互式前景提取<a class="headerlink" href="#172-交互式前景提取" title="Permanent link">#</a></h2>
@@ -4484,10 +4492,10 @@ UN = (O - B) - F
 <a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>不使用掩模（掩模值都为默认的 0）时，<code>cv2.grabCut()</code> 的处理效果并不太好：提取前景时人物的帽子没有提取完整；对有些图像，还可能把背景错误地提取出来。</p>
+<p>不使用掩模（掩模值都为默认的 0）时，<code>cv2.grabCut()</code> 的处理效果并不太好：picture3 中人物深色的头发、眼睛、嘴和衣服都被当成了背景，只有颜色与背景差异明显的面部皮肤被提取出来；对有些图像，还可能把背景错误地提取出来。</p>
 <figure>
-  <img src="../images/ch17/fig-17-15.png" class="lq-img" />
-  <figcaption>图 17.15 使用 GrabCut 算法提取前景：右图帽檐发梢有残缺（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-15.png" class="lq-img" />
+  <figcaption>图 17.15 使用 GrabCut 算法提取前景：右图发顶被切、双眼和嘴被挖成空洞（代码实跑）</figcaption>
 </figure>
 
 <p>为了得到完整的前景对象，需要改进：对原始图像进行标注，把需要保留的部分设置为白色，把需要删除的背景设置为黑色，以标记好的图像作为掩模，再用 <code>cv2.grabCut()</code> 完成前景提取。主要步骤：</p>
@@ -4545,10 +4553,12 @@ UN = (O - B) - F
 <a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch17/fig-17-16.png" class="lq-img" />
-  <figcaption>图 17.16 使用掩模提取前景：左为标注模板，右为提取结果（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-16.png" class="lq-img" />
+  <figcaption>图 17.16 使用掩模提取前景：左为程序生成的标注模板，右为提取结果（代码实跑）</figcaption>
 </figure>
 
+<p>对比图 17.15：补充白色标注后，发顶、嘴等区域被找了回来；但模板没盖到的右眼仍被误删——标注要覆盖全部前景细节，提取效果才完整。</p>
+<p>实际使用中也可以不用矩形初始化，直接使用模板模式。构造一幅模板图像，其中：</p>
 <p>实际使用中也可以不用矩形初始化，直接使用模板模式。构造一幅模板图像，其中：</p>
 <ul>
 <li>像素值 0 标注确定背景；</li>
@@ -4592,8 +4602,8 @@ UN = (O - B) - F
 <a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch17/fig-17-17.png" class="lq-img" />
-  <figcaption>图 17.17 使用自定义模板提取前景（截自原书）</figcaption>
+  <img src="../images/ch17/out-17-17.png" class="lq-img" />
+  <figcaption>图 17.17 使用自定义模板提取前景：矩形框模板同样只框住面部，右眼仍被误删（代码实跑）</figcaption>
 </figure>
 
 <p>本例构造的模板比较简单。构造更有针对性的模板，能够提取更准确的前景对象。对于不同的图像，要构造不同的模板来划分它们的确定前景、确定背景、可能的前景与可能的背景。</p>
@@ -4728,6 +4738,12 @@ UN = (O - B) - F
 <a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"compactness ="</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>                        <span class="c1"># 本次量化的紧密度</span>
 </code></pre></div>
+<p>运行结果如下图：4 个类心分别对应深色皮革背景、两种深浅的金色币面和暗色斑渍，同色区域连成块，完成一次按颜色的粗分割。</p>
+<figure>
+  <img src="../images/ch17/out-17-31.png" class="lq-img" />
+  <figcaption>图 17.31 拓展实跑：K-means 颜色量化（K=4）把 picture13.jpg 的像素聚成 4 类并替换为类心颜色（代码实跑）</figcaption>
+</figure>
+
 <div class="admonition note">
 <p class="admonition-title">拓展：三种分割方法怎么选</p>
 <ul>
@@ -4743,7 +4759,7 @@ UN = (O - B) - F
 <li><strong>阈值极性想当然</strong>：<code>THRESH_BINARY_INV+OTSU</code> 只对"浅底暗物"成立（原书 water_coins）。深底亮物（picture13）用 INV 会把背景变成前景，后面距离变换、标注、分水岭全在分割背景——输出一片噪声。先想清楚"物体亮还是背景亮"，再选 BINARY 还是 INV。</li>
 <li><strong>0 在两个函数里含义相反</strong>：<code>connectedComponents</code> 里 0 = 背景；<code>watershed</code> 里 0 = 未知区域。把 connectedComponents 的结果直接喂给 watershed，等于告诉算法"没有未知区域"，背景还会被当成 0 号种子，结果整体错位。必须 <code>markers + 1</code> 后再把 unknown 区域置 0。</li>
 <li><strong>markers 的 dtype 必须是 32 位有符号整数</strong>：connectedComponents 的返回值天然是 int32，可直接用；自己构造标注时要写 <code>np.int32</code>，传 uint8 会报错。-1 也只有 int32 装得下。</li>
-<li><strong>-1 边界的范围被高估</strong>：<code>markers == -1</code> 只覆盖不同区域交界处，不含背景最外圈。想给整幅图加外框，得另想办法；用绿色 <code>[0,255,0]</code> 涂边界时注意 img 此时已被转成 RGB 序（或先涂再转）。</li>
+<li><strong>-1 边界比想象的多一圈外框</strong>：<code>markers == -1</code> 除了不同区域交界处，还总是包含<strong>图像最外圈的一像素框</strong>（OpenCV 把图像外侧当虚拟区域），涂绿后结果自带一圈绿框；不想要外框，可在涂色后把最外圈像素恢复为原图。用绿色 <code>[0,255,0]</code> 涂边界时注意 img 此时已被转成 RGB 序（或先涂再转）。</li>
 <li><strong>确定背景必须用膨胀</strong>：对前景掩模做膨胀（如 iterations=3），前景放大、背景缩小，剩下的背景才"确定不含前景"。直接拿二值化结果当确定背景，物体边缘那一圈就永远是未知区域之外——UN 算错，边界画不准。</li>
 <li><strong>手绘模板不能直接当 mask 传给 grabCut</strong>：画笔画出的是 0~255 的灰度图，grabCut 只认 0/&frac12;/3。必须先映射：白 255→1（确定前景）、黑 0→0（确定背景），再以 <code>GC_INIT_WITH_MASK</code> 模式调用。</li>
 <li><strong>rect 必须框住全部前景</strong>：rect 之外一律被当作确定背景，框外的前景永远不会被提取。不确定图的大小时，w、h 可以给一个很大的值；掩模模式下 rect 传 None。</li>

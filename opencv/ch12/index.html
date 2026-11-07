@@ -4528,8 +4528,8 @@
 <li>第 0 个轮廓是右下角小矩形的 4 个角点，坐标为 <code>[列 行]</code> 形式。</li>
 </ul>
 <figure>
-  <img src="../images/ch12/fig-12-1.png" class="lq-img" />
-  <figcaption>图 12.1 轮廓示例：左图三个对象，右图提取出 3 条轮廓并编号（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-1.png" class="lq-img" />
+  <figcaption>图 12.1 轮廓示例：左图三个对象，右图提取出 3 条轮廓并编号（代码实跑）</figcaption>
 </figure>
 
 <p><strong>返回值 hierarchy（层次）。</strong> 图像内的轮廓可能存在嵌套：外部的轮廓称为<strong>父轮廓</strong>，其内部的轮廓称为<strong>子轮廓</strong>。轮廓之间的父子、先后关系称为层次（组织结构），<code>hierarchy</code> 就是这种关系的描述。每个轮廓 <code>contours[i]</code> 对应 4 个元素：</p>
@@ -4598,10 +4598,16 @@
   <figcaption>图 12.5 RETR_TREE：等级树结构（截自原书）</figcaption>
 </figure>
 
+<p>四种模式在同一幅构造图上检索出的轮廓编号对比（层次数值即上面的实测输出）：</p>
+<figure>
+  <img src="../images/ch12/out-12-50.png" class="lq-img" />
+  <figcaption>图 12.50 四种 RETR 模式在带孔矩形构造图上的轮廓编号对比：EXTERNAL 只剩 2 条外轮廓，LIST/CCOMP/TREE 都是 3 条但父子关系不同（代码实跑，增补）</figcaption>
+</figure>
+
 <p><strong>参数 method：4 种近似方法。</strong></p>
 <figure>
-  <img src="../images/ch12/fig-12-6.png" class="lq-img" />
-  <figcaption>图 12.6 CHAIN_APPROX_NONE（左，存储每个轮廓点）与 CHAIN_APPROX_SIMPLE（右，仅 4 个角点）（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-6.png" class="lq-img" />
+  <figcaption>图 12.6 CHAIN_APPROX_NONE（左，存储每个轮廓点）与 CHAIN_APPROX_SIMPLE（右，仅 4 个角点）（代码实跑，取大矩形外边界：656 点 vs 4 角点）</figcaption>
 </figure>
 
 <ul>
@@ -4667,8 +4673,8 @@
 </code></pre></div>
 <p>三个对象提取出 3 条外轮廓。注意编号顺序：下方的方块反而是 <code>contours[0]</code>，上方的圆是 <code>contours[2]</code>——<strong>轮廓编号由算法内部扫描顺序决定，不按"从上到下、从左到右"排列</strong>，定位特定轮廓时先打印 <code>boundingRect</code> 核对再使用索引。</p>
 <figure>
-  <img src="../images/ch12/fig-12-7.png" class="lq-img" />
-  <figcaption>图 12.7 【例 12.1】绘制所有轮廓：3 条红色轮廓（纸质书显示为灰色）（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-7.png" class="lq-img" />
+  <figcaption>图 12.7 【例 12.1】绘制所有轮廓：3 条红色轮廓（代码实跑）</figcaption>
 </figure>
 
 <p>【例 12.2】逐个显示一幅图像内的边缘信息：循环把 <code>contourIdx</code> 依次设为 0, 1, 2, …。</p>
@@ -4710,8 +4716,8 @@
 </code></pre></div>
 <p>实心轮廓 <code>mask</code> 是一幅"对象白、背景黑"的二值掩模；<code>bitwise_and</code> 把掩模外的像素全部清零，掩模内的像素原样保留，前景对象就被抠了出来。</p>
 <figure>
-  <img src="../images/ch12/fig-12-9.png" class="lq-img" />
-  <figcaption>图 12.9 【例 12.3】原始图像（左）、实心轮廓掩模（中）、提取出的前景小花（右）（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-9.png" class="lq-img" />
+  <figcaption>图 12.9 【例 12.3】原始图像（左）、实心轮廓掩模（中）、提取出的前景对象（右）（代码实跑）</figcaption>
 </figure>
 
 <h2 id="122-矩特征">12.2 矩特征<a class="headerlink" href="#122-矩特征" title="Permanent link">#</a></h2>
@@ -4850,8 +4856,8 @@
 </code></pre></div>
 <p>实测三条面积 4900、9101、3754 中只有轮廓 1（箭头，9101）超过 5000，仅它被显示——这就是"按面积筛掉小噪声"的标准写法。</p>
 <figure>
-  <img src="../images/ch12/fig-12-12.png" class="lq-img" />
-  <figcaption>图 12.12 【例 12.6】只显示面积大于阈值的轮廓（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-12.png" class="lq-img" />
+  <figcaption>图 12.12 【例 12.6】只显示面积大于阈值的轮廓：仅 contours[1]（箭头，面积 9101）入选（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1223-计算轮廓的长度arcLength-函数">12.2.3 计算轮廓的长度：arcLength 函数<a class="headerlink" href="#1223-计算轮廓的长度arcLength-函数" title="Permanent link">#</a></h3>
@@ -5063,8 +5069,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 <li>不相似图像的返回值大得多（0.125）。</li>
 </ul>
 <figure>
-  <img src="../images/ch12/fig-12-15.png" class="lq-img" />
-  <figcaption>图 12.15 【例 12.10】参与匹配的三幅图像：cs1、缩放旋转平移后的 cs2、不相似的 cc（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-15.png" class="lq-img" />
+  <figcaption>图 12.15 【例 12.10】参与匹配的三幅图像：g1 四边形、放大 2 倍后的 g2（显示时缩半）、不相似的 g3 圆（代码实跑）</figcaption>
 </figure>
 
 <h2 id="124-轮廓拟合">12.4 轮廓拟合<a class="headerlink" href="#124-轮廓拟合" title="Permanent link">#</a></h2>
@@ -5117,8 +5123,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 <a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch12/fig-12-16.png" class="lq-img" />
-  <figcaption>图 12.16 【例 12.12】在原图上绘制矩形包围框（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-16.png" class="lq-img" />
+  <figcaption>图 12.16 【例 12.12】在原图上绘制矩形包围框（代码实跑）</figcaption>
 </figure>
 
 <p>【例 12.13】用 <code>cv2.rectangle()</code> 绘制：更简单，直接给左上、右下两个角点。</p>
@@ -5195,8 +5201,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 <li>取整后的 4 个角点与构造四边形时给的顶点一一对应。</li>
 </ul>
 <figure>
-  <img src="../images/ch12/fig-12-18.png" class="lq-img" />
-  <figcaption>图 12.18 【例 12.14】最小包围矩形框：随对象倾斜（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-18.png" class="lq-img" />
+  <figcaption>图 12.18 【例 12.14】最小包围矩形框：随对象倾斜（代码实跑，底图调暗以显示白色矩形）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -5229,8 +5235,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>实测：<code>(x, y) = (280.0000, 120.0000)</code>、<code>radius = 50.0001</code>——圆轮廓的包围圆就是它自己（圆心 (280,120)、半径 50）。</p>
 <figure>
-  <img src="../images/ch12/fig-12-19.png" class="lq-img" />
-  <figcaption>图 12.19 【例 12.15】最小包围圆形（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-19.png" class="lq-img" />
+  <figcaption>图 12.19 【例 12.15】最小包围圆形（代码实跑，底图调暗以显示白色圆）</figcaption>
 </figure>
 
 <h3 id="1244-最优拟合椭圆">12.4.4 最优拟合椭圆<a class="headerlink" href="#1244-最优拟合椭圆" title="Permanent link">#</a></h3>
@@ -5269,8 +5275,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 <li>105.85：旋转角度。</li>
 </ul>
 <figure>
-  <img src="../images/ch12/fig-12-20.png" class="lq-img" />
-  <figcaption>图 12.20 【例 12.16】最优拟合椭圆（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-20.png" class="lq-img" />
+  <figcaption>图 12.20 【例 12.16】最优拟合椭圆（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1245-最优拟合直线">12.4.5 最优拟合直线<a class="headerlink" href="#1245-最优拟合直线" title="Permanent link">#</a></h3>
@@ -5347,8 +5353,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>实测 <code>[vx, vy, x, y] = [0.9645, 0.264, 140.10, 95.00]</code>：方向向量 (0.9645, 0.264) 表示直线向右下方倾斜，过点 (140.10, 95.00)（≈ 质心）。<code>lefty</code>/<code>righty</code> 用点斜式把直线延拓到图像左右两条边界上，再整条画出。</p>
 <figure>
-  <img src="../images/ch12/fig-12-21.png" class="lq-img" />
-  <figcaption>图 12.21 【例 12.17】最优拟合直线（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-21.png" class="lq-img" />
+  <figcaption>图 12.21 【例 12.17】最优拟合直线（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1246-最小外包三角形">12.4.6 最小外包三角形<a class="headerlink" href="#1246-最小外包三角形" title="Permanent link">#</a></h3>
@@ -5381,12 +5387,16 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>实测输出：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>area= 13239.9970703125
-<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>trgl: [[[210, 50]], [[-10, 50]], [[170, 170]]]
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>trgl: [[[210.33333   50.      ]]
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a> [[-10.333328  50.      ]]
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a> [[170.33333  170.      ]]]
 </code></pre></div>
 <p>三个顶点连接时用 <code>(i+1) % 3</code> 让第 3 个顶点连回第 1 个，三角形才闭合。注意原书这里用 <code>tuple(trgl[i][0])</code> 传入 <code>cv2.line</code>——<code>trgl</code> 是 float32，部分版本的绘图函数不接受浮点坐标，先 <code>astype(int)</code> 更稳。</p>
 <figure>
-  <img src="../images/ch12/fig-12-22.png" class="lq-img" />
-  <figcaption>图 12.22 【例 12.18】最小外包三角形（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-22.png" class="lq-img" />
+  <figcaption>图 12.22 【例 12.18】最小外包三角形（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1247-逼近多边形">12.4.7 逼近多边形<a class="headerlink" href="#1247-逼近多边形" title="Permanent link">#</a></h3>
@@ -5437,8 +5447,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>斜四边形轮廓有 204 个边界点（斜边不是 45°，SIMPLE 压不掉）。epsilon 取周长的 1% 以上时都收敛到 4 个顶点，且坐标就是构造时的四个顶点 <code>[100,50] [200,80] [180,140] [80,110]</code>；epsilon 降到 0.1% 才保留 124 个点。原书图像上更精细的 epsilon 依次呈现 3 → 4 → 5 → 更多顶点的渐进过程——<strong>epsilon 越小多边形越贴近原轮廓，也越失去"简化"的意义</strong>。</p>
 <figure>
-  <img src="../images/ch12/fig-12-24.png" class="lq-img" />
-  <figcaption>图 12.24 【例 12.19】不同 epsilon 的逼近多边形：(b) 一条直线 → (f) 贴合轮廓（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-24.png" class="lq-img" />
+  <figcaption>图 12.24 【例 12.19】不同 epsilon 的逼近多边形：0.1/0.02/0.01 倍周长都收敛到 4 个顶点，0.001 倍周长保留 124 点（代码实跑）</figcaption>
 </figure>
 
 <p>需要注意：本节示例处理的都是单轮廓图的 <code>contours[0]</code>。若原图有多个轮廓，要控制索引 <code>contours[i]</code> 指向特定轮廓。</p>
@@ -5550,8 +5560,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>只有一条缺陷：从角点 (250,50) 到 (50,50)，最远点正是凹口顶点 (150,150)。距离字段 25600 是<strong>乘以 256 的定点数</strong>，除以 256 得 100.00——恰是凹点到凸包边 y=50 的垂直距离，手算吻合。</p>
 <figure>
-  <img src="../images/ch12/fig-12-27.png" class="lq-img" />
-  <figcaption>图 12.27 【例 12.22】凸缺陷：红色连线与蓝色最远点（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-27.png" class="lq-img" />
+  <figcaption>图 12.27 【例 12.22】凸缺陷：红色连线与蓝色最远点（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -5599,8 +5609,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>凸包必然是凸的（True）；epsilon=1% 周长的逼近多边形保留了 5 个顶点，凹口还没被"填平"，所以不是凸形（False）。</p>
 <figure>
-  <img src="../images/ch12/fig-12-28.png" class="lq-img" />
-  <figcaption>图 12.28 【例 12.23】原图（左）、凸包（中，凸形）、逼近多边形（右，非凸）（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-28.png" class="lq-img" />
+  <figcaption>图 12.28 【例 12.23】原图（左）、凸包（中，凸形）、逼近多边形（右，非凸）（代码实跑）</figcaption>
 </figure>
 
 <p><strong>2. 点到轮廓的距离</strong></p>
@@ -5642,8 +5652,8 @@ m_i^A = \mathrm{sign}(h_i^A) \cdot \log(h_i^A), \qquad m_i^B = \mathrm{sign}(h_i
 </code></pre></div>
 <p>A 在轮廓内部（到最近边界 50 像素），返回正数；B 在外部 50 像素，返回负数；C 恰在顶点上，返回 0（打印成 -0.0 是浮点表示问题）。距离数值可以手算：凸包边界分别是 x=50、x=250、y=50、y=250，点 (100,200) 到最近的边界（x=50 或 y=250）恰好 50。</p>
 <figure>
-  <img src="../images/ch12/fig-12-29.png" class="lq-img" />
-  <figcaption>图 12.29 【例 12.24】内部点 A、外部点 B、边上点 C 到凸包的距离（截自原书）</figcaption>
+  <img src="../images/ch12/out-12-29.png" class="lq-img" />
+  <figcaption>图 12.29 【例 12.24】内部点 A（+50.0）、外部点 B（−50.0）、边上点 C（0）到凸包的距离（代码实跑）</figcaption>
 </figure>
 
 <p>【例 12.25】measureDist=False：只判断位置关系。</p>
@@ -6096,6 +6106,12 @@ H(A, B) = \max\left(h(A, B),\ h(B, A)\right), \qquad h(A, B) = \max_{a \in A} \m
 <li>彩色图返回 B、G、R、A 四个均值，本例三通道相同所以三个值一样，alpha 通道为 0；</li>
 <li>手算核对：掩模内 6000 个像素，5998 个是 100、一个 10、一个 250，均值 <span class="arithmatex">\((5998 \times 100 + 10 + 250)/6000 = 100.01\)</span>，与实测一致。</li>
 </ul>
+<p>实心轮廓掩模怎样"圈出"统计区域，可对照下面的实跑图：minMaxLoc 的最值位置与 mean 的均值都来自掩模保留的那块感兴趣区域。</p>
+<figure>
+  <img src="../images/ch12/out-12-51.png" class="lq-img" />
+  <figcaption>图 12.51 实心轮廓掩模限定 minMaxLoc / mean 的统计区域：左为原图与最值位置，右为掩模选出的感兴趣区域（代码实跑，增补）</figcaption>
+</figure>
+
 <h3 id="1279-极点">12.7.9 极点<a class="headerlink" href="#1279-极点" title="Permanent link">#</a></h3>
 <p>获取对象最左、最右、最上、最下四个极值点，用 Numpy 的 <code>argmin</code>/<code>argmax</code> 沿轮廓点集的某一维查找：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="n">leftmost</span>   <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">cnt</span><span class="p">[</span><span class="n">cnt</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">argmin</span><span class="p">()][</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># x 最小的点</span>

@@ -3734,10 +3734,10 @@
 <li>将图像内所有像素值大于 127 的像素点的值设为 255；</li>
 <li>将图像内所有像素值小于或等于 127 的像素点的值设为 0。</li>
 </ul>
-<p>这样得到一幅二值图像，前景与背景被有效分离——图 6.1 左边是灰度原图，右边是处理后的二值图，帽檐、头发这些亮部保留为白，背景整体变黑。</p>
+<p>这样得到一幅二值图像，前景与背景被有效分离——图 6.1 左边是灰度原图，右边是处理后的二值图，明亮的背景、浅色的服饰保留为白，深色的头发、轮廓线整体变黑。</p>
 <figure>
-  <img src="../images/ch06/fig-6-1.png" class="lq-img" />
-  <figcaption>图 6.1 阈值处理示例：灰度图 → 二值图，前景与背景分离（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-1.png" class="lq-img" />
+  <figcaption>图 6.1 阈值处理示例：灰度图 → 二值图，前景与背景分离（代码实跑）</figcaption>
 </figure>
 
 <p>OpenCV 提供两个函数实现阈值处理：<code>cv2.threshold()</code>（固定阈值）与 <code>cv2.adaptiveThreshold()</code>（自适应阈值）。先看前者，语法格式：</p>
@@ -3977,10 +3977,10 @@ dst(x,y)=\begin{cases}
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
-<p>运行程序，结果如图 6.4 所示，左图是原始图像，右图是二值化阈值处理结果：亮部（脸、帽子顶部）变白，暗部（背景、头发阴影）变黑，全图只剩纯黑与纯白两个灰度级。</p>
+<p>运行程序，结果如图 6.4 所示，左图是原始图像，右图是二值化阈值处理结果：亮部（白色背景、浅色服饰）变白，暗部（头发、深色轮廓）变黑，全图只剩纯黑与纯白两个灰度级。</p>
 <figure>
-  <img src="../images/ch06/fig-6-4.png" class="lq-img" />
-  <figcaption>图 6.4 二值化阈值处理结果：左原图，右 BINARY 处理结果（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-4.png" class="lq-img" />
+  <figcaption>图 6.4 【例 6.2】运行结果：左原图，右 BINARY 处理结果（代码实跑）</figcaption>
 </figure>
 
 <h3 id="612-反二值化阈值处理cv2THRESH_BINARY_INV">6.1.2 反二值化阈值处理（cv2.THRESH_BINARY_INV）<a class="headerlink" href="#612-反二值化阈值处理cv2THRESH_BINARY_INV" title="Permanent link">#</a></h3>
@@ -4040,8 +4040,8 @@ dst(x,y)=\begin{cases}
 </code></pre></div>
 <p>运行程序，结果如图 6.6 所示：与图 6.4 的 BINARY 结果对照，黑白完全互换——亮部变黑、暗部变白，好比照片的"负片"。</p>
 <figure>
-  <img src="../images/ch06/fig-6-6.png" class="lq-img" />
-  <figcaption>图 6.6 反二值化阈值处理结果：与图 6.4 黑白互换（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-6.png" class="lq-img" />
+  <figcaption>图 6.6 【例 6.4】运行结果：反二值化阈值处理，与图 6.4 黑白互换（代码实跑）</figcaption>
 </figure>
 
 <h3 id="613-截断阈值化处理cv2THRESH_TRUNC">6.1.3 截断阈值化处理（cv2.THRESH_TRUNC）<a class="headerlink" href="#613-截断阈值化处理cv2THRESH_TRUNC" title="Permanent link">#</a></h3>
@@ -4106,8 +4106,8 @@ src(x,y), &amp; \text{其他情况}
 </code></pre></div>
 <p>运行程序，结果如图 6.8 所示：右图亮部全部压成同一层灰（127），整体像蒙了一层灰纱——画面比原图"闷"，因为最亮的那批像素失去了层次。</p>
 <figure>
-  <img src="../images/ch06/fig-6-8.png" class="lq-img" />
-  <figcaption>图 6.8 截断阈值化处理结果：亮部压平为 127（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-8.png" class="lq-img" />
+  <figcaption>图 6.8 【例 6.6】运行结果：截断阈值化处理，亮部压平为 127（代码实跑）</figcaption>
 </figure>
 
 <h3 id="614-超阈值零处理cv2THRESH_TOZERO_INV">6.1.4 超阈值零处理（cv2.THRESH_TOZERO_INV）<a class="headerlink" href="#614-超阈值零处理cv2THRESH_TOZERO_INV" title="Permanent link">#</a></h3>
@@ -4167,8 +4167,8 @@ src(x,y), &amp; \text{其他情况}
 </code></pre></div>
 <p>运行程序，结果如图 6.10 所示：亮部（大于 127）全部变黑，只留下暗部细节——效果类似图 6.6 反二值化的"暗部"，但保留的是原始灰度层次而非纯白。</p>
 <figure>
-  <img src="../images/ch06/fig-6-10.png" class="lq-img" />
-  <figcaption>图 6.10 超阈值零处理结果：亮部变黑，暗部保留原灰度（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-10.png" class="lq-img" />
+  <figcaption>图 6.10 【例 6.8】运行结果：超阈值零处理，亮部变黑，暗部保留原灰度（代码实跑）</figcaption>
 </figure>
 
 <h3 id="615-低阈值零处理cv2THRESH_TOZERO">6.1.5 低阈值零处理（cv2.THRESH_TOZERO）<a class="headerlink" href="#615-低阈值零处理cv2THRESH_TOZERO" title="Permanent link">#</a></h3>
@@ -4228,8 +4228,8 @@ src(x,y), &amp; src(x,y) &gt; thresh\\
 </code></pre></div>
 <p>运行程序，结果如图 6.12 所示：暗部整体变黑，亮部保留原有灰度——相当于把背景"压黑"、前景"浮出来"，常用于突出高亮区域。</p>
 <figure>
-  <img src="../images/ch06/fig-6-12.png" class="lq-img" />
-  <figcaption>图 6.12 低阈值零处理结果：暗部变黑，亮部保留原灰度（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-12.png" class="lq-img" />
+  <figcaption>图 6.12 【例 6.10】运行结果：低阈值零处理，暗部变黑，亮部保留原灰度（代码实跑）</figcaption>
 </figure>
 
 <h2 id="62-自适应阈值处理">6.2 自适应阈值处理<a class="headerlink" href="#62-自适应阈值处理" title="Permanent link">#</a></h2>
@@ -4300,8 +4300,8 @@ src(x,y), &amp; src(x,y) &gt; thresh\\
 </code></pre></div>
 <p>运行程序，结果如图 6.13 所示：(a) 原始图像；(b) 全局二值化结果；&copy; MEAN_C 自适应结果；(d) GAUSSIAN_C 自适应结果。</p>
 <figure>
-  <img src="../images/ch06/fig-6-13.png" class="lq-img" />
-  <figcaption>图 6.13 【例 6.11】运行结果：(a) 原图；(b) 全局 127；(c) 自适应 MEAN；(d) 自适应 GAUSSIAN（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-13.png" class="lq-img" />
+  <figcaption>图 6.13 【例 6.11】运行结果：(a) 原图；(b) 全局 127；(c) 自适应 MEAN；(d) 自适应 GAUSSIAN（代码实跑）</figcaption>
 </figure>
 
 <p>对比非常直观。原书的计算器图左侧被阴影遮盖，全局 127 后左半部分几乎全黑，按键信息大量丢失。换成素材 picture12.jpg（暗背景古钱币，平均灰度约 57）后同样如此：全局 127 二值化后白像素只占约 7%，币面图案几乎全黑；而两种自适应方法都把钱币的纹理完整勾了出来，说明自适应阈值处理保留了更多的细节信息。在一些极端情况下，普通阈值处理会丢失大量信息，而自适应阈值处理可以得到效果更好的二值图像。</p>
@@ -4418,14 +4418,14 @@ src(x,y), &amp; src(x,y) &gt; thresh\\
 </code></pre></div>
 <p>运行程序，结果如图 6.14 所示：(a) 原始图像；(b) 以 127 为阈值的普通二值化结果；&copy; Otsu 处理结果。</p>
 <figure>
-  <img src="../images/ch06/fig-6-14.png" class="lq-img" />
-  <figcaption>图 6.14 【例 6.13】运行结果：(a) 原图；(b) 127 阈值；(c) Otsu 阈值（截自原书）</figcaption>
+  <img src="../images/ch06/out-6-14.png" class="lq-img" />
+  <figcaption>图 6.14 【例 6.13】运行结果：(a) 原图；(b) 127 阈值；(c) Otsu 阈值（代码实跑）</figcaption>
 </figure>
 
 <p>本例中原始图像整体的亮度较高，即有较多的像素值大于 127，所以：</p>
 <ul>
-<li>使用 127 作为阈值进行普通二值化时，得到了大量的白色区域（实测 picture1.jpg：白像素约占 80%），脸部、头发的层次糊成一片白；</li>
-<li>使用 Otsu 方法时，通过计算采用最优阈值（实测为 160），高光被压回黑侧，五官轮廓重新清晰，得到了较好的处理结果。</li>
+<li>使用 127 作为阈值进行普通二值化时，得到了大量的白色区域（实测 picture1.jpg：白像素约占 80%），浅色背景与人物服饰的层次糊成一片白；</li>
+<li>使用 Otsu 方法时，通过计算采用最优阈值（实测为 160），大片中灰的云雾背景被压回黑侧，人物轮廓重新分明，得到了较好的处理结果。</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">拓展：THRESH_TRIANGLE——单峰直方图的另一种自动阈值</p>
@@ -4434,6 +4434,18 @@ src(x,y), &amp; src(x,y) &gt; thresh\\
 </code></pre></div>
 <p>实测例 6.12 的 123/126 图，三角法返回 125.0（恰好是原书手工挑选的那个值），同样只支持 8 位单通道图。</p>
 </div>
+<p>最后把五种类型放到同一张图上横向对比，再用直方图看清各路阈值到底切在哪里。对 picture1.jpg 依次做五种处理（阈值 127、maxval 255），结果如图 6.30：BINARY 与 BINARY_INV 黑白互换，TRUNC 把亮部统一压到 127 这一层灰，TOZERO_INV 只留暗部、TOZERO 只留亮部——与 6.1 节的曲线示意图一一对应。</p>
+<figure>
+  <img src="../images/ch06/out-6-30.png" class="lq-img" />
+  <figcaption>图 6.30 五种阈值类型作用于同一张 picture1.jpg 的效果对比（代码实跑）</figcaption>
+</figure>
+
+<p>图 6.31 是 picture1.jpg 的灰度直方图，三条阈值线画在同一坐标系里：直方图重心明显偏右、230 以后陡然隆起，这是一张"整体偏亮"的图。固定阈值 127 切在主峰左侧，把约 80% 的像素划成白色；Otsu 找到的 160（红线）往右挪了一截，把大片中灰的云雾背景压回黑侧；Triangle 找到的 236 几乎顶到直方图右端（分割后白像素约 29%），它面向单峰直方图，把阈值取在峰值与远端连线的最远点，本例中留下的才是真正的高光区。同一张图，三种阈值策略给出的答案可能差得很远——"阈值怎么选"不是玄学，看直方图形状就能估出个八九不离十。</p>
+<figure>
+  <img src="../images/ch06/out-6-31.png" class="lq-img" />
+  <figcaption>图 6.31 picture1.jpg 灰度直方图与阈值位置：固定 127 / Otsu(160) / Triangle(236)，右侧为 Otsu 分割结果（代码实跑）</figcaption>
+</figure>
+
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">8 个容易踩的坑</p>

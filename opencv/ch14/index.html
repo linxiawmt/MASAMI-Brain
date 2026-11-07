@@ -3792,7 +3792,7 @@
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">运行环境约定</p>
-<p>原书本章素材 <code>image\lena.bmp</code>、<code>boat.bmp</code> 不在素材目录中，本章统一换用素材目录里的图片顶替：<code>picture2.png</code> 顶替 lena（1387×1040×3，例 14.1、14.2 使用），<code>picture8.jpg</code> 顶替 boat（936×432×3，例 14.3~14.6 使用）。路径写作相对路径，运行时工作目录需为 数字图像处理-python 根目录，否则 <code>imread</code> 返回 None。例 14.6 的低通掩模边长由原书的 30 调整为 50（即中心 100×100 区域），与跟随代码一致；跟随代码还在例 14.3、14.6 里比原书多显示了滤波前后的频谱图，笔记代码保持原书结构。所有验证结论均为 OpenCV 4.13 + NumPy 2.2 + Matplotlib 3.10 环境实测。</p>
+<p>原书本章素材 <code>image\lena.bmp</code>、<code>boat.bmp</code> 不在素材目录中，本章统一换用素材目录里的图片顶替：<code>picture2.png</code> 顶替 lena（1387×1040×3，例 14.1、14.2 使用），<code>picture8.jpg</code> 顶替 boat（936×432×3，例 14.3~14.6 使用）。路径写作相对路径，运行时工作目录需为 数字图像处理-python 根目录，否则 <code>imread</code> 返回 None。例 14.6 的低通掩模边长由原书的 30 调整为 50（即中心 100×100 区域），与跟随代码一致；跟随代码还在例 14.3、14.6 里比原书多显示了滤波前后的频谱图，笔记代码保持原书结构。所有验证结论均为 OpenCV 4.13 + NumPy 2.2 + Matplotlib 3.10 环境实测。插图分两类：概念示意图（图 14.1~14.8、图 14.10）保留原书插图；程序运行结果类（图 14.9、图 14.11~14.19，以及增补的图 14.30、图 14.31）均为按笔记代码实跑生成的输出图。</p>
 </div>
 <h2 id="140-本章导图">14.0 本章导图<a class="headerlink" href="#140-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -4079,6 +4079,12 @@
 <p class="admonition-title">拓展：相位里藏着什么</p>
 <p>原书强调逆变换必须同时保留幅度与相位。实测（picture8.jpg）：把相位全部清零、只留幅度，重建图与原图的相关系数只有 0.06，只剩一团中心对称的亮斑；把幅度全部置 1、只留相位，重建图与原图的相关系数绝对值达 0.48，轮廓结构仍可辨认（相关系数为负只说明对比度翻转）。图像的"结构在哪儿"主要由相位决定，"每个频率有多强"由幅度决定，两者缺一不可。</p>
 </div>
+<p>图 14.30 把这组实测画了出来：中图仅保留幅度，只剩中心一团亮斑（显示时经 <code>fftshift</code> 移到画面中心并截断高光）；右图仅保留相位，轮廓结构依然可辨认。</p>
+<figure>
+  <img src="../images/ch14/out-14-30.png" class="lq-img" />
+  <figcaption>图 14.30 幅度与相位各自携带的信息：仅幅度重建 vs 仅相位重建（代码实跑）</figcaption>
+</figure>
+
 <p>变换后，图像中同时存在低频和高频信息：</p>
 <ul>
 <li><strong>低频信息</strong>对应图像内变化缓慢的灰度分量。大草原图像里那片广袤的、颜色趋于一致的草原是低频；</li>
@@ -4134,8 +4140,8 @@
 </code></pre></div>
 <p>运行结果如图 14-9：左图是原始图像，右图是频谱图像。中心最亮的点就是零频率分量，从中心向外频率越来越高，越亮的点表示该频率分量的幅度越大。</p>
 <figure>
-  <img src="../images/ch14/fig-14-9.png" class="lq-img" />
-  <figcaption>图 14.9 原始图像及其频谱图像（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-9.png" class="lq-img" />
+  <figcaption>图 14.9 原始图像及其频谱图像（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4175,7 +4181,7 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture2.png"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 原书 boat.bmp</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"picture2.png"</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>   <span class="c1"># 原书 lena.bmp</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>                  <span class="c1"># 傅里叶变换</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>           <span class="c1"># 零频率移到中心</span>
@@ -4190,10 +4196,10 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"inverse FFT"</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 <a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>运行结果如图 14-11：左图是原始图像，右图是"变换 → 逆变换"一圈回来的图像，肉眼看不出差别（实测最大误差在 <span class="arithmatex">\(10^{-5}\)</span> 量级，纯属浮点精度）。</p>
+<p>运行结果如图 14-11：左图是原始图像，右图是"变换 → 逆变换"一圈回来的图像，肉眼看不出差别（实测最大误差约 <span class="arithmatex">\(2.8\times10^{-13}\)</span>，纯属浮点精度）。</p>
 <figure>
-  <img src="../images/ch14/fig-14-11.png" class="lq-img" />
-  <figcaption>图 14.11 逆傅里叶变换：原图与还原结果一致（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-11.png" class="lq-img" />
+  <figcaption>图 14.11 逆傅里叶变换：原图与还原结果一致（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1423-高通滤波示例">14.2.3 高通滤波示例<a class="headerlink" href="#1423-高通滤波示例" title="Permanent link">#</a></h3>
@@ -4210,8 +4216,8 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 <p>傅里叶变换可以将图像的高频信号和低频信号分离：变换后低频信号位于频谱的中心位置（图 14-9 右图的中心）。于是可以对高频、低频分别处理——高通滤波或低通滤波——处理完再逆变换返回空域，就完成了对图像的频域处理。频域处理可以实现图像增强、图像去噪、边缘检测、特征提取、压缩和加密等操作。</p>
 <p>高通滤波的做法：将频谱中心区域的低频分量值都替换为 0（处理为黑色），屏蔽低频信号、只保留高频信号，如图 14-12 所示。</p>
 <figure>
-  <img src="../images/ch14/fig-14-12.png" class="lq-img" />
-  <figcaption>图 14.12 滤波示例：original 原图、result 频谱、filter 中心置零后的掩模（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-12.png" class="lq-img" />
+  <figcaption>图 14.12 高通滤波示例：original 原图、result 频谱、filter 中心 60×60 置零后的频谱（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4250,13 +4256,13 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 </code></pre></div>
 <p>运行结果如图 14-13：经过高通滤波，图像的边缘信息得以保留，大面积平缓的区域（低频）被抹掉，还原图只剩轮廓感、整体偏暗。</p>
 <figure>
-  <img src="../images/ch14/fig-14-13.png" class="lq-img" />
-  <figcaption>图 14.13 傅里叶变换对比图：高通滤波后边缘信息得以保留（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-13.png" class="lq-img" />
+  <figcaption>图 14.13 傅里叶变换对比图：高通滤波后边缘信息得以保留（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
 <p class="admonition-title">拓展：高通滤波前后实测</p>
-<p>对 picture8.jpg 做例 14.3 的高通滤波，实测：频谱总能量中中心 60×60 低频区占 12.2%，置零后剩下 87.8% 的能量分布在四周高频区；空域上还原图的横向 Sobel 梯度从 52.9 升到 450.7（约 8.5 倍），边缘与细节被显著突出。</p>
+<p>对 picture8.jpg 做例 14.3 的高通滤波，实测：中心 60×60 低频区（含直流分量）的频谱幅度总和占 12.2%，按平方能量算更是占 98.1%（仅直流分量一项就占约 96%）——自然图像的能量高度集中在低频；置零后还原图的均值从 213.27 跌到 17.45，整体变暗、只剩边缘轮廓，横向 Sobel 梯度与图像均值的比从 0.25 升到 2.0（约 8 倍），边缘与细节被显著突出。</p>
 </div>
 <h2 id="143-OpenCV-实现傅里叶变换">14.3 OpenCV 实现傅里叶变换<a class="headerlink" href="#143-OpenCV-实现傅里叶变换" title="Permanent link">#</a></h2>
 <p>OpenCV 提供了 <code>cv2.dft()</code> 和 <code>cv2.idft()</code> 来实现傅里叶变换和逆傅里叶变换。</p>
@@ -4326,15 +4332,15 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a> [170.33455 169.99630 182.59192 ... 178.78554 175.72964 166.86703]
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a> [145.33728 171.02048 162.05890 ... 159.65900 156.89287 166.03783]]
 </code></pre></div>
-<p>各步骤的取值范围如图 14-14 所示：</p>
+<p>各步骤的取值范围如图 14-14 所示（每个面板按自身 min–max 归一化显示）：</p>
 <ul>
-<li>左图是 <code>cv2.dft()</code> 得到的频谱值，由实部和虚部构成，数值可达 <span class="arithmatex">\(10^3\)</span>~<span class="arithmatex">\(10^8\)</span>；</li>
-<li>中间的图是 <code>cv2.magnitude()</code> 计算得到的频谱幅度值，不在标准灰度空间 <span class="arithmatex">\([0, 255]\)</span> 内；</li>
-<li>右图是对幅度进一步规范化（20·log）后的结果，量级回落到一百多。</li>
+<li>左图是 <code>cv2.dft()</code> 得到的频谱值（此处显示实部），数值跨度达 <span class="arithmatex">\(10^6\)</span> 量级，强分量一枝独秀，直接显示几乎是一片灰黑；</li>
+<li>中间的图是 <code>cv2.magnitude()</code> 计算得到的频谱幅度值，范围 <span class="arithmatex">\(13\)</span>~<span class="arithmatex">\(8.6\times10^7\)</span>，不在标准灰度空间 <span class="arithmatex">\([0, 255]\)</span> 内，同样只有中心直流一个亮点可辨；</li>
+<li>右图是对幅度进一步规范化（20·log）后的结果，范围回落到 <span class="arithmatex">\([51.5, 365.5]\)</span>，各频率分量的明暗细节全部显现——这正是频谱必须取对数显示的原因。</li>
 </ul>
 <figure>
-  <img src="../images/ch14/fig-14-14.png" class="lq-img" />
-  <figcaption>图 14.14 值范围：频谱原始值、幅度值、规范化后的显示值（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-14.png" class="lq-img" />
+  <figcaption>图 14.14 值范围：频谱原始值、幅度值、规范化后的显示值（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4361,8 +4367,8 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 </code></pre></div>
 <p>运行结果如图 14-15：左图是原始图像，右图是频谱图像——用 <code>np.fft.fftshift()</code> 把零频率分量移至中心后的结果，形态与例 14.1 的 Numpy 版一致。</p>
 <figure>
-  <img src="../images/ch14/fig-14-15.png" class="lq-img" />
-  <figcaption>图 14.15 原图像与傅里叶变换后的频谱图像（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-15.png" class="lq-img" />
+  <figcaption>图 14.15 原图像与傅里叶变换后的频谱图像（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1432-实现逆傅里叶变换">14.3.2 实现逆傅里叶变换<a class="headerlink" href="#1432-实现逆傅里叶变换" title="Permanent link">#</a></h3>
@@ -4392,8 +4398,8 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 </code></pre></div>
 <p>运行结果如图 14-16：左图是原始图像 img，右图是"变换 → 逆变换"一圈回来的图像，两者肉眼一致。</p>
 <figure>
-  <img src="../images/ch14/fig-14-16.png" class="lq-img" />
-  <figcaption>图 14.16 原始图像与逆傅里叶变换示例（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-16.png" class="lq-img" />
+  <figcaption>图 14.16 原始图像与逆傅里叶变换示例（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4408,14 +4414,14 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 <p>前面讲过，低频信号对应图像内变化缓慢的灰度分量（大草原上颜色趋于一致的广袤草原）。低通滤波器让高频信号衰减而让低频信号通过，图像低通滤波后会变模糊。</p>
 <p>做法：将傅里叶变换结果中高频信号的值都替换为 0（黑），屏蔽高频信号、只保留低频信号，从而实现低通滤波，如图 14-17 所示。</p>
 <figure>
-  <img src="../images/ch14/fig-14-17.png" class="lq-img" />
-  <figcaption>图 14.17 低通滤波示意图：original 原图、result 频谱、filter 高频置黑（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-17.png" class="lq-img" />
+  <figcaption>图 14.17 低通滤波示例：original 原图、result 频谱、filter 高频置零后的频谱（代码实跑，掩模中心 60×60）</figcaption>
 </figure>
 
 <p>实现时可以专门构造一个如图 14-18 左图所示的掩模图像，用它<strong>乘</strong>频谱图像，就能把频谱中的高频信号过滤掉。</p>
 <figure>
-  <img src="../images/ch14/fig-14-18.png" class="lq-img" />
-  <figcaption>图 14.18 构造滤波器：掩模 × 频谱 = 滤波后的频谱（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-18.png" class="lq-img" />
+  <figcaption>图 14.18 构造滤波器：掩模 × 频谱 = 滤波后的频谱（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4460,14 +4466,20 @@ f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1} F(u,v)\,\mathrm{e}^{\mathr
 </code></pre></div>
 <p>运行结果如图 14-19：左图为原始图像，右图为变换后的图像。经过低通滤波后，图像的边缘信息被削弱了，整体变模糊。</p>
 <figure>
-  <img src="../images/ch14/fig-14-19.png" class="lq-img" />
-  <figcaption>图 14.19 傅里叶变换前后的对比图：低通滤波后边缘被削弱（截自原书）</figcaption>
+  <img src="../images/ch14/out-14-19.png" class="lq-img" />
+  <figcaption>图 14.19 傅里叶变换前后的对比图：低通滤波后边缘被削弱（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
 <p class="admonition-title">拓展：低通滤波实测与带通滤波</p>
-<p>实测 picture8.jpg（掩模 100×100）：频谱能量只剩 20.7%，还原图的 Sobel 梯度从 52.9 降到 38.8（73%），而全图均值几乎不变（213.28 vs 213.27）——直流分量留在中心，整图亮度得以保留，与高通"连亮度一起删"形成对照。掩模法稍加推广就是带通滤波器（<strong>band-pass filter</strong>）：用一个大低通掩模减去一个小低通掩模，得到只允许中间频率通过的环形区域，可提取中等尺度的结构；在特定位置开"窗口"（陷波滤波）则有针对性地去除周期性噪声。</p>
+<p>实测 picture8.jpg（掩模 100×100）：保留区域的频谱幅度总和只剩 20.7%（按平方能量算仍占 98.6%，直流稳稳留在中心），还原图的 Sobel 梯度从 52.9 降到 38.8（73%），而全图均值几乎不变（213.28 vs 213.27）——直流分量留在中心，整图亮度得以保留，与高通"连亮度一起删"形成对照。掩模法稍加推广就是带通滤波器（<strong>band-pass filter</strong>）：用一个大低通掩模减去一个小低通掩模，得到只允许中间频率通过的环形区域，可提取中等尺度的结构；在特定位置开"窗口"（陷波滤波）则有针对性地去除周期性噪声。</p>
 </div>
+<p>图 14.31 对 picture8.jpg 用不同半径的理想低通滤波做了对比实测：半径越小，保留的频谱成分越少，图像越模糊；r=80 时已接近原图。</p>
+<figure>
+  <img src="../images/ch14/out-14-31.png" class="lq-img" />
+  <figcaption>图 14.31 理想低通滤波不同半径对比：r=10/30/50/80，标题为保留的幅度总和占比（代码实跑）</figcaption>
+</figure>
+
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">8 个容易踩的坑</p>

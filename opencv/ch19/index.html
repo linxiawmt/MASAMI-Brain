@@ -3955,6 +3955,12 @@
 <p class="admonition-title">拓展：4 连接、8 连接与抗锯齿差别在哪</p>
 <p>光栅线条由一串像素拼成。4 连接只允许像素水平、垂直衔接，斜线呈直角阶梯；8 连接允许斜向衔接（默认值），阶梯更缓；<code>LINE_AA</code> 对亚像素位置做加权平均，让边缘出现过渡灰度，放大看颜色浅一层，视觉上平滑无锯齿。小图细线用 AA 效果明显，粗线条差别不大。</p>
 </div>
+<p>三种 <code>lineType</code> 画同一条对角线的放大对比如下，直角阶梯、斜向阶梯与过渡灰度的差别一目了然：</p>
+<figure>
+  <img src="../images/ch19/out-19-30.png" class="lq-img" />
+  <figcaption>图 19.30 同一条对角斜线在 LINE_4 / LINE_8 / LINE_AA 三种线型下的放大对比（代码实跑，增补图）</figcaption>
+</figure>
+
 <h3 id="1911-绘制直线">19.1.1 绘制直线<a class="headerlink" href="#1911-绘制直线" title="Permanent link">#</a></h3>
 <p>OpenCV 提供了函数 <code>cv2.line()</code> 用来绘制直线（线段）。语法格式：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>img = cv2.line( img, pt1, pt2, color[, thickness[, lineType]] )
@@ -3982,8 +3988,8 @@
 </code></pre></div>
 <p>程序在 <code>img</code> 中绘制了三条不同起始点、颜色和粗细的直线：蓝色对角线、绿色水平细线、红色垂直粗线。</p>
 <figure>
-  <img src="../images/ch19/fig-19-1.png" class="lq-img" />
-  <figcaption>图 19.1 绘制直线示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-1.png" class="lq-img" />
+  <figcaption>图 19.1 绘制直线示例：黑色画布上的蓝色对角线（粗 3）、绿色水平细线（粗 1）与红色垂直粗线（粗 6）（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4015,8 +4021,8 @@
 </code></pre></div>
 <p>程序绘制了一个红色的实心矩形（在纸质书中显示为灰色）。实心与空心只差一个 <code>thickness</code>：换成 <code>2</code> 就得到只有两像素宽边框的空心矩形，内部保持白色。</p>
 <figure>
-  <img src="../images/ch19/fig-19-2.png" class="lq-img" />
-  <figcaption>图 19.2 绘制矩形示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-2.png" class="lq-img" />
+  <figcaption>图 19.2 绘制矩形示例：白色画布上的红色实心矩形（thickness=-1）（代码实跑）</figcaption>
 </figure>
 
 <h3 id="1913-绘制圆形">19.1.3 绘制圆形<a class="headerlink" href="#1913-绘制圆形" title="Permanent link">#</a></h3>
@@ -4047,8 +4053,8 @@
 </code></pre></div>
 <p>程序绘制了一组同心圆。半径序列是 5, 17, 29, …, 197（公差 12），粗细固定为 3。</p>
 <figure>
-  <img src="../images/ch19/fig-19-3.png" class="lq-img" />
-  <figcaption>图 19.3 绘制同心圆示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-3.png" class="lq-img" />
+  <figcaption>图 19.3 绘制同心圆示例：半径 5, 17, 29, …, 197、粗细 3 的红色同心圆（代码实跑）</figcaption>
 </figure>
 
 <p>【例 19.4】使用函数 <code>cv2.circle()</code> 在一个白色背景图像内绘制一组位置和大小均随机的实心圆。</p>
@@ -4073,8 +4079,8 @@
 </code></pre></div>
 <p>程序在画布中绘制了一组随机的实心圆。<code>np.random.randint</code> 的上界 <code>high</code> 取不到：<code>high=256</code> 才能产生 255 的颜色分量。</p>
 <figure>
-  <img src="../images/ch19/fig-19-4.png" class="lq-img" />
-  <figcaption>图 19.4 绘制实心圆示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-4.png" class="lq-img" />
+  <figcaption>图 19.4 绘制实心圆示例：100 个位置、大小、颜色随机的实心圆（代码实跑，固定随机种子）</figcaption>
 </figure>
 
 <h3 id="1914-绘制椭圆">19.1.4 绘制椭圆<a class="headerlink" href="#1914-绘制椭圆" title="Permanent link">#</a></h3>
@@ -4113,8 +4119,8 @@
 </code></pre></div>
 <p>程序绘制了一组随机的空心椭圆：中心固定，形状固定（横轴 100、竖轴 200），角度、颜色、粗细随机。</p>
 <figure>
-  <img src="../images/ch19/fig-19-5.png" class="lq-img" />
-  <figcaption>图 19.5 绘制空心椭圆示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-5.png" class="lq-img" />
+  <figcaption>图 19.5 绘制空心椭圆示例：中心与形状固定、角度/颜色/粗细随机的 10 个空心椭圆（代码实跑，固定随机种子）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4151,16 +4157,16 @@
 </code></pre></div>
 <p>程序绘制了一个封闭的多边形（菱形）。</p>
 <figure>
-  <img src="../images/ch19/fig-19-6.png" class="lq-img" />
-  <figcaption>图 19.6 绘制封闭的多边形示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-6.png" class="lq-img" />
+  <figcaption>图 19.6 绘制封闭的多边形示例：isClosed=True 的绿色菱形（代码实跑）</figcaption>
 </figure>
 
 <p>第 3 个参数 <code>isClosed</code> 是闭合标记，将该值设置为 <code>False</code> 时，仅仅将各个顶点用线段连接，多边形是不封闭的：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">cv2</span><span class="o">.</span><span class="n">polylines</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="n">pts</span><span class="p">],</span> <span class="kc">False</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># 仅改 True 为 False，其余不变</span>
 </code></pre></div>
 <figure>
-  <img src="../images/ch19/fig-19-7.png" class="lq-img" />
-  <figcaption>图 19.7 不封闭的多边形示例（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-7.png" class="lq-img" />
+  <figcaption>图 19.7 不封闭的多边形示例：isClosed=False，首尾顶点不连线（代码实跑）</figcaption>
 </figure>
 
 <p>因此，可以使用函数 <code>cv2.polylines()</code> 来绘制多条首尾相连的线段：只要把线段的各个点放在一个数组中，将这个数组传给函数 <code>cv2.polylines()</code> 的第 2 个参数 <code>pts</code> 就可以了。</p>
@@ -4250,8 +4256,8 @@
 </code></pre></div>
 <p>第 1 次调用绘制了宽度（由参数 <code>thickness</code> 控制）为 15 的文字"OpenCV"，第 2 次调用在第 1 次绘制的"OpenCV"内部绘制了稍细的宽度为 5 的"OpenCV"。两次颜色不一样，实现了文字的"描边"（<strong>outline</strong>）效果。</p>
 <figure>
-  <img src="../images/ch19/fig-19-8.png" class="lq-img" />
-  <figcaption>图 19.8 绘制文字示例：绿底红字的描边效果（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-8.png" class="lq-img" />
+  <figcaption>图 19.8 绘制文字示例：粗细 15 的绿字上叠画粗细 5 的红字，得到描边效果（代码实跑）</figcaption>
 </figure>
 
 <p>【例 19.8】使用函数 <code>cv2.putText()</code> 在一个白色背景图像内绘制一段镜像的文字。</p>
@@ -4275,8 +4281,8 @@
 </code></pre></div>
 <p>第 1 次调用绘制了上方正常显示的文字"OpenCV"；第 2 次调用时参数 <code>bottomLeftOrigin</code> 被设置为 <code>True</code>，实现绘制镜像文字效果，绘制了下方的倒置文字"OpenCV"。</p>
 <figure>
-  <img src="../images/ch19/fig-19-9.png" class="lq-img" />
-  <figcaption>图 19.9 绘制镜像文字示例：上为正常文字，下为垂直镜像（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-9.png" class="lq-img" />
+  <figcaption>图 19.9 绘制镜像文字示例：上为正常文字，下为垂直镜像（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4291,6 +4297,12 @@
 <p class="admonition-title">拓展：putText 写不了中文</p>
 <p><code>fontFace</code> 的八种 Hershey 字体只内建 ASCII 字符集。<code>cv2.putText(img, '中文', ...)</code> 会把中文字符画成一串"?"。要在画面上写中文，常用做法是用 PIL 的 <code>ImageDraw.text</code>（先把 OpenCV 的 BGR 数组转成 PIL 图像，写完再转回来），或使用 opencv-contrib 扩展包的 <code>cv2.freetype</code> 模块加载 TTF 字体文件。</p>
 </div>
+<p>最后把六种绘图 API 画在同一张画布上，集中看一下各自的效果，方便互相对照：</p>
+<figure>
+  <img src="../images/ch19/out-19-31.png" class="lq-img" />
+  <figcaption>图 19.31 六种绘图 API（line / rectangle / circle / ellipse / polylines / putText）画在同一张画布上的效果合集（代码实跑，增补图）</figcaption>
+</figure>
+
 <h2 id="192-鼠标交互">19.2 鼠标交互<a class="headerlink" href="#192-鼠标交互" title="Permanent link">#</a></h2>
 <p>当用户触发鼠标事件（<strong>mouse event</strong>）时，希望程序对该事件做出响应。例如，用户单击鼠标，就画一个圆。通常的做法是创建一个 <code>OnMouseAction()</code> 响应函数（<strong>callback function</strong>，回调函数），将要实现的操作写在该响应函数内。响应函数按固定格式创建：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">OnMouseAction</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
@@ -4436,8 +4448,8 @@
 </ul>
 <p>先后单击左键、右键、滚轮、拖动鼠标，程序在控制台依次打印对应的提示文字。</p>
 <figure>
-  <img src="../images/ch19/fig-19-10.png" class="lq-img" />
-  <figcaption>图 19.10 【例 19.9】程序的运行结果：控制台输出（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-10.png" class="lq-img" />
+  <figcaption>图 19.10 【例 19.9】程序的运行结果：控制台输出（代码实跑，按笔记代码逻辑模拟依次触发左键、右键、中键单击与左键拖动事件后截获的打印）</figcaption>
 </figure>
 
 <p>可以通过下面的方法查看 OpenCV 所支持的鼠标事件：</p>
@@ -4485,8 +4497,8 @@
 </code></pre></div>
 <p>运行程序，在图像内双击鼠标就会以当前位置为顶点绘制大小随机、颜色随机的矩形。图 19-11 是在图像的不同位置多次双击鼠标后的结果。</p>
 <figure>
-  <img src="../images/ch19/fig-19-11.png" class="lq-img" />
-  <figcaption>图 19.11 在不同位置多次双击后画出的随机矩形（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-11.png" class="lq-img" />
+  <figcaption>图 19.11 在不同位置多次双击后画出的随机矩形（代码实跑，按笔记代码逻辑模拟 5 次双击交互后的效果）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4591,8 +4603,8 @@
 </tbody>
 </table>
 <figure>
-  <img src="../images/ch19/fig-19-12.png" class="lq-img" />
-  <figcaption>图 19.12 【例 19.11】程序的运行结果（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-12.png" class="lq-img" />
+  <figcaption>图 19.12 【例 19.11】程序的运行结果：依次按 r、c、l、e、t 并各单击一次左键（按 e 前先按 u 切空心）（代码实跑，模拟交互后的效果）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4648,8 +4660,8 @@
 </code></pre></div>
 <p>在窗体内分别调整 R、G、B 三个滚动条，画布颜色实时变化（图 19-13 中 R=223、G=163、B=83，画布呈现橙色）。</p>
 <figure>
-  <img src="../images/ch19/fig-19-13.png" class="lq-img" />
-  <figcaption>图 19.13 模拟调色板：三个滚动条控制画布颜色（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-13.png" class="lq-img" />
+  <figcaption>图 19.13 模拟调色板：三个滚动条取 R=223、G=163、B=83，一次回调后画布刷成对应橙色（代码实跑，模拟交互一次后的效果；滚动条状态为按本章绘图 API 示意绘制）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4703,8 +4715,8 @@
 </code></pre></div>
 <p>运行程序，窗体内同时显示控制阈值处理方式和阈值的两个滚动条。Type 滚动条的 0~4 依次对应 <code>THRESH_BINARY</code>、<code>THRESH_BINARY_INV</code>、<code>THRESH_TRUNC</code>、<code>THRESH_TOZERO</code>、<code>THRESH_TOZERO_INV</code> 五种处理方式；调整滚动条可以分别控制阈值处理时所使用的阈值和阈值处理方式，处理结果实时刷新在窗口里。</p>
 <figure>
-  <img src="../images/ch19/fig-19-14.png" class="lq-img" />
-  <figcaption>图 19.14 用滚动条控制阈值处理参数（截自原书，原书截图为 lena）</figcaption>
+  <img src="../images/ch19/out-19-14.png" class="lq-img" />
+  <figcaption>图 19.14 用滚动条控制阈值处理参数：Type=0（THRESH_BINARY）、Value=127 一次回调后的处理结果，素材 picture1.jpg（代码实跑，模拟交互一次后的效果；滚动条状态为示意绘制）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4754,8 +4766,8 @@
 </code></pre></div>
 <p>运行程序，调整滚动条（0 或 1），再双击鼠标，绘制的矩形随之在实心与空心之间切换。</p>
 <figure>
-  <img src="../images/ch19/fig-19-15.png" class="lq-img" />
-  <figcaption>图 19.15 用滚动条控制绘制的矩形是空心的还是实心的（截自原书）</figcaption>
+  <img src="../images/ch19/out-19-15.png" class="lq-img" />
+  <figcaption>图 19.15 用滚动条控制绘制的矩形是空心的还是实心的：左为开关 R=0 画出的实心矩形，右为开关 R=1 画出的空心矩形（代码实跑，模拟双击交互后的效果）</figcaption>
 </figure>
 
 <div class="admonition note">

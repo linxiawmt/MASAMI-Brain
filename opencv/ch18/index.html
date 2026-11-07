@@ -3892,7 +3892,7 @@
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">运行环境约定</p>
-<p>本章代码引用素材根目录下的视频文件 <code>video1.mp4</code>（1280×720、30 fps、484 帧）。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，<code>video1.mp4</code> 就在那里。原书用 <code>viptrain.avi</code>、<code>vtest.avi</code> 演示播放与逐帧处理，本章统一换成素材目录里的 <code>video1.mp4</code>，代码逻辑一字未改。涉及摄像头的示例（<code>cv2.VideoCapture(0)</code>，例 18.1、例 18.3）必须接有真实摄像头才能运行；没有摄像头的环境会读到 <code>ret=False</code>，无法出画面。</p>
+<p>本章代码引用素材根目录下的视频文件 <code>video1.mp4</code>（1280×720、30 fps、484 帧）。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，<code>video1.mp4</code> 就在那里。原书用 <code>viptrain.avi</code>、<code>vtest.avi</code> 演示播放与逐帧处理，本章统一换成素材目录里的 <code>video1.mp4</code>，代码逻辑一字未改。涉及摄像头的示例（<code>cv2.VideoCapture(0)</code>，例 18.1、例 18.3）必须接有真实摄像头才能运行；没有摄像头的环境会读到 <code>ret=False</code>，无法出画面——因此例 18.1 的运行效果（图 18.1）在本笔记中用 <code>video1.mp4</code> 的抽帧模拟。</p>
 </div>
 <h2 id="180-本章导图">18.0 本章导图<a class="headerlink" href="#180-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
@@ -4309,10 +4309,10 @@ t = \frac{\text{FRAME\_COUNT}}{\text{FPS}}
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>                      <span class="c1"># 释放摄像头</span>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>            <span class="c1"># 关闭所有窗口</span>
 </code></pre></div>
-<p>运行程序，笔者拿着一本 OpenCV 图书放在摄像头前，程序捕获的摄像头视频截图如图 18.1 所示。</p>
+<p>运行程序，程序捕获的摄像头视频截图如图 18.1 所示——原书笔者把一本 OpenCV 图书放在摄像头前，拍下的就是书页画面。本笔记环境没有摄像头，图 18.1 改用 <code>VideoCapture</code> 读 <code>video1.mp4</code> 抽出的两帧来模拟 <code>imshow</code> 窗口的输出：读摄像头与读视频文件返回的帧格式完全一致，窗口里看到的就是这样一幅幅帧画面（代码实跑）。</p>
 <figure>
-  <img src="../images/ch18/fig-18-1.png" class="lq-img" />
-  <figcaption>图 18.1 捕获的摄像头视频的截图（截自原书）</figcaption>
+  <img src="../images/ch18/out-18-1.png" class="lq-img" />
+  <figcaption>图 18.1 捕获并显示视频帧的效果（本环境无摄像头，用 VideoCapture 读 video1.mp4 抽帧模拟 imshow 输出，代码实跑）</figcaption>
 </figure>
 
 <div class="admonition warning">
@@ -4343,10 +4343,10 @@ t = \frac{\text{FRAME\_COUNT}}{\text{FPS}}
 <a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>                          <span class="c1"># 释放视频对象</span>
 <a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>                <span class="c1"># 关闭所有窗口</span>
 </code></pre></div>
-<p>运行程序，播放的视频截图如图 18.2 所示。</p>
+<p>运行程序，播放的视频截图如图 18.2 所示。图中 4 帧抽自 <code>video1.mp4</code> 的第 0/160/320/480 帧，从 0.0 s 到 16.0 s，能看到画面随播放不断推进（代码实跑）。</p>
 <figure>
-  <img src="../images/ch18/fig-18-2.png" class="lq-img" />
-  <figcaption>图 18.2 【例 18.2】程序播放的视频的截图（截自原书）</figcaption>
+  <img src="../images/ch18/out-18-2.png" class="lq-img" />
+  <figcaption>图 18.2 【例 18.2】程序播放的视频的截图：video1.mp4 第 0/160/320/480 帧（代码实跑，video1.mp4 抽帧）</figcaption>
 </figure>
 
 <p>用 <code>video1.mp4</code> 实测：循环逐帧读取共读到 484 帧，与 <code>CAP_PROP_FRAME_COUNT</code> 属性报告的 484 一致；视频时长约 16.13 秒。<code>waitKey(25)</code> 时的播放速度只取决于停留时间，与文件自身 30 fps 的帧速率不必相同——想按原始速度播放，取值应约为 <code>int(1000 / FPS)</code>。</p>
@@ -4483,7 +4483,12 @@ t = \frac{\text{FRAME\_COUNT}}{\text{FPS}}
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>读回总帧数: 30.0
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>读回逐帧计数: 30
 </code></pre></div>
-<p>写进去 30 帧、读回来还是 30 帧，帧数完全一致。注意 <code>frameSize</code> 写 <code>(160, 120)</code> 是宽在前，而造帧时 <code>np.zeros((120, 160, 3))</code> 是高（行数）在前——两个参数方向相反，写反了帧就会变形。</p>
+<p>写进去 30 帧、读回来还是 30 帧，帧数完全一致。注意 <code>frameSize</code> 写 <code>(160, 120)</code> 是宽在前，而造帧时 <code>np.zeros((120, 160, 3))</code> 是高（行数）在前——两个参数方向相反，写反了帧就会变形。把读回的第 0/&frac12; 帧拼成图 18.30，颜色轮换清晰可见：写进去什么颜色，读出来还是什么颜色（代码实跑，增补）。</p>
+<figure>
+  <img src="../images/ch18/out-18-30.png" class="lq-img" />
+  <figcaption>图 18.30 无摄像头写视频读回验证：写入 30 帧（依次点亮 B/G/R 通道）后读回，总帧数与逐帧计数均为 30，第 0/1/2 帧依次为蓝、绿、红（代码实跑，增补）</figcaption>
+</figure>
+
 <h2 id="183-视频操作基础">18.3 视频操作基础<a class="headerlink" href="#183-视频操作基础" title="Permanent link">#</a></h2>
 <p>视频是由视频帧构成的。将视频帧从视频中提取出来，对其使用图像处理的方法进行处理，就可以达到处理视频的目的。</p>
 <p>【例 18.4】提取视频的 Canny 边缘检测结果。</p>
@@ -4504,13 +4509,18 @@ t = \frac{\text{FRAME\_COUNT}}{\text{FPS}}
 <a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>                            <span class="c1"># 释放</span>
 <a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>                  <span class="c1"># 关闭所有窗口</span>
 </code></pre></div>
-<p>运行程序，就会播放对应视频的 Canny 边缘检测结果，视频播放截图如图 18.4 所示。</p>
+<p>运行程序，就会播放对应视频的 Canny 边缘检测结果，视频播放截图如图 18.4 所示。图中取 <code>video1.mp4</code> 第 80、400 帧，左右对照原帧与 Canny 结果：彩色画面进去，黑白边缘线出来（代码实跑）。</p>
 <figure>
-  <img src="../images/ch18/fig-18-4.png" class="lq-img" />
-  <figcaption>图 18.4 播放视频的边缘检测结果（截自原书）</figcaption>
+  <img src="../images/ch18/out-18-4.png" class="lq-img" />
+  <figcaption>图 18.4 播放视频的边缘检测结果：第 80/400 帧的原帧与 Canny(100, 200) 对照（代码实跑，video1.mp4 抽帧）</figcaption>
 </figure>
 
-<p>用 <code>video1.mp4</code> 实测：484 帧全部通过 Canny 处理，无一帧报错。套路就此固定——<strong>把例 18.2 的显示循环当骨架，把任意图像处理函数插在 <code>read()</code> 之后、<code>imshow()</code> 之前</strong>，就完成了对该视频的逐帧处理。例如换成 <code>cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</code> 是逐帧灰度化，换成第 8 章的 <code>cv2.erode()</code> 就是逐帧腐蚀。</p>
+<p>用 <code>video1.mp4</code> 实测：484 帧全部通过 Canny 处理，无一帧报错。套路就此固定——<strong>把例 18.2 的显示循环当骨架，把任意图像处理函数插在 <code>read()</code> 之后、<code>imshow()</code> 之前</strong>，就完成了对该视频的逐帧处理。例如换成 <code>cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</code> 是逐帧灰度化，换成第 8 章的 <code>cv2.erode()</code> 就是逐帧腐蚀。图 18.31 把同一帧的三种处理放在一起对照：灰度化保留明暗层次，Canny 只留边缘轮廓——插入的函数不同，得到的"处理视频"风格就不同（代码实跑，增补）。</p>
+<figure>
+  <img src="../images/ch18/out-18-31.png" class="lq-img" />
+  <figcaption>图 18.31 同一帧的三种处理对照：原帧 / cvtColor 灰度化 / Canny 边缘（video1.mp4 第 160 帧，代码实跑，增补）</figcaption>
+</figure>
+
 <div class="admonition note">
 <p class="admonition-title">拓展：帧差法找运动目标</p>
 <p>对视频帧做差分，静止的背景会抵消，运动的物体会留下来——这就是帧差法（<strong>frame differencing</strong>）。跟随代码里有一个简化版：先灰度化，再用 <code>cv2.subtract(gray, cv2.erode(gray, kernel))</code> 做腐蚀后差分，得到近似前景的边缘。更正规的做法是相邻帧相减（两帧时间上够近，背景不动、目标移动）或背景建模——把一段背景学习成模型再减除，对应第 17 章 GrabCut 前景提取的思路。</p>

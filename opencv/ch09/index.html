@@ -4210,8 +4210,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>使用该语句获取边缘图的示例如图 9-8 所示，其中左图为原始图像，右图为获取的边缘图。</p>
 <figure>
-  <img src="../images/ch09/fig-9-8.png" class="lq-img" />
-  <figcaption>图 9.8 获取水平方向的边缘：dx=1, dy=0 提取的是竖直方向的线条（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-8.png" class="lq-img" />
+  <figcaption>图 9.8 获取水平方向的边缘：dx=1, dy=0 提取的是竖直方向的线条（代码实跑）</figcaption>
 </figure>
 
 <h4 id="2-计算-y-方向边缘梯度dx0dy1">2. 计算 y 方向边缘（梯度）：dx=0、dy=1<a class="headerlink" href="#2-计算-y-方向边缘梯度dx0dy1" title="Permanent link">#</a></h4>
@@ -4220,8 +4220,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>获取边缘图的示例如图 9-9 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-9.png" class="lq-img" />
-  <figcaption>图 9.9 获取垂直方向的边缘：dx=0, dy=1 提取的是水平方向的线条（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-9.png" class="lq-img" />
+  <figcaption>图 9.9 获取垂直方向的边缘：dx=0, dy=1 提取的是水平方向的线条（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4234,8 +4234,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>使用该语句获取边缘图的示例如图 9-10 所示，仔细观察可以看到图中仅有若干微小白点，每个点的大小为一个像素。</p>
 <figure>
-  <img src="../images/ch09/fig-9-10.png" class="lq-img" />
-  <figcaption>图 9.10 dx=1, dy=1 时获取的边缘图：只剩零星的角点白点（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-10.png" class="lq-img" />
+  <figcaption>图 9.10 dx=1, dy=1 时获取的边缘图：只剩零星的角点白点（代码实跑）</figcaption>
 </figure>
 
 <h4 id="4-计算-x-方向和-y-方向的边缘叠加">4. 计算 x 方向和 y 方向的边缘叠加<a class="headerlink" href="#4-计算-x-方向和-y-方向的边缘叠加" title="Permanent link">#</a></h4>
@@ -4246,13 +4246,13 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>使用上述语句获取边缘图的示意图如图 9-11 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-11.png" class="lq-img" />
-  <figcaption>图 9.11 获取水平方向和垂直方向的边缘叠加（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-11.png" class="lq-img" />
+  <figcaption>图 9.11 获取水平方向和垂直方向的边缘叠加：(a) 原图；(b) dx=1, dy=0；(c) dx=0, dy=1；(d) addWeighted 叠加（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
 <p class="admonition-title">拓展：dx=1, dy=1 为什么几乎全黑</p>
-<p>dx=1 且 dy=1 时，OpenCV 在 x、y 两个方向上各取一次一阶差分，等效核是对角差分 <span class="arithmatex">\(\begin{pmatrix} 0.25 &amp; 0 &amp; -0.25 \\ 0 &amp; 0 &amp; 0 \\ -0.25 &amp; 0 &amp; 0.25 \end{pmatrix}\)</span>——只有主对角线与副对角线两端有系数。井字图内部是分片常数区域，x、y 方向不同时变化，响应处处接近 0，只在角点处留下白点。它不是"两个方向边缘的合成"，而是另一种算子（对角方向的混合偏导数）。</p>
+<p>dx=1 且 dy=1 时，OpenCV 在 x、y 两个方向上各取一次一阶差分，等效核是对角差分 <span class="arithmatex">\(\begin{pmatrix} 0.25 &amp; 0 &amp; -0.25 \\ 0 &amp; 0 &amp; 0 \\ -0.25 &amp; 0 &amp; 0.25 \end{pmatrix}\)</span>——只有主对角线与副对角线两端有系数。二值图内部是分片常数区域，x、y 方向不同时变化，响应处处接近 0，只在角点处留下白点。它不是"两个方向边缘的合成"，而是另一种算子（对角方向的混合偏导数）。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">拓展：addWeighted 与真正的梯度幅值</p>
@@ -4273,11 +4273,11 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-12 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-12.png" class="lq-img" />
-  <figcaption>图 9.12 【例 9.2】ddepth=-1 时只得到黑色框的右边界（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-12.png" class="lq-img" />
+  <figcaption>图 9.12 【例 9.2】ddepth=-1 时只得到字母 j 的右边界（代码实跑）</figcaption>
 </figure>
 
-<p><strong>分析</strong>：当参数 ddepth 的值为 -1 时，只得到了图中黑色框的右边界。左边界在运算时得到了负值，其在显示时被调整为 0，所以没有显示出来。要想获取左边界的值（将其显示出来），必须将参数 ddepth 的值设置为更大范围的数据类型，并将其映射到 8 位图像内。</p>
+<p><strong>分析</strong>：当参数 ddepth 的值为 -1 时，只得到了图中白色字母 j 的右边界。左边界在运算时得到了负值，其在显示时被调整为 0，所以没有显示出来。要想获取左边界的值（将其显示出来），必须将参数 ddepth 的值设置为更大范围的数据类型，并将其映射到 8 位图像内。</p>
 <p>【例 9.3】使用函数 cv2.Sobel() 获取图像水平方向的完整边缘信息。参数 ddepth 的值设置为 cv2.CV_64F，并使用函数 cv2.convertScaleAbs() 对计算结果取绝对值。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 9.2.3 例 9.3：CV_64F + convertScaleAbs =====</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -4292,11 +4292,17 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-13 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-13.png" class="lq-img" />
-  <figcaption>图 9.13 【例 9.3】水平方向的完整边缘信息（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-13.png" class="lq-img" />
+  <figcaption>图 9.13 【例 9.3】水平方向的完整边缘信息（代码实跑）</figcaption>
 </figure>
 
 <p><strong>分析</strong>：将 ddepth 设置为 <code>cv2.CV_64F</code>、参数设置为 "dx=1, dy=0"，执行 <code>cv2.Sobel()</code> 后再对结果取绝对值，可以获取图像在水平方向的完整边缘信息。</p>
+<p>上述差别在自然图像上同样明显。图 9-30 把 picture1.jpg 上的同一组处理放在一起：ddepth=-1 时只保留了灰度上升一侧的边缘，画面明显偏暗（实测平均亮度约为完整结果的一半）；换成 <code>cv2.CV_64F</code> + 取绝对值后，两侧边缘都完整保留。</p>
+<figure>
+  <img src="../images/ch09/out-9-30.png" class="lq-img" />
+  <figcaption>图 9.30 自然图像上的 ddepth 对比：(a) 原图；(b) ddepth=-1，负梯度被截断；(c) ddepth=CV_64F + convertScaleAbs（代码实跑）</figcaption>
+</figure>
+
 <p>【例 9.4】使用函数 cv2.Sobel() 获取图像垂直方向的边缘信息。参数 ddepth 的值设置为 cv2.CV_64F，并用 cv2.convertScaleAbs() 取绝对值。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 9.2.3 例 9.4：垂直方向完整边缘 =====</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -4311,8 +4317,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-14 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-14.png" class="lq-img" />
-  <figcaption>图 9.14 【例 9.4】垂直方向的完整边缘信息（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-14.png" class="lq-img" />
+  <figcaption>图 9.14 【例 9.4】垂直方向的完整边缘信息（代码实跑）</figcaption>
 </figure>
 
 <p><strong>分析</strong>：ddepth 设置为 <code>cv2.CV_64F</code>、参数为 "dx=0, dy=1"，配合 <code>cv2.convertScaleAbs()</code> 取绝对值，可以获取图像在垂直方向的完整边缘信息。</p>
@@ -4346,8 +4352,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-16 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-16.png" class="lq-img" />
-  <figcaption>图 9.16 【例 9.6】两个方向的边缘叠加结果（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-16.png" class="lq-img" />
+  <figcaption>图 9.16 【例 9.6】两个方向的边缘叠加结果（代码实跑）</figcaption>
 </figure>
 
 <p><strong>分析</strong>：本例先分别计算 x 方向的边缘、y 方向的边缘，再使用函数 <code>cv2.addWeighted()</code> 对两个方向的边缘进行叠加。在最终的叠加边缘结果中，同时显示两个方向的边缘信息。</p>
@@ -4370,14 +4376,14 @@ dst = saturate(src \times alpha + beta)
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
 <a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"original"</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
 <a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"xy"</span><span class="p">,</span> <span class="n">Sobelxy</span><span class="p">)</span>          <span class="c1"># 方式 1：完整边缘</span>
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"xy11"</span><span class="p">,</span> <span class="n">Sobelxy11</span><span class="p">)</span>      <span class="c1"># 方式 2：几乎全黑</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"xy11"</span><span class="p">,</span> <span class="n">Sobelxy11</span><span class="p">)</span>      <span class="c1"># 方式 2：明显偏暗</span>
 <a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
 <a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </code></pre></div>
 <p>运行程序，结果如图 9-17 所示，其中左图为原始图像，中间的图为方式 1 对应的图像，右图为方式 2 对应的图像。</p>
 <figure>
-  <img src="../images/ch09/fig-9-17.png" class="lq-img" />
-  <figcaption>图 9.17 【例 9.7】方式 1（中）保留完整边缘，方式 2（右）几乎全黑（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-17.png" class="lq-img" />
+  <figcaption>图 9.17 【例 9.7】方式 1（中）保留完整边缘，方式 2（右）只剩微弱响应、画面明显偏暗（代码实跑）</figcaption>
 </figure>
 
 <p>两种方式的差别一目了然：要拿"完整边缘"，就走"分方向计算 + addWeighted 叠加"的路；"dx=1, dy=1" 是混合偏导数，不是边缘合成。</p>
@@ -4459,8 +4465,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-18 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-18.png" class="lq-img" />
-  <figcaption>图 9.18 计算水平方向的边缘信息（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-18.png" class="lq-img" />
+  <figcaption>图 9.18 【例 9.8】计算水平方向的边缘信息（代码实跑）</figcaption>
 </figure>
 
 <p>【例 9.9】使用函数 cv2.Scharr() 获取图像垂直方向的边缘信息。</p>
@@ -4525,8 +4531,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-21 所示，其中左图为原始图像，中间的图为水平边缘图像，右图为垂直边缘图像。</p>
 <figure>
-  <img src="../images/ch09/fig-9-21.png" class="lq-img" />
-  <figcaption>图 9.21 【例 9.12】Sobel 传 ksize=-1 得到的 Scharr 边缘（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-21.png" class="lq-img" />
+  <figcaption>图 9.21 【例 9.12】Sobel 传 ksize=-1 得到的 Scharr 边缘：(a) 原图；(b) 水平边缘；(c) 垂直边缘（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4568,8 +4574,8 @@ dst = saturate(src \times alpha + beta)
 </code></pre></div>
 <p>运行程序，结果如图 9-23 所示。</p>
 <figure>
-  <img src="../images/ch09/fig-9-23.png" class="lq-img" />
-  <figcaption>图 9.23 【例 9.13】Sobel 叠加边缘（中）与 Scharr 叠加边缘（右）：Scharr 明显更亮、细节更丰富（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-23.png" class="lq-img" />
+  <figcaption>图 9.23 【例 9.13】Sobel 叠加边缘（中）与 Scharr 叠加边缘（右）：Scharr 明显更亮、细节更丰富（代码实跑）</figcaption>
 </figure>
 
 <p>对比两个结果：Scharr 的边缘响应整体更亮，发丝、帽饰等弱纹理区域的边缘更多——同样的 3×3 大小、同样的计算量，Scharr 的灵敏度更高。</p>
@@ -4651,8 +4657,8 @@ dst = \Delta src = \frac{\partial^2 src}{\partial x^2} + \frac{\partial^2 src}{\
 </code></pre></div>
 <p>运行程序，结果如图 9-28 所示，其中左图为原始图像，右图为得到的边缘信息。</p>
 <figure>
-  <img src="../images/ch09/fig-9-28.png" class="lq-img" />
-  <figcaption>图 9.28 【例 9.14】Laplacian 计算的边缘信息（截自原书）</figcaption>
+  <img src="../images/ch09/out-9-28.png" class="lq-img" />
+  <figcaption>图 9.28 【例 9.14】Laplacian 计算的边缘信息（代码实跑）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -4722,6 +4728,12 @@ dst = \Delta src = \frac{\partial^2 src}{\partial x^2} + \frac{\partial^2 src}{\
 </tr>
 </tbody>
 </table>
+<p>图 9-31 把三种算子作用于同一幅 picture1.jpg 的结果放在一起：Scharr 的响应整体最亮（叠加边缘的平均亮度约为 Sobel 的 2.5 倍），Sobel 居中；Laplacian 的边缘线最细，但碎细节最多，噪声也最容易被放大——与上表的"噪声敏感性"排序一致。</p>
+<figure>
+  <img src="../images/ch09/out-9-31.png" class="lq-img" />
+  <figcaption>图 9.31 同一幅图上 Sobel、Scharr、Laplacian 三种算子的边缘效果对比：(a) 原图；(b) Sobel 叠加边缘；(c) Scharr 叠加边缘；(d) Laplacian 边缘（代码实跑）</figcaption>
+</figure>
+
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">8 个容易踩的坑</p>
@@ -4742,7 +4754,7 @@ dst = \Delta src = \frac{\partial^2 src}{\partial x^2} + \frac{\partial^2 src}{\
 <li>Sobel 是"高斯平滑 + 一阶差分"的离散微分算子：Gx 右减左（中间行权重 2），Gy 下减上（中间列权重 2）；<span class="arithmatex">\(P5_x = (P3-P1) + 2(P6-P4) + (P9-P7)\)</span>，<span class="arithmatex">\(P5_y = (P7-P1) + 2(P8-P2) + (P9-P3)\)</span>。</li>
 <li>滤波器 = 核 = 掩模 = 模板 = 算子；线性滤波即卷积。</li>
 <li>ddepth 必须设 <code>cv2.CV_64F</code>（设 -1 时负梯度截断为 0，丢一侧边界），再用 <code>cv2.convertScaleAbs()</code> 取绝对值转 8 位：dst = saturate(src·alpha + beta)。</li>
-<li>方向组合：dx=1,dy=0 提取竖直线条（x 方向边缘）；dx=0,dy=1 提取水平线条；dx=1,dy=1 是混合偏导数，几乎全黑只剩角点白点；完整边缘用 <code>cv2.addWeighted(x, 0.5, y, 0.5, 0)</code> 叠加。</li>
+<li>方向组合：dx=1,dy=0 提取竖直线条（x 方向边缘）；dx=0,dy=1 提取水平线条；dx=1,dy=1 是混合偏导数，二值图上只剩角点白点、自然图上明显偏暗；完整边缘用 <code>cv2.addWeighted(x, 0.5, y, 0.5, 0)</code> 叠加。</li>
 <li>Scharr：平滑权重 3、10、3，与 Sobel 同速度、3×3 下精度更高；等价写法是 Sobel 的 <code>ksize=-1</code>（必须关键字传参）；约束 dx+dy=1，不允许 dx=1, dy=1。</li>
 <li>Laplacian：二阶导数算子，旋转不变，核中心 -4、系数和为 0；响应 = (P2+P4+P6+P8) − 4·P5，平滑区为 0，边缘处可正可负需取绝对值；中心改 -5 的扩展核用于对比度增强（锐化）。</li>
 <li>一阶两算子各算一次 "|左−右|" 与 "|下−上|"；Laplacian 是"差分的差分"，各算两次。</li>
