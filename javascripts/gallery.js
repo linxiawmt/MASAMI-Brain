@@ -3,7 +3,7 @@
   function setup() {
 
     // 首页视频背景：兜底自动播放（部分浏览器策略会拦截 muted autoplay）
-    const bgVideo = document.querySelector(".home-bg-fixed");
+    const bgVideo = document.querySelector(".home-bg-video");
     if (bgVideo) {
       bgVideo.muted = true;
       const tryPlay = () => {

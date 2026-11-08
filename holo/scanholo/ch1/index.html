@@ -4083,7 +4083,7 @@ f(x,y) \Leftrightarrow F(k_x,k_y).
 \tag{1.1-3b}
 \]</div>
 <p><figure>
-  <img src="../../../images/holo/scanholo/fig-1-1.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-1.png" width="480" class="lq-img" />
 <br />
 <figcaption>图 1.1 rect 函数：a) 一维剖面（宽 a、高 1）；b) 三维图；c) 灰度图——幅度 1 显示为"白"、幅度 0 显示为"黑"，所以白色区域面积是 a×b（截自原书）</figcaption></p>
 </figure>
@@ -4157,7 +4157,7 @@ f(x,y) \Leftrightarrow F(k_x,k_y).
 </div>
 </div>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-2.png" width="520" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-2.png" width="520" class="lq-img" />
   <figcaption>图 1.2 sinc 函数：主瓣高 1，过零点在 ±1, ±2, ±3,…，旁瓣逐级衰减（截自原书）</figcaption>
 </figure>
 
@@ -4177,7 +4177,7 @@ k_{x,0}=\frac{2\pi}{a}.
 \]</div>
 <p>图 1.3 是这对变换对的"照片"：上面是二维灰度图，下面是过中心的横向剖面（沿 <span class="arithmatex">\(k_x\)</span> 的 sinc）。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-3.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-3.png" width="620" class="lq-img" />
   <figcaption>图 1.3 rect 函数及其傅里叶变换：左列是空域（灰度图 + 剖面，宽 a），右列是频域（灰度图 + sinc 剖面，第一零点 2π/a）。图中用 M=11 生成（截自原书）</figcaption>
 </figure>
 
@@ -4446,7 +4446,7 @@ k_{x,0}=\frac{2\pi}{a}.
 </div>
 </div>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-4.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-4.png" width="620" class="lq-img" />
   <figcaption>图 1.4 a) 三角形位图；b) 其傅里叶变换的绝对值——中心亮（零频），星芒方向对应直边方向（截自原书）</figcaption>
 </figure>
 
@@ -4457,7 +4457,7 @@ k_{x,0}=\frac{2\pi}{a}.
 \tag{1.1-9}
 \]</div>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-5.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-5.png" width="480" class="lq-img" />
   <figcaption>图 1.5 δ 函数的定义：矩形越压越窄、越竖越高，面积恒为 1；极限下用带 "(1)" 的箭头表示（截自原书）</figcaption>
 </figure>
 
@@ -4475,7 +4475,7 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 \]</div>
 <p>人话版：δ 只在 <span class="arithmatex">\(x_0\)</span> 处"活着"，所以拿 <span class="arithmatex">\(f(x)\)</span> 乘它，等于拿 <span class="arithmatex">\(f(x_0)\)</span> 乘它——图 1.6 里任意函数 <span class="arithmatex">\(f(x)\)</span> 与位于 <span class="arithmatex">\(x_0\)</span> 的 δ 相乘，结果就是强度变成 <span class="arithmatex">\(f(x_0)\)</span> 的偏置 δ 函数。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-6.png" width="520" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-6.png" width="520" class="lq-img" />
   <figcaption>图 1.6 乘积性质：f(x) 与 δ(x−x₀) 相乘 = 强度为 f(x₀) 的 δ(x−x₀)（截自原书）</figcaption>
 </figure>
 
@@ -4507,7 +4507,7 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 \]</div>
 <p>与性质表 #7 一致。图 1.7 画出这对关系。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-7.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-7.png" width="480" class="lq-img" />
   <figcaption>图 1.7 二维 δ 函数（左，空间中的单位强度点）及其傅里叶变换（右，幅度恒为 1 的平坦平面）（截自原书）</figcaption>
 </figure>
 
@@ -4519,13 +4519,13 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 <h3 id="121-线性与空间不变">1.2.1 线性与空间不变<a class="headerlink" href="#121-线性与空间不变" title="Permanent link">#</a></h3>
 <p><strong>系统</strong>（system）定义为把输入（或一组输入）映射成输出（或一组输出）的"黑盒"。若<strong>叠加原理</strong>（superposition）成立，系统就是<strong>线性的</strong>（linear）：单输入-单输出系统里，输入 <span class="arithmatex">\(f_1(t)\)</span> 出 <span class="arithmatex">\(g_1(t)\)</span>、输入 <span class="arithmatex">\(f_2(t)\)</span> 出 <span class="arithmatex">\(g_2(t)\)</span>，那么输入 <span class="arithmatex">\(af_1(t)+bf_2(t)\)</span> 时输出必是 <span class="arithmatex">\(ag_1(t)+bg_2(t)\)</span>（<span class="arithmatex">\(a,b\)</span> 为常数）。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-8.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-8.png" width="620" class="lq-img" />
   <figcaption>图 1.8 线性系统：两个输入各自过系统，再线性叠加 = 叠加后的输入一起过系统（截自原书）</figcaption>
 </figure>
 
 <p>参数不随时间改变的系统叫<strong>时不变系统</strong>（time-invariant systems）：输入延迟 <span class="arithmatex">\(t_0\)</span>，输出跟着延迟同一个 <span class="arithmatex">\(t_0\)</span>，波形形状不变（图 1.9）。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-9.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-9.png" width="620" class="lq-img" />
   <figcaption>图 1.9 时不变系统：f(t)→g(t)，则 f(t−t₀)→g(t−t₀)（截自原书）</figcaption>
 </figure>
 
@@ -4547,7 +4547,7 @@ g(x,y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x',y')\,h(x-x',\,y-y')\,d
 <p><span class="arithmatex">\(f(x,y)\)</span> 是 LSI 系统的二维输入，<span class="arithmatex">\(h(x,y)\)</span>、<span class="arithmatex">\(g(x,y)\)</span> 分别是对应的冲激响应和输出。</p>
 <p>时不变在电工里很直观（图 1.9 的延迟），光学里的<strong>空间不变</strong>（space-invariance）用图 1.10 说清：输入图像 <span class="arithmatex">\(f(x,y)\)</span>（笑脸）平移到新原点 <span class="arithmatex">\((x_0,y_0)\)</span>，输出 <span class="arithmatex">\(g(x,y)\)</span> 就在 <span class="arithmatex">\(x\text{-}y\)</span> 平面上跟着平移——电系统里的"延迟"对应光学里的"图像平移"。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-10.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-10.png" width="620" class="lq-img" />
   <figcaption>图 1.10 空间不变概念：输入笑脸移到哪里，输出光斑就移到哪里（截自原书）</figcaption>
 </figure>
 
@@ -4562,7 +4562,7 @@ G(k_x,k_y)=F(k_x,k_y)\,H(k_x,k_y),
 \]</div>
 <p>其中 <span class="arithmatex">\(G\)</span>、<span class="arithmatex">\(F\)</span>、<span class="arithmatex">\(H\)</span> 分别是 <span class="arithmatex">\(g\)</span>、<span class="arithmatex">\(f\)</span>、<span class="arithmatex">\(h\)</span> 的傅里叶变换。证明在例 1.4。这一步是全章最重要的一行——<strong>空域卷积 = 频域乘法</strong>：</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-11.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-11.png" width="620" class="lq-img" />
   <figcaption>图 1.11 LSI 系统框图：空间域 g = f*h（h 称空间冲激响应/点扩散函数）；频域 G = F·H（H 称空间频率响应/频率传递函数）（截自原书）</figcaption>
 </figure>
 
@@ -4589,7 +4589,7 @@ G(k_x,k_y)=F(k_x,k_y)\,H(k_x,k_y),
 <p>上一节说明 LSI 系统必然牵出卷积积分。本节先讲清<strong>卷积</strong>（convolution）到底怎么算，再引入它的孪生兄弟<strong>相关</strong>（correlation），最后把两者区分开。</p>
 <p><strong>卷积：翻转 + 平移 + 乘积面积。</strong> 图 1.12 用两张图像 <span class="arithmatex">\(f(x,y)\)</span>、<span class="arithmatex">\(h(x,y)\)</span> 演示 (1.2-2)：对每个平移量 <span class="arithmatex">\((x,y)\)</span>，卷积值 = 乘积 <span class="arithmatex">\(f(x',y')\,h(x-x',y-y')\)</span> 在 <span class="arithmatex">\(x'\text{-}y'\)</span> 平面上的总面积。操作步骤：先把 <span class="arithmatex">\(h(x,y)\)</span> 绕两个轴<strong>翻转</strong>（变成 <span class="arithmatex">\(h(-x',-y')\)</span>），再把翻转后的图像<strong>平移</strong>、使其中心落在 <span class="arithmatex">\((x,y)\)</span>（得到 <span class="arithmatex">\(h(x-x',y-y')\)</span>），与 <span class="arithmatex">\(f(x',y')\)</span> 叠起来算乘积面积；扫遍所有 <span class="arithmatex">\((x,y)\)</span> 就得到二维灰度图 <span class="arithmatex">\(g(x,y)\)</span>。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-12.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-12.png" width="640" class="lq-img" />
   <figcaption>图 1.12 二维卷积的概念：f 不动，h 翻转后中心滑到 (x,y)，逐点乘、求面积；结果 g(x,y) 是一张模糊化的图像（截自原书）</figcaption>
 </figure>
 
@@ -4600,7 +4600,7 @@ C_{fh}(x,y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f^{*}(x',y')\,h(x+x',\
 \]</div>
 <p>其中 <span class="arithmatex">\(\otimes\)</span> 是相关符号（<span class="arithmatex">\(f\)</span> 取共轭）。它专门用来<strong>比较两个函数有多像</strong>，是<strong>图案识别</strong>（pattern recognition）的数学发动机。图 1.13 假设 <span class="arithmatex">\(f\)</span> 为实函数：与卷积不同，算乘积 <span class="arithmatex">\(f(x',y')\,h(x+x',y+y')\)</span> 时 <span class="arithmatex">\(h\)</span> <strong>不需要</strong>绕 <span class="arithmatex">\(x'\)</span>、<span class="arithmatex">\(y'\)</span> 轴翻转，只要平移。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-13.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-13.png" width="640" class="lq-img" />
   <figcaption>图 1.13 二维相关的概念（设 f 为实函数）：h 不翻转、中心滑到 (−x,−y)，逐点乘、求面积，得到 C_fh（截自原书）</figcaption>
 </figure>
 
@@ -4638,12 +4638,12 @@ f(x,y)\otimes h(x,y)=\mathcal{F}_{xy}^{-1}\{F^{*}(k_x,k_y)\,H(k_x,k_y)\}.
 \]</div>
 <p>对给定的两幅图像 <span class="arithmatex">\(f\)</span>、<span class="arithmatex">\(h\)</span>：先各自做二维 FFT，频域相乘（一个取共轭），再逆变换回来。图 1.14 是两幅相同 256×256 smiley.bmp 的<strong>自相关</strong>：中心出现明亮光斑——按 (1.2-6)，亮斑 = 两图"匹配"；图 1.15 是笑脸与另一幅图像的<strong>互相关</strong>：中心没有可辨认的亮斑——不匹配。</p>
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-14.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-14.png" width="640" class="lq-img" />
   <figcaption>图 1.14 自相关：笑脸 ⊗ 笑脸 = 中心亮斑（匹配成功）（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-15.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-15.png" width="640" class="lq-img" />
   <figcaption>图 1.15 互相关：笑脸 ⊗ 人像 = 中心无亮斑（不匹配）（截自原书）</figcaption>
 </figure>
 
@@ -4939,7 +4939,7 @@ h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad
 </div>
 </div>
 <figure>
-  <img src="../../../images/holo/scanholo/sim-fresnel-lsi.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/sim-fresnel-lsi.png" width="640" class="lq-img" />
   <figcaption>图（本笔记运行结果）：左上 输入方孔；右上 空域剖面；左下 z=5 cm 处 |g| 剖面——孔边缘亮条纹；右下 2-D 衍射光斑（CCD 视角）——孔内近乎原像、边缘菲涅耳条纹（深近场特征）</figcaption>
 </figure>
 
@@ -5140,11 +5140,13 @@ h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

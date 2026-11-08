@@ -3898,7 +3898,7 @@ n = -\tfrac{N}{2},\,\cdots,\,\tfrac{N}{2}-1 .
 \]</div>
 <p>这是全书的<strong>标准指标约定，且 <span class="arithmatex">\(M, N\)</span> 默认为偶数</strong>——偶数样本数对 DFT 效率和样本排布都有好处（2.4 节展开）。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-1.png" width="640" />
+  <img src="../../images/fourier/fig-2-1.png" width="640" />
   <figcaption>图 2.1 二维函数的 (a) 解析版本与 (b) 采样版本（截自原书）</figcaption>
 </figure>
 
@@ -3920,7 +3920,7 @@ D_X \le L_X, \qquad D_Y \le L_Y .
 \]</div>
 <p><span class="arithmatex">\(B_X, B_Y\)</span> 是连续函数频谱沿 <span class="arithmatex">\(x, y\)</span> 方向的<strong>带宽（bandwidth）</strong>（图 2.2）。违反式 (2.5) 就发生<strong>混叠（aliasing）</strong>：欠采样的高频成分被错当成低频成分混进结果里（2.5 节会亲眼看到）。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-2.png" width="640" />
+  <img src="../../images/fourier/fig-2-2.png" width="640" />
   <figcaption>图 2.2 g(x,y) 沿 x 轴的 (a) 支撑 D_X 与 (b) 带宽 B_X；带宽按"半宽"计量（截自原书）</figcaption>
 </figure>
 
@@ -3969,7 +3969,7 @@ B \approx \frac{5}{w}.
 \tag{2.11}
 \]</div>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-3.png" width="620" />
+  <img src="../../images/fourier/fig-2-3.png" width="620" />
   <figcaption>图 2.3 rect(x/2w)rect(y/2w) 频谱的 98% 功率范围：(a) 幅度谱 |F|，(b) 功率谱 |F|²（截自原书）</figcaption>
 </figure>
 
@@ -4252,7 +4252,7 @@ B \approx \frac{5}{w}.
 <li>高斯：<span class="arithmatex">\(B\cdot w = 0.7892\)</span>，解析值 <span class="arithmatex">\(\sqrt{\ln 50/(2\pi)} = 0.7891\)</span>——表 2.1 的 <span class="arithmatex">\(0.79/w\)</span> 就是方程 <span class="arithmatex">\(1-e^{-2\pi w^2 B^2} = 0.98\)</span> 的精确解。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-py-effbw.png" width="880" />
+  <img src="../../images/fourier/fig-2-py-effbw.png" width="880" />
   <figcaption>图 2-P1 有效带宽数值验证：左两幅为 rect 频谱与 98% 功率圆（复现图 2.3），右为三种函数的累积功率曲线与 98% 交点（笔记自制）</figcaption>
 </figure>
 
@@ -4337,13 +4337,13 @@ f_X \;\rightarrow\; \left[-\frac{1}{2\Delta x} \;:\; \frac{1}{L} \;:\; \frac{1}{
 </ul>
 <p>居中 → 移位的换位由 <code>fftshift</code> 完成，反方向用 <code>ifftshift</code>。图 2.4 用一维 rect 和它的频谱把三种排列全部摆了出来——左列空域、右列频域，Index 行是数组索引、coords 行是物理坐标。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-4.png" width="780" />
+  <img src="../../images/fourier/fig-2-4.png" width="780" />
   <figcaption>图 2.4 一维空域（左列）与频域（右列）向量的三种采样排列：(a)(b) 解析；(c)(d) 居中；(e)(f) FFT 前的移位排列（截自原书）</figcaption>
 </figure>
 
 <p>二维数组同理：MATLAB 索引从 <code>(1,1)</code> 开始。居中排列中零坐标 <span class="arithmatex">\([x,y]=[0,0]\)</span> 位于索引 <code>(N/2+1, M/2+1)</code>；2D FFT 之前要把它移到索引 <code>(1,1)</code>。所需的"移位"实际上就是<strong>数组的四象限对调</strong>（图 2.5）：<code>fftshift</code> 和 <code>ifftshift</code> 都能完成。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-5.png" width="700" />
+  <img src="../../images/fourier/fig-2-5.png" width="700" />
   <figcaption>图 2.5 二维空间阵列的采样排列：(a) 居中（[0,0] 在 (N/2+1, M/2+1)，象限序 3-4/2-1）与 (b) FFT 前的移位排列（[0,0] 在 (1,1)，象限序 1-2/4-3）（截自原书）</figcaption>
 </figure>
 
@@ -4561,7 +4561,7 @@ f_X \;\rightarrow\; \left[-\frac{1}{2\Delta x} \;:\; \frac{1}{L} \;:\; \frac{1}{
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>2D 居中排列零坐标位置 (行,列) = (4.0, 4.0)；MATLAB (i,j) 记法 = (N/2+1, M/2+1) = (5, 5)
 </code></pre></div>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-py-arrange.png" width="880" />
+  <img src="../../images/fourier/fig-2-py-arrange.png" width="880" />
   <figcaption>图 2-P2 排列演示：上排为居中 / 移位 / FFT 定标三种 1D 排列（复现图 2.4），下排为 2D 象限编号对调（复现图 2.5）与 FFT 原始输出顺序（笔记自制）</figcaption>
 </figure>
 
@@ -4651,7 +4651,7 @@ f_P(x) = \Big\{\Big[f(x)\cdot \mathrm{comb}\!\left(\frac{x}{\Delta x}\right)\Big
 <p>于是<strong>周期延拓概念</strong>一句话说清：我们从 <span class="arithmatex">\(f(x)\)</span> 的采样版本出发，但 FFT 算完之后，<strong>一切就像我们从周期函数 <span class="arithmatex">\(f_P(x)\)</span>（样本数组首尾相接、无限复制）出发、得到周期谱 <span class="arithmatex">\(F_P(f_X)\)</span> 一样</strong>。</p>
 <p>书上的例子（图 2.6）：解析矩形（实线）与采样版本（点），向量长度 20（<span class="arithmatex">\(L = 20\)</span>，<span class="arithmatex">\(\Delta x = 1\)</span>）；虚线是周期延拓——样本向量"虚拟地"向两边无限复制。图 2.6(b)：解析谱幅度（实线）、FFT 结果（点）、周期谱（虚线）——<strong>FFT 样本跟随周期谱</strong>。与解析谱最明显的差别是高频瓣处样本值略大：矩形谱中欠采样频率成分混叠的结果。实践中，按有效带宽（如 98% 水平）采样，只会引入少量混叠。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-6.png" width="680" />
+  <img src="../../images/fourier/fig-2-6.png" width="680" />
   <figcaption>图 2.6 周期延拓演示：(a) rect 函数——解析（实线）、周期延拓（虚线）、采样（点）；(b) rect 频谱幅度——解析（实线）、周期延拓（虚线）、FFT 样本（点）（截自原书）</figcaption>
 </figure>
 
@@ -4832,14 +4832,14 @@ f_P(x) = \Big\{\Big[f(x)\cdot \mathrm{comb}\!\left(\frac{x}{\Delta x}\right)\Big
 <li>DC 样本 <span class="arithmatex">\(G(0) = 5.000000\)</span>，等于中心纵坐标定理给出的 <span class="arithmatex">\(\int f\,dx = 5\)</span>——第 1 章的"免费仪器"继续可用。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-py-periodic.png" width="720" />
+  <img src="../../images/fourier/fig-2-py-periodic.png" width="720" />
   <figcaption>图 2-P3 周期延拓数值复现（书图 2.6 参数）：上为空域 rect 及其周期副本，下为解析谱（实线）、周期谱（虚线）与 FFT 样本（点）——高频瓣处样本被混叠抬起（笔记自制）</figcaption>
 </figure>
 
 <h2 id="26-周期卷积">2.6 周期卷积<a class="headerlink" href="#26-周期卷积" title="Permanent link">#</a></h2>
 <p>周期延拓的另一张账单出现在卷积上。如果用 FFT 做卷积 <span class="arithmatex">\(f(x)\ast h(x)\)</span>，实际得到的是<strong>缩放版的 <span class="arithmatex">\(f_P(x)\ast h_P(x)\)</span></strong>——两个周期延拓之间的循环卷积。图 2.7 用矩形与直角三角形演示：两个函数各占 20 个样本的向量（(a) rect 支撑 <span class="arithmatex">\(D_1=9\)</span>；(b) 右三角形支撑 <span class="arithmatex">\(D_2=15\)</span>，值从 0 线性升到 1）。卷积在概念上是"翻转—平移—记录重叠面积"：图 2.7&copy; 把翻转后的三角形平移到某个位置，解析卷积的重叠面积只是那个小灰三角形——但由于周期延拓，三角形左侧还有一条带子压在了<strong>另一个矩形副本</strong>上，这块面积也被算进了离散卷积结果。随着三角形继续右移，错误面积会退场，但卷积结果的边缘（图 2.7(d) 的点）始终跟着周期结果走。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-7.png" width="780" />
+  <img src="../../images/fourier/fig-2-7.png" width="780" />
   <figcaption>图 2.7 周期卷积演示：(a) 采样 rect；(b) 采样右三角形；(c) 平移重叠示意——周期函数（虚线）与采样函数（点）；(d) 卷积结果——解析（实线）、周期（虚线）与 FFT（点）（截自原书）</figcaption>
 </figure>
 
@@ -5050,7 +5050,7 @@ D_1 + D_2 &lt; L .
 <li>零填充到 <span class="arithmatex">\(N_1+N_2-1 = 39\)</span>：同样 <span class="arithmatex">\(5.0\times10^{-3}\)</span>——<strong>不改网格、用旧样本就能修好</strong>。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-2-py-perconv.png" width="900" />
+  <img src="../../images/fourier/fig-2-py-perconv.png" width="900" />
   <figcaption>图 2-P4 周期卷积数值复现（书图 2.7(d)）：左为违反式 (2.27) 的卷绕污染，中/右为两种修复——加大 L 或零填充（笔记自制）</figcaption>
 </figure>
 
@@ -5304,11 +5304,13 @@ g_2(x,y) = \mathrm{circ}\!\left(\sqrt{x^2+y^2}\middle/2d\right).
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

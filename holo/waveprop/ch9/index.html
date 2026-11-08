@@ -4311,7 +4311,7 @@ C_n^2 = \left[77.6\times 10^{-6}\left(1+7.52\times 10^{-3}\lambda^{-2}\right)\fr
 \tag{9.18}
 \]</div>
 <p>其中 <span class="arithmatex">\(\kappa_m = 5.92/l_0\)</span>、<span class="arithmatex">\(\kappa_0 = 2\pi/L_0\)</span>，分别匹配高频（内尺度）与低频（外尺度）行为。修正 von Kármán 是同时含内、外尺度效应的最简 PSD；取 <span class="arithmatex">\(l_0=0\)</span>、<span class="arithmatex">\(L_0=\infty\)</span> 时它退化为 Kolmogorov 谱 (9.16)。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-1.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-1.png" />
 <em>图 9.1 常用大气功率谱模型（Kolmogorov、Tatarskii、von Kármán、修正 von Kármán）：低频端由外尺度截断，高频端由内尺度滚降（截自原书）</em></p>
 <p>时间维上，光穿越一个大涡的时间远短于涡自身演化的时间（100 µs 量级内折射率可视为不随时间变），所以时间统计通过**泰勒冻结湍流假设（Taylor's frozen-turbulence hypothesis）**引入：气象量的时间变化来自平均风把它们"平流"过观测点，涡旋本身冻结。于是涡旋被当成冻结图案以平均风速 <span class="arithmatex">\(\mathbf{v}\)</span> 横扫光轴，空间统计换算成时间统计：</p>
 <div class="arithmatex">\[
@@ -4469,7 +4469,7 @@ r_{0,sw} = \left[0.423\,k^2\int_0^{\Delta z} C_n^2(z)\left(\frac{z}{\Delta z}\ri
 \tag{9.55}
 \]</div>
 <p>长/短曝光的差别就在<strong>倾斜（tilt）</strong>：长曝光里像点随机晃动无数次、被平均掉；短曝光里只有一次倾斜实现，多帧平均前先把每帧对中（去掉倾斜）。大气有自己的传递函数 (9.54)，成像系统有自己的 OTF（5.2.2 节），复合系统 OTF 是两者乘积。图 9.2 画了 <span class="arithmatex">\(D/r_0=4\)</span> 的圆孔复合 MTF：无像差曲线、短曝光（纯相位）、短曝光（含闪烁）、长曝光依次更差。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-2.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-2.png" />
 <em>图 9.2 D/r0 = 4 的复合 MTF：实线为无像差；灰虚线/点划线/点线分别为短曝光（无闪烁）、短曝光（含闪烁）、长曝光（截自原书）</em></p>
 <p>平均 MTF 还能算 Strehl 比（5.2.3 节）。圆孔 + 湍流的 Strehl 比是积分</p>
 <div class="arithmatex">\[
@@ -4642,7 +4642,7 @@ P_{tot} = \int\int|\phi(x,y)|^2dx\,dy = \int\int\Phi_\phi(f_x,f_y)\,df_x\,df_y.
 <p><span class="arithmatex">\(c_{n,m} = (\mathcal{N}_1+i\mathcal{N}_2)\sqrt{\text{PSD}}\,\Delta f\)</span> 的模方期望是 <span class="arithmatex">\(2\times\)</span>PSD<span class="arithmatex">\(\Delta f^2\)</span>（两份独立方差），而取 <span class="arithmatex">\(\mathrm{Re}[\sum c_n e^{i\theta}]\)</span> 又贡献 <span class="arithmatex">\(1/2\)</span> 因子，两者相消——实部（或虚部）各自都是式 (9.79) 方差正确的独立相位屏。这是书代码"取实部扔虚部"不浪费一半方差的原理。另外 <span class="arithmatex">\(l_0=0\)</span> 时 <span class="arithmatex">\(f_m=\infty\)</span>、指数化为 1，<span class="arithmatex">\(L_0=\infty\)</span> 时 <span class="arithmatex">\(f_0=0\)</span>——一份代码覆盖全部谱模型。</p>
 </div>
 <p>遗憾的是，<strong>纯 FT 屏不准确</strong>。图 9.1 的相位 PSD 把大部分功率压在低空间频率，而 FFT 网格的最低频只有 <span class="arithmatex">\(1/L\)</span>（<span class="arithmatex">\(L\)</span> 是屏边长）——低阶模式（尤其倾斜 tilt）根本采不够。验证：生成 40 块 FT 屏，用第 3 章的 <code>str_fcn2_ft</code> 算每块的结构函数再平均（图 9.3 虚线），大间隔处与理论（实线）明显偏低。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-3.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-3.png" />
 <em>图 9.3 平均相位结构函数：理论 vs 次谐波屏（Simulated SH）vs 纯 FT 屏（Simulated FT）——FT 屏缺低频，大间隔处塌掉（截自原书）</em></p>
 <p>补救方案三类：Zernike 模式随机抽取（用 Noll 的 Zernike 模式统计）；频域非均匀采样的傅里叶级数法；以及两者结合的<strong>次谐波法（subharmonics）</strong>——在 FT 屏上叠加一组低频傅里叶级数。本书实现 Lane 等人的次谐波法（Frehlich 证明用它做束波仿真结果准确）。低频屏</p>
 <div class="arithmatex">\[
@@ -4730,7 +4730,7 @@ P_{tot} = \int\int|\phi(x,y)|^2dx\,dy = \int\int\Phi_\phi(f_x,f_y)\,df_x\,df_y.
 </div>
 </div>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-4.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-4.png" />
 <em>图 9.4 次谐波法生成的典型大气相位屏（r0 = 10 cm、L0 = 100 m、l0 = 1 cm、屏边长 2 m）（截自原书）</em></p>
 <p>次谐波法的有效性有一串文献背书：Herman &amp; Strugala（结构函数与平均 Strehl 都对得上）；Lane 等（本节采用的方法）；Johansson &amp; Gavel（对比并改进）；Sedmak（非方形屏、孔径平均相位方差）；Frehlich（全波光学仿真精度：束波的平均辐照度两种屏都还行，但<strong>辐照度方差</strong>只有次谐波屏才准；平面波的辐照度方差两者都行，但互相干函数只有次谐波法对）。</p>
 <p><strong>数值验证（本笔记复现图 9.3）</strong>：同一参数（<span class="arithmatex">\(N=256\)</span>、<span class="arithmatex">\(\delta=2/256\)</span> m、<span class="arithmatex">\(r_0=0.1\)</span> m、<span class="arithmatex">\(L_0=100\)</span> m、<span class="arithmatex">\(l_0=1\)</span> cm）各生成 40 块屏，重写自书 Listing 3.7 的 <code>str_fcn2_ft</code>（按定义 <span class="arithmatex">\(\langle[\phi(\mathbf{r}+\boldsymbol\rho)-\phi(\mathbf{r})]^2\rangle\)</span> 的填零 FFT 无偏估计）算平均结构函数：</p>
@@ -4740,7 +4740,7 @@ P_{tot} = \int\int|\phi(x,y)|^2dx\,dy = \int\int\Phi_\phi(f_x,f_y)\,df_x\,df_y.
 <li>大间隔（8–12 <span class="arithmatex">\(r_0\)</span>）最大相对偏差：次谐波 43%、FT 83%。</li>
 </ul>
 <p>结论与原书一致：次谐波屏全面优于纯 FT 屏，但三层 3×3 次谐波仍补不满最低频段——大间隔统计略欠。要更准可换 Johansson &amp; Gavel 的方法或加密次谐波层数。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-11.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-11.png" />
 <em>图 9-11（自绘仿真）相位屏结构函数验证（书图 9.3 复现）：40 块屏平均。次谐波屏（点划线）显著优于纯 FT 屏（点线），但大间隔仍低于理论（实线）</em></p>
 <h2 id="94-采样约束">9.4 采样约束<a class="headerlink" href="#94-采样约束" title="Permanent link">#</a></h2>
 <p>湍流让光束因两种效应展宽：高阶像差使光束超出衍射展宽地扩张（短曝光可见）；倾斜让光束质心随机晃动（长时间 ≥1 ms 内能量撒满观测面，只有长曝光可见）。这两种展宽使湍流仿真的采样要求比第 8 章真空约束更严。</p>
@@ -4776,7 +4776,7 @@ N \ge \frac{D_1'}{2\delta_1} + \frac{D_2'}{2\delta_n} + \frac{\lambda\Delta z}{2
 \left(1+\frac{\Delta z}{R}\right)\delta_1 - \frac{\lambda\Delta z}{D_1} \le \delta_2 \le \left(1+\frac{\Delta z}{R}\right)\delta_1 + \frac{\lambda\Delta z}{D_1}.
 \tag{9.88}
 \]</div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-5.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-5.png" />
 <em>图 9.5 传播几何：湍流使光线随机折射（虚线）——由此导出约束 1 的湍流修正（截自原书）</em></p>
 <p>选好 <span class="arithmatex">\(N\)</span>、<span class="arithmatex">\(\delta_1\)</span>、<span class="arithmatex">\(\delta_n\)</span> 后，部分传播的距离与次数照旧由</p>
 <div class="arithmatex">\[
@@ -4846,7 +4846,7 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 </div>
 </div>
 <p><strong>实跑结果</strong>：<span class="arithmatex">\(r_{0,pw}=7.03\)</span> cm、<span class="arithmatex">\(r_{0,sw}=12.66\)</span> cm（书正文 12.7 cm）、<span class="arithmatex">\(\sigma_{\chi,sw}^2=0.4365\)</span>（书 0.436）；解出的屏强度 <span class="arithmatex">\(r_{0_i} = [50,\ 0.353,\ 0.301,\ 0.268,\ 0.275,\ 0.282,\ 0.285,\ 0.283,\ 0.266,\ 0.216,\ 10^6]\)</span> m——两端屏权重为 0、强度由初值/上界决定（见 9.4 节坑 4），中段屏 <span class="arithmatex">\(r_0\approx 0.22\)</span>–0.35 m；回代 <span class="arithmatex">\(r_{0,sw}\)</span> 与 <span class="arithmatex">\(\sigma^2\)</span> 与目标逐位一致。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-12.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-12.png" />
 <em>图 9-12（自绘仿真）分层大气：左为约束优化解出的 11 块屏强度（对数轴），右为矩匹配方程 (9.72)–(9.74) 的权重函数——端点屏权重为零的来源一目了然</em></p>
 <h3 id="952-采样分析">9.5.2 采样分析<a class="headerlink" href="#952-采样分析" title="Permanent link">#</a></h3>
 <p>Listing 9.6 用 <span class="arithmatex">\(c=2\)</span> 的式 (9.84)–(9.88) 评估三条约束并画等高线（图 9.6）：约束 2 的 <span class="arithmatex">\(\log_2 N\)</span> 下界等高线，叠加约束 1（虚线以下可行）与约束 3（点划线以上可行）。本例 <span class="arithmatex">\(C_n^2\)</span> 常数故 <span class="arithmatex">\(r_{0,rev}=r_{0,sw}\)</span>，式 (9.84) 两处都用 <span class="arithmatex">\(r_{0,sw}\)</span>。</p>
@@ -4887,7 +4887,7 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 </div>
 </div>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-6.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-6.png" />
 <em>图 9.6 点源例子的图形化采样分析：约束 2 的 log2 N 等高线（灰度），约束 1 可行域在虚线下方、约束 3 在点划线上方，白叉为选中的 (δ1, δn) = (10 mm, 10 mm)（截自原书）</em></p>
 <h3 id="953-真空仿真">9.5.3 真空仿真<a class="headerlink" href="#953-真空仿真" title="Permanent link">#</a></h3>
 <p>网格定了先跑<strong>真空</strong>，两个目的：(1) 验证仿真在无湍流时正确——本例是点源，可与解析对照：ROI 内辐照度应均匀、准直后相位应平坦；(2) 留下真空场 <span class="arithmatex">\(U_{vac}\)</span> 供湍流对比（算 Strehl、对数振幅扰动 <span class="arithmatex">\(\chi = \ln(|U|/|U_{vac}|)\)</span> 都要它）。</p>
@@ -4925,7 +4925,7 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 </div>
 </div>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-7.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-7.png" />
 <em>图 9.7 模型点源真空传播：辐照度在 ROI 内近均匀，准直后相位平坦（截自原书）</em></p>
 <p><strong>实跑验证</strong>：平台区（<span class="arithmatex">\(|x|\le 0.75\,D_{ROI}/2\)</span>）辐照度均值 398.8 W/m²、std/mean <span class="arithmatex">\(= 6.5\times10^{-3}\)</span>；去 piston 后相位 std <span class="arithmatex">\(= 3.9\times10^{-9}\)</span> rad——与图 9.7 一致（均匀亮斑 + 平坦相位）。</p>
 <h3 id="954-湍流仿真">9.5.4 湍流仿真<a class="headerlink" href="#954-湍流仿真" title="Permanent link">#</a></h3>
@@ -4982,22 +4982,22 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 <p class="admonition-title">原书笔误：正文与 Listing 9.8 的实现次数不一致</p>
 <p>正文两处说"重复 40 次得 40 个实现"（9.5.4 与 9.5.5 节），Listing 9.8 第 15 行却印 <code>nreals = 20</code>。本笔记按代码的 20 实现。另外第 31 行续行符书印 4 个点 <code>....</code>，应为 <code>...</code>。</p>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-8.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-8.png" />
 <em>图 9.8 一次湍流实现的观测面：辐照度散斑化、相位 ±3 rad 大幅扭曲；白圈是望远镜口径（截自原书）</em></p>
 <p><strong>实跑复现</strong>（<span class="arithmatex">\(N=512\)</span>、11 平面、20 次实现）：一次实现的辐照度呈散斑状（口径外更强、口径内起伏数百 W/m²），相位呈现 2–3 rad 的涡旋状扭曲——与图 9.8 的形态一致：</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-13.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-13.png" />
 <em>图 9-13（自绘仿真）真空 vs 湍流的一次实现：真空辐照度均匀平台/相位平坦（a,b，书图 9.7）；湍流辐照度散斑/相位扭曲（c,d，书图 9.8），白圈为 D2 口径</em></p>
 <h3 id="955-验证输出">9.5.5 验证输出<a class="headerlink" href="#955-验证输出" title="Permanent link">#</a></h3>
 <p>两项验证，都用独立同分布的实现检查空间相关。</p>
 <p><strong>第一项：相位屏本身</strong>。取任一部分传播平面的 20（书文说 40）块屏，算二维结构函数求平均（<code>str_fcn2_ft</code>，书 Listing 3.7 的用法），与式 (9.44) 的理论对照。图 9.9 显示两者贴合——屏正确代表了路径累积相位。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-9.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-9.png" />
 <em>图 9.9 相位屏结构函数验证：理论曲线与实现平均的仿真曲线贴合（截自原书）</em></p>
 <p><strong>第二项：观测面相干因子</strong>。理论 = 式 (9.32) + (9.44) 的组合：</p>
 <div class="arithmatex">\[
 \mu(r) = \exp\left[-\tfrac{1}{2}D_K(r)\right] = \exp\left[-3.44\left(\frac{r}{r_{0,sw}}\right)^{5/3}\right].
 \]</div>
 <p>图 9.10 显示仿真与理论匹配良好、略有偏离——要更准可以回头调整屏参数/位置（式 9.65 的矩匹配），或换更精细的屏生成方法（如 Johansson &amp; Gavel）。更全面的验证还可对照 Martin &amp; Flatté 的做法：把观测面辐照度 PSD 与弱起伏/渐近理论比。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-10.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-10.png" />
 <em>图 9.10 观测面相干因子：理论曲线与仿真数据点（截自原书）</em></p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误：图 9.10 的理论曲线与式 (9.32)+(9.44) 差一个平方根</p>
@@ -5010,7 +5010,7 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 <li><strong>闪烁</strong>：口径内 <span class="arithmatex">\(\langle\sigma_\chi^2\rangle = 0.450\)</span> vs 式 (9.64) 预测 0.436（+3.1%）；闪烁指数 <span class="arithmatex">\(\sigma_I^2 = 1.37\)</span> vs 弱起伏理论 <span class="arithmatex">\(4\sigma_\chi^2 = 1.75\)</span>（比值 0.78——本例 Rytov 数已超弱起伏界，强起伏饱和效应可见）；</li>
 <li><strong>中程屏结构函数</strong>：20 块中程屏（<span class="arithmatex">\(r_0=0.282\)</span> m）平均，0.5–2 <span class="arithmatex">\(r_0\)</span> 段 log-log 斜率 1.569（接近 <span class="arithmatex">\(5/3\)</span>）、2–8 <span class="arithmatex">\(r_0\)</span> 段 1.394（次谐波低频欠采样的残余效应），<span class="arithmatex">\(D(r_0)=5.47\)</span> vs 理论 6.88——图 9-14(b)。</li>
 </ul>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-14.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-14.png" />
 <em>图 9-14（自绘仿真）湍流仿真验证：(a) 相干因子——长曝光（黑点）紧贴式 (9.32)+(9.44) 的理论（实线，含闪烁幅度修正的弱化版为灰点线），去倾斜后（蓝三角）显著抬升 = 短曝光近似；(b) 中程屏平均结构函数与理论</em></p>
 <p><strong>闪烁随 Rytov 方差的变化</strong>（同一套代码跑三个场景，每例 20 次实现，另两例为 100 km/<span class="arithmatex">\(C_n^2=10^{-17}\)</span> 与 50 km/<span class="arithmatex">\(C_n^2=10^{-17}\)</span>）：</p>
 <table>
@@ -5048,7 +5048,7 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
 </tbody>
 </table>
 <p>实测 <span class="arithmatex">\(\sigma_\chi^2\)</span> 随 Rytov 数线性跟随（偏差 −7% / +14% / +3%）；闪烁指数在弱起伏区（前两例）与 <span class="arithmatex">\(4\sigma_\chi^2\)</span> 吻合，强起伏区开始饱和——与 Rytov 理论的适用范围一致。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-15.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-15.png" />
 <em>图 9-15（自绘仿真）闪烁统计随 Rytov 数的变化：(a) 对数振幅方差实测跟随预测；(b) 闪烁指数在弱起伏区贴合 4σ_χ²、强起伏区饱和</em></p>
 <h3 id="96-结语原书-96">9.6 结语（原书 9.6）<a class="headerlink" href="#96-结语原书-96" title="Permanent link">#</a></h3>
 <p>本例演示了搭一套湍流仿真并保证结果准确的完整流程，很多步骤常被忽略。真实项目往往更复杂——双向传播、自适应光学、运动平台、粗糙面反射、多波长等——这些附加模块同样需要像本节这样彻底验证。</p>
@@ -5068,9 +5068,9 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
     (d) 采样分析（口径 2 m）：<span class="arithmatex">\(\delta_1=5\)</span> mm、<span class="arithmatex">\(\delta_n\le 141.7\)</span> mm（取 80 mm）、<span class="arithmatex">\(N\ge203\to 2^8=256\)</span>、<span class="arithmatex">\(\Delta z_{max}=6.4\)</span> km、最少 17 个平面；口径 2 m 时 <span class="arithmatex">\(N=2^8\)</span> 即可，但 <span class="arithmatex">\(\Delta z_{max}\)</span> 小、平面数多——传播验证的"示例规模"取 <span class="arithmatex">\(D_2=0.5\)</span> m、<span class="arithmatex">\(N=512\)</span>、7 屏（<code>ch9_turbulence.py p7</code>）：实测 <span class="arithmatex">\(\sigma_\chi^2=0.177\)</span> vs 预测 0.156、相干因子拟合斜率 <span class="arithmatex">\(-2.87\)</span>（理论 <span class="arithmatex">\(-3.44\)</span>）；
     (e)(f) 与 9.5 节同流程的屏结构函数与相干因子验证，<code>p7</code> 命令一并完成（20 次实现）。</li>
 </ol>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-16.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-16.png" />
 <em>图 9-16（自绘仿真）习题 &#8538; 的采样图（log2 N 等高线 + 约束 1' 上界 + 选中点）：湍流展宽抬高约束 1 上界，但 D1' 变大要求更多网格点</em></p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-9-17.png" />
+<p><img alt="" src="../../images/waveprop/fig-9-17.png" />
 <em>图 9-17（自绘仿真）习题 7(b)&copy;：三屏唯一解（无鲁棒性）与七屏约束优化解（回代精确）的屏强度对比</em></p>
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
@@ -5323,11 +5323,13 @@ r_{0,sw} = 12.7\ \text{cm},\qquad \sigma_{\chi,sw}^2 = 0.436.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

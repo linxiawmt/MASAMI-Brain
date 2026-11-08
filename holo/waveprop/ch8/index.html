@@ -3932,7 +3932,7 @@ g_{ct}(x, y) =
 \tag{8.2}
 \]</div>
 <p>其中 <span class="arithmatex">\(0 \le \alpha \le 1\)</span> 是锥削区宽度参数：<span class="arithmatex">\(\alpha\)</span> 大，中心不衰减的平台就宽、边缘锥削就窄。两种窗画在一起（原书取 <span class="arithmatex">\(\sigma = 0.45L\)</span>、<span class="arithmatex">\(n = 16\)</span>；图基窗 <span class="arithmatex">\(\alpha = 0.65\)</span>）：</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-1.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-1.png" /></p>
 <p><em>图 8.1 四种数据窗对比：超高斯与图基窗中心是平顶（不碰中心光场）、边缘归零，适合当吸收边界；汉明窗与巴特利特窗从中心就开始往下压，不合格（截自原书）</em></p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误：式 (8.2) 的图基窗不等号印反，还混用了 N 与 L</p>
@@ -3945,7 +3945,7 @@ g_{ct}(x, y) =
 </div>
 <h2 id="82-两次部分传播">8.2 两次部分传播<a class="headerlink" href="#82-两次部分传播" title="Permanent link">#</a></h2>
 <p>本节把角谱传播跑两遍：第一段从源平面到<strong>中间平面</strong>（位置在源与观察面之间，不一定在中点），第二段从中间平面到观察平面。吸收边界在第一段传完、中间面上施加。几何见图 8.2，符号见表 8.1。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-2.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-2.png" /></p>
 <p><em>图 8.2 两次部分传播的坐标系：源平面（z₁、δ₁）—中间平面（z₂、δ₂）—观察平面（z₃、δ₃），两段距离 Δz₁、Δz₂（截自原书）</em></p>
 <p><strong>表 8.1 两次部分传播的符号（按原书 Table 8.1 整理）</strong></p>
 <table>
@@ -4009,7 +4009,7 @@ g_{ct}(x, y) =
 \tag{8.8}
 \]</div>
 <p>人话：<strong>中间面的网格间距 = 两端网格间距按位置线性插值</strong>。第一段刚开始（<span class="arithmatex">\(\alpha \to 0\)</span>）用 <span class="arithmatex">\(\delta_1\)</span>，快到观察面（<span class="arithmatex">\(\alpha \to 1\)</span>）就用 <span class="arithmatex">\(\delta_3\)</span>，全程平滑过渡。式 (8.8) 是整个方法的几何地基。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-3.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-3.png" /></p>
 <p><em>图 8.3 网格间距的相似三角形：由 BDH ∼ BFG 导出 δ₂ = (1−α)δ₁ + αδ₃（截自原书）</em></p>
 <p>现在写两次传播的完整算符链。第 6 章的角谱传播（<span class="arithmatex">\(m\)</span> 分支）用两次，中间夹一个吸收边界算符 <span class="arithmatex">\(\mathcal{A}[\mathbf{r}_2]\)</span>：</p>
 <div class="arithmatex">\[
@@ -4149,7 +4149,7 @@ U(\mathbf{r}_1)
 <p class="admonition-title">原书笔误：表 8.2 把 αᵢ 的描述差了一位</p>
 <p>原书 Table 8.2 把 <span class="arithmatex">\(\alpha_i = z_i/\Delta z\)</span> 描述成"从平面 1 到平面 i+1 的分数距离"。按 Table 8.3 自己的行（<span class="arithmatex">\(\alpha_1 = z_1/\Delta z = 0\)</span> 对应平面 1、<span class="arithmatex">\(\alpha_2 = z_2/\Delta z\)</span> 对应平面 2）以及 Listing 8.1 的实现（<code>alpha = z/z(n)</code> 逐平面对应），<span class="arithmatex">\(\alpha_i\)</span> 对应平面 <span class="arithmatex">\(i\)</span>。公式与代码都自洽，只有表格措辞差一位。</p>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-4.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-4.png" /></p>
 <p><em>图 8.4 单段部分传播的坐标系：第 i 面既是上一段的观察面、又是下一段的源面，网格间距按线性插值过渡（截自原书）</em></p>
 <p>把式 (8.17) 的模式循环起来，就是任意次部分传播的算符链（式 8.18）：</p>
 <div class="arithmatex">\[
@@ -4337,7 +4337,7 @@ U(\mathbf{r}_n) =
 </ul>
 <p>Python 版的差异都写进注释：0-based 索引（零坐标样本在 <code>N//2</code>）、<code>ft2</code>/<code>ift2</code> 的归一化、以及一个 Windows 专属坑——<code>nsq ** 8</code> 在 numpy 默认 int32 下会整数溢出回绕，必须先转 float（MATLAB 全 double 没这个问题）。</p>
 <p>各平面场上到底发生了什么？工程 1 把 Listing 8.2 书例的 5 个平面全部录了下来：</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-8.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-8.png" /></p>
 <p><em>图 8-8（自绘仿真）分段传播各平面演化（书例参数，5 段、每段 0.4 m）：(a) 各平面 |U| 的 y=0 切片——方孔衍射逐面展开、边缘被超高斯窗逐段剪掉；(b) 边缘能量占比（r ≥ 0.45N/2）：无吸收边界时随平面数持续增长（衍射能量外流），有吸收边界时被压低约一个量级、几乎不动</em></p>
 <h2 id="84-多次部分传播的采样">8.4 多次部分传播的采样<a class="headerlink" href="#84-多次部分传播的采样" title="Permanent link">#</a></h2>
 <p>平面一多，第 7 章的四条约束要重新过一遍。<strong>约束 1 与约束 2 是纯几何的</strong>（观测孔径的物理带宽、网格装不装得下卷绕），跟传播方法无关，原样沿用，只是把 <span class="arithmatex">\(\delta_2\)</span> 换成 <span class="arithmatex">\(\delta_n\)</span>：</p>
@@ -4393,7 +4393,7 @@ n = \operatorname{ceil}\!\left(\frac{\Delta z}{\Delta z_{max}}\right) + 1
 <li><strong>分段只多不少</strong>：更短的段距天然仍满足约束 4。</li>
 </ol>
 <p>原书本章末尾用这个方法做了一个完整书例：均匀振幅平面波（<span class="arithmatex">\(R = \infty\)</span>）离开源面的方孔。<span class="arithmatex">\(D_1 = 2\)</span> mm、<span class="arithmatex">\(\lambda = 1\,\mu\)</span>m、观察面在 <span class="arithmatex">\(\Delta z = 2\)</span> m。要求源孔径与观察面感兴趣区内都至少 30 个网格点，取终稿参数 <span class="arithmatex">\(D_2 = 6\)</span> mm（Listing 8.2）得 <span class="arithmatex">\(\delta_1 = D_1/30 \approx 66.7\,\mu\)</span>m、<span class="arithmatex">\(\delta_n = D_2/30 = 200\,\mu\)</span>m。图 8.5 画了约束 2 的 <span class="arithmatex">\(\log_2 N\)</span> 等高线并叠上约束 1：按终稿口径，约束 2 需要 <span class="arithmatex">\(N \ge 105 = 2^{6.71}\)</span>，向上取 2 的幂得 <span class="arithmatex">\(N = 128\)</span>；约束 1 给 <span class="arithmatex">\(\delta_n \le 800\,\mu\)</span>m，余量很大。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-5.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-5.png" /></p>
 <p><em>图 8.5 采样约束分析：约束 2 的 log₂N 等高线 + 约束 1（虚线），白叉标记"30 点跨源孔径与观察孔径"对应的网格间距（截自原书）</em></p>
 <p>最后用约束 4 收尾（<span class="arithmatex">\(\delta_1 = 66.7\,\mu\)</span>m、<span class="arithmatex">\(\delta_n = 200\,\mu\)</span>m、<span class="arithmatex">\(N = 128\)</span>）：</p>
 <div class="arithmatex">\[
@@ -4401,7 +4401,7 @@ n = \operatorname{ceil}\!\left(\frac{\Delta z}{\Delta z_{max}}\right) + 1
 \tag{8.25}
 \]</div>
 <p>（书印 0.567 m，尾数舍入。）于是至少 <span class="arithmatex">\(n = \operatorname{ceil}(2/0.569) + 1 = 5\)</span> 个平面——最少 4 次部分传播；Listing 8.2 取了 5 次（每段 0.4 m）。注意<strong>单次传播</strong>在此参数下约束 4 要 <span class="arithmatex">\(N \ge 150 &gt; 128\)</span>：分段不是可选项，是必需品。仿真结果与解析对照（图 8.6）：感兴趣区域内辐照度与相位都贴得很近——解析峰值辐照度 2.56（书图读数 2.57）、第一暗环在 1.0 mm，工程 1 复现的 ROI 误差 <span class="arithmatex">\(|\Delta I|/\)</span>峰值 <span class="arithmatex">\(= 3.9\times10^{-3}\)</span>、相位残差 <span class="arithmatex">\(4.8\times10^{-3}\)</span> rad。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-6.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-6.png" /></p>
 <p><em>图 8.6 观察面感兴趣区内的仿真 vs 解析：(a) 辐照度（峰值约 2.57）；(b) 缠绕相位（中央近平、暗环处 π 跳变）。数值点与解析曲线重合（截自原书）</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：图 8.6 峰值为什么是 2.57</p>
@@ -4415,10 +4415,10 @@ n = \operatorname{ceil}\!\left(\frac{\Delta z}{\Delta z_{max}}\right) + 1
 - 图 8.6 数值标记的间距约 0.13 mm（<span class="arithmatex">\(\pm 2\)</span> mm 内约 30 个点），对应 <span class="arithmatex">\(\delta_n = 133\,\mu\)</span>m 而非 200 µm。
 - 数值自洽的一套是 <strong>Listing 8.2</strong>（<span class="arithmatex">\(\delta_n = 200\,\mu\)</span>m、<span class="arithmatex">\(\Delta z = 2\)</span> m）：约束 2 需 <span class="arithmatex">\(N \ge 105\)</span>（满足）、单次约束 4 需 <span class="arithmatex">\(N \ge 150\)</span>（分段确实必要）。本笔记与工程 1 以 Listing 8.2 为准复现，另附 133 µm 口径的对照（约束 2 被突破 143 vs 128，但卷绕污染温和，ROI 内 <span class="arithmatex">\(|\Delta I|/\)</span>峰值 <span class="arithmatex">\(= 4.3\times10^{-3}\)</span>，仍大致可用——约束是指导线不是铁律的又一例证）。</p>
 </div>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-9.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-9.png" /></p>
 <p><em>图 8-9（自绘）约束图复现与勘误取证：灰度为终稿口径（D₂=6mm、Δz=2m）的约束 2 log₂N 等高线，蓝点线为图 8.5 实绘的旧稿口径（D₂=4mm、Δz=1m）；黑虚线是终稿约束 1（截距 1000 µm，出图范围外）、蓝虚线是图 8.5 实绘约束 1（截距 500 µm）；红星 = Listing 8.2 的 (66.7, 200) µm，白星 = 图 8.5 白叉实测 (66.0, 132.7) µm</em></p>
 <p>部分传播 + 吸收边界到底解决了什么？书例参数下把总距离拉到 <span class="arithmatex">\(\Delta z = 8\)</span> m 做对照：单次传播（无吸收边界）违反约束 4（需 <span class="arithmatex">\(N \ge 600\)</span>）也违反约束 2（需 <span class="arithmatex">\(N \ge 330\)</span>），网格边缘的卷绕伪影成片爬进 ROI，误差 <span class="arithmatex">\(|\Delta I|/\)</span>峰值 <span class="arithmatex">\(= 1.1\times10^{-1}\)</span>；拆成 20 段（每段 0.4 m，每段约束 4 只需 <span class="arithmatex">\(N \ge 82\)</span>）加超高斯吸收边界后误差降到 <span class="arithmatex">\(8.2\times10^{-3}\)</span>——<strong>差 14 倍</strong>。这就是本章方法的存在意义。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-7.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-7.png" /></p>
 <p><em>图 8-7（自绘仿真）长距传播的 wrap-around 与分段 + 吸收边界的抑制（D₁=2mm、D₂=6mm、Δz=8m、λ=1µm、N=128）：(a) 单次传播的对数辐照度——网格边缘的卷绕伪影成片；(b) 分段 20 次 + 吸收边界——干净；&copy; ROI 内辐照度切片（对数坐标）：单次的伪影抬高背景约两个量级</em></p>
 <p>书例的完整仿真就是 Listing 8.2 这十几行：</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MATLAB</label><label for="__tabbed_2_2">Python</label></div>
@@ -5475,14 +5475,14 @@ n = \operatorname{ceil}\!\left(\frac{\Delta z}{\Delta z_{max}}\right) + 1
 <li>模拟均匀振幅平面波从环形孔径到目标面的传播，源束聚焦在目标面上。环孔外径 1.5 m、内径 0.5 m、<span class="arithmatex">\(\lambda = 1.3\,\mu\)</span>m，目标面在 100 km 外。(a) 给出类似图 8.5 的详细采样分析，并说明分段数怎么定；(b) 仿真后画 <span class="arithmatex">\(y_n = 0\)</span> 切片的辐照度与相位，解析与仿真同图。</li>
 </ol>
 <p><strong>习题 1</strong>（窗压混叠的玩具版）：<span class="arithmatex">\(\delta = L/N = 1/32\)</span> m，<span class="arithmatex">\(f_{loc} = a^2 x = 16x\)</span>，Nyquist <span class="arithmatex">\(= 16\)</span> /m——混叠边界 <span class="arithmatex">\(|x| = 1\)</span> m 恰为 <span class="arithmatex">\(L/4\)</span>。窗 <span class="arithmatex">\(\sigma = 0.25L = 1\)</span> m 在 <span class="arithmatex">\(|x| = 1\)</span> m 处的值 <span class="arithmatex">\(e^{-1} = 0.368\)</span>，在 <span class="arithmatex">\(|x| = 2\)</span> m 处已降到 <span class="arithmatex">\(10^{-7000}\)</span> 量级（数值下溢为 0）：<strong>混叠区被窗精确处决</strong>。低频段（<span class="arithmatex">\(|f| \le 8\)</span> /m）与解析 FT 的最大偏差：无窗 DFT 0.250（= 振幅尺度 <span class="arithmatex">\(1/a\)</span>，谱被混叠完全污染），加窗 DFT 0.001——两个量级的改善。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-10.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-10.png" /></p>
 <p><em>图 8-10（自绘仿真）习题 1：a=4、N=128、L=4 m 的啁啾信号 DFT。(a) 超高斯窗（n=16、σ=0.25L），阴影区 |x|&gt;1 m 是混叠区；(b) 实部与 &copy; 虚部：无窗 DFT（红点）被混叠污染成散点，加窗 DFT（蓝点）贴住解析曲线（黑线）</em></p>
 <p><strong>习题 2</strong>（<span class="arithmatex">\(\alpha_2\)</span> 消去的代数）：把 <span class="arithmatex">\(\delta_2 = (1-\alpha_2)\delta_1 + \alpha_2\delta_n\)</span>、<span class="arithmatex">\(\Delta z_1 = \alpha_2 \Delta z\)</span> 代入式 (8.20) 后，左右两个不等式各移项、合并 <span class="arithmatex">\((1-\alpha_2)\delta_1\)</span>，得 <span class="arithmatex">\(\alpha_2 \delta_n \ge \alpha_2\delta_1 + \alpha_2 \Delta z \delta_1/R - \lambda\alpha_2\Delta z/D_1\)</span>（左）与 <span class="arithmatex">\(\alpha_2 \delta_n \le \alpha_2\delta_1 + \alpha_2 \Delta z \delta_1/R + \lambda\alpha_2\Delta z/D_1\)</span>（右）；两边除以 <span class="arithmatex">\(\alpha_2 &gt; 0\)</span>，<span class="arithmatex">\(\alpha_2\)</span> 严格消去，得式 (8.22)。工程 1 验证 0 的 1000 组随机参数复核判定不一致为 0 组。</p>
 <p><strong>习题 3</strong>（点源长距：分段无收益的情形）：沿用第 7 章习题 2 的选点 <span class="arithmatex">\(\delta_1 = \delta_2 = 1\)</span> cm、<span class="arithmatex">\(N = 1024\)</span>：约束 4（单次）要 <span class="arithmatex">\(N \ge 1000\)</span>，约束 2 要 <span class="arithmatex">\(N \ge 600\)</span>——约束 4 主导。从式 (8.24) 的视角看：<span class="arithmatex">\(\Delta z_{max} = (10^{-2})^2 \times 1024 / 10^{-6} = 1.024\times10^5\)</span> m <span class="arithmatex">\(\ge \Delta z = 10^5\)</span> m（余量仅 2%）——<span class="arithmatex">\(N = 1024\)</span> 正是约束 4 逼出来的，单次传播本来就可行，<strong>分段在这里没有收益</strong>（分 2 段每段只需 <span class="arithmatex">\(N \ge 500\)</span>，余量放大 4 倍，但也仅此而已）。对照书例（<span class="arithmatex">\(\delta \sim\)</span> 几十 µm、<span class="arithmatex">\(\Delta z_{max} = 0.57\)</span> m <span class="arithmatex">\(\ll 2\)</span> m）：分段的收益由 <span class="arithmatex">\(\min(\delta_1,\delta_n)^2 N/\lambda\)</span> 相对 <span class="arithmatex">\(\Delta z\)</span> 的大小决定；点源长距场景网格间距是厘米级，约束 4 天然宽松。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-11.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-11.png" /></p>
 <p><em>图 8-11（自绘）习题 3：点源 100 km 的采样图（log₂N 等高线，约束 1 对 D₁→0 失效不画）。蓝实线 = 单次传播约束 4 的界（δ₁δₙ ≥ 10⁻³ m²），蓝虚线 = 分 20 段后的界（下移 20 倍）；红星 = 选点 (1 cm, 1 cm)、N=1024，恰好压在单次界线上</em></p>
 <p><strong>习题 4</strong>（环形孔径聚焦 100 km）：源是环孔 <span class="arithmatex">\(\times\)</span> 聚焦相位（<span class="arithmatex">\(R = -\Delta z\)</span>）。取 <span class="arithmatex">\(\delta_1 = D_{out}/30 = 50\)</span> mm、<span class="arithmatex">\(\delta_n = 2.5\)</span> mm（聚焦斑 Airy 半径 <span class="arithmatex">\(1.22\lambda\Delta z/D_{out} = 106\)</span> mm，约 40 点/半径，分辨充裕）、<span class="arithmatex">\(D_2 = 0.5\)</span> m：约束 2 要 <span class="arithmatex">\(N \ge 635 = 2^{9.31}\)</span> <span class="arithmatex">\(\to N = 1024\)</span>；约束 3 因 <span class="arithmatex">\(|1 + \Delta z/R| = 0 &lt; D_2/D_1\)</span> 免检；约束 4 给 <span class="arithmatex">\(\Delta z_{max} = (2.5\,\mathrm{mm})^2 \times 1024/1.3\,\mu\mathrm{m} = 4.9\)</span> km <span class="arithmatex">\(\to\)</span> 至少 21 段（每段 4.8 km）。仿真（21 段收缩网格传播）vs 解析：峰值比 0.9992、ROI(±0.25 m) 内 <span class="arithmatex">\(|\Delta I|/\)</span>峰值 <span class="arithmatex">\(= 1.0\times10^{-2}\)</span>、相位残差 <span class="arithmatex">\(3.6\times10^{-4}\)</span> rad。</p>
-<p><img alt="" src="../../../images/holo/waveprop/fig-8-12.png" /></p>
+<p><img alt="" src="../../images/waveprop/fig-8-12.png" /></p>
 <p><em>图 8-12（自绘仿真）习题 4：环形孔径聚焦束传播 100 km（λ=1.3µm、N=1024、21 段）。(a) 采样分析（log₂N 等高线 + 约束 1 虚线 + 选点红星）；(b) yₙ=0 切片辐照度：仿真（红点）贴住解析（黑线），主瓣 ±0.1 m</em></p>
 <div class="admonition note">
 <p class="admonition-title">拓展：习题 4 的解析解——聚焦啁啾精确相消</p>
@@ -6330,11 +6330,13 @@ U(\mathbf{r}_n) = \frac{e^{ik\Delta z}}{i\lambda \Delta z}\, e^{i\frac{k}{2\Delt
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

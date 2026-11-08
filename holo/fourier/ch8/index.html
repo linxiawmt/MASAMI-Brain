@@ -4150,7 +4150,7 @@ W(x,y) = W_{ab}(x,y) - W_{sp}(x,y),
 \]</div>
 <p><span class="arithmatex">\(x,y\)</span> 是瞳面坐标。图 8.1 还标了符号约定:像差波前在理想波前的<strong>像侧</strong>(更靠近像)时 W 取正——这个约定在 8.3.1 节变成指数里的负号。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-1.png" width="500" />
+  <img src="../../images/fourier/fig-8-1.png" width="500" />
   <figcaption>图 8.1 球面波前(sp)与像差波前(ab):W(x,y) = W_ab − W_sp(截自原书)</figcaption>
 </figure>
 
@@ -4207,7 +4207,7 @@ W(\hat{u}_0;\,\rho,\theta) = \sum_{j,m,n} W_{klm}\,\hat{u}_0^{\,k}\,\rho^{\,l}\c
 <li><span class="arithmatex">\(\hat{u}_0\)</span>:<strong>分数像高(fractional image height)</strong>——像面上所考虑点的物理高度除以最大像半径,沿图 8.2(b) 的 <span class="arithmatex">\(\hat{u}\)</span> 轴定义。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-2.png" width="480" />
+  <img src="../../images/fourier/fig-8-2.png" width="480" />
   <figcaption>图 8.2 Seidel 像差坐标定义:归一化出瞳 (a) 与像面 (b)(截自原书)</figcaption>
 </figure>
 
@@ -4373,7 +4373,7 @@ W(\hat{u}_0;\,\hat{x},\hat{y}) ={}&amp; W_d\left(\hat{x}^2+\hat{y}^2\right) + W_
 </code></pre></div>
 <p>取合适的样本数、边长 2 的归一化瞳,试几个系数组合。图 8.3 能看出:球差 <span class="arithmatex">\(W_{040}\)</span> 和场曲 <span class="arithmatex">\(W_{220}\)</span> 是"曲率型"的——对瞳坐标<strong>球对称</strong>;彗差 <span class="arithmatex">\(W_{131}\)</span> 和像散 <span class="arithmatex">\(W_{222}\)</span> 不对称,依赖像点位置。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-3.png" width="760" />
+  <img src="../../images/fourier/fig-8-3.png" width="760" />
   <figcaption>图 8.3 seidel_5 生成的波前 OPD 曲面/等高线例:左上 w040=1(轴上);右上 u0=1, w040=w131=w222=1;左下 u0=0, v0=1 同系数(方向随像点转);右下 u0=1, w220=1(截自原书)</figcaption>
 </figure>
 
@@ -4437,7 +4437,7 @@ H(\hat{u}_0,\hat{v}_0;f_U,f_V) = P\!\left(\hat{u}_0,\hat{v}_0;-\lambda z_{XP}f_U
 <h2 id="85-透镜实例PSF-与-MTFLens-ExamplePSF-and-MTF">8.5 透镜实例——PSF 与 MTF(Lens Example—PSF and MTF)<a class="headerlink" href="#85-透镜实例PSF-与-MTFLens-ExamplePSF-and-MTF" title="Permanent link">#</a></h2>
 <p>图 8.4 是商业光学设计软件 <strong>ZEMAX</strong> 画的一枚真实平凸透镜光线追迹布局。用 ZEMAX 提取实际像差系数来仿真:有效焦距 100 mm、瞳直径 20 mm → 像方 <strong>f/5</strong>。假设立远物成像,故 <span class="arithmatex">\(z_{XP} \approx f\)</span>。透镜结构参数:前表面曲率半径 51.68 mm、后表面无限(平凸)、玻璃 BK7、中心厚度 4.585 mm。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-4.png" width="640" />
+  <img src="../../images/fourier/fig-8-4.png" width="640" />
   <figcaption>图 8.4 f/5 平凸透镜的 ZEMAX 光线追迹布局:有效焦距 100 mm、瞳直径 20 mm;图中给出 0 与 10 mm 两个像高(截自原书)</figcaption>
 </figure>
 
@@ -4623,7 +4623,7 @@ H(\hat{u}_0,\hat{v}_0;f_U,f_V) = P\!\left(\hat{u}_0,\hat{v}_0;-\lambda z_{XP}f_U
 </div>
 <p>先取轴上像点(第 19 行 <span class="arithmatex">\(u_0=0, v_0=0\)</span>),结果见图 8.5:相干传递函数相位 (a) 用等值图显示,黑 = 0、白 = <span class="arithmatex">\(2\pi\)</span> rad——相位其实采样充分,图里的纹样一部分是<strong>显示伪像</strong>;看它的目的是确认传递函数直径 ≤ 阵列之半(式 8.6)。PSF (b)–(d) 看着较窄——不错,但相对衍射限 PSF 其实已经摊宽不少(习题 8.8)。MTF 只画一半(负频率侧对称),图 8.5(e) 里它比衍射限曲线掉得快得多:实用截止频率从曲线估约 <strong>120–130 cyc/mm</strong>。轴上像点 PSF 与 MTF 都对称,u、v 两轴结果无差别。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-5.png" width="560" />
+  <img src="../../images/fourier/fig-8-5.png" width="560" />
   <figcaption>图 8.5 平凸透镜轴上像点结果:(a) 相干传递函数相位;(b) PSF 图样;(c) u 轴剖面;(d) v 轴剖面;(e) MTF(衍射限虚线)。(a) 的部分纹样是显示伪像(截自原书)</figcaption>
 </figure>
 
@@ -4636,24 +4636,24 @@ H(\hat{u}_0,\hat{v}_0;f_U,f_V) = P\!\left(\hat{u}_0,\hat{v}_0;-\lambda z_{XP}f_U
 <li>轴上 Strehl 比(习题 8.8(e)):0.0212(见下)。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-lens.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-lens.png" width="900" />
   <figcaption>图 8-P1 lens_psfmtf 复现:上排左/中 PSF(平方根拉伸,左轴上、右最大像高),上右相干 TF 相位;下排 MTF(实线 u、虚线 v、点线衍射限)与最大像高点 PSF 剖面(笔记自制)</figcaption>
 </figure>
 
 <p>把最大像高点改到 v 轴(<span class="arithmatex">\(\hat{u}_0=0,\hat{v}_0=1\)</span>),结果见图 8.6:PSF 不再对称,沿 v 方向<strong>特征性拉长</strong> (b)–(d);峰值比轴上小得多(PSF 大幅摊开);MTF (e) 两个方向不一样,v 轴最差,实用截止约 <strong>u ≈ 20、v ≈ 10 cyc/mm</strong>。注意:PSF 都显示在 1 mm × 1 mm 的阵列里,但就整个像面而言,轴上 PSF 位于光轴上,最大像高 PSF 在离轴 10 mm 处——两幅图是不同像点各自的"局部"。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-6.png" width="560" />
+  <img src="../../images/fourier/fig-8-6.png" width="560" />
   <figcaption>图 8.6 平凸透镜最大像高点结果:(a) 相干传递函数相位;(b) PSF 图样(v 方向拉长);(c) u 轴剖面;(d) v 轴剖面;(e) MTF(u 轴实线、v 轴虚线、衍射限点线)(截自原书)</figcaption>
 </figure>
 
 <p>验证/合理性检查:与 ZEMAX 对同一例子的分析对比。图 8.7 的<strong>光线点列图(ray spot diagrams)</strong>:在瞳内撒一组光线,按直线追迹到像面,标出落点——点云形状与 lens_psfmtf 的 PSF 形状相似,好兆头。更定量的对比是 MTF(图 8.8):"T"指<strong>子午面(tangential)</strong>,与本章 v 轴一致;"S"指<strong>弧矢面(sagittal)</strong>,含 u 轴。10 mm 像点的 T、S 曲线难分辨,T(v 轴)在下。ZEMAX 曲线与 lens_psfmtf 相当接近;差异在预料之中——lens_psfmtf 只用五个初级 Seidel 像差,而 ZEMAX 的瞳面波前含<strong>高阶项</strong>。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-7.png" width="640" />
+  <img src="../../images/fourier/fig-8-7.png" width="640" />
   <figcaption>图 8.7 f/5 平凸透镜的 ZEMAX 点列图:(a) 轴上像点;(b) 最大像高(10 mm)像点(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-8.png" width="640" />
+  <img src="../../images/fourier/fig-8-8.png" width="640" />
   <figcaption>图 8.8 f/5 平凸透镜的 ZEMAX MTF 曲线:深色为轴上像点,浅色为最大像高点的子午(T)与弧矢(S)面(截自原书)</figcaption>
 </figure>
 
@@ -4808,7 +4808,7 @@ W_{040} \leq \frac{L}{16(f/\#)}\,. \tag{8.15}
 <li><strong>(f)</strong> 第 46 行:PSF 只是<strong>加在一起</strong>方便观看比较——<strong>别把这当成卷积或叠加运算</strong>,它只是摆放。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-9.png" width="480" />
+  <img src="../../images/fourier/fig-8-9.png" width="480" />
   <figcaption>图 8.9 psf_map 例子的像面 PSF 分布图:中心对称,向边缘因彗差 + 像散逐渐拉长(截自原书)</figcaption>
 </figure>
 
@@ -4818,7 +4818,7 @@ W_{040} \leq \frac{L}{16(f/\#)}\,. \tag{8.15}
 </div>
 <p>本章 Python 复现(<span class="arithmatex">\(2f_0 = 1\times10^5 \le f_N = 1.25\times10^5\ \text{m}^{-1}\)</span>,判据满足):中心 PSF 对称(轴上只受球差影响,评注 (a) 的直接体现:中心 13×13 邻域左右镜像差 <span class="arithmatex">\(2.9\times10^{-5}\)</span> 相对量),边缘 PSF 沿 v 拉长、拖尾方向随像点符号翻转——与图 8.9 一致。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-psfmap.png" width="560" />
+  <img src="../../images/fourier/fig-8-py-psfmap.png" width="560" />
   <figcaption>图 8-P2 psf_map 复现(f/20,0.5λ 球差 + 1λ 彗差 + 1.5λ 像散,四次方根拉伸)(笔记自制)</figcaption>
 </figure>
 
@@ -4967,7 +4967,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 <li><strong>(h)</strong> 最后一条:<strong>这段代码跑起来相当慢</strong>!(书作者笔记本约 1 小时。)62,500 个 <span class="arithmatex">\(250\times250\)</span> 的 PSF 被生成并叠加。对比:卷积只需一个 PSF、几次 FFT、不到一秒——空间变系统没有卷积这个奢侈。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-10.png" width="480" />
+  <img src="../../images/fourier/fig-8-10.png" width="480" />
   <figcaption>图 8.10 image_super 例子的测试靶图像:中心清晰,边缘因离轴像差明显退化(截自原书)</figcaption>
 </figure>
 
@@ -4978,7 +4978,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 <li><strong>M = 100(快速验证,4.3 s)</strong>:能量同样守恒,但注意 <span class="arithmatex">\(f_N = 5\times10^4 &lt; 2f_0 = 10^5\ \text{m}^{-1}\)</span>,<strong>式 (8.6) 不再满足</strong>——书选 M=250 不是随便定的:再省样本,PSF 本身就欠采样了。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-imagesuper.png" width="880" />
+  <img src="../../images/fourier/fig-8-py-imagesuper.png" width="880" />
   <figcaption>图 8-P3 image_super 复现(M=250,三次方根拉伸):左理想靶,右叠加像——中心保持,边缘(尤其左列竖条与上缘)模糊拖尾(笔记自制)</figcaption>
 </figure>
 
@@ -5063,7 +5063,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </details>
 <p><strong>8.2 离焦补偿球差</strong>:球差源于用球面聚光,而球面对大多数入射波前并不给出球面会聚波。焦点(准确说是<strong>离焦</strong>)可以用来对冲球差。(a) 取轴上像点、<span class="arithmatex">\(W_{040}=1\)</span>(任取)、其余系数为零,画 W 曲面。(b) 加入离焦 <span class="arithmatex">\(W_d\)</span>,调 <span class="arithmatex">\(W_d\)</span> 去补偿 <span class="arithmatex">\(W_{040}\)</span>(理想情况 W 应当<strong>平</strong>),粗判最佳补偿量。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex82.png" width="860" />
+  <img src="../../images/fourier/fig-8-py-ex82.png" width="860" />
   <figcaption>图 8-P4 习题 8.2:纯球差(rms = 0.298λ)与离焦平衡后 W = W040(ρ⁴−ρ²)(rms = 0.0745λ)的瞳内 OPD(笔记自制)</figcaption>
 </figure>
 
@@ -5073,7 +5073,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </details>
 <p><strong>8.3 通过焦 PSF(PSF through focus)</strong>:检查 PSF 随焦点位置的变化是很有用的设计手段。离焦波前参考球面的曲率中心,相对原像点移动 <span class="arithmatex">\(\delta d = 8(f/\#)^2 W_d\)</span>。例如 f/10 系统、<span class="arithmatex">\(W_d=-1.0\lambda\)</span>、<span class="arithmatex">\(\lambda=0.5\ \mu\text{m}\)</span>:<span class="arithmatex">\(\delta d = -0.4\)</span> mm——把像面向镜头方向移 0.4 mm,效果等价于瞳里造出 <span class="arithmatex">\(W_d=-1.0\lambda\)</span> 的像差。对 8.5 节 f/5 透镜的轴上像点,考察 <span class="arithmatex">\(\delta d = -1, -0.5, 0, +0.5, +1\)</span> mm 的 PSF:哪个 <span class="arithmatex">\(\delta d\)</span> 的 PSF 最"窄"(峰值最高)?对应的 <span class="arithmatex">\(W_d\)</span> 是多少?</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex83.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex83.png" width="900" />
   <figcaption>图 8-P5 习题 8.3:f/5 透镜轴上 PSF 通过焦剖面(δd = −1…+1 mm;横轴像面 u)(笔记自制)</figcaption>
 </figure>
 
@@ -5126,7 +5126,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </details>
 <p><strong>8.4 抛物面镜</strong>:抛物面镜对零视场角(沿光轴)的平面波入射是<strong>衍射限</strong>的。图 8.11 是 f/5 抛物面镜的 ZEMAX 追迹布局。实际中会聚光通常用第二块镜(如 45° 小平面镜)引出入射光路,这里忽略。镜参数:<span class="arithmatex">\(f = 200\)</span> mm、直径 40 mm、最大像高 3.5 mm;Seidel 系数见表 8.3(He-Ne 激光波长 0.633 μm,元件检测常用)。改 lens_psfmtf 建模此镜:用 <span class="arithmatex">\(M=1024\)</span>、<span class="arithmatex">\(L=0.1\times10^{-3}\)</span> m,对像点 <span class="arithmatex">\((\hat{u}_0,\hat{v}_0)\)</span>: (0, 0)、(0, 1)、(0.707, 0.707) 生成 PSF 与 MTF。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-11.png" width="640" />
+  <img src="../../images/fourier/fig-8-11.png" width="640" />
   <figcaption>图 8.11 f/5 抛物面镜的 ZEMAX 追迹布局:有效焦距 200 mm、瞳直径 40 mm;入射视场角 0 与 1°,对应像高 0 与 3.5 mm(截自原书;原书编号重复印作"Figure 8.10",笔记按 8.11 处理)</figcaption>
 </figure>
 
@@ -5202,7 +5202,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </details>
 <p><strong>8.5 临界采样离焦</strong>:对 8.5 节 f/5 透镜的最大像高点(分数像高 1),求可以加入瞳中的<strong>正离焦</strong> <span class="arithmatex">\(W_d\)</span> 的量,使式 (8.12) 取等号(临界满足)。在 lens_psfmtf 里加这个离焦,考察临界值上、下的 PSF:波前 OPD 欠采样时 PSF 会怎样?</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex85.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex85.png" width="900" />
   <figcaption>图 8-P6 习题 8.5:临界离焦试验(最大像高点):Wd/2(欠)/临界(+14.9λ)/1.5·Wd(过,相位混叠)(笔记自制)</figcaption>
 </figure>
 
@@ -5279,7 +5279,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </table>
 <p>(a) 写一个类似 seidel_5 的函数求 Zernike 多项式,至少到第 11 项;瞳坐标 <code>p=sqrt(X.^2+Y.^2)</code>,<code>A=atan2(Y,X)</code>。(b) 改 lens_psfmtf 用 Zernike 函数,系数取表 8.4(单位"波长",乘 λ),生成 PSF 与 MTF,与 Seidel 版比较。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex86.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex86.png" width="900" />
   <figcaption>图 8-P7 习题 8.6:Zernike 前 11 项 vs Seidel 5 项(最大像高点):PSF 图样几乎一致,MTF u 轴曲线重合(笔记自制)</figcaption>
 </figure>
 
@@ -5289,7 +5289,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </details>
 <p><strong>8.7 单项像差的 PSF</strong>:用 psf_map 代码考察单项 Seidel 像差对 PSF 的影响。出瞳参数同例子,分别看:(a) 1λ 离焦;(b) 1λ 球差;&copy; 2λ 彗差;(d) 1λ 像散;(e) 1λ 场曲;(f) ±3λ 畸变。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex87.png" width="820" />
+  <img src="../../images/fourier/fig-8-py-ex87.png" width="820" />
   <figcaption>图 8-P8 习题 8.7:单项像差的像面 PSF 图(f/20,7×7 像点,四次方根拉伸):离焦 = 环;球差 = 均匀软斑;彗差 = 拖尾随视场翻转;像散 = X 形随位置旋转;场曲 = 均匀离焦斑;畸变 = 只移位不展宽(笔记自制)</figcaption>
 </figure>
 
@@ -5315,7 +5315,7 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
 <p>数值验证见下:实测纯球差方差 = 0.0889<span class="arithmatex">\(\lambda^2\)</span> = 4/45(单位:<span class="arithmatex">\(W_{040}=1\lambda\)</span>),与修正式逐位吻合。</p>
 </div>
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex88.png" width="620" />
+  <img src="../../images/fourier/fig-8-py-ex88.png" width="620" />
   <figcaption>图 8-P9 习题 8.8:Strehl 比 vs W040——数值(点)与 Marechal 近似(线);W040 ≤ 0.5λ 内吻合,大像差区 Marechal 只给趋势(笔记自制)</figcaption>
 </figure>
 
@@ -5591,11 +5591,13 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

@@ -4069,13 +4069,13 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 </table>
 <p>一维函数的图像如下（注意 <span class="arithmatex">\(\mathrm{rect}\)</span> 和 <span class="arithmatex">\(\mathrm{circ}\)</span> 在边界点取半值 <span class="arithmatex">\(1/2\)</span>——这是解析约定，数值网格很少恰好落在边界上）：</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-1.png" width="560" />
+  <img src="../../images/fourier/fig-1-1.png" width="560" />
   <figcaption>图 1.1 基本一维函数：rect、sinc、Λ、comb、高斯（截自原书）</figcaption>
 </figure>
 
 <p>这些一维函数可以相乘组成<strong>可分离的二维函数</strong>。圆函数（<strong>circle function</strong>）是圆对称二维函数，常用径向变量 <span class="arithmatex">\(r=(x^2+y^2)^{1/2}\)</span> 表示。高斯没有简写名，但出场率极高；这里选 <span class="arithmatex">\(\exp(-\pi x^2)\)</span> 这种形式是因为它对傅里叶分析最方便（见下面的拓展框）。圆函数和二维高斯的曲面图：</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-2.png" width="600" />
+  <img src="../../images/fourier/fig-1-2.png" width="600" />
   <figcaption>图 1.2 二维函数示例：circ（圆柱）与 exp[−π(x²+y²)]（高斯包络）（截自原书）</figcaption>
 </figure>
 
@@ -4320,7 +4320,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 </code></pre></div>
 <p>圆函数的变换曲面如下——这就是著名的"jinc"形频谱，中心尖峰周围一圈圈衰减的环：</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-3.png" width="480" />
+  <img src="../../images/fourier/fig-1-3.png" width="480" />
   <figcaption>图 1.3 圆函数的变换：原点处峰值 π（截自原书）</figcaption>
 </figure>
 
@@ -4568,7 +4568,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 <li>chirp 勘误验证：修正式误差 <span class="arithmatex">\(1.4\times10^{-2}\)</span>（截断水平），原书式误差 <span class="arithmatex">\(2.0\)</span>——第 2 处笔误实锤。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-pairs.png" width="760" />
+  <img src="../../images/fourier/fig-1-py-pairs.png" width="760" />
   <figcaption>图 1-P1 表 1.3 三个一维变换对的数值验证：DFT（圆点）与解析式（实线）重合（笔记自制）</figcaption>
 </figure>
 
@@ -4719,7 +4719,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 </div>
 </div>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-circ.png" width="780" />
+  <img src="../../images/fourier/fig-1-py-circ.png" width="780" />
   <figcaption>图 1-P2 circ 变换对径向剖面（fY=0）：左为半径 1 圆盘（峰值 π，匹配表 1.3/图 1.3），右为半径 1/2（峰值 π/4，匹配表 1.2 定义）（笔记自制）</figcaption>
 </figure>
 
@@ -4934,7 +4934,7 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
 </div>
 <p>数值验证结论：两条路线的最大差异 <span class="arithmatex">\(5.3\times10^{-15}\)</span>（相对量同阶），纯粹是浮点舍入——式 (1.13) 成立。<span class="arithmatex">\(h\)</span> 归一化后 <span class="arithmatex">\(\sum h=1\)</span>，即 <span class="arithmatex">\(H(0,0)=1\)</span>：模糊不改变图像的平均亮度（直流分量）。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-lsi.png" width="800" />
+  <img src="../../images/fourier/fig-1-py-lsi.png" width="800" />
   <figcaption>图 1-P3 线性空间不变系统演示：物 g1、点扩散函数 h、像 g2=g1⊗h；直接卷积与频域法之差在 1e-15 量级（笔记自制）</figcaption>
 </figure>
 
@@ -5292,11 +5292,13 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

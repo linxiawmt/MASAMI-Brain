@@ -4354,20 +4354,20 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 <p>带下标 "1" 的变量都是源面量。TF 与 IR 传播器里源面、观察面边长相同(<span class="arithmatex">\(L_1 = L_2 = L\)</span>),但其他传播器未必如此,所以这里保留 <span class="arithmatex">\(L_1\)</span> 记号。代码在源面边长上布 250 个样本,采样间隔 <span class="arithmatex">\(\Delta x_1 = 2\times10^{-3}\)</span> m(2 mm)。</p>
 <p>假设方孔半宽 0.051 m(51 mm),单位振幅平面波从背面照明,<span class="arithmatex">\(\lambda = 0.5\ \mu\text{m}\)</span>。这样孔径上跨了 <strong>51 个样本</strong>,对方孔是很好的表示(2.2 节)。传播距离 <span class="arithmatex">\(z = 2000\)</span> m,菲涅耳数 <span class="arithmatex">\(N_F = w^2/\lambda z = 2.6\)</span>——书原话"reasonable for applying the Fresnel expression"(用菲涅耳表达式合理)。运行脚本生成图 5.1,先验证源面布置无误:</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-1.png" width="420" />
+  <img src="../../images/fourier/fig-5-1.png" width="420" />
   <figcaption>图 5.1 sqr_beam 的源面辐照度(0.5 m 窗内 51 mm 方孔)(截自原书)</figcaption>
 </figure>
 
 <p>接下来是真正传播的部分(上面代码的 <code>u2=propTF(...)</code> 起的 26 行)。观察面参数带下标 "2";第 24、25 行把观察面坐标设成与源面相同——这与 propTF 的工作方式一致。第 28–47 行显示观察面辐照度图像、辐照度剖面、场幅度与相位剖面。两个新函数:<code>num2str</code> 把传播距离写进标题;相位剖面用的 <code>unwrap</code> 见下面几段。</p>
 <p>运行 sqr_beam,辐照度结果如图 5.2——相干光的相长/相消干涉(衍射所致)让某些峰的辐照度<strong>超过源面初值 1</strong>,峰之间夹着更低的谷;剖面图上还能看到光"展宽出翅膀",超出源矩形的初始宽度:</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-2.png" width="760" />
+  <img src="../../images/fourier/fig-5-2.png" width="760" />
   <figcaption>图 5.2 观察面辐照度:(a) 图样;(b) x 轴剖面(中央峰 1.92、±0.02 侧峰 1.96、±0.01 谷 0.89)(截自原书)</figcaption>
 </figure>
 
 <p>场的幅度与相位见图 5.3。相位单位是弧度。<code>unwrap</code> 的作用:相邻样本跳变超过 <span class="arithmatex">\(\pi\)</span> 时加/减 <span class="arithmatex">\(2\pi\)</span> 的整数倍,把模 <span class="arithmatex">\(2\pi\)</span> 格式里"断崖式"的跳变接回去,让相位的底层形状显形——把 <code>unwrap</code> 去掉跑一遍就能看到模 <span class="arithmatex">\(2\pi\)</span> 跳变的样子。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-3.png" width="760" />
+  <img src="../../images/fourier/fig-5-3.png" width="760" />
   <figcaption>图 5.3 观察面 (a) 幅度剖面与 (b) unwrap 相位剖面(截自原书)</figcaption>
 </figure>
 
@@ -4392,7 +4392,7 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 <li><strong>z = 20,000 m</strong>:TF 剖面呈"stair-step"(台阶状)——明显的 artifact;IR 光滑。长距离下夫琅禾费理论预言辐照度趋于 <span class="arithmatex">\(\mathrm{sinc}^2\)</span> 形,图 5.4(h) 大体如此。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-4.png" width="820" />
+  <img src="../../images/fourier/fig-5-4.png" width="820" />
   <figcaption>图 5.4 TF 与 IR 传播的 x 轴辐照度剖面(z = 1000–20,000 m):(c)(d) 出现尖刺与台阶,(e) 出现周期副本,(h) 出现假旁瓣(截自原书)</figcaption>
 </figure>
 
@@ -4402,13 +4402,13 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 </div>
 <p>对应的辐照度图样见图 5.5:</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-5.png" width="680" />
+  <img src="../../images/fourier/fig-5-5.png" width="680" />
   <figcaption>图 5.5 与图 5.4 对应的辐照度图样(TF/IR × 四个距离)(截自原书)</figcaption>
 </figure>
 
 <p>用本章 Python 复现同一组剖面(与图 5.4 对照,四类 artifacts 全部重现):</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-profiles.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-profiles.png" width="880" />
   <figcaption>图 5-P1 sqr_beam 的 TF/IR 剖面数值复现(参数同图 5.4):TF@4000 的 ticks、TF@20000 的 stair-step、IR@1000 的周期副本、IR@20000 的假旁瓣全部出现(笔记自制)</figcaption>
 </figure>
 
@@ -4578,13 +4578,13 @@ C(\chi) = \int_0^\chi \cos\left(\frac{\pi t^2}{2}\right)dt, \qquad S(\chi) = \in
 <li><strong>&copy; IR,z = 20,000 m</strong>:长距案例,IR 幅度[图 5.6(e)]跟随解析结果,但阵列边缘附近出现假旁瓣;相位[图 5.6(f)]两翼也有误差。重新调整采样参数可以更好,但这个辐照度图样凑合能用。</li>
 </ul>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-6.png" width="820" />
+  <img src="../../images/fourier/fig-5-6.png" width="820" />
   <figcaption>图 5.6 TF 与 IR(z = 1000、2000、20,000 m)的幅度与相位剖面(实线),虚线为对应解析结果(截自原书)</figcaption>
 </figure>
 
 <p>本章 Python 复现同一组对比(解析式 (5.11) 用 2500 点细网格评估,scipy 的 <code>fresnel</code> 函数计算 <span class="arithmatex">\(C,S\)</span>),并给出主体区(<span class="arithmatex">\(|x| \le L/4\)</span>)的定量偏差:</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-compare.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-compare.png" width="880" />
   <figcaption>图 5-P2 式 (5.11) 解析(2500 点,虚线)vs 数值传播(250 点,实线):左列 log 幅度、右列 unwrap 相位。TF@2000 临界采样几乎逐点重合;TF@1000 两翼被磨平;IR@20000 边缘假旁瓣与相位误差清晰可见(笔记自制,复现原书图 5.6 布局)</figcaption>
 </figure>
 
@@ -4795,7 +4795,7 @@ x_2 = -\frac{L_2}{2}:\Delta x_2:\frac{L_2}{2}-\Delta x_2 = -\frac{\lambda z}{2\D
 </div>
 <p>源半宽 <span class="arithmatex">\(w = 0.011\)</span> m、<span class="arithmatex">\(z = 2000\)</span> m,给出菲涅耳数 0.12——夫琅禾费近似合理。运行 sqr_beam_FF 得到图 5.7 的辐照度结果;用 <code>nthroot</code> 拉伸对比度把旁瓣显出来:</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-7.png" width="760" />
+  <img src="../../images/fourier/fig-5-7.png" width="760" />
   <figcaption>图 5.7 夫琅禾费辐照度:(a) 图样(<span class="arithmatex">\(I_2^{1/3}\)</span> 拉伸);(b) x 剖面,散点为解析值(截自原书)</figcaption>
 </figure>
 
@@ -4908,7 +4908,7 @@ I_2(x_2,y_2) = \left(\frac{4w^2}{\lambda z}\right)^2\mathrm{sinc}^2\left(\frac{2
 <p>临界采样要求 <span class="arithmatex">\(\Delta x = L_1/M = \lambda z/L_1\)</span>,解出 <span class="arithmatex">\(L_1 = \sqrt{M\lambda z} = \sqrt{500\times0.5\times10^{-6}\times1000} = 0.5\)</span> m,<span class="arithmatex">\(\Delta x = 1\)</span> mm,<span class="arithmatex">\(F_N = 1/(2\Delta x) = 500\)</span> cyc/m。<span class="arithmatex">\(B_1 = 5.98/w = 119.6 &lt; 500\)</span> ✓;跨直径 <span class="arithmatex">\(2w/\Delta x = 100\)</span> 样本。<span class="arithmatex">\(N_F = w^2/\lambda z = 5\)</span>(<span class="arithmatex">\(N_F = 1\)</span> 对应 <span class="arithmatex">\(z = 5000\)</span> m)——z = 1000 m 处 <span class="arithmatex">\(N_F &gt; 1\)</span>,处于菲涅耳区(圆孔是平滑孔径,式 (4.28) 的 <span class="arithmatex">\(N_F \gtrsim 1\)</span> 口径即可用)。离散圆盘功率 0.007841 vs 解析 <span class="arithmatex">\(\pi w^2 = 0.007854\)</span>(100 样本跨直径的圆盘近似)。z = 500/1000/2000 m 对应 <span class="arithmatex">\(\lambda z/(L\Delta x) = 0.5/1/2\)</span>:TF 过采样、临界、欠采样——z = 1000 m 临界档实测 TF 与 IR 辐照度最大相对差 <span class="arithmatex">\(1.3\times10^{-15}\)</span>(逐位相同),500 m 档 IR 出周期副本、2000 m 档 TF 出网格纹。</p>
 </details>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-ex51.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-ex51.png" width="880" />
   <figcaption>图 5-P3 习题 5.1(d):圆孔菲涅耳 TF 传播(<span class="arithmatex">\(I_2^{1/3}\)</span>),z = 500/1000/2000 m 对应 TF 过/临界/欠采样(笔记自制)</figcaption>
 </figure>
 
@@ -4985,7 +4985,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
 <p><span class="arithmatex">\(z_R = \pi w_0^2/\lambda = 4.963\)</span> m;临界采样距离(式 5.14)<span class="arithmatex">\(z = L^2/(M\lambda) = 0.015^2/(250\times0.633\times10^{-6}) = 1.42\)</span> m。(a) 数值 vs 解析剖面最大相对偏差:z = 1 m → <span class="arithmatex">\(6.9\times10^{-16}\)</span>、z = 5 m → <span class="arithmatex">\(3.4\times10^{-16}\)</span>、z = 10 m → <span class="arithmatex">\(6.6\times10^{-10}\)</span>——高斯 + TF 传播达到<strong>机器精度/近机器精度</strong>,印证"高斯对采样宽容"(高斯谱指数衰减,天然近带宽限)。<span class="arithmatex">\(w(z)\)</span> 解析:1.020/1.419/2.249 mm。(b) z = 10 m 可用带宽 <span class="arithmatex">\(L/(2\lambda z) = 1185\)</span> cyc/m;高斯谱 <span class="arithmatex">\(\exp(-\pi^2 w_0^2 f^2)\)</span> 的 99% 功率带宽 <span class="arithmatex">\(\approx \mathrm{erfinv}(0.99)/(\sqrt{2}\pi w_0) = 410\)</span> cyc/m &lt; 1185 ✓。&copy; <span class="arithmatex">\(\mathfrak{F}\{U_0\} = \pi w_0^2 A_0\exp[-\pi^2 w_0^2(f_X^2+f_Y^2)]\)</span>,代入 <span class="arithmatex">\(f = r_2/(\lambda z)\)</span>:<span class="arithmatex">\(I_2 = \left(\frac{\pi w_0^2}{\lambda z}\right)^2\exp\left[-\frac{2\pi^2 w_0^2 r_2^2}{(\lambda z)^2}\right]\)</span>。与式 (5.26) 对比:令 <span class="arithmatex">\(w(z) = \lambda z/(\pi w_0)\)</span>(即 <span class="arithmatex">\(z \gg z_R\)</span> 时式 (5.27) 的渐近),两式完全一致——远场高斯束半径 <span class="arithmatex">\(w(z) \to \lambda z/(\pi w_0)\)</span>,发散角 <span class="arithmatex">\(\theta = \lambda/(\pi w_0)\)</span>。</p>
 </details>
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-ex55.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-ex55.png" width="880" />
   <figcaption>图 5-P4 习题 5.5(a):高斯束 propTF 剖面(实线)与式 (5.26) 解析(虚线)在 z = 1/5/10 m 重合到机器精度级;右为 z = 10 m 图像(笔记自制)</figcaption>
 </figure>
 
@@ -5215,11 +5215,13 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

@@ -3943,12 +3943,12 @@ t_a(x,y) = \exp\left[jk(x\cos\theta + y\sin\theta)\tan\alpha\right]. \tag{6.3}
 \]</div>
 <p>注意 <span class="arithmatex">\(\alpha = \tan^{-1}(r/z)\)</span>,<span class="arithmatex">\(r\)</span> 是观察面上从原点到**光束瞄准点(beam aiming point)**的径向距离——瞄准点在 <span class="arithmatex">\(r = z\tan\alpha\)</span>(图 6.2)。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-1.png" width="330" />
+  <img src="../../images/fourier/fig-6-1.png" width="330" />
   <figcaption>图 6.1 y–z 面内的波前倾斜(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-2.png" width="330" />
+  <img src="../../images/fourier/fig-6-2.png" width="330" />
   <figcaption>图 6.2 观察面上的光束瞄准点:r = z tanα(截自原书)</figcaption>
 </figure>
 
@@ -4040,7 +4040,7 @@ t_a(x,y) = \exp\left[jk(x\cos\theta + y\sin\theta)\tan\alpha\right]. \tag{6.3}
 </div>
 <p>其余与 sqr_beam 相同(仍用 propTF 传到 <span class="arithmatex">\(z=2000\)</span> m)。运行后观察面辐照度如图 6.3——光斑沿 45° 方向平移到了 <span class="arithmatex">\(r = z\tan\alpha = 0.1\)</span> m 处。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-3.png" width="400" />
+  <img src="../../images/fourier/fig-6-3.png" width="400" />
   <figcaption>图 6.3 倾斜例子的观察面辐照度:α = 5.0×10⁻⁵ rad、θ = 45°(截自原书)</figcaption>
 </figure>
 
@@ -4075,7 +4075,7 @@ B_1^{+T} = B_1 + \frac{\tan\alpha}{\lambda}\,. \tag{6.5}
 <p>试验:取 <code>theta=0</code>、<code>alpha=7.6e-5</code>,光束应贴近阵列边缘;看幅度剖面,"wrap-around"效果明显——能量从网格对面一侧进来(<strong>周期延拓</strong>!)。要让图样跨网格边界劈开,取 <span class="arithmatex">\(\alpha = \lambda/2\Delta x_1 = 1.25\times10^{-4}\)</span>。再试一些更短/更长的传播距离,观察倾角增大时光束怎么变。一般来说,倾角应远在式 (6.6) 界内;典型仿真里最大可用倾角相当小——这与菲涅耳传播器的傍轴本性一致。</p>
 <p>本章 Python 复现同一组试验(<span class="arithmatex">\(\theta = 0\)</span>):</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-tiltlim.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-tiltlim.png" width="820" />
   <figcaption>图 6-P1 倾角判据试验:无倾斜 / α = 7.6×10⁻⁵(式 6.6 边界,光束贴边 + 对侧 wrap-around)/ α = λ/2Δx₁(劈半)(笔记自制)</figcaption>
 </figure>
 
@@ -4098,7 +4098,7 @@ t_A(x,y) = \exp\left[-j\frac{k}{2z_f}\left(x^2 + y^2\right)\right]. \tag{6.9}
 \]</div>
 <p>这与式 (4.23) 菲涅耳脉冲响应 <span class="arithmatex">\(h\)</span> 里的相位 chirp 同形,只是指数符号为负——<span class="arithmatex">\(h\)</span> 把波"散开",focus 把波"收拢"。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-4.png" width="330" />
+  <img src="../../images/fourier/fig-6-4.png" width="330" />
   <figcaption>图 6.4 会聚波前(截自原书)</figcaption>
 </figure>
 
@@ -4167,12 +4167,12 @@ t_A(x,y) = \exp\left[-j\frac{k}{2z_f}\left(x^2 + y^2\right)\right]. \tag{6.9}
 </code></pre></div>
 <p>结果见图 6.5——相当前的一个焦点!本例焦距与传播距离相同(<span class="arithmatex">\(z_f = z = 2000\)</span> m),所以预期小光斑。这个图样其实是<strong>一幅缩放了的夫琅禾费图样</strong>(见 6.3 节)。试别的焦距——能不能让图样扩展到铺满观察面网格?负的 focus 值把焦点放到平面背后的虚位置,产生发散波(图 6.6),也试试。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-5.png" width="780" />
+  <img src="../../images/fourier/fig-6-5.png" width="780" />
   <figcaption>图 6.5 聚焦例子:(a) 辐照度图样;(b) 剖面(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-6.png" width="720" />
+  <img src="../../images/fourier/fig-6-6.png" width="720" />
   <figcaption>图 6.6 源面上会聚 (a) / 发散 (b) 波前的几何光线图(截自原书)</figcaption>
 </figure>
 
@@ -4192,7 +4192,7 @@ B_1^{+F} = B_1 + \frac{D_1}{2\lambda|z_f|}\,. \tag{6.10}
 <p>与倾角判据一样,式 (6.11) 是近似的——源与传播器相位的精确相互作用没有计入。</p>
 <p>sqr_beam_focus 例子:<span class="arithmatex">\(\lambda = 0.5\times10^{-6}\)</span> m、<span class="arithmatex">\(\Delta x_1 = 2\times10^{-3}\)</span> m、<span class="arithmatex">\(B_1 \approx 98\)</span> cycles/m、<span class="arithmatex">\(D_1 = 0.102\)</span> m,给出 <span class="arithmatex">\(|z_f| \geq 671\)</span> m(用 <span class="arithmatex">\(B_1 = 117.3\)</span> 则为 768 m)。用代码检验这个条件:<span class="arithmatex">\(z_f = -671\)</span> m 时波发散,观察面上明显推过阵列边界;<span class="arithmatex">\(z_f = +671\)</span> m 时图样更小——光束在到达观察面前先过了焦点(图 6.6)。图样看似合理,但相位混叠误差刚好开始在阵列边缘冒头——看观察面场的 unwrap 相位剖面就能发现。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-focusbounds.png" width="780" />
+  <img src="../../images/fourier/fig-6-py-focusbounds.png" width="780" />
   <figcaption>图 6-P2 式 (6.11) 边界试验(z = 2000 m):z_f = +671 m(先聚焦,图样变小)/ z_f = −671 m(发散,推过阵列)(笔记自制)</figcaption>
 </figure>
 
@@ -4234,7 +4234,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 <p>式 (6.18) 表明:<strong>理想正透镜焦面上的场,就是入射场取 <span class="arithmatex">\(z = f\)</span> 的夫琅禾费图样</strong>。所以想求正透镜焦面的场或辐照度——包括小 <span class="arithmatex">\(f/\#\)</span> 的透镜——用上一章的 propFF、把 <span class="arithmatex">\(z\)</span> 换成 <span class="arithmatex">\(f\)</span> 即可。</p>
 <p>取 f/10 透镜的参数,设 <span class="arithmatex">\(U_1\)</span> 是单位振幅平面波,选 <span class="arithmatex">\(M = 250\)</span>、<span class="arithmatex">\(L = 250\)</span> mm,用 propFF 生成焦面辐照度(习题 6.4),结果见图 6.7。理想圆形透镜形成的聚焦辐照度图样就是著名的 <strong>Airy 图样(Airy pattern)</strong>。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-7.png" width="820" />
+  <img src="../../images/fourier/fig-6-7.png" width="820" />
   <figcaption>图 6.7 透镜夫琅禾费图样:(a) 辐照度(四次方根拉伸);(b) x 剖面——单位振幅入射场的全部功率被聚进极小面积,峰值 ~1.5×10⁷(截自原书)</figcaption>
 </figure>
 
@@ -4266,7 +4266,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </tbody>
 </table>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-airy.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-airy.png" width="820" />
   <figcaption>图 6-P3 f/10 理想透镜焦面:数值(实线)vs 解析 Airy(虚线);瞳减半时零点翻倍、峰值降为 1/16(笔记自制)</figcaption>
 </figure>
 
@@ -4280,7 +4280,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\iint U_1(x_1,y_1)\,P\left(x_1+x_2,\,
 \]</div>
 <p>前导的 chirp 相位因子<strong>没有了</strong>——焦面场是输入场的<strong>缩放傅里叶变换</strong>。瞳函数的宗量 <span class="arithmatex">\((x_1+x_2,\,y_1+y_2)\)</span> 计入了<strong>渐晕(vignetting)</strong>:输入场里离轴点因瞳径有限而丢光。透镜瞳相对输入场支撑越大,渐晕越弱。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-8.png" width="420" />
+  <img src="../../images/fourier/fig-6-8.png" width="420" />
   <figcaption>图 6.8 "傅里叶变换"透镜安排:U₁ 在前焦面,U₂ 在后焦面(截自原书)</figcaption>
 </figure>
 
@@ -4300,7 +4300,7 @@ t_A(x,y) = \frac{1}{2}\left[1-\cos\left(2\pi\frac{x_1}{P}\right)\right]\mathrm{r
 \]</div>
 <p>图 6.9 是它的一维剖面。光栅定义在 <span class="arithmatex">\(D_1\times D_1\)</span> 的二维面内,余弦图案只随 <span class="arithmatex">\(x\)</span> 变化、周期为 <span class="arithmatex">\(P\)</span>,通常 <span class="arithmatex">\(P \ll D_1\)</span>。单位振幅平面波照明时源场 <span class="arithmatex">\(U_1(x_1,y_1) = t_A(x_1,y_1)\)</span>,夫琅禾费图样用焦距 <span class="arithmatex">\(f\)</span> 的透镜(或反射镜)产生。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-9.png" width="620" />
+  <img src="../../images/fourier/fig-6-9.png" width="620" />
   <figcaption>图 6.9 余弦光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -4376,7 +4376,7 @@ t_A(x,y) = \frac{1}{2}\left[1-\cos\left(2\pi\frac{x_1}{P}\right)\right]\mathrm{r
 \]</div>
 <p>grating_cos 里 <span class="arithmatex">\(MP/L_1 = 5\)</span>——每个余弦周期 5 个样本,"okay"(满足采样定理至少要 2 个)。<span class="arithmatex">\(L_1\)</span>、<span class="arithmatex">\(D_1\)</span>、<span class="arithmatex">\(P\)</span>、<span class="arithmatex">\(M\)</span> 的取值同时照顾了夫琅禾费图样的显示;<span class="arithmatex">\(D_1 = 1.02\times10^{-3}\)</span> 让跨 rect 的样本数 <span class="arithmatex">\(D_1/dx_1 = 51\)</span> 为<strong>奇数</strong>,与 rect 函数的定义一致。透镜焦距 <span class="arithmatex">\(f = 0.5\)</span> m 是任选的。图 6.10 给出源面辐照度 <span class="arithmatex">\(I_1\)</span>、观察面辐照度 <span class="arithmatex">\(I_2\)</span> 与观察面 x 剖面:中央特征叫<strong>零阶(zero order)</strong>,两侧是 <span class="arithmatex">\(-1\)</span> 与 <span class="arithmatex">\(+1\)</span> **一阶(first-order)**峰。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-10.png" width="780" />
+  <img src="../../images/fourier/fig-6-10.png" width="780" />
   <figcaption>图 6.10 grating_cos 结果:(a) 源面辐照度(显示分辨率看不出周期结构);(b) 夫琅禾费辐照度(三次方根拉伸);(c) x 剖面(截自原书)</figcaption>
 </figure>
 
@@ -4403,13 +4403,13 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </code></pre></div>
 <p>夫琅禾费图样的前导复指数没有写进代码——只看辐照度,但<strong>别忘了 1/λz</strong>(这里 <span class="arithmatex">\(z = f\)</span>)。跑一下,离散与解析曲线应当重合。本章 Python 实测:最大相对差 <strong>0.258%</strong>;一阶峰位置 <span class="arithmatex">\(\pm\lambda f/P = \pm 2.50\)</span> mm,峰高约 1.04 vs 零阶 4.16(书图 6.10&copy; 同为 ~1 / ~4.2 / ~1)。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-gratingcos.png" width="880" />
+  <img src="../../images/fourier/fig-6-py-gratingcos.png" width="880" />
   <figcaption>图 6-P4 grating_cos 复现:源面 / 夫琅禾费(1/3 次拉伸)/ 剖面(数值实线 vs 式 6.24 解析虚线,最大相对差 0.26%)(笔记自制)</figcaption>
 </figure>
 
 <p>光栅的主要应用是<strong>分光</strong>。图 6.11 把 <span class="arithmatex">\(\lambda = 0.5\ \mu\text{m}\)</span> 与 <span class="arithmatex">\(0.6\ \mu\text{m}\)</span> 的剖面叠在一起:一阶峰明显分开(<span class="arithmatex">\(\pm2.5\)</span> mm vs <span class="arithmatex">\(\pm3.0\)</span> mm)。做法:先跑一个波长,把 <span class="arithmatex">\(I_2\)</span>、<span class="arithmatex">\(x_2\)</span> 存进临时数组(如 <code>I2p5=I2; x2p5=x2;</code>),换波长重跑,再在命令窗口对两条曲线执行 plot。<strong>两个波长的 x2 网格不同</strong>(<span class="arithmatex">\(L_2 = \lambda f/\Delta x_1\)</span> 分别 12.5 mm 与 15.0 mm)——别共用同一组 x2 向量!"照亮"更大的光栅面积会收窄各阶、提高光谱分辨率——把 <span class="arithmatex">\(D_1\)</span> 加大就能验证。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-11.png" width="620" />
+  <img src="../../images/fourier/fig-6-11.png" width="620" />
   <figcaption>图 6.11 grating_cos 在 λ = 0.5 μm 与 0.6 μm 下的辐照度剖面(截自原书)</figcaption>
 </figure>
 
@@ -4420,7 +4420,7 @@ t_A(x,y) = \left[\mathrm{rect}\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{
 \]</div>
 <p><span class="arithmatex">\(P\)</span> 是 x 方向延展的方波振幅图案的周期,限于 <span class="arithmatex">\(D_1\times D_1\)</span> 面内。注意卷积里的 <strong>1/P 归一</strong>:它让每个 comb delta 的权重是"占空比意义上的平均值",这样各阶权重直接是 <span class="arithmatex">\(\frac{1}{2}\mathrm{sinc}(n/2)\)</span>、零阶权重 <span class="arithmatex">\(\frac{1}{2} = 50\%\)</span> 占空比的均值。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-12.png" width="620" />
+  <img src="../../images/fourier/fig-6-12.png" width="620" />
   <figcaption>图 6.12 方波光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -4560,12 +4560,12 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </code></pre></div>
 <p>把这段代码加到 grating_sqr 末尾,与数值仿真对比——能让它们匹配吗?本章 Python 实测:最大相对差 <strong>6.1%</strong>(出现在窗口边缘的 Gibbs 起伏区;三个主阶峰值本身符合得更好),阶位 <span class="arithmatex">\(\pm2.50\)</span> mm(<span class="arithmatex">\(\pm1\)</span> 阶)、<span class="arithmatex">\(\pm7.50\)</span> mm(<span class="arithmatex">\(\pm3\)</span> 阶)。书把这题留给读者("Can you get them to match?")正是因为窗口采样与截断都要花点功夫。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-13.png" width="620" />
+  <img src="../../images/fourier/fig-6-13.png" width="620" />
   <figcaption>图 6.13 grating_sqr 的夫琅禾费辐照度剖面(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-gratingsqr.png" width="780" />
+  <img src="../../images/fourier/fig-6-py-gratingsqr.png" width="780" />
   <figcaption>图 6-P5 grating_sqr 复现:数值(实线)vs 式 (6.27) 解析(n=−5..5,虚线),最大相对差 6.1%(笔记自制)</figcaption>
 </figure>
 
@@ -4578,7 +4578,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </code></pre></div>
 <p>注意一维前导因子是 <span class="arithmatex">\(1/\sqrt{\lambda f}\)</span>——二维是 <span class="arithmatex">\(1/(\lambda f)\)</span>,维度减半开平方根。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-14.png" width="460" />
+  <img src="../../images/fourier/fig-6-14.png" width="460" />
   <figcaption>图 6.14 grating_sqr 一维夫琅禾费辐照度剖面:(a) 全向量;(b) 局部放大(截自原书)</figcaption>
 </figure>
 
@@ -4595,7 +4595,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 \]</div>
 <p>这个情形见图 6.15:求夫琅禾费图样的 DFT,其结果对应输入阵列的重复副本(周期延拓);既然源在阵列边界处完美连续,结果就是<strong>无限周期结构的变换</strong>——衍射阶位置上出现样本 delta 函数。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-15.png" width="640" />
+  <img src="../../images/fourier/fig-6-15.png" width="640" />
   <figcaption>图 6.15 整数个周期占满向量的余弦光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -4604,7 +4604,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </code></pre></div>
 <p>其中假定单位源场幅度。Fpwr 的显示见图 6.16:<strong>25% 的功率在零阶,±1 一阶各 6.25%</strong>。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-16.png" width="620" />
+  <img src="../../images/fourier/fig-6-16.png" width="620" />
   <figcaption>图 6.16 grating_cos 无限周期模型的分数功率(截自原书)</figcaption>
 </figure>
 
@@ -4693,7 +4693,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 <p>原书 8 道题。每题给题目与提示,本章做过数值的题附 Python 实测结果——先自己动手。</p>
 <p><strong>6.1 倾斜判据的几何推导</strong>:图 6.17 画出场相对光轴以 <span class="arithmatex">\(\alpha\)</span> 角传播的情形。场支撑 <span class="arithmatex">\(D_2\)</span> 恰好伸到观察面边长的一半(<span class="arithmatex">\(L/2\)</span>)。用这个布局推导与式 (6.6) 相同的倾斜判据。假定临界采样与夫琅禾费传播;夫琅禾费传播下 <span class="arithmatex">\(D_2 = 2B_1\lambda z\)</span>。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-17.png" width="560" />
+  <img src="../../images/fourier/fig-6-17.png" width="560" />
   <figcaption>图 6.17 以 α 角传播的示意图(截自原书)</figcaption>
 </figure>
 
@@ -4712,7 +4712,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 <p>(a) 把 focus 的 chirp 只作用在一个轴:<code>uout=uin.*exp(-j*k/(2*zf)*(X.^2))</code>(MATLAB 取 <code>[X,~]=meshgrid(x,x)</code>,numpy 取 <code>X,_</code>——取错输出轴就聚焦到另一个方向了)。(b) 实测:观察面上 x 方向收到焦线(半高宽 8 mm),y 方向仍是衍射展宽(72 mm),见图 6-P6 左图。&copy; <strong>不能</strong>:柱面透镜只在一个轴上做傅里叶变换,另一个轴仍是菲涅耳传播行为,焦面场不是二维夫琅禾费图样(也不可分离成一个 FT 乘一个 FT——耦合在孔径上)。</p>
 </details>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex63.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-ex63.png" width="820" />
   <figcaption>图 6-P6 习题 6.3(左:柱面聚焦的焦线)与习题 6.2(右:tilt+focus 同加)(笔记自制)</figcaption>
 </figure>
 
@@ -4727,7 +4727,7 @@ t_A(r) = \frac{1}{2}\left[1+\cos\left(\frac{k}{2f}r^2\right)\right]\mathrm{circ}
 \]</div>
 <p>其中 <span class="arithmatex">\(r = \sqrt{x^2+y^2}\)</span>。透过率图样见图 6.18。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-18.png" width="360" />
+  <img src="../../images/fourier/fig-6-18.png" width="360" />
   <figcaption>图 6.18 波带片透过率示意(截自原书)</figcaption>
 </figure>
 
@@ -4741,7 +4741,7 @@ t_A(r) = \frac{1}{2}\left\{1+\mathrm{sign}\left[\cos\left(\frac{k}{2f}r^2\right)
 \]</div>
 <p>这块板的透过率是二值的(1 或 0),可以用悬浮不透明材料环带做成。(f) 仿真这块板并用同样参数重复 (e)(提示:MATLAB 自带 sign 函数)。(g) 比较两块板在焦面(<span class="arithmatex">\(z = 10\)</span> m)的辐照度剖面,哪个效率更高?(h) 把波带片剖面与同样参数正透镜的焦面辐照度剖面比较。</p>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex65.png" width="880" />
+  <img src="../../images/fourier/fig-6-py-ex65.png" width="880" />
   <figcaption>图 6-P7 习题 6.5:余弦型(上排)与二值型(下排)波带片在 z = 5/8/10/12 m 的辐照度(1/4 次拉伸);z = 10 m 处聚焦(笔记自制)</figcaption>
 </figure>
 
@@ -4772,7 +4772,7 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
 <p>(a) <span class="arithmatex">\(dx = P/8 = 250\)</span> nm(每三角 8 样本)、<span class="arithmatex">\(M = 4096\)</span>、<span class="arithmatex">\(L_1 = 1.024\)</span> mm。(b) <span class="arithmatex">\(\mathfrak{F}\{\Lambda(x/(P/2))\} = (P/2)\mathrm{sinc}^2(Pf_X/2)\)</span>,阶权重 <span class="arithmatex">\(\propto \mathrm{sinc}^2(n/2) \geq 0\)</span>(方波是 <span class="arithmatex">\(\mathrm{sinc}(n/2)\)</span>,可负——三角波各阶无 <span class="arithmatex">\(\pi\)</span> 相位翻转,这就是"闪耀"结构的好处);解析 <span class="arithmatex">\(U_2 \propto \frac{D_1}{2\sqrt{\lambda f}}\sum_n \mathrm{sinc}^2(n/2)\,\mathrm{sinc}\left[\frac{D_1}{\lambda f}(x_2 - n\lambda f/P)\right]\)</span>,阶位 <span class="arithmatex">\(\pm\lambda f/P = \pm125\)</span> mm(<span class="arithmatex">\(\pm1\)</span> 阶)、<span class="arithmatex">\(\pm375\)</span> mm(<span class="arithmatex">\(\pm3\)</span> 阶);数值 vs 解析最大相对差 <strong>2.2%</strong>(图 6-P8)。&copy; 无限周期模型(<span class="arithmatex">\(L_1/P = 512\)</span> 整数):阶退化为样本 delta,分数功率实测零阶 <strong>0.2500</strong>(理论 <span class="arithmatex">\(|c_0|^2 = 0.25\)</span>)、±1 阶 0.0455(理论 <span class="arithmatex">\(|c_{\pm1}|^2 = 0.0411\)</span>),总透射 0.3438 = <span class="arithmatex">\(\langle t^2\rangle\)</span>(振幅光栅,其余被"吸收")。</p>
 </details>
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex68.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-ex68.png" width="820" />
   <figcaption>图 6-P8 习题 6.8:三角波光栅(500 lines/mm)一维夫琅禾费图样,数值(实线)vs sinc²(n/2) 解析(虚线),阶位 0、±125、±375 mm(笔记自制)</figcaption>
 </figure>
 
@@ -4982,11 +4982,13 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>

@@ -4300,7 +4300,7 @@ U_P(\mathbf r) = A\exp\left[i\frac{2\pi}{\lambda}(\alpha x + \beta y + \gamma z)
 \]</div>
 <p>这列波与 <span class="arithmatex">\(x\)</span> 轴夹角 <span class="arithmatex">\(\cos^{-1}\alpha\)</span>、与 <span class="arithmatex">\(y\)</span> 轴夹角 <span class="arithmatex">\(\cos^{-1}\beta\)</span>，如图 1.1。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-1.png" width="560" />
+  <img src="../../images/waveprop/fig-1-1.png" width="560" />
   <figcaption>图 1.1 方向余弦 <span class="arithmatex">\(\alpha\)</span>、<span class="arithmatex">\(\beta\)</span>、<span class="arithmatex">\(\gamma\)</span>：波矢 <span class="arithmatex">\(\boldsymbol k\)</span> 与三根坐标轴的夹角（截自原书）</figcaption>
 </figure>
 
@@ -4359,7 +4359,7 @@ R(z) = z\left[1 + \left(\frac{\pi W_0^2}{\lambda z}\right)^2\right],
 <p>光源往往不是单纯的平面波、球面波或高斯光束。更一般的情形要正经解标量亥姆霍兹方程，手段是**格林定理（Green's theorem）**加聪明的边界条件。这条推导线原书没有展开（"这不是本书要讨论的细节"），指向了标准参考书——脚注 Refs. 4–5，其中 Ref. 5 就是 Goodman 的《Introduction to Fourier Optics》，本栏目《计算傅里叶光学》笔记用的正是同一套记号。</p>
 <p>几何设置见图 1.2：源平面坐标 <span class="arithmatex">\(\mathbf r_1=(x_1,y_1)\)</span>，观察平面坐标 <span class="arithmatex">\(\mathbf r_2=(x_2,y_2)\)</span>，两平面相距 <span class="arithmatex">\(\Delta z\)</span>。基本问题一句话：<strong>已知源平面场 <span class="arithmatex">\(U(x_1,y_1)\)</span>，求观察平面场 <span class="arithmatex">\(U(x_2,y_2)\)</span></strong>。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-2.png" width="620" />
+  <img src="../../images/waveprop/fig-1-2.png" width="620" />
   <figcaption>图 1.2 光波传播的坐标系：源平面 <span class="arithmatex">\((x_1,y_1)\)</span> 与观察平面 <span class="arithmatex">\((x_2,y_2)\)</span> 相距 <span class="arithmatex">\(\Delta z\)</span>（截自原书）</figcaption>
 </figure>
 
@@ -4520,12 +4520,12 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 <h4 id="工程-1单缝衍射与双缝干涉式-157167171-的端到端验证">工程 1：单缝衍射与双缝干涉——式 (1.57)(1.67)(1.71) 的端到端验证<a class="headerlink" href="#工程-1单缝衍射与双缝干涉式-157167171-的端到端验证" title="Permanent link">#</a></h4>
 <p>单缝 <span class="arithmatex">\(\mathrm{rect}(x/D_x)\mathrm{rect}(y/D_y)\)</span> 与双缝（缝宽 <span class="arithmatex">\(D_x=40\,\mu\mathrm m\)</span>、缝高 <span class="arithmatex">\(D_y=400\,\mu\mathrm m\)</span>、中心距 <span class="arithmatex">\(\Delta x=120\,\mu\mathrm m=3D_x\)</span>）两个孔径，各传播两次：近场 <span class="arithmatex">\(z=5\)</span> mm 用 (1.57) 的<strong>传递函数法</strong>（把 (1.57) 写成"FFT → 乘 <span class="arithmatex">\(H\)</span> → IFFT"，<span class="arithmatex">\(H=\exp(ik\Delta z)\exp[-i\pi\lambda\Delta z(f_X^2+f_Y^2)]\)</span>，离散窗 <span class="arithmatex">\(\Delta z\le 4dx^2/\lambda\approx 30\)</span> mm，5 mm 安全），远场 <span class="arithmatex">\(z=80\)</span> mm 用 (1.67) 的"变换 + 坐标缩放 <span class="arithmatex">\(x_2=\lambda\Delta z f_X\)</span>"。胞元中心采样下 <span class="arithmatex">\(40\,\mu\mathrm m\)</span> 缝恰好占 20 个胞元，离散谱零点严格落在连续理论位置上。代码文件：<code>matlab/waveprop/ch1/ch1_slit_diffraction.m</code>、<code>python/waveprop/ch1/ch1_slit_diffraction.py</code>。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-3.png" width="820" />
+  <img src="../../images/waveprop/fig-1-3.png" width="820" />
   <figcaption>图 1.3 单缝（上排）与双缝（下排）的菲涅耳近场（左列）与夫琅禾费远场（右列），灰度上限截到峰值的 2% 以压掉 0 级亮斑（自绘仿真）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-4.png" width="760" />
+  <img src="../../images/waveprop/fig-1-4.png" width="760" />
   <figcaption>图 1.4 双缝夫琅禾费剖面（4 倍补零）：<span class="arithmatex">\(\cos^2\)</span> 条纹被 <span class="arithmatex">\(\mathrm{sinc}^2\)</span> 包络调制，<span class="arithmatex">\(\Delta x=3D_x\)</span> 导致 <span class="arithmatex">\(\pm3\)</span> 级缺级（自绘仿真）</figcaption>
 </figure>
 
@@ -4953,7 +4953,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 <h4 id="工程-2几何光学-vs-波动光学泊松斑">工程 2：几何光学 vs 波动光学——泊松斑<a class="headerlink" href="#工程-2几何光学-vs-波动光学泊松斑" title="Permanent link">#</a></h4>
 <p>1.1 节说"<span class="arithmatex">\(\lambda\to0\)</span> 波走直线"，那就让直线光学和波动光学当场比武：直径 <span class="arithmatex">\(D=100\,\mu\mathrm m\)</span> 的不透明圆盘（水滴模型）挡住平面波。几何光学预言盘后是<strong>绝对阴影</strong>；波动光学按 (1.57) 传播 <span class="arithmatex">\(U_1=1-\mathrm{circ}\)</span>（平面波减圆盘），<span class="arithmatex">\(\Delta z=5\)</span> mm。本版替换了旧稿的启发式 sinc 公式，但保留了"水滴挡光"的物理场景。代码文件：<code>matlab/waveprop/ch1/ch1_geom_vs_wave.m</code>、<code>python/waveprop/ch1/ch1_geom_vs_wave.py</code>。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-5.png" width="860" />
+  <img src="../../images/waveprop/fig-1-5.png" width="860" />
   <figcaption>图 1.5 左：圆盘后 5 mm 的波动光学光强分布——阴影中心残留亮斑（泊松斑）、边缘一圈圈衍射条纹；右：中心行剖面，几何光学（红虚线）vs 波动光学（蓝实线）（自绘仿真）</figcaption>
 </figure>
 
@@ -5144,7 +5144,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 <h4 id="工程-3圆孔的二维傅里叶变换艾里斑与采样混叠">工程 3：圆孔的二维傅里叶变换——艾里斑与采样混叠<a class="headerlink" href="#工程-3圆孔的二维傅里叶变换艾里斑与采样混叠" title="Permanent link">#</a></h4>
 <p>(1.67) 说"夫琅禾费图样 = 孔径的 FT"。直径 <span class="arithmatex">\(D=100\,\mu\mathrm m\)</span> 的圆孔 <span class="arithmatex">\(\mathrm{circ}(2r/D)\)</span> 是最圆美的考题：理论 FT 是 <span class="arithmatex">\(J_1\)</span> 型艾里斑，直流分量 = 孔径面积 <span class="arithmatex">\(\pi D^2/4\)</span>，第一暗环在 <span class="arithmatex">\(f=3.8317/(\pi D)\)</span>。同一孔径在细网格（1 µm 像素）与粗网格（4 µm 像素）上各变换一次，看离散化会造成什么。本版由旧稿 <code>Fourier_Transfer_2D.m</code>、<code>circle_digital.m</code>、<code>二维傅里叶变换.py</code>、<code>圆孔离散化.py</code> 四份合并而成；旧稿细网格圆用 OpenCV 抗锯齿画圆（<code>cv2.LINE_AA</code>），本版改成解析判据 <span class="arithmatex">\(R\le D/2\)</span>——"抗锯齿"是把边缘人为抹糊，恰好掩盖了我们想研究的离散化效应。代码文件：<code>matlab/waveprop/ch1/ch1_circle_ft_aliasing.m</code>、<code>python/waveprop/ch1/ch1_circle_ft_aliasing.py</code>。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-6.png" width="880" />
+  <img src="../../images/waveprop/fig-1-6.png" width="880" />
   <figcaption>图 1.6 上排：细网格圆孔（a）、艾里斑频谱（b，对数尺度）、3D 光强（c）；下排：粗网格圆孔的锯齿边缘（d）、出现高频混叠的频谱（e）、沿 <span class="arithmatex">\(f_X\)</span> 的剖面对比（f，对数纵轴）（自绘仿真）</figcaption>
 </figure>
 
@@ -5423,7 +5423,7 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\;e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}\;\,2D_x
 <h4 id="工程-4DFT-三步演化通往第-2-章的桥">工程 4：DFT 三步演化——通往第 2 章的桥<a class="headerlink" href="#工程-4DFT-三步演化通往第-2-章的桥" title="Permanent link">#</a></h4>
 <p>原书明说：(1.57) 要写成傅里叶变换才有高效算法，而把连续傅里叶变换搬进计算机要过三关——<strong>空间采样、有限截断、频域采样</strong>，每一步在两个域里各损失/改变什么。本工程用 <span class="arithmatex">\(g(x)=\exp(-a|x|)\)</span>（<span class="arithmatex">\(a=10\)</span>，<span class="arithmatex">\(\delta=0.0375\)</span> m，<span class="arithmatex">\(L=0.6\)</span> m，<span class="arithmatex">\(N=16\)</span>，参数与你旧稿一致）把三步各画一行：空域乘 comb ↔ 频域卷积 comb（频谱周期复制、混叠）；空域乘 rect ↔ 频域卷积 <span class="arithmatex">\(L\,\mathrm{sinc}(Lf)\)</span>（吉布斯波纹）；频域乘 comb ↔ 空域卷积 comb（虚拟周期延拓）。代码文件：<code>matlab/waveprop/ch1/ch1_dft_three_steps.m</code>、<code>python/waveprop/ch1/ch1_dft_three_steps.py</code>。</p>
 <figure>
-  <img src="../../../images/holo/waveprop/fig-1-7.png" width="880" />
+  <img src="../../images/waveprop/fig-1-7.png" width="880" />
   <figcaption>图 1.7 DFT 三步演化的双域对照：每行左为空间域、右为频域。灰线是连续参考，彩线是当前步骤的结果（自绘仿真）</figcaption>
 </figure>
 
@@ -5982,11 +5982,13 @@ U(x_2,y_2) = \frac{e^{ik\Delta z}\,e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lamb
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
