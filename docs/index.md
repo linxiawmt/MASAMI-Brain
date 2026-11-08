@@ -4,7 +4,11 @@ hide:
   - navigation
 ---
 
-<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jpg')"></div>
+<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jpg')">
+  <video class="home-bg-video" autoplay muted loop playsinline preload="metadata" poster="images/bg/miku-poster.jpg">
+    <source src="images/bg/miku-loop.mp4" type="video/mp4">
+  </video>
+</div>
 <div class="home-bg-glow"></div>
 
 <div class="glass home-hero">
