@@ -198,9 +198,6 @@ body.is-home .md-typeset > h1:first-child {
   color: #fff;
 }
 
-/* 主卡 */
-.home-hero { padding: 2.4rem 2.6rem; margin: 0 0 18px auto; max-width: 720px; }
-@media (max-width: 900px) { .home-hero { max-width: none; } }
 .home-kicker {
   letter-spacing: 0.4em;
   font-size: 0.7rem;
@@ -247,19 +244,6 @@ body.is-home .md-typeset > h1:first-child {
 body.is-home .md-typeset a.gbtn { color: #fff !important; }
 .gbtn.ghost:hover { background: rgba(255, 255, 255, 0.22); }
 
-/* 双卡 */
-.home-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  max-width: 720px;
-  margin-left: auto;
-}
-@media (max-width: 900px) { .home-cols { max-width: none; } }
-@media (max-width: 720px) {
-  .home-cols { grid-template-columns: 1fr; }
-}
-.home-card { padding: 1.3rem 1.6rem; }
 .hc-title {
   font-size: 0.74rem;
   letter-spacing: 0.3em;
@@ -470,44 +454,7 @@ body.is-home .md-content__inner { padding-top: 0.5rem; }
 }
 .md-typeset .grid.cards a:hover { color: var(--md-accent-fg-color); }
 
-/* 首页统计胶囊 */
-.home-stats {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  max-width: 720px;
-  margin: 0 0 16px auto;
-}
-@media (max-width: 900px) { .home-stats { max-width: none; } }
-.stat-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.stat-chip .twemoji, .stat-chip .lg-middle { height: 1em; }
-
-/* 首页栏目导航卡（玻璃容器里的 grid cards 改透明底白字） */
-.home-projects { padding: 1.3rem 1.6rem; margin-bottom: 18px; }
-.home-projects .grid.cards > ul > li,
-.home-projects .grid.cards > li {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.home-projects .grid.cards > ul > li:hover,
-.home-projects .grid.cards > li:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.45);
-}
-.home-projects .grid.cards code { background: rgba(255,255,255,0.12); color:#fff; }
+/* 首页统计胶囊（v1 已废弃，由 bento stat 瓷片替代） */
 
 /* 栏目入口页顶部的图标章 */
 .md-typeset h1 { letter-spacing: 0.01em; }
@@ -523,3 +470,240 @@ body.is-home .md-content__inner { padding-top: 0.5rem; }
 /* 减少动态偏好 / 小屏省流量：退回静态海报层 */
 @media (prefers-reduced-motion: reduce) { .home-bg-video { display: none; } }
 @media (max-width: 720px) { .home-bg-video { display: none; } }
+
+/* =====================================================================
+   首页 v2：bento 瓷片网格（对称）+ 动效（reveal 入场 / 数字滚动 /
+   卡片聚光 + 高光扫过 / 渐变描边旋转 / NOW 进度条）
+   ===================================================================== */
+.home-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+.home-wrap > * { grid-column: span 12; }
+.bento {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.30);
+}
+/* 聚光层：跟随鼠标的柔光（JS 写入 --mx/--my） */
+.bento::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.14), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.bento:hover::after { opacity: 1; }
+
+/* ---- HERO：整行 ---- */
+.bento.hero {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+  padding: 2.6rem 2.8rem;
+}
+.hero-left { flex: 1 1 auto; min-width: 0; }
+.hero-now {
+  flex: 0 0 300px;
+  padding: 1.1rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+.now-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.66);
+  margin-bottom: 0.7rem;
+}
+.now-item { margin: 0.55rem 0; }
+.now-name { color: #fff; font-weight: 700; font-size: 0.95rem; }
+.now-note { color: rgba(255, 255, 255, 0.75); font-size: 0.82rem; margin: 0.15rem 0 0.45rem; }
+.now-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+.now-bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--ui-grad);
+  transition: width 1.1s cubic-bezier(0.25, 0.8, 0.3, 1) 0.35s;
+}
+.reveal.in .now-bar i { width: var(--w, 0%); }
+.now-bar.done i { background: linear-gradient(135deg, #7dffb2 0%, #58c4ff 100%); }
+
+/* ---- 数字瓷片：四个等宽 ---- */
+.bento.stat {
+  grid-column: span 3;
+  text-align: center;
+  padding: 1.15rem 0.8rem 1rem;
+}
+.stat-num {
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.05;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  background: var(--ui-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label { color: #fff; font-weight: 700; font-size: 0.92rem; margin-top: 0.3rem; }
+.stat-sub {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  margin-top: 0.25rem;
+}
+
+/* ---- 分节标题 ---- */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  max-width: 1080px;
+  margin: 6px auto 10px;
+  padding: 0 6px;
+}
+.sec-kicker {
+  font-size: 0.66rem;
+  letter-spacing: 0.34em;
+  color: rgba(255, 255, 255, 0.62);
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+.sec-title { color: rgba(255, 255, 255, 0.92); font-weight: 700; font-size: 1.02rem; }
+
+/* ---- 书架瓷片：3×3 对称，接管 grid.cards 样式 ---- */
+.home-grid-cards { grid-column: span 12; }
+body.is-home .home-grid-cards .grid.cards > ul,
+body.is-home .home-grid-cards .grid.cards > ul > li {
+  margin: 0;
+}
+body.is-home .home-grid-cards .grid.cards > ul {
+  gap: 16px;
+}
+body.is-home .home-grid-cards .grid.cards > ul > li,
+body.is-home .home-grid-cards .grid.cards > li {
+  background: rgba(18, 20, 40, 0.30);
+  backdrop-filter: blur(6px) saturate(1.25);
+  -webkit-backdrop-filter: blur(6px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.28);
+  color: #fff;
+  padding: 1.25rem 1.35rem;
+  position: relative;
+  overflow: hidden;
+}
+/* 高光扫过（悬停触发一次斜向 sweep） */
+body.is-home .home-grid-cards .grid.cards > ul > li::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 55%;
+  height: 220%;
+  transform: rotate(24deg) translateX(-140%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transition: transform 0.85s ease;
+  pointer-events: none;
+}
+body.is-home .home-grid-cards .grid.cards > ul > li:hover::before {
+  transform: rotate(24deg) translateX(560%);
+}
+body.is-home .home-grid-cards .grid.cards > ul > li:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 110, 196, 0.55);
+  box-shadow: 0 18px 44px rgba(255, 110, 196, 0.18);
+}
+body.is-home .home-grid-cards .grid.cards a { color: #fff; }
+body.is-home .home-grid-cards .grid.cards .md-typeset a,
+body.is-home .home-grid-cards .grid.cards a:hover { color: #ffd7ef; }
+body.is-home .home-grid-cards .grid.cards code { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* ---- 底部双卡 ---- */
+.home-tail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.bento.bcard { padding: 1.35rem 1.6rem; }
+
+/* ---- reveal 入场（IntersectionObserver 加 .in；仅 JS 就绪后生效）---- */
+body.fx-ready .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+body.fx-ready .reveal.in { opacity: 1; transform: translateY(0); }
+/* 书架瓷片由 JS 统一编 --i */
+body.fx-ready.is-home .home-grid-cards .grid.cards > ul > li {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+body.fx-ready.is-home .home-grid-cards .grid.cards > ul > li.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+body.fx-ready.is-home .home-grid-cards .grid.cards > ul > li.in:hover { transform: translateY(-4px); }
+
+/* ---- 按钮高光扫过 ---- */
+.gbtn { position: relative; overflow: hidden; }
+.gbtn::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -70%;
+  width: 45%; height: 100%;
+  transform: skewX(-22deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.gbtn:hover::after { left: 130%; }
+.gbtn:active { transform: translateY(-1px) scale(0.98); }
+
+@media (max-width: 900px) {
+  .bento.hero { flex-direction: column; align-items: stretch; padding: 1.9rem 1.6rem; }
+  .hero-now { flex: none; }
+  .bento.stat { grid-column: span 6; }
+  .home-tail { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .bento.stat { grid-column: span 6; }
+  .home-wrap { gap: 12px; }
+}
+
+/* ---- 减少动态偏好：全部入场动效直接到位 ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, body.is-home .home-grid-cards .grid.cards > ul > li {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .bento::after, .gbtn::after,
+  body.is-home .home-grid-cards .grid.cards > ul > li::before { display: none; }
+  .now-bar i { transition: none; }
+}
+
+/* 首页隐藏 Material 自动补的页面标题 h1（hero 已有站名） */
+body.is-home .md-typeset > h1:first-child { display: none; }
