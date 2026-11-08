@@ -4077,92 +4077,141 @@
 </div>
 <div class="home-bg-glow"></div>
 
-<div class="glass home-hero">
-  <div class="home-kicker">STUDY · NOTES · GROWING</div>
-  <div class="home-title">MASAMI 的外置大脑</div>
-  <div class="home-sub">深度学习 · 计算机视觉 · 计算光学 · 传热学 —— 七大板块持续更新</div>
-  <div class="home-btns">
-    <a class="gbtn" href="dl4vs/">进入第一个项目</a>
-    <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub 仓库</a>
+<div class="home-wrap">
+
+  <!-- HERO：整行对称，左侧自述 + 右侧"手头在啃" -->
+  <section class="glass bento hero reveal" style="--i:0">
+    <div class="hero-left">
+      <div class="home-kicker">记在网上的学习笔记本</div>
+      <div class="home-title">MASAMI 的外置大脑</div>
+      <div class="home-sub">啃过的书、推导过的公式、跑通过的代码都堆在这里——先给自己回头翻，顺手让同路的人少踩几个坑。</div>
+      <div class="home-btns">
+        <a class="gbtn" href="ml/">去翻最新一本</a>
+        <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <aside class="hero-now">
+      <div class="now-kicker">NOW · 手头在啃</div>
+      <div class="now-item">
+        <div class="now-name">《机器学习实战》</div>
+        <div class="now-note">15 章过了 9 章，剩下的在路上</div>
+        <div class="now-bar"><i style="--w:60%"></i></div>
+      </div>
+      <div class="now-item">
+        <div class="now-name">《传热学》</div>
+        <div class="now-note">14 章完结留档，过阵子回头复习</div>
+        <div class="now-bar done"><i style="--w:100%"></i></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- 数字瓷片：四个等宽，数字滚动 -->
+  <div class="bento stat reveal" style="--i:1">
+    <div class="stat-num" data-count="8">0</div>
+    <div class="stat-label">书架板块</div>
+    <div class="stat-sub">SECTIONS</div>
   </div>
+  <div class="bento stat reveal" style="--i:2">
+    <div class="stat-num" data-count="93">0</div>
+    <div class="stat-label">章笔记在线</div>
+    <div class="stat-sub">CHAPTERS</div>
+  </div>
+  <div class="bento stat reveal" style="--i:3">
+    <div class="stat-num" data-count="3">0</div>
+    <div class="stat-label">套代码栈</div>
+    <div class="stat-sub">PYTHON · MATLAB · PYTORCH</div>
+  </div>
+  <div class="bento stat reveal" style="--i:4">
+    <div class="stat-num" data-count="2">0</div>
+    <div class="stat-label">副深浅主题</div>
+    <div class="stat-sub">LIGHT · DARK</div>
+  </div>
+
 </div>
 
-<div class="home-stats">
-<p><span class="stat-chip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M232.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0l-218.6-101C5.4 145.8 0 137.3 0 128s5.4-17.9 13.9-21.8zM48.1 218.4l164.3 75.9c27.7 12.8 59.6 12.8 87.3 0L464 218.4l34.1 15.8c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0l-218.6-101C5.4 273.8 0 265.3 0 256s5.4-17.9 13.9-21.8L48 218.4zM13.9 362.2 48 346.4l164.3 75.9c27.7 12.8 59.6 12.8 87.3 0l164.3-75.9 34.1 15.8c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0l-218.5-101C5.4 401.8 0 393.3 0 384s5.4-17.9 13.9-21.8"/></svg></span> <strong>8 大板块</strong></span>
-<span class="stat-chip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg></span> <strong>93 章在线</strong></span>
-<span class="stat-chip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span> <strong>MATLAB / Python / PyTorch</strong></span>
-<span class="stat-chip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448 256c0-106-86-192-192-192v384c106 0 192-86 192-192M0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0"/></svg></span> <strong>深浅双主题</strong></span></p>
-</div>
-<div class="glass home-card home-projects">
-<div class="hc-title">PROJECTS · 栏目导航</div>
+<!-- 书架：九张等宽瓷片，3×3 对称（markdown 容器必须在顶层） -->
+<div class="sec-head reveal" style="--i:5">
+    <span class="sec-kicker">PROJECTS</span>
+    <span class="sec-title">书架上现在有九样东西</span>
+  </div>
+
+<div class="home-grid-cards">
 <div class="grid cards">
 <ul>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6-46.8 43.5-78.1 95.4-93 131.1-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1C142.5 443.1 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.9 368.8 32 288 32M144 256a144 144 0 1 1 288 0 144 144 0 1 1-288 0m144-64c0 35.3-28.7 64-64 64-11.5 0-22.3-3-31.7-8.4-1 10.9-.1 22.1 2.9 33.2 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-12.2-45.7-55.5-74.8-101.1-70.8 5.3 9.3 8.4 20.1 8.4 31.7"/></svg></span> <strong>深度学习视觉系统</strong></p>
 <hr />
-<p>《Deep Learning for Vision System》全书 10 章精读，PyTorch 重写全部示例。</p>
-<p><a href="dl4vs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Elgendy 那本 10 章啃完，Keras 示例全翻成了 PyTorch——能跑的我都自己跑过。</p>
+<p><a href="dl4vs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 64h192c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32m16 168a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0M88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48M64 424c0-13.3 10.7-24 24-24h112c13.3 0 24 10.7 24 24s-10.7 24-24 24H88c-13.3 0-24-10.7-24-24m232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24"/></svg></span> <strong>数值分析方法</strong></p>
 <hr />
-<p>误差、方程、插值、积分到微分方程，13 章理论推导 + MATLAB 内联。</p>
-<p><a href="numana/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>13 章理论为主，推导不跳步，MATLAB 例程直接内联在页面上。期末复习靠它续命。</p>
+<p><a href="numana/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 96c0-17.7 14.3-32 32-32h160c17.7 0 32 14.3 32 32v288h96V256c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32v128c0 17.7-14.3 32-32 32H256c-17.7 0-32-14.3-32-32V128h-96v128c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h32z"/></svg></span> <strong>计算傅里叶光学</strong></p>
 <hr />
-<p>Voelz (SPIE TT89) 全 9 章，衍射、透镜、成像与部分相干仿真。</p>
-<p><a href="holo/fourier/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Voelz (SPIE TT89) 9 章，衍射、透镜、成像仿真，MATLAB 和 Python 双份代码对照写。</p>
+<p><a href="holo/fourier/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M288 32c0 17.7 14.3 32 32 32h40c13.3 0 24 10.7 24 24s-10.7 24-24 24H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h328c48.6 0 88-39.4 88-88S408.6 0 360 0h-40c-17.7 0-32 14.3-32 32m64 352c0 17.7 14.3 32 32 32h32c53 0 96-43 96-96s-43-96-96-96H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c-17.7 0-32 14.3-32 32M128 512h40c48.6 0 88-39.4 88-88s-39.4-88-88-88H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h136c13.3 0 24 10.7 24 24s-10.7 24-24 24h-40c-17.7 0-32 14.3-32 32s14.3 32 32 32"/></svg></span> <strong>光波传播数值模拟</strong></p>
 <hr />
-<p>Schmidt (SPIE PM199)，采样判据、部分传播与大气湍流相位屏。</p>
-<p><a href="holo/waveprop/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Schmidt (SPIE PM199)，采样判据、相位屏这些硬骨头都在；书缺的第 3 章留了占位。</p>
+<p><a href="holo/waveprop/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 416V208h136.2c13.5-20.2 32-36.8 53.7-48H0v-34.3c0-35.3 28.7-64 64-64h.1C65.3 45.1 79.1 32 96 32h32c16.9 0 30.7 13.1 31.9 29.7H192l51.2-23.8c8.4-3.9 17.6-6 26.9-6L448 32c35.3 0 64 28.7 64 64v64H322c21.7 11.2 40.2 27.8 53.7 48h136.2v208c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64m256-224a96.1 96.1 0 1 0 0 192.1 96.1 96.1 0 1 0 0-192.1"/></svg></span> <strong>光学扫描全息</strong></p>
 <hr />
-<p>Poon (Springer) 全 5 章，OSH 原理、应用与进展。</p>
-<p><a href="holo/scanholo/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Poon (Springer) 5 章，OSH 从原理到进展，公式全推了一遍。</p>
+<p><a href="holo/scanholo/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M96 96c0-35.3 28.7-64 64-64h320c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64zm-72 32c13.3 0 24 10.7 24 24v296c0 8.8 7.2 16 16 16h360c13.3 0 24 10.7 24 24s-10.7 24-24 24H64c-35.3 0-64-28.7-64-64V152c0-13.3 10.7-24 24-24m168 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64m196.5 11.5c-4.4-7.1-12.1-11.5-20.5-11.5s-16.1 4.4-20.5 11.5l-56.3 92.1-24.5-30.6c-4.6-5.7-11.4-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4S174.8 352 184 352h272c8.7 0 16.7-4.7 20.9-12.3s4.1-16.8-.5-24.3l-88-144z"/></svg></span> <strong>OpenCV 轻松入门</strong></p>
 <hr />
-<p>李立宗全书 19 章，逐章跟随代码 + 实跑效果图。</p>
-<p><a href="opencv/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>李立宗那本 19 章，例子里能跑的全实跑过——页面截图是我机器上跑出来的，不是翻拍。</p>
+<p><a href="opencv/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M160.5-26.4c9.3-7.8 23-7.5 31.9.9 12.3 11.6 23.3 24.4 33.9 37.4 13.5 16.5 29.7 38.3 45.3 64.2 5.2-6.8 10-12.8 14.2-17.9 1.1-1.3 2.2-2.7 3.3-4.1C297 44.3 306.8 32 319.9 32c13.4 0 22.8 11.9 30.8 22.1q1.95 2.55 3.9 4.8c10.3 12.4 24 30.3 37.7 52.4 27.2 43.9 55.6 106.4 55.6 176.6 0 123.7-100.3 224-224 224S0 411.7 0 288c0-91.1 41.1-170 80.5-225 19.9-27.7 39.7-49.9 54.6-65.1 8.2-8.4 16.5-16.7 25.5-24.2zM225.7 416c25.3 0 47.7-7 68.8-21 42.1-29.4 53.4-88.2 28.1-134.4-4.5-9-16-9.6-22.5-2l-25.2 29.3c-6.6 7.6-18.5 7.4-24.7-.5-17.3-22.1-49.1-62.4-65.3-83-5.4-6.9-15.2-8-21.5-1.9-18.3 17.8-51.5 56.8-51.5 104.3 0 68.6 50.6 109.2 113.7 109.2z"/></svg></span> <strong>传热学</strong></p>
 <hr />
-<p>Incropera《Fundamentals of Heat and Mass Transfer》7<sup>th</sup> ed. 全 14 章精解。</p>
-<p><a href="heat/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Incropera 圣经 14 章，例题按"已知 → 求 → 分析 → 点评"完整拆解。</p>
+<p><a href="heat/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M352 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64h-96c-53 0-96 43-96 96v224c0 53 43 96 96 96h256c53 0 96-43 96-96V160c0-53-43-96-96-96h-96zM160 368c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24M224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 48a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-304 0c0-17.7-14.3-32-32-32S0 206.3 0 224v96c0 17.7 14.3 32 32 32s32-14.3 32-32zm544-32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32v-96c0-17.7-14.3-32-32-32"/></svg></span> <strong>机器学习实战</strong></p>
 <hr />
-<p>Harrington《Machine Learning in Action》全书 15 章，分类/回归/无监督/大数据。</p>
-<p><a href="ml/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>Harrington 的 MLIA，9/15 章上线，代码全从 Python 2 改成了能直接跑的 Python 3。</p>
+<p><a href="ml/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m50.7-186.9-144.3 55.5c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31l-55.5 144.3c-3.2 8.5-9.9 15.1-18.4 18.4M288 256a32 32 0 1 0-64 0 32 32 0 1 0 64 0"/></svg></span> <strong>学习资源导航</strong></p>
 <hr />
-<p>GitHub 精选学习资源小仓库：浙大专属 · CS 自学 · AI · 专业课工具（与课程笔记分开维护）。</p>
-<p><a href="resources/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 进入</a></p>
+<p>顺手收藏的 GitHub 好东西：浙大专属、CS 自学、AI……和课程笔记分开放。</p>
+<p><a href="resources/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 去看</a></p>
 </li>
 </ul>
 </div>
-<div class="hc-item muted">前八项为课程笔记板块；「学习资源导航」是独立小板块，只收录外部链接</div>
 </div>
-<div class="home-cols">
-  <div class="glass home-card">
-    <div class="hc-title">HOW TO USE</div>
-    <div class="hc-item">代码书：网页精读笔记 + 代码实战 notebook 双件套</div>
-    <div class="hc-item">理论书：完整公式推导 + 例题全解，专业术语中英对照</div>
-    <div class="hc-item">顶部栏目切换 · 左侧章节目录 · 右侧本页提纲</div>
-    <div class="hc-item">右上角搜索全文 · 深浅色随心切</div>
-  </div>
+<div class="home-tail">
+
+  <!-- 底部两卡：等宽对称 -->
+  <section class="glass bento bcard reveal" style="--i:15">
+    <div class="hc-title">怎么用</div>
+    <div class="hc-item">代码书：页面笔记 + 能跑的代码 + 实跑截图，三者永远对得上</div>
+    <div class="hc-item">理论书：公式全推导，原书跳步的地方我补了，笔误直接在页面里标</div>
+    <div class="hc-item">顶部标签换栏目 · 左侧翻章节 · 右上角放大镜搜全文 · 深浅色随手切</div>
+  </section>
+
+  <section class="glass bento bcard reveal" style="--i:16">
+    <div class="hc-title">关于这个站</div>
+    <div class="hc-item">MkDocs Material 驱动，界面 CSS 自己手搓，背景是 Wallpaper Engine 里那张 MIKU</div>
+    <div class="hc-item">笔记忠于原书，发现原书笔误就直接标出来改掉，不藏着</div>
+    <div class="hc-item">更新不定期，但一直在写——最新进度看各栏目入口页</div>
+  </section>
+
 </div>
 
 
