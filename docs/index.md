@@ -22,8 +22,8 @@ hide:
 </div>
 
 <div class="home-stats" markdown>
-<span class="stat-chip">:fontawesome-solid-layer-group: **7 大板块**</span>
-<span class="stat-chip">:fontawesome-solid-book: **78 章在线**</span>
+<span class="stat-chip">:fontawesome-solid-layer-group: **8 大板块**</span>
+<span class="stat-chip">:fontawesome-solid-book: **93 章在线**</span>
 <span class="stat-chip">:fontawesome-solid-code: **MATLAB / Python / PyTorch**</span>
 <span class="stat-chip">:fontawesome-solid-circle-half-stroke: **深浅双主题**</span>
 </div>
@@ -89,6 +89,14 @@ hide:
 
     [:octicons-arrow-right-24: 进入](heat/index.md)
 
+-   :fontawesome-solid-robot:{ .lg .middle } **机器学习实战**
+
+    ---
+
+    Harrington《Machine Learning in Action》全书 15 章，分类/回归/无监督/大数据。
+
+    [:octicons-arrow-right-24: 进入](ml/index.md)
+
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
     ---
@@ -99,7 +107,7 @@ hide:
 
 </div>
 
-  <div class="hc-item muted">前七项为课程笔记板块；「学习资源导航」是独立小板块，只收录外部链接</div>
+  <div class="hc-item muted">前八项为课程笔记板块；「学习资源导航」是独立小板块，只收录外部链接</div>
 </div>
 
 <div class="home-cols">

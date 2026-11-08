@@ -181,5 +181,22 @@ nav:
       - 第12章 辐射：过程与性质: heat/ch12.md
       - 第13章 表面间的辐射换热: heat/ch13.md
       - 第14章 扩散传质: heat/ch14.md
+  - 机器学习实战:
+      - ml/index.md
+      - 第1章 机器学习基础: ml/ch01.md
+      - 第2章 k-近邻算法: ml/ch02.md
+      - 第3章 决策树: ml/ch03.md
+      - 第4章 基于概率论的分类方法：朴素贝叶斯: ml/ch04.md
+      - 第5章 Logistic回归: ml/ch05.md
+      - 第6章 支持向量机: ml/ch06.md
+      - 第7章 利用AdaBoost元算法提高分类性能: ml/ch07.md
+      - 第8章 预测数值型数据：回归: ml/ch08.md
+      - 第9章 树回归: ml/ch09.md
+      - 第10章 利用K-均值聚类算法对未标注数据分组: ml/ch10.md
+      - 第11章 使用Apriori算法进行关联分析: ml/ch11.md
+      - 第12章 使用FP-growth算法来高效发现频繁项集: ml/ch12.md
+      - 第13章 利用PCA来简化数据: ml/ch13.md
+      - 第14章 利用SVD简化数据: ml/ch14.md
+      - 第15章 大数据与MapReduce: ml/ch15.md
   - 学习资源:
       - resources/index.md
