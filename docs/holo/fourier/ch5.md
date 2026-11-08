@@ -380,7 +380,7 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 假设方孔半宽 0.051 m(51 mm),单位振幅平面波从背面照明,\(\lambda = 0.5\ \mu\text{m}\)。这样孔径上跨了 **51 个样本**,对方孔是很好的表示(2.2 节)。传播距离 \(z = 2000\) m,菲涅耳数 \(N_F = w^2/\lambda z = 2.6\)——书原话"reasonable for applying the Fresnel expression"(用菲涅耳表达式合理)。运行脚本生成图 5.1,先验证源面布置无误:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-1.png" width="420" />
+  <img src="../../images/fourier/fig-5-1.png" width="420" />
   <figcaption>图 5.1 sqr_beam 的源面辐照度(0.5 m 窗内 51 mm 方孔)(截自原书)</figcaption>
 </figure>
 
@@ -389,14 +389,14 @@ h(x,y) = \frac{\exp(jkz)}{j\lambda z}\exp\left[j\frac{k}{2z}\left(x^2+y^2\right)
 运行 sqr_beam,辐照度结果如图 5.2——相干光的相长/相消干涉(衍射所致)让某些峰的辐照度**超过源面初值 1**,峰之间夹着更低的谷;剖面图上还能看到光"展宽出翅膀",超出源矩形的初始宽度:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-2.png" width="760" />
+  <img src="../../images/fourier/fig-5-2.png" width="760" />
   <figcaption>图 5.2 观察面辐照度:(a) 图样;(b) x 轴剖面(中央峰 1.92、±0.02 侧峰 1.96、±0.01 谷 0.89)(截自原书)</figcaption>
 </figure>
 
 场的幅度与相位见图 5.3。相位单位是弧度。`unwrap` 的作用:相邻样本跳变超过 \(\pi\) 时加/减 \(2\pi\) 的整数倍,把模 \(2\pi\) 格式里"断崖式"的跳变接回去,让相位的底层形状显形——把 `unwrap` 去掉跑一遍就能看到模 \(2\pi\) 跳变的样子。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-3.png" width="760" />
+  <img src="../../images/fourier/fig-5-3.png" width="760" />
   <figcaption>图 5.3 观察面 (a) 幅度剖面与 (b) unwrap 相位剖面(截自原书)</figcaption>
 </figure>
 
@@ -426,7 +426,7 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 - **z = 20,000 m**:TF 剖面呈"stair-step"(台阶状)——明显的 artifact;IR 光滑。长距离下夫琅禾费理论预言辐照度趋于 \(\mathrm{sinc}^2\) 形,图 5.4(h) 大体如此。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-4.png" width="820" />
+  <img src="../../images/fourier/fig-5-4.png" width="820" />
   <figcaption>图 5.4 TF 与 IR 传播的 x 轴辐照度剖面(z = 1000–20,000 m):(c)(d) 出现尖刺与台阶,(e) 出现周期副本,(h) 出现假旁瓣(截自原书)</figcaption>
 </figure>
 
@@ -436,14 +436,14 @@ Python 实测数值检查(\(L_1=0.5\) m、\(M=250\)、\(\Delta x_1=2\) mm、\(w=
 对应的辐照度图样见图 5.5:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-5.png" width="680" />
+  <img src="../../images/fourier/fig-5-5.png" width="680" />
   <figcaption>图 5.5 与图 5.4 对应的辐照度图样(TF/IR × 四个距离)(截自原书)</figcaption>
 </figure>
 
 用本章 Python 复现同一组剖面(与图 5.4 对照,四类 artifacts 全部重现):
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-profiles.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-profiles.png" width="880" />
   <figcaption>图 5-P1 sqr_beam 的 TF/IR 剖面数值复现(参数同图 5.4):TF@4000 的 ticks、TF@20000 的 stair-step、IR@1000 的周期副本、IR@20000 的假旁瓣全部出现(笔记自制)</figcaption>
 </figure>
 
@@ -570,14 +570,14 @@ C(\chi) = \int_0^\chi \cos\left(\frac{\pi t^2}{2}\right)dt, \qquad S(\chi) = \in
 - **(c) IR,z = 20,000 m**:长距案例,IR 幅度[图 5.6(e)]跟随解析结果,但阵列边缘附近出现假旁瓣;相位[图 5.6(f)]两翼也有误差。重新调整采样参数可以更好,但这个辐照度图样凑合能用。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-6.png" width="820" />
+  <img src="../../images/fourier/fig-5-6.png" width="820" />
   <figcaption>图 5.6 TF 与 IR(z = 1000、2000、20,000 m)的幅度与相位剖面(实线),虚线为对应解析结果(截自原书)</figcaption>
 </figure>
 
 本章 Python 复现同一组对比(解析式 (5.11) 用 2500 点细网格评估,scipy 的 `fresnel` 函数计算 \(C,S\)),并给出主体区(\(|x| \le L/4\))的定量偏差:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-compare.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-compare.png" width="880" />
   <figcaption>图 5-P2 式 (5.11) 解析(2500 点,虚线)vs 数值传播(250 点,实线):左列 log 幅度、右列 unwrap 相位。TF@2000 临界采样几乎逐点重合;TF@1000 两翼被磨平;IR@20000 边缘假旁瓣与相位误差清晰可见(笔记自制,复现原书图 5.6 布局)</figcaption>
 </figure>
 
@@ -781,7 +781,7 @@ imagesc(x2,y2,nthroot(I2,3)); %stretch image contrast
 源半宽 \(w = 0.011\) m、\(z = 2000\) m,给出菲涅耳数 0.12——夫琅禾费近似合理。运行 sqr_beam_FF 得到图 5.7 的辐照度结果;用 `nthroot` 拉伸对比度把旁瓣显出来:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-7.png" width="760" />
+  <img src="../../images/fourier/fig-5-7.png" width="760" />
   <figcaption>图 5.7 夫琅禾费辐照度:(a) 图样(<span class="arithmatex">\(I_2^{1/3}\)</span> 拉伸);(b) x 剖面,散点为解析值(截自原书)</figcaption>
 </figure>
 
@@ -865,7 +865,7 @@ Python 侧的对应物:`python -m cProfile -s cumulative 脚本.py` 看各函数
     临界采样要求 \(\Delta x = L_1/M = \lambda z/L_1\),解出 \(L_1 = \sqrt{M\lambda z} = \sqrt{500\times0.5\times10^{-6}\times1000} = 0.5\) m,\(\Delta x = 1\) mm,\(F_N = 1/(2\Delta x) = 500\) cyc/m。\(B_1 = 5.98/w = 119.6 < 500\) ✓;跨直径 \(2w/\Delta x = 100\) 样本。\(N_F = w^2/\lambda z = 5\)(\(N_F = 1\) 对应 \(z = 5000\) m)——z = 1000 m 处 \(N_F > 1\),处于菲涅耳区(圆孔是平滑孔径,式 (4.28) 的 \(N_F \gtrsim 1\) 口径即可用)。离散圆盘功率 0.007841 vs 解析 \(\pi w^2 = 0.007854\)(100 样本跨直径的圆盘近似)。z = 500/1000/2000 m 对应 \(\lambda z/(L\Delta x) = 0.5/1/2\):TF 过采样、临界、欠采样——z = 1000 m 临界档实测 TF 与 IR 辐照度最大相对差 \(1.3\times10^{-15}\)(逐位相同),500 m 档 IR 出周期副本、2000 m 档 TF 出网格纹。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-ex51.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-ex51.png" width="880" />
   <figcaption>图 5-P3 习题 5.1(d):圆孔菲涅耳 TF 传播(<span class="arithmatex">\(I_2^{1/3}\)</span>),z = 500/1000/2000 m 对应 TF 过/临界/欠采样(笔记自制)</figcaption>
 </figure>
 
@@ -929,7 +929,7 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
     \(z_R = \pi w_0^2/\lambda = 4.963\) m;临界采样距离(式 5.14)\(z = L^2/(M\lambda) = 0.015^2/(250\times0.633\times10^{-6}) = 1.42\) m。(a) 数值 vs 解析剖面最大相对偏差:z = 1 m → \(6.9\times10^{-16}\)、z = 5 m → \(3.4\times10^{-16}\)、z = 10 m → \(6.6\times10^{-10}\)——高斯 + TF 传播达到**机器精度/近机器精度**,印证"高斯对采样宽容"(高斯谱指数衰减,天然近带宽限)。\(w(z)\) 解析:1.020/1.419/2.249 mm。(b) z = 10 m 可用带宽 \(L/(2\lambda z) = 1185\) cyc/m;高斯谱 \(\exp(-\pi^2 w_0^2 f^2)\) 的 99% 功率带宽 \(\approx \mathrm{erfinv}(0.99)/(\sqrt{2}\pi w_0) = 410\) cyc/m < 1185 ✓。(c) \(\mathfrak{F}\{U_0\} = \pi w_0^2 A_0\exp[-\pi^2 w_0^2(f_X^2+f_Y^2)]\),代入 \(f = r_2/(\lambda z)\):\(I_2 = \left(\frac{\pi w_0^2}{\lambda z}\right)^2\exp\left[-\frac{2\pi^2 w_0^2 r_2^2}{(\lambda z)^2}\right]\)。与式 (5.26) 对比:令 \(w(z) = \lambda z/(\pi w_0)\)(即 \(z \gg z_R\) 时式 (5.27) 的渐近),两式完全一致——远场高斯束半径 \(w(z) \to \lambda z/(\pi w_0)\),发散角 \(\theta = \lambda/(\pi w_0)\)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-5-py-ex55.png" width="880" />
+  <img src="../../images/fourier/fig-5-py-ex55.png" width="880" />
   <figcaption>图 5-P4 习题 5.5(a):高斯束 propTF 剖面(实线)与式 (5.26) 解析(虚线)在 z = 1/5/10 m 重合到机器精度级;右为 z = 10 m 图像(笔记自制)</figcaption>
 </figure>
 

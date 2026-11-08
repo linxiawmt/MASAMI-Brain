@@ -80,7 +80,7 @@
 打开 MATLAB，常用窗口有：**Current Directory**（当前文件夹，你的文件存这里）、**Command Window**（命令窗口，逐行执行、显示数值输出）、**Command History**（历史命令），它们通常组成了 MATLAB **桌面（Desktop）**；另一个重要窗口是 **Editor Window**（编辑器），代码在这里输入并保存成文件——**M 文件**（扩展名 `.m`）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-1.png" width="680" />
+  <img src="../../images/fourier/fig-3-1.png" width="680" />
   <figcaption>图 3.1 MATLAB 7.1 桌面：Current Directory（左上）、Command History（左下）、停靠的编辑器（右上）、Command Window（右下）（截自原书）</figcaption>
 </figure>
 
@@ -187,7 +187,7 @@ plot(x,f);       %plot f vs x
 `figure(1)` 打开（或切到）1 号图窗，`plot` 画 \(f\) 对 \(x\)。脚本要先存盘（别用带空格的文件名）再点 Run 运行；代码有错时命令窗口会报信息。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-2.png" width="480" />
+  <img src="../../images/fourier/fig-3-2.png" width="480" />
   <figcaption>图 3.2 第一个 rect 函数绘图（截自原书）</figcaption>
 </figure>
 
@@ -203,7 +203,7 @@ xlabel('x(m)');
 `'-o'` 在每个样本处画圆圈标记；`axis([...])` 设定横纵轴范围；`xlabel` 给横轴加标签。`figure(2)` 开新窗口——没有它，新图会覆盖 1 号窗里的旧图。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-3.png" width="520" />
+  <img src="../../images/fourier/fig-3-3.png" width="520" />
   <figcaption>图 3.3 采样矩形的放大视图：矩形"顶"宽 0.1 m（11 个样本），"底"宽 0.12 m（13 个样本）（截自原书）</figcaption>
 </figure>
 
@@ -221,7 +221,7 @@ xlabel('index');
 ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-4.png" width="520" />
+  <img src="../../images/fourier/fig-3-4.png" width="520" />
   <figcaption>图 3.4 采样矩形对索引：中心样本在 index 101 = M/2+1（截自原书）</figcaption>
 </figure>
 
@@ -236,7 +236,7 @@ xlabel('index');
 ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-5.png" width="560" />
+  <img src="../../images/fourier/fig-3-5.png" width="560" />
   <figcaption>图 3.5 移位后的矩形：中心样本到了 index 1，5 个样本在"右"、5 个挂到向量末尾（截自原书）</figcaption>
 </figure>
 
@@ -270,7 +270,7 @@ xlabel('index');
 约定：频域向量用大写字母。**乘 \(\Delta x\) 是近似连续傅里叶变换积分的必要步骤**（式 (2.19) 的黎曼和因子；忘了它，整个频谱就小 \(M\) 倍）。每个复数样本装着两份信息——实部/虚部，或等价地幅度/相位——所以 customary 用两张图展示：`abs` 取幅度，`angle` 取相位（输出范围 \(-\pi\) 到 \(\pi\)）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-6.png" width="760" />
+  <img src="../../images/fourier/fig-3-6.png" width="760" />
   <figcaption>图 3.6 FFT 结果对索引：(a) 幅度；(b) 相位（截自原书）</figcaption>
 </figure>
 
@@ -299,7 +299,7 @@ xlabel('fx (cyc/m)');
 频率坐标 `fx` 按式 (2.22) 建立：\(-50 : 0.5 : 49.5\) cyc/m。运行后得到居中的幅度与相位图（图 3.7）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-7.png" width="760" />
+  <img src="../../images/fourier/fig-3-7.png" width="760" />
   <figcaption>图 3.7 居中后的 FFT 结果：(a) 幅度；(b) 相位，频率轴已定标（截自原书）</figcaption>
 </figure>
 
@@ -335,7 +335,7 @@ xlabel('fx (cyc/m)')
 原书用 MATLAB 内置 `sinc`——它与表 1.2 的定义一致（`sin(pi*u)/(pi*u)`；numpy 的 `np.sinc` 同定义，但它是基础 MATLAB 没有的信号处理工具箱函数，本笔记脚本自带 `sincn` 局部函数以免依赖）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-8.png" width="760" />
+  <img src="../../images/fourier/fig-3-8.png" width="760" />
   <figcaption>图 3.8 FFT 与解析结果对比：(a) 幅度——几乎重合，FFT 边缘略高；(b) 相位——只差 ±π 跳变，无实质差别（截自原书）</figcaption>
 </figure>
 
@@ -566,7 +566,7 @@ Python 实测（\(w=0.055\)、\(L=2\)、\(M=200\)）：
 - \(L/(2w) = 18.18\)——"相位跳变约每 18 个点"的来历；峰值处相位 \(0.00\)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-py-fft1d.png" width="880" />
+  <img src="../../images/fourier/fig-3-py-fft1d.png" width="880" />
   <figcaption>图 3-P1 一维 fft_example 全流程数值复现：采样矩形（对坐标/对索引/移位后）与 FFT 幅度、相位（对索引）及居中幅度与解析对比（笔记自制）</figcaption>
 </figure>
 
@@ -607,7 +607,7 @@ xlabel('x (m)')
 ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-9.png" width="760" />
+  <img src="../../images/fourier/fig-3-9.png" width="760" />
   <figcaption>图 3.9 (a) 两个高斯函数 <span class="arithmatex">\(f_a\)</span>（<span class="arithmatex">\(w_a=0.3\)</span>）与 <span class="arithmatex">\(f_b\)</span>（<span class="arithmatex">\(w_b=0.2\)</span>）；(b) FFT 卷积结果（截自原书）</figcaption>
 </figure>
 
@@ -775,7 +775,7 @@ Python 实测：
 - 反例：只 `ifftshift` 其中一个函数，卷积峰跑到 \(x = -1.00\) m——整体错位 \(L/2\)，坐实"要么都别移、要么严格按相对位置移"。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-py-conv.png" width="820" />
+  <img src="../../images/fourier/fig-3-py-conv.png" width="820" />
   <figcaption>图 3-P2 两高斯 FFT 卷积与解析式 (3.2) 对比：两条曲线在图上不可区分（差异 5×10⁻¹²）（笔记自制）</figcaption>
 </figure>
 
@@ -813,7 +813,7 @@ xlabel('x (m)'); ylabel('y (m)');
 `imagesc` 把阵列数据缩放到全显示范围；`colormap` 提供伪彩色（这里用灰度）；`axis square` 把图窗边框变成正方形（\(x\)、\(y\) 边长相同的时候有用）。**方向注意**：常规图像文件的第 1 行对应画面**顶部**，MATLAB 图像显示因此默认 \(y\) 值自上而下增；`axis xy` 把 \(y\) 轴翻回自下而上增的笛卡尔习惯。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-10.png" width="780" />
+  <img src="../../images/fourier/fig-3-10.png" width="780" />
   <figcaption>图 3.10 二维矩形：(a) imagesc 图像；(b) 过阵列中心的 x 方向切片 g(M/2+1,:)（截自原书）</figcaption>
 </figure>
 
@@ -849,7 +849,7 @@ xlabel('fx (cyc/m)');
 ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-11.png" width="520" />
+  <img src="../../images/fourier/fig-3-11.png" width="520" />
   <figcaption>图 3.11 二维 FFT 幅度：(a) surf 曲面显示；(b) fy=0 剖面——峰值约 0.023（截自原书）</figcaption>
 </figure>
 
@@ -1067,7 +1067,7 @@ Python 实测：
 - 同一剖面 vs 连续解析谱 \(4w_xw_y\,\mathrm{sinc}\)：最大差异 \(3.1\times10^{-3}\)——DC 处 0.0231 vs 0.020，加上样本错过 sinc 零点。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-py-fft2d.png" width="880" />
+  <img src="../../images/fourier/fig-3-py-fft2d.png" width="880" />
   <figcaption>图 3-P3 二维 fft2_example 数值复现：2D 矩形图像与 y=0 切片（上排）、|G| 曲面与 fy=0 剖面（下排）——FFT 曲线与 Dirichlet 离散精确谱重合、峰值 0.0231 高于连续解析谱 0.020（笔记自制）</figcaption>
 </figure>
 
@@ -1318,7 +1318,7 @@ out=T.*mask;
     ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-3-py-exercise.png" width="860" />
+  <img src="../../images/fourier/fig-3-py-exercise.png" width="860" />
   <figcaption>图 3-P4 习题数值解答：三角函数采样与 |FFT| vs <span class="arithmatex">\(w\,\mathrm{sinc}^2(w f_X)\)</span>（上排）、圆盘图像与 <span class="arithmatex">\(f_Y=0\)</span> 剖面 vs jinc（下排）（笔记自制）</figcaption>
 </figure>
 

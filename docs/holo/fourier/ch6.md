@@ -79,12 +79,12 @@ t_a(x,y) = \exp\left[jk(x\cos\theta + y\sin\theta)\tan\alpha\right]. \tag{6.3}
 注意 \(\alpha = \tan^{-1}(r/z)\),\(r\) 是观察面上从原点到**光束瞄准点(beam aiming point)**的径向距离——瞄准点在 \(r = z\tan\alpha\)(图 6.2)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-1.png" width="330" />
+  <img src="../../images/fourier/fig-6-1.png" width="330" />
   <figcaption>图 6.1 y–z 面内的波前倾斜(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-2.png" width="330" />
+  <img src="../../images/fourier/fig-6-2.png" width="330" />
   <figcaption>图 6.2 观察面上的光束瞄准点:r = z tanα(截自原书)</figcaption>
 </figure>
 
@@ -178,7 +178,7 @@ tilt 函数如下:
 其余与 sqr_beam 相同(仍用 propTF 传到 \(z=2000\) m)。运行后观察面辐照度如图 6.3——光斑沿 45° 方向平移到了 \(r = z\tan\alpha = 0.1\) m 处。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-3.png" width="400" />
+  <img src="../../images/fourier/fig-6-3.png" width="400" />
   <figcaption>图 6.3 倾斜例子的观察面辐照度:α = 5.0×10⁻⁵ rad、θ = 45°(截自原书)</figcaption>
 </figure>
 
@@ -221,7 +221,7 @@ sqr_beam_tilt 例子:\(\lambda = 0.5\times10^{-6}\) m、\(\Delta x_1 = 2\times10
 本章 Python 复现同一组试验(\(\theta = 0\)):
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-tiltlim.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-tiltlim.png" width="820" />
   <figcaption>图 6-P1 倾角判据试验:无倾斜 / α = 7.6×10⁻⁵(式 6.6 边界,光束贴边 + 对侧 wrap-around)/ α = λ/2Δx₁(劈半)(笔记自制)</figcaption>
 </figure>
 
@@ -251,7 +251,7 @@ t_A(x,y) = \exp\left[-j\frac{k}{2z_f}\left(x^2 + y^2\right)\right]. \tag{6.9}
 这与式 (4.23) 菲涅耳脉冲响应 \(h\) 里的相位 chirp 同形,只是指数符号为负——\(h\) 把波"散开",focus 把波"收拢"。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-4.png" width="330" />
+  <img src="../../images/fourier/fig-6-4.png" width="330" />
   <figcaption>图 6.4 会聚波前(截自原书)</figcaption>
 </figure>
 
@@ -324,12 +324,12 @@ zf=2000;
 结果见图 6.5——相当前的一个焦点!本例焦距与传播距离相同(\(z_f = z = 2000\) m),所以预期小光斑。这个图样其实是**一幅缩放了的夫琅禾费图样**(见 6.3 节)。试别的焦距——能不能让图样扩展到铺满观察面网格?负的 focus 值把焦点放到平面背后的虚位置,产生发散波(图 6.6),也试试。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-5.png" width="780" />
+  <img src="../../images/fourier/fig-6-5.png" width="780" />
   <figcaption>图 6.5 聚焦例子:(a) 辐照度图样;(b) 剖面(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-6.png" width="720" />
+  <img src="../../images/fourier/fig-6-6.png" width="720" />
   <figcaption>图 6.6 源面上会聚 (a) / 发散 (b) 波前的几何光线图(截自原书)</figcaption>
 </figure>
 
@@ -355,7 +355,7 @@ B_1^{+F} = B_1 + \frac{D_1}{2\lambda|z_f|}\,. \tag{6.10}
 sqr_beam_focus 例子:\(\lambda = 0.5\times10^{-6}\) m、\(\Delta x_1 = 2\times10^{-3}\) m、\(B_1 \approx 98\) cycles/m、\(D_1 = 0.102\) m,给出 \(|z_f| \geq 671\) m(用 \(B_1 = 117.3\) 则为 768 m)。用代码检验这个条件:\(z_f = -671\) m 时波发散,观察面上明显推过阵列边界;\(z_f = +671\) m 时图样更小——光束在到达观察面前先过了焦点(图 6.6)。图样看似合理,但相位混叠误差刚好开始在阵列边缘冒头——看观察面场的 unwrap 相位剖面就能发现。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-focusbounds.png" width="780" />
+  <img src="../../images/fourier/fig-6-py-focusbounds.png" width="780" />
   <figcaption>图 6-P2 式 (6.11) 边界试验(z = 2000 m):z_f = +671 m(先聚焦,图样变小)/ z_f = −671 m(发散,推过阵列)(笔记自制)</figcaption>
 </figure>
 
@@ -415,7 +415,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 取 f/10 透镜的参数,设 \(U_1\) 是单位振幅平面波,选 \(M = 250\)、\(L = 250\) mm,用 propFF 生成焦面辐照度(习题 6.4),结果见图 6.7。理想圆形透镜形成的聚焦辐照度图样就是著名的 **Airy 图样(Airy pattern)**。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-7.png" width="820" />
+  <img src="../../images/fourier/fig-6-7.png" width="820" />
   <figcaption>图 6.7 透镜夫琅禾费图样:(a) 辐照度(四次方根拉伸);(b) x 剖面——单位振幅入射场的全部功率被聚进极小面积,峰值 ~1.5×10⁷(截自原书)</figcaption>
 </figure>
 
@@ -428,7 +428,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 | 瞳直径减半(习题 6.4b) | 零点 ×2 = 12.2 μm | 13.0 μm;峰值降为 1/16 = 0.0612 |
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-airy.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-airy.png" width="820" />
   <figcaption>图 6-P3 f/10 理想透镜焦面:数值(实线)vs 解析 Airy(虚线);瞳减半时零点翻倍、峰值降为 1/16(笔记自制)</figcaption>
 </figure>
 
@@ -444,7 +444,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\iint U_1(x_1,y_1)\,P\left(x_1+x_2,\,
 前导的 chirp 相位因子**没有了**——焦面场是输入场的**缩放傅里叶变换**。瞳函数的宗量 \((x_1+x_2,\,y_1+y_2)\) 计入了**渐晕(vignetting)**:输入场里离轴点因瞳径有限而丢光。透镜瞳相对输入场支撑越大,渐晕越弱。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-8.png" width="420" />
+  <img src="../../images/fourier/fig-6-8.png" width="420" />
   <figcaption>图 6.8 "傅里叶变换"透镜安排:U₁ 在前焦面,U₂ 在后焦面(截自原书)</figcaption>
 </figure>
 
@@ -467,7 +467,7 @@ t_A(x,y) = \frac{1}{2}\left[1-\cos\left(2\pi\frac{x_1}{P}\right)\right]\mathrm{r
 图 6.9 是它的一维剖面。光栅定义在 \(D_1\times D_1\) 的二维面内,余弦图案只随 \(x\) 变化、周期为 \(P\),通常 \(P \ll D_1\)。单位振幅平面波照明时源场 \(U_1(x_1,y_1) = t_A(x_1,y_1)\),夫琅禾费图样用焦距 \(f\) 的透镜(或反射镜)产生。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-9.png" width="620" />
+  <img src="../../images/fourier/fig-6-9.png" width="620" />
   <figcaption>图 6.9 余弦光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -547,7 +547,7 @@ t_A(x,y) = \frac{1}{2}\left[1-\cos\left(2\pi\frac{x_1}{P}\right)\right]\mathrm{r
 grating_cos 里 \(MP/L_1 = 5\)——每个余弦周期 5 个样本,"okay"(满足采样定理至少要 2 个)。\(L_1\)、\(D_1\)、\(P\)、\(M\) 的取值同时照顾了夫琅禾费图样的显示;\(D_1 = 1.02\times10^{-3}\) 让跨 rect 的样本数 \(D_1/dx_1 = 51\) 为**奇数**,与 rect 函数的定义一致。透镜焦距 \(f = 0.5\) m 是任选的。图 6.10 给出源面辐照度 \(I_1\)、观察面辐照度 \(I_2\) 与观察面 x 剖面:中央特征叫**零阶(zero order)**,两侧是 \(-1\) 与 \(+1\) **一阶(first-order)**峰。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-10.png" width="780" />
+  <img src="../../images/fourier/fig-6-10.png" width="780" />
   <figcaption>图 6.10 grating_cos 结果:(a) 源面辐照度(显示分辨率看不出周期结构);(b) 夫琅禾费辐照度(三次方根拉伸);(c) x 剖面(截自原书)</figcaption>
 </figure>
 
@@ -584,14 +584,14 @@ I2a=abs(u2a).^2;
 夫琅禾费图样的前导复指数没有写进代码——只看辐照度,但**别忘了 1/λz**(这里 \(z = f\))。跑一下,离散与解析曲线应当重合。本章 Python 实测:最大相对差 **0.258%**;一阶峰位置 \(\pm\lambda f/P = \pm 2.50\) mm,峰高约 1.04 vs 零阶 4.16(书图 6.10(c) 同为 ~1 / ~4.2 / ~1)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-gratingcos.png" width="880" />
+  <img src="../../images/fourier/fig-6-py-gratingcos.png" width="880" />
   <figcaption>图 6-P4 grating_cos 复现:源面 / 夫琅禾费(1/3 次拉伸)/ 剖面(数值实线 vs 式 6.24 解析虚线,最大相对差 0.26%)(笔记自制)</figcaption>
 </figure>
 
 光栅的主要应用是**分光**。图 6.11 把 \(\lambda = 0.5\ \mu\text{m}\) 与 \(0.6\ \mu\text{m}\) 的剖面叠在一起:一阶峰明显分开(\(\pm2.5\) mm vs \(\pm3.0\) mm)。做法:先跑一个波长,把 \(I_2\)、\(x_2\) 存进临时数组(如 `I2p5=I2; x2p5=x2;`),换波长重跑,再在命令窗口对两条曲线执行 plot。**两个波长的 x2 网格不同**(\(L_2 = \lambda f/\Delta x_1\) 分别 12.5 mm 与 15.0 mm)——别共用同一组 x2 向量!"照亮"更大的光栅面积会收窄各阶、提高光谱分辨率——把 \(D_1\) 加大就能验证。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-11.png" width="620" />
+  <img src="../../images/fourier/fig-6-11.png" width="620" />
   <figcaption>图 6.11 grating_cos 在 λ = 0.5 μm 与 0.6 μm 下的辐照度剖面(截自原书)</figcaption>
 </figure>
 
@@ -606,7 +606,7 @@ t_A(x,y) = \left[\mathrm{rect}\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{
 \(P\) 是 x 方向延展的方波振幅图案的周期,限于 \(D_1\times D_1\) 面内。注意卷积里的 **1/P 归一**:它让每个 comb delta 的权重是"占空比意义上的平均值",这样各阶权重直接是 \(\frac{1}{2}\mathrm{sinc}(n/2)\)、零阶权重 \(\frac{1}{2} = 50\%\) 占空比的均值。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-12.png" width="620" />
+  <img src="../../images/fourier/fig-6-12.png" width="620" />
   <figcaption>图 6.12 方波光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -756,12 +756,12 @@ u2a=D1^2/(2*lf)*u2a;
 把这段代码加到 grating_sqr 末尾,与数值仿真对比——能让它们匹配吗?本章 Python 实测:最大相对差 **6.1%**(出现在窗口边缘的 Gibbs 起伏区;三个主阶峰值本身符合得更好),阶位 \(\pm2.50\) mm(\(\pm1\) 阶)、\(\pm7.50\) mm(\(\pm3\) 阶)。书把这题留给读者("Can you get them to match?")正是因为窗口采样与截断都要花点功夫。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-13.png" width="620" />
+  <img src="../../images/fourier/fig-6-13.png" width="620" />
   <figcaption>图 6.13 grating_sqr 的夫琅禾费辐照度剖面(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-gratingsqr.png" width="780" />
+  <img src="../../images/fourier/fig-6-py-gratingsqr.png" width="780" />
   <figcaption>图 6-P5 grating_sqr 复现:数值(实线)vs 式 (6.27) 解析(n=−5..5,虚线),最大相对差 6.1%(笔记自制)</figcaption>
 </figure>
 
@@ -780,7 +780,7 @@ L2=lf/dx1;
 注意一维前导因子是 \(1/\sqrt{\lambda f}\)——二维是 \(1/(\lambda f)\),维度减半开平方根。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-14.png" width="460" />
+  <img src="../../images/fourier/fig-6-14.png" width="460" />
   <figcaption>图 6.14 grating_sqr 一维夫琅禾费辐照度剖面:(a) 全向量;(b) 局部放大(截自原书)</figcaption>
 </figure>
 
@@ -802,7 +802,7 @@ L2=lf/dx1;
 这个情形见图 6.15:求夫琅禾费图样的 DFT,其结果对应输入阵列的重复副本(周期延拓);既然源在阵列边界处完美连续,结果就是**无限周期结构的变换**——衍射阶位置上出现样本 delta 函数。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-15.png" width="640" />
+  <img src="../../images/fourier/fig-6-15.png" width="640" />
   <figcaption>图 6.15 整数个周期占满向量的余弦光栅剖面(截自原书)</figcaption>
 </figure>
 
@@ -815,7 +815,7 @@ Fpwr=I2*dx2*dx2/(L1^2);
 其中假定单位源场幅度。Fpwr 的显示见图 6.16:**25% 的功率在零阶,±1 一阶各 6.25%**。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-16.png" width="620" />
+  <img src="../../images/fourier/fig-6-16.png" width="620" />
   <figcaption>图 6.16 grating_cos 无限周期模型的分数功率(截自原书)</figcaption>
 </figure>
 
@@ -873,7 +873,7 @@ flowchart TD
 **6.1 倾斜判据的几何推导**:图 6.17 画出场相对光轴以 \(\alpha\) 角传播的情形。场支撑 \(D_2\) 恰好伸到观察面边长的一半(\(L/2\))。用这个布局推导与式 (6.6) 相同的倾斜判据。假定临界采样与夫琅禾费传播;夫琅禾费传播下 \(D_2 = 2B_1\lambda z\)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-17.png" width="560" />
+  <img src="../../images/fourier/fig-6-17.png" width="560" />
   <figcaption>图 6.17 以 α 角传播的示意图(截自原书)</figcaption>
 </figure>
 
@@ -891,7 +891,7 @@ flowchart TD
     (a) 把 focus 的 chirp 只作用在一个轴:`uout=uin.*exp(-j*k/(2*zf)*(X.^2))`(MATLAB 取 `[X,~]=meshgrid(x,x)`,numpy 取 `X,_`——取错输出轴就聚焦到另一个方向了)。(b) 实测:观察面上 x 方向收到焦线(半高宽 8 mm),y 方向仍是衍射展宽(72 mm),见图 6-P6 左图。(c) **不能**:柱面透镜只在一个轴上做傅里叶变换,另一个轴仍是菲涅耳传播行为,焦面场不是二维夫琅禾费图样(也不可分离成一个 FT 乘一个 FT——耦合在孔径上)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex63.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-ex63.png" width="820" />
   <figcaption>图 6-P6 习题 6.3(左:柱面聚焦的焦线)与习题 6.2(右:tilt+focus 同加)(笔记自制)</figcaption>
 </figure>
 
@@ -909,7 +909,7 @@ t_A(r) = \frac{1}{2}\left[1+\cos\left(\frac{k}{2f}r^2\right)\right]\mathrm{circ}
 其中 \(r = \sqrt{x^2+y^2}\)。透过率图样见图 6.18。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-18.png" width="360" />
+  <img src="../../images/fourier/fig-6-18.png" width="360" />
   <figcaption>图 6.18 波带片透过率示意(截自原书)</figcaption>
 </figure>
 
@@ -928,7 +928,7 @@ t_A(r) = \frac{1}{2}\left\{1+\mathrm{sign}\left[\cos\left(\frac{k}{2f}r^2\right)
 这块板的透过率是二值的(1 或 0),可以用悬浮不透明材料环带做成。(f) 仿真这块板并用同样参数重复 (e)(提示:MATLAB 自带 sign 函数)。(g) 比较两块板在焦面(\(z = 10\) m)的辐照度剖面,哪个效率更高?(h) 把波带片剖面与同样参数正透镜的焦面辐照度剖面比较。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex65.png" width="880" />
+  <img src="../../images/fourier/fig-6-py-ex65.png" width="880" />
   <figcaption>图 6-P7 习题 6.5:余弦型(上排)与二值型(下排)波带片在 z = 5/8/10/12 m 的辐照度(1/4 次拉伸);z = 10 m 处聚焦(笔记自制)</figcaption>
 </figure>
 
@@ -963,7 +963,7 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
     (a) \(dx = P/8 = 250\) nm(每三角 8 样本)、\(M = 4096\)、\(L_1 = 1.024\) mm。(b) \(\mathfrak{F}\{\Lambda(x/(P/2))\} = (P/2)\mathrm{sinc}^2(Pf_X/2)\),阶权重 \(\propto \mathrm{sinc}^2(n/2) \geq 0\)(方波是 \(\mathrm{sinc}(n/2)\),可负——三角波各阶无 \(\pi\) 相位翻转,这就是"闪耀"结构的好处);解析 \(U_2 \propto \frac{D_1}{2\sqrt{\lambda f}}\sum_n \mathrm{sinc}^2(n/2)\,\mathrm{sinc}\left[\frac{D_1}{\lambda f}(x_2 - n\lambda f/P)\right]\),阶位 \(\pm\lambda f/P = \pm125\) mm(\(\pm1\) 阶)、\(\pm375\) mm(\(\pm3\) 阶);数值 vs 解析最大相对差 **2.2%**(图 6-P8)。(c) 无限周期模型(\(L_1/P = 512\) 整数):阶退化为样本 delta,分数功率实测零阶 **0.2500**(理论 \(|c_0|^2 = 0.25\))、±1 阶 0.0455(理论 \(|c_{\pm1}|^2 = 0.0411\)),总透射 0.3438 = \(\langle t^2\rangle\)(振幅光栅,其余被"吸收")。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-6-py-ex68.png" width="820" />
+  <img src="../../images/fourier/fig-6-py-ex68.png" width="820" />
   <figcaption>图 6-P8 习题 6.8:三角波光栅(500 lines/mm)一维夫琅禾费图样,数值(实线)vs sinc²(n/2) 解析(虚线),阶位 0、±125、±375 mm(笔记自制)</figcaption>
 </figure>
 

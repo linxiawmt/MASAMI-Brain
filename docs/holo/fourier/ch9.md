@@ -81,7 +81,7 @@ flowchart TD
 
 图 9.1 把两类相干画在一张图里:**时间相干（temporal coherence）**= 同一点 \(P\) 的场在时间差 \(\tau\) 前后的相关(时间平均的场乘积);部分时间相干源的这个"相干度"随 \(\tau\) 增大典型地下降。**空间相干（spatial coherence）**= 同一时刻、不同横向点 \(P_1\)、\(P_2\) 的场相关;随间隔增大典型地下降。
 
-![](../../images/holo/fourier/fig-9-1.png)
+![](../images/fourier/fig-9-1.png)
 
 *图 9.1 时间相干:P 点的场 U(P,t) 与 U(P,t+τ) 的相关;空间相干:同一时刻 P1、P2 两点的场相关（截自原书）*
 
@@ -123,7 +123,7 @@ b = \frac{\Delta\nu}{2\sqrt{\ln 2}}\,. \tag{9.2}
 
 \(|\gamma| = 1\) 是完全相干,\(|\gamma| = 0\) 是完全不相干。图 9.2 显示 \(|\tau|\) 越大 \(|\gamma(\tau)|\) 越小——时间上离得越远,相干越差。
 
-![](../../images/holo/fourier/fig-9-2.png)
+![](../images/fourier/fig-9-2.png)
 
 *图 9.2 式 (9.4) 的复时间相干度模长;τ 的正负号取决于哪个采样点被延迟（截自原书）*
 
@@ -160,7 +160,7 @@ I(x,y) \approx \sum_{n=1}^{N}\hat{S}(\nu_n)\,I(x,y;\nu_n)\,\delta\nu\,, \tag{9.9
 
 \(n\) 是谱线编号、\(N\) 是谱线条数、\(\delta\nu\) 是相邻谱线的频率间隔。图 9.3 是一个采样后的归一化 PSD。
 
-![](../../images/holo/fourier/fig-9-3.png)
+![](../images/fourier/fig-9-3.png)
 
 *图 9.3 离散采样后的归一化功率谱密度(pc_temp 取 51 条线、跨 4Δν)（截自原书）*
 
@@ -177,7 +177,7 @@ I(x,y) \approx \sum_{n=1}^{N}\hat{S}(\nu_n)\,I(x,y;\nu_n)\,\delta\nu\,, \tag{9.9
 
 光路见图 9.4:两束平行圆光束(半径 \(w\))从左侧进入,中心间距 \(\Delta s\)。它们来自同一光源、彼此无延迟。下臂用反射镜绕行,多走 \(\Delta d\)——相当于相对时间延迟 \(\tau = \Delta d/c\)。两束经焦距 \(f\) 的透镜聚焦形成夫琅禾费图样。这本质上就是杨氏双缝实验,只是缝换成了孔、加了透镜。透镜左侧的衍射效应忽略,所以到达透镜的两束就是圆盘函数。
 
-![](../../images/holo/fourier/fig-9-4.png)
+![](../images/fourier/fig-9-4.png)
 
 *图 9.4 双光束时间相干光路:下臂绕行增加光程 Δd,透镜后形成夫琅禾费图样（截自原书）*
 
@@ -338,7 +338,7 @@ I_2(x_2,y_2) = \frac{2}{(\lambda_0 f)^2}\left\{w^4\left[\frac{J_1\!\left(2\pi\df
 !!! warning "原书笔误:图 9.5 题注的脚本名"
     题注写"Partial temporal coherence results for **pb_temp**"——脚本是 pc_temp,排版把名字拼坏了。
 
-![](../../images/holo/fourier/fig-9-5.png)
+![](../images/fourier/fig-9-5.png)
 
 *图 9.5 pc_temp 结果(Δd = 5 cm、|γ(τ)| = 0.67):(a) 辐照度图样;(b) x 剖面,x 轴已放大以便看清中央;散点为式 (9.10) 解析值（截自原书）*
 
@@ -349,17 +349,17 @@ I_2(x_2,y_2) = \frac{2}{(\lambda_0 f)^2}\left\{w^4\left[\frac{J_1\!\left(2\pi\df
 - 条纹可见度(中央 \(\pm1\) 周期的插值极值)= 0.71,目标 \(|\gamma| = 0.673\)(包络在一个周期内略衰减,极值法略偏高);
 - 反证勘误:若按书印的 \(w^2\) 计算,解析中心值 \(7.5\times10^8\),比仿真大 6 个量级。
 
-![](../../images/holo/fourier/fig-9-py-temporal.png)
+![](../images/fourier/fig-9-py-temporal.png)
 
 *图 9-P1 pc_temp 复现:辐照度图样 / x 剖面(数值实线 vs 式 9.10 勘误版散点)/ |γ(τ)| 曲线(标出 τ = 0.167 ns 的取值点)/ 51 条采样谱线(笔记自制)*
 
 图 9.6 的系列面板(同一脚本改 \(\Delta d\))展示从高对比到低对比条纹的过渡:\(\Delta d = 0\to 50\) cm,\(|\gamma| = 1.0 \to 0.67 \to 0.21 \to 0\)。\(\Delta d = 50\) cm 时两束之间的相干干涉几乎全部丢失,图样退化成单束的 Airy 图样——只是辐照度翻倍(两束都在)。\(\Delta d = 50\) cm 面板里 Airy 环上的"疙瘩"(lumpiness)来自初始圆盘函数的离散边缘采样。
 
-![](../../images/holo/fourier/fig-9-6.png)
+![](../images/fourier/fig-9-6.png)
 
 *图 9.6 Δd = 0/5/10/50 cm 的辐照度图样(左列)与对应 x 剖面(右列):|γ| = 1.0/0.67/0.21/0;Δd = 50 cm 时只剩单束 Airy(功率翻倍)（截自原书）*
 
-![](../../images/holo/fourier/fig-9-py-series.png)
+![](../images/fourier/fig-9-py-series.png)
 
 *图 9-P2 Δd 系列复现(0/5/10/50 cm):条纹对比度随延迟单调下降,50 cm 处条纹消失(笔记自制)*
 
@@ -381,7 +381,7 @@ I_2(x_2,y_2) = \frac{2}{(\lambda_0 f)^2}\left\{w^4\left[\frac{J_1\!\left(2\pi\df
 U(x,y;t) = U_0(x,y)\,t_A(x,y;t)\,. \tag{9.13}
 \]
 
-![](../../images/holo/fourier/fig-9-7.png)
+![](../images/fourier/fig-9-7.png)
 
 *图 9.7 空间相干相关的场采样位置:两点间隔 x′、y′（截自原书）*
 
@@ -412,7 +412,7 @@ R(x',y') = \exp\left[-\frac{x'^2+y'^2}{\ell_{cr}^2}\right], \tag{9.16}
 
 仿真流程(图 9.8):对一个确定性光束场施加空间随机透过率屏 → 传播 → 形成辐照度;换一个屏的新实现重复多次;把这些辐照度图样**平均**得到部分空间相干结果。
 
-![](../../images/holo/fourier/fig-9-8.png)
+![](../images/fourier/fig-9-8.png)
 
 *图 9.8 部分空间相干仿真流程:随机透过屏逐个作用,观察面辐照度做平均（截自原书）*
 
@@ -494,7 +494,7 @@ F(f_X,f_Y) = \exp\left[-\pi^2\sigma_f^2\left(f_X^2+f_Y^2\right)\right]\,. \tag{9
 \left|\mu_{12}\right| = \exp\left[-\Delta s^2/\ell_{cr}^2\right] = 0.677\,.
 \]
 
-![](../../images/holo/fourier/fig-9-9.png)
+![](../images/fourier/fig-9-9.png)
 
 *图 9.9 双光束空间相干光路:与图 9.4 相同但无路径延迟（截自原书）*
 
@@ -637,11 +637,11 @@ F(f_X,f_Y) = \exp\left[-\pi^2\sigma_f^2\left(f_X^2+f_Y^2\right)\right]\,. \tag{9
 
 看结果之前,先看几块实际加到源面上的随机相位屏(图 9.10,pc_spatial 参数下的两个实现)。相位值与起伏对 \(\sigma_f = 20\) mm 来说合理。pc_spatial 共施加 100 次屏实现。注意:若屏的相位激励变得太大,相位可能欠采样、产生混叠(与 8.6 节像差波前的讨论同理)。
 
-![](../../images/holo/fourier/fig-9-10.png)
+![](../images/fourier/fig-9-10.png)
 
 *图 9.10 pc_spatial 参数下的两个随机相位屏实现 φ(x,y):σf = 20 mm,相位起伏约 ±8 rad（截自原书）*
 
-![](../../images/holo/fourier/fig-9-py-screens.png)
+![](../images/fourier/fig-9-py-screens.png)
 
 *图 9-P3 相位屏生成复现(书参数):两块独立实现,实部各满足高斯相关;与书图 9.10 同量级(笔记自制)*
 
@@ -654,7 +654,7 @@ I_2(x_2,y_2) \approx \frac{2}{(\lambda f)^2}\left\{w^4\left[\frac{J_1\!\left(2\p
 !!! warning "原书笔误:式 (9.27) 花括号内的 w² 应为 w⁴"
     与式 (9.10) 同款笔误。按 \(w^2\) 计算,中心值 \(2\pi^2w^2/(\lambda f)^2 \approx 7.5\times10^8\),比书图 9.11(b) 峰值(~1250)大 6 个量级;按 \(w^4\) 得 \(2\pi^2w^4/(\lambda f)^2 \times (1+0.677) = 1253\)——与图完全吻合。
 
-![](../../images/holo/fourier/fig-9-11.png)
+![](../images/fourier/fig-9-11.png)
 
 *图 9.11 pc_spatial 结果(ℓcr = 8 mm、|μ12| = 0.68):(a) 辐照度图样;(b) x 剖面(放大),散点为式 (9.27) 解析值（截自原书）*
 
@@ -668,7 +668,7 @@ I_2(x_2,y_2) \approx \frac{2}{(\lambda f)^2}\left\{w^4\left[\frac{J_1\!\left(2\p
 !!! note "拓展:书参数下条纹对比度偏高的定量诊断"
     式 (9.26) 滤波器的通带宽度约 \(1/(\pi\sigma_f) = 15.9\) 1/m,而频率网格间距 \(\Delta f_X = 1/L_1 = 20\) 1/m——通带不足一个网格!屏的相关结构实际由 DC 与 \(\pm20\) cyc/m 的两三个样本决定,相关长度被拉长,可见度偏向相干。数值扫描(21 行的 2.5 倍率):2.5 → 可见度 0.83、2.0 → 0.76、1.5 → 0.74、1.2 → 0.74(目标 0.677);把网格加大到 \(L_1=200\) mm、\(M=1000\)(\(\Delta f_X=5\) 1/m,通带占 3.2 个网格)后直接测屏的相位结构函数 \(D(5\text{ mm}) = 0.751\) vs 式 (9.20) 预测 0.769、透过率相关 0.686 vs 预测 0.681——屏生成链本身是精确的,偏差全在通带采样。补救:调小 \(\sigma_f\) 倍率或加大 \(L_1\)、\(M\)。这与书 9.2.3 节"\(\sigma_f > L/2\) 时输出完全相干"是同一机理的温和版本。
 
-![](../../images/holo/fourier/fig-9-py-spatial.png)
+![](../images/fourier/fig-9-py-spatial.png)
 
 *图 9-P4 pc_spatial 复现:辐照度图样 / x 剖面(数值实线 vs 式 9.27 勘误版散点)/ 实测可见度随 σf 倍率的扫描(书参数 0.81 vs 目标 0.677,倍率调小后回落)(笔记自制)*
 
@@ -705,7 +705,7 @@ I_2(x_2,y_2) \approx \frac{2}{(\lambda f)^2}\left\{w^4\left[\frac{J_1\!\left(2\p
 ??? note "9.1 参考答案要点(Python 实测)"
     (b) 矩形的傅里叶变换:\(|\gamma(\tau)| = |\mathrm{sinc}(\Delta\nu\,\tau)|\);代入 \(\Delta\nu\,\tau = 2\times10^9 \times 1.667\times10^{-10} = 0.333\):\(|\gamma| = 0.8270\);\(\tau_c = 1/\Delta\nu = 0.5\) ns(高斯线型是 0.664/\(\Delta\nu\) = 0.332 ns——矩形谱更"宽平",相干时间反而更长)。(a) 谱线间隔 \(\delta\nu = 4\Delta\nu/51\),矩形内有 13 条线;谱线权重和 \(\sum S\,\delta\nu = 1.0196 \neq 1\)(矩形边界落在样本之间,矩形规则超计)。(c) 离散度和 \(0.8376\),仿真的条纹可见度 = 度和/权重和 = **0.8215** vs 连续理论 0.827(−0.7%)——注意别拿度和 0.8376 直接比 0.827 而误读成"+1.3%",先除权重和。剖面 vs 式 (9.10)(\(|\gamma|\) 换 0.827)最大相对偏差 3.5%(像元化圆盘边缘,同主例)。图 9-P5。
 
-![](../../images/holo/fourier/fig-9-py-ex91.png)
+![](../images/fourier/fig-9-py-ex91.png)
 
 *图 9-P5 习题 9.1:矩形线型的辐照度图样与剖面(实线)vs 式 (9.10) 解析(|γ| = 0.827,散点)(笔记自制)*
 
@@ -714,7 +714,7 @@ I_2(x_2,y_2) \approx \frac{2}{(\lambda f)^2}\left\{w^4\left[\frac{J_1\!\left(2\p
 ??? note "9.2 参考答案要点(Python 实测)"
     剖面按 \(I(x) = |A|^2\,[2+2\cos(2\pi\Delta s\,x_2/\lambda_0 f + k_0\Delta d)]\):\(\Delta d\) 每增 \(\lambda_0\),条纹平移整整一个周期 \( \lambda_0 f/\Delta s = 32.5\ \mu\text{m}\)。对四个剖面做"包络 + cos + sin"三参数最小二乘,拟合相位(以周期计,wrap 到 \([-0.5,0.5)\))= [0, 0.25, −0.5, −0.25],理论 \(k_0\Delta d/2\pi \bmod 1\) = [0, 0.25, 0.5(≡−0.5), −0.25]——逐个吻合(半周期翻转处平移 ±0.5 等价)。局限:图样以 \(\lambda_0\) 为周期,\(\Delta d\) 与 \(\Delta d + \lambda_0\)(整数倍波长)不可区分——单次测量的无模糊范围是 \(\lambda_0\)(650 nm);要往大里测,得靠多波长/外差的办法。图 9-P6。
 
-![](../../images/holo/fourier/fig-9-py-ex92.png)
+![](../images/fourier/fig-9-py-ex92.png)
 
 *图 9-P6 习题 9.2:相干双束在 Δd = 0、λ0/4、λ0/2、3λ0/4 下的条纹平移(每格横轴 ±1.5×10⁻⁴ m)(笔记自制)*
 
@@ -729,7 +729,7 @@ V = \frac{2A_1A_2}{A_1^2 + A_2^2}\,\gamma\!\left(\frac{\Delta d}{c}\right). \tag
 ??? note "9.3 参考答案要点(Python 实测)"
     (a) \(V = \frac{2\times0.75\times0.20}{0.75^2+0.20^2}\times0.6733 = 0.4979\times0.6733 = \mathbf{0.3353}\)。(c) 提议式:把式 (9.10) 的 \([1+|\gamma|\cos]\) 换成 \([A_1^2+A_2^2+2A_1A_2|\gamma|\cos(\,2\pi\Delta s\,x_2/\lambda_0 f + k_0\Delta d)]\),包络去掉双束因子 2,改为单束夫琅禾费 \(w^4/(\lambda_0 f)^2[J_1(v)/(w r/\lambda_0 f)]^2\)。自洽检查:\(A_1=A_2=1\) 时括号 \(= 2[1+|\gamma|\cos]\),精确退回勘误后的式 (9.10)。剖面 vs 提议式最大相对偏差 3.8%(同主例的圆盘边缘量级)。图 9-P7。
 
-![](../../images/holo/fourier/fig-9-py-ex93.png)
+![](../images/fourier/fig-9-py-ex93.png)
 
 *图 9-P7 习题 9.3:A1 = 0.75、A2 = 0.20 的辐照度与剖面;提议解析式(散点)贴合仿真,V = 0.335(笔记自制)*
 
@@ -738,7 +738,7 @@ V = \frac{2A_1A_2}{A_1^2 + A_2^2}\,\gamma\!\left(\frac{\Delta d}{c}\right). \tag
 ??? note "9.4 参考答案要点(Python 实测)"
     \(|\mu_{12}| = \exp[-(5/\ell_{cr})^2]\):15 mm → 0.8948、8 mm → 0.6766、4 mm → 0.2096、1 mm → \(\exp(-25) \approx 0\)(式 9.20 精确值 0.8953/0.6807/0.2302/0.0000)。实测可见度(N=100 屏):15 mm + 倍率 2.5(\(\sigma_f = 37.5 > L/2 = 25\) mm)→ **1.000,完全相干输出**——书描述的失效模式;倍率降到 1.5(\(\sigma_f = 22.5 < 25\))→ 0.956,恢复部分相干;8 mm(书参数)→ 0.794;4 mm → 0.284;1 mm → **无条纹**(N=100 与 N=400 都一样)。1 mm 的解释:\(\ell_{cr} \ll \Delta s = 5\) mm,两束完全不相干(\(|\mu_{12}|\approx 0\)),图样是两幅单束 Airy 的**非相干相加**(辐照度翻倍、零条纹);增加屏数只让平均更光滑,不恢复条纹——这是物理,不是收敛问题。图 9-P8。
 
-![](../../images/holo/fourier/fig-9-py-ex94.png)
+![](../images/fourier/fig-9-py-ex94.png)
 
 *图 9-P8 习题 9.4:ℓcr = 15/8/4/1 mm 的辐照度(√拉伸)与剖面;15 mm 档对比倍率 2.5(失效)与 1.5(恢复)(笔记自制)*
 
@@ -747,7 +747,7 @@ V = \frac{2A_1A_2}{A_1^2 + A_2^2}\,\gamma\!\left(\frac{\Delta d}{c}\right). \tag
 ??? note "9.5 参考答案要点(Python 实测)"
     \(\ell_{cr} = 20\) mm(\(\gg\) 孔径 5 mm):接近完全相干,图样是 \(\mathrm{sinc}^2\times\mathrm{sinc}^2\) 带清晰的旁瓣(5 mm 长轴方向的旁瓣更密)。\(\ell_{cr}\) 减小,孔径内远距离点对的条纹贡献按 \(\exp[-(x'/\ell_{cr})^2]\) 加权,高频衍射结构(旁瓣)先死;\(\ell_{cr} = 1\) mm(\(\ll\) 孔径)时几乎非相干,图样趋于**横向相干函数的傅里叶变换**(光滑宽包络,宽度 ~\(\lambda f/\ell_{cr} = 162\ \mu\text{m}\)),孔径自己的衍射旁瓣完全消失。物理:互强度 \(\Gamma(x_1,x_2) = A(x_1)A^*(x_2)\mu(x_1-x_2)\),远场辐照度是它对 \((x_1-x_2)\) 的变换;\(\mu\) 的宽度从"比孔径宽"(相干极限,变换给出孔径衍射)缩到"比孔径窄"(变换给出 \(\mu\) 自己的宽斑)。图 9-P9。
 
-![](../../images/holo/fourier/fig-9-py-ex95.png)
+![](../images/fourier/fig-9-py-ex95.png)
 
 *图 9-P9 习题 9.5:5 mm × 2 mm 矩形孔在 ℓcr = 20/8/4/1 mm 下的夫琅禾费图样(√拉伸)与剖面:旁瓣随相干长度减小先消失(笔记自制)*
 
@@ -774,7 +774,7 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
 ??? note "9.6 参考答案要点(Python 实测)"
     网格:TF 判据(书 5.4 节)\(\Delta x \geq \lambda z/L\),取 \(L_1 = 0.55\) m(\(\Delta x = 2.148\) mm \(\geq 1.927\) mm,同时 \(\sigma_f = 2.5\,\ell_{cr} = 2.5\) cm \(< L/2\))。理论:式 (9.33) 的 \(\Delta = 2.7210\)(完全相干 \(\ell_{cr}\to\infty\) 时 \(\Delta = 1.3083\));GSM 峰值 \(I_0/\Delta^2 = 0.1351\),相干峰值 0.5843。实测(N=200 屏,源面相位屏 + propTF 传播):剖面高斯拟合 \(\Delta_{sim} = 2.761\)(差 1.5%,屏数与系综噪声量级);峰值 GSM 0.1374 vs 0.1351、相干 0.5843(逐位一致);总功率 \(6.2832\times10^{-4}\) m² = \(\pi w_0^2/2\) 精确守恒(相位屏只调相不调幅)。注意 propTF 要求源场**居中排列**,而相位屏是 ifft2 输出的 FFT 排列——相乘前要 ifftshift(见坑与陷阱)。图 9-P10。
 
-![](../../images/holo/fourier/fig-9-py-ex96.png)
+![](../images/fourier/fig-9-py-ex96.png)
 
 *图 9-P10 习题 9.6:GSM 光束在 z = 1 km 的辐照度(√拉伸)与剖面:GSM 仿真、式 (9.32) 解析(Δ = 2.721)、完全相干仿真与解析(Δ = 1.308)(笔记自制)*
 

@@ -279,7 +279,7 @@ U(\mathbf{r}_2) = \mathcal{R}[\Delta z, \mathbf{r}_1, \mathbf{r}_2]\{U(\mathbf{r
 原书 Listing 6.2 的用法：\(N=1024\)、网格宽 \(L=1\,\text{cm}\)、方形孔径边长 \(D=2\,\text{mm}\)、\(\lambda=1\,\mu\text{m}\)、\(\Delta z=1\,\text{m}\)；源面场 `ap = rect(x1/D).*rect(y1/D)`，解析对照用方孔菲涅耳衍射闭式（Fresnel 积分可分离成两个一维积分，工程 1 里实现了 `fresnel_prop_square_ap`）。数值与解析结果画在一起就是原书图 6.1——辐照度与相位都对得上：
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-1.png" width="720" />
+  <img src="../../images/waveprop/fig-6-1.png" width="720" />
   <figcaption>图 6.1 方形孔径的菲涅耳衍射，仿真 vs 解析：(a) 观测面辐照度；(b) 观测面相位（截自原书）</figcaption>
 </figure>
 
@@ -298,12 +298,12 @@ m = \frac{\delta_2}{\delta_1}.
 记号沿用：源面 \(z = z_1\)（\(\mathbf{r}_1\) 坐标），观测面 \(z = z_2\)（\(\mathbf{r}_2\) 坐标），\(\Delta z = z_2 - z_1\)，\(m = \delta_2/\delta_1\)。中间面放在 \(z = z_{1a}\)（\(\mathbf{r}_{1a} = (x_{1a}, y_{1a})\) 坐标），第一段距离 \(\Delta z_1 = z_{1a} - z_1\)，第二段 \(\Delta z_2 = z_2 - z_{1a}\)。给定 \(m\)，满足条件的中间面有**两个**（\(\Delta z_1 + \Delta z_2 = \Delta z\) 约束下）：
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-2.png" width="640" />
+  <img src="../../images/waveprop/fig-6-2.png" width="640" />
   <figcaption>图 6.2 两步传播几何之一：中间面不在源面与观测面之间（"−"支，对 \(m>1\) 有 \(\Delta z_1<0\)）（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-3.png" width="640" />
+  <img src="../../images/waveprop/fig-6-3.png" width="640" />
   <figcaption>图 6.3 两步传播几何之二：中间面夹在源面与观测面之间（"+"支，两段距离均为正）（截自原书）</figcaption>
 </figure>
 
@@ -580,7 +580,7 @@ z_{1a} = z_2 + \Delta z\,\frac{\mp m}{1 \pm m}.
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-4.png" width="720" />
+  <img src="../../images/waveprop/fig-6-4.png" width="720" />
   <figcaption>图 6.4 方形孔径的菲涅耳衍射，两步仿真 vs 解析：(a) 观测面辐照度；(b) 观测面相位（截自原书）</figcaption>
 </figure>
 
@@ -879,7 +879,7 @@ U(\mathbf{r}) = \mathcal{Q}\!\left[\frac{m \pm 1}{m\Delta z}, \mathbf{r}_2\right
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-5.png" width="720" />
+  <img src="../../images/waveprop/fig-6-5.png" width="720" />
   <figcaption>图 6.5 方形孔径的菲涅耳衍射，角谱仿真 vs 解析：(a) 观测面辐照度；(b) 观测面相位（截自原书）</figcaption>
 </figure>
 
@@ -1105,7 +1105,7 @@ H(\mathbf{f}) = \frac{i}{\alpha}\, e^{-i\frac{\pi}{\alpha}\left(f_x^2 + f_y^2\ri
 原书 Listing 6.7 是用法示例：\(N=1024\)、\(L=1\) cm 的网格上放 \(D=2\) mm 方孔，取 \(\delta_2 = \lambda\Delta z/(N\delta_1)\)，光线矩阵 `ABCD = [1 Dz; 0 1] * [1 0; -1/f 1]`——例子取 \(f = \infty\)（源面曲率半径无穷大），此时 ABCD 链退化为纯自由空间、与角谱法完全等价（工程 1 验证 5 实测两者一致到 \(1.4\times10^{-14}\)）；换成有限 \(f\) 即可模拟"孔径 × 薄透镜"系统。结果即原书图 6.6：
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-6.png" width="720" />
+  <img src="../../images/waveprop/fig-6-6.png" width="720" />
   <figcaption>图 6.6 方孔源 + 发散球面波前的观测面场，ABCD 光线矩阵法传播（截自原书）</figcaption>
 </figure>
 
@@ -1244,17 +1244,17 @@ W(\mathbf{r}_2 - \mathbf{r}_c) = A\, \text{rect}\!\left(\frac{x_2 - x_c}{D}\righ
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-7.png" width="560" />
+  <img src="../../images/waveprop/fig-6-7.png" width="560" />
   <figcaption>图 6.7 sinc 模型点源的辐照度（源面）（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-8.png" width="760" />
+  <img src="../../images/waveprop/fig-6-8.png" width="760" />
   <figcaption>图 6.8 sinc 模型点源的菲涅耳衍射辐照度（观测面）：(a) 二维分布；(b) 切片（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-9.png" width="560" />
+  <img src="../../images/waveprop/fig-6-9.png" width="560" />
   <figcaption>图 6.9 sinc 模型点源的菲涅耳衍射相位（观测面）——窗外混叠可见（截自原书）</figcaption>
 </figure>
 
@@ -1340,17 +1340,17 @@ sinc-Gaussian 模型点源及其观测面场见原书图 6.10–6.12。对比图
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-10.png" width="560" />
+  <img src="../../images/waveprop/fig-6-10.png" width="560" />
   <figcaption>图 6.10 sinc-Gaussian 模型点源的辐照度（源面）——旁瓣被高斯因子压低（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-11.png" width="760" />
+  <img src="../../images/waveprop/fig-6-11.png" width="760" />
   <figcaption>图 6.11 sinc-Gaussian 模型点源的菲涅耳衍射辐照度（观测面）：(a) 二维分布；(b) 切片（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-12.png" width="560" />
+  <img src="../../images/waveprop/fig-6-12.png" width="560" />
   <figcaption>图 6.12 sinc-Gaussian 模型点源的菲涅耳衍射相位（观测面）——边缘混叠明显减轻（截自原书）</figcaption>
 </figure>
 
@@ -2383,7 +2383,7 @@ sinc-Gaussian 模型点源及其观测面场见原书图 6.10–6.12。对比图
 原书图 6.1/6.4/6.5/6.6 的复现对照 + 两处勘误的可视化实锤：
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-13.png" width="860" />
+  <img src="../../images/waveprop/fig-6-13.png" width="860" />
   <figcaption>图 6-13（自绘仿真）工程 1：单步/两步/角谱/ABCD 交叉验证与两处勘误对照。上排：方孔衍射 vs 解析闭式（辐照度切片、相位残差）；下排：非对称场的镜像勘误（"−"支输出 = 镜像）与 (6.66) 勘误（书印链 = −conj(真值)）</figcaption>
 </figure>
 
@@ -2946,7 +2946,7 @@ sinc-Gaussian 模型点源及其观测面场见原书图 6.10–6.12。对比图
 - 勘误 (6.92) 对照：离轴窗 \(\mathbf{r}_c = (1.2, 0.8)\) mm——修正模型质心 \((+1.20, +0.80)\) mm，书印模型质心 \((-1.20, -0.80)\) mm；修正模型 vs 目标场（式 6.86）在内部 80% 区域 \(|\text{比值}-1|\le 2.4\times10^{-2}\)、相位残差 \(\le 2.2\times10^{-2}\) rad。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-14.png" width="860" />
+  <img src="../../images/waveprop/fig-6-14.png" width="860" />
   <figcaption>图 6-14（自绘仿真）工程 2：点源模型与式 (6.92) 勘误对照。(a)(b) 两种源面模型；(c) 观测面辐照度平顶；(d)(e) sinc vs sinc-Gaussian 的观测面相位；(f) 勘误实锤：书印模型窗口被推到 −r_c</figcaption>
 </figure>
 
@@ -3630,7 +3630,7 @@ sinc-Gaussian 模型点源及其观测面场见原书图 6.10–6.12。对比图
 - 习题 5（圆形窗 \(D=3\) mm）：质心一致，内部 80% \(|\text{比值}-1|\le 6.8\times10^{-2}\)；jinc 主瓣第一零点 \(0.61\lambda\Delta z/R_2 \approx 0.81\) mm。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-6-15.png" width="860" />
+  <img src="../../images/waveprop/fig-6-15.png" width="860" />
   <figcaption>图 6-15（自绘仿真）工程 3：习题 1–5。(a)(b) 高斯束 4 m 传播的辐照度/相位；(c) 焦面 vs Airy；(d) 第一 Talbot 像面；(e)(f) 矩形/圆形窗模型点源 vs 目标场</figcaption>
 </figure>
 

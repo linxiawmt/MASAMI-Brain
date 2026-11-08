@@ -168,7 +168,7 @@ U_{th}(x_2, y_2) = \frac{e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lambda \Delta 
     文献里 jinc 有两种常见定义：\(\mathrm{jinc}_a(u)=2J_1(\pi u)/(\pi u)\)（归一化、峰值为 1，Schmidt 用这个）与 \(\mathrm{jinc}_b(\rho)=J_1(2\pi\rho)/(\pi\rho)\)（Voelz《计算傅里叶光学》的 `jinc` 用这一族）。`base.py` 的 `jinc(rho, R)` 是半径 \(R\) 圆盘的谱 \(R J_1(2\pi R\rho)/\rho\)，取 \(R=D/2\) 时恰好等于 \(\frac{\pi D^2}{4}\,\mathrm{jinc}_a(D\rho)\)——即"孔径面积 × 归一化 jinc"。工程 1 验证 0 把两种写法逐点对过：最大差 \(4.2\times10^{-22}\)。圆孔用 `circle(X, Y, D/2)`（半径参数）生成，对应原书的 `circ(x1, y1, D)`（直径参数）——两本书一个按直径一个按半径，容易踩。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-1.png" width="720" />
+  <img src="../../images/waveprop/fig-4-1.png" width="720" />
   <figcaption>图 4.1 圆孔夫琅禾费图样的 <span class="arithmatex">\(y_2=0\)</span> 切片：数值（叉）与解析（线）重合，轴上辐照度约 1.54 mW/m²（截自原书）</figcaption>
 </figure>
 
@@ -179,7 +179,7 @@ U_{th}(x_2, y_2) = \frac{e^{i\frac{k}{2\Delta z}(x_2^2+y_2^2)}}{i\lambda \Delta 
 - **边缘**（\(|x_2|>0.6\ \mathrm{m}\)）误差只有 \(2\times10^{-5}\)：但那里图样本身只剩峰值的 \(10^{-6}\) 倍，**相对局部信号**误差仍然显著——这就是原书说"把显示区域拉大，边缘开始出现偏差"的准确含义。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-5.png" width="1100" />
+  <img src="../../images/waveprop/fig-4-5.png" width="1100" />
   <figcaption>图 4-5（自绘仿真）工程 1 复现原书图 4.1：(a) 观察面辐照度二维图样（±0.1 m），(b) <span class="arithmatex">\(y_2=0\)</span> 切片数值 vs 解析，(c) 归一化形状误差——残差集中在爱里环陡坡，直流标度差已单独扣除</figcaption>
 </figure>
 
@@ -223,7 +223,7 @@ f_{x1,\max} = \frac{x_{2,\max}}{\lambda\Delta z}, \qquad f_{y1,\max} = \frac{y_{
 （N=64 的标度误差大还有第二个原因：\(\delta_1\) 变粗后圆孔一个直径只跨 8.5 个样本，孔径本身就采歪了。这提醒你 \(\delta_1=L/N\) 同时管着源面采样和观察窗——动 \(N\) 是一石二鸟，两边都要检查。）
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-6.png" width="1000" />
+  <img src="../../images/waveprop/fig-4-6.png" width="1000" />
   <figcaption>图 4-6（自绘仿真）采样不足的混叠：(a) N=64 时观察窗（红虚线）缩到 ±0.085 m，窗外的环被卷回窗内、外环错位；(b) 同一位置的误差对比——N=64（红）比 N=512（黑）大约两个量级</figcaption>
 </figure>
 
@@ -724,7 +724,7 @@ e^{i\frac{k}{2 f_l}(x_2^2+y_2^2)}\,
 和 (4.3) 一样：**一次 FT + 观察面二次相位**，只是频率标度从 \(\lambda\Delta z\) 换成了 \(\lambda f_l\)、被变换的东西从 \(U_1\) 换成了 \(t_A P\)。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-2.png" width="720" />
+  <img src="../../images/waveprop/fig-4-2.png" width="720" />
   <figcaption>图 4.2 物片紧贴透镜的几何：单色平面波照明，物片 <span class="arithmatex">\(t_A(x_1,y_1)\)</span> 与透镜 <span class="arithmatex">\(P\,e^{i\phi}\)</span> 重合，传 <span class="arithmatex">\(\Delta z=f_l\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
@@ -755,7 +755,7 @@ P\!\left(x_1 + \frac{d}{f_l}x_2,\; y_1 + \frac{d}{f_l}y_2\right)\right\}\Big|_{f
 - **\(d=f_l\)**：物片放在**前焦面**，外面那层相位的曲率 \((1-d/f_l)\) 变成 0——二次相位整个消失，得到**精确的傅里叶变换关系**（没有外加相位）。工程 2 验证：\(d=f_l\) 的结果与纯 \(1/(i\lambda f_l)\cdot\mathcal{F}\{t_A P\}\) 的相位差最大 \(5\times10^{-30}\) rad，严格为零。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-3.png" width="760" />
+  <img src="../../images/waveprop/fig-4-3.png" width="760" />
   <figcaption>图 4.3 物片在透镜前 <span class="arithmatex">\(d\)</span> 处的几何：物片 <span class="arithmatex">\(t_A(x_1,y_1)\)</span> 先被照明，传 <span class="arithmatex">\(d\)</span> 到透镜 <span class="arithmatex">\(P\,e^{i\phi}\)</span>，再传 <span class="arithmatex">\(\Delta z=f_l\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
@@ -888,7 +888,7 @@ P\!\left(\frac{f_l}{d}x_1,\; \frac{f_l}{d}y_1\right)\right\}\Big|_{f_x=\frac{x_2
 和前两式相比有两点质变：**FT 的频率标度换成 \(\lambda d\)**（不是 \(\lambda f_l\)——物片离焦面越近，焦斑越小），**幅度多乘 \(f_l/d\)**（会聚越厉害场越强）。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-4.png" width="700" />
+  <img src="../../images/waveprop/fig-4-4.png" width="700" />
   <figcaption>图 4.4 物片在透镜后（距焦面 <span class="arithmatex">\(d\)</span>）的几何：透镜先给会聚球面波 <span class="arithmatex">\(P\,e^{i\phi}\)</span>，物片 <span class="arithmatex">\(t_A\)</span> 浸在会聚波里，再传 <span class="arithmatex">\(\Delta z=d\)</span> 到焦面（截自原书）</figcaption>
 </figure>
 
@@ -979,7 +979,7 @@ graph TD
 - **相位才记得位置**：三条曲率不同的抛物线（\(1/f_l\)、\(0.5/f_l\)、0），数值相位落点与理论包裹相位逐点吻合。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-7.png" width="1100" />
+  <img src="../../images/waveprop/fig-4-7.png" width="1100" />
   <figcaption>图 4-7（自绘仿真）三种物位置的焦面对比：(a) 辐照度——物前位置不影响图样，物后改标度（红虚线，λd）；(b) 相位——曲率随 (1−d/f_l) 变化，d=f_l 时严格为零（点=数值，线=理论包裹相位）</figcaption>
 </figure>
 
@@ -1566,12 +1566,12 @@ U(x_2, y_2) = \frac{\pi w^2}{i\lambda f_l}\,
 实测：峰值辐照度数值 \(1.5791\times10^6\) vs 理论 \((\pi w^2/(\lambda f_l))^2 = 1.5791\times10^6\ \mathrm{W/m^2}\)；归一化形状误差 \(1.2\times10^{-15}\)——**机器精度**（高斯是软限带信号里最乖的，第 2 章案例 2 的 FT 对就是这么说的）；\(1/e^2\) 半径 \(16.06\ \mu\mathrm{m}\) vs \(15.92\ \mu\mathrm{m}\)（内插残差）；能量 \(\sum|U_2|^2\delta_2^2 = 6.2832\times10^{-4}\) vs \(\pi w^2/2 = 6.2832\times10^{-4}\)（\(1.7\times10^{-16}\)）。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-8.png" width="1050" />
+  <img src="../../images/waveprop/fig-4-8.png" width="1050" />
   <figcaption>图 4-8（自绘仿真）习题 1–4 的焦面辐照度切片（点=数值，虚线=解析）：方孔 sinc（±20 mm 零点）、双缝余弦条纹（周期 26.7 mm）、振幅光栅三峰（±1 级在 ±200 mm、高度 1/16）、相位光栅衍射级（N=2048，±1 级 4.5%、±2 级 8.3%）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-4-9.png" width="1050" />
+  <img src="../../images/waveprop/fig-4-9.png" width="1050" />
   <figcaption>图 4-9（自绘仿真）习题 5 高斯聚焦：(a) 透镜面振幅（红线 ±w=±2 cm，L=0.4 m 窗口截断 e⁻¹⁰⁰）；(b) 焦面光斑数值 vs 解析——形状误差 1.2×10⁻¹⁵，1/e² 半径 15.9 μm</figcaption>
 </figure>
 

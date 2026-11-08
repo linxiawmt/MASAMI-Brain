@@ -55,7 +55,7 @@ OSH 迄今的主要应用领域包括扫描全息显微、三维图像识别、�
 3-D 成像对光学显微是个大难题：横向分辨率越高，景深越短——用高数值孔径（**numerical aperture, NA**）物镜可以提高横向分辨率，代价是只有样品的一个薄层能清晰成像。Poon 用一个简单的量子力学论证把这件事算成公式（图 4.1）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-1.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-1.png" width="620" class="lq-img" />
   <figcaption>图 4.1 用不确定原理求分辨率与景深：平行光被透镜聚焦，两极限光线 CA 与 CC′ 夹角 θ，动量差分解出横向 Δp_r 与纵向 Δp_z（截自原书）</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ OSH 迄今的主要应用领域包括扫描全息显微、三维图像识别、�
     书 4.1 节实验：\(f=150\) mm 透镜聚焦直径 \(D=10\) mm 的平面波，\(\lambda_0=514.5\) nm（氩离子激光线）。\(\sin(\theta/2)\approx\tan(\theta/2)=(D/2)/f=0.0333\)，即 \(NA\approx 0.0333\) ✓（书印 0.033）。代入 (4.1-2)/(4.1-4)：\(\Delta r=\lambda_0/NA=15.4\ \mu\text{m}\)、\(\Delta z=2\lambda_0/NA^2=0.93\) mm；书印 \(\Delta r\approx 18.5\ \mu\text{m}\)、\(\Delta z\approx 1028.4\ \mu\text{m}\)——同数量级但对应 \(NA\approx 0.028\) 与 \(0.0316\)，属书内舍入不一致，量级结论不变。另验 (4.1-5)：\((\Delta r)^2/\Delta z=0.257\ \mu\text{m}=\lambda_0/2\) ✓ 精确自洽。（15 µm 荧光小球 vs Δr≈15~18 µm：确实"很接近横向分辨极限"。）
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-shm-resolution.png" width="680" class="lq-img" />
+  <img src="../../images/scanholo/sim-shm-resolution.png" width="680" class="lq-img" />
   <figcaption>图（本笔记运行结果）：左 (4.1-5) 的 Δz–Δr 双曲线标度律与 Schilling 实验位置（分辨率×2 ⇒ 景深÷4）；右 TDFZP 扫描场内的条纹周期分布——边缘最细（决定采样要求）</figcaption>
 </figure>
 
@@ -284,14 +284,14 @@ flowchart LR
 **OSM**（图 4.2）：宽场显微镜逐深度调焦，顺序记录不同深度的一叠 2-D 图像 [Agard (1984)]。每张 2-D 图既含聚焦信息也含离焦信息，需要重建算法把"在焦"信息提取出来。难点在记录端：相邻 2-D 图的纵向间距必须精确控制，图像配准（registration）也必须在计算机处理前做好。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-2.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-2.png" width="480" class="lq-img" />
   <figcaption>图 4.2 光学切片显微镜（OSM）：像面/物镜/厚样品，逐深度记录在焦与离焦的混合信息（截自原书）</figcaption>
 </figure>
 
 **SCM**（图 4.3）：针对 OSM 的问题全新设计的显微镜 [Wilson and Sheppard (1984)]，共焦原理最早由 Minsky 提出 [Minsky, US Patent (1961)]。双聚焦物镜系统 + 光电探测器前的**针孔光阑**只对一个点成像：焦平面上的光（实线）全部穿过针孔进入探测器，离焦平面的光（虚线）被针孔挡住。3-D 信息靠三维扫描样品逐点采集。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-3.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-3.png" width="620" class="lq-img" />
   <figcaption>图 4.3 扫描共焦显微镜（SCM）：物镜—厚样品—收集透镜—针孔光阑—探测器；虚线是被针孔拒绝的离焦光（截自原书）</figcaption>
 </figure>
 
@@ -309,21 +309,21 @@ flowchart LR
 与图 4.2/4.3 同等简洁度地画出 SHM（图 4.4）：原理上就是**用一个 TDFZP 对厚样品做 2-D 光栅扫描**——第 3 章的记录机原封不动搬进显微镜。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-4.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-4.png" width="620" class="lq-img" />
   <figcaption>图 4.4 扫描全息显微镜（SHM）：点源（ω0）球面波 + 平面波（ω0+Ω）干涉成 TDFZP，扫过厚样品，透镜收集全部光到光电探测器（截自原书）</figcaption>
 </figure>
 
 真实荧光实验装置（图 4.5a）：两束宽激光（来自氩离子激光器的 **514.5 nm 线**），时间频率差 \(\Delta\Omega\)，入射到反射镜与分束器（BS）。每束的频移由声光频移器（AOFS）完成——配置成把激光分成频率差 \(\Delta\Omega/2\pi=10.7\) MHz 的两束，然后准直、平行放置。透镜 L1 放在其中一束里形成球面波，在 BS 处与另一束共线合束——在物体上形成 TDFZP（物体在球面波焦点外 \(\Delta z\) 处）。**dichroic 分束片**透射 514 nm、反射约 595 nm：激光穿过它去激发荧光样品（样品发 **560 nm** 荧光），光电倍增管（PMT）前的**发射滤光片**让荧光通过、挡掉 514 nm 背景激光。样品由计算机控制的机械 x-y 扫描台按 TDFZP 光栅扫描；PMT 电流（含被扫物体的全息信息）经电子滤波、在 10.7 MHz 放大、解调、与 x-y 扫描器同步数字化——最终产出**电子全息图**。解调就是图 3.6 那套电子检测，但**实验只用了同相（in-phase）一个通道**。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-5.png" width="680" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-5.png" width="680" class="lq-img" />
   <figcaption>图 4.5 a) OSH 记录荧光样品全息图的实验装置：ω0±ΔΩ/2 双光束、L1 成球面波、dichroic 分束、PMT + 发射滤光片、机械 2-D 扫描台、解调与显示 [Schilling et al., Optics Letters 22, 1506 (1997)]；b) 荧光样品：两根平行光轴的金属丝顶端各挂一滴荧光溶液，深度差约 2 mm（右滴 z0≈35 mm，左滴 z1≈37 mm）（截自原书）</figcaption>
 </figure>
 
 荧光样品：高浓度荧光乳胶小球（直径 **15 µm**，峰值激发 530 nm、峰值发射 560 nm）溶液。为了演示**深度分辨能力**，用两根并排、平行光轴的金属丝，顶端各挂一滴荧光溶液，深度差约 2 mm（图 4.5b）。记录到的全息图（图 4.6）：256 级灰度、256×256 像素，扫描面积约 2.0 mm × 2.0 mm——两滴溶液在全息图里清晰可辨。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-6.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-6.png" width="480" class="lq-img" />
   <figcaption>图 4.6 OSH 记录的荧光样品全息图：两滴荧光乳胶小球溶液，深度差约 2 mm（截自原书，© OSA）</figcaption>
 </figure>
 
@@ -332,7 +332,7 @@ OSH 系统的分辨率受系统 NA 限制：NA 由透镜 L1 焦距（\(f=150\) m
 全息图存好后，3-D 图像可以光学或数值重建。数值重建在两个深度进行（图 4.7）：\(z_0=35\) mm 与 \(z_1=37\) mm。每滴的个体特征不明显的位置用箭头标出：图 4.7a（\(z_0=35\) mm）中左滴更清晰，箭头所指小球在该深度重建时比 4.7b 清楚；图 4.7b（\(z_1=37\) mm）的箭头指向一串 4 个小球，只在这个深度能逐个分辨，在 \(z_0\) 平面里是模糊的。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-7.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-7.png" width="480" class="lq-img" />
   <figcaption>图 4.7 图 4.6 全息图的数值重建：a) z0=35 mm（箭头：该深度在焦的小球）；b) z1=37 mm（箭头：四个逐个可辨的荧光小球）[Schilling et al., 1997]（截自原书，© OSA）</figcaption>
 </figure>
 
@@ -530,7 +530,7 @@ OSH 系统的分辨率受系统 NA 限制：NA 由透镜 L1 焦距（\(f=150\) m
 实跑结果：**振幅粒子**在重建振幅中对比度 0.446——清晰黑盘，形貌真实；**相位粒子**在重建振幅中"对比度" 0.260——但它全部来自幽灵环干涉伪影，不代表形貌（换一个相位延迟值这张图就变样）；**相位通道**在粒子中心读出 0.589 rad（真值 1.5），被背景干涉压低且非线性。一句话：强度/振幅通道会**误导**（伪影像形貌），相位通道读数**失真**——定量相位成像必须走复全息图路线（OSH 的 \(i_c/i_s\) 双通道、ch5 的相干模式），这正是 SHM 在生命科学里的价值所在。
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-amplitude-phase.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-amplitude-phase.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果，拓展实战）：左 物体振幅（左 0.1 吸收盘、右 1.5 rad 相位粒子不可见）；中 重建振幅——吸收盘清晰，相位粒子只剩幽灵环；右 重建相位——1.5 rad 相位穹顶显现但被背景干涉压低（读出 0.589 rad）</figcaption>
 </figure>
 
@@ -541,7 +541,7 @@ OSH 系统的分辨率受系统 NA 限制：NA 由透镜 L1 焦距（\(f=150\) m
 第 2 章说过：把记录干版换成 CCD 摄像机，再把电子输出转移到空间光调制器（SLM）上，就得到 3-D 显示。图 4.8 是点源物体的完整"记录 + 重建"概念系统：CCD 以视频速率把全息信息转移到 SLM，就是**全息 3-D 显示系统**。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-8.png" width="560" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-8.png" width="560" class="lq-img" />
   <figcaption>图 4.8 点源物体的全息 3-D 显示概念系统：上半 记录（激光+BS+针孔+记录干版，全息信息转移），下半 重建（SLM+重建波，观察者看到虚像/实像）（截自原书）</figcaption>
 </figure>
 
@@ -550,7 +550,7 @@ OSH 系统的分辨率受系统 NA 限制：NA 由透镜 L1 焦距（\(f=150\) m
 本节描述 Poon 提出的全息电视系统 [Poon (2002a)]：**OSH 采集 + SLM 相干显示**。先认识 SLM——实验用的是**电子束寻址空间光调制器**（electron-beam-addressed spatial light modulator, EBSLM）[Hamamatsu Photonics K.K., Japan 和 Hamamatsu Corp., Bridgewater, NJ]（图 4.9）：
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-9.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-9.png" width="640" class="lq-img" />
   <figcaption>图 4.9 电子束寻址空间光调制器（EBSLM）：串行视频信号→控制器→电子枪+偏转线圈在 LiNbO₃ 晶体表面沉积电荷，激光经半反镜/正交偏振器读出（截自原书）</figcaption>
 </figure>
 
@@ -564,7 +564,7 @@ OSH 系统的分辨率受系统 NA 限制：NA 由透镜 L1 焦距（\(f=150\) m
 把 OSH（记录）+ EBSLM（显示）拼起来就是**完整全息电视系统**（图 4.10）：
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-10.png" width="700" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-10.png" width="700" class="lq-img" />
   <figcaption>图 4.10 提议的全息电视系统 [Poon (2002a)]：上半 OSH 记录（M1~M3、BS1/BS2、AOM 移频 Ω、BE1/BE2 扩束、L 生成点源、x-y 扫描器、PMT），射频外差电流经天线无线传输，远端电子多路检测后由 PC 合成全息图送 EBSLM；下半 EBSLM 相干重建（激光+正交偏振器+检偏器）（截自原书）</figcaption>
 </figure>
 
@@ -593,21 +593,21 @@ flowchart LR
 系统要点：M1、M2、M3 是反射镜，BS1/BS2 是分束器，**AOM**（声光调制器）把激光移频 Ω，BE1/BE2 是扩束器。透镜 L 把点源聚焦在 BS2 上，经 x-y 扫描器向物体投射球面波，BE2 提供平面波。2-D 光栅扫描后，PMT 收集物体散射光、输出外差电流——**若外差电流在射频频段，可以直接经天线辐射到远端解调**（解调端就是标准的电子多路检测）。PC 处理 sin/cos 两张全息图，输出送 EBSLM 控制器做相干重建。Poon [2002a] 提出该系统后，用图 4.11 的实验系统做了验证：TDFZP 扫描 3-D 物体，PD 输出经 **BPF@Ω** 后与 \(\cos(\Omega t)\) 混频、低通，得 sine-FZP 全息图 \(H_s(x,y)\)（式 3.5-3a），经 **IPMS**（Image Processing and Measuring System——接收慢扫描电信号、存入数字内存、转成 NTSC 视频信号 [Hamamatsu DVS-3010/SS]）在电视监视器上显示，再送 EBSLM；EBSLM 的反射光经检偏器（analyzer）读出，在与检偏器距离 \(M\times z\) 处重建出相干像（\(z\) 是记录时扫描镜到物体的距离，\(M\) 是**全息图缩放因子**——比如 EBSLM 的显示面积 ≠ 实际光学扫描面积就会引入 \(M\)，详见 Example 4.1）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-11.png" width="700" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-11.png" width="700" class="lq-img" />
   <figcaption>图 4.11 实验 3-D 全息电视系统 [Poon et al., Optical Review 4, 576 (1997)]：左 记录（L1/BS/x-y 扫描器/L2/PD/BPF@Ω/混频/LPF/IPMS），右 显示（偏振器+BS+EBSLM+检偏器+可移动 CCD+TV 监视器）（截自原书）</figcaption>
 </figure>
 
 实验物体：两张 35 mm 幻灯片字母 **"V"** 与 **"T"** 并排、深度差约 15 cm；V 离 2-D 扫描器约 23 cm（\(z=23\) cm）。两者印在 35 mm 胶片上、线宽约 100 µm、不透明背景上透光。图 4.12 是记录到的 **sine-FZP 全息图**——两张不同深度的 FZP 环纹叠加，就是 3-D 物体全息图的样子。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-12.png" width="440" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-12.png" width="440" class="lq-img" />
   <figcaption>图 4.12 不同深度字母 "V" "T" 的 sine-FZP 全息图 [Poon et al., Optical Engineering 34, 1338 (1995)，© SPIE]（截自原书）</figcaption>
 </figure>
 
 EBSLM 的实时重建（图 4.13a/c/e）：\(M\times z=23\) cm 处 V 在焦、41 cm 处 T 在焦——**沿深度逐平面观察**（可移动 CCD 对焦不同重建面）。注意重建面被孪生像噪声污染：只用了一个通道（sine-FZP 全息图）。作为对比，图 4.13b/d/f 是同一全息图的数字重建 [Poon, Doh, Schilling, Wu, Shinoda, and Suzuki (1995)]。EBSLM 能以视频速率显示全息图，商用 x-y 扫描器也能视频速率工作。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-13.png" width="660" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-13.png" width="660" class="lq-img" />
   <figcaption>图 4.13 全息重建：a) c) e) EBSLM 实时重建（不同深度分别 V/T 在焦，有孪生噪声）[Poon et al., Optical Review 4, 576 (1997)]；b) d) f) 数字重建（干净）[Poon et al., Optical Engineering 34, 1338 (1995)]（截自原书）</figcaption>
 </figure>
 
@@ -1010,7 +1010,7 @@ H_{3\text{-}p}(x,y)*h(x,y;z,k_0/\mathrm{m})
     ```
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-magnification.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-magnification.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果，Example 4.1）：上排 缩放全息图 H(Mx,My)（M=0.5）→ 在 z0/M²=120 mm 重建出两点（间距 2.00 mm = x0/M）→ 轴上深度响应在 120/200 mm 出现两个聚焦平台（M_long=1/M²）；下排 原始三点正弦全息图 → 用 k0/m 在 z0/m=50 mm 重建（横向位置不变，M_lat=1）→ 用 k0 在 z0=100 mm 的参考重建</figcaption>
 </figure>
 
@@ -1049,7 +1049,7 @@ NA=\sin(\theta/2)=\lambda_0 f_{max}=\lambda_0 f_0.
 人话版：**SLM 分辨率直接决定视角** \(\theta=2\arcsin(\lambda_0 f_0)\)。Hamamatsu EBSLM 的空间分辨率约 \(f_0=8\) lp/mm，在 \(\lambda_0=0.6328\ \mu\text{m}\) 下视角约 **0.6°**——做 3-D 显示没戏；但若只要**沿深度的顺序 2-D 显示**（sequential 2-D display along the depth），EBSLM 够用，因为它能视频速率刷新全息图。Table 4.1 列出现有 SLM 的视角——目前没有适合 3-D 显示的 SLM（视角被严重限制）；离轴全息更糟（要分辨载频：45° 记录角对应约 1000 lp/mm，远超现有 SLM，见 Table 4.1）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-14.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-14.png" width="620" class="lq-img" />
   <figcaption>图 4.14 视角：SLM 显示 FZP 全息图（孔径半宽 x_max、FZP 距离 z0），衍射锥半角 θ/2 即视角的一半（截自原书）</figcaption>
 </figure>
 
@@ -1088,7 +1088,7 @@ N=(l\,f_s)^2=(l\times 2f_0)^2=\Big(2l\frac{NA}{\lambda_0}\Big)^2,
     视角逐行验算见上（0.58°/7.26°/36.9° vs 书 0.6°/6.8°/34°）；像素数：(4.2-10) 精确给 \(N=(2\times0.02\times0.5/0.6328\times10^{-6})^2\approx 1.00\) billion，书用 \(\lambda_0=0.6\ \mu\)m 算恰为 1.1 billion；数据率 1.1e9×8×30=0.264 → "0.26 Tbit/s" ✓；HPO 修正式 16.2M×8×30=3.9 → "4 Gbit/s" ✓。脚本对这批数全链路复核了一遍（下图）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-slm-budget.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-slm-budget.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果）：左 视角 vs SLM 分辨率（式 4.2-9），红点为 Table 4.1 的三个器件、60° 目标线；右 全视差 vs HPO 的串行数据率对比（8 bit×30 fps），虚线为光纤 40 Gbit/s——HPO 落在可行区</figcaption>
 </figure>
 
@@ -1271,7 +1271,7 @@ N=(l\,f_s)^2=(l\times 2f_0)^2=\Big(2l\frac{NA}{\lambda_0}\Big)^2,
 ### 4.3.2 系统：两个一模一样的双瞳处理器
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-15.png" width="560" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-15.png" width="560" class="lq-img" />
   <figcaption>图 4.15 光学扫描加密：上半 加密级（p1=加密密钥@ω0、p2=针孔@ω0+Ω，扫描 |Γ0(x,y;z^c)|²，PD→天线无线发送 i_Ω^c）；下半 解密级（p1=针孔@ω0、p2=解密密钥@ω0+Ω，扫描针孔光阑 @z^d，PD→BPF@Ω→cos/sin 解调→ic,is→数字计算机）[Poon et al., Applied Optics 42, 496 (2003)]（截自原书）</figcaption>
 </figure>
 
@@ -1375,7 +1375,7 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,p
 这就是解密端产生的输出（插好解密密钥、扫描针孔），存入计算机，等无线传来的密文到了再解。**数字解密单元**（digital decryption unit, DDU，图 4.16）对两个输入做的是**复谱直接相乘**（不是相关、不取共轭）：
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-16.png" width="560" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-16.png" width="560" class="lq-img" />
   <figcaption>图 4.16 数字解密单元（DDU）：密文 <span class="arithmatex">\(i(x,y;z^c)\)</span> 与解密端信息 <span class="arithmatex">\(i(x,y;z^d)\)</span> 各做 <span class="arithmatex">\(\mathcal{F}\)</span>，相乘，<span class="arithmatex">\(\mathcal{F}^{-1}\)</span>，输出"解密图像" <span class="arithmatex">\(|\Gamma_0(x,y;z^c)|^2\)</span> [Poon et al., Applied Optics 42, 496 (2003)]（截自原书）</figcaption>
 </figure>
 
@@ -1449,14 +1449,14 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,
     书把 (4.3-11)/(4.3-12) 送入 DDU 后的输出式又印作 "(4.3-12)"——与上一式（解密端扫描输出）编号撞车。按上下文（"Eqs. (4.3-11) and (4.3-12) are the inputs of the DDU"），DDU 输出式应为 **(4.3-13)**。本笔记按 (4.3-13) 引用。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-17.png" width="420" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-17.png" width="420" class="lq-img" />
   <figcaption>图 4.17 加密仿真（Virginia Tech 文档）：a) 原始文档 |Γ0|²；b) 文档×随机相位后的实部；c) 虚部；d) 加密文档的"强度" |i(x,y;z^c)|（按式 4.3-11，σ=(zc·λd)/(4π)=(30)×(0.6×10⁻⁶)/4π）——纯噪声，文档信息荡然无存（截自原书）</figcaption>
 </figure>
 
 Table 4.2 的 Cryptography.m（改编自 Taegeun Kim，Sejong Univ.）复现这组仿真，结果见图 4.17/4.18：**图 4.18a** 密钥匹配且 \(z^d=z^c\) 时解密强度干净；**图 4.18b** 解密密钥选错（猜随机相位）时输出不可用；**图 4.18c** 密钥正确但 \(\sigma\)（即 \(z^d\)）选错（如 \(z^d=1.5z^c\)）时是 4.18a 的散焦版——\(z^c\) 与 \(z^d\) 的引入给出**额外一层安全保障**。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-4-18.png" width="420" class="lq-img" />
+  <img src="../../images/scanholo/fig-4-18.png" width="420" class="lq-img" />
   <figcaption>图 4.18 解密仿真：a) 密钥匹配 + z^d=z^c（干净文档）；b) 密钥不匹配 + z^d=z^c（噪声）；c) 密钥匹配 + z^d=1.5z^c（散焦）（截自原书）</figcaption>
 </figure>
 
@@ -1703,7 +1703,7 @@ Table 4.2 的 Cryptography.m（改编自 Taegeun Kim，Sejong Univ.）复现这�
 实跑结果（对应书图 4.17/4.18）：a) 匹配密钥 + \(z^d=z^c\)：DDU 输出强度与原文档的相关系数 **1.0000**（干净）；b) 密钥不匹配：**0.0004**（纯噪声）；c) 匹配密钥 + \(z^d=1.5z^c\)：**0.2693**（散焦）。两条保障独立生效：\(|OTF_{enc}\cdot P|\equiv 1\)（模守恒使密钥项在 DDU 乘积中对消），密文强度 \(|e|\) 与文档的相关系数仅 **0.0020**——窃听者拿不到任何东西。
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-osc-cryptography.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-osc-cryptography.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果，对应图 4.17/4.18）：上排 原始文档 → 乘随机相位的实部/虚部 → 加密强度（纯噪声）；下排 匹配密钥+z^d=z^c（cc=1.000，干净）→ 密钥不匹配（cc=0.000，噪声）→ z^d=1.5z^c（cc=0.269，散焦）→ 密文频谱相位（随机化）</figcaption>
 </figure>
 

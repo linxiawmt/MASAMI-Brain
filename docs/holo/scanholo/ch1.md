@@ -137,7 +137,7 @@ f(x,y) \Leftrightarrow F(k_x,k_y).
 \]
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-1.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-1.png" width="480" class="lq-img" />
   <figcaption>图 1.1 rect 函数：a) 一维剖面（宽 a、高 1）；b) 三维图；c) 灰度图——幅度 1 显示为"白"、幅度 0 显示为"黑"，所以白色区域面积是 a×b（截自原书）</figcaption>
 </figure>
 
@@ -220,7 +220,7 @@ f(x,y) \Leftrightarrow F(k_x,k_y).
     ```
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-2.png" width="520" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-2.png" width="520" class="lq-img" />
   <figcaption>图 1.2 sinc 函数：主瓣高 1，过零点在 ±1, ±2, ±3,…，旁瓣逐级衰减（截自原书）</figcaption>
 </figure>
 
@@ -246,7 +246,7 @@ k_{x,0}=\frac{2\pi}{a}.
 图 1.3 是这对变换对的"照片"：上面是二维灰度图，下面是过中心的横向剖面（沿 \(k_x\) 的 sinc）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-3.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-3.png" width="620" class="lq-img" />
   <figcaption>图 1.3 rect 函数及其傅里叶变换：左列是空域（灰度图 + 剖面，宽 a），右列是频域（灰度图 + sinc 剖面，第一零点 2π/a）。图中用 M=11 生成（截自原书）</figcaption>
 </figure>
 
@@ -516,7 +516,7 @@ k_{x,0}=\frac{2\pi}{a}.
     ```
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-4.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-4.png" width="620" class="lq-img" />
   <figcaption>图 1.4 a) 三角形位图；b) 其傅里叶变换的绝对值——中心亮（零频），星芒方向对应直边方向（截自原书）</figcaption>
 </figure>
 
@@ -530,7 +530,7 @@ k_{x,0}=\frac{2\pi}{a}.
 \]
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-5.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-5.png" width="480" class="lq-img" />
   <figcaption>图 1.5 δ 函数的定义：矩形越压越窄、越竖越高，面积恒为 1；极限下用带 "(1)" 的箭头表示（截自原书）</figcaption>
 </figure>
 
@@ -555,7 +555,7 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 人话版：δ 只在 \(x_0\) 处"活着"，所以拿 \(f(x)\) 乘它，等于拿 \(f(x_0)\) 乘它——图 1.6 里任意函数 \(f(x)\) 与位于 \(x_0\) 的 δ 相乘，结果就是强度变成 \(f(x_0)\) 的偏置 δ 函数。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-6.png" width="520" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-6.png" width="520" class="lq-img" />
   <figcaption>图 1.6 乘积性质：f(x) 与 δ(x−x₀) 相乘 = 强度为 f(x₀) 的 δ(x−x₀)（截自原书）</figcaption>
 </figure>
 
@@ -599,7 +599,7 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 与性质表 #7 一致。图 1.7 画出这对关系。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-7.png" width="480" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-7.png" width="480" class="lq-img" />
   <figcaption>图 1.7 二维 δ 函数（左，空间中的单位强度点）及其傅里叶变换（右，幅度恒为 1 的平坦平面）（截自原书）</figcaption>
 </figure>
 
@@ -613,14 +613,14 @@ f(x)\,\delta(x-x_0)=f(x_0)\,\delta(x-x_0).
 **系统**（system）定义为把输入（或一组输入）映射成输出（或一组输出）的"黑盒"。若**叠加原理**（superposition）成立，系统就是**线性的**（linear）：单输入-单输出系统里，输入 \(f_1(t)\) 出 \(g_1(t)\)、输入 \(f_2(t)\) 出 \(g_2(t)\)，那么输入 \(af_1(t)+bf_2(t)\) 时输出必是 \(ag_1(t)+bg_2(t)\)（\(a,b\) 为常数）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-8.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-8.png" width="620" class="lq-img" />
   <figcaption>图 1.8 线性系统：两个输入各自过系统，再线性叠加 = 叠加后的输入一起过系统（截自原书）</figcaption>
 </figure>
 
 参数不随时间改变的系统叫**时不变系统**（time-invariant systems）：输入延迟 \(t_0\)，输出跟着延迟同一个 \(t_0\)，波形形状不变（图 1.9）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-9.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-9.png" width="620" class="lq-img" />
   <figcaption>图 1.9 时不变系统：f(t)→g(t)，则 f(t−t₀)→g(t−t₀)（截自原书）</figcaption>
 </figure>
 
@@ -651,7 +651,7 @@ g(x,y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x',y')\,h(x-x',\,y-y')\,d
 时不变在电工里很直观（图 1.9 的延迟），光学里的**空间不变**（space-invariance）用图 1.10 说清：输入图像 \(f(x,y)\)（笑脸）平移到新原点 \((x_0,y_0)\)，输出 \(g(x,y)\) 就在 \(x\text{-}y\) 平面上跟着平移——电系统里的"延迟"对应光学里的"图像平移"。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-10.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-10.png" width="620" class="lq-img" />
   <figcaption>图 1.10 空间不变概念：输入笑脸移到哪里，输出光斑就移到哪里（截自原书）</figcaption>
 </figure>
 
@@ -670,7 +670,7 @@ G(k_x,k_y)=F(k_x,k_y)\,H(k_x,k_y),
 其中 \(G\)、\(F\)、\(H\) 分别是 \(g\)、\(f\)、\(h\) 的傅里叶变换。证明在例 1.4。这一步是全章最重要的一行——**空域卷积 = 频域乘法**：
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-11.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-11.png" width="620" class="lq-img" />
   <figcaption>图 1.11 LSI 系统框图：空间域 g = f*h（h 称空间冲激响应/点扩散函数）；频域 G = F·H（H 称空间频率响应/频率传递函数）（截自原书）</figcaption>
 </figure>
 
@@ -701,7 +701,7 @@ G(k_x,k_y)=F(k_x,k_y)\,H(k_x,k_y),
 **卷积：翻转 + 平移 + 乘积面积。** 图 1.12 用两张图像 \(f(x,y)\)、\(h(x,y)\) 演示 (1.2-2)：对每个平移量 \((x,y)\)，卷积值 = 乘积 \(f(x',y')\,h(x-x',y-y')\) 在 \(x'\text{-}y'\) 平面上的总面积。操作步骤：先把 \(h(x,y)\) 绕两个轴**翻转**（变成 \(h(-x',-y')\)），再把翻转后的图像**平移**、使其中心落在 \((x,y)\)（得到 \(h(x-x',y-y')\)），与 \(f(x',y')\) 叠起来算乘积面积；扫遍所有 \((x,y)\) 就得到二维灰度图 \(g(x,y)\)。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-12.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-12.png" width="640" class="lq-img" />
   <figcaption>图 1.12 二维卷积的概念：f 不动，h 翻转后中心滑到 (x,y)，逐点乘、求面积；结果 g(x,y) 是一张模糊化的图像（截自原书）</figcaption>
 </figure>
 
@@ -715,7 +715,7 @@ C_{fh}(x,y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f^{*}(x',y')\,h(x+x',\
 其中 \(\otimes\) 是相关符号（\(f\) 取共轭）。它专门用来**比较两个函数有多像**，是**图案识别**（pattern recognition）的数学发动机。图 1.13 假设 \(f\) 为实函数：与卷积不同，算乘积 \(f(x',y')\,h(x+x',y+y')\) 时 \(h\) **不需要**绕 \(x'\)、\(y'\) 轴翻转，只要平移。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-13.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-13.png" width="640" class="lq-img" />
   <figcaption>图 1.13 二维相关的概念（设 f 为实函数）：h 不翻转、中心滑到 (−x,−y)，逐点乘、求面积，得到 C_fh（截自原书）</figcaption>
 </figure>
 
@@ -768,12 +768,12 @@ f(x,y)\otimes h(x,y)=\mathcal{F}_{xy}^{-1}\{F^{*}(k_x,k_y)\,H(k_x,k_y)\}.
 对给定的两幅图像 \(f\)、\(h\)：先各自做二维 FFT，频域相乘（一个取共轭），再逆变换回来。图 1.14 是两幅相同 256×256 smiley.bmp 的**自相关**：中心出现明亮光斑——按 (1.2-6)，亮斑 = 两图"匹配"；图 1.15 是笑脸与另一幅图像的**互相关**：中心没有可辨认的亮斑——不匹配。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-14.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-14.png" width="640" class="lq-img" />
   <figcaption>图 1.14 自相关：笑脸 ⊗ 笑脸 = 中心亮斑（匹配成功）（截自原书）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-1-15.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-1-15.png" width="640" class="lq-img" />
   <figcaption>图 1.15 互相关：笑脸 ⊗ 人像 = 中心无亮斑（不匹配）（截自原书）</figcaption>
 </figure>
 
@@ -1071,7 +1071,7 @@ h(x,y;\,z)=\frac{j\,k_0}{2\pi z}\exp\!\Big[-j\frac{k_0}{2z}(x^2+y^2)\Big],\qquad
     ```
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-fresnel-lsi.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/sim-fresnel-lsi.png" width="640" class="lq-img" />
   <figcaption>图（本笔记运行结果）：左上 输入方孔；右上 空域剖面；左下 z=5 cm 处 |g| 剖面——孔边缘亮条纹；右下 2-D 衍射光斑（CCD 视角）——孔内近乎原像、边缘菲涅耳条纹（深近场特征）</figcaption>
 </figure>
 

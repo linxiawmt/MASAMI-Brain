@@ -70,7 +70,7 @@ W(x,y) = W_{ab}(x,y) - W_{sp}(x,y),
 \(x,y\) 是瞳面坐标。图 8.1 还标了符号约定:像差波前在理想波前的**像侧**(更靠近像)时 W 取正——这个约定在 8.3.1 节变成指数里的负号。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-1.png" width="500" />
+  <img src="../../images/fourier/fig-8-1.png" width="500" />
   <figcaption>图 8.1 球面波前(sp)与像差波前(ab):W(x,y) = W_ab − W_sp(截自原书)</figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ W(\hat{u}_0;\,\rho,\theta) = \sum_{j,m,n} W_{klm}\,\hat{u}_0^{\,k}\,\rho^{\,l}\c
 - \(\hat{u}_0\):**分数像高(fractional image height)**——像面上所考虑点的物理高度除以最大像半径,沿图 8.2(b) 的 \(\hat{u}\) 轴定义。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-2.png" width="480" />
+  <img src="../../images/fourier/fig-8-2.png" width="480" />
   <figcaption>图 8.2 Seidel 像差坐标定义:归一化出瞳 (a) 与像面 (b)(截自原书)</figcaption>
 </figure>
 
@@ -254,7 +254,7 @@ xlabel('x'); ylabel('y');
 取合适的样本数、边长 2 的归一化瞳,试几个系数组合。图 8.3 能看出:球差 \(W_{040}\) 和场曲 \(W_{220}\) 是"曲率型"的——对瞳坐标**球对称**;彗差 \(W_{131}\) 和像散 \(W_{222}\) 不对称,依赖像点位置。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-3.png" width="760" />
+  <img src="../../images/fourier/fig-8-3.png" width="760" />
   <figcaption>图 8.3 seidel_5 生成的波前 OPD 曲面/等高线例:左上 w040=1(轴上);右上 u0=1, w040=w131=w222=1;左下 u0=0, v0=1 同系数(方向随像点转);右下 u0=1, w220=1(截自原书)</figcaption>
 </figure>
 
@@ -345,7 +345,7 @@ PSF 就是**非相干脉冲响应** \(|h|^2\):点源的像长什么样。粗略�
 图 8.4 是商业光学设计软件 **ZEMAX** 画的一枚真实平凸透镜光线追迹布局。用 ZEMAX 提取实际像差系数来仿真:有效焦距 100 mm、瞳直径 20 mm → 像方 **f/5**。假设立远物成像,故 \(z_{XP} \approx f\)。透镜结构参数:前表面曲率半径 51.68 mm、后表面无限(平凸)、玻璃 BK7、中心厚度 4.585 mm。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-4.png" width="640" />
+  <img src="../../images/fourier/fig-8-4.png" width="640" />
   <figcaption>图 8.4 f/5 平凸透镜的 ZEMAX 光线追迹布局:有效焦距 100 mm、瞳直径 20 mm;图中给出 0 与 10 mm 两个像高(截自原书)</figcaption>
 </figure>
 
@@ -507,7 +507,7 @@ ZEMAX 对这枚镜头算出的初级 Seidel 系数(表 8.2,波长 0.55 μm;数�
 先取轴上像点(第 19 行 \(u_0=0, v_0=0\)),结果见图 8.5:相干传递函数相位 (a) 用等值图显示,黑 = 0、白 = \(2\pi\) rad——相位其实采样充分,图里的纹样一部分是**显示伪像**;看它的目的是确认传递函数直径 ≤ 阵列之半(式 8.6)。PSF (b)–(d) 看着较窄——不错,但相对衍射限 PSF 其实已经摊宽不少(习题 8.8)。MTF 只画一半(负频率侧对称),图 8.5(e) 里它比衍射限曲线掉得快得多:实用截止频率从曲线估约 **120–130 cyc/mm**。轴上像点 PSF 与 MTF 都对称,u、v 两轴结果无差别。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-5.png" width="560" />
+  <img src="../../images/fourier/fig-8-5.png" width="560" />
   <figcaption>图 8.5 平凸透镜轴上像点结果:(a) 相干传递函数相位;(b) PSF 图样;(c) u 轴剖面;(d) v 轴剖面;(e) MTF(衍射限虚线)。(a) 的部分纹样是显示伪像(截自原书)</figcaption>
 </figure>
 
@@ -520,26 +520,26 @@ ZEMAX 对这枚镜头算出的初级 Seidel 系数(表 8.2,波长 0.55 μm;数�
 - 轴上 Strehl 比(习题 8.8(e)):0.0212(见下)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-lens.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-lens.png" width="900" />
   <figcaption>图 8-P1 lens_psfmtf 复现:上排左/中 PSF(平方根拉伸,左轴上、右最大像高),上右相干 TF 相位;下排 MTF(实线 u、虚线 v、点线衍射限)与最大像高点 PSF 剖面(笔记自制)</figcaption>
 </figure>
 
 把最大像高点改到 v 轴(\(\hat{u}_0=0,\hat{v}_0=1\)),结果见图 8.6:PSF 不再对称,沿 v 方向**特征性拉长** (b)–(d);峰值比轴上小得多(PSF 大幅摊开);MTF (e) 两个方向不一样,v 轴最差,实用截止约 **u ≈ 20、v ≈ 10 cyc/mm**。注意:PSF 都显示在 1 mm × 1 mm 的阵列里,但就整个像面而言,轴上 PSF 位于光轴上,最大像高 PSF 在离轴 10 mm 处——两幅图是不同像点各自的"局部"。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-6.png" width="560" />
+  <img src="../../images/fourier/fig-8-6.png" width="560" />
   <figcaption>图 8.6 平凸透镜最大像高点结果:(a) 相干传递函数相位;(b) PSF 图样(v 方向拉长);(c) u 轴剖面;(d) v 轴剖面;(e) MTF(u 轴实线、v 轴虚线、衍射限点线)(截自原书)</figcaption>
 </figure>
 
 验证/合理性检查:与 ZEMAX 对同一例子的分析对比。图 8.7 的**光线点列图(ray spot diagrams)**:在瞳内撒一组光线,按直线追迹到像面,标出落点——点云形状与 lens_psfmtf 的 PSF 形状相似,好兆头。更定量的对比是 MTF(图 8.8):"T"指**子午面(tangential)**,与本章 v 轴一致;"S"指**弧矢面(sagittal)**,含 u 轴。10 mm 像点的 T、S 曲线难分辨,T(v 轴)在下。ZEMAX 曲线与 lens_psfmtf 相当接近;差异在预料之中——lens_psfmtf 只用五个初级 Seidel 像差,而 ZEMAX 的瞳面波前含**高阶项**。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-7.png" width="640" />
+  <img src="../../images/fourier/fig-8-7.png" width="640" />
   <figcaption>图 8.7 f/5 平凸透镜的 ZEMAX 点列图:(a) 轴上像点;(b) 最大像高(10 mm)像点(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-8.png" width="640" />
+  <img src="../../images/fourier/fig-8-8.png" width="640" />
   <figcaption>图 8.8 f/5 平凸透镜的 ZEMAX MTF 曲线:深色为轴上像点,浅色为最大像高点的子午(T)与弧矢(S)面(截自原书)</figcaption>
 </figure>
 
@@ -714,7 +714,7 @@ lens_psfmtf 用 \(1024\times1024\) 阵列检查 \(1\times1\) mm 的像面。要�
 - **(f)** 第 46 行:PSF 只是**加在一起**方便观看比较——**别把这当成卷积或叠加运算**,它只是摆放。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-9.png" width="480" />
+  <img src="../../images/fourier/fig-8-9.png" width="480" />
   <figcaption>图 8.9 psf_map 例子的像面 PSF 分布图:中心对称,向边缘因彗差 + 像散逐渐拉长(截自原书)</figcaption>
 </figure>
 
@@ -724,7 +724,7 @@ lens_psfmtf 用 \(1024\times1024\) 阵列检查 \(1\times1\) mm 的像面。要�
 本章 Python 复现(\(2f_0 = 1\times10^5 \le f_N = 1.25\times10^5\ \text{m}^{-1}\),判据满足):中心 PSF 对称(轴上只受球差影响,评注 (a) 的直接体现:中心 13×13 邻域左右镜像差 \(2.9\times10^{-5}\) 相对量),边缘 PSF 沿 v 拉长、拖尾方向随像点符号翻转——与图 8.9 一致。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-psfmap.png" width="560" />
+  <img src="../../images/fourier/fig-8-py-psfmap.png" width="560" />
   <figcaption>图 8-P2 psf_map 复现(f/20,0.5λ 球差 + 1λ 彗差 + 1.5λ 像散,四次方根拉伸)(笔记自制)</figcaption>
 </figure>
 
@@ -878,7 +878,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \int_{-\infty}^{\infty}\!\!\int I_g(u,v)\left|h(\hat{
 - **(h)** 最后一条:**这段代码跑起来相当慢**!(书作者笔记本约 1 小时。)62,500 个 \(250\times250\) 的 PSF 被生成并叠加。对比:卷积只需一个 PSF、几次 FFT、不到一秒——空间变系统没有卷积这个奢侈。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-10.png" width="480" />
+  <img src="../../images/fourier/fig-8-10.png" width="480" />
   <figcaption>图 8.10 image_super 例子的测试靶图像:中心清晰,边缘因离轴像差明显退化(截自原书)</figcaption>
 </figure>
 
@@ -890,7 +890,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \int_{-\infty}^{\infty}\!\!\int I_g(u,v)\left|h(\hat{
 - **M = 100(快速验证,4.3 s)**:能量同样守恒,但注意 \(f_N = 5\times10^4 < 2f_0 = 10^5\ \text{m}^{-1}\),**式 (8.6) 不再满足**——书选 M=250 不是随便定的:再省样本,PSF 本身就欠采样了。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-imagesuper.png" width="880" />
+  <img src="../../images/fourier/fig-8-py-imagesuper.png" width="880" />
   <figcaption>图 8-P3 image_super 复现(M=250,三次方根拉伸):左理想靶,右叠加像——中心保持,边缘(尤其左列竖条与上缘)模糊拖尾(笔记自制)</figcaption>
 </figure>
 
@@ -950,7 +950,7 @@ flowchart TD
 **8.2 离焦补偿球差**:球差源于用球面聚光,而球面对大多数入射波前并不给出球面会聚波。焦点(准确说是**离焦**)可以用来对冲球差。(a) 取轴上像点、\(W_{040}=1\)(任取)、其余系数为零,画 W 曲面。(b) 加入离焦 \(W_d\),调 \(W_d\) 去补偿 \(W_{040}\)(理想情况 W 应当**平**),粗判最佳补偿量。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex82.png" width="860" />
+  <img src="../../images/fourier/fig-8-py-ex82.png" width="860" />
   <figcaption>图 8-P4 习题 8.2:纯球差(rms = 0.298λ)与离焦平衡后 W = W040(ρ⁴−ρ²)(rms = 0.0745λ)的瞳内 OPD(笔记自制)</figcaption>
 </figure>
 
@@ -960,7 +960,7 @@ flowchart TD
 **8.3 通过焦 PSF(PSF through focus)**:检查 PSF 随焦点位置的变化是很有用的设计手段。离焦波前参考球面的曲率中心,相对原像点移动 \(\delta d = 8(f/\#)^2 W_d\)。例如 f/10 系统、\(W_d=-1.0\lambda\)、\(\lambda=0.5\ \mu\text{m}\):\(\delta d = -0.4\) mm——把像面向镜头方向移 0.4 mm,效果等价于瞳里造出 \(W_d=-1.0\lambda\) 的像差。对 8.5 节 f/5 透镜的轴上像点,考察 \(\delta d = -1, -0.5, 0, +0.5, +1\) mm 的 PSF:哪个 \(\delta d\) 的 PSF 最"窄"(峰值最高)?对应的 \(W_d\) 是多少?
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex83.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex83.png" width="900" />
   <figcaption>图 8-P5 习题 8.3:f/5 透镜轴上 PSF 通过焦剖面(δd = −1…+1 mm;横轴像面 u)(笔记自制)</figcaption>
 </figure>
 
@@ -980,7 +980,7 @@ flowchart TD
 **8.4 抛物面镜**:抛物面镜对零视场角(沿光轴)的平面波入射是**衍射限**的。图 8.11 是 f/5 抛物面镜的 ZEMAX 追迹布局。实际中会聚光通常用第二块镜(如 45° 小平面镜)引出入射光路,这里忽略。镜参数:\(f = 200\) mm、直径 40 mm、最大像高 3.5 mm;Seidel 系数见表 8.3(He-Ne 激光波长 0.633 μm,元件检测常用)。改 lens_psfmtf 建模此镜:用 \(M=1024\)、\(L=0.1\times10^{-3}\) m,对像点 \((\hat{u}_0,\hat{v}_0)\): (0, 0)、(0, 1)、(0.707, 0.707) 生成 PSF 与 MTF。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-11.png" width="640" />
+  <img src="../../images/fourier/fig-8-11.png" width="640" />
   <figcaption>图 8.11 f/5 抛物面镜的 ZEMAX 追迹布局:有效焦距 200 mm、瞳直径 40 mm;入射视场角 0 与 1°,对应像高 0 与 3.5 mm(截自原书;原书编号重复印作"Figure 8.10",笔记按 8.11 处理)</figcaption>
 </figure>
 
@@ -1009,7 +1009,7 @@ flowchart TD
 **8.5 临界采样离焦**:对 8.5 节 f/5 透镜的最大像高点(分数像高 1),求可以加入瞳中的**正离焦** \(W_d\) 的量,使式 (8.12) 取等号(临界满足)。在 lens_psfmtf 里加这个离焦,考察临界值上、下的 PSF:波前 OPD 欠采样时 PSF 会怎样?
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex85.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex85.png" width="900" />
   <figcaption>图 8-P6 习题 8.5:临界离焦试验(最大像高点):Wd/2(欠)/临界(+14.9λ)/1.5·Wd(过,相位混叠)(笔记自制)</figcaption>
 </figure>
 
@@ -1035,7 +1035,7 @@ flowchart TD
 (a) 写一个类似 seidel_5 的函数求 Zernike 多项式,至少到第 11 项;瞳坐标 `p=sqrt(X.^2+Y.^2)`,`A=atan2(Y,X)`。(b) 改 lens_psfmtf 用 Zernike 函数,系数取表 8.4(单位"波长",乘 λ),生成 PSF 与 MTF,与 Seidel 版比较。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex86.png" width="900" />
+  <img src="../../images/fourier/fig-8-py-ex86.png" width="900" />
   <figcaption>图 8-P7 习题 8.6:Zernike 前 11 项 vs Seidel 5 项(最大像高点):PSF 图样几乎一致,MTF u 轴曲线重合(笔记自制)</figcaption>
 </figure>
 
@@ -1045,7 +1045,7 @@ flowchart TD
 **8.7 单项像差的 PSF**:用 psf_map 代码考察单项 Seidel 像差对 PSF 的影响。出瞳参数同例子,分别看:(a) 1λ 离焦;(b) 1λ 球差;(c) 2λ 彗差;(d) 1λ 像散;(e) 1λ 场曲;(f) ±3λ 畸变。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex87.png" width="820" />
+  <img src="../../images/fourier/fig-8-py-ex87.png" width="820" />
   <figcaption>图 8-P8 习题 8.7:单项像差的像面 PSF 图(f/20,7×7 像点,四次方根拉伸):离焦 = 环;球差 = 均匀软斑;彗差 = 拖尾随视场翻转;像散 = X 形随位置旋转;场曲 = 均匀离焦斑;畸变 = 只移位不展宽(笔记自制)</figcaption>
 </figure>
 
@@ -1076,7 +1076,7 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
     数值验证见下:实测纯球差方差 = 0.0889\(\lambda^2\) = 4/45(单位:\(W_{040}=1\lambda\)),与修正式逐位吻合。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-8-py-ex88.png" width="620" />
+  <img src="../../images/fourier/fig-8-py-ex88.png" width="620" />
   <figcaption>图 8-P9 习题 8.8:Strehl 比 vs W040——数值(点)与 Marechal 近似(线);W040 ≤ 0.5λ 内吻合,大像差区 Marechal 只给趋势(笔记自制)</figcaption>
 </figure>
 

@@ -66,7 +66,7 @@
 其中 \(f\) 是透镜(或透镜组)焦距,\(z_1\) 是物到**前主平面(front principal plane)**的距离,\(z_2\) 是**后主平面(back principal plane)**到像的距离。主平面是几何透镜分析里的**虚拟**概念,垂直于光轴:入射到前主平面上某高度的光线,从后主平面**同一高度**射出——主平面是"单位放大率"的平面。薄透镜的前后主平面与透镜平面重合;真实(厚)透镜的主平面一般在透镜附近但不重合。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-1.png" width="420" />
+  <img src="../../images/fourier/fig-7-1.png" width="420" />
   <figcaption>图 7.1 焦距 f 的正薄透镜几何成像:物点(箭头端)发出的锥形光束被透镜收集,会聚到对应像点(截自原书)</figcaption>
 </figure>
 
@@ -83,14 +83,14 @@ M_t = \frac{y_2}{y_1} = -\frac{z_2}{z_1}\,. \tag{7.2}
 成像系统还用**瞳(pupil)**刻画。瞳是虚拟孔径:**入瞳(entrance pupil, EP)**表示系统从物体方向看到的"收集开口",**出瞳(exit pupil, XP)**表示光离开系统去成像时的"出口开口"。瞳是**孔径光阑(aperture stop)**——限制收光的那个真实元件——经它前/后的光学元件所成的像。图 7.1 里透镜本身就是光阑;换个系统也可能是别的孔径。这里最关心光阑的一点:**它把入射场"切成饼干",是像里基本衍射效应的来源**——像差等别的因素会进一步破坏图像,但光阑造成的衍射是成像系统的**根本性能极限**。光阑与系统其他效应都可以折进瞳里,所以衍射分析统一用瞳这个概念。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-2.png" width="440" />
+  <img src="../../images/fourier/fig-7-2.png" width="440" />
   <figcaption>图 7.2 成像系统的入瞳(EP)/出瞳(XP)模型:轴上物点到 EP 距离 zEP,XP 到轴上像点距离 zXP,直径 DEP/DXP(截自原书)</figcaption>
 </figure>
 
 图 7.2 的模型里,EP/XP 的先后次序与位置取决于具体系统。单薄透镜系统(图 7.1)最简单:主平面、瞳、透镜全在同一平面,\(z_1 = z_{EP}\)、\(z_2 = z_{XP}\)、\(D_{EP} = D_{XP} =\) 透镜直径——想本章例子时退回这个情形即可。但要想远一点:图 7.3 里光阑是**透镜后面的光圈(iris)**,XP 与光圈重合同径,EP 是把光圈"反着穿过"透镜成像得到的虚拟孔径——这时瞳距与主面距就不同了。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-3.png" width="480" />
+  <img src="../../images/fourier/fig-7-3.png" width="480" />
   <figcaption>图 7.3 光圈作光阑的单透镜系统:EP 是光圈经透镜成的(虚)像(截自原书)</figcaption>
 </figure>
 
@@ -137,7 +137,7 @@ G_i(f_U,f_V) = H(f_U,f_V)\,G_g(f_U,f_V)\,, \tag{7.6}
 \]
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-4.png" width="460" />
+  <img src="../../images/fourier/fig-7-4.png" width="460" />
   <figcaption>图 7.4 成像仿真坐标定义:物面 Uo(ξ,η)、入瞳、出瞳 P(x,y)、像面 Ui(u,v) 与 Ii(u,v)(截自原书)</figcaption>
 </figure>
 
@@ -263,14 +263,14 @@ L \leq 250\times 2.5\ \mu\text{m} = 0.625\ \text{mm}\,. \tag{7.22}
 先解决理想图像。原书用一幅 \(250\times250\) 像素的 USAF 1951 分辨率测试板 `.png`(实物的测试板印在玻璃基板上,至今仍用于镜头测试),下载地址已失效;网上可以找到类似图,或自己造一幅特征尺寸丰富的图。书脚本读入后的理想图像(书图 7.5):
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-5.png" width="330" />
+  <img src="../../images/fourier/fig-7-5.png" width="330" />
   <figcaption>图 7.5 USAF 测试板理想图像:250×250 像素映射到 L = 0.3 mm(截自原书)</figcaption>
 </figure>
 
 本章笔记用脚本生成同规格的 USAF 式分辨率板(下节代码直接读它):
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-chart.png" width="430" />
+  <img src="../../images/fourier/fig-7-py-chart.png" width="430" />
   <figcaption>图 7-P1 笔记自制的 USAF 式分辨率板(250×250,映射 L = 0.3 mm、Δu = 1.2 μm;对应原书图 7.5 的角色):组 g、单元 n 的条纹频率 2e5·2^(g+n/6) cyc/m,组-2/单元6 = 1e5 cyc/m(笔记自制)</figcaption>
 </figure>
 
@@ -366,36 +366,36 @@ MATLAB 新建脚本 **coh_image**:
     两处:(1) 书第 30 行 `surf(fu,fv,H)` 之后第 34 行写 `ylabel('fu (cyc/m)'); xlabel('fv (cyc/m)')`——`surf` 的第一参数 \(f_u\) 应配 x 轴,标签写反了。圆瞳下 \(H\) 各向同性,显示无恙;矩形瞳(习题 7.3)照抄的话曲面和像的 x/y 就整个标反。本笔记 MATLAB 文件已按正确映射写。(2) 书第 30 行 `H.*.99`:MATLAB 7.1 的 surf 画不动单位高度的圆面,乘 0.99 是当年显示权宜之计,新版 MATLAB 直接删掉即可。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-6.png" width="430" />
+  <img src="../../images/fourier/fig-7-6.png" width="430" />
   <figcaption>图 7.6 相干传递函数:f/10 圆瞳,半径 f0 = 1e5 cyc/m(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-cohTF.png" width="430" />
+  <img src="../../images/fourier/fig-7-py-cohTF.png" width="430" />
   <figcaption>图 7-P2 coh_image 复现:相干传递函数 H(笔记自制,对应原书图 7.6)</figcaption>
 </figure>
 
 仿真出的像见图 7.7(显示时对辐照度开平方 `nthroot(Ii,2)` 提亮对比度):特征被模糊,一些三条组分辨不开;相长/相消干涉造成"振铃(ringing)"。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-7.png" width="430" />
+  <img src="../../images/fourier/fig-7-7.png" width="430" />
   <figcaption>图 7.7 模拟衍射限相干像(对比度增强)(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-coh.png" width="700" />
+  <img src="../../images/fourier/fig-7-py-coh.png" width="700" />
   <figcaption>图 7-P3 coh_image 复现:模拟相干像(sqrt 拉伸)+ v = −0.8×10⁻⁴ m 行剖面(笔记自制,对应原书图 7.7/7.8)</figcaption>
 </figure>
 
 最后一段代码画剖面:先选一个物理 \(v\) 坐标(`vvalue`),用 `round` 找最近的阵列行号,把理想与模拟剖面叠画。图 7.8 里组-2/单元6 是"能分辨"的最小组:放大剖面看,它的三条竖纹周期约 \(1\times10^{-5}\) m,对应 \(1\times10^5\) cyc/m——正好是相干截止 \(f_0\)。虽然辐照度取了平方(频率可以到 \(2f_0\)),这种模拟相干**辐照度**图像的表观分辨率通常仍贴近相干截止。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-8.png" width="480" />
+  <img src="../../images/fourier/fig-7-8.png" width="480" />
   <figcaption>图 7.8 v = −0.8×10⁻⁴ m 行剖面:组-2/单元6 与组-2/单元1(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-cohprofile.png" width="640" />
+  <img src="../../images/fourier/fig-7-py-cohprofile.png" width="640" />
   <figcaption>图 7-P4 coh_image 复现:剖面(数值实线 vs 理想点线),组-2/单元6 条纹周期实测 10.8 μm → 9.3e4 cyc/m ≈ f0;单元1 边缘过冲 1.50(相干振铃)(笔记自制)</figcaption>
 </figure>
 
@@ -409,12 +409,12 @@ MATLAB 新建脚本 **coh_image**:
 图 7.9 给出不同瞳径/f 数的谱(对数显示)与像:f/5(\(f_0 = 2\times10^5\))接近理想、f/20(\(f_0 = 0.5\times10^5\))几乎全糊——注意理想图像的 \(f_N = 4.17\times10^5\) 不变,变的是瞳。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-9.png" width="620" />
+  <img src="../../images/fourier/fig-7-9.png" width="620" />
   <figcaption>图 7.9 相干像谱幅度(左列,log)与对应辐照度像(右列):Ideal/f5/f10/f20(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-fseries-coh.png" width="480" />
+  <img src="../../images/fourier/fig-7-py-fseries-coh.png" width="480" />
   <figcaption>图 7-P5 f/# 系列复现(相干):通带圆盘随 f/# 缩小,像逐步模糊(笔记自制,对应原书图 7.9)</figcaption>
 </figure>
 
@@ -440,12 +440,12 @@ MATLAB 新建脚本 **coh_image**:
 `rand` 产生 \([0,1)\) 均匀分布的 \(M\times M\) 随机数,乘 \(2\pi\) 后覆盖所有相位值 \([0,2\pi]\)——每个样本点的相位独立且互不相关,代表相对光波长"极粗糙"的随机表面。跑出的辐照度图像见图 7.10:各点发出的子波相干干涉,形成 **speckle(相干斑)**——随机的一堆斑点、点与小曲线。相干斑是著名现象[5]:拿激光笔照墙、轻轻移动光斑或歪一下头,看到的闪烁就是 speckle。图 7.10 说明:speckle 会严重妨碍从图像里解读信息。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-10.png" width="400" />
+  <img src="../../images/fourier/fig-7-10.png" width="400" />
   <figcaption>图 7.10 粗糙表面的模拟相干像(speckle)(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-speckle.png" width="380" />
+  <img src="../../images/fourier/fig-7-py-speckle.png" width="380" />
   <figcaption>图 7-P6 粗糙物体复现(2π 随机相位,f/10;笔记自制,对应原书图 7.10)</figcaption>
 </figure>
 
@@ -617,27 +617,27 @@ I_i(u,v) = \mathfrak{F}^{-1}\left\{\mathcal{H}(f_U,f_V)\,\mathfrak{F}\left\{I_g(
 衍射限 OTF 见图 7.11,像见图 7.12。与相干像(图 7.7)相比:**分辨率更好**(看组-1/单元3 的三条),而且**没有振铃**。图 7.13 的剖面(v = 0.2×10⁻⁴ m)里组-1/单元3 刚可分辨:这些条纹的空间频率约 \(1.7\times10^5\) cyc/m,略小于但同量级于非相干截止 \(2f_0 = 2\times10^5\) cyc/m。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-11.png" width="430" />
+  <img src="../../images/fourier/fig-7-11.png" width="430" />
   <figcaption>图 7.11 非相干(光学)传递函数:圆瞳 OTF,支撑半径 2f0(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-12.png" width="430" />
+  <img src="../../images/fourier/fig-7-12.png" width="430" />
   <figcaption>图 7.12 模拟衍射限非相干像(对比度增强)(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-13.png" width="480" />
+  <img src="../../images/fourier/fig-7-13.png" width="480" />
   <figcaption>图 7.13 v = +0.2×10⁻⁴ m 行剖面:组-1/单元3 刚可分辨(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-otf.png" width="430" />
+  <img src="../../images/fourier/fig-7-py-otf.png" width="430" />
   <figcaption>图 7-P7 incoh_image 复现:OTF 曲面(笔记自制,对应原书图 7.11)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-incoh.png" width="700" />
+  <img src="../../images/fourier/fig-7-py-incoh.png" width="700" />
   <figcaption>图 7-P8 incoh_image 复现:模拟非相干像 + v = +0.2×10⁻⁴ m 剖面(笔记自制,对应原书图 7.12/7.13)</figcaption>
 </figure>
 
@@ -650,19 +650,19 @@ I_i(u,v) = \mathfrak{F}^{-1}\left\{\mathcal{H}(f_U,f_V)\,\mathfrak{F}\left\{I_g(
 - 剖面里组-1/单元3(自制板 1.41e5 cyc/m)调制度 0.74(OTF 在该频率传函 0.18,条纹可辨认);同剖面组-2/单元3 调制度 0.96;**无振铃**:组-2/单元1 处最大值 0.883(相干像同处 1.50)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-otfcheck.png" width="760" />
+  <img src="../../images/fourier/fig-7-py-otfcheck.png" width="760" />
   <figcaption>图 7-P9 OTF 验证:左——f/10 时 FFT 自相关与式 (7.31) 解析重合(最大差 3.3e-3);右——f/4 违反式 (7.17) 时高频环绕污染(最大差 7.9e-2)(笔记自制)</figcaption>
 </figure>
 
 图 7.14 是与图 7.9 同系列的非相干像(f/5、f/10、f/20,谱按五次方根拉伸):这一组里非相干光明显改善图像质量。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-14.png" width="620" />
+  <img src="../../images/fourier/fig-7-14.png" width="620" />
   <figcaption>图 7.14 非相干像谱幅度(左列,五次方根)与对应辐照度像(右列)(截自原书)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-fseries-incoh.png" width="480" />
+  <img src="../../images/fourier/fig-7-py-fseries-incoh.png" width="480" />
   <figcaption>图 7-P10 f/# 系列复现(非相干):OTF 圆冠随 f/# 缩小,像逐步模糊但无振铃(笔记自制,对应原书图 7.14)</figcaption>
 </figure>
 
@@ -728,7 +728,7 @@ flowchart TD
     (a) \(f_{0x} = w_x/(\lambda z_{XP}) = 4\times10^4\)、\(f_{0y} = 2\times10^4\) cyc/m;非相干 \(2f_{0x} = 8\times10^4\)、\(2f_{0y} = 4\times10^4\)。(b) \(H = \mathrm{rect}(f_U/2f_{0x})\mathrm{rect}(f_V/2f_{0y})\) 方通带(曲面是"方柱");\(\Delta u = 4\ \mu\text{m}\) 对 u 方向判据 \(\leq 6.2\ \mu\text{m}\)、v 方向 \(\leq 12.5\ \mu\text{m}\),均满足。(c) OTF = 两个梯形之积(式 7.29 的 x/y 各异版本);实测像谱支撑 **u 方向 8.000e4 = 2f0x、v 方向 4.000e4 = 2f0y,逐位一致**。(d) 明显:本板条纹(映射到 L=1 mm)组-1/单元2 = 3.8e4 cyc/m < \(f_{0x}\)——u 向可分辨;组-2/单元3 = 2.1e4 > \(f_{0y}\)——v 向只到组-2/单元2(1.9e4)。**竖条清晰、横向细节被抹掉**(图 7-P7)。注意:书 coh_image 的 surf 轴标签互换在矩形瞳下必须改正,否则曲面和像的 x/y 标注就是反的。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex73.png" width="660" />
+  <img src="../../images/fourier/fig-7-py-ex73.png" width="660" />
   <figcaption>图 7-P11 习题 7.3:矩形瞳的相干传递函数(方柱)、OTF(双梯形)与相干/非相干像——竖直条纹可辨、v 向细节被抹掉(笔记自制)</figcaption>
 </figure>
 
@@ -738,7 +738,7 @@ flowchart TD
     (a) 相干截止由**外**半径决定:\(f_0 = w_o/(\lambda z_{XP}) = 4\times10^4\)(\(2f_0 = 8\times10^4\));内半径把 \(|f| < w_i/(\lambda z_{XP}) = 2\times10^4\) 的 DC 与低频整个挖掉。(b) 相干传递函数是"圆管";像呈**边缘增强**("伪相衬"外观):大条内部平均场从全孔径的 0.528 掉到 0.101——平坦区域的场被抽掉,只剩边缘贡献。(c) 环孔 OTF:零频处仍为 1,低频下陷、中高频相对占优——与全孔径之比实测低频(\(|f|\sim3\times10^4\) 处)**0.48**、中频(\(|f|\sim6\times10^4\) 处)**1.29**(图 7-P8)。(d) 丢 DC/低频 = 丢大尺度亮度信息:均匀区域成暗场、物体只剩"描边";这也是环孔望远镜"对比度换分辨率"的经典代价。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex74.png" width="660" />
+  <img src="../../images/fourier/fig-7-py-ex74.png" width="660" />
   <figcaption>图 7-P12 习题 7.4:环形瞳的相干传递函数(圆管)、OTF(中心凹陷)与边缘增强的相干像;OTF 切片:低频受损、中高频反超全孔径(笔记自制)</figcaption>
 </figure>
 
@@ -748,7 +748,7 @@ flowchart TD
     (a) 相位尺度 \(2\pi \to \pi \to 0.4\pi\):图像上的 speckle 变弱、测试板图案重新可辨(图 7-P13 上排)。定量:均匀物体实测对比度 \(C = \mathrm{std}/\langle I\rangle\) 从 **0.998**(充分发展 speckle,理论 1)**断崖跌至 0.20**(π)、**0.03**(0.4π)。解释:各点波前相位差变小,干涉起伏变弱——speckle 来自"随机相位差的相干叠加",相位差不随机了就没有斑。(b) 孔径变小(f/5 → f/20,图 7-P13 下排):对比度不变(C≈1),但**颗粒变大**——实测自相关过零 3.6/6.0/9.6 μm(±1 网格),与 \(1.22\lambda(f/\#) = 3.0/6.1/12.2\ \mu\text{m}\) 同级:颗粒线度就是 PSF 的宽度。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex75.png" width="720" />
+  <img src="../../images/fourier/fig-7-py-ex75.png" width="720" />
   <figcaption>图 7-P13 习题 7.5:上排——相位尺度 2π/π/0.4π,斑纹变弱、图案重现;下排——均匀粗糙物体 f/5/f/10/f/20,颗粒变粗(笔记自制)</figcaption>
 </figure>
 
@@ -769,7 +769,7 @@ flowchart TD
     (a) \(\delta = 1.22\times0.5\ \mu\text{m}\times20 = 12.2\ \mu\text{m}\)。(b) \(S = 12.2/1.2 = 10.17 \to 10\) 个样本(间隔 12 μm,略小于 \(\delta\))。(c)(d) \(w_{XP} = z_{XP}/40 = 3.125\) mm(\(f_0 = 5\times10^4\)、\(2f_0 = 10^5\))。剖面两点峰之间有清晰凹陷:凹陷/峰 = **0.760**——Airy 理论值 0.735(间隔 = 第一零点时中点强度/峰 = \(2[2J_1(1.916)/1.916]^2\)),"刚好分辨"(图 7-P14 右)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex7677.png" width="860" />
+  <img src="../../images/fourier/fig-7-py-ex7677.png" width="860" />
   <figcaption>图 7-P14 习题 7.6/7.7:左——冲激响应 h(u) 数值 vs 2J1(v)/v 解析;中——PSF vs Airy(第一零点 6.14 vs 6.10 μm);右——双点源(f/#=20,间隔 10 样本)剖面,凹陷比 0.760(笔记自制)</figcaption>
 </figure>
 
@@ -787,7 +787,7 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
 **7.9 相衬成像(Phase Contrast Imaging)**:活细胞、微生物、光刻图形这类物体基本透明,只是各处折射率不同——普通(辐照度)成像看不见它们。**相衬成像(phase contrast)**把物体产生的小相位变化(光程差)转成可探测的辐照度变化,常用于显微。参见 Ersoy 或 Hecht[6,7]。装置见图 7.15:透镜 1(焦距 \(f\))对相位物体做光学傅里叶变换[见式 (6.19)],用相位"点"板改变变换场的 DC 部分,透镜 2 再做一次变换成像。思路:用相位板把物场**平均部分**相移一小段波长(通常 \(\pi/2\) 或 \(3\pi/2\)),平均场与相位调制场在像面干涉,把相位变化翻译成辐照度变化。按以下步骤写代码:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-15.png" width="560" />
+  <img src="../../images/fourier/fig-7-15.png" width="560" />
   <figcaption>图 7.15 相衬成像布置:透镜 1 做傅里叶变换,相位"点"板移 DC,透镜 2 成像(截自原书)</figcaption>
 </figure>
 
@@ -800,14 +800,14 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
     严格算一笔账:\(u_i = u_g + (e^{j\beta}-1)\langle u_g\rangle\)(DC 项被替换成 \(e^{j\beta}\langle u_g\rangle\))。对二值板,\(\langle u_g\rangle \approx 1 + j f̄ \theta_0\)(\(f̄\) 是条形占空比)——平均场自带一点相位。所以条纹上的实测值是 1.059 而不是理想线的 1.063、背景是 0.996 而不是 1.000:**"差 = 2θ"精确成立,"绝对值骑在 ⟨ug⟩ 上"**。教科书公式都默认 ⟨θ⟩≈0,真实图案要留这个余量。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex79.png" width="640" />
+  <img src="../../images/fourier/fig-7-py-ex79.png" width="640" />
   <figcaption>图 7-P15 习题 7.9:(b) 相位物体直接辐照度恒为 1(不可见);(c) 正相衬条纹变亮;(d) 负相衬条纹变暗;右下——剖面 vs 理想 1±2θ(笔记自制)</figcaption>
 </figure>
 
 **7.10 全息术(Holography)**:全息指一种辐照度记录(传统上在胶片上),"回放"时能重建物体的光场——重建场让观察者看到真物体的部分特性,比如 3D 深度。这里考虑一种**傅里叶全息图(Fourier hologram)**(图 7.16)。记录:物体被相干光(通常是平面波)照明;物体旁边一个小球面镜截获部分照明光,把球面波送回透镜——镜子实际上扮演**参考点源**。照明物体 + 点源的夫琅禾费图样由透镜产生在胶片面上;胶片记录辐照度并处理成透过率与辐照度成正比。回放:胶片被相干平面波照明,透镜对透射波前做傅里叶变换形成像。按以下步骤仿真:
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-16.png" width="620" />
+  <img src="../../images/fourier/fig-7-16.png" width="620" />
   <figcaption>图 7.16 傅里叶全息方案:记录(物体+参考点源 → 透镜 → 胶片)与回放(胶片 → 透镜 → 像面)(截自原书)</figcaption>
 </figure>
 
@@ -816,7 +816,7 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
 傅里叶全息图产生:物体的像、"共轭"像、以及中间一个自相关相关的结果。几个思考题:如果撤掉回放透镜、把眼睛放到合适位置,你能只看到物体的像吗?你认出这个傅里叶全息过程就是傅里叶自相关定理的实现了吗?
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-17.png" width="560" />
+  <img src="../../images/fourier/fig-7-17.png" width="560" />
   <figcaption>图 7.17 全息例子的物体(F 形:竖梁 0.4×2 mm,两条 1×0.4 mm 臂,中心 (-2,0)/(-1.3,0.8)/(-1.3,0) mm)与参考点源 (2,0) mm(截自原书)</figcaption>
 </figure>
 
@@ -864,7 +864,7 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
 实测结果(图 7-P16):回放场由四部分组成——**真像**(F 形,中心 \(-1.5-2 = -3.5\) mm;与物体窗口的归一化互相关 **+1.000**)、**共轭像**(180° 翻转的 F,中心 \(+3.5\) mm;与翻转物体的互相关 **+0.929**)、中间的**物体自相关**宽包络、以及已清零的轴上亮点(\(R^2\delta\),回放中仍是平面波的那部分)。思考题的答案也在这个分解里:回放场 \(= \mathrm{IFT}\{|\mathcal{F}\{u_1\}|^2\} = u_1 \circledast u_1\)(傅里叶自相关定理),而 \((O + R\delta)\circledast(O + R\delta) = O\circledast O + R\,O(x+x_0) + R\,O^*(x_0-x) + R^2\delta\)——全息记录/回放就是自相关定理的物理实现;撤掉回放透镜,衍射阶不分开,各个分量叠在一起,眼睛放哪都只能看到混合像。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-7-py-ex710.png" width="860" />
+  <img src="../../images/fourier/fig-7-py-ex710.png" width="860" />
   <figcaption>图 7-P16 习题 7.10:胶片 log|FFT|²(左)、回放场 log 显示(中)与 sqrt 显示(右)——真像(-3.5 mm)、自相关包络(中央)、共轭像(+3.5 mm,翻转)(笔记自制)</figcaption>
 </figure>
 

@@ -165,7 +165,7 @@ U(d) = A\exp(jknd). \tag{4.10}
 这叫 **chirp（啁啾）项**（见原书附录 A），相位随横向位置的**平方**变化，用来建模收缩或会聚、扩张或发散的光场。式 (4.11) 相位的一维剖面见图 4.1。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-1.png" width="420" />
+  <img src="../../images/fourier/fig-4-1.png" width="420" />
   <figcaption>图 4.1 式 (4.11) chirp 函数沿 x 轴的相位剖面（纵轴以 k/2z 为单位）（截自原书）</figcaption>
 </figure>
 
@@ -191,7 +191,7 @@ r_{12} = \sqrt{z^2 + (x-\xi)^2 + (y-\eta)^2}. \tag{4.13}
 这里 \(\lambda\) 是光波长，\(k = 2\pi/\lambda\)（自由空间），\(z\) 是源与观察坐标系中心之间的距离，\(r_{12}\) 是源平面上一点到观察平面上一点的距离，积分限即源区域 \(\Sigma\)。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-2.png" width="680" />
+  <img src="../../images/fourier/fig-4-2.png" width="680" />
   <figcaption>图 4.2 平行源平面与观察平面的传播几何（截自原书）</figcaption>
 </figure>
 
@@ -299,7 +299,7 @@ N_F = \frac{w^2}{\lambda z}, \tag{4.28}
 原书没画这两张传递函数的对比图，但它是理解"菲涅耳近似精度"最直观的一张图——把它补上（数值脚本见下方代码块）：
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-py-hcompare.png" width="880" />
+  <img src="../../images/fourier/fig-4-py-hcompare.png" width="880" />
   <figcaption>图 4-P1 RS 传递函数 (4.19) vs 菲涅耳传递函数 (4.24)：|H_RS| 在 |f|=1/λ 处倏逝截止而 |H_F|≡1；相位差按 πλ³zf⁴/4 增长，0.1 rad 容差只到 f ≈ 0.006/λ（z = 50 m，λ = 0.633 μm）（笔记自制）</figcaption>
 </figure>
 
@@ -715,7 +715,7 @@ D_{lobe} = 1.22\,\frac{\lambda z}{w}. \tag{4.37}
 书里对脚本逐条给了注释（对应行号）：(a) 第 6 行：坐标变量为了简洁没写下标 2；(b) 第 9 行：科学记数有几种写法，`e-3` 与 `10^-3` 等价——**别在 e 记号里用 ^ 符号**；(c) 第 16 行：调用 jinc 函数；(d) 第 19 行：3 次方根把图样里的"圆环"从暗部拉出来（第 3 章的对比度拉伸技巧）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-3.png" width="760" />
+  <img src="../../images/fourier/fig-4-3.png" width="760" />
   <figcaption>图 4.3 圆孔的夫琅禾费辐照度：(a) 图样；(b) x 轴剖面。这就是 Airy 图样（截自原书）</figcaption>
 </figure>
 
@@ -731,7 +731,7 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 顺手再核对两个书里没算的判据数字：式 (4.27)（观察区取 \(L+w\) 邻域）要求 \(z^3 \gg 516\ \text{m}^3\)，\(z^3 = 125000\)——裕量 242 倍；式 (4.29) 要求 \(z \gg 9.93\) m，\(z=50\) m 是 5 倍——夫琅禾费区成立但不算"极远"，与书选 \(z=50\) m 的口径一致。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-py-airy.png" width="860" />
+  <img src="../../images/fourier/fig-4-py-airy.png" width="860" />
   <figcaption>图 4-P2 Airy 图样数值复现：<span class="arithmatex">\(I_2^{1/3}\)</span> 图像（1/3 次根拉出圆环）与 <span class="arithmatex">\(y=0\)</span> 剖面（红线为式 (4.36) 的 <span class="arithmatex">\(\pm0.61\lambda z/w\)</span> 零点参考位）（笔记自制）</figcaption>
 </figure>
 
@@ -745,7 +745,7 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
 **4.1 光程差**：波长 \(\lambda\) 的平面波入射到两块厚度、折射率都不同的玻璃上（图 4.4），求平面 \(a\)、\(b\) 之间光束两部分的光程差（OPD）表达式。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-4.png" width="560" />
+  <img src="../../images/fourier/fig-4-4.png" width="560" />
   <figcaption>图 4.4 平面波穿过两块不同的玻璃（截自原书）</figcaption>
 </figure>
 
@@ -789,14 +789,14 @@ Python 实测（\(w=1\) mm、\(\lambda=0.633\ \mu\text{m}\)、\(z=50\) m、\(L=0
     **数值验证**（`ch4_exercises`，\(L=0.02\) m、\(M=512\)、\(z=2\) m）：采样 chirp 的瞬时频率是 \(x/(\lambda z)\)，所以 DFT 只能在"驻点带" \(|f| \le L/(2\lambda z) = 7900\) cyc/m 内与解析 \(H\) 比较（它要低于 Nyquist \(1.28\times10^4\)——这就是第 5 章采样判据的预告）。实测：0.8 频带内最大缠绕相位差 **0.165 rad**，0.5 频带内 **0.069 rad**；残差来自常数幅度 chirp 被窗口硬截断的边缘贡献，不是公式错。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-py-ex43.png" width="860" />
+  <img src="../../images/fourier/fig-4-py-ex43.png" width="860" />
   <figcaption>图 4-P3 习题 4.3 数值验证：左——<span class="arithmatex">\(\angle(H_{num}/H_{an})\)</span> 沿 <span class="arithmatex">\(f_X\)</span>（<span class="arithmatex">\(f_Y=0\)</span>）在 0.8 驻点带内全部缠绕在 ±0.1 rad 内；右——低频窗（|f|≤400）内两个解卷绕相位完全重合（笔记自制）</figcaption>
 </figure>
 
 **4.4 三个孔径的解析夫琅禾费场与辐照度**（图 4.5，单位振幅平面波照明）：推导解析表达式，并在计算机上画解析辐照度图样与剖面；自选合适的传播距离 \(z\) 与观察面边长 \(L\)；\(\lambda = 0.633\ \mu\text{m}\)，参数：(a) \(w_X = 0.1\) mm、\(w_Y = 0.05\) mm；(b) \(w_1 = 1\) mm、\(w_2 = 0.2\) mm；(c) \(w = 1\) mm、\(s = 4\) mm。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-5.png" width="680" />
+  <img src="../../images/fourier/fig-4-5.png" width="680" />
   <figcaption>图 4.5 孔径：(a) 矩形；(b) 带遮拦圆孔；(c) 一对圆孔（截自原书）</figcaption>
 </figure>
 
@@ -828,7 +828,7 @@ I_2(x,y) = \left(\frac{2w^2}{\lambda z}\right)^2 \cos^2\!\left(\frac{\pi s x}{\l
     取 \(z = 500\) m（要求 \(z \gg 49.6\) m——孔径外缘离中心远，远场更苛刻）、\(L = 0.6\) m。这是"Airy 包络 × 余弦条纹"的双缝升级版：条纹周期 \(\lambda z/s = 79.1\) mm，包络（单孔 Airy）第一零点 \(0.61\lambda z/w = 193\) mm，包络内约 5 条亮纹。峰值 \((2\pi w^2/\lambda z)^2 = 3.94\times10^{-4}\)，数值逐点吻合。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-py-ex44.png" width="900" />
+  <img src="../../images/fourier/fig-4-py-ex44.png" width="900" />
   <figcaption>图 4-P4 习题 4.4 解析夫琅禾费图样：上排——(a) 矩形孔图像与 sinc²×sinc² 剖面、(b) 环形孔剖面（实线）与无遮拦圆孔（虚线）对比；下排——(b) 环形孔图像、(c) 双孔图像与"条纹 × Airy 包络"剖面（显示一律 <span class="arithmatex">\(I_2^{1/3}\)</span> 拉伸）（笔记自制）</figcaption>
 </figure>
 
@@ -856,7 +856,7 @@ I_2(x,y) = \left(\frac{w^2}{\lambda z}\right)^2 \mathrm{jinc}^2\!\left(\frac{w\r
     \(A_1 = A_2\) 时退化为 4.4(c) 的 \(\cos^2\)（此时 \(A_1^2+A_2^2+2A_1A_2\cos 2\alpha = 2A^2(1+\cos 2\alpha) = 4A^2\cos^2\alpha\)）；\(A_2 \to 0\) 时条纹消失只剩单孔 Airy。条纹**可见度（visibility）** \(V = 2A_1A_2/(A_1^2+A_2^2)\)：\(A_1=1, A_2=0.4\) 时 \(V = 0.69\)，中心区 \(I_{\max}/I_{\min} = \big((A_1+A_2)/(A_1-A_2)\big)^2 = 5.44\)。数值验证（\(z=500\) m）：峰值 \((w^2/\lambda z)^2\pi^2(A_1+A_2)^2 = 1.931\times10^{-4}\) 与实测一致，条纹周期 79.1 mm。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-4-py-ex45.png" width="860" />
+  <img src="../../images/fourier/fig-4-py-ex45.png" width="860" />
   <figcaption>图 4-P5 习题 4.5（<span class="arithmatex">\(A_1=1, A_2=0.4\)</span>）：Airy 包络内可见度 0.69 的余弦条纹；与图 4-P4(c) 对比，暗纹不再到零（笔记自制）</figcaption>
 </figure>
 

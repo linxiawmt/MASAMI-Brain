@@ -122,7 +122,7 @@ U_p(x, y, z) = e^{i\mathbf{k}\cdot\mathbf{r}} = e^{i\frac{2\pi}{\lambda}(\alpha 
 式 (7.7) 把网格参数和传播几何绑在了一起，是全章的枢纽。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-1.png" width="420" />
+  <img src="../../images/waveprop/fig-7-1.png" width="420" />
   <figcaption>图 7.1 方向余弦 α、β、γ 的几何示意：波矢 k 与三条坐标轴夹角的余弦（截自原书）</figcaption>
 </figure>
 
@@ -181,7 +181,7 @@ U_p(x, y, z) = e^{i\mathbf{k}\cdot\mathbf{r}} = e^{i\frac{2\pi}{\lambda}(\alpha 
 **满足式 (7.14)（约束 1）意味着：所选网格间距足以采样"影响观测面感兴趣区域"的空间带宽。**它在 \((\delta_1, \delta_2)\) 平面上是一条斜率为 \(-D_2/D_1\)、截距为 \(\lambda \Delta z/D_1\) 的直线（7.3.3 节的图 7.7 会再画它）。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-2.png" width="640" />
+  <img src="../../images/waveprop/fig-7-2.png" width="640" />
   <figcaption>图 7.2 角度定义：α_max = α_edges + α_k——源面下边缘发出、恰好扫过观测孔径上边缘的最大角（截自原书）</figcaption>
 </figure>
 
@@ -224,7 +224,7 @@ N = \frac{D_{grid}}{\delta_2}
 **满足式 (7.20)（约束 2）意味着：观测面网格足够宽，卷绕回来的光不会爬进感兴趣区域。**注意 \(D_1 \delta_2/\delta_1\) 就是"几何像"的大小（两副网格的缩放关系），\(\lambda \Delta z/\delta_1\) 是衍射展宽（源面网格边缘两点的角分离 \(\lambda/\delta_1\) 乘距离）。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-3.png" width="660" />
+  <img src="../../images/waveprop/fig-7-3.png" width="660" />
   <figcaption>图 7.3 观测面上被最大角含量照亮的区域：几何像 D1δ2/δ1 加上两侧 ±α_max·Δz 的衍射展宽（截自原书）</figcaption>
 </figure>
 
@@ -445,7 +445,7 @@ f_{loc_x} = \frac{1}{2 \pi} \frac{\partial}{\partial x_1} \frac{k}{2}\left(\frac
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-4.png" width="640" />
+  <img src="../../images/waveprop/fig-7-4.png" width="640" />
   <figcaption>图 7.4 方孔菲涅耳衍射，单步仿真 vs 解析：(a) 观测面辐照度；(b) 观测面相位。采样参数按式 (7.25)/(7.42) 选取（截自原书）</figcaption>
 </figure>
 
@@ -568,7 +568,7 @@ N \ge \frac{\lambda \Delta z}{\delta_1 \delta_2}.
 四个不等式联立求解不容易，最直接的办法是把它们的边界画在 \((\delta_1, \delta_2)\) 平面上。原书例子参数：\(D_1 = 2\) mm、\(D_2 = 4\) mm、\(\Delta z = 0.1\) m、\(\lambda = 1\,\mu\)m。图 7.5(a) 是约束 4 给出的 \(\log_2 N\) 下界等高线（实线族），叠加约束 1（点划线）与约束 3（虚线）对 \(\delta_2\) 的上界；约束 1 显然比约束 3 更紧。选点被限制在点划线以下的左下角，该区域等高线给出的 \(\log_2 N\) 至少 \(2^{8.5}\)；因为 FFT 要 2 的幂，取 \(N = 2^9 = 512\)。随后（有点随意地）选 \(\delta_1 = 9.48\,\mu\)m、\(\delta_2 = 28.12\,\mu\)m，约束 4 给出最少 \(2^{8.55}\) 个点；图 7.5(b) 显示约束 2 只要求 \(2^{8.51}\)。于是 \(N = 512\) 足够。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-5.png" width="760" />
+  <img src="../../images/waveprop/fig-7-5.png" width="760" />
   <figcaption>图 7.5 角谱传播的采样约束（D1=2 mm, D2=4 mm, Δz=0.1 m, λ=1 µm）：(a) 约束 4 的 log2 N 等高线 + 约束 1（点划线）/约束 3（虚线）上界；(b) 约束 2 的等高线。红* 处参数即正文所选（截自原书）</figcaption>
 </figure>
 
@@ -622,7 +622,7 @@ N \ge \frac{\lambda \Delta z}{\delta_1 \delta_2}.
     ```
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-6.png" width="640" />
+  <img src="../../images/waveprop/fig-7-6.png" width="640" />
   <figcaption>图 7.6 方孔菲涅耳衍射，角谱仿真 vs 解析：(a) 观测面辐照度；(b) 观测面缠绕相位。四条约束下选参，结果贴合（截自原书）</figcaption>
 </figure>
 
@@ -640,7 +640,7 @@ N \ge \frac{\lambda \Delta z}{\delta_1 \delta_2}.
 时，约束 3 不是限制因素。有趣的物理解释：**几何光束被包含在直径 \(D_2\) 的区域内**——这包括发散源，以及焦点在观测面**之前或之后**的会聚源（习题 5 要求画出这四种光线图，工程 2 的图 7-10 三情形就是它的参数版）。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-7.png" width="760" />
+  <img src="../../images/waveprop/fig-7-7.png" width="760" />
   <figcaption>图 7.7 角谱传播的一般采样约束：约束 1（实线，斜率 −D2/D1）与约束 3 上界（点划线，斜率 1+Δz/R、同截距 λΔz/D1）、下界（虚线，δ1 截距 λΔz/[D1(1+Δz/R)]）的三种相对位置（截自原书）</figcaption>
 </figure>
 
@@ -1556,17 +1556,17 @@ flowchart TD
 书例复现 + 约束图 + 三情形判定：
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-8.png" width="860" />
+  <img src="../../images/waveprop/fig-7-8.png" width="860" />
   <figcaption>图 7-8（自绘仿真）工程 1：单步法（原书图 7.4）与角谱法（原书图 7.6）复现 vs 解析闭式。(a)(b) N=128 单步：辐照度/相位；(c)(d) N=512 角谱：辐照度/缠绕相位</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-9.png" width="860" />
+  <img src="../../images/waveprop/fig-7-9.png" width="860" />
   <figcaption>图 7-9（自绘仿真）工程 1：图 7.5 复现——角谱传播采样约束等高线。(a) 约束 4 的 log2 N 等高线 + 约束 1（点划）/约束 3 上界（虚线）；(b) 约束 2 等高线。红* = 书例选点 (9.48 µm, 28.12 µm)</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-10.png" width="860" />
+  <img src="../../images/waveprop/fig-7-10.png" width="860" />
   <figcaption>图 7-10（自绘仿真）工程 1：图 7.7 复现——式 (7.60) 三情形的约束 3 去留（阴影 = 同时满足约束 1/3 的 δ2 可行带）。(a) 1+Δz/R=3 > D2/D1：约束 3 上界更松、不用管；(b) 0.5 与 (c) −1.5：|1+Δz/R| < D2/D1，约束 3 免检，可行域被约束 1 完全决定</figcaption>
 </figure>
 
@@ -2242,17 +2242,17 @@ flowchart TD
 - 习题 6（代数 + 数值）：1000 组随机参数（约束 1 成立域内）\(\max[\text{约束2右端} - \text{约束4右端}] = 0\)，恒 \(\le 0\)——约束 4 蕴含约束 2 数值实锤。
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-11.png" width="860" />
+  <img src="../../images/waveprop/fig-7-11.png" width="860" />
   <figcaption>图 7-11（自绘仿真）工程 2 习题 1：a=4、N=128、L=4 m 的啁啾混叠。(a) 采样后 Re g(x)，红色区域 |x|>1 m 即 f_loc > Nyquist，振荡明显"变慢"（频率回折）；(b) 真实局部频率 a²x（蓝）与回折后表观频率 |2f_N−f_loc|（绿）</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-12.png" width="880" />
+  <img src="../../images/waveprop/fig-7-12.png" width="880" />
   <figcaption>图 7-12（自绘仿真）工程 2 习题 2/3：采样图（log2 N 等高线 + 红* 可行选点）。(a) 点源 100 km：约束 1 对 D1→0 失效，约束 4 主导；(b) D1=1 mm 短距：约束 1 强制 δ1 < 0.5 µm（红线），可行点 (0.4 µm, 0.1 mm) 需 N=2^15</figcaption>
 </figure>
 
 <figure>
-  <img src="../../../images/holo/waveprop/fig-7-13.png" width="880" />
+  <img src="../../images/waveprop/fig-7-13.png" width="880" />
   <figcaption>图 7-13（自绘仿真）工程 2 习题 4：会聚源（R=−0.2 m）。(a) 约束 1/3 与选中网格；(b) 角谱仿真 vs 推广解析辐照度；(c) 输出相位（曲率拟合 R_out≈−0.107 m ≈ R+Δz）；(d) 勘误 c 实锤：R=+0.2 展宽（发散）、R=−0.2 收窄（会聚）</figcaption>
 </figure>
 

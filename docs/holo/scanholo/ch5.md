@@ -59,7 +59,7 @@ ch4 的所有应用都建立在 ch3 图 3.11 的标准双瞳处理器上。**广
 PD 收集**透过掩膜的全部光**，输出被处理且被扫描的电流 \(i(t)\)；BPF 调谐到 \(\Omega\) 取出外差电流 \(i_\Omega(t)\)。3-D 物体照旧建模成一叠薄、弱散射的横切片，每片用振幅透过率 \(T(x,y;z)\) 表示。扫描与外差检测部分与图 3.11 完全相同。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-5-1.png" width="640" class="lq-img" />
+  <img src="../../images/scanholo/fig-5-1.png" width="640" class="lq-img" />
   <figcaption>图 5.1 广义双瞳图像处理器：双瞳 p1@ω0、p2@ω0+Ω 经 L1/扫描振镜在 3-D 物体（切片 T(x,y;z)，前表面距焦点 z0）上形成扫描场；L2 后焦面上的掩膜 M(x,y) 决定处理模式，PD 空间积分后 BPF@Ω 给 i_Ω(t)，×cos/×sin 解调出 i_c、i_s。Adapted from T.-C. Poon, J. Holography Speckle 1, 6-25 (2004)（截自原书）</figcaption>
 </figure>
 
@@ -280,7 +280,7 @@ i_{\Omega p}(x,y)=\int\exp\big[-jk_0(z+z_0)\big]\frac{jk_0}{2\pi(z+z_0)}\,
 本笔记把例 5.1 的物理差异完整数值化（代码见下）：物体 = 三条振幅缝（\(|T|=1\)）+ 一块**纯相位圆盘**（\(|T|=1\)、零吸收、相位延迟 1.5 rad），物体以外区域全吸收（\(T=0\)）。相干模式（(5.1-9)，\(p_2=1\)）记录后重建：振幅与 \(|T|\) 的相关系数 **1.0000**，圆盘上相位读出 **+1.5000 rad**（真值 1.5，精确）；非相干模式（(5.1-6c)，标准 OSH 的 \(p_1=1,p_2=\delta\)）记录后重建：强度与 \(|T|^2\) 相关系数 **1.0000**，但圆盘相位读出 **+0.0000 rad**——纯相位结构在非相干模式里**完全不可见**。
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-coherent-incoherent.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-coherent-incoherent.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果，Example 5.1 + 式 5.1-6b/6c 对比）：上排 相干模式——物体相位（三缝振幅 + 1.5 rad 相位圆盘）→ 复 FZP 全息图 |i_Ωp|（式 5.1-9）→ 重建相位在圆盘上精确读出 1.5 rad；下排 非相干模式——强度物体 |T|²（圆盘"隐身"成均匀亮盘）→ 重建振幅 ≈ |T|² → 重建相位 ≈ 0（相位信息从未被记录）</figcaption>
 </figure>
 
@@ -504,7 +504,7 @@ OSH 用于 3-D 显微的适用性最近被系统评估过：**偏振效应、高
 - **双光束扫描**（double-beam scanning）：平面波 + 球面波**一起**光栅扫描厚样品；**单光束扫描**（single-beam scanning）：只有一束波被扫描，另一束相对样品保持静止。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-5-2.png" width="560" class="lq-img" />
+  <img src="../../images/scanholo/fig-5-2.png" width="560" class="lq-img" />
   <figcaption>图 5.2 OSH 的两种扫描构型：实线 单光束扫描（振镜 M1 扫、M2 固定）；虚线 双光束扫描（M2 扫、M1 固定）。M：固定反射镜，BS：分束器，L1/L2：透镜，PD：光电探测器；样品与掩膜分别放在 L2 的前、后焦面（即图 5.1 的情形）（截自原书）</figcaption>
 </figure>
 
@@ -588,7 +588,7 @@ a(x,y)=\frac{jk_0}{2\pi z_1}\exp\Big[\frac{jk_0(x^2+y^2)}{2z_1}\Big].
 取 \(z_i=2f\)、\(z_0=z_1=f/4\)，(5.3-5) 成立（\(1/3f+1/(3f/2)=1/f\) ✓，本笔记已数值复核，见 5.3.3 代码）。由于 \(z_0=z_1\)，照明样品的是一对**曲率相反的球面波**。
 
 <figure>
-  <img src="../../../images/holo/scanholo/fig-5-3.png" width="620" class="lq-img" />
+  <img src="../../images/scanholo/fig-5-3.png" width="620" class="lq-img" />
   <figcaption>图 5.3 a) 标准 OSH：TDFZP 作扫描光束（p1=1 全开→焦点 c→发散球面波；p2=δ→平面波），物面距焦点 z0；b) PSF 工程：点源 p 在光瞳面前 z_i 处（实现 p2 的二次相位），经透镜成像于 c'（物面后 z1），物面上是曲率相反的球面波对（发散自 c、会聚至 c'）。Adapted from T.-C. Poon, J. Holography and Speckle 1, 6 (2004)（截自原书）</figcaption>
 </figure>
 
@@ -626,7 +626,7 @@ i_c(x,y)\sim\sin\Big[\frac{k_0}{z_0}(x^2+y^2)\Big]
 本笔记数值复现（代码见下）：两张针孔全息图——标准 \(i_c\sim\sin[k_0r^2/2z_0]\)（式 5.3-2）与工程 \(i_c\sim\sin[k_0r^2/z_0]\)（式 5.3-7）——角谱重建后：工程版的聚焦距离精确落在 \(z_0/2\)（扫描曲线峰值 3520 = 几何值，标准版因低菲涅尔数 \(N_F=4.1\) 出现 Li & Wolf 焦移，峰值前移至 6512）；焦斑半高全宽（FWHM）**15.11 vs 7.53，比值 2.006 ≈ 理论 2.0**，且各自贴住 Airy 理论值（15.09/7.54）。
 
 <figure>
-  <img src="../../../images/holo/scanholo/sim-psf-engineering.png" width="720" class="lq-img" />
+  <img src="../../images/scanholo/sim-psf-engineering.png" width="720" class="lq-img" />
   <figcaption>图（本笔记运行结果，式 5.3-2 vs 5.3-7）：左上 标准针孔全息图 \(\sin(k_0r^2/2z_0)\)；右上 工程全息图 \(\sin(k_0r^2/z_0)\)（条纹密度翻倍）；左下 两个焦斑剖面对比（FWHM 15.1 → 7.5，分辨率 ×2）；右下 聚焦锐度 vs 重建距离——工程版峰值在 z0/2（3520，精确），标准版在 z0 附近（6512，低菲涅尔数焦移）</figcaption>
 </figure>
 

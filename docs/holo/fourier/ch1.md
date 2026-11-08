@@ -222,14 +222,14 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 一维函数的图像如下（注意 \(\mathrm{rect}\) 和 \(\mathrm{circ}\) 在边界点取半值 \(1/2\)——这是解析约定，数值网格很少恰好落在边界上）：
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-1.png" width="560" />
+  <img src="../../images/fourier/fig-1-1.png" width="560" />
   <figcaption>图 1.1 基本一维函数：rect、sinc、Λ、comb、高斯（截自原书）</figcaption>
 </figure>
 
 这些一维函数可以相乘组成**可分离的二维函数**。圆函数（**circle function**）是圆对称二维函数，常用径向变量 \(r=(x^2+y^2)^{1/2}\) 表示。高斯没有简写名，但出场率极高；这里选 \(\exp(-\pi x^2)\) 这种形式是因为它对傅里叶分析最方便（见下面的拓展框）。圆函数和二维高斯的曲面图：
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-2.png" width="600" />
+  <img src="../../images/fourier/fig-1-2.png" width="600" />
   <figcaption>图 1.2 二维函数示例：circ（圆柱）与 exp[−π(x²+y²)]（高斯包络）（截自原书）</figcaption>
 </figure>
 
@@ -446,7 +446,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 圆函数的变换曲面如下——这就是著名的"jinc"形频谱，中心尖峰周围一圈圈衰减的环：
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-3.png" width="480" />
+  <img src="../../images/fourier/fig-1-3.png" width="480" />
   <figcaption>图 1.3 圆函数的变换：原点处峰值 π（截自原书）</figcaption>
 </figure>
 
@@ -693,7 +693,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
 - chirp 勘误验证：修正式误差 \(1.4\times10^{-2}\)（截断水平），原书式误差 \(2.0\)——第 2 处笔误实锤。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-pairs.png" width="760" />
+  <img src="../../images/fourier/fig-1-py-pairs.png" width="760" />
   <figcaption>图 1-P1 表 1.3 三个一维变换对的数值验证：DFT（圆点）与解析式（实线）重合（笔记自制）</figcaption>
 </figure>
 
@@ -845,7 +845,7 @@ g_S(x,y) = g_x(x)\,g_y(y) ,
     ```
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-circ.png" width="780" />
+  <img src="../../images/fourier/fig-1-py-circ.png" width="780" />
   <figcaption>图 1-P2 circ 变换对径向剖面（fY=0）：左为半径 1 圆盘（峰值 π，匹配表 1.3/图 1.3），右为半径 1/2（峰值 π/4，匹配表 1.2 定义）（笔记自制）</figcaption>
 </figure>
 
@@ -1086,7 +1086,7 @@ graph LR
 数值验证结论：两条路线的最大差异 \(5.3\times10^{-15}\)（相对量同阶），纯粹是浮点舍入——式 (1.13) 成立。\(h\) 归一化后 \(\sum h=1\)，即 \(H(0,0)=1\)：模糊不改变图像的平均亮度（直流分量）。
 
 <figure>
-  <img src="../../../images/holo/fourier/fig-1-py-lsi.png" width="800" />
+  <img src="../../images/fourier/fig-1-py-lsi.png" width="800" />
   <figcaption>图 1-P3 线性空间不变系统演示：物 g1、点扩散函数 h、像 g2=g1⊗h；直接卷积与频域法之差在 1e-15 量级（笔记自制）</figcaption>
 </figure>
 
