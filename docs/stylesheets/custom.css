@@ -707,3 +707,235 @@ body.fx-ready.is-home .home-grid-cards .grid.cards > ul > li.in:hover { transfor
 
 /* 首页隐藏 Material 自动补的页面标题 h1（hero 已有站名） */
 body.is-home .md-typeset > h1:first-child { display: none; }
+
+/* =====================================================================
+   笔记页排版精修 v2（全站）：导览卡 / 小节标题 / 表格 / 提示框 /
+   代码块 / 插图卡 / 流程图卡 / 公式排版 —— 呼应首页玻璃+渐变语言
+   ===================================================================== */
+
+/* ---- 导览卡：把"本章解决 / 承上启下"blockquote 升级成渐变导览条 ---- */
+.md-typeset blockquote {
+  position: relative;
+  border: none;
+  border-left: 4px solid #7873f5;
+  border-radius: 0 12px 12px 0;
+  background: linear-gradient(90deg, rgba(120, 115, 245, 0.10), rgba(255, 110, 196, 0.06) 65%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(120, 115, 245, 0.12);
+  padding: 0.85rem 1.2rem 0.85rem 1.05rem;
+  margin: 1.3em 0;
+  color: var(--md-default-fg-color);
+  overflow: hidden;
+}
+.md-typeset blockquote p { margin: 0.45em 0; }
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  background: linear-gradient(90deg, rgba(120, 115, 245, 0.16), rgba(255, 110, 196, 0.09) 65%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(196, 126, 247, 0.18);
+}
+
+/* ---- 小节标题：h2 渐变侧标 + h3 淡色 ---- */
+.md-typeset h2 {
+  position: relative;
+  padding-left: 0.7rem;
+  margin-top: 2.1em;
+  scroll-margin-top: 3.2rem;
+}
+.md-typeset h2::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.22em; bottom: 0.22em;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--ui-grad);
+}
+.md-typeset h2 .headerlink { margin-left: 0.2rem; }
+.md-typeset h3 { scroll-margin-top: 3.2rem; }
+
+/* ---- 表格：圆角 + 表头渐变带 + 斑马纹 + 悬停高亮 ---- */
+.md-typeset table:not([class]) {
+  font-size: 0.755rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba(20, 24, 60, 0.05), 0 8px 22px rgba(20, 24, 60, 0.08);
+}
+.md-typeset table:not([class]) th {
+  background: linear-gradient(180deg, rgba(120, 115, 245, 0.16), rgba(120, 115, 245, 0.10));
+  font-weight: 700;
+  border-bottom: 2px solid rgba(120, 115, 245, 0.45);
+  padding: 0.55em 0.7em;
+  white-space: nowrap;
+}
+.md-typeset table:not([class]) th:first-child { border-top-left-radius: 9px; }
+.md-typeset table:not([class]) th:last-child { border-top-right-radius: 9px; }
+.md-typeset table:not([class]) td {
+  padding: 0.5em 0.7em;
+  border-bottom: 1px solid rgba(20, 24, 60, 0.08);
+  background: var(--md-default-bg-color);
+}
+.md-typeset table:not([class]) tbody tr:nth-child(even) td {
+  background: rgba(120, 115, 245, 0.045);
+}
+.md-typeset table:not([class]) tbody tr:hover td {
+  background: rgba(255, 110, 196, 0.07);
+}
+.md-typeset table:not([class]) tbody tr:last-child td { border-bottom: none; }
+.md-typeset table:not([class]) tbody tr td:first-child { border-left: 3px solid transparent; }
+.md-typeset table:not([class]) tbody tr:hover td:first-child { border-left-color: #ff6ec4; }
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* ---- 提示框：去掉生硬描边，改成柔色卡 + 左侧色条 + 细投影 ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border: none;
+  border-left: 3px solid var(--md-admonition-fg-color, #7873f5);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--md-admonition-bg-color, #7873f5) 14%, var(--md-default-bg-color));
+  box-shadow: 0 3px 14px rgba(20, 24, 60, 0.07);
+}
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details {
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- 代码块：卡片化 + 内联代码芯片 ---- */
+.md-typeset pre {
+  border-radius: 12px;
+  border: 1px solid rgba(20, 24, 60, 0.10);
+  box-shadow: 0 4px 16px rgba(20, 24, 60, 0.09);
+}
+.md-typeset pre > code { line-height: 1.55; }
+[data-md-color-scheme="slate"] .md-typeset pre {
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+.md-typeset :not(pre) > code {
+  border: 1px solid rgba(120, 115, 245, 0.22);
+  background: rgba(120, 115, 245, 0.08);
+  padding: 0.1em 0.38em;
+  border-radius: 6px;
+}
+
+/* ---- 插图卡：图 + 图注 成组入卡 ---- */
+.md-typeset figure {
+  border: 1px solid rgba(20, 24, 60, 0.10);
+  border-radius: 12px;
+  background: var(--md-default-bg-color);
+  padding: 0.7rem 0.7rem 0.45rem;
+  margin: 1.35em 0;
+  box-shadow: 0 5px 18px rgba(20, 24, 60, 0.09);
+}
+.md-typeset figure img {
+  border: none;
+  box-shadow: none;
+}
+.md-typeset figure figcaption {
+  margin-top: 0.5em;
+  padding-top: 0.45em;
+  border-top: 1px dashed rgba(20, 24, 60, 0.14);
+  line-height: 1.55;
+}
+[data-md-color-scheme="slate"] .md-typeset figure {
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.30);
+}
+[data-md-color-scheme="slate"] .md-typeset figure figcaption {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+/* 站内插图（非 figure 包裹）也统一柔化边框 */
+.md-typeset img {
+  border-color: rgba(20, 24, 60, 0.10);
+  box-shadow: 0 3px 12px rgba(20, 24, 60, 0.07);
+}
+[data-md-color-scheme="slate"] .md-typeset img {
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* ---- Mermaid 流程图：居中入卡，防止溢出 ---- */
+.md-typeset .mermaid {
+  display: flex;
+  justify-content: center;
+  background: var(--md-default-bg-color);
+  border: 1px dashed rgba(120, 115, 245, 0.30);
+  border-radius: 12px;
+  padding: 0.9rem 0.6rem;
+  margin: 1.3em 0;
+  overflow-x: auto;
+}
+.md-typeset .mermaid svg { max-width: 100%; height: auto; }
+
+/* ---- 公式排版：独立公式呼吸感 + 横向溢出保护 ---- */
+.md-typeset mjx-container[jax="CHTML"][display="true"] {
+  margin: 1.15em 0 !important;
+  padding: 0.15em 0.1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+.md-typeset li > mjx-container[jax="CHTML"][display="true"] {
+  margin: 0.6em 0 !important;
+}
+/* 长公式在窄屏下容器内横滚，不撑破页面 */
+.md-typeset .arithmatex {
+  max-width: 100%;
+}
+.md-typeset span.arithmatex {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  vertical-align: middle;
+}
+/* MathJax 辅助层（绝对定位的隐藏 MathML）不得参与页面滚动区 */
+.md-typeset mjx-assistive-mml {
+  contain: strict;
+  width: 1px;
+  height: 1px;
+}
+/* 移动端表格：块级化 + 内部横滚（保留圆角斑马纹） */
+.md-typeset table:not([class]) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* ---- 知识树（brtree）点缀：根标签用品牌渐变 ---- */
+.brtree .brlabel.root {
+  background: var(--ui-grad);
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+}
+.brtree .brleaf {
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.brtree .brleaf:hover {
+  border-color: rgba(255, 110, 196, 0.55);
+  transform: translateY(-1px);
+}
+
+/* ---- 链接：正文链接渐变下划线 ---- */
+.md-typeset p a,
+.md-typeset li a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(120, 115, 245, 0.4);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.md-typeset p a:hover,
+.md-typeset li a:hover {
+  border-bottom-color: #ff6ec4;
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .grid.cards a,
+.md-typeset figure a,
+.md-typeset .admonition a {
+  border-bottom: none;
+}
+
