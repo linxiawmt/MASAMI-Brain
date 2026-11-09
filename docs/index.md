@@ -28,8 +28,8 @@ hide:
       <div class="now-kicker">NOW · 手头在啃</div>
       <div class="now-item">
         <div class="now-name">《机器学习实战》</div>
-        <div class="now-note">15 章过了 9 章，剩下的在路上</div>
-        <div class="now-bar"><i style="--w:60%"></i></div>
+        <div class="now-note">15 章全完结，随时回头翻</div>
+        <div class="now-bar done"><i style="--w:100%"></i></div>
       </div>
       <div class="now-item">
         <div class="now-name">《传热学》</div>
@@ -132,7 +132,7 @@ hide:
 
     ---
 
-    Harrington 的 MLIA，9/15 章上线，代码全从 Python 2 改成了能直接跑的 Python 3。
+    Harrington 的 MLIA 15 章全完结，代码全从 Python 2 改成了能直接跑的 Python 3。
 
     [:octicons-arrow-right-24: 去看](ml/index.md)
 
