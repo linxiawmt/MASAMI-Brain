@@ -4823,10 +4823,10 @@
 </tbody>
 </table>
 <p>图像处理的最小流程只有四步，本章就把这条链完整走通：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 读取图像&lt;br/&gt;cv2.imread"] --&gt; B["② 处理图像&lt;br/&gt;本章用灰度化客串&lt;br/&gt;第 2 章起才是主体"]
     B --&gt; C["③ 显示图像&lt;br/&gt;imshow + waitKey"]
-    C --&gt; D["④ 保存图像&lt;br/&gt;cv2.imwrite"]</code></pre>
+    C --&gt; D["④ 保存图像&lt;br/&gt;cv2.imwrite"]</div>
 <div class="admonition note">
 <p class="admonition-title">运行环境约定</p>
 <p>本章所有代码引用本目录根下的素材（<code>picture1.jpg</code> 等），路径写作相对路径 <code>picture1.jpg</code>。<strong>运行时工作目录需为 数字图像处理-python 根目录</strong>，否则 <code>imread</code> 读不到图（详见 §1.2.2 的 (-215) 错误与"坑与陷阱"第 2 条）。拿不准时先 <code>print(os.getcwd())</code> 确认。</p>
@@ -5432,9 +5432,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

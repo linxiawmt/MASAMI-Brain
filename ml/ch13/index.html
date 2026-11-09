@@ -5009,12 +5009,12 @@
 </div>
 <h3 id="1322-在-NumPy-中实现-PCA">13.2.2 在 NumPy 中实现 PCA<a class="headerlink" href="#1322-在-NumPy-中实现-PCA" title="Permanent link">#</a></h3>
 <p>将数据转换成前 N 个主成分的伪码大致如下：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["去除平均值"] --&gt; B["计算协方差矩阵"]
     B --&gt; C["计算协方差矩阵的&lt;br/&gt;特征值和特征向量"]
     C --&gt; D["将特征值&lt;br/&gt;从大到小排序"]
     D --&gt; E["保留最上面的 N 个特征向量"]
-    E --&gt; F["将数据转换到上述 N 个&lt;br/&gt;特征向量构建的新空间中"]</code></pre>
+    E --&gt; F["将数据转换到上述 N 个&lt;br/&gt;特征向量构建的新空间中"]</div>
 <p>建立一个名为 <code>pca.py</code> 的文件，加入下列代码。原书清单 13-1 是 Python 2 写法，笔记改写成 Python 3 可直接运行：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书 13.2.2 节 程序清单13-1 PCA算法（Python 3 改写）=====</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -5138,12 +5138,12 @@
 <p>已经去除了所有 NaN，接下来考虑应用 PCA。首先确认所需特征和可以去除特征的数目。<strong>PCA 会给出数据中所包含的信息量</strong>。需要特别强调：数据（data）和信息（information）之间具有巨大的差别——数据指的是接受的原始材料，其中可能包含噪声和不相关信息；信息是指数据中的相关部分。这些并非抽象概念：我们可以<strong>定量地计算</strong>数据中所包含的信息并决定保留的比例。</p>
 <div class="admonition note">
 <p class="admonition-title">运行流程</p>
-<p><pre class="mermaid"><code>flowchart LR
+<p><div class="mermaid">flowchart LR
     A["replaceNanWithMean()&lt;br/&gt;NaN → 列均值"] --&gt; B["去均值"]
     B --&gt; C["协方差矩阵&lt;br/&gt;590 × 590"]
     C --&gt; D["特征分解&lt;br/&gt;590 个特征值"]
     D --&gt; E["看方差占比&lt;br/&gt;决定保留几个"]
-    E --&gt; F["pca(dataMat, N)&lt;br/&gt;590 → N"]</code></pre>
+    E --&gt; F["pca(dataMat, N)&lt;br/&gt;590 → N"]</div>
 之所以"借用" pca() 里的代码而不直接调用，是因为我们想了解<strong>中间结果</strong>而非最后输出。</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== 书 13.3 节 借用 pca() 的中间步骤 =====</span>
@@ -5563,9 +5563,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

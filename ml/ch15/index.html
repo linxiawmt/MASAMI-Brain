@@ -5174,13 +5174,13 @@
 <p>MapReduce 是一个软件框架，可以将单个计算作业分配给多台计算机执行。它假定这些作业在单机上需要很长的运行时间，因此用多台机器缩短运行时间——常见的例子是日常统计数字的汇总，单机执行要超过一整天。</p>
 <p>尽管有人声称独立开发过类似的框架，美国还是把 MapReduce 的专利颁发给了 Google。Google 的 Jeffrey Dean 和 Sanjay Ghemawat 在 2004 年的论文《MapReduce: Simplified Data Processing on Large Clusters》中第一次提出了这个思想。MapReduce 的名字由函数式编程中常用的 map 和 reduce 两个单词组成。</p>
 <p>MapReduce 在大量节点组成的集群上运行。工作流程：单个作业被分成很多小份，输入数据也被切片分发到每个节点，各节点只在本地数据上做运算，对应的运算代码称为 mapper，这个过程被称作 map 阶段；每个 mapper 的输出通过某种方式组合（一般还会做排序），排序后的结果再被分成小份分发到各个节点进行下一步处理，第二步的处理阶段被称为 reduce 阶段，对应的运行代码被称为 reducer。reducer 的输出就是程序的最终执行结果。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     IN["输入数据"] --&gt;|"切片分发"| M["map 阶段&lt;br/&gt;各节点只算本地数据"]
     M --&gt;|"合并 + 排序"| S["sort / combine&lt;br/&gt;相同 key 归组"]
     S --&gt;|"按 key 分发"| R["reduce 阶段&lt;br/&gt;汇总成最终结果"]
     R --&gt; OUT["输出"]
     MN["主节点 master node&lt;br/&gt;编配作业 · 副本容错 · 心跳监控"] -.-&gt; M
-    MN -.-&gt; R</code></pre>
+    MN -.-&gt; R</div>
 <p>MapReduce 的优势在于程序以并行方式执行：如果集群由 10 个节点组成，原先的作业需要 10 个小时，那么应用 MapReduce 后，一个多小时就能得到同样的结果。举个例子：给出过去 100 年内中国每个省每天的正确气温数据（格式 <code>&lt;province&gt;&lt;date&gt;&lt;temp&gt;</code>），想知道近 100 年中国国内的最高气温——先把数据按节点数分成很多份，每个节点各自寻找本机数据上的最高温度，每个 mapper 产生一个形如 <code>&lt;"max"&gt;&lt;temp&gt;</code> 的输出（所有 mapper 都用相同的 key："max"），最后只需一个 reducer 比较所有 mapper 的输出，就得到全局最高温。</p>
 <div class="admonition note">
 <p class="admonition-title">注意：mapper 之间、reducer 之间不通信</p>
@@ -5774,11 +5774,11 @@
 <p>map_fin() 方法在所有输入到达后开始执行。这时已经获得了权重向量 w 和本次批处理中的一组 x 值。每个 x 值是一个整数，它并不是数据本身，而是<strong>索引</strong>：数据存储在磁盘上，当脚本执行的时候读入到内存中。当 map_fin() 启动时，它首先将数据分成标签和数据，然后在本次批处理的数据（存储在 self.dataList 里）上进行迭代，如果有任何值被错分就将其输出给 reducer。为了在 mapper 和 reducer 之间保存状态，w 向量和 t 值都应被发送给 reducer。</p>
 <p>最后是 reduce() 函数，本例只有一个 reducer 执行。该函数首先迭代所有的 key/value 对并将值解包到一个局部变量 datalist 里，之后 dataList 里的值都将用于更新权重向量 w，更新量在 wDelta 中完成累加。然后，wMat 按照 wDelta 和学习率 eta 进行更新。在 wMat 更新完毕后，又可以重新开始整个过程：一个新的批处理过程开始，随机选择一组向量并输出。注意，这些向量的 key 是 mapper 编号。</p>
 <p>整个迭代作业的数据流如下（reducer 的输出绕回 mapper，形成链条）：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["reduce 输出&lt;br/&gt;新 w、t+1、随机 x 索引"] --&gt;|"下一轮"| B["map&lt;br/&gt;存 w/t，收集 x 索引"]
     B --&gt; C["map_fin&lt;br/&gt;逐个判错分，发 u/w/t"]
     C --&gt; D["reduce&lt;br/&gt;累加 wDelta，更新 w"]
-    D --&gt;|"t 小于 T，继续循环"| A</code></pre>
+    D --&gt;|"t 小于 T，继续循环"| A</div>
 <p>为了看一下该算法的执行效果，还需要用一些类似于 reducer 输出的数据作为输入数据启动该任务，作者为此附上了一个文件 kickStart.txt。在本机上执行前面的代码可以用下面的命令：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>%python mrSVM.py &lt; kickStart.txt
 </code></pre></div>
@@ -6071,9 +6071,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5528,7 +5528,7 @@ I_i(u,v) = \mathfrak{F}^{-1}\left\{\mathcal{H}(f_U,f_V)\,\mathfrak{F}\left\{I_g(
 </tbody>
 </table>
 <p>把"选哪条路、查哪条判据"画成决策流程图:</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["要仿真成像(衍射限)"] --&gt; B{"照明是相干还是非相干?"}
     B -- "相干(激光)" --&gt; C["场线性:Ui = h⊛Ug(式 7.4)&lt;br/&gt;H = 出瞳缩放反转(式 7.7)"]
     B -- "非相干(自然光)" --&gt; D["辐照度线性:Ii = PSF⊛Ig(式 7.23)&lt;br/&gt;OTF = H 的零频归一自相关(式 7.25)"]
@@ -5552,7 +5552,7 @@ I_i(u,v) = \mathfrak{F}^{-1}\left\{\mathcal{H}(f_U,f_V)\,\mathfrak{F}\left\{I_g(
     H1 --&gt; I["检查:截止半径、振铃、谱支撑、&lt;br/&gt;OTF 非负性"]
     H2 --&gt; I
     H3 --&gt; I
-    H4 --&gt; I</code></pre>
+    H4 --&gt; I</div>
 <h2 id="74-习题原书">7.4 习题(原书)<a class="headerlink" href="#74-习题原书" title="Permanent link">#</a></h2>
 <p>原书 10 道题。每题给题目与提示,本章做过数值的题附 Python 实测结果——先自己动手。</p>
 <p><strong>7.1 薄透镜成像</strong>:半径 10 mm、<span class="arithmatex">\(f = 50\)</span> mm 的薄透镜,物在透镜前 200 mm。(a) 像距(后主面到像)多少?横向放大率?(b) <span class="arithmatex">\(D_{XP}\)</span>、<span class="arithmatex">\(z_{XP}\)</span>、<span class="arithmatex">\(f/\#\)</span>?&copy; 物距增大到 <span class="arithmatex">\(z_1 \gg f\)</span>,像距约多少?</p>
@@ -5942,9 +5942,13 @@ f/\#_{OBJ} = \frac{z_{EP}}{D_{EP}}\,.
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

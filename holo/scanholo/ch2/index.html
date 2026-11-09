@@ -6308,7 +6308,7 @@ aA*h(x,y;z=z_0)=aA.
 </figure>
 
 <p>用 mermaid 把"记录—再现"的两步流程画出来：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph REC["全息记录（coding）"]
         L["激光分束"] --&gt; O["物波 ψo = 点源/物体散射&lt;br/&gt;（发散球面波）"]
         L --&gt; R["参考波 ψr（平面波）"]
@@ -6322,7 +6322,7 @@ aA*h(x,y;z=z_0)=aA.
         RW --&gt; RI["实像/孪生像：会聚&lt;br/&gt;前方 z0 (2.5-6b)"]
         RW --&gt; VI["虚像：发散&lt;br/&gt;后方 z0，原始物位置 (2.5-6c)"]
         VI --&gt; OB["观察者看虚像"]
-    end</code></pre>
+    end</div>
 <div class="admonition note">
 <p class="admonition-title">拓展：FZP 的频域三峰——孪生像问题的"频率视图"</p>
 <p>把 (2.5-4) 按 (2.5-6) 的方式拆开后，<span class="arithmatex">\(t(x,y)\)</span> 是"直流 <span class="arithmatex">\(A\)</span> + 正啁啾 + 负啁啾"。啁啾 <span class="arithmatex">\(e^{\pm jk_0r^2/2z_0}\)</span> 的<strong>局部频率</strong> <span class="arithmatex">\(\pm k_0r/2\pi z_0=\pm x/\lambda_0z_0\)</span>（正是式 2.5-5 加正负号）：FZP 的频谱因此是"中心直流峰 + 两翼啁啾谱"的三瓣结构。再现时三个波对应三个传播方向——同轴全息下它们全挤在观察方向上，这就是孪生像的频域解释；下一小节离轴全息的本质就是给其中一瓣<strong>搬个家</strong>。</p>
@@ -6591,14 +6591,14 @@ t(x,y)=A+B\sin\Big[\frac{k_0}{2z_0}(x^2+y^2)+2\pi f_cx\Big],
 \]</div>
 <p>其中 <span class="arithmatex">\(f_c=\dfrac{k_0\sin\theta}{2\pi}=\dfrac{\sin\theta}{\lambda_0}\)</span> 是<strong>空间载频</strong>（spatial carrier）。人话版：<span class="arithmatex">\(\theta\)</span> 越大，条纹越密。数字算一算就明白离轴的代价：<span class="arithmatex">\(\theta=45^\circ\)</span>、<span class="arithmatex">\(\lambda_0=0.6\,\mu\)</span>m 时 <span class="arithmatex">\(f_c=\sin45^\circ/0.6\,\mu\text{m}\approx1\,000\,000\)</span> cycle/mm——记录介质分辨率至少要 <strong>1000 lp/mm</strong>（线对/mm）。常见全息干版约 5000 lp/mm，绰绰有余；对比普通黑白胶卷只有 80~100 lp/mm、彩色胶卷 40~60 lp/mm。CCD 呢？市面上顶级的 Canon D60（3072×2048 像素，67.7 lp/mm，7.4 µm 像元）比全息干版差了两个数量级——<strong>离轴记录对电子记录介质的要求苛刻到不现实</strong>；把 <span class="arithmatex">\(\theta\)</span> 调小可以放宽要求，但小角度常常不实用。所以<strong>数字全息里同轴方案占主流</strong>［Piestun, Shamir, Wekamp, and Bryngdahl (1997)］，代价是孪生像问题必须用别的办法处理——孪生像消除本身就是一个研究方向［Poon et al. (2000)］。</p>
 <p>那数字化的全息图怎么"再现"？两条路：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph DIG["数字（电子）全息"]
         CCD["CCD/CMOS 拍下&lt;br/&gt;全息图 t(x,y)"] --&gt; PC["数字化存入计算机"]
         PC --&gt; C1["路线一：数字重构&lt;br/&gt;逐层算菲涅耳卷积&lt;br/&gt;a·t*h(x,y;z_i)"]
         C1 --&gt; V3D["改变 z = z1, z2, ...&lt;br/&gt;逐层重建 3-D 体（图 2.25）"]
         PC --&gt; C2["路线二：光学再现&lt;br/&gt;把 t(x,y) 写到 SLM 上&lt;br/&gt;（如改造后的 LCTV）"]
         C2 --&gt; OPT["激光照射 SLM&lt;br/&gt;实时相干再现"]
-    end</code></pre>
+    end</div>
 <p><strong>路线一（数字重构）</strong>：全息信息一旦进了电子/数字域，就可以用计算机直接算菲涅耳卷积 <span class="arithmatex">\(a\,t(x,y)*h(x,y;z)\)</span>（<span class="arithmatex">\(a\)</span> 是再现光振幅、<span class="arithmatex">\(t\)</span> 是记录的全息图、<span class="arithmatex">\(h\)</span> 是傅里叶光学的空间冲激响应）。对 <span class="arithmatex">\(z=D_1,D_2,\dots\)</span> 逐个距离算一遍，就把垂直于全息图的整个 3-D 体<strong>逐层重建</strong>出来（图 2.25）——本节 2.5.2 的离轴脚本、2.3.1 的 ASM 脚本干的就是这件事。先驱性工作是 Goodman 和 Lawrence [1967]；此后数字全息成为实用工具［Schnars and Juptner (2002)］，最新进展汇总见 Poon 主编 (2006)。</p>
 <figure>
   <img src="../../images/scanholo/fig-2-25.png" width="560" class="lq-img" />
@@ -6860,9 +6860,13 @@ t(x,y)=A+B\sin\Big[\frac{k_0}{2z_0}(x^2+y^2)+2\pi f_cx\Big],
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

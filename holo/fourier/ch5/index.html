@@ -5632,7 +5632,7 @@ z = \frac{L^2}{M\lambda}, \qquad M = \frac{L^2}{\lambda z}, \tag{5.14}
 <p>它用"跨阵列边长的样本数"定义了临界判据。给定场景下,临界条件可能要求太多样本(FFT 算不动),也可能太少(源面或观察面采不够)。别的需求还会跟临界判据打架——比如模拟大气湍流传播用的相位屏,有自己的一套采样间隔与阵列尺寸要求(参考文献 2、4)。判据总可以靠<strong>插值或抽取</strong>维持,但额外步骤增加复杂度和运行时间,而且未必解决样本太多/太少的实际问题。</p>
 <p>实践中表 5.3 的第 3 步常常不那么直接——源的有效带宽未必好估。最省事的办法:对采样参数做"有根据的猜测",跑几个试验仿真看结果。出现 stair-step 或假旁瓣之类的 artifact 迹象(图 5.4、5.5 那样),就得回头细查采样参数。</p>
 <p>把表 5.1 的三条 regime 与表 5.3 的四步设计画成一张决策流程图(数值验证见本节上文与习题 5.3 的功率诊断):</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["开始:确定源支撑 D1 与波长 λ、距离 z"] --&gt; B{"D1 &amp;lt; L 且留 2~3 倍 guard?"}
     B -- "否" --&gt; B1["加大 L 或缩小源,否则 FFT 周期回绕污染边缘"]
     B1 --&gt; A
@@ -5652,7 +5652,7 @@ z = \frac{L^2}{M\lambda}, \qquad M = \frac{L^2}{\lambda z}, \tag{5.14}
     H --&gt; I{"剖面有 ticks / stair-step / 副本 / 假旁瓣?"}
     I -- "有" --&gt; J
     I -- "无" --&gt; K["完成:结果可信"]
-    J --&gt; A</code></pre>
+    J --&gt; A</div>
 <p>读图提醒:<strong>split-step 不出现在这张图里</strong>——它救不了采样判据(式 5.15),只在需要中途插相位屏时才用。</p>
 <h3 id="546-分步仿真加窗与扩展网格">5.4.6 分步仿真、加窗与扩展网格<a class="headerlink" href="#546-分步仿真加窗与扩展网格" title="Permanent link">#</a></h3>
 <p>有人会想:"嘿,等等!把长距离传播拆成一连串更短的、每步都满足 <span class="arithmatex">\(\Delta x \geq \lambda z/L\)</span> 的 TF 传播,不就行了?"——可惜,<strong>结果与单次 TF 传播完全一样</strong>。因为一连串 TF 传播等价于把各段传递函数<strong>相乘</strong>后作用到初始场:比如把 <span class="arithmatex">\(z_N\)</span> 拆成若干短距离,容易证明</p>
@@ -6208,9 +6208,13 @@ U(x,y) = A_0\exp\left[-\frac{x^2+y^2}{w_0^2}\right], \tag{5.29}
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

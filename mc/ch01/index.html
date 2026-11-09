@@ -4938,12 +4938,12 @@
 </tbody>
 </table>
 <p>本章代码：<a href="../nb/ch01.ipynb">nb/ch01.ipynb</a>（NumPy 实跑；随机种子 2024，从头到尾复跑数字可复现；结果图均标注"代码实跑"）。任何随机模拟的骨架都是同一张流程图：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 建模&lt;br/&gt;把答案写成期望/概率"] --&gt; B["② 抽样&lt;br/&gt;从分布产生一条条 history"]
     B --&gt; C["③ 记分&lt;br/&gt;每条 history 记一个分数"]
     C --&gt; D["④ 统计&lt;br/&gt;分数平均 = 估计值"]
     D --&gt; E["⑤ 误差分析&lt;br/&gt;标准误差 ∝ 1/√N"]
-    E -.-&gt;|方差太大？| F["方差缩减（第 10 章）"]</code></pre>
+    E -.-&gt;|方差太大？| F["方差缩减（第 10 章）"]</div>
 <h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5307,9 +5307,13 @@ I=\int_a^b g(x)\,\mathrm dx
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

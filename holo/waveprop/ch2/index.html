@@ -5666,7 +5666,7 @@ G(f_x) = 0 \qquad \text{for } |f_x| &gt; f_{x,\max},
 \]</div>
 <p>人话：混叠照样发生，但折返来的分量只落在频带最高端——你关心的频段是干净的。</p>
 <p>把"拿到一个信号，怎么走到一张靠谱的谱"整理成决策流程——全书每一章建网格都在重演这条链：</p>
-<pre class="mermaid"><code>graph TD
+<div class="mermaid">graph TD
     A["拿到信号 g(x)，要算它的谱"] --&gt; B{"有解析 FT 可查？"}
     B -- "有" --&gt; C{"严格限带？&lt;br/&gt;（如 sinc 的谱是 rect）"}
     B -- "没有" --&gt; D["按物理图像估一个&lt;br/&gt;关心的最高频率"]
@@ -5683,7 +5683,7 @@ G(f_x) = 0 \qquad \text{for } |f_x| &gt; f_{x,\max},
     K -- "混叠超标" --&gt; L["δ 减半（N 翻倍，L 不动）"] --&gt; I
     K -- "波纹超标" --&gt; M["L 加倍（δ 不动 → N 翻倍）"] --&gt; I
     K -- "两者都超标" --&gt; N["δ 减半且 L 加倍&lt;br/&gt;（N 变 4 倍）"] --&gt; I
-    K -- "达标" --&gt; O["收工：G(f_m) 可信"]</code></pre>
+    K -- "达标" --&gt; O["收工：G(f_m) 可信"]</div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MATLAB</label><label for="__tabbed_3_2">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7297,9 +7297,13 @@ G(f_x,f_y) = D^2\,\mathrm{sinc}(Df_x)\,\mathrm{sinc}(Df_y).
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5275,7 +5275,7 @@
 </div>
 <h3 id="412-现有-3-D-显微都要轴向扫描">4.1.2 现有 3-D 显微都要"轴向扫描"<a class="headerlink" href="#412-现有-3-D-显微都要轴向扫描" title="Permanent link">#</a></h3>
 <p>过去十年，3-D 显微技术大量涌现，实际可用的有两类：<strong>光学切片显微</strong>（optical sectioning microscopy, OSM）与<strong>扫描共焦显微</strong>（scanning confocal microscopy, SCM）。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     Q["3-D 显微：横向分辨率 vs 大景深（4.1-5）"] --&gt; OSM["OSM 光学切片&lt;br/&gt;宽场显微镜逐深度调焦&lt;br/&gt;记录一叠 2-D 图（图 4.2）"]
     Q --&gt; SCM["SCM 扫描共焦&lt;br/&gt;双聚焦物镜 + 针孔挡离焦光&lt;br/&gt;逐点 3-D 扫描（图 4.3）"]
     Q --&gt; OCT["OCT 光学相干层析&lt;br/&gt;干涉术，也要深度扫描"]
@@ -5284,7 +5284,7 @@
     OCT --&gt; P3["难处：同样要深度方向扫描；&lt;br/&gt;也不能拍荧光"]
     P1 &amp; P2 &amp; P3 --&gt; C["共同死穴：数据靠慢速 3-D（轴向）扫描逐层采集&lt;br/&gt;→ 活体动态测量无望 + 光漂白加剧"]
     C --&gt; MOT["动机：消除深度扫描 → 全息方法"]
-    MOT --&gt; SHM["SHM 扫描全息显微：单次 2-D x-y 扫描&lt;br/&gt;拿全 3-D 信息，还能拍荧光（4.1.2）"]</code></pre>
+    MOT --&gt; SHM["SHM 扫描全息显微：单次 2-D x-y 扫描&lt;br/&gt;拿全 3-D 信息，还能拍荧光（4.1.2）"]</div>
 <p><strong>OSM</strong>（图 4.2）：宽场显微镜逐深度调焦，顺序记录不同深度的一叠 2-D 图像 [Agard (1984)]。每张 2-D 图既含聚焦信息也含离焦信息，需要重建算法把"在焦"信息提取出来。难点在记录端：相邻 2-D 图的纵向间距必须精确控制，图像配准（registration）也必须在计算机处理前做好。</p>
 <figure>
   <img src="../../images/scanholo/fig-4-2.png" width="480" class="lq-img" />
@@ -5552,7 +5552,7 @@
   <figcaption>图 4.10 提议的全息电视系统 [Poon (2002a)]：上半 OSH 记录（M1~M3、BS1/BS2、AOM 移频 Ω、BE1/BE2 扩束、L 生成点源、x-y 扫描器、PMT），射频外差电流经天线无线传输，远端电子多路检测后由 PC 合成全息图送 EBSLM；下半 EBSLM 相干重建（激光+正交偏振器+检偏器）（截自原书）</figcaption>
 </figure>
 
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph TX["发射端：OSH 记录（图 4.10 上半）"]
         L1["激光 @ω0"] --&gt; AOM["AOM 移频 +Ω"]
         AOM --&gt; P2["BE2 扩束&lt;br/&gt;平面波 @ω0+Ω"]
@@ -5570,7 +5570,7 @@
         Ctl --&gt; EBSLM["EBSLM：电子束写入 LiNbO3&lt;br/&gt;Pockels 效应"]
         EBSLM --&gt; POL["激光读出 + 正交偏振器/检偏器"]
         POL --&gt; IMG["相干 3-D 像重建&lt;br/&gt;观察者"]
-    end</code></pre>
+    end</div>
 <p>系统要点：M1、M2、M3 是反射镜，BS1/BS2 是分束器，<strong>AOM</strong>（声光调制器）把激光移频 Ω，BE1/BE2 是扩束器。透镜 L 把点源聚焦在 BS2 上，经 x-y 扫描器向物体投射球面波，BE2 提供平面波。2-D 光栅扫描后，PMT 收集物体散射光、输出外差电流——<strong>若外差电流在射频频段，可以直接经天线辐射到远端解调</strong>（解调端就是标准的电子多路检测）。PC 处理 sin/cos 两张全息图，输出送 EBSLM 控制器做相干重建。Poon [2002a] 提出该系统后，用图 4.11 的实验系统做了验证：TDFZP 扫描 3-D 物体，PD 输出经 <strong>BPF@Ω</strong> 后与 <span class="arithmatex">\(\cos(\Omega t)\)</span> 混频、低通，得 sine-FZP 全息图 <span class="arithmatex">\(H_s(x,y)\)</span>（式 3.5-3a），经 <strong>IPMS</strong>（Image Processing and Measuring System——接收慢扫描电信号、存入数字内存、转成 NTSC 视频信号 [Hamamatsu DVS-3010/SS]）在电视监视器上显示，再送 EBSLM；EBSLM 的反射光经检偏器（analyzer）读出，在与检偏器距离 <span class="arithmatex">\(M\times z\)</span> 处重建出相干像（<span class="arithmatex">\(z\)</span> 是记录时扫描镜到物体的距离，<span class="arithmatex">\(M\)</span> 是<strong>全息图缩放因子</strong>——比如 EBSLM 的显示面积 ≠ 实际光学扫描面积就会引入 <span class="arithmatex">\(M\)</span>，详见 Example 4.1）。</p>
 <figure>
   <img src="../../images/scanholo/fig-4-11.png" width="700" class="lq-img" />
@@ -6621,7 +6621,7 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,
   <figcaption>图（本笔记运行结果，对应图 4.17/4.18）：上排 原始文档 → 乘随机相位的实部/虚部 → 加密强度（纯噪声）；下排 匹配密钥+z^d=z^c（cc=1.000，干净）→ 密钥不匹配（cc=0.000，噪声）→ z^d=1.5z^c（cc=0.269，散焦）→ 密文频谱相位（随机化）</figcaption>
 </figure>
 
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph ENC["加密级（发射端，图 4.15 上半）"]
         K1["p1 = 加密密钥&lt;br/&gt;exp[j2πM(x,y)] @ω0"]
         PH1["p2 = δ 针孔 @ω0+Ω"]
@@ -6641,7 +6641,7 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,
         M1["F{i_enc} × F{i_dec}（复谱相乘，无共轭）"] --&gt; M2["F^{-1}"]
         M2 --&gt; M3["|·| 取模：抹掉 exp[j2πr]"]
     end
-    DDU --&gt; OUT["输出 |Γ0(x,y;z^c)|²&lt;br/&gt;条件 1) z^d=z^c（在焦）&lt;br/&gt;条件 2) p1*(-x,-y)p2(x,y)=1（密钥匹配）&lt;br/&gt;错密钥→噪声；错距离→散焦（图 4.18）"]</code></pre>
+    DDU --&gt; OUT["输出 |Γ0(x,y;z^c)|²&lt;br/&gt;条件 1) z^d=z^c（在焦）&lt;br/&gt;条件 2) p1*(-x,-y)p2(x,y)=1（密钥匹配）&lt;br/&gt;错密钥→噪声；错距离→散焦（图 4.18）"]</div>
 <div class="admonition note">
 <p class="admonition-title">拓展：为什么"取模"能去掉随机相位，而双随机相位编码与 Refregier-Javidi 原版不同在哪</p>
 <p>密文里真正需要保密的是复振幅 <span class="arithmatex">\(i(x,y;z^c)\)</span>；解密后的场是 <span class="arithmatex">\(|\Gamma_0|^2\exp[j2\pi r]\)</span>——输入面随机相位还在场里，但<strong>强度 <span class="arithmatex">\(|\cdot|^2\)</span> 看不见它</strong>。原版 Refregier-Javidi（1995）用相干 4f 系统：输入面与傅里叶面各放一块物理随机相位板，解密需要逆傅里叶变换 + 共轭密钥板。OSC 的对应关系：输入面随机相位 <span class="arithmatex">\(\exp[j2\pi r]\)</span> ↔ 原版输入面；光瞳密钥 <span class="arithmatex">\(\exp[-j2\pi M(-u)]\)</span> ↔ 原版傅里叶面；而"第二块相位板"在 OSC 里不是物理板，是<strong>双瞳处理器的 OTF 相位项</strong>（外差扫描天然执行了正逆傅里叶变换对）。另外 OSC 多送了两个密钥自由度：编码/解码距离 <span class="arithmatex">\(z^c, z^d\)</span>（散焦惩罚）+ 射频载波（无线传输本身也有物理层保密的意义）。</p>
@@ -6890,9 +6890,13 @@ i(x,y;z^d)=\mathcal{F}^{-1}\Big\{\exp\Big[j\frac{z^d}{2k_0}(k_x^2+k_y^2)\Big]\,
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

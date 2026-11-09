@@ -4893,12 +4893,12 @@
 <p>这会是激动人心的一章，因为我们将首次接触到<strong>最优化算法（optimization algorithm）</strong>。日常生活中其实到处是最优化问题：如何在最短时间内从 A 点到达 B 点？如何投入最少工作量却获得最大效益？如何设计发动机使得油耗最少而功率最大？本章介绍几个最优化算法，并利用它们训练出一个<strong>非线性函数</strong>用于分类。</p>
 <p>不熟悉回归也没关系（第 8 章起会深入介绍）。假设现在有一些数据点，用一条直线对这些点进行拟合（该线称为<strong>最佳拟合直线</strong>），这个拟合过程就称作<strong>回归（regression）</strong>。利用 Logistic 回归进行分类的主要思想：<strong>根据现有数据对分类边界线建立回归公式，以此进行分类</strong>。这里的"回归"一词源于最佳拟合，表示要找到最佳拟合参数集。训练分类器时的做法就是寻找最佳拟合参数，使用的是最优化算法。</p>
 <p><strong>Logistic 回归的一般过程</strong>（训练占去大部分时间，训练完成后分类非常快）：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 收集数据&lt;br/&gt;任意方法"] --&gt; B["② 准备数据&lt;br/&gt;数值型 · 结构化最佳"]
     B --&gt; C["③ 分析数据&lt;br/&gt;任意方法"]
     C --&gt; D["④ 训练算法&lt;br/&gt;找最佳回归系数"]
     D --&gt; E["⑤ 测试算法&lt;br/&gt;训练完成分类很快"]
-    E --&gt; F["⑥ 使用算法&lt;br/&gt;回归计算判类别"]</code></pre>
+    E --&gt; F["⑥ 使用算法&lt;br/&gt;回归计算判类别"]</div>
 <h2 id="50-本章导图">5.0 本章导图<a class="headerlink" href="#50-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5674,9 +5674,13 @@ w := w + \alpha \, X^{T}(y - h)
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

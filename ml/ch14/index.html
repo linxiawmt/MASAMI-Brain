@@ -5349,9 +5349,9 @@ Data_{m \times n} \approx U_{m \times 3} \, \Sigma_{3 \times 3} \, V^{T}_{3 \tim
 <p>现在构建一个关注餐馆食物推荐的引擎：假设一个人在家决定外出吃饭，但不知道该到哪儿吃、该点什么菜——推荐系统帮他做到这两点。路线：先构建一个<strong>基本的推荐引擎</strong>（寻找用户没有尝过的菜肴）→ 通过 SVD 减少特征空间并提高推荐效果 → 打包成用户可读的人机界面 → 最后介绍构建推荐系统面临的问题。</p>
 <h3 id="1451-推荐未尝过的菜肴">14.5.1 推荐未尝过的菜肴<a class="headerlink" href="#1451-推荐未尝过的菜肴" title="Permanent link">#</a></h3>
 <p>推荐系统的工作过程：给定一个用户，为此用户返回 <strong>N 个最好的推荐菜</strong>。需要做到：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 寻找用户没有评级的菜肴&lt;br/&gt;即用户-物品矩阵中的 0 值"] --&gt; B["② 对每个未评级物品&lt;br/&gt;预计一个可能的评分"]
-    B --&gt; C["③ 按评分从高到低排序&lt;br/&gt;返回前 N 个物品"]</code></pre>
+    B --&gt; C["③ 按评分从高到低排序&lt;br/&gt;返回前 N 个物品"]</div>
 <p>打开 svdRec.py，加入原书程序清单 14-2：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 14.5.1 节 程序清单 14-2：基于物品相似度的推荐引擎 =====</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">standEst</span><span class="p">(</span><span class="n">dataMat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">simMeas</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -5937,9 +5937,13 @@ Data_{m \times n} \approx U_{m \times 3} \, \Sigma_{3 \times 3} \, V^{T}_{3 \tim
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

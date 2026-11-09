@@ -6112,12 +6112,12 @@ a+b, &amp; a+b \leq 255\\
 <p>掩模参数只判断"非零 / 零"，不要求写 255。实测 <code>mask[2:4,2:4]=1</code> 与 <code>=255</code> 的输出完全相同。但<strong>把掩模当图像显示时</strong>必须用 0/255——值为 1 的像素在 8 位灰度显示里几乎是黑的，所以书里显示掩模时都写成 <code>mask*255</code>。</p>
 </div>
 <p>位运算函数也都有 <code>mask</code> 参数。彩色图配单通道掩模有两种写法：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["彩色图 + 单通道掩模"] --&gt; B{"走哪条路"}
     B --&gt;|直接按位与| C["把掩模扩成 3 通道&lt;br/&gt;与图像逐通道按位与"]
     B --&gt;|掩模参数| D["让图像同时当 src1 和 src2&lt;br/&gt;单通道掩模传给 mask"]
     C --&gt; E["结果：掩模内保留彩色，掩模外全黑"]
-    D --&gt; E</code></pre>
+    D --&gt; E</div>
 <p>第二种写法的原理是：<strong>任何数值与自身按位与，结果仍是自身</strong>。所以 <code>cv2.bitwise_and(a, a, mask=mask)</code> 中，前两个参数等于什么都没做，真正起作用的只有 <code>mask</code>——它决定输出里哪些位置取 <code>a</code> 的值、哪些位置是 0。注意 <code>mask</code> 必须按关键字传参：<code>bitwise_and</code> 的第三个<strong>位置参数</strong>是 <code>dst</code>（输出数组），写成 <code>cv2.bitwise_and(a, a, mask)</code> 等于没传掩模，OpenCV 会静默返回 <code>a AND a</code> 的整幅原图。</p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误</p>
@@ -6271,11 +6271,11 @@ a+b, &amp; a+b \leq 255\\
 </figure>
 
 <p><strong>分解的五个步骤</strong>：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 读图&lt;br/&gt;取宽高 M、N"] --&gt; B["② 构造提取矩阵&lt;br/&gt;值为 2 的 n 次幂"]
     B --&gt; C["③ 与提取矩阵按位与&lt;br/&gt;只留第 n 位"]
     C --&gt; D["④ 阈值处理&lt;br/&gt;大于零改为 255"]
-    D --&gt; E["⑤ 显示/保存&lt;br/&gt;观察各位平面"]</code></pre>
+    D --&gt; E["⑤ 显示/保存&lt;br/&gt;观察各位平面"]</div>
 <p><strong>② 构造提取矩阵</strong>。按位与能"抠出"指定比特位：提取因子 F 只有第 n 位是 1，就能把 N 的第 n 位原样留下，其余位置零。</p>
 <table>
 <thead>
@@ -6548,13 +6548,13 @@ a+b, &amp; a+b \leq 255\\
 </tbody>
 </table>
 <p>对每个像素重复这个动作，就完成了整幅图的加密解密：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     P["明文图像"] --&gt; X1["按位异或"]
     K["密钥图像"] --&gt; X1
     X1 --&gt; C["密文图像&lt;br/&gt;杂乱无章"]
     C --&gt; X2["按位异或"]
     K --&gt; X2
-    X2 --&gt; R["还原的明文图像"]</code></pre>
+    X2 --&gt; R["还原的明文图像"]</div>
 <p>【例 3.14】用随机数生成密钥图像，加密后再解密：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -6854,7 +6854,7 @@ a+b, &amp; a+b \leq 255\\
 <li>两块相加 → 得到"只有脸是密文"的打码图。</li>
 </ol>
 <p>解码是它的逆过程：先把打码图<strong>整幅</strong>与密钥异或（脸部还原成明文，非脸部被搅成噪声），再用掩模从里面取出脸部明文、用反掩模从打码图里取出非脸部原图，两块相加就还原了。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["原图"] --&gt; B["与密钥异或"]
     K["密钥图"] --&gt; B
     B --&gt; C["与掩模按位与&lt;br/&gt;抠出脸部密文"]
@@ -6865,7 +6865,7 @@ a+b, &amp; a+b \leq 255\\
     F --&gt; G["与掩模按位与&lt;br/&gt;抠出脸部明文"]
     E --&gt; H["与反掩模按位与&lt;br/&gt;抠出非脸部"]
     G --&gt; I["相加&lt;br/&gt;解码图"]
-    H --&gt; I</code></pre>
+    H --&gt; I</div>
 <p>【例 3.16】实现：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -7200,9 +7200,13 @@ a+b, &amp; a+b \leq 255\\
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

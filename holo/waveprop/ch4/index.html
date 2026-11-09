@@ -6007,7 +6007,7 @@ P\!\left(\frac{f_l}{d}x_1,\; \frac{f_l}{d}y_1\right)\right\}\Big|_{f_x=\frac{x_2
 </tbody>
 </table>
 <p>对应的决策流程：</p>
-<pre class="mermaid"><code>graph TD
+<div class="mermaid">graph TD
     A["要把光传到某个观察面"] --&gt; B{"面附近有透镜吗？"}
     B -- "无透镜" --&gt; C{"满足远场判据？&lt;br/&gt;Δz &gt; 2D²/λ（式 4.2）"}
     C -- "是" --&gt; D["夫琅禾费路线（4.1 节）&lt;br/&gt;一次 ft2，x2 = λΔz·fx1&lt;br/&gt;Listing 4.1"]
@@ -6024,7 +6024,7 @@ P\!\left(\frac{f_l}{d}x_1,\; \frac{f_l}{d}y_1\right)\right\}\Big|_{f_x=\frac{x_2
     J --&gt; L
     K --&gt; L
     L -- "只看辐照度" --&gt; M["相位因子可扔：四条路线都是&lt;br/&gt;一次 FT 的模方"]
-    L -- "要复振幅（干涉/全息）" --&gt; N["二次相位必须保留&lt;br/&gt;只有物在前焦面是严格 FT"]</code></pre>
+    L -- "要复振幅（干涉/全息）" --&gt; N["二次相位必须保留&lt;br/&gt;只有物在前焦面是严格 FT"]</div>
 <p>再强调一遍这张表里最容易被忽略的一行：<strong>透镜焦面 ≠ 远场</strong>。<span class="arithmatex">\(f_l=1\ \mathrm{m}\)</span> 的透镜对 <span class="arithmatex">\(1\ \mathrm{mm}\)</span> 孔径给的"焦面 FT"，其远场判据要求 <span class="arithmatex">\(\Delta z &gt; 2000\ \mathrm{m}\)</span>——焦面上的 FT 性质来自二次相位的<strong>精确相消</strong>，与 (4.2) 的近似无关。两者的差别全在复振幅的相位里：工程 2 验证 2 实测，贴透镜情形焦面 <span class="arithmatex">\(r_2=1\ \mathrm{cm}\)</span> 处的二次相位高达 <span class="arithmatex">\(314\ \mathrm{rad}\)</span>，而 <span class="arithmatex">\(d=f_l\)</span> 情形严格为 0。只看辐照度时它隐形，做干涉、全息、相位恢复时它会咬人。</p>
 <p>工程 2 把三种位置放在同一块 <span class="arithmatex">\(0.5\ \mathrm{mm}\)</span> 方孔物片上跑了一遍（<span class="arithmatex">\(f_l=1\ \mathrm{m}\)</span>、<span class="arithmatex">\(\lambda=1\ \mu\mathrm{m}\)</span>、<span class="arithmatex">\(N=256\)</span>、<span class="arithmatex">\(L=2.5\ \mathrm{mm}\)</span>），结论浓缩成图 4-7：</p>
 <ul>
@@ -7306,9 +7306,13 @@ U(x_2, y_2) = \frac{\pi w^2}{i\lambda f_l}\,
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

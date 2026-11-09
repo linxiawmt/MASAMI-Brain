@@ -5245,7 +5245,7 @@
 </figure>
 
 <p>图 9.12 的走法：大图先下采样两次到 octave 3 的最小图。第一个区间不需要注入细节（源图没被放大过）；跑完 DeepDream 后放大输出，细节丢失、图像模糊——此时把 octave 2 原图的细节重注入，混合后再跑 DeepDream；如此"放大 → 注入 → 做梦"递归进行，直到回到原始尺寸。</p>
-<pre class="mermaid"><code>flowchart TB
+<div class="mermaid">flowchart TB
     A["原尺寸输入图"] --&gt; B["下采样 num_octave-1 次&lt;br/&gt;得到最小尺度"]
     B --&gt; C["逐 octave 处理（从小到大）"]
     C --&gt; D["梯度上升 iterations 次&lt;br/&gt;最大化 layer_contributions 加权激活"]
@@ -5253,7 +5253,7 @@
     E -- 否 --&gt; F["放大 octave_scale 倍到下一尺度"]
     F --&gt; G["重注入放大丢失的细节&lt;br/&gt;lost_detail = 原图同尺度版 - 最小尺度原图放大版"]
     G --&gt; D
-    E -- 是 --&gt; H["deprocess → 保存 final_dream.png"]</code></pre>
+    E -- 是 --&gt; H["deprocess → 保存 final_dream.png"]</div>
 <p>三个超参数（默认配置）：<code>num_octave = 3</code>、<code>octave_scale = 1.4</code>、<code>iterations = 20</code>。</p>
 <h3 id="922-DeepDream-实现PyTorch">9.2.2 DeepDream 实现（PyTorch）<a class="headerlink" href="#922-DeepDream-实现PyTorch" title="Permanent link">#</a></h3>
 <p>下面直接给出可运行的 PyTorch 实现。整体分四块：加载并冻结 Inception v3、用 hook 收集 <code>layer_contributions</code> 指定的层激活、定义加权 L2 损失与梯度上升、套上 octave 循环。</p>
@@ -5934,9 +5934,13 @@ G = F F^{\mathsf T}, \qquad G_{ij} = \sum_{k=1}^{H \cdot W} F_{ik}\, F_{jk}
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

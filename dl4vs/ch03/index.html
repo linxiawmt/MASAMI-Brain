@@ -6347,13 +6347,13 @@ O = \frac{W - K + 2P}{S} + 1
 </div>
 <h2 id="37-项目彩色图像分类CIFAR-10">3.7 项目：彩色图像分类（CIFAR-10）<a class="headerlink" href="#37-项目彩色图像分类CIFAR-10" title="Permanent link">#</a></h2>
 <p>端到端实战：训练 CNN 分类 <strong>CIFAR-10</strong> 数据集——CV 领域的经典目标识别数据集，是 <em>80 Million Tiny Images</em>（Torralba, Fergus, Freeman, IEEE TPAMI 2008）的子集：<strong>60,000 张 <span class="arithmatex">\(32\times32\)</span> 彩色图、10 类、每类 6,000 张</strong>。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["Step 1&lt;br/&gt;加载数据集"] --&gt; B["Step 2&lt;br/&gt;预处理：/255 · one-hot · 切分"]
     B --&gt; C["Step 3&lt;br/&gt;定义模型架构"]
     C --&gt; D["Step 4&lt;br/&gt;配置损失 + 优化器 + 指标"]
     D --&gt; E["Step 5&lt;br/&gt;训练（盯 val_loss）"]
     E --&gt; F["Step 6&lt;br/&gt;加载最优权重"]
-    F --&gt; G["Step 7&lt;br/&gt;评估测试集"]</code></pre>
+    F --&gt; G["Step 7&lt;br/&gt;评估测试集"]</div>
 <h3 id="Step-1加载数据集">Step 1：加载数据集<a class="headerlink" href="#Step-1加载数据集" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== 3.7 Step 1：加载 CIFAR-10 并预览前 36 张 =====</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -6653,13 +6653,13 @@ O = \frac{W - K + 2P}{S} + 1
 </div>
 <div class="admonition note">
 <p class="admonition-title">侧栏：盯住这些常见现象（3 种症状 → 3 个药方）</p>
-<p><pre class="mermaid"><code>flowchart TD
+<p><div class="mermaid">flowchart TD
     A["看训练日志"] --&gt; B{"val_loss 上蹿下跳？&lt;br/&gt;0.8 → 0.9 → 0.7 → 1.0"}
     B -- 是 --&gt; C["学习率太大，下不了误差山&lt;br/&gt;→ 调低学习率，训练更久"]
     A --&gt; D{"val_loss 一直不降？"}
     D -- 是 --&gt; E["模型太简单，欠拟合&lt;br/&gt;→ 加隐藏层/加复杂度"]
     A --&gt; F{"loss 在降但 val_loss 不降了？"}
-    F -- 是 --&gt; G["开始过拟合训练集&lt;br/&gt;→ 上 Dropout 等防过拟合手段（第 4 章还有更多）"]</code></pre>
+    F -- 是 --&gt; G["开始过拟合训练集&lt;br/&gt;→ 上 Dropout 等防过拟合手段（第 4 章还有更多）"]</div>
 大学习率的下降路径大步跨越、来回震荡；小学习率步子小、稳步下山。</p>
 </div>
 <h3 id="Step-6加载最优权重">Step 6：加载最优权重<a class="headerlink" href="#Step-6加载最优权重" title="Permanent link">#</a></h3>
@@ -6893,9 +6893,13 @@ O = \frac{W - K + 2P}{S} + 1
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

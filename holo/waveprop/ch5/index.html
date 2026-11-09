@@ -6477,7 +6477,7 @@ H(f) =
 </figure>
 
 <p>选路线的决策图：</p>
-<pre class="mermaid"><code>graph TD
+<div class="mermaid">graph TD
     A["已知：振幅光瞳 P(x,y) + 波前差 W(x,y)"] --&gt; B["广义光瞳 𝒫 = P·e^{i2πW}（式 5.1）&lt;br/&gt;ASF：h = ft2(𝒫)/(λz_i)（式 5.29）"]
     B --&gt; C{"照明空间相干吗？"}
     C -- "相干" --&gt; D["场线性：U_i = h ⊗ U_o（式 5.27）&lt;br/&gt;频域：ATF = λz_i·𝒫(−λz_i f)（式 5.34）&lt;br/&gt;截频 f₀"]
@@ -6489,7 +6489,7 @@ H(f) =
     G --&gt; I{"评价系统好坏"}
     H --&gt; I
     I -- "小像差 σ_φ²≲1" --&gt; J["Strehl：式 5.46 光瞳积分&lt;br/&gt;或 Maréchal 1−σ_φ² / 经验 e^{−σ_φ²}"]
-    I -- "大像差 / 全频段" --&gt; K["仿真 PSF 峰值比 + OTF 曲线&lt;br/&gt;（Maréchal 在 σ_φ²&gt;1 已失效）"]</code></pre>
+    I -- "大像差 / 全频段" --&gt; K["仿真 PSF 峰值比 + OTF 曲线&lt;br/&gt;（Maréchal 在 σ_φ²&gt;1 已失效）"]</div>
 <h3 id="523-Strehl-比">5.2.3 Strehl 比<a class="headerlink" href="#523-Strehl-比" title="Permanent link">#</a></h3>
 <p>整幅 PSF 信息量大，但工程上常要<strong>一个数</strong>。最常用的是<strong>Strehl 比（Strehl ratio）</strong>：实际系统轴上 PSF 峰值与无像差系统轴上 PSF 峰值之比。轴上值由 (5.29) 在原点取模方：</p>
 <div class="arithmatex">\[
@@ -7993,9 +7993,13 @@ W(x, y) = 0.07\, Z_4 + 0.05\, Z_5 - 0.05\, Z_6 + 0.03\, Z_7 - 0.03\, Z_8,
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

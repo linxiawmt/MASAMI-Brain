@@ -5698,7 +5698,7 @@ A_h = \frac{NTU \times C_{min}}{U_h} = \frac{2.0 \times 1889\ \mathrm{W/K}}{100\
 <p><strong>设计问题</strong>（design problem）：给定流体进口温度与流量，以及要求的某个出口温度——要选定换热器型式并确定其尺寸（换热面积 <span class="arithmatex">\(A\)</span>）。典型场景是为特定应用定制一台换热器。</p>
 <p><strong>性能计算</strong>（performance calculation）：换热器已经存在（型式、面积已知），给定流量与进口温度，求传热量与两股流体的出口温度。典型场景是选用厂商货架产品。</p>
 <p>两条路都能用 NTU 法走通，流程如下：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A[换热器计算任务] --&gt; B{手头已知什么}
     B --&gt;|进口温度与流量已知&lt;br&gt;且要求某个出口温度| C[设计型问题]
     B --&gt;|换热器已有面积与总系数&lt;br&gt;进口温度与流量给定| D[校核型问题]
@@ -5709,7 +5709,7 @@ A_h = \frac{NTU \times C_{min}}{U_h} = \frac{2.0 \times 1889\ \mathrm{W/K}}{100\
     D --&gt; I[算 NTU 与 Cr]
     I --&gt; J[查表或查图得效能 eps]
     J --&gt; K[q = eps 乘 Cmin 乘进口温差]
-    K --&gt; L[能量平衡反解两个出口温度]</code></pre>
+    K --&gt; L[能量平衡反解两个出口温度]</div>
 <p><strong>【例 11.4】运行条件变了：这台叉流换热器还能出多少热水</strong></p>
 <p><strong>已知（Known）</strong>：仍是例 11.3 那台肋管叉流换热器：<span class="arithmatex">\(U_h = 100\ \mathrm{W/(m^2 \cdot K)}\)</span>，但面积改为 <span class="arithmatex">\(A_h = 40\ \mathrm{m^2}\)</span>。水侧流量 <span class="arithmatex">\(1\ \mathrm{kg/s}\)</span>、进口 <span class="arithmatex">\(35^\circ\mathrm{C}\)</span> 不变；热气发生器工况改变后，废气以 <span class="arithmatex">\(1.5\ \mathrm{kg/s}\)</span>、<span class="arithmatex">\(250^\circ\mathrm{C}\)</span> 进入。求传热速率与气、水出口温度。</p>
 <p><strong>求（Find）</strong>：传热速率与两股流体的出口温度。</p>
@@ -6321,9 +6321,13 @@ t = \frac{-\ln\left[\dfrac{T_{h,f} - T_{c,f}}{T_{h,i} - T_{c,i}}\right]}{UA\left
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

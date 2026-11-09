@@ -5091,13 +5091,13 @@
 <li>重新扫描交易记录，去掉不满足最小支持度的项集（<span class="arithmatex">\(L_2\)</span>）；</li>
 <li>重复该过程，直到所有项集都被去掉。</li>
 </ol>
-<pre class="mermaid"><code>flowchart TB
+<div class="mermaid">flowchart TB
     A["createC1：生成单元素候选 C1"] --&gt; B["scanD：扫描数据集过滤 → L1"]
     B --&gt; C{"上一级 Lk 非空？"}
     C -- "是" --&gt; D["aprioriGen：由 Lk 组合出候选 Ck+1"]
     D --&gt; E["scanD：扫描过滤 → Lk+1"]
     E --&gt; C
-    C -- "否" --&gt; F["返回 L = [L1, L2, ...] 与 supportData"]</code></pre>
+    C -- "否" --&gt; F["返回 L = [L1, L2, ...] 与 supportData"]</div>
 <p>整个算法先把"扫描数据集、过滤候选"封装成可复用的函数，伪代码大致如下：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>对数据集中的每条交易记录 tran：
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    对每个候选项集 can：
@@ -5861,9 +5861,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5715,13 +5715,13 @@ l_{\text{triplet}}(a, p, n) = [D_{ap} - D_{an} + \alpha]_+
 </figure>
 
 <p>一个 epoch 的信息流（图 10.13）：从数据集构造 mini-batch → 为批内每个样本找出 valid 三元组 → 用三元组更新损失 → 循环直到批用尽，一个 epoch 结束。OpenFace [37] 的方案类似：dataloader 构造具有预定义统计特性的 batch，GPU 上算嵌入，CPU 上生成 valid 三元组再算损失。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["Dataset&lt;br/&gt;数据集"] --&gt; B["Dataloader&lt;br/&gt;PK 采样批：P 个身份 × 各 K 张"]
     B --&gt; C["GPU 前向&lt;br/&gt;算出 PK 个嵌入"]
     C --&gt; D{"批内挖掘&lt;br/&gt;BA / BH / BW / BS"}
     D --&gt; E["三元组损失&lt;br/&gt;relu(α + wp·Dap − wn·Dan)"]
     E --&gt; F["反传，更新 CNN"]
-    F --&gt; B</code></pre>
+    F --&gt; B</div>
 <h3 id="1041-Dataloader为挖掘而设计的-PK-批">10.4.1 Dataloader：为挖掘而设计的 PK 批<a class="headerlink" href="#1041-Dataloader为挖掘而设计的-PK-批" title="Permanent link">#</a></h3>
 <p>dataloader 从数据集里选子集，是挖到好三元组的第一道关卡。用最平凡的随机采样，批内可能<strong>类别多样性不足</strong>：比如整批只采到一个类别——批内凑不出任何 valid 三元组，这一轮迭代直接白跑。</p>
 <div class="admonition info">
@@ -6640,9 +6640,13 @@ AP(q) = \frac{\sum_k P(k) \times \delta_k}{N_{gt}(q)}, \qquad mAP = \frac{\sum_{
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

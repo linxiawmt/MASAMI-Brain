@@ -4813,6 +4813,16 @@ P^{(2)}_{ij}=\sum_k P_{ik}P_{kj},
 \alpha(x\to x')=\min\!\Big(1,\ \frac{\tilde\pi(x')}{\tilde\pi(x)}\Big)
 \]</div>
 <p>接受（移到 <span class="arithmatex">\(x'\)</span>），否则拒绝（<strong>原地不动</strong>，也算一步）。</p>
+<p>单步流程如下（6.4 的 Hastings 校正只改 <span class="arithmatex">\(\alpha\)</span> 的算式，流程骨架不变）：</p>
+<div class="mermaid">flowchart TB
+    A["当前状态 x"] --&gt; B["按提议分布 q(x'|x) 抽出候选 x'"]
+    B --&gt; C["计算接受率&lt;br/&gt;α = min(1, π(x')·q(x|x') / π(x)·q(x'|x))&lt;br/&gt;对称提议时 q 相消：α = min(1, π(x')/π(x))"]
+    C --&gt; D{"抽 u ~ U(0,1)，u &lt; α ?"}
+    D -- 是 --&gt; E["移动：X(t+1) = x'"]
+    D -- 否 --&gt; F["原地：X(t+1) = x"]
+    E --&gt; G["记分，进入下一步"]
+    F --&gt; G
+    G --&gt; A</div>
 <p><strong>推导（为什么细致平衡）</strong>。实际转移概率 <span class="arithmatex">\(P(x\to x')=q(x'\mid x)\,\alpha(x\to x')\)</span>。考察乘积：</p>
 <div class="arithmatex">\[
 \tilde\pi(x)\,q(x')\min\!\Big(1,\frac{\tilde\pi(x')}{\tilde\pi(x)}\Big)
@@ -4855,7 +4865,11 @@ P^{(2)}_{ij}=\sum_k P_{ik}P_{kj},
 <div class="arithmatex">\[
 \alpha(x\to x')=\min\!\Big(1,\ \frac{\tilde\pi(x')\,q(x\mid x')}{\tilde\pi(x)\,q(x'\mid x)}\Big).
 \]</div>
-<p><strong>推导</strong>与 6.3 同构：<span class="arithmatex">\(\tilde\pi(x)q(x')\alpha(x\to x')=\min\big(\tilde\pi(x)q(x'),\ \tilde\pi(x')q(x)\big)\)</span> 对称成立。校正是"提议偏向的补偿"：往提议不爱去的地方走，额外奖励；顺着提议偏爱走，额外收税。</p>
+<p><strong>推导</strong>与 6.3 同构：</p>
+<div class="arithmatex">\[
+\tilde\pi(x)\,q(x')\,\alpha(x\to x')=\min\big(\tilde\pi(x)q(x'),\ \tilde\pi(x')q(x)\big)
+\]</div>
+<p>对交换 <span class="arithmatex">\(x\leftrightarrow x'\)</span> 对称成立。校正是"提议偏向的补偿"：往提议不爱去的地方走，额外奖励；顺着提议偏爱走，额外收税。</p>
 <p><strong>实验</strong>：目标半正态（<span class="arithmatex">\(x&gt;0\)</span>），独立性提议 <span class="arithmatex">\(x'\sim Exp(1)\)</span>（密度 <span class="arithmatex">\(q=e^{-x'}\)</span>）。三组对比：</p>
 <ul>
 <li>正确 MH：均值 <strong>0.797</strong>（理论 <span class="arithmatex">\(\sqrt{2/\pi}=0.798\)</span>）✓</li>
@@ -5012,9 +5026,13 @@ P(\mathbf s)=\frac{e^{-E(\mathbf s)/T}}{Z},\quad Z=\sum_{\mathbf s}e^{-E(\mathbf
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5329,7 +5329,7 @@ f_X \;\rightarrow\; \left[-\frac{1}{2\Delta x} \;:\; \frac{1}{L} \;:\; \frac{1}{
 
 <p>还有一个容易绊倒的细节：<strong>MATLAB 用"行–列"索引</strong>，<code>(i, j)</code> 表示第 <span class="arithmatex">\(i\)</span> 行第 <span class="arithmatex">\(j\)</span> 列——顺序恰好与笛卡尔坐标 <span class="arithmatex">\((x, y)\)</span>（先横轴后纵轴）相反：<strong><span class="arithmatex">\(j\)</span> 索引对应 <span class="arithmatex">\(x\)</span> 坐标，<span class="arithmatex">\(i\)</span> 索引对应 <span class="arithmatex">\(y\)</span> 坐标</strong>。所以图 2.5 里 <span class="arithmatex">\([x,y]\)</span> 值和 <code>(j, i)</code> 索引成对出现。好在 MATLAB 的向量运算记号本来就按笛卡尔系设计，只有直接操作整数索引时才需要想起这件事。</p>
 <p>把"如何从物理问题走到一个能 FFT 的网格"整理成流程图——这一套动作在全书每一章开头都会重演：</p>
-<pre class="mermaid"><code>graph TD
+<div class="mermaid">graph TD
     A["明确物理问题：波长 / 孔径 / 传播距离"] --&gt; B["估支撑 D 与有效带宽 B&lt;br/&gt;（2.2 节 + 表 2.1）"]
     B --&gt; C{"Δx ≤ 1/(2B) 满足？"}
     C -- "不满足：加密采样&lt;br/&gt;或收窄带宽" --&gt; B
@@ -5339,7 +5339,7 @@ f_X \;\rightarrow\; \left[-\frac{1}{2\Delta x} \;:\; \frac{1}{L} \;:\; \frac{1}{
     F --&gt; G["采样 g(mΔx, nΔy) → 居中数组&lt;br/&gt;零坐标在 index N/2+1（MATLAB）"]
     G --&gt; H["ifftshift → 移位排列&lt;br/&gt;（index 1 = 零坐标）"]
     H --&gt; I["fft / fft2 → 频域数组&lt;br/&gt;乘 Δx（或 Δx²）补回物理量纲"]
-    I --&gt; J["fftshift 回居中排列&lt;br/&gt;频率轴 −1/(2Δx) : 1/L : 1/(2Δx)−1/L（式 2.22）"]</code></pre>
+    I --&gt; J["fftshift 回居中排列&lt;br/&gt;频率轴 −1/(2Δx) : 1/L : 1/(2Δx)−1/L（式 2.22）"]</div>
 <p>下面的脚本用 <span class="arithmatex">\(N=8\)</span> 的迷你网格把三种排列打印出来（复现图 2.4 的数值），并把图 2.5 的象限对调画出来。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MATLAB</label><label for="__tabbed_2_2">Python</label></div>
 <div class="tabbed-content">
@@ -6297,9 +6297,13 @@ g_2(x,y) = \mathrm{circ}\!\left(\sqrt{x^2+y^2}\middle/2d\right).
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

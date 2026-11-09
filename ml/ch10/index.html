@@ -4950,12 +4950,12 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    对每一个簇，计算簇中所有点的均值并将均值作为质心
 </code></pre></div>
 <p>K-均值聚类的一般流程六步，注意第 4 步与监督学习的差别：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 收集数据&lt;br/&gt;使用任意方法"] --&gt; B["② 准备数据&lt;br/&gt;需要数值型数据计算距离&lt;br/&gt;标称型可映射为二值型"]
     B --&gt; C["③ 分析数据&lt;br/&gt;使用任意方法"]
     C --&gt; D["④ 训练算法&lt;br/&gt;不适用于无监督学习&lt;br/&gt;即没有训练过程"]
     D --&gt; E["⑤ 测试算法&lt;br/&gt;应用聚类算法、观察结果&lt;br/&gt;可用误差平方和等量化指标评价"]
-    E --&gt; F["⑥ 使用算法&lt;br/&gt;用于所希望的任何应用&lt;br/&gt;簇质心可代表整个簇做决策"]</code></pre>
+    E --&gt; F["⑥ 使用算法&lt;br/&gt;用于所希望的任何应用&lt;br/&gt;簇质心可代表整个簇做决策"]</div>
 <p>上面提到"最近"质心，意味着需要距离计算——可以使用任意喜欢的距离度量方法，数据集上 K-均值的性能会受所选距离计算方法的影响。下面开始写代码：创建 <code>kMeans.py</code> 文件，先加入三个辅助函数。</p>
 <p><strong>程序清单 10-1 K-均值聚类支持函数</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 10.1 节 程序清单10-1 K-均值支持函数 =====</span>
@@ -5716,9 +5716,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

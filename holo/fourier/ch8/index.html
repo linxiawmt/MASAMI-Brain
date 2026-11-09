@@ -6013,7 +6013,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
 </tbody>
 </table>
 <p>把本章"拿到一个成像系统怎么仿"的选择路径画成决策图:</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["有成像系统 + 像差系数(Seidel/ZEMAX)"] --&gt; B{"只要像质指标?"}
     B -- "是" --&gt; C["PSF = |IFFT{H}|^2(式 8.7)&lt;br/&gt;MTF = |FFT{PSF}| 归一(式 8.9)"]
     C --&gt; C1{"两条采样判据都过?"}
@@ -6033,7 +6033,7 @@ I_i(\hat{u}_0,\hat{v}_0) = \iint I_g(u,v)\,\left|h(\hat{u}_0,\hat{v}_0;\,u-\hat{
     H --&gt; I{"边缘伪像 / PSF 异常宽?"}
     I -- "有" --&gt; J["回头查:式 8.6 采样、式 8.12 相位斜率、&lt;br/&gt;系数符号(表 8.2 全正)、circshift 行列序"]
     I -- "无" --&gt; K["完成"]
-    J --&gt; A</code></pre>
+    J --&gt; A</div>
 <h2 id="88-习题原书">8.8 习题(原书)<a class="headerlink" href="#88-习题原书" title="Permanent link">#</a></h2>
 <p>原书 8 道题。每题给题目与提示,本章做过数值的题附 Python 实测结果——先自己动手。</p>
 <p><strong>8.1 f/5 平凸透镜例子的基本量</strong>:(a) 非相干截止频率是多少?Nyquist 频率是多少?式 (8.6) 满足吗?(b) 生成轴上像点 <span class="arithmatex">\((\hat{u}_0,\hat{v}_0)=(0,0)\)</span> 与最大分数像高点 <span class="arithmatex">\((\hat{u}_0,\hat{v}_0)=(0,1)\)</span> 的波前 OPD 曲面图。</p>
@@ -6584,9 +6584,13 @@ S \approx \exp\left(-k^2\sigma^2\right), \tag{8.19}
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

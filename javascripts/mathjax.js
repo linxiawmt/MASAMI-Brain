@@ -9,7 +9,7 @@ window.MathJax = {
     }
   },
   options: {
-    ignoreHtmlClass: ".*|",
+    ignoreHtmlClass: "mathjax_ignore",
     processHtmlClass: "arithmatex"
   }
 };

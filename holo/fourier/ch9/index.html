@@ -4942,7 +4942,7 @@
 </div>
 
 <p>先给一张"选哪条路"的决策图(依据见各节数值验证):</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["部分相干仿真:先问哪一类?"] --&gt; B{"时间相干问题?谱宽加延迟"}
     B -- "是" --&gt; B1["离散谱线逐条传播,谱加权求和辐照度"]
     B1 --&gt; B2{"场里存在微分延迟吗?"}
@@ -4956,7 +4956,7 @@
     D2 -- "采够了" --&gt; D4["一次 FFT 出两块屏,系综平均 N 块"]
     D4 --&gt; C2["解析对照:式 9.27;相干长度接近光束直径时解析失效"]
     C1 --&gt; E["定量检查:峰值、条纹可见度、随参数的衰减趋势"]
-    C2 --&gt; E</code></pre>
+    C2 --&gt; E</div>
 <h2 id="91-部分时间相干Partial-Temporal-Coherence">9.1 部分时间相干（Partial Temporal Coherence）<a class="headerlink" href="#91-部分时间相干Partial-Temporal-Coherence" title="Permanent link">#</a></h2>
 <p>**相干性（coherence）**指光场在不同时间或不同空间点之间的相关程度。高相干产生稳定的干涉效应——前几章单色光仿真里那些"fringing""ringing"结构(以及 7.3.4 节的散斑)都来自它;非相干成像(第 7 章)里没有这些特征。相干性在不同应用里角色不同:全息需要高相干,光学相干层析（OCT）反而利用低相干,有时它是噪声源(散斑)。应用清单:全息、干涉测量、OCT、相干激光雷达、傅里叶变换光谱、量子通信。</p>
 <p>图 9.1 把两类相干画在一张图里:<strong>时间相干（temporal coherence）</strong>= 同一点 <span class="arithmatex">\(P\)</span> 的场在时间差 <span class="arithmatex">\(\tau\)</span> 前后的相关(时间平均的场乘积);部分时间相干源的这个"相干度"随 <span class="arithmatex">\(\tau\)</span> 增大典型地下降。<strong>空间相干（spatial coherence）</strong>= 同一时刻、不同横向点 <span class="arithmatex">\(P_1\)</span>、<span class="arithmatex">\(P_2\)</span> 的场相关;随间隔增大典型地下降。</p>
@@ -5818,9 +5818,13 @@ U_1 = \exp\left[-\frac{x^2+y^2}{w_0^2}\right]. \tag{9.34}
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

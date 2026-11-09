@@ -4929,12 +4929,12 @@
 </table>
 <p>搜索引擎的自动补全就是这类算法的用武之地：输入"为什么"三个字，搜索引擎推荐了一大堆你根本不知道存在的查询词——那是研究人员从互联网上的用词里找出<strong>经常一块出现的词对</strong>得到的。本章给出两个实例：从 Twitter 文本流中挖掘共现词，从新闻网站点击流中挖掘热门报道组合。</p>
 <p>FP-growth 的一般流程六步，本章按这条链走：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 收集数据&lt;br/&gt;任意方法"] --&gt; B["② 准备数据&lt;br/&gt;标称型；连续数据需量化成离散值"]
     B --&gt; C["③ 分析数据&lt;br/&gt;任意方法"]
     C --&gt; D["④ 训练算法&lt;br/&gt;构建一个 FP 树，并对树进行挖掘"]
     D --&gt; E["⑤ 测试算法&lt;br/&gt;没有测试过程"]
-    E --&gt; F["⑥ 使用算法&lt;br/&gt;识别常出现的元素项，用于决策/推荐/预测"]</code></pre>
+    E --&gt; F["⑥ 使用算法&lt;br/&gt;识别常出现的元素项，用于决策/推荐/预测"]</div>
 <div class="admonition note">
 <p class="admonition-title">运行环境</p>
 <ul>
@@ -5264,13 +5264,13 @@
 <li>利用条件模式基，构建一棵<strong>条件 FP 树</strong>；</li>
 <li>迭代重复步骤 (1)(2)，直到树包含一个元素项为止。</li>
 </ol>
-<pre class="mermaid"><code>flowchart TB
+<div class="mermaid">flowchart TB
     A["对头指针表中的每个元素项&lt;br/&gt;（按计数从小到大）"] --&gt; B["频繁项集 = 前缀 preFix ∪ 元素项&lt;br/&gt;存入 freqItemList"]
     B --&gt; C["findPrefixPath：上溯取前缀路径&lt;br/&gt;得到条件模式基"]
     C --&gt; D["createTree：用条件模式基&lt;br/&gt;构建条件 FP 树"]
     D --&gt; E{"条件树中还有元素？"}
     E -- "有" --&gt; F["前缀更新为 preFix ∪ 元素项"] --&gt; A
-    E -- "没有" --&gt; A</code></pre>
+    E -- "没有" --&gt; A</div>
 <h3 id="1231-抽取条件模式基">12.3.1 抽取条件模式基<a class="headerlink" href="#1231-抽取条件模式基" title="Permanent link">#</a></h3>
 <p>首先从上一节发现的、已保存在头指针表中的单个频繁元素项开始。对每一个元素项，获得其对应的<strong>条件模式基</strong>（<strong>conditional pattern base</strong>）。条件模式基是<strong>以所查找元素项为结尾的路径集合</strong>；每一条路径其实都是一条<strong>前缀路径</strong>（<strong>prefix path</strong>）——介于所查找元素项与树根节点之间的所有内容。回到图 12.2，符号 r 的前缀路径是 <span class="arithmatex">\(\{x, s\}\)</span>、<span class="arithmatex">\(\{z, x, y\}\)</span> 和 <span class="arithmatex">\(\{z\}\)</span>。每条前缀路径都与一个计数值关联，该计数值<strong>等于起始元素项的计数值</strong>，它给出了每条路径上 r 的数目。表 12.3 列出了上例中每一个频繁项的所有前缀路径：</p>
 <table>
@@ -5835,9 +5835,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

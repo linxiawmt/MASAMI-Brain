@@ -5637,10 +5637,10 @@
 
 <h2 id="13-CV-流水线全书主线">1.3 CV 流水线：全书主线<a class="headerlink" href="#13-CV-流水线全书主线" title="Permanent link">#</a></h2>
 <p>应用千差万别，但典型视觉系统都遵循同一套流程——<strong>Computer Vision Pipeline（CV 流水线）</strong>，四步（图 1.13）：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 输入&lt;br/&gt;图像 / 视频帧"] --&gt; B["② 预处理&lt;br/&gt;统一尺寸 · 颜色变换 · 去噪"]
     B --&gt; C["③ 特征提取&lt;br/&gt;输出特征向量"]
-    C --&gt; D["④ ML 模型&lt;br/&gt;预测类别"]</code></pre>
+    C --&gt; D["④ ML 模型&lt;br/&gt;预测类别"]</div>
 <p>原书 DEFINITIONS，两个术语先钉死：</p>
 <ul>
 <li><strong>Image Classifier（图像分类器）</strong>：以图像为输入、输出标签（类别）的算法。</li>
@@ -5825,13 +5825,13 @@
 <li><strong>皮肤癌检测</strong>依赖皮肤红色强度（红疹），去色等于抹掉关键证据；</li>
 <li><strong>车道线检测</strong>必须区分<strong>黄线与白线</strong>——交规里两者含义不同，灰度图做不到。</li>
 </ul>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["拿到图像数据集"] --&gt; B{"肉眼能从灰度图认出目标吗？"}
     B -- 能 --&gt; C["灰度化：3通道 → 1通道&lt;br/&gt;像素量与内存直接除3"]
     B -- 不能 --&gt; D["保留颜色"]
     D --&gt; E["反例①：皮肤癌检测依赖红色强度"]
     D --&gt; F["反例②：车道线必须区分黄线/白线"]
-    C --&gt; G["继续：统一尺寸 / 增强"]</code></pre>
+    C --&gt; G["继续：统一尺寸 / 增强"]</div>
 <div class="admonition tip">
 <p class="admonition-title">经验法则（适用于几乎所有预处理决策）</p>
 <p><strong>用肉眼看灰度图：能认出你要找的目标，灰度就够用；认不出，就必须保留颜色（更多信息）。</strong> 这条"肉眼测试"是作者给的最实用判断器。</p>
@@ -6230,9 +6230,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

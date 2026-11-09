@@ -5000,7 +5000,7 @@
 </div>
 
 <p>拿到一个数值型预测任务，方法怎么选？本章技术就按下面这张决策图对号入座：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["数值型预测任务"] --&gt; B{"样本数是否多于特征数？&lt;br/&gt;特征是否高度相关？"}
     B -- "是，X 的 Gram 矩阵可逆" --&gt; C["标准线性回归 OLS&lt;br/&gt;最小二乘闭式解"]
     B -- "否，X 的 Gram 矩阵奇异" --&gt; D["岭回归：&lt;br/&gt;加 λI 惩罚保证可逆"]
@@ -5009,7 +5009,7 @@
     E -- "欠拟合，想抓局部模式" --&gt; F["局部加权线性回归 LWLR&lt;br/&gt;调小核参数 k"]
     E -- "想让模型更简、可解释" --&gt; G["缩减法：lasso / 前向逐步回归"]
     F --&gt; H["在测试集/交叉验证上比误差&lt;br/&gt;权衡偏差与方差"]
-    G --&gt; H</code></pre>
+    G --&gt; H</div>
 <div class="admonition note">
 <p class="admonition-title">运行环境</p>
 <p>本章代码默认把所有函数保存进 <code>regression.py</code>，在 Python 提示符或脚本里导入使用。数据文件（<code>ex0.txt</code>、<code>abalone.txt</code>、<code>lego*.txt</code>）放在数据目录下，<strong>代码里只用相对文件名，运行前把工作目录切到数据所在目录</strong>，否则 <code>loadDataSet</code> 读不到文件。原书是 Python 2，本章全部改写为 Python 3 可直接运行：<code>print</code> 改函数、<code>urllib2</code> 改 <code>urllib.request</code>；另外新版 numpy（2.0 起）删掉了 <code>mat()</code>，代码开头用一行 <code>mat = asmatrix</code> 补回，行为完全一致。</p>
@@ -6081,9 +6081,13 @@ Price = 55319.97 - 27.59 \times Year - 0.00268 \times NumPieces - 11.22 \times N
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

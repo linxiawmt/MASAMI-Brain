@@ -5291,7 +5291,7 @@ D_{t+1}^{(i)}=\frac{D_t^{(i)}\,\mathrm{e}^{+\alpha}}{\mathrm{Sum}(D)}
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    更新累计类别估计值
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    如果错误率等于 0.0，则退出循环
 </code></pre></div>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["初始化权重向量 D = 1/m"] --&gt; B["用当前 D 找最佳单层决策树"]
     B --&gt; C["计算 alpha，存入弱分类器数组"]
     C --&gt; D["错分样本权重升、分对降，再归一化"]
@@ -5300,7 +5300,7 @@ D_{t+1}^{(i)}=\frac{D_t^{(i)}\,\mathrm{e}^{+\alpha}}{\mathrm{Sum}(D)}
     F -- 是 --&gt; G["提前退出循环"]
     F -- 否 --&gt; H{"迭代数用完 numIt？"}
     H -- 否 --&gt; B
-    H -- 是 --&gt; G</code></pre>
+    H -- 是 --&gt; G</div>
 <p>打开 <code>adaboost.py</code> 文件并将程序清单 7-2 的代码加入其中：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 7.4 节 程序清单 7-2：基于单层决策树的 AdaBoost 训练过程 =====</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">adaBoostTrainDS</span><span class="p">(</span><span class="n">dataArr</span><span class="p">,</span> <span class="n">classLabels</span><span class="p">,</span> <span class="n">numIt</span><span class="o">=</span><span class="mi">40</span><span class="p">):</span>
@@ -5997,9 +5997,13 @@ D_{t+1}^{(i)}=\frac{D_t^{(i)}\,\mathrm{e}^{+\alpha}}{\mathrm{Sum}(D)}
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

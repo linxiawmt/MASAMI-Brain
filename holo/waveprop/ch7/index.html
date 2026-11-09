@@ -5564,7 +5564,7 @@ N \ge \frac{\lambda \Delta z}{\delta_1 \delta_2}.
 </tbody>
 </table>
 <p>实际选型与选参的完整决策流程（结合第 6 章四种传播器与本章四约束）：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["已知：源尺寸 D1、接收区 D2、波长 λ、&lt;br/&gt;距离 Δz、源波前曲率 R"] --&gt; B{"单步法可行？&lt;br/&gt;Δz ≥ D1δ1/λ（式 7.42）且&lt;br/&gt;N ≥ D1λΔz/[δ1(λΔz−D2δ1)]（式 7.25）"}
     B --&gt;|"可行且 δ2 = λΔz/(Nδ1) 够用"| C["单步菲涅耳积分法&lt;br/&gt;（书 Listing 6.1，1 次 FT）"]
     B --&gt;|"短距离 / 要自由 δ2"| D["角谱法（书 Listing 6.5）：&lt;br/&gt;独立选 δ1、δ2"]
@@ -5579,7 +5579,7 @@ N \ge \frac{\lambda \Delta z}{\delta_1 \delta_2}.
     J --&gt; K
     K --&gt;|"对不上"| L["加密网格 / 调 δ1、δ2，重走判据"]
     L --&gt; A
-    K --&gt;|"通过"| M["输出 U(r2)，放心用于&lt;br/&gt;第 8/9 章湍流与系统仿真"]</code></pre>
+    K --&gt;|"通过"| M["输出 U(r2)，放心用于&lt;br/&gt;第 8/9 章湍流与系统仿真"]</div>
 <h2 id="74-习题">7.4 习题<a class="headerlink" href="#74-习题" title="Permanent link">#</a></h2>
 <p>原书 7.4 节 6 道题，全部可用本章判据与第 6 章传播器完成；工程 2 给了完整复现（题号对应工程 2 的验证编号）：</p>
 <ol>
@@ -7329,9 +7329,13 @@ D_1 \delta_2 + D_2 \delta_1 \le \lambda \Delta z.
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

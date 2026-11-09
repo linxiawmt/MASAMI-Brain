@@ -5740,14 +5740,14 @@
 <p>数据集大，你可能想干脆从头训练整网、完全不碰迁移学习。但实践中，<strong>从预训练模型初始化权重通常仍然非常划算</strong>——收敛更快（6.4.3 侧栏讲过原因）。而且大数据集给了你<strong>微调整个网络而不必担心过拟合</strong>的信心。</p>
 <h3 id="655-四场景小结">6.5.5 四场景小结<a class="headerlink" href="#655-四场景小结" title="Permanent link">#</a></h3>
 <p>两个主因素（数据量、域相似度）交叉出表 6.1 的四个场景；图 6.11 把"每种场景该微调到什么深度"画在了一张图上。</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["拿到底盘：ImageNet 预训练网络"] --&gt; B{"目标数据集大小？"}
     B -- 小 --&gt; C{"与源域相似吗？"}
     C -- 相似 --&gt; D["场景 1：全冻结&lt;br/&gt;只训新分类头"]
     C -- 不同 --&gt; E["场景 3：冻前 1/3~1/2&lt;br/&gt;从较早层起微调&lt;br/&gt;小数据防过拟合"]
     B -- 大 --&gt; F{"与源域相似吗？"}
     F -- 相似 --&gt; G["场景 2：冻 60%~80%&lt;br/&gt;微调其余"]
-    F -- 不同 --&gt; H["场景 4：微调整网&lt;br/&gt;预训练权重起步收敛更快"]</code></pre>
+    F -- 不同 --&gt; H["场景 4：微调整网&lt;br/&gt;预训练权重起步收敛更快"]</div>
 <figure>
   <img src="../images/ch06/fig-6-11.png" width="560" class="lq-img" />
   <figcaption>图 6.11 表 6.1 + 四场景的微调深度指南：网络从浅到深，场景 1 全冻、场景 2 冻大半、场景 3 冻前段、场景 4 全解冻（截自原书）</figcaption>
@@ -6397,9 +6397,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

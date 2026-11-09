@@ -5113,7 +5113,10 @@ f(x)=F'(x)\ (\text{连续情形}).
 </table>
 <div class="admonition note">
 <p class="admonition-title">拓展：指数分布的无记忆性</p>
-<p><span class="arithmatex">\(P(X&gt;s+t\mid X&gt;s)=\dfrac{P(X&gt;s+t)}{P(X&gt;s)}=\dfrac{e^{-\lambda(s+t)}}{e^{-\lambda s}}=e^{-\lambda t}=P(X&gt;t)\)</span>。"已等了 <span class="arithmatex">\(s\)</span> 分钟"这个信息不改变还要再等多久的分布——连续分布中唯有指数有此性质，排队论因此偏爱它（第 7 章）。</p>
+<div class="arithmatex">\[
+P(X&gt;s+t\mid X&gt;s)=\frac{P(X&gt;s+t)}{P(X&gt;s)}=\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}=e^{-\lambda t}=P(X&gt;t).
+\]</div>
+<p>"已等了 <span class="arithmatex">\(s\)</span> 分钟"这个信息不改变还要再等多久的分布——连续分布中唯有指数有此性质，排队论因此偏爱它（第 7 章）。</p>
 </div>
 <figure>
   <img src="../images/ch02/out-exp.png" class="lq-img" />
@@ -5136,9 +5139,11 @@ E[aX+bY]=\sum_i (a x_i+b y_i)\,p_i
 <p><strong>定义与展开</strong>：方差度量取值的分散程度，</p>
 <div class="arithmatex">\[
 \mathrm{Var}(X)=E\big[(X-\mu)^2\big]
-=E[X^2]-\mu^2
+=E[X^2]-\mu^2,
+\qquad
+\underbrace{E\big[(X-\mu)^2\big]=E[X^2-2\mu X+\mu^2]=E[X^2]-2\mu^2+\mu^2}_{\text{第二式推导（用了期望线性）}} .
 \]</div>
-<p>（第二式推导：<span class="arithmatex">\(E[(X-\mu)^2]=E[X^2-2\mu X+\mu^2]=E[X^2]-2\mu^2+\mu^2\)</span>，中途用了期望线性。）<strong>尺度变换</strong>：</p>
+<p><strong>尺度变换</strong>：</p>
 <div class="arithmatex">\[
 \mathrm{Var}(aX+b)=E\big[(aX+b-a\mu-b)^2\big]=a^2E\big[(X-\mu)^2\big]=a^2\mathrm{Var}(X).
 \]</div>
@@ -5335,9 +5340,13 @@ P\big(\big|\tfrac{S}{N}-p\big|\ge\varepsilon\big)\le\frac{1}{4N\varepsilon^2}.
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

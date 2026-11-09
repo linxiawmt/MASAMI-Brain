@@ -5401,7 +5401,7 @@ C \ge \alpha_i \ge 0, \quad \text{和} \quad \sum_{i=1}^{m} label^{(i)} \cdot \a
 <p>所谓<strong>非边界 alpha</strong>，指的就是那些不等于边界 0 或 C 的 alpha 值。对整个数据集的扫描相当容易；而对非边界 alpha 值的扫描，首先需要建立这些 alpha 值的列表，然后对这个表进行遍历，同时跳过那些已知的不会改变的 alpha 值。</p>
 <p><strong>内循环</strong>：选择第一个 alpha 值后，算法通过内循环选择第二个 alpha 值。优化过程中通过<strong>最大化步长</strong>的方式来获得第二个 alpha 值。简化版 SMO 在选择 j 之后才计算误差 Ej；完整版则建立一个<strong>全局的缓存</strong>用于保存误差值，并从中选择使得步长（即 <span class="arithmatex">\(E_i - E_j\)</span>）最大的 alpha 值。</p>
 <p>完整算法的流程（外循环在两种扫描方式之间切换，直到没有 alpha 可以被优化）：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     S["初始化：entireSet = True, iter = 0"] --&gt; Q{"entireSet == True ?"}
     Q -- 是 --&gt; F1["全数据集扫描&lt;br/&gt;对每个点调用 innerL 尝试优化"]
     Q -- 否 --&gt; F2["非边界 alpha 扫描&lt;br/&gt;只遍历 0 &lt; alpha &lt; C 的点"]
@@ -5413,7 +5413,7 @@ C \ge \alpha_i \ge 0, \quad \text{和} \quad \sum_{i=1}^{m} label^{(i)} \cdot \a
     T3 --&gt; N
     N --&gt; W{"iter &lt; maxIter 且&lt;br/&gt;entireSet 为真或本轮有改变？"}
     W -- 是 --&gt; Q
-    W -- 否 --&gt; E["退出循环，返回 b 与所有 alpha"]</code></pre>
+    W -- 否 --&gt; E["退出循环，返回 b 与所有 alpha"]</div>
 <p>在讲述改进后的代码之前，必须先对上节的代码进行清理。下面的程序清单包含 1 个用于清理代码的数据结构和 3 个用于对 E 进行缓存的辅助函数（程序清单 6-3）：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 6.4 节 程序清单 6-3：完整版 Platt SMO 的支持函数（无核版本） =====</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">optStruct</span><span class="p">:</span>
@@ -6242,9 +6242,13 @@ k(x, y) = \exp\left( -\frac{\|x - y\|^2}{2\sigma^2} \right)
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

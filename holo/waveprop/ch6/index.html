@@ -5862,7 +5862,7 @@ U(\mathbf{r}) = \mathcal{Q}\!\left[\frac{m \pm 1}{m\Delta z}, \mathbf{r}_2\right
 </tbody>
 </table>
 <p>实际选型逻辑（mermaid 决策图）：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["源面场 U(r1) 已采样：N、δ1"] --&gt; B{"允许 δ2 = λΔz/(Nδ1)&lt;br/&gt;（式 6.16）？"}
     B --&gt;|可以| C["单步 one_step_prop&lt;br/&gt;1 次 FT，最快"]
     B --&gt;|不行| D{"要穿过透镜/简单&lt;br/&gt;光学系统（ABCD）？"}
@@ -5876,7 +5876,7 @@ U(\mathbf{r}) = \mathcal{Q}\!\left[\frac{m \pm 1}{m\Delta z}, \mathbf{r}_2\right
     H --&gt; I
     I --&gt;|不过关| K["增大 N / 调 δ1 / 吸收边界（8.1 节）"]
     K --&gt; A
-    I --&gt;|过关| L["输出 U(r2)，与解析/闭式对照"]</code></pre>
+    I --&gt;|过关| L["输出 U(r2)，与解析/闭式对照"]</div>
 <h2 id="65-简单光学系统">6.5 简单光学系统<a class="headerlink" href="#65-简单光学系统" title="Permanent link">#</a></h2>
 <p>本书的传播仿真大多在真空或弱折射介质（如大气湍流）里进行；但前面建立的整套形式可以推广到<strong>简单折射/反射光学系统</strong>——只要系统的效应能用近轴光线矩阵（paraxial ray matrix，原书文献 45）的几何光学语言描述。</p>
 <p>光线矩阵描述折射元件如何变换近轴光线的位置与方向：光线用三个数表示——光线高度 <span class="arithmatex">\(y_1\)</span>（离光轴的距离）、光线斜率 <span class="arithmatex">\(y_1'\)</span>、所在介质的折射率 <span class="arithmatex">\(n_1\)</span>；通常只考虑子午面（<span class="arithmatex">\(y\)</span>-<span class="arithmatex">\(z\)</span> 平面）。光线穿过简单光学系统时，系统的作用写成两个耦合的线性方程：</p>
@@ -8745,9 +8745,13 @@ W(\mathbf{r}_2 - \mathbf{r}_c) = A\, \text{rect}\!\left(\frac{x_2 - x_c}{D}\righ
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5923,10 +5923,10 @@
 <li><strong>非极大值抑制（NMS, Non-Maximum Suppression）</strong>——同一个物体通常被框了多次，NMS 把重叠框合并成一个。</li>
 <li><strong>评估指标</strong>——分类用 accuracy/precision/recall，检测有自己的指标：<strong>mAP</strong>、<strong>PR 曲线</strong>、<strong>IoU</strong>。</li>
 </ol>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① Region Proposal&lt;br/&gt;成千上万个候选框 + objectness"] --&gt; B["② 特征提取与预测&lt;br/&gt;预训练 CNN → 每框出 (x,y,w,h) + 类别"]
     B --&gt; C["③ NMS&lt;br/&gt;同一物体多个框 → 一个"]
-    C --&gt; D["④ 评估&lt;br/&gt;FPS（速度）/ mAP（精度）"]</code></pre>
+    C --&gt; D["④ 评估&lt;br/&gt;FPS（速度）/ mAP（精度）"]</div>
 <h3 id="711-Region-proposals先圈出可能有货的区域">7.1.1 Region proposals：先圈出"可能有货"的区域<a class="headerlink" href="#711-Region-proposals先圈出可能有货的区域" title="Permanent link">#</a></h3>
 <p>系统先扫图，提出 RoI 供后续分析。每个候选区域打一个 <strong>objectness score</strong>：高分 = 大概率含物体（<strong>foreground 前景</strong>），保留送入后续步骤；低分 = 大概率是背景（<strong>background</strong>），直接丢弃。</p>
 <p><img alt="" class="lq-img" src="../images/ch07/fig-7-2.png" />
@@ -7469,9 +7469,13 @@ P_o = \Pr(\text{containing an object}) \times \text{IoU}(\text{pred}, \text{trut
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

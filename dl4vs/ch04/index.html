@@ -6148,7 +6148,7 @@ x_{\text{norm}} = \frac{x - \mu}{\sigma}
 <li><strong>形态 C（刚刚好）</strong>：训练、验证 loss 都健康下降并贴合。这种状态的网络大概率能在测试集和真实场景表现良好。</li>
 </ul>
 <p>把"看到什么 → 得什么病 → 开什么药"固化成决策流程——<strong>本章最值得收藏的一张图</strong>：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["训练完成，看学习曲线"] --&gt; B{"train 表现如何？"}
     B -- "差（train_error 高）" --&gt; C["欠拟合 Underfitting"]
     C --&gt; C1["加深/加宽网络（提容量）"]
@@ -6158,7 +6158,7 @@ x_{\text{norm}} = \frac{x - \mu}{\sigma}
     D --&gt; D1["收集更多数据"]
     D --&gt; D2["正则化：L2 / Dropout / 数据增强"]
     D --&gt; D3["别加单元、别加深——已经太复杂"]
-    B -- "都好且贴合" --&gt; E["状态健康 → 上测试集"]</code></pre>
+    B -- "都好且贴合" --&gt; E["状态健康 → 上测试集"]</div>
 <table>
 <thead>
 <tr>
@@ -6253,11 +6253,11 @@ x_{\text{norm}} = \frac{x - \mu}{\sigma}
 <p>写作时点，大部分标注靠人一张张看图打标签。更贵的是专业领域：标肺部 X 光查肿瘤，得雇<strong>有资质的医生</strong>——成本远高于雇人分猫狗。所以"多收数据"对某些 accuracy 问题确实是好方案，也能增强鲁棒性，但<strong>不总是可行</strong>。</p>
 </div>
 <p>原书作者做这个决策的流程（照做即可）：</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["观察 train_acc 与 val_acc"] --&gt; B{"训练集上表现可接受吗？"}
     B -- "否（train 也差）" --&gt; C["欠拟合：收数据没意义&lt;br/&gt;调超参 / 清洗训练数据"]
     B -- "是，但 val/test 差很多" --&gt; D["过拟合：收集更多数据可能有效"]
-    B -- "都好" --&gt; E["达标，收工或冲更高目标"]</code></pre>
+    B -- "都好" --&gt; E["达标，收工或冲更高目标"]</div>
 <div class="admonition tip">
 <p class="admonition-title">原书 TIP</p>
 <p>评估性能的目标是给问题<strong>定性归类</strong>：数据问题 → 花时间在预处理/收集数据；学习算法问题 → 花时间调网络。</p>
@@ -7346,9 +7346,13 @@ y_i \leftarrow \gamma \hat{x}_i + \beta
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

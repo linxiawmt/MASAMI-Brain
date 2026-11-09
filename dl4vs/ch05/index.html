@@ -6582,11 +6582,11 @@
 </div>
 <h2 id="57-五大架构演进总览">5.7 五大架构演进总览<a class="headerlink" href="#57-五大架构演进总览" title="Permanent link">#</a></h2>
 <p>把五代网络串成一条决策链——每一环都在解决上一环暴露的短板：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["LeNet-5 · 1998&lt;br/&gt;5 层 · 6.1万参数"] --&gt;|"MNIST 太简单&lt;br/&gt;想去啃真实大图"| B["AlexNet · 2012&lt;br/&gt;ReLU · Dropout · 增强"]
     B --&gt;|"每层超参全靠试错"| C["VGGNet · 2014&lt;br/&gt;统一 3×3 + 2×2"]
     C --&gt;|"参数爆炸 · 大核太贵"| D["GoogLeNet · 2014&lt;br/&gt;Inception 并行 + 1×1 降维"]
-    D --&gt;|"还想更深？梯度传不动"| E["ResNet · 2015&lt;br/&gt;残差块 + skip connection"]</code></pre>
+    D --&gt;|"还想更深？梯度传不动"| E["ResNet · 2015&lt;br/&gt;残差块 + skip connection"]</div>
 <p>一张表收拢全部关键数字：</p>
 <table>
 <thead>
@@ -6913,9 +6913,13 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

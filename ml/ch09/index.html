@@ -5028,12 +5028,12 @@
 </tbody>
 </table>
 <p>树回归的一般方法六步，本章按这条链走：</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["① 收集数据&lt;br/&gt;任意方法"] --&gt; B["② 准备数据&lt;br/&gt;数值型；标称型映射成二值型"]
     B --&gt; C["③ 分析数据&lt;br/&gt;二维可视化，字典方式生成树"]
     C --&gt; D["④ 训练算法&lt;br/&gt;大部分时间花在叶节点模型的构建上"]
     D --&gt; E["⑤ 测试算法&lt;br/&gt;用测试数据上的 R² 分析模型效果"]
-    E --&gt; F["⑥ 使用算法&lt;br/&gt;用训练出的树做预测"]</code></pre>
+    E --&gt; F["⑥ 使用算法&lt;br/&gt;用训练出的树做预测"]</div>
 <div class="admonition note">
 <p class="admonition-title">运行环境</p>
 <p>本章代码从 tab 分隔的文本文件读数据，<strong>工作目录需在数据所在目录</strong>（本笔记为 <code>E:\Desktop\深度学习\_ml_data\Ch09\</code>，含 <code>ex00.txt</code>、<code>ex0.txt</code>、<code>ex2.txt</code>、<code>ex2test.txt</code>、<code>exp2.txt</code>、<code>bikeSpeedVsIq_train.txt</code>、<code>bikeSpeedVsIq_test.txt</code>）。拿不准时先 <code>print(os.getcwd())</code>。运行环境为 Python 3 + NumPy 2.x（machinelearn 环境）；原书是 Python 2，差异处均已在代码注释和 <code>!!! warning</code> 中标明。所有关键数值均已实跑复现。</p>
@@ -6125,9 +6125,13 @@ S \;=\; \sum_{i=1}^{m}\left(y_i - \bar{y}\right)^2 \;=\; \mathrm{var}(y)\,\times
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5248,11 +5248,11 @@
 (4) 确定前 <span class="arithmatex">\(k\)</span> 个点所在类别的出现频率；
 (5) 返回前 <span class="arithmatex">\(k\)</span> 个点出现频率最高的类别作为当前点的预测分类。</p>
 </blockquote>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     A["计算已知类别数据集&lt;br/&gt;各点与当前点的距离"] --&gt; B["按距离递增次序排序&lt;br/&gt;argsort"]
     B --&gt; C["选取距离最小的&lt;br/&gt;k 个点"]
     C --&gt; D["统计前 k 个点&lt;br/&gt;各类别出现频率"]
-    D --&gt; E["返回出现频率最高的&lt;br/&gt;类别作为预测分类"]</code></pre>
+    D --&gt; E["返回出现频率最高的&lt;br/&gt;类别作为预测分类"]</div>
 <p>Python 函数 classify0() 如程序清单 2-1 所示：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 2.1.2 节 程序清单 2-1：k-近邻算法 =====</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">classify0</span><span class="p">(</span><span class="n">inX</span><span class="p">,</span> <span class="n">dataSet</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
@@ -5973,9 +5973,13 @@ newValue = \frac{oldValue - min}{max - min}
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

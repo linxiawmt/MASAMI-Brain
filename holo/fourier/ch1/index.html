@@ -5758,13 +5758,13 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
 <li>不必硬啃卷积积分：<strong>变换到频域 → 乘传递函数 → 逆变换回来</strong>，三步搞定；</li>
 <li>传递函数模型和电路理论、数字信号处理里的<strong>频率滤波</strong>完全同构——那些领域攒了几十年的洞见可以直接搬进光学。</li>
 </ol>
-<pre class="mermaid"><code>graph LR
+<div class="mermaid">graph LR
     A["输入 g1(x,y)"] -- "FFT" --&gt; B["G1(fX,fY)"]
     B -- "乘传递函数&lt;br/&gt;G2 = G1 · H" --&gt; C["G2(fX,fY)"]
     C -- "IFFT" --&gt; D["输出 g2(x,y)"]
     E["h(x,y)&lt;br/&gt;冲激响应"] -- "FFT" --&gt; F["H(fX,fY)&lt;br/&gt;传递函数"]
     F --&gt; B
-    A -. "直接卷积 g1 ⊗ h&lt;br/&gt;(式 1.11，慢)" .-&gt; D</code></pre>
+    A -. "直接卷积 g1 ⊗ h&lt;br/&gt;(式 1.11，慢)" .-&gt; D</div>
 <p>下面这个演示把两条路线都跑一遍：一个简单"物体"（圆盘 + 方块 + 双缝）经过小圆盘状的冲激响应 <span class="arithmatex">\(h\)</span>（光学里就是<strong>点扩散函数 PSF</strong>）被模糊。频域法用"零填充 + FFT"实现线性卷积，与直接二维卷积对比。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">MATLAB</label><label for="__tabbed_4_2">Python</label></div>
 <div class="tabbed-content">
@@ -6285,9 +6285,13 @@ G_2(f_X,f_Y) = G_1(f_X,f_Y)\,H(f_X,f_Y) ,
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

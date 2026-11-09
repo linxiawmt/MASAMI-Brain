@@ -5238,7 +5238,7 @@ i=\iint_D\big|\psi_p\exp(j\omega_0t)+B\exp[j(\omega_0+\Omega)t]\big|^2dxdy
   <figcaption>图 3.6 电子多路检测：BPF 调谐在 <span class="arithmatex">\(\Omega\)</span> 提取外差电流 <span class="arithmatex">\(i_\Omega\)</span>，分两路各乘 <span class="arithmatex">\(\cos\Omega t\)</span> / <span class="arithmatex">\(\sin\Omega t\)</span> 再低通，得 <span class="arithmatex">\(i_c\)</span>、<span class="arithmatex">\(i_s\)</span>（截自原书）</figcaption>
 </figure>
 
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph OPT["光学外差（图 3.5）"]
         L1["信息光&lt;br/&gt;A·exp(jφ)·exp(jω0t)"] --&gt; BS["半反镜合束&lt;br/&gt;拍频"]
         L2["参考光&lt;br/&gt;B·exp(j(ω0+Ω)t)"] --&gt; BS
@@ -5253,7 +5253,7 @@ i=\iint_D\big|\psi_p\exp(j\omega_0t)+B\exp[j(\omega_0+\Omega)t]\big|^2dxdy
     end
     IC --&gt; ADD["复数加法 (3.2-4)&lt;br/&gt;i_c + j·i_s = (A/2)e^{jφ}"]
     IS --&gt; ADD
-    ADD --&gt; OUT["信息信号完全恢复&lt;br/&gt;幅度 A + 相位 φ（无孪生像噪声的伏笔）"]</code></pre>
+    ADD --&gt; OUT["信息信号完全恢复&lt;br/&gt;幅度 A + 相位 φ（无孪生像噪声的伏笔）"]</div>
 <p>上通道数学（用积化和差 <span class="arithmatex">\(\cos\alpha\cos\beta=\frac12\cos(\alpha-\beta)+\frac12\cos(\alpha+\beta)\)</span>）：</p>
 <div class="arithmatex">\[
 i_\Omega\times\cos(\Omega t)=A\cos(\Omega t-\phi)\cos(\Omega t)
@@ -5669,7 +5669,7 @@ H_{c\pm}(x,y)=\exp\Big[\pm j\frac{k_0}{2z_0}(x^2+y^2)\Big].
 \tag{3.5-6}
 \]</div>
 <p>按第 2 章 (2.5-6b)/(2.5-6c) 的再现规则：指数取<strong>正号</strong>（<span class="arithmatex">\(e^{+j\theta}\)</span>，会聚球面波）→ 重建<strong>实像</strong>；<strong>负号</strong>（发散）→ 重建<strong>虚像</strong>。无论哪种，复全息图里都只有一瓣——<strong>孪生像不再存在</strong>。</p>
-<pre class="mermaid"><code>flowchart LR
+<div class="mermaid">flowchart LR
     subgraph REC["记录（Coding）：一次 2-D 光栅扫描"]
         P1["p1 = 1 全开光瞳&lt;br/&gt;→ 点源球面波 @ω0"] --&gt; SC["双光束在物体上干涉&lt;br/&gt;TDFZP 扫描（式 3.6-1）"]
         P2["p2 = δ 点光瞳&lt;br/&gt;→ 平面波 @ω0+Ω"] --&gt; SC
@@ -5685,7 +5685,7 @@ H_{c\pm}(x,y)=\exp\Big[\pm j\frac{k_0}{2z_0}(x^2+y^2)\Big].
         CP --&gt; RC1["sin 或 cos 单独重建&lt;br/&gt;主像 + 孪生像（50/50 能量）"]
         CP --&gt; RC2["H_c+ * h(z0)&lt;br/&gt;→ 聚焦实像，无孪生像"]
         CP --&gt; RC3["H_c- * h(z0)&lt;br/&gt;→ 虚像方向离焦图&lt;br/&gt;= 原物 2z0 菲涅耳衍射"]
-    end</code></pre>
+    end</div>
 <figure>
   <img src="../../images/scanholo/fig-3-14.png" width="660" class="lq-img" />
   <figcaption>图 3.14 OSH 孪生像消除实验 [Poon et al., Optics Letters 25, 215 (2000)]：3-D 物体由两张 35mm 幻灯片（方形 + 三角形）并排组成，深度差 15 cm。a) cos 全息图；b) sin 全息图；c) cos 全息图重建（聚焦方形，孪生噪声明显）；d) 复全息图重建（聚焦方形，无孪生噪声）；e) cos 重建聚焦三角形（有噪声）；f) 复全息图重建（干净）（截自原书）</figcaption>
@@ -6731,9 +6731,13 @@ I_{scan}(x,y;z_0,t)=E^2+F^2+EF\sin\Big[\frac{k_0}{2z_0}(x^2+y^2)-\Omega t\Big]
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

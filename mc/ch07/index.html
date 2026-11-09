@@ -4767,6 +4767,19 @@ L=\lambda W .
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">in_service</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">next_dep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
 </code></pre></div>
 <p>两个记分约定：<span class="arithmatex">\(W_q\)</span>=开始服务−到达（在服务开始时记）、<span class="arithmatex">\(W\)</span>=离开−到达（在离开时记）。一个实现细节值得划重点：<code>in_service</code> 必须保存<strong>顾客的到达时刻</strong>而不是服务开始时刻——否则 <span class="arithmatex">\(W\)</span> 会悄悄退化成纯服务时长（本笔记初稿就踩了这个坑，<span class="arithmatex">\(\bar W\)</span> 输出恰好 <span class="arithmatex">\(1/\mu=1.0\)</span>，一眼锁定）。</p>
+<p>整个模拟器的控制流是一张事件循环图——DES 的"心跳"：</p>
+<div class="mermaid">flowchart TB
+    A["初始化：t = 0，生成首个到达事件"] --&gt; B["从未来事件表取最早的事件"]
+    B --&gt; C{"到达 还是 离开？"}
+    C -- 到达 --&gt; D["台空：立即开始服务，记 Wq = 0&lt;br/&gt;台忙：排入队列"]
+    D --&gt; E["生成下一到达时刻，放入事件表"]
+    C -- 离开 --&gt; F["记 W = t − 该顾客到达时刻&lt;br/&gt;队列非空：队首补位，记其 Wq"]
+    F --&gt; G["生成新的服务完成时刻，放入事件表"]
+    E --&gt; H["时钟跳到最近事件时刻"]
+    G --&gt; H
+    H --&gt; I{"模拟时长到 T 了吗？"}
+    I -- 否 --&gt; B
+    I -- 是 --&gt; J["输出 Wq、W、L 及误差棒"]</div>
 <h2 id="74-模拟对撞解析MM1">7.4 模拟对撞解析：M/M/1<a class="headerlink" href="#74-模拟对撞解析MM1" title="Permanent link">#</a></h2>
 <p>M/M/1 是排队论里罕见的可解模型：由无记忆性，系统是<strong>生灭过程</strong>，稳态队长的几何分布 <span class="arithmatex">\(P_n=(1-\rho)\rho^n\)</span>（<span class="arithmatex">\(\rho=\lambda/\mu&lt;1\)</span> 为利用率）。于是</p>
 <div class="arithmatex">\[
@@ -4923,9 +4936,13 @@ W_q=W-\frac{1}{\mu}=\frac{\rho}{\mu-\lambda}.
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

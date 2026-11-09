@@ -4919,6 +4919,20 @@ c^*=\frac{\mathrm{Cov}(g,Y)}{\mathrm{Var}(Y)}
   <figcaption>代码实跑：五条曲线各有斜率与常数——没有万能冠军，只有"方法与被积函数的匹配度"。</figcaption>
 </figure>
 
+<p>把决策指南画成图（先看被积函数的形状，再选兵器，最后算总账）：</p>
+<div class="mermaid">flowchart TB
+    S["要压方差：先看被积函数长什么样"] --&gt; M{"单调光滑？"}
+    S --&gt; Y{"有期望已知的亲戚量？"}
+    S --&gt; A{"两头抵消的对称结构？"}
+    S --&gt; P{"尖峰 / 稀有事件？"}
+    M -- 是 --&gt; T["系统抽样 / 分层&lt;br/&gt;误差降到 O(N^(-3/2))"]
+    Y -- 是 --&gt; CV["控制变量&lt;br/&gt;方差 ×(1−ρ²)"]
+    A -- 是 --&gt; AN["对偶变量 (U, 1−U)&lt;br/&gt;负相关对冲"]
+    P -- 是 --&gt; IM["重要性抽样&lt;br/&gt;f* 贴着 g 走，且绝不触零"]
+    T --&gt; Z["总账：FOM = 1/(耗时 × 方差)"]
+    CV --&gt; Z
+    AN --&gt; Z
+    IM --&gt; Z</div>
 <p>这张表就是决策指南：<strong>先看函数形状</strong>——单调光滑上系统/分层（斜率赢），对称结构上对偶，有尖峰/稀有事件上重要性，有已知期望的亲戚量上控制变量；高维且形状复杂时，老老实实均值法 + 多维分层网格。</p>
 <h2 id="107-小结">10.7 小结<a class="headerlink" href="#107-小结" title="Permanent link">#</a></h2>
 <ul>
@@ -4996,9 +5010,13 @@ c^*=\frac{\mathrm{Cov}(g,Y)}{\mathrm{Var}(Y)}
       
         <script src="../../javascripts/mathjax.js"></script>
       
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -5643,7 +5643,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
 </tbody>
 </table>
 <p>把全章四类操作的"选哪个、查哪条判据"画成一张决策流程图(数值依据见各节实测):</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="mermaid">flowchart TD
     A["源面要加什么动作?(乘法透过率)"] --&gt; B{"要改变传播方向?"}
     B -- "是" --&gt; B1["tilt(式 6.3):频谱平移 tanα/λ"]
     B1 --&gt; B2{"α ≤ λ(1/2Δx₁ − B₁)?(式 6.6;&lt;br/&gt;长距把 1/2Δx₁ 换 L₁/2λz)"}
@@ -5668,7 +5668,7 @@ U_2(x_2,y_2) = \frac{\exp(jkf)}{j\lambda f}\exp\left[j\frac{k}{2f}\left(x_2^2+y_
     H --&gt; I{"artifacts / 阶模糊?"}
     I -- "有" --&gt; J["回头查:每周期样本数、窗口奇偶、&lt;br/&gt;B₁ 口径(98 vs 117.3)、观察面网格随波长变"]
     I -- "无" --&gt; K["完成"]
-    J --&gt; A</code></pre>
+    J --&gt; A</div>
 <h2 id="65-习题原书">6.5 习题(原书)<a class="headerlink" href="#65-习题原书" title="Permanent link">#</a></h2>
 <p>原书 8 道题。每题给题目与提示,本章做过数值的题附 Python 实测结果——先自己动手。</p>
 <p><strong>6.1 倾斜判据的几何推导</strong>:图 6.17 画出场相对光轴以 <span class="arithmatex">\(\alpha\)</span> 角传播的情形。场支撑 <span class="arithmatex">\(D_2\)</span> 恰好伸到观察面边长的一半(<span class="arithmatex">\(L/2\)</span>)。用这个布局推导与式 (6.6) 相同的倾斜判据。假定临界采样与夫琅禾费传播;夫琅禾费传播下 <span class="arithmatex">\(D_2 = 2B_1\lambda z\)</span>。</p>
@@ -5975,9 +5975,13 @@ t_A(x,y) = \left[\Lambda\left(\frac{x}{P/2}\right) * \frac{1}{P}\,\mathrm{comb}\
       
         <script src="../../../javascripts/mathjax.js"></script>
       
+        <script src="../../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
         <script src="../../../javascripts/gallery.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../javascripts/mathjax/tex-mml-chtml.js"></script>
       
     
   </body>
