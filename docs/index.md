@@ -27,6 +27,11 @@ hide:
     <aside class="hero-now">
       <div class="now-kicker">NOW · 手头在啃</div>
       <div class="now-item">
+        <div class="now-name">《随机模拟方法及应用》</div>
+        <div class="now-note">11 章全完结，MCMC 到复杂系统一网打尽</div>
+        <div class="now-bar done"><i style="--w:100%"></i></div>
+      </div>
+      <div class="now-item">
         <div class="now-name">《机器学习实战》</div>
         <div class="now-note">15 章全完结，随时回头翻</div>
         <div class="now-bar done"><i style="--w:100%"></i></div>
@@ -41,12 +46,12 @@ hide:
 
   <!-- 数字瓷片：四个等宽，数字滚动 -->
   <div class="bento stat reveal" style="--i:1">
-    <div class="stat-num" data-count="8">0</div>
+    <div class="stat-num" data-count="9">0</div>
     <div class="stat-label">书架板块</div>
     <div class="stat-sub">SECTIONS</div>
   </div>
   <div class="bento stat reveal" style="--i:2">
-    <div class="stat-num" data-count="93">0</div>
+    <div class="stat-num" data-count="104">0</div>
     <div class="stat-label">章笔记在线</div>
     <div class="stat-sub">CHAPTERS</div>
   </div>
@@ -66,7 +71,7 @@ hide:
   <!-- 书架：九张等宽瓷片，3×3 对称（markdown 容器必须在顶层） -->
   <div class="sec-head reveal" style="--i:5">
     <span class="sec-kicker">PROJECTS</span>
-    <span class="sec-title">书架上现在有九样东西</span>
+    <span class="sec-title">书架上现在有十样东西</span>
   </div>
 
 <div class="home-grid-cards" markdown>
@@ -135,6 +140,14 @@ hide:
     Harrington 的 MLIA 15 章全完结，代码全从 Python 2 改成了能直接跑的 Python 3。
 
     [:octicons-arrow-right-24: 去看](ml/index.md)
+
+-   :fontawesome-solid-dice:{ .lg .middle } **随机模拟方法及应用**
+
+    ---
+
+    肖柳青教材 11 章 + Dunn/Shonkwiler 两本英文书的知识血统，11 份 Jupyter Notebook 全实跑——蒙提霍尔到 Ising 一网打尽。
+
+    [:octicons-arrow-right-24: 去看](mc/index.md)
 
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
