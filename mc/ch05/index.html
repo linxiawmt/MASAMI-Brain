@@ -27,7 +27,7 @@
     
     
       
-        <title>第5章 方差缩减 - MASAMI的外置大脑</title>
+        <title>第5章 马尔科夫链蒙特卡罗 - MASAMI的外置大脑</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#第-5-章-方差缩减" class="md-skip">
+        <a href="#第-5-章-马尔科夫链蒙特卡罗" class="md-skip">
           跳转至
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第5章 方差缩减
+              第5章 马尔科夫链蒙特卡罗
             
           </span>
         </div>
@@ -4144,7 +4144,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 伪随机数
+    第3章 随机数生成
   
 
     
@@ -4172,7 +4172,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 抽样、记分与精度
+    第4章 概率分布与抽样
   
 
     
@@ -4209,7 +4209,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 方差缩减
+    第5章 马尔科夫链蒙特卡罗
   
 
     
@@ -4227,7 +4227,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 方差缩减
+    第5章 马尔科夫链蒙特卡罗
   
 
     
@@ -4264,33 +4264,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#51-出发点方差是从哪来的" class="md-nav__link">
+  <a href="#51-离散马尔科夫链" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 出发点：方差是从哪来的
+        5.1 离散马尔科夫链
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#52-重要性抽样" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 重要性抽样
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5.2 重要性抽样">
+    <nav class="md-nav" aria-label="5.1 离散马尔科夫链">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#521-权重的来源" class="md-nav__link">
+  <a href="#511-定义与图表示" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.1 权重的来源
+        5.1.1 定义与图表示
       
     </span>
   </a>
@@ -4298,10 +4287,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#522-方差比较与最优的重要性函数" class="md-nav__link">
+  <a href="#512-一个可以手算的小链股票市场" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.2 方差比较与最优的重要性函数
+        5.1.2 一个可以手算的小链：股票市场
       
     </span>
   </a>
@@ -4309,32 +4298,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#523-最优形状的严格版本Schwartz-不等式" class="md-nav__link">
+  <a href="#513-平稳分布存在的两个条件" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.3 最优形状的严格版本（Schwartz 不等式）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#524-实验e-的七次方积分DS-习题-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2.4 实验：e 的七次方积分（D&amp;S 习题 1）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#525-不连续的重要性函数大间距的蒲丰投针DS-例-52" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2.5 不连续的重要性函数：大间距的蒲丰投针（D&amp;S 例 5.2）
+        5.1.3 平稳分布存在的两个条件
       
     </span>
   </a>
@@ -4347,22 +4314,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#53-系统抽样" class="md-nav__link">
+  <a href="#52-Metropolis-算法" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3 系统抽样
+        5.2 Metropolis 算法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.3 系统抽样">
+    <nav class="md-nav" aria-label="5.2 Metropolis 算法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#531-分区与估计量" class="md-nav__link">
+  <a href="#521-从舍选法到链" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3.1 分区与估计量
+        5.2.1 从舍选法到链
       
     </span>
   </a>
@@ -4370,10 +4337,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#532-方差分解系统抽样为什么更好" class="md-nav__link">
+  <a href="#522-三个例子SM-321" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3.2 方差分解：系统抽样为什么更好
+        5.2.2 三个例子（S&amp;M §3.2.1）
       
     </span>
   </a>
@@ -4386,22 +4353,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#54-分层抽样" class="md-nav__link">
+  <a href="#53-为什么有效细致平衡与遍历定理" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4 分层抽样
+        5.3 为什么有效：细致平衡与遍历定理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.4 分层抽样">
+    <nav class="md-nav" aria-label="5.3 为什么有效：细致平衡与遍历定理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#541-与系统抽样的差别" class="md-nav__link">
+  <a href="#531-概率质量流动图像" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.1 与系统抽样的差别
+        5.3.1 概率质量流动图像
       
     </span>
   </a>
@@ -4409,10 +4376,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#542-最优分配的推导Lagrange-乘子" class="md-nav__link">
+  <a href="#532-验证-Metropolis-链满足细致平衡" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.2 最优分配的推导（Lagrange 乘子）
+        5.3.2 验证 Metropolis 链满足细致平衡
       
     </span>
   </a>
@@ -4420,21 +4387,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#543-为什么比朴素抽样好" class="md-nav__link">
+  <a href="#533-遍历定理相关样本也能算期望" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.3 为什么比朴素抽样好
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#544-重要性抽样-vs-分层抽样DS-542" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.4 重要性抽样 vs 分层抽样（D&amp;S §5.4.2）
+        5.3.3 遍历定理：相关样本也能算期望
       
     </span>
   </a>
@@ -4447,22 +4403,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#55-相关抽样与对偶变量" class="md-nav__link">
+  <a href="#54-统计力学Boltzmann-分布从哪来" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5 相关抽样与对偶变量
+        5.4 统计力学：Boltzmann 分布从哪来
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.5 相关抽样与对偶变量">
+    <nav class="md-nav" aria-label="5.4 统计力学：Boltzmann 分布从哪来">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#551-估计两个几乎相同的量之差" class="md-nav__link">
+  <a href="#541-相空间与其惊人的尺度" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5.1 估计"两个几乎相同的量之差"
+        5.4.1 相空间与其惊人的尺度
       
     </span>
   </a>
@@ -4470,32 +4426,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#552-一个已知期望的陪跑控制变量" class="md-nav__link">
+  <a href="#542-熵温度与-Boltzmann-因子" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5.2 一个已知期望的"陪跑"：控制变量
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#553-对偶变量" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.5.3 对偶变量
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#554-三者的区别" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.5.4 三者的区别
+        5.4.2 熵、温度与 Boltzmann 因子
       
     </span>
   </a>
@@ -4508,22 +4442,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#56-部分解析区域分割与降维" class="md-nav__link">
+  <a href="#55-Ising-模型与相变" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6 部分解析：区域分割与降维
+        5.5 Ising 模型与相变
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.6 部分解析：区域分割与降维">
+    <nav class="md-nav" aria-label="5.5 Ising 模型与相变">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#561-区域分割partition" class="md-nav__link">
+  <a href="#551-模型与接受率" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6.1 区域分割（partition）
+        5.5.1 模型与接受率
       
     </span>
   </a>
@@ -4531,10 +4465,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#562-降维expected-value--条件期望法" class="md-nav__link">
+  <a href="#552-一个手算的-22-例SM-35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6.2 降维（expected value / 条件期望法）
+        5.5.2 一个手算的 2×2 例（S&amp;M §3.5）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-相变居里点与退火" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 相变、居里点与退火
       
     </span>
   </a>
@@ -4547,22 +4492,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#57-俄罗斯轮盘与分裂" class="md-nav__link">
+  <a href="#56-MetropolisHastings放开对称性" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7 俄罗斯轮盘与分裂
+        5.6 Metropolis–Hastings：放开对称性
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.7 俄罗斯轮盘与分裂">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-计数与精确采样SM-3738-概要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 计数与精确采样（S&amp;M §3.7–3.8 概要）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 计数与精确采样（S&amp;M §3.7–3.8 概要）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#571-动机" class="md-nav__link">
+  <a href="#571-数羊范式与单体-二聚体计数" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.1 动机
+        5.7.1 数羊范式与单体-二聚体计数
       
     </span>
   </a>
@@ -4570,10 +4526,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#572-权重账为什么仍然无偏" class="md-nav__link">
+  <a href="#572-约束洗牌" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.2 权重账：为什么仍然无偏
+        5.7.2 约束洗牌
       
     </span>
   </a>
@@ -4581,10 +4537,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#573-组合技术的合法性DS-59" class="md-nav__link">
+  <a href="#573-从过去耦合coupling-from-the-past" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.3 组合技术的合法性（D&amp;S §5.9）
+        5.7.3 从过去耦合（coupling from the past）
       
     </span>
   </a>
@@ -4593,67 +4549,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#58-改进的求积方案" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8 改进的求积方案
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5.8 改进的求积方案">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#581-加权蒙特卡罗把收敛阶提到-N-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.1 加权蒙特卡罗：把收敛阶提到 \(N^{-1}\)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#582-拟随机数quasirandom--low-discrepancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.2 拟随机数（quasirandom / low-discrepancy）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#583-有偏但一致的估计量DS-510" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.3 有偏但一致的估计量（D&amp;S §5.10）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#59-怎样选" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.9 怎样选
-      
-    </span>
-  </a>
   
 </li>
       
@@ -4713,7 +4608,7 @@
   <span class="md-ellipsis">
     
   
-    第6章 马尔科夫链蒙特卡罗
+    第6章 随机游走
   
 
     
@@ -4741,7 +4636,7 @@
   <span class="md-ellipsis">
     
   
-    第7章 贝叶斯推断与 Gibbs 抽样
+    第7章 蒙特卡罗优化：模拟退火与遗传算法
   
 
     
@@ -4769,7 +4664,7 @@
   <span class="md-ellipsis">
     
   
-    第8章 随机游走
+    第8章 贝叶斯推断与 Gibbs 抽样
   
 
     
@@ -4797,7 +4692,7 @@
   <span class="md-ellipsis">
     
   
-    第9章 蒙特卡罗优化：模拟退火与遗传算法
+    第9章 蒙特卡罗积分与方差缩减
   
 
     
@@ -4983,33 +4878,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#51-出发点方差是从哪来的" class="md-nav__link">
+  <a href="#51-离散马尔科夫链" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 出发点：方差是从哪来的
+        5.1 离散马尔科夫链
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#52-重要性抽样" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 重要性抽样
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5.2 重要性抽样">
+    <nav class="md-nav" aria-label="5.1 离散马尔科夫链">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#521-权重的来源" class="md-nav__link">
+  <a href="#511-定义与图表示" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.1 权重的来源
+        5.1.1 定义与图表示
       
     </span>
   </a>
@@ -5017,10 +4901,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#522-方差比较与最优的重要性函数" class="md-nav__link">
+  <a href="#512-一个可以手算的小链股票市场" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.2 方差比较与最优的重要性函数
+        5.1.2 一个可以手算的小链：股票市场
       
     </span>
   </a>
@@ -5028,32 +4912,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#523-最优形状的严格版本Schwartz-不等式" class="md-nav__link">
+  <a href="#513-平稳分布存在的两个条件" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2.3 最优形状的严格版本（Schwartz 不等式）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#524-实验e-的七次方积分DS-习题-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2.4 实验：e 的七次方积分（D&amp;S 习题 1）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#525-不连续的重要性函数大间距的蒲丰投针DS-例-52" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2.5 不连续的重要性函数：大间距的蒲丰投针（D&amp;S 例 5.2）
+        5.1.3 平稳分布存在的两个条件
       
     </span>
   </a>
@@ -5066,22 +4928,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#53-系统抽样" class="md-nav__link">
+  <a href="#52-Metropolis-算法" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3 系统抽样
+        5.2 Metropolis 算法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.3 系统抽样">
+    <nav class="md-nav" aria-label="5.2 Metropolis 算法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#531-分区与估计量" class="md-nav__link">
+  <a href="#521-从舍选法到链" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3.1 分区与估计量
+        5.2.1 从舍选法到链
       
     </span>
   </a>
@@ -5089,10 +4951,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#532-方差分解系统抽样为什么更好" class="md-nav__link">
+  <a href="#522-三个例子SM-321" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3.2 方差分解：系统抽样为什么更好
+        5.2.2 三个例子（S&amp;M §3.2.1）
       
     </span>
   </a>
@@ -5105,22 +4967,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#54-分层抽样" class="md-nav__link">
+  <a href="#53-为什么有效细致平衡与遍历定理" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4 分层抽样
+        5.3 为什么有效：细致平衡与遍历定理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.4 分层抽样">
+    <nav class="md-nav" aria-label="5.3 为什么有效：细致平衡与遍历定理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#541-与系统抽样的差别" class="md-nav__link">
+  <a href="#531-概率质量流动图像" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.1 与系统抽样的差别
+        5.3.1 概率质量流动图像
       
     </span>
   </a>
@@ -5128,10 +4990,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#542-最优分配的推导Lagrange-乘子" class="md-nav__link">
+  <a href="#532-验证-Metropolis-链满足细致平衡" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.2 最优分配的推导（Lagrange 乘子）
+        5.3.2 验证 Metropolis 链满足细致平衡
       
     </span>
   </a>
@@ -5139,21 +5001,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#543-为什么比朴素抽样好" class="md-nav__link">
+  <a href="#533-遍历定理相关样本也能算期望" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.3 为什么比朴素抽样好
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#544-重要性抽样-vs-分层抽样DS-542" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.4 重要性抽样 vs 分层抽样（D&amp;S §5.4.2）
+        5.3.3 遍历定理：相关样本也能算期望
       
     </span>
   </a>
@@ -5166,22 +5017,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#55-相关抽样与对偶变量" class="md-nav__link">
+  <a href="#54-统计力学Boltzmann-分布从哪来" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5 相关抽样与对偶变量
+        5.4 统计力学：Boltzmann 分布从哪来
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.5 相关抽样与对偶变量">
+    <nav class="md-nav" aria-label="5.4 统计力学：Boltzmann 分布从哪来">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#551-估计两个几乎相同的量之差" class="md-nav__link">
+  <a href="#541-相空间与其惊人的尺度" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5.1 估计"两个几乎相同的量之差"
+        5.4.1 相空间与其惊人的尺度
       
     </span>
   </a>
@@ -5189,32 +5040,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#552-一个已知期望的陪跑控制变量" class="md-nav__link">
+  <a href="#542-熵温度与-Boltzmann-因子" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5.2 一个已知期望的"陪跑"：控制变量
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#553-对偶变量" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.5.3 对偶变量
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#554-三者的区别" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.5.4 三者的区别
+        5.4.2 熵、温度与 Boltzmann 因子
       
     </span>
   </a>
@@ -5227,22 +5056,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#56-部分解析区域分割与降维" class="md-nav__link">
+  <a href="#55-Ising-模型与相变" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6 部分解析：区域分割与降维
+        5.5 Ising 模型与相变
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.6 部分解析：区域分割与降维">
+    <nav class="md-nav" aria-label="5.5 Ising 模型与相变">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#561-区域分割partition" class="md-nav__link">
+  <a href="#551-模型与接受率" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6.1 区域分割（partition）
+        5.5.1 模型与接受率
       
     </span>
   </a>
@@ -5250,10 +5079,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#562-降维expected-value--条件期望法" class="md-nav__link">
+  <a href="#552-一个手算的-22-例SM-35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6.2 降维（expected value / 条件期望法）
+        5.5.2 一个手算的 2×2 例（S&amp;M §3.5）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-相变居里点与退火" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 相变、居里点与退火
       
     </span>
   </a>
@@ -5266,22 +5106,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#57-俄罗斯轮盘与分裂" class="md-nav__link">
+  <a href="#56-MetropolisHastings放开对称性" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7 俄罗斯轮盘与分裂
+        5.6 Metropolis–Hastings：放开对称性
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.7 俄罗斯轮盘与分裂">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-计数与精确采样SM-3738-概要" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 计数与精确采样（S&amp;M §3.7–3.8 概要）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 计数与精确采样（S&amp;M §3.7–3.8 概要）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#571-动机" class="md-nav__link">
+  <a href="#571-数羊范式与单体-二聚体计数" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.1 动机
+        5.7.1 数羊范式与单体-二聚体计数
       
     </span>
   </a>
@@ -5289,10 +5140,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#572-权重账为什么仍然无偏" class="md-nav__link">
+  <a href="#572-约束洗牌" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.2 权重账：为什么仍然无偏
+        5.7.2 约束洗牌
       
     </span>
   </a>
@@ -5300,10 +5151,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#573-组合技术的合法性DS-59" class="md-nav__link">
+  <a href="#573-从过去耦合coupling-from-the-past" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.7.3 组合技术的合法性（D&amp;S §5.9）
+        5.7.3 从过去耦合（coupling from the past）
       
     </span>
   </a>
@@ -5312,67 +5163,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#58-改进的求积方案" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8 改进的求积方案
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5.8 改进的求积方案">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#581-加权蒙特卡罗把收敛阶提到-N-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.1 加权蒙特卡罗：把收敛阶提到 \(N^{-1}\)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#582-拟随机数quasirandom--low-discrepancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.2 拟随机数（quasirandom / low-discrepancy）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#583-有偏但一致的估计量DS-510" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.8.3 有偏但一致的估计量（D&amp;S §5.10）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#59-怎样选" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.9 怎样选
-      
-    </span>
-  </a>
   
 </li>
       
@@ -5429,10 +5219,10 @@
   
 
 
-<h1 id="第-5-章-方差缩减">第 5 章 方差缩减<a class="headerlink" href="#第-5-章-方差缩减" title="Permanent link">#</a></h1>
+<h1 id="第-5-章-马尔科夫链蒙特卡罗">第 5 章 马尔科夫链蒙特卡罗<a class="headerlink" href="#第-5-章-马尔科夫链蒙特卡罗" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：第 4 章报出的"± 误差"里，误差常数由单条 history 的方差决定。本章回答一个问题——<strong>在样本量不变的前提下，怎么把方差压下去</strong>。手段分几路：改变抽样分布（重要性抽样）、分区按比例抽样（系统/分层抽样）、制造相关性（相关抽样、对偶变量、控制变量）、改变 history 的生死与份数（俄罗斯轮盘与分裂）、改变记分方式（加权蒙特卡罗、拟随机数）。核心恒等式只有一个：估计量仍是同一个积分、期望不变，但二阶矩更小。
-<strong>对照教材</strong>：Dunn &amp; Shultis §5.1–5.12（本章主线）；Shonkwiler &amp; Mendivil §6.3.1（方差缩减入门与控制变量/重要性抽样示例）。</p>
+<p><strong>本章解决</strong>：第 4 章的抽样方法都要求"能直接从目标分布抽"——逆 CDF 要显式分布函数、舍选法要能构造包络。当目标分布<strong>只能算出未归一化的相对值</strong>（贝叶斯后验、统计力学的 Boltzmann 分布、巨大的组合状态空间）时，这些方法全部失效。MCMC 的解法只有一句话：<strong>构造一条马尔科夫链，让它的平稳分布恰好是目标分布</strong>——链走足够久之后，样本就来自目标分布。本章给出这条路线的全部要件：离散链与平稳分布（S&amp;M §3.1）、Metropolis 算法与细致平衡证明（§3.2）、遍历定理（§3.3）、Boltzmann 分布的来历（§3.4）、Ising 模型相变（§3.5）、非对称提议的 Hastings 校正（§3.6）、计数与精确采样（§3.7–3.8）。
+<strong>对照教材</strong>：Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》Chapter 3（本章主线，小节划分跟随它）；Dunn &amp; Shultis《Exploring Monte Carlo Methods》§6.1 补充（burn-in 的讨论、提议分布的调节经验、Gibbs 抽样预告）。</p>
 </blockquote>
 <table>
 <thead>
@@ -5443,602 +5233,326 @@
 </thead>
 <tbody>
 <tr>
-<td>目标</td>
-<td>同样 <span class="arithmatex">\(N\)</span>，让 <span class="arithmatex">\(s(\bar z)\)</span> 更小；等价于压小 <span class="arithmatex">\(\overline{z^2}-\bar z^2\)</span></td>
+<td>马尔科夫性</td>
+<td>下一状态只依赖当前状态，与更早历史无关</td>
 </tr>
 <tr>
-<td>不被允许的事</td>
-<td>改变期望值。所有技巧都必须<strong>保持无偏</strong>（或至少一致）</td>
+<td>转移矩阵</td>
+<td>行和为 1；<span class="arithmatex">\(p_{t+1}=p_tP\)</span>，<span class="arithmatex">\(p_t=p_0P^t\)</span></td>
 </tr>
 <tr>
-<td>重要性抽样</td>
-<td>从 <span class="arithmatex">\(f^*\)</span> 抽、乘权重 <span class="arithmatex">\(W=f/f^*\)</span>；<span class="arithmatex">\(f^*\propto\lvert z\rvert f\)</span> 时理论方差为零</td>
+<td>平稳分布</td>
+<td><span class="arithmatex">\(\pi P=\pi\)</span>；不可约 + 非周期 ⇒ 唯一且 <span class="arithmatex">\(p_t\to\pi\)</span></td>
 </tr>
 <tr>
-<td>系统/分层抽样</td>
-<td>分区抽样，方差中"层均值差异"那一项被消掉</td>
+<td>Metropolis 接受率</td>
+<td><span class="arithmatex">\(h=\min(1,\,f(y)/f(x))\)</span>；只用 <span class="arithmatex">\(f\)</span> 的<strong>相对值</strong></td>
 </tr>
 <tr>
-<td>对偶变量</td>
-<td>用 <span class="arithmatex">\(1-u\)</span> 造负相关，<span class="arithmatex">\(g(u)\)</span> 与 <span class="arithmatex">\(g(1-u)\)</span> 取平均</td>
+<td>细致平衡</td>
+<td><span class="arithmatex">\(\pi(x)p_{xy}=\pi(y)p_{yx}\)</span>；逐对概率流平衡 ⇒ 平稳</td>
 </tr>
 <tr>
-<td>控制变量</td>
-<td>减去与已知期望量的偏差，最优系数由协方差定</td>
+<td>遍历定理</td>
+<td>时间平均 <span class="arithmatex">\(\frac1N\sum r(X_i)\to\mathbb E_\pi(r)\)</span>；相关样本也能算期望</td>
 </tr>
 <tr>
-<td>轮盘赌/分裂</td>
-<td>按"是否有希望"杀或复制，权重补偿保证无偏</td>
+<td>Boltzmann 分布</td>
+<td><span class="arithmatex">\(f(x)=e^{-E(x)/k_BT}/Z\)</span>；<span class="arithmatex">\(Z\)</span> 归一但 Metropolis 不需要它</td>
 </tr>
 <tr>
-<td>加权蒙特卡罗</td>
-<td>排序后梯形积分，一维可达 <span class="arithmatex">\(N^{-1}\)</span>；高维失效</td>
+<td>Ising 相变</td>
+<td>低于临界温度磁化（双峰），高于则消磁；<span class="arithmatex">\(T_c\approx2.269\)</span>（2D）</td>
 </tr>
 <tr>
-<td>拟随机数</td>
-<td>低差异序列，Sobol 约 <span class="arithmatex">\((\ln N)^k/N\)</span></td>
+<td>Hastings 校正</td>
+<td>非对称提议乘 (q(x</td>
+</tr>
+<tr>
+<td>burn-in</td>
+<td>链早期未达平稳，统计要丢弃前段</td>
 </tr>
 </tbody>
 </table>
-<p>本章代码：<a href="../nb/ch05.ipynb">nb/ch05.ipynb</a>（8 个实验，每个都给出实测方差缩减比与理论值对照）。贯穿全章的一句话：<strong>方差缩减不是数学定理的艺术，是"用关于问题的知识换计算量"的艺术</strong>——这也是 D&amp;S 反复强调它是一门"艺术"的原因。</p>
+<p>本章代码：<a href="../nb/ch05.ipynb">nb/ch05.ipynb</a>（5 个实验，随机种子 2024；结果图均标注"代码实跑"）。承上启下：本章的链式抽样是第 8 章（贝叶斯后验的 MCMC 计算）与第 9 章（MCMC 求积）的引擎；§5.5 末尾的"退火"概念在第 7 章长成优化算法。</p>
 <h2 id="50-本章导图">5.0 本章导图<a class="headerlink" href="#50-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">方差缩减</span>
+    <span class="brlabel root">马尔科夫链蒙特卡罗</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">
-        <span class="brlabel">改抽样分布</span>
+        <span class="brlabel">离散链</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">重要性抽样与权重</span>
-          <span class="brleaf">最优重要性函数的推导</span>
-          <span class="brleaf">零方差的理想极限</span>
+          <span class="brleaf">邻域与转移矩阵</span>
+          <span class="brleaf">概率向量与矩阵幂</span>
+          <span class="brleaf">平稳分布与正则条件</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">分区抽样</span>
+        <span class="brlabel">Metropolis</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">系统抽样与方差分解</span>
-          <span class="brleaf">分层的最优样本分配</span>
-          <span class="brleaf">两种方法的取舍</span>
+          <span class="brleaf">提议 + 接受两步走</span>
+          <span class="brleaf">接受率只用相对值</span>
+          <span class="brleaf">对称提议、最小邻域</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">制造相关性</span>
+        <span class="brlabel">为什么有效</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">相关抽样估小差异</span>
-          <span class="brleaf">控制变量与最优系数</span>
-          <span class="brleaf">对偶变量的负相关</span>
+          <span class="brleaf">概率质量流动图像</span>
+          <span class="brleaf">细致平衡逐对推导</span>
+          <span class="brleaf">遍历定理：时间平均即期望</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">改 history</span>
+        <span class="brlabel">统计力学与 Ising</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">俄罗斯轮盘赌</span>
-          <span class="brleaf">分裂与权重补偿</span>
-          <span class="brleaf">组合技术的公平性</span>
+          <span class="brleaf">熵最大 ⇒ Boltzmann 因子</span>
+          <span class="brleaf">配分函数在算法中消掉</span>
+          <span class="brleaf">Ising 相变与居里点</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">改记分与序列</span>
+        <span class="brlabel">延伸</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">加权蒙特卡罗排序积分</span>
-          <span class="brleaf">拟随机数与低差异序列</span>
-          <span class="brleaf">有偏但一致的估计量</span>
+          <span class="brleaf">Hastings 非对称校正</span>
+          <span class="brleaf">数羊范式与计数</span>
+          <span class="brleaf">从过去耦合：精确采样</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<h2 id="51-出发点方差是从哪来的">5.1 出发点：方差是从哪来的<a class="headerlink" href="#51-出发点方差是从哪来的" title="Permanent link">#</a></h2>
-<p>蒙特卡罗估计量的全部不确定性都写在方差里：</p>
+<h2 id="51-离散马尔科夫链">5.1 离散马尔科夫链<a class="headerlink" href="#51-离散马尔科夫链" title="Permanent link">#</a></h2>
+<h3 id="511-定义与图表示">5.1.1 定义与图表示<a class="headerlink" href="#511-定义与图表示" title="Permanent link">#</a></h3>
+<p>单次概率实验推广为<strong>一串</strong>实验：<span class="arithmatex">\(t=0,1,2,\dots\)</span> 每步从状态 <span class="arithmatex">\(X_{t-1}\)</span> 走到 <span class="arithmatex">\(X_t\)</span>。"马尔科夫"的关键是<strong>只看现在，不看历史</strong>——从状态 <span class="arithmatex">\(x\)</span> 出发的下一步只依赖 <span class="arithmatex">\(x\)</span>。通常从 <span class="arithmatex">\(x\)</span> 只能走到 <span class="arithmatex">\(\Omega\)</span> 的一小部分，称为 <span class="arithmatex">\(x\)</span> 的<strong>邻域</strong>（neighborhood）<span class="arithmatex">\(N_x\)</span>；每条有向边 <span class="arithmatex">\(x\to y\)</span> 带一个转移概率 <span class="arithmatex">\(p_{xy}\)</span>，行和必须为 1：</p>
 <div class="arithmatex">\[
-\langle z\rangle=\int_V z(\mathbf x)f(\mathbf x)\,\mathrm d\mathbf x
-\simeq \bar z=\frac1N\sum_{i=1}^{N}z(\mathbf x_i),
+\sum_{y\in N_x}p_{xy}=1,\qquad \text{对所有 } x\in\Omega .
+\]</div>
+<p>链可以画成图：状态是顶点、转移是有向边（S&amp;M 图 3.1 的四状态例）。本章只处理<strong>时齐</strong>（time invariant）链——转移概率不随 <span class="arithmatex">\(t\)</span> 变。</p>
+<h3 id="512-一个可以手算的小链股票市场">5.1.2 一个可以手算的小链：股票市场<a class="headerlink" href="#512-一个可以手算的小链股票市场" title="Permanent link">#</a></h3>
+<p>S&amp;M 的股票模型：昨天 up / same / down 三种状态，今天的条件概率为——昨天 up 则今天 up 0.3、same 0.2、down 0.5；昨天 same 则 0.4/0.3/0.3；昨天 down 则 0.3/0.4/0.3。<strong>模拟单条链</strong>：按当前状态的行做轮盘选择（第 4 章的方法）即可走链；<strong>研究分布</strong>则用矩阵。转移矩阵</p>
+<div class="arithmatex">\[
+P=\begin{bmatrix}0.3&amp;0.2&amp;0.5\\0.4&amp;0.3&amp;0.3\\0.3&amp;0.4&amp;0.3\end{bmatrix},
 \qquad
-s(\bar z)=\frac{1}{\sqrt{N-1}}\sqrt{\overline{z^2}-\bar z^2}.
+p_{t+1}=p_tP,\qquad p_t=p_0P^t ,
 \]</div>
-<p>要让 <span class="arithmatex">\(s(\bar z)\)</span> 变小，只有三条路：增大 <span class="arithmatex">\(N\)</span>（成本线性增长，误差只按 <span class="arithmatex">\(\sqrt N\)</span> 降——最笨的一条）、把 <span class="arithmatex">\(\overline{z^2}-\bar z^2\)</span> 压小（<strong>本章主旨</strong>）、或者接受一点偏差换取更低方差（§5.10）。</p>
-<p>第二条路为什么可行？因为 <span class="arithmatex">\(\overline{z^2}-\bar z^2\)</span> 衡量的是"各条 history 之间散不散"。若每条 history 都给出接近均值的结果，方差自然小；极端地，若每条都恰好给出 <span class="arithmatex">\(\langle z\rangle\)</span>，方差为零。<strong>方差缩减的目标就是通过人为干预（偏置抽样、分区、造相关），让 history 的结果更整齐</strong>。</p>
-<p>D&amp;S §5 开篇列了一张技术地图，按干预方式分类：</p>
-<table>
-<thead>
-<tr>
-<th>思路</th>
-<th>做法</th>
-<th>对应小节</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>变换问题</td>
-<td>利用对称性把问题改写成等价但更易算的形式</td>
-<td>§5.1</td>
-</tr>
-<tr>
-<td>截断简化</td>
-<td>简化对结果无影响的物理细节，把省下的时间换成 history 数</td>
-<td>§5.1</td>
-</tr>
-<tr>
-<td>修改抽样</td>
-<td>从偏置分布抽样 + 权重补偿</td>
-<td>§5.2–5.5</td>
-</tr>
-<tr>
-<td>控制 history</td>
-<td>轮盘赌杀死无望者、分裂有希望者</td>
-<td>§5.8</td>
-</tr>
-<tr>
-<td>修改记分</td>
-<td>让更多 history 产生非零分数</td>
-<td>§5.11</td>
-</tr>
-<tr>
-<td>半解析</td>
-<td>部分阶段用解析结果取代抽样</td>
-<td>§5.6–5.7</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">拓展：为什么"变换问题"常常最有效</p>
-<p>D&amp;S 图 5.1 的例子：单向粒子束均匀入射屏蔽板左侧，要估右侧一小块面积 <span class="arithmatex">\(\Delta A\)</span> 的透射率。若真的在整个左表面均匀取入射点，几乎没人能正好打到 <span class="arithmatex">\(\Delta A\)</span> 上。但"能否到达右表面"与入射点在左表面的位置无关，于是可以<strong>把所有粒子都从同一点入射、把整个右表面当记分区</strong>——期望值不变，效率提高几个数量级。这种"重写问题"的收益通常高于任何数值技巧，代价是要真正理解问题结构。</p>
-</div>
-<h2 id="52-重要性抽样">5.2 重要性抽样<a class="headerlink" href="#52-重要性抽样" title="Permanent link">#</a></h2>
-<h3 id="521-权重的来源">5.2.1 权重的来源<a class="headerlink" href="#521-权重的来源" title="Permanent link">#</a></h3>
-<p>要估 <span class="arithmatex">\(\langle z\rangle=\int zf\,\mathrm dx\)</span>，但 <span class="arithmatex">\(z\)</span> 在 <span class="arithmatex">\(V\)</span> 的大部分区域接近于零，值几乎全部来自一小块区域。均匀（或按 <span class="arithmatex">\(f\)</span>）抽样会把绝大多数 history 浪费在无关区域上。</p>
-<p>引入任意一个<strong>重要性密度</strong> <span class="arithmatex">\(f^*(\mathbf x)\)</span>（同样非负归一），把积分改写成对它求期望：</p>
+<p>其中 <span class="arithmatex">\(p_t\)</span> 是 <span class="arithmatex">\(X_t\)</span> 的<strong>概率向量</strong>（行向量）。从 <span class="arithmatex">\(p_0=[1\ 0\ 0]\)</span>（确定性从 up 开始）出发：</p>
 <div class="arithmatex">\[
-\langle z\rangle=\int_V \frac{z(\mathbf x)f(\mathbf x)}{f^*(\mathbf x)}f^*(\mathbf x)\,\mathrm d\mathbf x
-\equiv\int_V z^*(\mathbf x)f^*(\mathbf x)\,\mathrm d\mathbf x=\langle z^*\rangle,
-\qquad z^*=zW,\quad W\equiv\frac{f}{f^*}.
+p_1=[0.3\ 0.2\ 0.5],\qquad
+p_2=[0.32\ 0.32\ 0.36],\qquad
+\dots,\qquad
+p_{10}=[0.330357\ 0.303571\ 0.366072].
 \]</div>
-<p>于是估计量变成</p>
+<p>分布迅速稳定下来——这不是巧合，而是正则马尔科夫链的普遍性质：存在<strong>不变分布</strong>（invariant distribution）<span class="arithmatex">\(\pi\)</span> 满足</p>
 <div class="arithmatex">\[
-\langle z\rangle\simeq\frac1N\sum_{i=1}^{N}z(\mathbf x_i)\,W(\mathbf x_i),
-\qquad \mathbf x_i\sim f^* .
+\pi P=\pi ,
 \]</div>
-<p><strong>无偏性的来源</strong>就一句话：<span class="arithmatex">\(f^*\)</span> 在分子分母里各出现一次，积分值不变。权重 <span class="arithmatex">\(W\)</span> 是"偏置的汇率"——在 <span class="arithmatex">\(f^*\)</span> 抽得多的区域，样本被折扣；抽得少的区域，样本被加权。</p>
-<h3 id="522-方差比较与最优的重要性函数">5.2.2 方差比较与最优的重要性函数<a class="headerlink" href="#522-方差比较与最优的重要性函数" title="Permanent link">#</a></h3>
-<p>两个估计量的方差是</p>
+<p>且 <span class="arithmatex">\(p_t\to\pi\)</span>。用 <span class="arithmatex">\(\pi P=\pi\)</span> 解股票链，得精确值</p>
 <div class="arithmatex">\[
-\sigma^2(z)=\langle z^2\rangle-\langle z\rangle^2,
-\qquad
-\sigma^2(z^*)=\langle z^{*2}\rangle-\langle z\rangle^2,
+\pi=\Big[\tfrac{37}{112},\ \tfrac{34}{112},\ \tfrac{41}{112}\Big]\approx[0.3304,\ 0.3036,\ 0.3661].
 \]</div>
-<p>其中关键的一项是</p>
-<div class="arithmatex">\[
-\langle z^{*2}\rangle=\int_V z^2 W^2 f^*\,\mathrm d\mathbf x
-=\int_V z^2 W f\,\mathrm d\mathbf x
-\ne \int_V z^2 f\,\mathrm dx=\langle z^2\rangle .
-\]</div>
-<p><strong>判据</strong>：若在 <span class="arithmatex">\(z\)</span> 贡献大的区域里 <span class="arithmatex">\(W&lt;1\)</span>（即 <span class="arithmatex">\(f^*&gt;f\)</span>，抽样被加强），则 <span class="arithmatex">\(\langle z^{*2}\rangle&lt;\langle z^2\rangle\)</span>，方差减小。</p>
-<p>取极限情形 <span class="arithmatex">\(f^*(\mathbf x)=f(\mathbf x)z(\mathbf x)/\langle z\rangle\)</span>，则 <span class="arithmatex">\(W=\langle z\rangle/z\)</span>，代入得</p>
-<div class="arithmatex">\[
-\langle z^{*2}\rangle=\int_V z^2\cdot\frac{\langle z\rangle}{z}\,f\,\mathrm d\mathbf x
-=\langle z\rangle\int_V zf\,\mathrm d\mathbf x=\langle z\rangle^2,
-\]</div>
-<p>于是 <span class="arithmatex">\(\sigma^2(z^*)=0\)</span>。<strong>理论上存在零方差的重要性函数，但它需要知道 <span class="arithmatex">\(\langle z\rangle\)</span> 本身</strong>——这正是我们要估的量。所以实践中的做法是：构造一个形状接近 <span class="arithmatex">\(z f\)</span> 的 <span class="arithmatex">\(f^*\)</span>。</p>
-<h3 id="523-最优形状的严格版本Schwartz-不等式">5.2.3 最优形状的严格版本（Schwartz 不等式）<a class="headerlink" href="#523-最优形状的严格版本Schwartz-不等式" title="Permanent link">#</a></h3>
-<p>对求积形式 <span class="arithmatex">\(I=\int_V g\,\mathrm d\mathbf x\)</span>，用 <span class="arithmatex">\(f^*\)</span> 抽样后</p>
-<div class="arithmatex">\[
-I\simeq\overline{\left(\frac{g}{f^*}\right)},
-\qquad
-\sigma^2\!\left(\frac{g}{f^*}\right)=\int_V\frac{g^2}{f^*}\,\mathrm d\mathbf x-I^2 .
-\]</div>
-<p>要最小化它，只需最小化 <span class="arithmatex">\(\int g^2/f^*\)</span>。由 Schwartz 不等式</p>
-<div class="arithmatex">\[
-\left(\int_V|g|\,\mathrm d\mathbf x\right)^2
-=\left(\int_V\frac{|g|}{\sqrt{f^*}}\sqrt{f^*}\,\mathrm d\mathbf x\right)^2
-\le\left(\int_V\frac{g^2}{f^*}\,\mathrm d\mathbf x\right)\left(\int_V f^*\,\mathrm d\mathbf x\right),
-\]</div>
-<p>右端第二因子为 1，故</p>
-<div class="arithmatex">\[
-\int_V\frac{g^2}{f^*}\,\mathrm d\mathbf x\ \ge\ \left(\int_V|g|\,\mathrm d\mathbf x\right)^2,
-\]</div>
-<p>等号在 <span class="arithmatex">\(f^*\propto|g|\)</span> 时成立。代回方差表达式：</p>
-<div class="arithmatex">\[
-\sigma^2_{\min}\!\left(\frac{g}{f^*}\right)
-=\left(\int_V|g|\,\mathrm d\mathbf x\right)^2-\left(\int_V g\,\mathrm d\mathbf x\right)^2 .
-\]</div>
-<p><strong>若 <span class="arithmatex">\(g\)</span> 在 <span class="arithmatex">\(V\)</span> 上不变号，最小方差为零</strong>。这解释了为什么"重要性抽样做得好"可以极端有效：被积函数越接近单峰、越容易用密度拟合，收益越大。</p>
-<div class="admonition note">
-<p class="admonition-title">拓展：为什么 <span class="arithmatex">\(f^*\propto|g|\)</span> 不能直接用</p>
-<p>因为归一化常数 <span class="arithmatex">\(\int|g|\mathrm dx\)</span> 就是要估的积分（或与之等价的量）。这就是方差缩减的"先有鸡还是先有蛋"：<strong>知道答案就能零方差，正因为不知道才要算</strong>。实践中的全部智慧在于用便宜的信息（粗略解析估计、先导模拟、物理直觉）造一个"足够像"的 <span class="arithmatex">\(f^*\)</span>。</p>
-</div>
-<h3 id="524-实验e-的七次方积分DS-习题-1">5.2.4 实验：e 的七次方积分（D&amp;S 习题 1）<a class="headerlink" href="#524-实验e-的七次方积分DS-习题-1" title="Permanent link">#</a></h3>
-<p>真值 <span class="arithmatex">\((e^7-1)/7=156.519\)</span>。朴素均匀抽样的方差很大（被积函数在右端翘起），取 <span class="arithmatex">\(f^*(x)\propto 3^{7x}\)</span>（形状接近 <span class="arithmatex">\(e^{7x}\)</span>）后：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>估计值</th>
-<th>标准误差</th>
-<th>与真值偏差</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>朴素抽样</td>
-<td>155.3677</td>
-<td>0.5516</td>
-<td>−1.15</td>
-</tr>
-<tr>
-<td>重要性抽样</td>
-<td>156.5242</td>
-<td>0.0337</td>
-<td>+0.005</td>
-</tr>
-</tbody>
-</table>
-<p>标准差比 <strong>16.4 倍</strong>（方差比约 270）。图 5.1 左图是两种方法"单条 history 分数"的分布：重要性抽样的分数集中得多；右图是标准误差随 <span class="arithmatex">\(N\)</span> 的下降，两条线斜率都近似 <span class="arithmatex">\(-1/2\)</span>，但重要性抽样的整条线低了一个多量级。</p>
 <figure>
   <img src="../images/ch05/out-5-1.png" class="lq-img" />
-  <figcaption>图 5.1 重要性抽样（代码实跑）：左，单条 history 分数的分布（朴素 vs 重要性）；右，标准误差随 <span class="arithmatex">\(N\)</span> 的变化，重要性抽样整体低约一个量级。</figcaption>
+  <figcaption>图 5.1 股票链收敛（代码实跑）：左，三条状态概率曲线收敛到平稳分布（虚线）；右，误差几何下降，速率恰为次特征值 <span class="arithmatex">\(0.1414\)</span>——收敛快慢由谱隙决定。</figcaption>
 </figure>
 
-<p><strong>零方差的验证</strong>（实验 2）：取 <span class="arithmatex">\(g(x)=3x^2\)</span>（积分 1），则 <span class="arithmatex">\(f^*(x)=3x^2\)</span>，权重 <span class="arithmatex">\(g/f^*\equiv1\)</span>。实际抽样得到每条 history 的分数恒为 1、标准差 <span class="arithmatex">\(0\)</span>——把 §5.2.3 的结论跑成了字面事实。</p>
-<h3 id="525-不连续的重要性函数大间距的蒲丰投针DS-例-52">5.2.5 不连续的重要性函数：大间距的蒲丰投针（D&amp;S 例 5.2）<a class="headerlink" href="#525-不连续的重要性函数大间距的蒲丰投针DS-例-52" title="Permanent link">#</a></h3>
-<p>当针间距 <span class="arithmatex">\(D\gg L\)</span> 时，<span class="arithmatex">\(z(x)\)</span> 只在 <span class="arithmatex">\(x\in[0,L]\cup[D-L,D]\)</span> 上非零，其余处为零。按 <span class="arithmatex">\(f=1/D\)</span> 抽样，绝大多数样本落在零区。改用</p>
-<div class="arithmatex">\[
-f^*(x)=
-\begin{cases}
-\dfrac{1}{2L}, &amp; 0&lt;x&lt;L \ \text{或}\ D-L&lt;x&lt;D,\\[4pt]
-0, &amp; \text{其他},
-\end{cases}
-\qquad
-W(x)=\frac{f}{f^*}=
-\begin{cases}
-\dfrac{2L}{D}, &amp; \text{非零区},\\[4pt]
-0, &amp; \text{其他}.
-\end{cases}
-\]</div>
-<p><span class="arithmatex">\(D/L=10^4\)</span> 时 <span class="arithmatex">\(P_{cut}=2/(10^4\pi)=6.3662\times10^{-5}\)</span>，重要性抽样把相对误差压低了约两个数量级（D&amp;S 图 5.4）。这类"只在子区间上抽样"的做法还有个通用版本：把"重要子区间" <span class="arithmatex">\([c,d]\)</span> 的概率密度乘 <span class="arithmatex">\(\alpha\)</span>、其余乘 <span class="arithmatex">\(\beta\)</span>，由归一化条件解出</p>
-<div class="arithmatex">\[
-\alpha=\frac{1-\beta[1-F(d)+F(c)]}{F(d)-F(c)},
-\]</div>
-<p>权重在子区间内为 <span class="arithmatex">\(1/\alpha\)</span>、外为 <span class="arithmatex">\(1/\beta\)</span>（D&amp;S 例 5.3）。</p>
-<h2 id="53-系统抽样">5.3 系统抽样<a class="headerlink" href="#53-系统抽样" title="Permanent link">#</a></h2>
-<h3 id="531-分区与估计量">5.3.1 分区与估计量<a class="headerlink" href="#531-分区与估计量" title="Permanent link">#</a></h3>
-<p>把积分区域切成 <span class="arithmatex">\(M\)</span> 个互不重叠的子区域 <span class="arithmatex">\(V_1,\dots,V_M\)</span>，令</p>
-<div class="arithmatex">\[
-p_m=\int_{V_m}f(\mathbf x)\,\mathrm d\mathbf x,\qquad
-f_m(\mathbf x)=
-\begin{cases}
-f(\mathbf x)/p_m, &amp; \mathbf x\in V_m,\\
-0, &amp; \text{其他},
-\end{cases}
-\]</div>
-<p>则 <span class="arithmatex">\(f_m\)</span> 是 <span class="arithmatex">\(V_m\)</span> 上的 PDF，且</p>
-<div class="arithmatex">\[
-\langle z\rangle=\sum_{m=1}^{M}p_m\langle z\rangle_m,
-\qquad
-\langle z\rangle_m=\int_{V_m}z(\mathbf x)f_m(\mathbf x)\,\mathrm d\mathbf x .
-\]</div>
-<p><strong>系统抽样</strong>的做法：按比例分配样本数 <span class="arithmatex">\(N_m=p_mN\)</span>，每层按 <span class="arithmatex">\(f_m\)</span> 抽，然后加权平均</p>
-<div class="arithmatex">\[
-\bar z_{\mathrm{sys}}=\sum_{m=1}^{M}p_m\bar z_m,
-\qquad
-\bar z_m=\frac{1}{N_m}\sum_{i_m=1}^{N_m}z(\mathbf x_{i_m}).
-\]</div>
-<p>无偏性直接由各层无偏推出。</p>
-<h3 id="532-方差分解系统抽样为什么更好">5.3.2 方差分解：系统抽样为什么更好<a class="headerlink" href="#532-方差分解系统抽样为什么更好" title="Permanent link">#</a></h3>
-<p><strong>系统抽样的方差</strong>。各层样本相互独立、层内方差 <span class="arithmatex">\(\sigma_m^2\)</span>，于是</p>
-<div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{sys}})
-=\sum_m\frac{p_m^2}{N_m}\sigma_m^2
-\overset{N_m=p_mN}{=}
-\frac1N\sum_m p_m\sigma_m^2 .
-\]</div>
-<p><strong>朴素抽样的方差</strong>（关键一步）。把整体方差按层拆开，用到 <span class="arithmatex">\(f=p_mf_m\)</span>：</p>
-<div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{sf}})
-=\frac1N\int_V[z-\langle z\rangle]^2f\,\mathrm d\mathbf x
-=\frac1N\sum_m p_m\int_{V_m}\big[(z-\langle z\rangle_m)+(\langle z\rangle_m-\langle z\rangle)\big]^2f_m\,\mathrm d\mathbf x .
-\]</div>
-<p>展开平方后三项：第一项是 <span class="arithmatex">\(\sigma_m^2\)</span>；第二项是 <span class="arithmatex">\(\int(z-\langle z\rangle_m)f_m\,\mathrm dx=0\)</span>（层内偏差均值为零）；第三项被积函数是常数，积出来是 <span class="arithmatex">\((\langle z\rangle_m-\langle z\rangle)^2\)</span>。于是</p>
-<div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{sf}})
-=\frac1N\sum_m p_m\sigma_m^2
-+\frac1N\sum_m p_m\big[\langle z\rangle_m-\langle z\rangle\big]^2 .
-\]</div>
-<p>两式相减：</p>
-<div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{sf}})-\sigma^2(\bar z_{\mathrm{sys}})
-=\frac1N\sum_m p_m\big[\langle z\rangle_m-\langle z\rangle\big]^2\ \ge 0 .
-\]</div>
-<p><strong>结论</strong>：系统抽样消掉的正是"各层均值差异"这一项。层与层之间差别越大（比如被积函数在某个区域整体抬高），收益越大；若各层均值相同，则没有收益。</p>
-<p>实验（<span class="arithmatex">\(g(x)=\sin\pi x\)</span>，<span class="arithmatex">\(M=16\)</span> 层，60–200 次重复）：理论标准误差比为 7.68，实测 7.24——量级完全吻合。</p>
-<p><figure>
-  <img src="../images/ch05/out-5-2.png" class="lq-img" />
-<br />
-<figcaption>图 5.2 系统抽样 vs 朴素抽样（代码实跑，60 次重复实测标准误差）：两条线都按 <span class="arithmatex">\(N^{-1/2}\)</span> 下降，系统抽样整体低数倍。</figcaption></p>
-</figure>
+<h3 id="513-平稳分布存在的两个条件">5.1.3 平稳分布存在的两个条件<a class="headerlink" href="#513-平稳分布存在的两个条件" title="Permanent link">#</a></h3>
+<p>S&amp;M（借助附录 B 的 Perron–Frobenius 定理）指出，<span class="arithmatex">\(P\)</span> 满足两条"正则"条件时不变分布唯一且 <span class="arithmatex">\(p_t\to\pi\)</span>：</p>
+<ol>
+<li><strong>不可约</strong>（irreducible）：图上从任何顶点出发都能到达任何其他顶点。若图分裂成几个连通块，各自有自己的平稳分布，没有全空间唯一的 <span class="arithmatex">\(\pi\)</span>。</li>
+<li><strong>非周期</strong>（aperiodic）：不存在 <span class="arithmatex">\(d&gt;1\)</span> 使得"回到出发点的步数都是 <span class="arithmatex">\(d\)</span> 的倍数"。违反则 <span class="arithmatex">\(p_t\)</span> 来回振荡不收敛——S&amp;M 图 3.3 的三态链（1⇄2⇄3，1 与 3 都只能去 2）中，回到自己的步数全是偶数，就是周期 <span class="arithmatex">\(d=2\)</span> 的反例。</li>
+</ol>
+<p>这两条在 §5.2 里还会重逢：Metropolis 链自动满足非周期（总有可能原地不动），只需保证提议过程不可约。</p>
 <div class="admonition note">
-<p class="admonition-title">拓展：系统抽样其实就是重要性抽样</p>
-<p>令 <span class="arithmatex">\(f^*(\mathbf x)=f(\mathbf x)/p_m\)</span>（<span class="arithmatex">\(\mathbf x\in V_m\)</span>），则 <span class="arithmatex">\(W=f/f^*=p_m\)</span>。也就是说，系统抽样是"分段常数权重"的重要性抽样——它不改变层内的相对重要性，只统一调整"每层被抽中的总概率"。这条观察把 §5.2 与 §5.3 合成一个框架（D&amp;S §5.3.3）。</p>
+<p class="admonition-title">拓展：收敛速率由谱隙决定</p>
+<p>实验测得股票链误差按几何速率下降，速率恰为 <span class="arithmatex">\(P\)</span> 的次特征值模长 <span class="arithmatex">\(\lambda_2=0.1414\)</span>。谱隙 <span class="arithmatex">\(1-\lambda_2\)</span> 越大混合越快——这是判断 MCMC"烧多久才算烧透"的理论依据（D&amp;S §6.1.3 会讨论 burn-in 的神话）。</p>
 </div>
-<h2 id="54-分层抽样">5.4 分层抽样<a class="headerlink" href="#54-分层抽样" title="Permanent link">#</a></h2>
-<h3 id="541-与系统抽样的差别">5.4.1 与系统抽样的差别<a class="headerlink" href="#541-与系统抽样的差别" title="Permanent link">#</a></h3>
-<p>分层抽样（stratified sampling）也分区、也每层抽固定条数，但 <span class="arithmatex">\(N_m\)</span> <strong>不由 <span class="arithmatex">\(p_m\)</span> 决定</strong>，而是<strong>选得让方差最小</strong>。方差公式同前：</p>
+<h2 id="52-Metropolis-算法">5.2 Metropolis 算法<a class="headerlink" href="#52-Metropolis-算法" title="Permanent link">#</a></h2>
+<h3 id="521-从舍选法到链">5.2.1 从舍选法到链<a class="headerlink" href="#521-从舍选法到链" title="Permanent link">#</a></h3>
+<p>MCMC 的想法来自 1953 年 Metropolis 等人的论文"Equations of state calculations by fast computing machines"（研究原子分子随机运动的物理问题）——该算法后来被评为对科学与工程影响最大的十大算法之一。</p>
+<p>第 4 章舍选法的结构是"提议 <span class="arithmatex">\(y\sim g\)</span>、以 <span class="arithmatex">\(h(y)\)</span> 接受"。Metropolis 把它改成链式：<strong>提议可以依赖当前状态</strong>（每个 <span class="arithmatex">\(x\)</span> 有自己的提议密度 <span class="arithmatex">\(g_x\)</span>），<strong>接受也可以依赖当前状态</strong>。这带来巨大的新自由度，代价是样本之间相关。对提议的唯一硬性要求是<strong>对称</strong>：</p>
 <div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{strat}})=\sum_{m}\frac{p_m^2}{N_m}\sigma_m^2 .
+g_x(y)=g_y(x),
 \]</div>
-<h3 id="542-最优分配的推导Lagrange-乘子">5.4.2 最优分配的推导（Lagrange 乘子）<a class="headerlink" href="#542-最优分配的推导Lagrange-乘子" title="Permanent link">#</a></h3>
-<p>在约束 <span class="arithmatex">\(\sum_m N_m=N\)</span> 下最小化上式，用乘子 <span class="arithmatex">\(\lambda\)</span> 构造</p>
+<p>即"从 <span class="arithmatex">\(x\)</span> 提议 <span class="arithmatex">\(y\)</span>"与"从 <span class="arithmatex">\(y\)</span> 提议 <span class="arithmatex">\(x\)</span>"等可能（最常用：随机游走 <span class="arithmatex">\(y=x+\varepsilon\)</span>，<span class="arithmatex">\(\varepsilon\)</span> 对称）。接受率为</p>
 <div class="arithmatex">\[
-F=\sum_m\left[\frac{p_m^2\sigma_m^2}{N_m}+\lambda N_m\right],
-\qquad
-\frac{\partial F}{\partial N_j}=-\frac{p_j^2\sigma_j^2}{N_j^2}+\lambda=0 .
+h(x,y)=\min\!\left(1,\ \frac{f(y)}{f(x)}\right),
 \]</div>
-<p>由此 <span class="arithmatex">\(N_j=p_j\sigma_j/\sqrt\lambda\)</span>。再对 <span class="arithmatex">\(j\)</span> 求和用掉约束：</p>
-<div class="arithmatex">\[
-\sqrt\lambda\,N=\sum_j p_j\sigma_j\equiv\langle\sigma\rangle,
-\qquad
-N_j=\frac{p_j\sigma_j}{\sum_m p_m\sigma_m}N .
-\]</div>
-<p><strong>含义</strong>：方差大的层多抽，方差小的层少抽；抽样数正比于 <span class="arithmatex">\(p_m\sigma_m\)</span>。把这个 <span class="arithmatex">\(N_j\)</span> 代回方差式，得到最小方差</p>
-<div class="arithmatex">\[
-\sigma^2_{\min}(\bar z_{\mathrm{strat}})=\frac1N\Big(\sum_m p_m\sigma_m\Big)^2 .
-\]</div>
-<h3 id="543-为什么比朴素抽样好">5.4.3 为什么比朴素抽样好<a class="headerlink" href="#543-为什么比朴素抽样好" title="Permanent link">#</a></h3>
-<p>与 §5.3.2 的朴素方差相减：</p>
-<div class="arithmatex">\[
-\sigma^2(\bar z_{\mathrm{sf}})-\sigma^2_{\min}(\bar z_{\mathrm{strat}})
-=\frac1N\Big[\big\langle\sigma_m^2\big\rangle-\langle\sigma_m\rangle^2\Big]
-+\frac1N\sum_m p_m\big[\langle z\rangle_m-\langle z\rangle\big]^2 .
-\]</div>
-<p>第一项是 <span class="arithmatex">\(\sigma_m\)</span> 的方差（非负），第二项是层均值差异（非负）。<strong>所以分层抽样几乎总是更好，且两项同时为正</strong>——除非各层的方差与均值全都相同。</p>
-<p>实验（三层，<span class="arithmatex">\(\sigma=\{0.1,0.5,2.0\}\)</span>，<span class="arithmatex">\(N=30000\)</span>）：平均分配方差 <span class="arithmatex">\(4.733\times10^{-5}\)</span>，最优分配 <span class="arithmatex">\(2.504\times10^{-5}\)</span>，与理论 <span class="arithmatex">\((\sum p_m\sigma_m)^2/N\)</span> 完全一致。</p>
-<div class="admonition warning">
-<p class="admonition-title">实践中的两个坑</p>
-<p><strong>其一</strong>：<span class="arithmatex">\(\sigma_m\)</span> 未知。用同一批 history 既估计 <span class="arithmatex">\(\bar z\)</span> 又估计 <span class="arithmatex">\(\sigma_m\)</span>，两者相关，会得出奇怪结果（D&amp;S 明确警告）。正确做法是先用小规模先导模拟粗估 <span class="arithmatex">\(\sigma_m\)</span>。<strong>其二</strong>：高维时分区数爆炸——每维切 <span class="arithmatex">\(k\)</span> 段就有 <span class="arithmatex">\(M=k^d\)</span> 个子区，<span class="arithmatex">\(d\ge5\)</span> 时既切不起也估不准方差。这是分层抽样最硬的限制。</p>
-</div>
-<h3 id="544-重要性抽样-vs-分层抽样DS-542">5.4.4 重要性抽样 vs 分层抽样（D&amp;S §5.4.2）<a class="headerlink" href="#544-重要性抽样-vs-分层抽样DS-542" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>重要性抽样</th>
-<th>分层抽样</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>用什么样的信息</td>
-<td><span class="arithmatex">\(\lvert zf\rvert\)</span> 的形状</td>
-<td>各层的<strong>方差</strong></td>
-</tr>
-<tr>
-<td>点往哪集中</td>
-<td>被积函数大的地方</td>
-<td>方差大的地方</td>
-</tr>
-<tr>
-<td>是否需要能抽样</td>
-<td>是（<span class="arithmatex">\(f^*\)</span> 要能抽）</td>
-<td>否（层内照原分布抽）</td>
-</tr>
-<tr>
-<td>主要风险</td>
-<td><span class="arithmatex">\(f^*\)</span> 拟合不好时方差反而增大</td>
-<td>高维分区爆炸、方差未知</td>
-</tr>
-</tbody>
-</table>
-<p>两者可以叠加：粗网格用分层，每格内再用重要性抽样（Press 等的自适应算法）。</p>
-<h2 id="55-相关抽样与对偶变量">5.5 相关抽样与对偶变量<a class="headerlink" href="#55-相关抽样与对偶变量" title="Permanent link">#</a></h2>
-<h3 id="551-估计两个几乎相同的量之差">5.5.1 估计"两个几乎相同的量之差"<a class="headerlink" href="#551-估计两个几乎相同的量之差" title="Permanent link">#</a></h3>
-<p>许多问题要的不是某个量本身，而是<strong>微小差异</strong>：参数改一点点，结果变多少？若分别做两次独立模拟再相减，两次的误差各自独立叠加：</p>
-<div class="arithmatex">\[
-\sigma^2(\langle\Delta z\rangle)=\sigma_1^2+\sigma_2^2-2\operatorname{cov}(\bar z_1,\bar z_2).
-\]</div>
-<p>若让两次模拟<strong>共用同一串随机数</strong>，且两问题结构相似，则 <span class="arithmatex">\(\bar z_1,\bar z_2\)</span> 高度正相关，协方差项把方差大幅拉低。这就是<strong>相关抽样</strong>。关键操作是"随机数同步"：在两问题对应位置使用同一个随机数。</p>
-<p>D&amp;S 例 5.4 的例子很典型：把平行线网格换成锯齿网格，<span class="arithmatex">\(P_{cut}\)</span> 只增加 0.000334。独立模拟要用极多样本才能把这个小差值从噪声里分辨出来；共用针的落点后，两次结果的差稳定得多。</p>
-<h3 id="552-一个已知期望的陪跑控制变量">5.5.2 一个已知期望的"陪跑"：控制变量<a class="headerlink" href="#552-一个已知期望的陪跑控制变量" title="Permanent link">#</a></h3>
-<p>若存在一个近似问题，其期望 <span class="arithmatex">\(\langle z_o\rangle\)</span> <strong>已知</strong>，则可以构造</p>
-<div class="arithmatex">\[
-\overline{z(\alpha)}\equiv\bar z-\alpha\big(\bar z_o-\langle z_o\rangle\big).
-\]</div>
-<p>它的期望恒为 <span class="arithmatex">\(\langle z\rangle\)</span>（因为 <span class="arithmatex">\(\langle\bar z_o-\langle z_o\rangle\rangle=0\)</span>），对任意 <span class="arithmatex">\(\alpha\)</span> 都无偏。方差是</p>
-<div class="arithmatex">\[
-\sigma^2\big(\overline{z(\alpha)}\big)=\frac1N\Big[\sigma^2(z)-2\alpha\operatorname{cov}(z,z_o)+\alpha^2\sigma^2(z_o)\Big].
-\]</div>
-<p>对 <span class="arithmatex">\(\alpha\)</span> 求导置零，得<strong>最优系数</strong></p>
-<div class="arithmatex">\[
-\alpha_{opt}=\frac{\operatorname{cov}(z,z_o)}{\sigma^2(z_o)}
-=\frac{\sigma(z)}{\sigma(z_o)}\rho(z,z_o),
-\]</div>
-<p>此时</p>
-<div class="arithmatex">\[
-\sigma^2\big(\overline{z(\alpha_{opt})}\big)=\frac{\sigma^2(z)}{N}\big[1-\rho^2(z,z_o)\big].
-\]</div>
-<p><strong>结论</strong>：方差最多能压到原来的 <span class="arithmatex">\(1-\rho^2\)</span> 倍；相关性越强收益越大。这也解释了"控制变量法"为什么极受欢迎——它只需要一个便宜的近似模型。</p>
-<p>实验（估 <span class="arithmatex">\(\int_0^1e^{-x^2}\mathrm dx\)</span>，控制变量 <span class="arithmatex">\(1-x^2\)</span>，期望 <span class="arithmatex">\(2/3\)</span> 已知）：<span class="arithmatex">\(\alpha_{opt}=0.6693\)</span>，普通标准误差 <span class="arithmatex">\(4.49\times10^{-4}\)</span>，控制变量后 <span class="arithmatex">\(5.5\times10^{-5}\)</span>；<span class="arithmatex">\(\rho=0.9924\)</span>，理论方差比 <span class="arithmatex">\(1/(1-\rho^2)=66.2\)</span>，实测 <strong>66.2</strong>。</p>
-<p>S&amp;M §6.3.1 也给了同款例子：估正态密度在 <span class="arithmatex">\([-2,2]\)</span> 上的积分（真值 0.9545），用对称的 Cauchy 密度作控制变量（其积分 <span class="arithmatex">\(G=\frac{2}{\pi}\arctan 2\approx0.70483\)</span> 解析可算）。40 次试验：直接估计误差约 10%，控制变量后约 0.7%——量级相同。</p>
-<h3 id="553-对偶变量">5.5.3 对偶变量<a class="headerlink" href="#553-对偶变量" title="Permanent link">#</a></h3>
-<p>若两个无偏估计量 <span class="arithmatex">\(I_1,I_2\)</span> <strong>负相关</strong>，取其平均：</p>
-<div class="arithmatex">\[
-\sigma^2\!\left(\frac{I_1+I_2}{2}\right)=\frac14\sigma^2(I_1)+\frac14\sigma^2(I_2)+\frac12\operatorname{cov}(I_1,I_2).
-\]</div>
-<p>协方差为负时，平均值的方差可以远小于单个估计量。最常用的构造是<strong>反演对称</strong>：用同一组均匀随机数 <span class="arithmatex">\(u_i\)</span>，同时产生 <span class="arithmatex">\(x_i=u_i\)</span> 与 <span class="arithmatex">\(y_i=1-u_i\)</span>。</p>
-<p>对 <span class="arithmatex">\(I=\int_0^1g(x)\mathrm dx\)</span>，令 <span class="arithmatex">\(I_{12}=\frac1{2N}\sum[g(u_i)+g(1-u_i)]\)</span>。可以证明<strong>对任意 <span class="arithmatex">\(g\)</span></strong> 都有 <span class="arithmatex">\(\sigma^2(I_{12})\le\sigma^2(I_1)\)</span>；若 <span class="arithmatex">\(g\)</span> 连续单调且导数连续，则更强地有 <span class="arithmatex">\(\sigma^2(I_{12})\le\sigma^2(I_1)/2\)</span>——这才是"多花一倍计算量也值得"的条件。D&amp;S 的证明用了一个辅助函数</p>
-<div class="arithmatex">\[
-h(x)=\int_0^x g(1-x')\,\mathrm dx'-xI,\qquad h'(x)=g(1-x)-I,
-\]</div>
-<p>对单调递减的 <span class="arithmatex">\(g\)</span> 论证 <span class="arithmatex">\(h\le0\)</span>，再由分部积分得到 <span class="arithmatex">\(\int g(1-x)g(x)\mathrm dx-I^2\le0\)</span>，即 <span class="arithmatex">\(2\sigma^2(I_{12})-\sigma^2(I_1)\le0\)</span>。</p>
-<p>一般分布下的版本：取 <span class="arithmatex">\(x_i=F^{-1}(\rho_i)\)</span>、<span class="arithmatex">\(y_i=F^{-1}(1-\rho_i)\)</span>，两者负相关。</p>
-<p>实验（<span class="arithmatex">\(g(x)=e^{x}\)</span>，真值 <span class="arithmatex">\(e-1=1.718282\)</span>）：普通 <span class="arithmatex">\(1.718231\pm0.001557\)</span>，对偶 <span class="arithmatex">\(1.718396\pm0.000198\)</span>；<span class="arithmatex">\(\rho=-0.968\)</span>，方差比 <strong>61.8</strong>，与理论 <span class="arithmatex">\(2/(1+\rho)=61.8\)</span> 完全一致。</p>
+<p><span class="arithmatex">\(f\)</span> 只需要<strong>相对值</strong>——比当前点概率高的提议必收，比当前点低的按比值概率收。算法骨架：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>选初始状态 x
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Loop t = 1, 2, …:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    从 N_x 按 g_x 提议 y
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    h = min(1, f(y)/f(x))
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    以概率 h 令 x ← y（否则留在 x）
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    记录 x
+</code></pre></div>
+<h3 id="522-三个例子SM-321">5.2.2 三个例子（S&amp;M §3.2.1）<a class="headerlink" href="#522-三个例子SM-321" title="Permanent link">#</a></h3>
+<p><strong>骰子（最小邻域）</strong>。状态 {2,…,12}，目标是两骰子之和的分布。提议只走 <span class="arithmatex">\(x\pm1\)</span>（端点自环）——样本强相关（从 5 只能先到 4 或 6），但跑足够久后频率与理论完全吻合：实验 2 的 20 万步最大频率偏差 0.004，各点频率与 <span class="arithmatex">\(\binom{n}{x}/36\)</span> 逐一对上。</p>
 <figure>
-  <img src="../images/ch05/out-5-3.png" class="lq-img" />
-  <figcaption>图 5.3 对偶对之间的强负相关（代码实跑）：<span class="arithmatex">\(g(u)\)</span> 与 <span class="arithmatex">\(g(1-u)\)</span> 的散点沿反对角线分布，<span class="arithmatex">\(\rho=-0.968\)</span>。</figcaption>
+  <img src="../images/ch05/out-5-2.png" class="lq-img" />
+  <figcaption>图 5.2 Metropolis 抽骰子和（代码实跑）：最小邻域提议，样本高度相关，但 20 万步后边缘频率与理论分布逐点吻合（最大偏差 0.004）。</figcaption>
 </figure>
 
-<h3 id="554-三者的区别">5.5.4 三者的区别<a class="headerlink" href="#554-三者的区别" title="Permanent link">#</a></h3>
-<ul>
-<li><strong>控制变量</strong>：需要一个<strong>已知期望</strong>的陪跑量，靠它"吸收"共同波动；最优系数由协方差确定，收益 <span class="arithmatex">\(1-\rho^2\)</span>。</li>
-<li><strong>对偶变量</strong>：不需要知道任何期望，靠<strong>同一随机数的反演</strong>制造负相关；收益 <span class="arithmatex">\(\frac{1+\rho}{2}\)</span>（相对于单估计量）。</li>
-<li><strong>相关抽样</strong>：目标是<strong>差异</strong>而非单个量，靠随机数同步让两结果同涨同落。</li>
-</ul>
-<h2 id="56-部分解析区域分割与降维">5.6 部分解析：区域分割与降维<a class="headerlink" href="#56-部分解析区域分割与降维" title="Permanent link">#</a></h2>
-<h3 id="561-区域分割partition">5.6.1 区域分割（partition）<a class="headerlink" href="#561-区域分割partition" title="Permanent link">#</a></h3>
-<p>若 <span class="arithmatex">\(V=V_1\cup V_2\)</span>，且 <span class="arithmatex">\(V_1\)</span> 上的积分能解析算出 <span class="arithmatex">\(I_1\)</span>，则把剩下的部分定义为截断密度</p>
-<div class="arithmatex">\[
-h(\mathbf x)=\frac{f(\mathbf x)}{1-P}\quad(\mathbf x\in V_2),
-\qquad P=\int_{V_1}f\,\mathrm d\mathbf x,
-\]</div>
-<p>于是</p>
-<div class="arithmatex">\[
-I=I_1+(1-P)\int_{V_2}z\,h\,\mathrm d\mathbf x
-\simeq I_1+\frac{1-P}{N}\sum_{i=1}^{N}z(\mathbf x_i),\quad \mathbf x_i\sim h .
-\]</div>
-<p><strong>把能解析的部分拿掉，方差只会更小</strong>（Rubinstein 的结论）：解析部分贡献的是零方差，剩下的抽样只覆盖更难的那一半。</p>
-<h3 id="562-降维expected-value--条件期望法">5.6.2 降维（expected value / 条件期望法）<a class="headerlink" href="#562-降维expected-value--条件期望法" title="Permanent link">#</a></h3>
-<p>把 <span class="arithmatex">\(\mathbf x=(\mathbf u,\mathbf v)\)</span> 拆开，若对 <span class="arithmatex">\(\mathbf v\)</span> 的积分能解析完成，则</p>
-<div class="arithmatex">\[
-I=\int_{V_1}f_{\mathbf u}(\mathbf u)\Big[\int_{V_2}z(\mathbf u,\mathbf v)f(\mathbf v\mid\mathbf u)\,\mathrm d\mathbf v\Big]\mathrm d\mathbf u
-\equiv\int_{V_1}f_{\mathbf u}(\mathbf u)\big\langle z(\mathbf v\mid\mathbf u)\big\rangle\,\mathrm d\mathbf u
-\simeq\frac1N\sum_{i=1}^{N}\big\langle z(\mathbf v\mid\mathbf u_i)\big\rangle .
-\]</div>
-<p>抽样只发生在 <span class="arithmatex">\(\mathbf u\)</span> 上，<span class="arithmatex">\(\mathbf v\)</span> 那一维被"平均掉"了。这个估计量的方差<strong>总是不大于</strong>普通样本均值法（Rubinstein）。直观原因：对 <span class="arithmatex">\(\mathbf v\)</span> 取条件期望相当于把该维的随机波动消掉——又一种"用解析换方差"。</p>
+<p><strong>提议切换</strong>。最小邻域在多峰目标上会"卡"在某峰附近（实验 3 的 <span class="arithmatex">\(\sigma=0.5\)</span> 就是这个症状），最大邻域（任何状态都可能被提议）则探索浅。S&amp;M 的倒数平方骰子例演示了实用折衷：<strong>90% 的时间用最小邻域、10% 的时间切到最大邻域</strong>——两全其美。</p>
+<p><strong>连续链</strong>。状态空间 <span class="arithmatex">\([0,\infty)\)</span> 时取 <span class="arithmatex">\(g_x\)</span> 为 <span class="arithmatex">\([x-1,x+1]\)</span> 上的均匀密度（对称），提议 <span class="arithmatex">\(y&lt;0\)</span> 直接拒绝（留在 <span class="arithmatex">\(x\)</span>）——对称性没破坏，端点效应交给接受率处理。S&amp;M 用 <span class="arithmatex">\(f(x)=0.5x^2e^{-x}\)</span>（gamma 形状）演示，2 万样本直方图与目标吻合（其图 3.6）。</p>
 <div class="admonition note">
-<p class="admonition-title">拓展：这也是 Rao–Blackwell 化</p>
-<p>统计里把估计量对充分统计量取条件期望会降低方差（Rao–Blackwell 定理）。条件期望法正是它的蒙特卡罗版本：<strong>能用积分算掉一个维度的随机性，就不要抽样去估它</strong>。</p>
+<p class="admonition-title">拓展：步长的经验法则（D&amp;S §6.1.4）</p>
+<p>随机游走提议的 <span class="arithmatex">\(\sigma\)</span> 要和目标的"宽度"匹配。太小时每步移动小、相邻样本高度相关、多峰目标会卡在单峰（实验 3：<span class="arithmatex">\(\sigma=0.5\)</span> 时每千步过零 0.2 次）；太大时拒绝率高、长时间原地踏步。经验上把<strong>接受率调到 20%–50%</strong> 附近效率较好；更好的做法是多尺度提议混合（即"提议切换"）。</p>
 </div>
-<h2 id="57-俄罗斯轮盘与分裂">5.7 俄罗斯轮盘与分裂<a class="headerlink" href="#57-俄罗斯轮盘与分裂" title="Permanent link">#</a></h2>
-<h3 id="571-动机">5.7.1 动机<a class="headerlink" href="#571-动机" title="Permanent link">#</a></h3>
-<p>前几节都假设 <span class="arithmatex">\(p_m\)</span> 已知或能估。但在复杂模拟（粒子输运、交通流、供应链）里，"哪块区域重要"往往是<strong>路径走到中途才知道</strong>的，而且一条 history 的成本可能极高。需要的是一套<strong>边走边决策</strong>的机制：</p>
-<ul>
-<li>进入"没希望"的区域 → <strong>以概率杀死</strong>，幸存者加权，避免浪费；</li>
-<li>进入"有希望"的区域 → <strong>分裂成多份</strong>，每份权重降低，提高命中率。</li>
-</ul>
-<p>这就是 von Neumann 与 Ulam 提出的 <strong>Russian roulette and splitting</strong>。</p>
-<h3 id="572-权重账为什么仍然无偏">5.7.2 权重账：为什么仍然无偏<a class="headerlink" href="#572-权重账为什么仍然无偏" title="Permanent link">#</a></h3>
-<p>设一条 history 的入境权重为 <span class="arithmatex">\(W\)</span>。</p>
-<p><strong>轮盘赌</strong>：以概率 <span class="arithmatex">\(p\)</span> 杀死（记分为 0），以概率 <span class="arithmatex">\(1-p\)</span> 存活，存活者权重改为</p>
+<h2 id="53-为什么有效细致平衡与遍历定理">5.3 为什么有效：细致平衡与遍历定理<a class="headerlink" href="#53-为什么有效细致平衡与遍历定理" title="Permanent link">#</a></h2>
+<h3 id="531-概率质量流动图像">5.3.1 概率质量流动图像<a class="headerlink" href="#531-概率质量流动图像" title="Permanent link">#</a></h3>
+<p>把 <span class="arithmatex">\(\pi\)</span> 看成一单位"沙子"铺在各状态上。每一步，状态 <span class="arithmatex">\(x\)</span> 的沙子按比例 <span class="arithmatex">\(p_{xy}\)</span> 流向邻居 <span class="arithmatex">\(y\)</span>，同时从邻居流入。"平衡"就是每个状态流入 = 流出：</p>
 <div class="arithmatex">\[
-W'=\frac{W}{1-p}.
+\pi(1)p_{1x}+\pi(2)p_{2x}+\cdots=\pi(x)\big(p_{x1}+p_{x2}+\cdots\big)=\pi(x),
 \]</div>
-<p>期望检验：<span class="arithmatex">\((1-p)\cdot\frac{W}{1-p}+p\cdot0=W\)</span>，<strong>保持无偏</strong>，方差增大（这正是"杀掉低价值 history、把预算让给高价值 history"的代价）。</p>
-<p><strong>分裂</strong>：把权重 <span class="arithmatex">\(W\)</span> 的 history 复制成 <span class="arithmatex">\(m\)</span> 份，每份</p>
+<p>右边用了行和为 1——这正是 <span class="arithmatex">\(\pi P=\pi\)</span> 的第 <span class="arithmatex">\(x\)</span> 列。<strong>更强的逐对条件</strong>：若每一对状态之间的流量两两平衡，</p>
 <div class="arithmatex">\[
-W'=\frac{W}{m}.
+\pi(x)\,p_{xy}=\pi(y)\,p_{yx},\qquad x,y\in\Omega,
 \]</div>
-<p>总权重 <span class="arithmatex">\(m\cdot\frac{W}{m}=W\)</span>，同样无偏，但命中记分区的概率提高了 <span class="arithmatex">\(m\)</span> 倍。</p>
-<p>若想按非整数比例 <span class="arithmatex">\(r_m\)</span> 分裂，取 <span class="arithmatex">\(k_m=\lfloor r_m\rfloor\)</span>、<span class="arithmatex">\(q_m=r_m-k_m\)</span>：以概率 <span class="arithmatex">\(q_m\)</span> 分成 <span class="arithmatex">\(k_m+1\)</span> 份、以 <span class="arithmatex">\(1-q_m\)</span> 分成 <span class="arithmatex">\(k_m\)</span> 份，每份权重 <span class="arithmatex">\(W/r_m\)</span>。</p>
-<p>实验（稀有事：命中率 2%，40 万条 history）：</p>
-<table>
-<thead>
-<tr>
-<th>处理</th>
-<th>估计值 ± 标准误差</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>朴素</td>
-<td>0.0198 ± 0.00022</td>
-<td>真值 0.02</td>
-</tr>
-<tr>
-<td>轮盘赌 <span class="arithmatex">\(q=0.9\)</span></td>
-<td>0.0186 ± 0.00068</td>
-<td>无偏，但方差约 9 倍</td>
-</tr>
-<tr>
-<td>分裂 <span class="arithmatex">\(m=4\)</span></td>
-<td>0.0198 ± 0.00022</td>
-<td>记分守恒，等效样本量 ×4</td>
-</tr>
-</tbody>
-</table>
-<p>轮盘赌本身<strong>不降低</strong>方差——它降低的是<strong>成本</strong>；只有把省下的时间换成更多 history，或与"重要性抽样/分裂"配合，才能在同样的机时下降低方差。这一点最容易被误解。</p>
-<h3 id="573-组合技术的合法性DS-59">5.7.3 组合技术的合法性（D&amp;S §5.9）<a class="headerlink" href="#573-组合技术的合法性DS-59" title="Permanent link">#</a></h3>
-<p>实际计算常同时用多种技巧。历史上需要逐个证明"组合仍无偏"。Booth 与 Pederson 的结论给出了统一答复：<strong>只要每种技巧单独产生无偏记分，任意组合仍然无偏</strong>（"fair games 的组合还是 fair game"）。但 D&amp;S 提醒：无偏不等于低方差，错误组合完全可能让方差爆掉。</p>
-<h2 id="58-改进的求积方案">5.8 改进的求积方案<a class="headerlink" href="#58-改进的求积方案" title="Permanent link">#</a></h2>
-<h3 id="581-加权蒙特卡罗把收敛阶提到-N-1">5.8.1 加权蒙特卡罗：把收敛阶提到 <span class="arithmatex">\(N^{-1}\)</span><a class="headerlink" href="#581-加权蒙特卡罗把收敛阶提到-N-1" title="Permanent link">#</a></h3>
-<p>样本均值法的误差是 <span class="arithmatex">\(N^{-1/2}\)</span>。但一维情况下有一个简单得多的高阶方案：把抽到的 <span class="arithmatex">\(N\)</span> 个点<strong>排序</strong>，在相邻点之间用梯形公式：</p>
+<p>这叫<strong>细致平衡</strong>（detailed balance），则整体平衡自动成立（对所有 <span class="arithmatex">\(y\)</span> 求和即得）。满足细致平衡的链也叫<strong>可逆</strong>（reversible）链——平稳时任何路径与其反向路径概率相同。</p>
+<h3 id="532-验证-Metropolis-链满足细致平衡">5.3.2 验证 Metropolis 链满足细致平衡<a class="headerlink" href="#532-验证-Metropolis-链满足细致平衡" title="Permanent link">#</a></h3>
+<p>Metropolis 的转移概率是"提议且接受"的乘积：<span class="arithmatex">\(p_{xy}=g_x(y)\,h(x,y)\)</span>。要证 <span class="arithmatex">\(\pi=f\)</span>（目标分布）满足细致平衡，即</p>
 <div class="arithmatex">\[
-\bar I=\frac12\sum_{i=0}^{N}\big[g(x_{(i)})+g(x_{(i+1)})\big]\big[x_{(i+1)}-x_{(i)}\big],
-\qquad x_{(0)}=a,\ x_{(N+1)}=b .
+f(x)g_x(y)h(x,y) \overset{?}{=} f(y)g_y(x)h(y,x).
 \]</div>
-<p>由于 <span class="arithmatex">\(x_{(i)}\)</span> 在区间上近似均匀铺开，相邻间距 <span class="arithmatex">\(\approx (b-a)/N\)</span>，误差累积按 <span class="arithmatex">\(N^{-1}\)</span> 下降（而不是 <span class="arithmatex">\(N^{-1/2}\)</span>）。<strong>额外的好处</strong>：要加密时只需补算新点、重新排序，旧值不浪费——这是确定性网格做不到的（网格加密要全部重算）。代价是要排序，且<strong>难以推广到多维</strong>。</p>
-<p>实验（<span class="arithmatex">\(g=e^{-x^2}\)</span>，40 次重复的 RMS 误差）：样本均值法从 <span class="arithmatex">\(2.1\times10^{-2}\)</span> 降到 <span class="arithmatex">\(1.2\times10^{-3}\)</span>（<span class="arithmatex">\(N^{-1/2}\)</span>），加权法从 <span class="arithmatex">\(2.1\times10^{-2}\)</span> 降到 <span class="arithmatex">\(1.3\times10^{-4}\)</span>（明显更陡，接近 <span class="arithmatex">\(N^{-1}\)</span>）。</p>
+<p>不妨设 <span class="arithmatex">\(f(y)&gt;f(x)\)</span>。则 <span class="arithmatex">\(h(x,y)=\min(1,f(y)/f(x))=1\)</span>，而 <span class="arithmatex">\(h(y,x)=\min(1,f(x)/f(y))=f(x)/f(y)\)</span>。代回：</p>
+<div class="arithmatex">\[
+\text{左边}=f(x)g_x(y)\cdot 1,\qquad
+\text{右边}=f(y)g_y(x)\cdot\frac{f(x)}{f(y)}=f(x)g_y(x).
+\]</div>
+<p>由提议的对称性 <span class="arithmatex">\(g_x(y)=g_y(x)\)</span>，两边相等。<strong>细致平衡成立</strong>；再配上行和为 1、提议不可约（保证链不可约）与"总有机会原地不动"（保证非周期），链收敛到 <span class="arithmatex">\(f\)</span>。这就是 Metropolis 算法的全部合法性证明——两行代数。</p>
+<h3 id="533-遍历定理相关样本也能算期望">5.3.3 遍历定理：相关样本也能算期望<a class="headerlink" href="#533-遍历定理相关样本也能算期望" title="Permanent link">#</a></h3>
+<p>链收敛到 <span class="arithmatex">\(\pi\)</span> 只保证"等久了能抽到一条样本"。MCMC 的实际用途是<strong>算期望</strong>，需要一整批样本——而链样本天然相关，不能直接套第 2 章的 <span class="arithmatex">\(\sigma^2/N\)</span>。救场的是：</p>
+<p><strong>遍历定理</strong>（S&amp;M 定理 3.1）：不可约、非周期的马尔科夫链，平稳分布 <span class="arithmatex">\(\pi\)</span>，则对任意函数 <span class="arithmatex">\(r\)</span>，</p>
+<div class="arithmatex">\[
+\lim_{N\to\infty}\frac1N\sum_{i=1}^{N}r(X_i)=\mathbb E_\pi(r)=\sum_j r(y_j)\,\pi(j).
+\]</div>
+<p>证明思想与大数定律同源：<span class="arithmatex">\(\frac{n_j}{N}\)</span>（状态 <span class="arithmatex">\(y_j\)</span> 被访问的频率）趋于 <span class="arithmatex">\(\pi(j)\)</span>，于是时间平均趋于期望。<strong>时间平均换成空间平均</strong>——MCMC 算期望的合法性证书。注意：样本相关意味着误差棒要用第 4 章的 batching 方法估算（把链切成段、段均值当独立样本），直接用 <span class="arithmatex">\(\sigma/\sqrt N\)</span> 会低估误差。</p>
+<h2 id="54-统计力学Boltzmann-分布从哪来">5.4 统计力学：Boltzmann 分布从哪来<a class="headerlink" href="#54-统计力学Boltzmann-分布从哪来" title="Permanent link">#</a></h2>
+<p>Metropolis 算法诞生于统计力学，其"接受率里的指数"（Boltzmann 因子）在本节从第一性原理推出来。赶时间的读者可跳过本节不影响后续，但它解释了 §5.5 Ising 模型里 <span class="arithmatex">\(e^{-\Delta E/T}\)</span> 的来历。</p>
+<h3 id="541-相空间与其惊人的尺度">5.4.1 相空间与其惊人的尺度<a class="headerlink" href="#541-相空间与其惊人的尺度" title="Permanent link">#</a></h3>
+<p>统计力学研究有天文数字个微观态的系统。<strong>微观态</strong> <span class="arithmatex">\(x\)</span> 是系统的完整刻画（粒子位置、动量、自旋……），全部微观态构成<strong>相空间</strong> <span class="arithmatex">\(\Omega\)</span>。最简单的系统是 Ising 模型：<span class="arithmatex">\(N\)</span> 个格点、每点自旋 <span class="arithmatex">\(\pm1\)</span>——它就是磁材料的玩具模型（电子自旋成对抵消，未配对电子的宏观集体行为就是磁性）。</p>
+<p>宏观性质是微观态的聚合量（磁矩 = 自旋净和）。关键问题是：为什么我们从没见过房间里所有空气自发挤到一个角落？把相空间按宏观性质分区计数：一个粒子待在 1/10 体积角落的概率是 1/10；<span class="arithmatex">\(10^{25}\)</span> 个粒子全在角落的概率</p>
+<div class="arithmatex">\[
+p=\Big(\frac{1}{10}\Big)^{10^{25}}=10^{-10^{25}},
+\]</div>
+<p>就算每秒采样 <span class="arithmatex">\(10^9\)</span> 个微观态、采到宇宙年龄（<span class="arithmatex">\(10^{18}\)</span> 秒）也只碰过 <span class="arithmatex">\(10^{27}\)</span> 个态——杯水车薪。Ising 侧同样惊人：<span class="arithmatex">\(100\times100\)</span> 格点的相空间有 <span class="arithmatex">\(2^{10000}\approx10^{3010}\)</span> 个态，而磁矩为零的态有 <span class="arithmatex">\(\binom{N}{N/2}\approx 2^N\sqrt{2/(\pi N)}\)</span> 个（这个组合数近似可由第 2 章的 CLT 对二项分布推出，S&amp;M 式 3.15；Stirling 公式给出同样结果）——<strong>"乱"的态比"整齐"的态多出天文倍数</strong>。</p>
+<h3 id="542-熵温度与-Boltzmann-因子">5.4.2 熵、温度与 Boltzmann 因子<a class="headerlink" href="#542-熵温度与-Boltzmann-因子" title="Permanent link">#</a></h3>
+<p>熵定义为 <span class="arithmatex">\(S=k_B\log n\)</span>（<span class="arithmatex">\(n\)</span> 为宏观态对应的微观态数）。热力学系统的观察结论：<strong>系统趋向熵最大的宏观态</strong>。两个系统接触、只交换能量时，<span class="arithmatex">\(S=S_1+S_2\)</span>（对数可加）、<span class="arithmatex">\(E=E_1+E_2\)</span>。能量怎么分？最大化 <span class="arithmatex">\(S_1(E_1)+S_2(E-E_1)\)</span> 得</p>
+<div class="arithmatex">\[
+\frac{\mathrm dS_1}{\mathrm dE_1}=\frac{\mathrm dS_2}{\mathrm dE_2},
+\qquad
+\text{定义温度}\quad \frac{\mathrm dS}{\mathrm dE}=\frac1T .
+\]</div>
+<p>平衡时 <span class="arithmatex">\(T_1=T_2\)</span>——温度就是熵对能量的斜率的倒数。</p>
+<p>小系统 1 与大热浴 2 接触时，把 <span class="arithmatex">\(S_2(E-E_1)\)</span> Taylor 展开（高阶项可忽略）：</p>
+<div class="arithmatex">\[
+S_2(E-E_1)\approx S_2(E)-\frac{E_1}{T}.
+\]</div>
+<p>由 <span class="arithmatex">\(S_2=k_B\log N_2\)</span>（<span class="arithmatex">\(N_2\)</span> 是热浴微观态数），宏观态 <span class="arithmatex">\(M\)</span> 出现的概率正比于 <span class="arithmatex">\(N_2\)</span>：</p>
+<div class="arithmatex">\[
+\Pr(M)\ \propto\ N_2=e^{S_2/k_B}=e^{S_2(E)/k_B}\cdot e^{-E_1/(k_BT)} .
+\]</div>
+<p>最后一个因子 <strong><span class="arithmatex">\(e^{-E/(k_BT)}\)</span> 就是 Boltzmann 因子</strong>：低温时低能量态压倒性地更可能；温度越高能量差别越不重要。归一化后得到 <strong>Boltzmann 分布</strong></p>
+<div class="arithmatex">\[
+f(x)=\frac{e^{-E(x)/k_BT}}{Z},
+\qquad
+Z=\sum_{x\in\Omega}e^{-E(x)/k_BT},
+\]</div>
+<p><span class="arithmatex">\(Z\)</span> 称为<strong>配分函数</strong>（partition function）。宏观量 <span class="arithmatex">\(\langle M\rangle\)</span> 就是在这个分布下取期望（热平均）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么配分函数算不动、又为什么不需要算</p>
+<p><span class="arithmatex">\(Z\)</span> 要对全部微观态求和——<span class="arithmatex">\(2^{10000}\)</span> 个态，任何计算机都加不完。但下一节会看到：Metropolis 的接受率是两个 Boltzmann 密度的<strong>比值</strong>，<span class="arithmatex">\(Z\)</span> 在分子分母里直接消掉。<strong>MCMC 的巨大价值正在于此：从只知相对值的分布里抽样</strong>。第 8 章的贝叶斯后验（分母同样算不出）是同一件事的统计学版本。</p>
+</div>
+<h2 id="55-Ising-模型与相变">5.5 Ising 模型与相变<a class="headerlink" href="#55-Ising-模型与相变" title="Permanent link">#</a></h2>
+<h3 id="551-模型与接受率">5.5.1 模型与接受率<a class="headerlink" href="#551-模型与接受率" title="Permanent link">#</a></h3>
+<p>格点 <span class="arithmatex">\(\Lambda\)</span> 上每个自旋 <span class="arithmatex">\(x_i=\pm1\)</span>，一条微观态就是全体自旋的一种配置。能量（S&amp;M 式 3.26）</p>
+<div class="arithmatex">\[
+E(x)=-\frac12\sum_{i\in\Lambda}\sum_{j\in\text{neighbors}(i)}x_ix_j ,
+\]</div>
+<p>相邻自旋同向降低能量（铁磁相互作用）。磁矩 <span class="arithmatex">\(M(x)=\sum_i x_i\)</span>。记 <span class="arithmatex">\(\beta=1/(k_BT)\)</span>，Metropolis 接受率特化为</p>
+<div class="arithmatex">\[
+h=\min\big(1,\ e^{-(E_y-E_x)/k_BT}\big)=\min\big(1,\ e^{-\beta(E_y-E_x)}\big),
+\]</div>
+<p>配分函数 <span class="arithmatex">\(Z\)</span> 已消掉。实现要点：<strong>提议 = 翻转一个随机选中的自旋</strong>（对称），能量差只需看 4 个邻居（周期边界；自由边界则边界点邻居更少）。初始配置随便给——链要烧一段（<strong>burn-in</strong>）才进入平稳分布，统计从烧完之后才开始记，烧多久靠实验判断。</p>
+<h3 id="552-一个手算的-22-例SM-35">5.5.2 一个手算的 2×2 例（S&amp;M §3.5）<a class="headerlink" href="#552-一个手算的-22-例SM-35" title="Permanent link">#</a></h3>
+<p>自由边界的 2×2 格点共 16 个微观态，可以逐个算 Boltzmann 概率：高温 <span class="arithmatex">\(T=100\)</span>（<span class="arithmatex">\(\beta=0.01\)</span>）时 <span class="arithmatex">\(Z=16.004\)</span>，各态几乎等概率；低温 <span class="arithmatex">\(T=1\)</span>（<span class="arithmatex">\(\beta=1\)</span>）时 <span class="arithmatex">\(Z=121.22\)</span>，全同向态（能量 <span class="arithmatex">\(-4\)</span>）各占约 45%，错排态几乎绝迹。磁矩分布从高温的钟形（正负自旋大致对半）变成低温的<strong>双峰</strong>（全 up 或全 down）。</p>
+<h3 id="553-相变居里点与退火">5.5.3 相变、居里点与退火<a class="headerlink" href="#553-相变居里点与退火" title="Permanent link">#</a></h3>
+<p>温度扫描时磁矩在临界温度附近陡降——系统经历<strong>相变</strong>（phase change），临界点称<strong>居里点</strong>（2D Ising 精确值 <span class="arithmatex">\(T_c=2/\ln(1+\sqrt2)\approx2.269\)</span>）。实验 5 用 16×16 格点的 Metropolis 扫温复现：<span class="arithmatex">\(T\le2.2\)</span> 时 <span class="arithmatex">\(|M|/\text{spin}&gt;0.8\)</span>，<span class="arithmatex">\(T\ge2.6\)</span> 时 <span class="arithmatex">\(|M|/\text{spin}&lt;0.23\)</span>，拐点与理论吻合。</p>
+<figure>
+  <img src="../images/ch05/out-5-5.png" class="lq-img" />
+  <figcaption>图 5.5 Ising 相变扫描（代码实跑，16×16，每点 burn-in 2000 + 测量 400 次 sweep）：磁矩在 <span class="arithmatex">\(T_c\approx2.269\)</span>（虚线）附近陡降。有限格点使转变比无限系统更平滑。</figcaption>
+</figure>
+
+<p>还有一个直接连接第 7 章的观察：温度骤降时系统会锁进自旋畴交错的<strong>亚稳态</strong>（metastable，S&amp;M 图 3.8 的 16×16 岛屿图样）；只有<strong>足够慢地降温</strong>让畴壁长大合并，系统才能到达全局能量最低的全同向态——这个过程叫<strong>退火</strong>（annealing）。把"能量"换成"目标函数"、把格点换成解空间，就是第 7 章的模拟退火。</p>
+<h2 id="56-MetropolisHastings放开对称性">5.6 Metropolis–Hastings：放开对称性<a class="headerlink" href="#56-MetropolisHastings放开对称性" title="Permanent link">#</a></h2>
+<p>对称提议有时不方便（比如非对称的独立提议、方向性走步）。Hastings 的推广把提议过程纳入接受率：仍要求 <span class="arithmatex">\(g_x(y)\neq0\iff g_y(x)\neq0\)</span>（但不必相等），取</p>
+<div class="arithmatex">\[
+h(x,y)=\min\!\left(1,\ \frac{f(y)\,g_y(x)}{f(x)\,g_x(y)}\right).
+\]</div>
+<p>推导与 §5.3.2 完全平行：设 <span class="arithmatex">\(f(y)g_y(x)&gt;f(x)g_x(y)\)</span>，则 <span class="arithmatex">\(h(x,y)=1\)</span>，<span class="arithmatex">\(h(y,x)=\frac{f(x)g_x(y)}{f(y)g_y(x)}\)</span>，细致平衡两边同为 <span class="arithmatex">\(f(x)g_x(y)\)</span>。<strong>多出来的因子 <span class="arithmatex">\(q(x|x')/q(x'|x)\)</span> 是对提议偏置的补偿</strong>。</p>
+<p>实验 4 演示了忘掉校正的代价：目标半正态（均值 <span class="arithmatex">\(\sqrt{2/\pi}\approx0.798\)</span>），提议 <span class="arithmatex">\(x'\sim Exp(1)\)</span>（独立、非对称：<span class="arithmatex">\(q(x'|x)=e^{-x'}\)</span> 而 <span class="arithmatex">\(q(x|x')=e^{-x}\)</span>）。正确 MH 给出 <span class="arithmatex">\(0.7994\)</span>（理论 0.7979，接受率 84%）；忘掉 <span class="arithmatex">\(q\)</span> 比值后均值偏到 <span class="arithmatex">\(0.5269\)</span>——系统性偏差，不是噪声。</p>
 <figure>
   <img src="../images/ch05/out-5-4.png" class="lq-img" />
-  <figcaption>图 5.4 加权蒙特卡罗的收敛阶（代码实跑，40 次重复 RMS）：样本均值法沿 <span class="arithmatex">\(N^{-1/2}\)</span>，排序梯形沿 <span class="arithmatex">\(N^{-1}\)</span>。</figcaption>
+  <figcaption>图 5.4 Hastings 校正实验（代码实跑）：同一目标、同一提议，正确 MH（橙）贴住半正态密度（红线），忘掉校正（灰）整体左移——非对称提议必须补偿。</figcaption>
 </figure>
 
-<h3 id="582-拟随机数quasirandom--low-discrepancy">5.8.2 拟随机数（quasirandom / low-discrepancy）<a class="headerlink" href="#582-拟随机数quasirandom--low-discrepancy" title="Permanent link">#</a></h3>
-<p>样本均值法之所以是 <span class="arithmatex">\(N^{-1/2}\)</span>，根源是<strong>随机点会聚团、会留空洞</strong>。若改用"刻意填缝"的序列——Halton 用不同素基底的数码反演、Sobol 用格雷码构造——点列会均匀得多，误差可以逼近 <span class="arithmatex">\(N^{-1}\)</span>。对 <span class="arithmatex">\(k\)</span> 维光滑函数，Sobol 序列的误差约为 <span class="arithmatex">\((\ln N)^k/N\)</span>：几乎就是 <span class="arithmatex">\(N^{-1}\)</span>，但当 <span class="arithmatex">\(k\)</span> 大时 <span class="arithmatex">\((\ln N)^k\)</span> 会吞掉收益。</p>
-<p><strong>这叫拟蒙特卡罗（QMC）</strong>，与"真随机"相反：它故意让点<strong>不独立</strong>。这也说明第 3 章那句"统计上像随机"并不是永远的优点——<strong>当目标是均匀覆盖而不是模拟随机性时，结构化序列更好</strong>。</p>
-<h3 id="583-有偏但一致的估计量DS-510">5.8.3 有偏但一致的估计量（D&amp;S §5.10）<a class="headerlink" href="#583-有偏但一致的估计量DS-510" title="Permanent link">#</a></h3>
-<p>有时 <span class="arithmatex">\(f^*\)</span> 太复杂抽不动，于是只在 <span class="arithmatex">\(V\)</span> 上均匀抽样、用比值估计：</p>
-<div class="arithmatex">\[
-\bar I_{bias}=\frac{\sum_i g(\mathbf u_i)}{\sum_i f^*(\mathbf u_i)},\qquad \mathbf u_i\sim U(V).
-\]</div>
-<p>它<strong>有偏</strong>（比值的期望不等于期望的比值），但<strong>一致</strong>：分子分母各自收敛，比值收敛到 <span class="arithmatex">\(I\)</span>。Powell 与 Swann 证明大 <span class="arithmatex">\(N\)</span> 时它比样本均值法效率高 <span class="arithmatex">\(\sqrt N\)</span> 倍。有偏估计量在蒙特卡罗里是被允许的——只要偏差随 <span class="arithmatex">\(N\)</span> 消失，且你能说清它的量级。</p>
-<h2 id="59-怎样选">5.9 怎样选<a class="headerlink" href="#59-怎样选" title="Permanent link">#</a></h2>
-<p>落地时的经验顺序（D&amp;S 与 S&amp;M 的共同建议）：</p>
-<ol>
-<li><strong>先问能不能改写问题</strong>（对称性、降维、部分解析）。这一步的收益通常最大。</li>
-<li><strong>再看被积函数形状</strong>：若高度集中，先上重要性抽样；若区域差异明显，先上系统/分层抽样。</li>
-<li><strong>有已知近似模型</strong>就用控制变量；能做对偶就顺手做（几乎零成本）。</li>
-<li><strong>模拟类问题</strong>（history 成本高、路径依赖）用轮盘赌与分裂。</li>
-<li><strong>一维、光滑、要高阶精度</strong>：加权蒙特卡罗或 QMC；多维回到样本均值法 + 上述技巧。</li>
-<li><strong>永远报误差</strong>，并且<strong>用两种独立方法互验</strong>——方差缩减做错的典型症状是"结果看起来很好，但和另一个方法对不上"。</li>
-</ol>
+<h2 id="57-计数与精确采样SM-3738-概要">5.7 计数与精确采样（S&amp;M §3.7–3.8 概要）<a class="headerlink" href="#57-计数与精确采样SM-3738-概要" title="Permanent link">#</a></h2>
+<h3 id="571-数羊范式与单体-二聚体计数">5.7.1 数羊范式与单体-二聚体计数<a class="headerlink" href="#571-数羊范式与单体-二聚体计数" title="Permanent link">#</a></h3>
+<p>估计巨大状态空间的<strong>大小</strong>可以用抽样：设想牧羊人靠"黑羊比例 <span class="arithmatex">\(s\)</span>"估算羊群总数（总数 ≈ 黑羊数 / <span class="arithmatex">\(s\)</span>）。MCMC 版本：在格点图的<strong>匹配</strong>（matching，两两不共端点的边集）空间上构造均匀采样链（<span class="arithmatex">\(f=1\)</span>，永远接受；提议"随机选一条边，删/加/换"是对称的），已知 <span class="arithmatex">\(|\mathcal M_1|=\)</span> 边数，于是 <span class="arithmatex">\(|\mathcal M_k|=|\mathcal M_1|\times\dfrac{\text{命中 }k\text{ 的频率}}{\text{命中 1 的频率}}\)</span> 逐级估出。S&amp;M 用 14 条边的图以 99 万步估出各级匹配数（其表 3.1），与可手算的小规模值吻合。<strong>分母是配分函数的计数问题，MCMC 绕过了它</strong>。</p>
+<h3 id="572-约束洗牌">5.7.2 约束洗牌<a class="headerlink" href="#572-约束洗牌" title="Permanent link">#</a></h3>
+<p>桥牌未知牌的随机分配（带花色约束）：目标是全部合法分配上的均匀分布（<span class="arithmatex">\(f=1\)</span>、永远接受），提议 = 从三手牌中各取一张、按随机顺序尝试交换并保持合法性。这是"把部分信息博弈转成随机全信息博弈"的标准招法（S&amp;M §3.8.1）。</p>
+<h3 id="573-从过去耦合coupling-from-the-past">5.7.3 从过去耦合（coupling from the past）<a class="headerlink" href="#573-从过去耦合coupling-from-the-past" title="Permanent link">#</a></h3>
+<p>普通 MCMC 的样本来自"近似平稳"的链。Propp–Wilson 的<strong>精确采样</strong>反着跑时间：预先固定随机数序列 <span class="arithmatex">\(r_{-1},r_{-2},\dots\)</span>，从<strong>所有</strong>状态同时出发向前走；若到 <span class="arithmatex">\(t=0\)</span> 所有轨迹合并成一个状态，这个状态就是<strong>精确</strong>的平稳分布样本；未耦合则回到更远的过去（且保留同一随机数序列）。S&amp;M 用股票链演示：随机数 <span class="arithmatex">\(\{0.31,0.57,0.97,0.85\}\)</span> 下三态轨迹在第 2 步耦合到 U。两个注意点：耦合后<strong>不能</strong>提前停止重试（会引入偏差，S&amp;M 的 <span class="arithmatex">\(P'\)</span> 例）；固定步数重试也会低估极端状态（<span class="arithmatex">\(P''\)</span> 例）——必须"回到足够远的过去"这一条纪律。</p>
 <h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
 <div class="admonition danger">
-<p class="admonition-title">重要性函数尾部太薄</p>
-<p>若 <span class="arithmatex">\(f^*\)</span> 在某个区域趋于零而 <span class="arithmatex">\(z f\)</span> 不为零，权重 <span class="arithmatex">\(W=f/f^*\)</span> 会爆炸，方差反而<strong>无穷大</strong>。重要性抽样最常见的翻车方式不是"效果一般"，而是"方差爆炸"。</p>
+<p class="admonition-title">把相关样本当独立样本算误差</p>
+<p>链样本自带相关性，<span class="arithmatex">\(\sigma/\sqrt N\)</span> 会严重低估误差。用 batching：切大段、段均值当独立样本、按第 4 章的 <span class="arithmatex">\(t\)</span> 区间报误差。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">把轮盘赌当成降方差手段</p>
-<p>轮盘赌保持无偏但<strong>增大</strong>方差，它的价值是省机时。只有把省下的机时换成更多 history 或配合分裂，才谈得上降方差。</p>
+<p class="admonition-title">不烧链就开始统计</p>
+<p>初始点大概率不在平稳分布附近。烧掉前段（burn-in），并用不同初点重复验证结果一致。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">用同一批 history 既估均值又估分层方差</p>
-<p>两者相关，会导致分层比例估偏、方差估计失真。先导模拟要单独跑。</p>
+<p class="admonition-title">多峰目标 + 小步长</p>
+<p>小步长链会在一个峰里困几万步（实验 3 的 <span class="arithmatex">\(\sigma=0.5\)</span>）。用大步长、多尺度提议混合，或确认过零次数足够。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">高维还用分层抽样</p>
-<p>每维切 <span class="arithmatex">\(k\)</span> 段就是 <span class="arithmatex">\(k^d\)</span> 个子区，5 维以上既算不动也估不准方差。</p>
+<p class="admonition-title">忘掉 Hastings 校正</p>
+<p>非对称提议下忘掉 <span class="arithmatex">\(q\)</span> 比值不是"效率低一点"，是<strong>收敛到错误的分布</strong>（实验 4：均值 0.527 vs 0.798）。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">对偶变量用在非单调函数上</p>
-<p>"负相关"不是自动成立的。对非单调的 <span class="arithmatex">\(g\)</span>，<span class="arithmatex">\(g(u)\)</span> 与 <span class="arithmatex">\(g(1-u)\)</span> 可能几乎不相关甚至正相关；用前先算一下 <span class="arithmatex">\(\rho\)</span>。</p>
+<p class="admonition-title">对接受率追逐 100%</p>
+<p>接受率过高 = 步长太小 = 混合慢。把接受率压到 20%–50% 区间通常更高效。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">控制变量的系数随手取 1</p>
-<p><span class="arithmatex">\(\alpha=1\)</span> 只在 <span class="arithmatex">\(z_o\)</span> 与 <span class="arithmatex">\(z\)</span> 尺度相当时合理；最优值由协方差决定，乱取可能让方差变大（式 5.60 中 <span class="arithmatex">\(\alpha^2\sigma^2(z_o)\)</span> 项）。</p>
+<p class="admonition-title">用未收敛的链做计数</p>
+<p>数羊范式要求链在<strong>整个</strong>空间混合均匀；卡在子空间的比例估计会全错。先验证链能访问全部状态类。</p>
 </div>
 <div class="admonition danger">
-<p class="admonition-title">以为组合越多越好</p>
-<p>每种技巧都应单独验证有效，再组合；组合后必须重新检查无偏性与方差，不能假定"叠加即改进"。</p>
+<p class="admonition-title">从过去耦合提前停</p>
+<p>耦合成功就停、失败就换新随机数重试固定次数——两种"优化"都引入偏差。必须保留随机数序列、回到足够远的过去。</p>
 </div>
 <h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
 <ol>
-<li>方差缩减 = 在<strong>期望不变</strong>的前提下压小 <span class="arithmatex">\(\overline{z^2}-\bar z^2\)</span>。</li>
-<li>重要性抽样：从 <span class="arithmatex">\(f^*\)</span> 抽、乘 <span class="arithmatex">\(W=f/f^*\)</span>；<span class="arithmatex">\(f^*\propto|g|\)</span> 时理论方差为零（但要先知道答案）。</li>
-<li>系统抽样按 <span class="arithmatex">\(N_m=p_mN\)</span> 分配，消掉"层均值差异"项；分层抽样按 <span class="arithmatex">\(N_m\propto p_m\sigma_m\)</span> 分配，消掉更多。</li>
-<li>分层最小方差 <span class="arithmatex">\(=(\sum p_m\sigma_m)^2/N\)</span>。</li>
-<li>控制变量：<span class="arithmatex">\(\alpha_{opt}=\operatorname{cov}(z,z_o)/\sigma^2(z_o)\)</span>，方差降至 <span class="arithmatex">\(1-\rho^2\)</span> 倍。</li>
-<li>对偶变量：<span class="arithmatex">\(x=u,\ y=1-u\)</span>，方差比 <span class="arithmatex">\(2/(1+\rho)\)</span>；单调函数可证 <span class="arithmatex">\(\le1/2\)</span>。</li>
-<li>相关抽样：共用随机数，让两个近似问题的差稳定。</li>
-<li>轮盘赌：存活者 <span class="arithmatex">\(W/(1-p)\)</span>；分裂：<span class="arithmatex">\(m\)</span> 份各 <span class="arithmatex">\(W/m\)</span>——都保持无偏。</li>
-<li>加权蒙特卡罗：排序 + 梯形，一维误差 <span class="arithmatex">\(N^{-1}\)</span>，多维不适用。</li>
-<li>QMC：低差异序列，Sobol 约 <span class="arithmatex">\((\ln N)^k/N\)</span>；与"随机"是两种不同的目标。</li>
+<li>马尔科夫链：下一状态只依赖当前状态；转移矩阵行和为 1。</li>
+<li><span class="arithmatex">\(p_{t+1}=p_tP\)</span>，<span class="arithmatex">\(p_t=p_0P^t\)</span>；不可约 + 非周期 ⇒ 唯一平稳分布 <span class="arithmatex">\(\pi\)</span> 且 <span class="arithmatex">\(p_t\to\pi\)</span>。</li>
+<li>收敛速率由次特征值（谱隙）控制。</li>
+<li>Metropolis：对称提议 + 接受率 <span class="arithmatex">\(\min(1,f(y)/f(x))\)</span>，只需要 <span class="arithmatex">\(f\)</span> 的相对值。</li>
+<li>细致平衡 <span class="arithmatex">\(\pi(x)p_{xy}=\pi(y)p_{yx}\)</span> 逐对验证，两行代数。</li>
+<li>遍历定理：时间平均收敛到空间平均，相关样本也能算期望。</li>
+<li>熵最大化推出 Boltzmann 因子 <span class="arithmatex">\(e^{-E/k_BT}\)</span>；配分函数 <span class="arithmatex">\(Z\)</span> 在接受率比值中消掉。</li>
+<li>Ising：单点翻转提议，<span class="arithmatex">\(\min(1,e^{-\Delta E/T})\)</span>；2D 临界温度 <span class="arithmatex">\(\approx2.269\)</span>，低温磁化、高温消磁。</li>
+<li>Hastings：非对称提议乘 <span class="arithmatex">\(q(x|x')/q(x'|x)\)</span>；忘掉则收敛到错误分布。</li>
+<li>慢降温的 Ising = 模拟退火的物理原型（第 7 章）；数羊范式 = 用已知计数 + 频率比估未知计数。</li>
 </ol>
 <h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
 <table>
@@ -6051,94 +5565,129 @@ W'=\frac{W}{m}.
 </thead>
 <tbody>
 <tr>
-<td>variance reduction</td>
-<td>方差缩减</td>
-<td>不增样本量而压小估计量方差</td>
+<td>Markov chain</td>
+<td>马尔科夫链</td>
+<td>无记忆的随机状态序列</td>
 </tr>
 <tr>
-<td>importance sampling</td>
-<td>重要性抽样</td>
-<td>从偏置密度抽样，用权重 <span class="arithmatex">\(f/f^*\)</span> 修正</td>
+<td>neighborhood</td>
+<td>邻域</td>
+<td>一步之内可达的状态集合 <span class="arithmatex">\(N_x\)</span></td>
 </tr>
 <tr>
-<td>importance function / weight</td>
-<td>重要性函数 / 权重</td>
-<td><span class="arithmatex">\(f^*\)</span> 与 <span class="arithmatex">\(W=f/f^*\)</span></td>
+<td>transition matrix</td>
+<td>转移矩阵</td>
+<td><span class="arithmatex">\(P=(p_{xy})\)</span>，行随机</td>
 </tr>
 <tr>
-<td>systematic sampling</td>
-<td>系统抽样</td>
-<td>分区、按 <span class="arithmatex">\(p_m\)</span> 分配样本数</td>
+<td>state probability vector</td>
+<td>状态概率向量</td>
+<td><span class="arithmatex">\(p_t\)</span>，<span class="arithmatex">\(X_t\)</span> 的分布，行向量</td>
 </tr>
 <tr>
-<td>stratified sampling</td>
-<td>分层抽样</td>
-<td>分区、按 <span class="arithmatex">\(p_m\sigma_m\)</span> 分配样本数</td>
+<td>invariant distribution</td>
+<td>不变分布</td>
+<td><span class="arithmatex">\(\pi P=\pi\)</span> 的概率向量</td>
 </tr>
 <tr>
-<td>optimal allocation</td>
-<td>最优分配</td>
-<td><span class="arithmatex">\(N_m\propto p_m\sigma_m\)</span></td>
+<td>irreducible / aperiodic</td>
+<td>不可约 / 非周期</td>
+<td>链正则的两个条件，保证收敛唯一</td>
 </tr>
 <tr>
-<td>correlated sampling</td>
-<td>相关抽样</td>
-<td>共用随机数估计两个近似量之差</td>
+<td>detailed balance</td>
+<td>细致平衡</td>
+<td>逐对概率流平衡；可逆性</td>
 </tr>
 <tr>
-<td>control variate</td>
-<td>控制变量</td>
-<td>用已知期望的陪跑量吸收波动</td>
+<td>reversible</td>
+<td>可逆</td>
+<td>平稳时正逆路径同概率</td>
 </tr>
 <tr>
-<td>antithetic variates</td>
-<td>对偶变量</td>
-<td>用 <span class="arithmatex">\(1-u\)</span> 造负相关再平均</td>
+<td>Metropolis algorithm</td>
+<td>Metropolis 算法</td>
+<td>对称提议 + <span class="arithmatex">\(\min(1,f(y)/f(x))\)</span> 接受</td>
 </tr>
 <tr>
-<td>Russian roulette</td>
-<td>俄罗斯轮盘赌</td>
-<td>按概率杀死 history，幸存者加权</td>
+<td>Metropolis–Hastings</td>
+<td>MH 算法</td>
+<td>非对称提议乘 <span class="arithmatex">\(q\)</span> 比值校正</td>
 </tr>
 <tr>
-<td>splitting</td>
-<td>分裂</td>
-<td>把一条 history 复制成多份、权重均分</td>
+<td>proposal distribution</td>
+<td>提议分布</td>
+<td><span class="arithmatex">\(g_x(\cdot)\)</span>，按当前状态选的候选生成器</td>
 </tr>
 <tr>
-<td>fair game</td>
-<td>公平游戏</td>
-<td>期望值不变的偏置模拟</td>
+<td>burn-in</td>
+<td>预烧期</td>
+<td>链未达平稳的前段，统计要丢弃</td>
 </tr>
 <tr>
-<td>weighted Monte Carlo integration</td>
-<td>加权蒙特卡罗积分</td>
-<td>排序后梯形积分，一维达 <span class="arithmatex">\(N^{-1}\)</span></td>
+<td>ergodic theorem</td>
+<td>遍历定理</td>
+<td>时间平均 → 平稳分布下的期望</td>
 </tr>
 <tr>
-<td>quasirandom / low-discrepancy sequence</td>
-<td>拟随机 / 低差异序列</td>
-<td>刻意填缝的点列，如 Halton、Sobol</td>
+<td>microstate / phase space</td>
+<td>微观态 / 相空间</td>
+<td>系统完整刻画 / 全部微观态</td>
 </tr>
 <tr>
-<td>quasi-Monte Carlo (QMC)</td>
-<td>拟蒙特卡罗</td>
-<td>用低差异序列代替随机点</td>
+<td>entropy</td>
+<td>熵</td>
+<td><span class="arithmatex">\(S=k_B\log n\)</span></td>
 </tr>
 <tr>
-<td>biased but consistent estimator</td>
-<td>有偏但一致估计量</td>
-<td>偏差随 <span class="arithmatex">\(N\)</span> 消失（如比值估计）</td>
+<td>Boltzmann factor</td>
+<td>玻尔兹曼因子</td>
+<td><span class="arithmatex">\(e^{-E/k_BT}\)</span></td>
 </tr>
 <tr>
-<td>expected value method</td>
-<td>期望值法（条件期望法）</td>
-<td>一维解析积分掉，降低有效维数</td>
+<td>partition function</td>
+<td>配分函数</td>
+<td><span class="arithmatex">\(Z=\sum e^{-E/k_BT}\)</span>，在 MH 中消掉</td>
 </tr>
 <tr>
-<td>partition of integration volume</td>
-<td>积分区域分割</td>
-<td>能解析的部分先算掉</td>
+<td>Ising model</td>
+<td>Ising 模型</td>
+<td>格点自旋 ±1 的磁体玩具模型</td>
+</tr>
+<tr>
+<td>Curie point</td>
+<td>居里点</td>
+<td>相变临界温度</td>
+</tr>
+<tr>
+<td>annealing</td>
+<td>退火</td>
+<td>慢降温消除亚稳态，第 7 章优化的原型</td>
+</tr>
+<tr>
+<td>metastable state</td>
+<td>亚稳态</td>
+<td>局部畴壁锁定的次优构型</td>
+</tr>
+<tr>
+<td>sheep-counting paradigm</td>
+<td>数羊范式</td>
+<td>已知类计数 + 频率比估计未知类计数</td>
+</tr>
+<tr>
+<td>matching</td>
+<td>匹配</td>
+<td>两两不共端点的边集</td>
+</tr>
+<tr>
+<td>coupling from the past</td>
+<td>从过去耦合</td>
+<td>反向时间线的精确采样</td>
+</tr>
+<tr>
+<td>exact sampling</td>
+<td>精确采样</td>
+<td>样本严格来自平稳分布</td>
 </tr>
 </tbody>
 </table>

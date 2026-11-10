@@ -27,7 +27,7 @@
     
     
       
-        <title>第3章 伪随机数 - MASAMI的外置大脑</title>
+        <title>第3章 随机数生成 - MASAMI的外置大脑</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第3章 伪随机数
+              第3章 随机数生成
             
           </span>
         </div>
@@ -4153,7 +4153,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 伪随机数
+    第3章 随机数生成
   
 
     
@@ -4171,7 +4171,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 伪随机数
+    第3章 随机数生成
   
 
     
@@ -4596,7 +4596,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 抽样、记分与精度
+    第4章 概率分布与抽样
   
 
     
@@ -4624,7 +4624,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 方差缩减
+    第5章 马尔科夫链蒙特卡罗
   
 
     
@@ -4652,7 +4652,7 @@
   <span class="md-ellipsis">
     
   
-    第6章 马尔科夫链蒙特卡罗
+    第6章 随机游走
   
 
     
@@ -4680,7 +4680,7 @@
   <span class="md-ellipsis">
     
   
-    第7章 贝叶斯推断与 Gibbs 抽样
+    第7章 蒙特卡罗优化：模拟退火与遗传算法
   
 
     
@@ -4708,7 +4708,7 @@
   <span class="md-ellipsis">
     
   
-    第8章 随机游走
+    第8章 贝叶斯推断与 Gibbs 抽样
   
 
     
@@ -4736,7 +4736,7 @@
   <span class="md-ellipsis">
     
   
-    第9章 蒙特卡罗优化：模拟退火与遗传算法
+    第9章 蒙特卡罗积分与方差缩减
   
 
     
@@ -5310,7 +5310,7 @@
 <h1 id="第-3-章-伪随机数">第 3 章 伪随机数<a class="headerlink" href="#第-3-章-伪随机数" title="Permanent link">#</a></h1>
 <blockquote>
 <p><strong>本章解决</strong>：蒙特卡罗的一切随机性最终都来自一串 <span class="arithmatex">\([0,1)\)</span> 上的"均匀随机数"——而计算机是确定性机器，造不出真随机。本章回答：伪随机数是什么、好生成器要满足什么、线性同余生成器怎么写、满周期怎么证、结构缺陷（超平面）怎么暴露、RANDU 为何身败名裂、洗牌与组合如何补救，以及怎么用统计检验给生成器"体检"。
-<strong>对照教材</strong>：Dunn &amp; Shultis《Exploring Monte Carlo Methods》§3.1–3.10（主线，小节编号跟随它）；Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§1.3（要求清单、平方取中、模算术与满周期定理）与附录 A（卡方与 KS 检验）。建议先读 S&amp;M §1.3 建立要求清单，再进 D&amp;S 的技术细节。</p>
+<strong>对照教材</strong>：Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§1.3 与附录 A（本章主线：对生成器的要求、平方取中、线性同余与满周期定理、均匀性与随机性检验）；Dunn &amp; Shultis《Exploring Monte Carlo Methods》§3.1–3.10 补充（谱检验与超平面结构、minstd 与 Schrage 编码、洗牌与组合生成器）。</p>
 </blockquote>
 <table>
 <thead>

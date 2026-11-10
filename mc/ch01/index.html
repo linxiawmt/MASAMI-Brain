@@ -4429,7 +4429,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 伪随机数
+    第3章 随机数生成
   
 
     
@@ -4457,7 +4457,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 抽样、记分与精度
+    第4章 概率分布与抽样
   
 
     
@@ -4485,7 +4485,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 方差缩减
+    第5章 马尔科夫链蒙特卡罗
   
 
     
@@ -4513,7 +4513,7 @@
   <span class="md-ellipsis">
     
   
-    第6章 马尔科夫链蒙特卡罗
+    第6章 随机游走
   
 
     
@@ -4541,7 +4541,7 @@
   <span class="md-ellipsis">
     
   
-    第7章 贝叶斯推断与 Gibbs 抽样
+    第7章 蒙特卡罗优化：模拟退火与遗传算法
   
 
     
@@ -4569,7 +4569,7 @@
   <span class="md-ellipsis">
     
   
-    第8章 随机游走
+    第8章 贝叶斯推断与 Gibbs 抽样
   
 
     
@@ -4597,7 +4597,7 @@
   <span class="md-ellipsis">
     
   
-    第9章 蒙特卡罗优化：模拟退火与遗传算法
+    第9章 蒙特卡罗积分与方差缩减
   
 
     
@@ -5032,7 +5032,7 @@
 <h1 id="第-1-章-初识蒙特卡罗方法">第 1 章 初识蒙特卡罗方法<a class="headerlink" href="#第-1-章-初识蒙特卡罗方法" title="Permanent link">#</a></h1>
 <blockquote>
 <p><strong>本章解决</strong>：随机模拟（<strong>Monte Carlo method</strong>，蒙特卡罗方法）是什么、从哪来、能干什么。一个中心思想——<strong>用样本均值估计总体均值</strong>（use sample means to estimate population means），两种视角——把过程"演"出来的<strong>模拟</strong>（simulation）与把答案写成积分再"抽"出来的<strong>求积</strong>（quadrature），五个经典例子跑通"建模 → 抽样 → 记分 → 统计"的完整闭环。
-<strong>对照教材</strong>：Dunn &amp; Shultis《Exploring Monte Carlo Methods》§1.1–1.6（本章主线）；Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§1.1.1（投针与简史）、§1.1.2–1.1.3（直方图与样本路径）、§1.4（hit-or-miss、优惠券收集、洗牌）。两书第 1 章互相独立成章，可平行对照阅读。</p>
+<strong>对照教材</strong>：Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§1.1、§1.4（本章主线：投针、直方图、样本路径、hit-or-miss、优惠券、洗牌）；Dunn &amp; Shultis《Exploring Monte Carlo Methods》§1.1–1.6 补充（求积视角的系统表述与蒙特卡罗简史）。</p>
 </blockquote>
 <p>"蒙特卡罗"是摩纳哥的著名赌城。用赌城为一种数值方法命名，是因为两者共享同一个数学骨架：<strong>单次结果随机，大量重复后规律浮现</strong>。抛一次硬币是随机的，但抛十万次后正面频率几乎必然贴近 0.5；赌局单把输赢难料，但赌场靠大数定律稳赚。蒙特卡罗方法把这件事反过来用：<strong>只要一个量的答案能表示成某个随机试验的平均值，就可以用计算机模拟这个试验，用平均值把答案"估"出来</strong>。</p>
 <table>
