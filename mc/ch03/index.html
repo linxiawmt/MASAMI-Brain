@@ -27,7 +27,7 @@
     
     
       
-        <title>第3章 善用身边的数学秘书：从 Matlab 到 Python - MASAMI的外置大脑</title>
+        <title>第3章 伪随机数 - MASAMI的外置大脑</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#第-3-章-善用身边的数学秘书从-Matlab-到-Python" class="md-skip">
+        <a href="#第-3-章-伪随机数" class="md-skip">
           跳转至
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第3章 善用身边的数学秘书：从 Matlab 到 Python
+              第3章 伪随机数
             
           </span>
         </div>
@@ -4088,7 +4088,7 @@
   <span class="md-ellipsis">
     
   
-    第1章 初识随机模拟方法
+    第1章 初识蒙特卡罗方法
   
 
     
@@ -4116,7 +4116,7 @@
   <span class="md-ellipsis">
     
   
-    第2章 懂点概率论：领会描述随机性的数学语言
+    第2章 概率论基础：蒙特卡罗的两大理论支柱
   
 
     
@@ -4153,7 +4153,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 善用身边的数学秘书：从 Matlab 到 Python
+    第3章 伪随机数
   
 
     
@@ -4171,7 +4171,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 善用身边的数学秘书：从 Matlab 到 Python
+    第3章 伪随机数
   
 
     
@@ -4197,10 +4197,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-环境与-Notebook-工作流" class="md-nav__link">
+  <a href="#30-本章导图" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 环境与 Notebook 工作流
+        3.0 本章导图
       
     </span>
   </a>
@@ -4208,22 +4208,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3⅓4-变量数组与向量化" class="md-nav__link">
+  <a href="#31-真随机与伪随机对生成器的要求" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.&#8531;.4 变量、数组与向量化
+        3.1 真随机与伪随机：对生成器的要求
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.⅓.4 变量、数组与向量化">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-平方取中与它的教训" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 平方取中与它的教训
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-线性同余生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 线性同余生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 线性同余生成器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#对照表Matlab--NumPy" class="md-nav__link">
+  <a href="#331-模算术三件套SM-133" class="md-nav__link">
     <span class="md-ellipsis">
       
-        对照表（Matlab → NumPy）
+        3.3.1 模算术三件套（S&amp;M §1.3.3）
       
     </span>
   </a>
@@ -4231,10 +4253,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#三个最常咬人的坑" class="md-nav__link">
+  <a href="#332-LCG-与乘同余" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三个最常咬人的坑
+        3.3.2 LCG 与乘同余
       
     </span>
   </a>
@@ -4242,10 +4264,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#向量化蒙特卡罗的第一生产力" class="md-nav__link">
+  <a href="#333-满周期三判据HullDobell-定理的完整推导" class="md-nav__link">
     <span class="md-ellipsis">
       
-        向量化：蒙特卡罗的第一生产力
+        3.3.3 满周期三判据：Hull–Dobell 定理的完整推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-乘同余特例原根与满周期-m-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4 乘同余特例：原根与满周期 \(m-1\)
       
     </span>
   </a>
@@ -4258,10 +4291,260 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-线性代数" class="md-nav__link">
+  <a href="#34-生成数的结构缺陷" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 线性代数
+        3.4 生成数的结构缺陷
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 生成数的结构缺陷">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-一切-LCG-都躺在超平面上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 一切 LCG 都躺在超平面上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-谱检验平面数与点距DS-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 谱检验、平面数与点距（D&amp;S §3.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-RANDU-的-15-张平面恒等式逐行推导" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 RANDU 的 15 张平面：恒等式逐行推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-实用生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 实用生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 实用生成器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-模数取-2-的幂" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 模数取 2 的幂
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-素数模与最小标准生成器-minstd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 素数模与"最小标准"生成器 minstd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-Schrage-编码32-位整数不溢出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 Schrage 编码：32 位整数不溢出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-minstd-的缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 minstd 的缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-改善手段洗牌与跳跃" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 改善手段：洗牌与跳跃
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 改善手段：洗牌与跳跃">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-BaysDurham-洗牌" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 Bays–Durham 洗牌
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-跳跃造独立子流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 跳跃：造独立子流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-组合生成器与现代生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 组合生成器与现代生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 组合生成器与现代生成器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-组合的动机与位混合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.1 组合的动机与位混合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-WichmannHill-与-LEcuyer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.2 Wichmann–Hill 与 L'Ecuyer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-更复杂的家族DS-39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.3 更复杂的家族（D&amp;S §3.9）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#374-对照今天Mersenne-Twister-与-NumPy-的-PCG64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.4 对照今天：Mersenne Twister 与 NumPy 的 PCG64
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-随机数统计检验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 随机数统计检验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 随机数统计检验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#381-卡方拟合优度检验SM-附录-A31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8.1 卡方拟合优度检验（S&amp;M 附录 A.3.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#382-KolmogorovSmirnov-检验SM-附录-A32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8.2 Kolmogorov–Smirnov 检验（S&amp;M 附录 A.3.2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
       
     </span>
   </a>
@@ -4269,10 +4552,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-作图" class="md-nav__link">
+  <a href="#速览" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 作图
+        速览
       
     </span>
   </a>
@@ -4280,21 +4563,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#35-符号演算" class="md-nav__link">
+  <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 符号演算
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#随机模拟常用函数速查NumPy-Generator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        随机模拟常用函数速查（NumPy Generator）
+        术语速查
       
     </span>
   </a>
@@ -4324,7 +4596,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 让电脑玩掷骰子：生成随机数
+    第4章 抽样、记分与精度
   
 
     
@@ -4352,7 +4624,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 掷骰子的进阶：特殊分布随机数的抽样
+    第5章 方差缩减
   
 
     
@@ -4380,7 +4652,7 @@
   <span class="md-ellipsis">
     
   
-    第6章 神奇的马尔科夫链蒙特卡罗方法
+    第6章 马尔科夫链蒙特卡罗
   
 
     
@@ -4408,7 +4680,7 @@
   <span class="md-ellipsis">
     
   
-    第7章 仿真随机服务系统
+    第7章 贝叶斯推断与 Gibbs 抽样
   
 
     
@@ -4436,7 +4708,7 @@
   <span class="md-ellipsis">
     
   
-    第8章 不落俗套：蒙特卡罗优化方法
+    第8章 随机游走
   
 
     
@@ -4464,7 +4736,7 @@
   <span class="md-ellipsis">
     
   
-    第9章 模拟醉汉行走：随机游走模拟
+    第9章 蒙特卡罗优化：模拟退火与遗传算法
   
 
     
@@ -4492,7 +4764,7 @@
   <span class="md-ellipsis">
     
   
-    第10章 化腐朽为神奇：蒙特卡罗积分法
+    第10章 逆蒙特卡罗
   
 
     
@@ -4520,7 +4792,7 @@
   <span class="md-ellipsis">
     
   
-    第11章 随机模拟无极限：探索复杂性问题的方法
+    第11章 线性算子方程
   
 
     
@@ -4639,10 +4911,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-环境与-Notebook-工作流" class="md-nav__link">
+  <a href="#30-本章导图" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 环境与 Notebook 工作流
+        3.0 本章导图
       
     </span>
   </a>
@@ -4650,22 +4922,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3⅓4-变量数组与向量化" class="md-nav__link">
+  <a href="#31-真随机与伪随机对生成器的要求" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.&#8531;.4 变量、数组与向量化
+        3.1 真随机与伪随机：对生成器的要求
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.⅓.4 变量、数组与向量化">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-平方取中与它的教训" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 平方取中与它的教训
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-线性同余生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 线性同余生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 线性同余生成器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#对照表Matlab--NumPy" class="md-nav__link">
+  <a href="#331-模算术三件套SM-133" class="md-nav__link">
     <span class="md-ellipsis">
       
-        对照表（Matlab → NumPy）
+        3.3.1 模算术三件套（S&amp;M §1.3.3）
       
     </span>
   </a>
@@ -4673,10 +4967,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#三个最常咬人的坑" class="md-nav__link">
+  <a href="#332-LCG-与乘同余" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三个最常咬人的坑
+        3.3.2 LCG 与乘同余
       
     </span>
   </a>
@@ -4684,10 +4978,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#向量化蒙特卡罗的第一生产力" class="md-nav__link">
+  <a href="#333-满周期三判据HullDobell-定理的完整推导" class="md-nav__link">
     <span class="md-ellipsis">
       
-        向量化：蒙特卡罗的第一生产力
+        3.3.3 满周期三判据：Hull–Dobell 定理的完整推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-乘同余特例原根与满周期-m-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4 乘同余特例：原根与满周期 \(m-1\)
       
     </span>
   </a>
@@ -4700,10 +5005,260 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-线性代数" class="md-nav__link">
+  <a href="#34-生成数的结构缺陷" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 线性代数
+        3.4 生成数的结构缺陷
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 生成数的结构缺陷">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-一切-LCG-都躺在超平面上" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 一切 LCG 都躺在超平面上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-谱检验平面数与点距DS-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 谱检验、平面数与点距（D&amp;S §3.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-RANDU-的-15-张平面恒等式逐行推导" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 RANDU 的 15 张平面：恒等式逐行推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-实用生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 实用生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 实用生成器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-模数取-2-的幂" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 模数取 2 的幂
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-素数模与最小标准生成器-minstd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 素数模与"最小标准"生成器 minstd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-Schrage-编码32-位整数不溢出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 Schrage 编码：32 位整数不溢出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-minstd-的缺陷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4 minstd 的缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-改善手段洗牌与跳跃" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 改善手段：洗牌与跳跃
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 改善手段：洗牌与跳跃">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361-BaysDurham-洗牌" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.1 Bays–Durham 洗牌
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362-跳跃造独立子流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6.2 跳跃：造独立子流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-组合生成器与现代生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 组合生成器与现代生成器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 组合生成器与现代生成器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-组合的动机与位混合" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.1 组合的动机与位混合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-WichmannHill-与-LEcuyer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.2 Wichmann–Hill 与 L'Ecuyer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-更复杂的家族DS-39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.3 更复杂的家族（D&amp;S §3.9）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#374-对照今天Mersenne-Twister-与-NumPy-的-PCG64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7.4 对照今天：Mersenne Twister 与 NumPy 的 PCG64
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-随机数统计检验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 随机数统计检验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 随机数统计检验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#381-卡方拟合优度检验SM-附录-A31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8.1 卡方拟合优度检验（S&amp;M 附录 A.3.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#382-KolmogorovSmirnov-检验SM-附录-A32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8.2 Kolmogorov–Smirnov 检验（S&amp;M 附录 A.3.2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
       
     </span>
   </a>
@@ -4711,10 +5266,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#33-作图" class="md-nav__link">
+  <a href="#速览" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 作图
+        速览
       
     </span>
   </a>
@@ -4722,21 +5277,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#35-符号演算" class="md-nav__link">
+  <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 符号演算
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#随机模拟常用函数速查NumPy-Generator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        随机模拟常用函数速查（NumPy Generator）
+        术语速查
       
     </span>
   </a>
@@ -4763,10 +5307,10 @@
   
 
 
-<h1 id="第-3-章-善用身边的数学秘书从-Matlab-到-Python">第 3 章 善用身边的数学秘书：从 Matlab 到 Python<a class="headerlink" href="#第-3-章-善用身边的数学秘书从-Matlab-到-Python" title="Permanent link">#</a></h1>
+<h1 id="第-3-章-伪随机数">第 3 章 伪随机数<a class="headerlink" href="#第-3-章-伪随机数" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：教材本章教 Matlab（3.1 快速入门、3.2 线性代数、3.3 作图、3.4 程序设计、3.5 符号演算），本笔记全程改用 <strong>Python + NumPy + Matplotlib + SymPy</strong>——这章做"翻译"：给全对照表、点名易踩的坑，并把蒙特卡罗的编程惯例（随机数对象、种子、向量化）一次立好。
-<strong>承上启下</strong>：向量化习惯从本章养成——蒙特卡罗动辄百万条 history，本章实测循环比向量化慢约 90 倍；第 4 章将拆开 <code>default_rng</code> 看均匀随机数是怎么造出来的。</p>
+<p><strong>本章解决</strong>：蒙特卡罗的一切随机性最终都来自一串 <span class="arithmatex">\([0,1)\)</span> 上的"均匀随机数"——而计算机是确定性机器，造不出真随机。本章回答：伪随机数是什么、好生成器要满足什么、线性同余生成器怎么写、满周期怎么证、结构缺陷（超平面）怎么暴露、RANDU 为何身败名裂、洗牌与组合如何补救，以及怎么用统计检验给生成器"体检"。
+<strong>对照教材</strong>：Dunn &amp; Shultis《Exploring Monte Carlo Methods》§3.1–3.10（主线，小节编号跟随它）；Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§1.3（要求清单、平方取中、模算术与满周期定理）与附录 A（卡方与 KS 检验）。建议先读 S&amp;M §1.3 建立要求清单，再进 D&amp;S 的技术细节。</p>
 </blockquote>
 <table>
 <thead>
@@ -4777,204 +5321,767 @@
 </thead>
 <tbody>
 <tr>
-<td>环境</td>
-<td>Anaconda（Python 3.12）+ Jupyter Notebook，<code>numpy</code> / <code>matplotlib</code> / <code>sympy</code></td>
+<td>伪随机数</td>
+<td>确定性算法产出的、统计上像随机的数列；种子相同则序列相同（可复现）</td>
 </tr>
 <tr>
-<td>心法</td>
-<td><strong>向量化</strong>：把"对每个样本做循环"改写成"对整个数组一次算"</td>
+<td>线性同余生成器（LCG）</td>
+<td><span class="arithmatex">\(x_{n+1}=(a x_n + c) \bmod m\)</span>，1970—90 年代的主流</td>
 </tr>
 <tr>
-<td>最大坑</td>
-<td>NumPy 索引从 <strong>0</strong> 开始；<code>*</code> 是逐元素乘，矩阵乘用 <code>@</code></td>
+<td>满周期</td>
+<td><span class="arithmatex">\(c\ne 0\)</span> 时由 Hull–Dobell 三判据决定；<span class="arithmatex">\(c=0\)</span> 时要 <span class="arithmatex">\(a\)</span> 是模 <span class="arithmatex">\(m\)</span> 的原根</td>
 </tr>
 <tr>
-<td>随机数入口</td>
-<td><code>np.random.default_rng(seed)</code> 返回 Generator 对象</td>
+<td>结构缺陷</td>
+<td>一切 LCG 的 <span class="arithmatex">\(k\)</span> 元组都躺在超平面上（Marsaglia）；RANDU 三维只有 15 张平面</td>
+</tr>
+<tr>
+<td>检验</td>
+<td>卡方（分组频率）+ KS（经验 CDF 距离）；只能拒绝随机性，不能证明随机性</td>
 </tr>
 </tbody>
 </table>
-<p>本章代码：<a href="../nb/ch03.ipynb">nb/ch03.ipynb</a>（工具演示，种子 2026）。</p>
-<h2 id="31-环境与-Notebook-工作流">3.1 环境与 Notebook 工作流<a class="headerlink" href="#31-环境与-Notebook-工作流" title="Permanent link">#</a></h2>
-<p>Anaconda 装好后，"数学秘书"就位。教材的"交互式使用"对应两种形态：</p>
+<p>本章代码：<a href="../nb/ch03.ipynb">nb/ch03.ipynb</a>（7 个实验全部实跑：平方取中普查、Hull–Dobell 验证、RANDU 平面、洗牌对比、Wichmann–Hill、卡方与 KS；确定性生成器自带种子，结果可复现）。</p>
+<h2 id="30-本章导图">3.0 本章导图<a class="headerlink" href="#30-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">伪随机数</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">为什么不用真随机</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">调试要求每次运行序列相同</span>
+          <span class="brleaf">外设（盖革计数器）慢且偏</span>
+          <span class="brleaf">查表（Marsaglia 光盘）读盘太慢</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">好生成器五要求</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">快、可复现、可分析</span>
+          <span class="brleaf">长周期（10⁹ 到 10¹⁷⁰）</span>
+          <span class="brleaf">对应用显得随机</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">线性同余 LCG</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">x_{n+1} = (a·x_n + c) mod m</span>
+          <span class="brleaf">Hull–Dobell 三判据 → 满周期 m</span>
+          <span class="brleaf">c=0：a 为原根 → 满周期 m−1</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">结构缺陷</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">k 元组躺在超平面上（≤ m^{1/k} 张）</span>
+          <span class="brleaf">谱检验 / 平面数 / 点距三统计量</span>
+          <span class="brleaf">RANDU：9x−6y+z 恒等式 → 15 平面</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">实用与改良</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">m=2ᵅ：周期 m/4，种子须奇</span>
+          <span class="brleaf">minstd：16807 mod (2³¹−1)</span>
+          <span class="brleaf">Schrage 编码防溢出</span>
+          <span class="brleaf">Bays–Durham 洗牌 / 跳跃 stride</span>
+          <span class="brleaf">组合：WH≈7×10¹²、L'Ecuyer≈10¹⁸</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">统计检验</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">卡方：V = Σ(Y−pN)²/(pN)，k−1 自由度</span>
+          <span class="brleaf">KS：D_N 距离，5% 临界 1.36/√n</span>
+          <span class="brleaf">只能拒绝，不能证明</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="31-真随机与伪随机对生成器的要求">3.1 真随机与伪随机：对生成器的要求<a class="headerlink" href="#31-真随机与伪随机对生成器的要求" title="Permanent link">#</a></h2>
+<p>第 1、2 章的一切模拟都建立在一串均匀分布在 <span class="arithmatex">\((0,1)\)</span> 上的随机数 <span class="arithmatex">\(\rho_i\)</span> 之上。但<strong>数字计算机按设计就不可能产生随机结果</strong>——它是确定性机器。要拿"真随机"，理论上可以外接一个物理随机源：放在放射性源旁边的盖革计数器的两次点击间隔、电子线路里的白噪声（D&amp;S §3 开篇）。D&amp;S 随即指出这条路<strong>灾难性地不可行</strong>，原因有二：</p>
+<ol>
+<li><strong>不可复现</strong>。调试代码的前提是每次运行用同一串数；若每次运行随机源都吐出新序列，一个 bug 你都抓不住——同一代码在不同机器上也得不到同样结果。</li>
+<li><strong>不可行且太慢</strong>。给每台计算机配外设不现实；把真随机数做成表格读入也不行——Marsaglia 1995 年的光盘存了 <span class="arithmatex">\(4.8\times 10^9\)</span> 个真随机数（两个伪随机生成器加三个物理装置合成），但现代模拟动辄要更多，而且<strong>从外部文件读一个数的时间</strong>在现代蒙特卡罗里完全不可接受。</li>
+</ol>
+<p>折中方案就是<strong>伪随机数生成器</strong>（pseudorandom number generator，RNG）：一个确定性算法，给定前面的数（通常只要最后一个），就能高效算出下一个。Designing better generators 至今仍是活跃的研究领域；D&amp;S 特意警告：历史上大量研究用了有严重缺陷的生成器而不自知，"如果这些论文消失，图书馆能腾出不少书架"。<strong>认清你手里生成器的出身，别随手改动它。</strong></p>
+<p>S&amp;M §1.3.1 把对 RNG 的要求列成五条，D&amp;S §3.3 补上一条可移植性：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>要求</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>快</strong>（fast）</td>
+<td>典型应用要消耗百万到十亿级随机数</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>可复现</strong>（repeatable）</td>
+<td>调试的前提：记住种子即可重放同一序列</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>可分析</strong>（amenable to analysis）</td>
+<td>分布性质要能被数学证明，不能只靠感觉</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>长周期</strong>（long period）</td>
+<td>一切 RNG 终将循环；32 位机上 <span class="arithmatex">\(2^{30}\approx 10^9\)</span> 易得，复杂应用想要 <span class="arithmatex">\(10^{18}\)</span> 到 <span class="arithmatex">\(10^{170}\)</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>对应用显得随机</strong>（apparently random）</td>
+<td>最重要的品质：能通过真随机序列能通过的那些统计检验</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>可移植</strong>（portable，D&amp;S）</td>
+<td>用高级语言写成、不依赖特定机器的字长与指令技巧，跨机器结果一致</td>
+</tr>
+</tbody>
+</table>
+<p>关于周期，S&amp;M 有一个精确的观察：<strong>单种子 RNG 的周期不可能超过种子的可能取值个数</strong>——种子一旦在序列中重复出现，其后的一切必然重演。所以 S&amp;M 把 RNG 比作一本极长的书：种子只是书签，决定从哪里开始读；种子相同，读到的序列就相同；读到"书尾"就绕回去（未必绕回开头）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：准随机数与真随机</p>
+<p>D&amp;S 还区分了一个名字相近的概念：<strong>准随机数</strong>（quasirandom numbers）——刻意<strong>不求随机、只求极端均匀</strong>的确定性点列（如 Sobol 序列），用于把蒙特卡罗求积的收敛速度从 <span class="arithmatex">\(N^{-1/2}\)</span> 再往上提（D&amp;S §5.11.2 的应用，本笔记第 5 章后可见）。另一头，<strong>真随机</strong>在 S&amp;M §1.3 末尾有个现代版本：量子计算机。制备一个量子比特，过一个 Hadamard 门进入 <span class="arithmatex">\(|0\rangle\)</span> 与 <span class="arithmatex">\(|1\rangle\)</span> 的叠加态，测量时它以物理规律保证的等概率塌缩成 0 或 1——这种随机无法预测也无法复现，所以只能当种子源用，不能当模拟的主力。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：复杂 ≠ 随机——Knuth 的自打脸</p>
+<p>"显得随机"这条要求看似容易蒙混：把算法写得足够复杂不就行了？S&amp;M 引用 Knuth 的亲身教训：Knuth 在《半数值算法》里描述过自己早期设计的一个生成器，对 10 位十进制数轮流做"加 <span class="arithmatex">\(5\times 10^9\)</span>、平方取中、乘 1001001001 取模、数字全体减一、高低五位居换"等 13 步操作，步骤数还由数字本身动态决定。复杂得像模像样——结果第一次运行就<strong>收敛到了不动点 6065038420</strong>（这个数经过整套变换还是它自己）；换个种子再跑，又掉进一个长度 3178 的环。教训原话是："随机数不应当用随机选来的方法生成。"复杂性可以掩盖简单行为，但制造不出随机性。要判断好坏，只能靠下一节的"简单到可分析"的骨架 + §3.8 的严格检验。</p>
+</div>
+<h2 id="32-平方取中与它的教训">3.2 平方取中与它的教训<a class="headerlink" href="#32-平方取中与它的教训" title="Permanent link">#</a></h2>
+<p>历史上第一个系统的伪随机生成方案来自冯·诺依曼（1940 年代，ENIAC 时代）：<strong>平方取中</strong>（middle-square）。以 4 位十进制为例：把当前 4 位数平方（左侧补零到 8 位），抽<strong>正中间的 4 位</strong>作下一个数。想法很自然——乘法会让数字充分搅动，中间几位"看起来"随机。S&amp;M §1.3.2 还给了个"高配版"：反复计算 <span class="arithmatex">\(\sin\)</span> 值、取小数点后第 5 位起的数字当随机数（<strong>middle-sine</strong>）；但算 100 万个 <span class="arithmatex">\(\sin\)</span> 要约 2 秒，而 Python 内置生成器同样的活只要 0.2 秒（向量化 0.01 秒）——用超越函数造随机，慢是硬伤。冯·诺依曼用 <span class="arithmatex">\(x^2\)</span> 代替 <span class="arithmatex">\(\sin x\)</span>，就是这个原因。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">middle_square</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">seen</span> <span class="o">=</span> <span class="n">seed</span><span class="p">,</span> <span class="p">[</span><span class="n">seed</span><span class="p">],</span> <span class="p">{</span><span class="n">seed</span><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="si">:</span><span class="s2">0</span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">digits</span><span class="si">}</span><span class="s2">d</span><span class="si">}</span><span class="s2">"</span>                  <span class="c1"># 平方，左侧补零到 2d 位</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">digits</span><span class="o">//</span><span class="mi">2</span> <span class="p">:</span> <span class="n">digits</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="n">digits</span><span class="p">])</span>   <span class="c1"># 抽中间 d 位</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>                                <span class="c1"># 状态重复 → 环闭合</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="n">seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="k">return</span> <span class="n">seq</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">4353</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">3792</span><span class="p">,</span> <span class="mi">6100</span><span class="p">):</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">seq</span> <span class="o">=</span> <span class="n">middle_square</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">seq</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>            <span class="c1"># 进入环的长度</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"种子 </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="s1">' -&gt; '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">seq</span><span class="p">[:</span><span class="mi">8</span><span class="p">]))</span><span class="si">}</span><span class="s2"> ...  步数 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">，环长 </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">（环值 </span><span class="si">{</span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">）"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>种子 1234: 1234 -&gt; 5227 -&gt; 3215 -&gt; 3362 -&gt; 3030 -&gt; 1809 -&gt; 2724 -&gt; 4201 ...  步数 57，环长 1（环值 0）
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>种子 4353: 4353 -&gt; 9486 -&gt; 9841 -&gt; 8452 -&gt; 4363 -&gt; 357 -&gt; 1274 -&gt; 6230 ...  步数 69，环长 4（环值 6100）
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>种子 1000: 1000 -&gt; 0 -&gt; 0 ...  步数 2，环长 1（环值 0）
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>种子 3792: 3792 -&gt; 3792 ...  步数 1，环长 1（环值 3792）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>种子 6100: 6100 -&gt; 2100 -&gt; 4100 -&gt; 8100 -&gt; 6100 ...  步数 4，环长 4（环值 6100）
+</code></pre></div>
+<p>前 40 步看起来还真像随机数（图 3.1 左）。但把 4 位数的全部 <span class="arithmatex">\(10^4\)</span> 个种子普查一遍（图 3.1 右），命运只有两种：</p>
 <ul>
-<li><strong>交互式</strong>：Jupyter Notebook / IPython。代码写在**单元（cell）**里，<code>Shift+Enter</code> 运行并跳到下一格；图表自动内嵌；内核（kernel）记着所有已定义的变量，改了代码记得从头重跑（Kernel → Restart &amp; Run All），保证结果可复现。</li>
-<li><strong>脚本</strong>：<code>import</code> 的 <code>.py</code> 模块（对应 Matlab 的 M 文件）——适合封装反复用的函数。</li>
+<li><strong>1968 个种子掉进 0</strong>——一旦中间 4 位是 0，之后永远是 0；另有 295 个种子掉进非零不动点（如 <span class="arithmatex">\(3792^2 = 14379264\)</span>，取中还是 3792）；</li>
+<li><strong>其余 7737 个种子全部进入唯一的 4 步环</strong> <span class="arithmatex">\(2100\to 4100\to 8100\to 6100\to 2100\)</span>。</li>
 </ul>
-<p>Notebook 对随机模拟尤其合适：它天然是一份"试验记录本"——代码、参数、结果、图按顺序留在同一页，复现只需重跑一遍。本章演示中的耗时用 IPython 魔法命令 <code>%timeit</code> 测量。</p>
-<h2 id="3⅓4-变量数组与向量化">3.&#8531;.4 变量、数组与向量化<a class="headerlink" href="#3⅓4-变量数组与向量化" title="Permanent link">#</a></h2>
-<h3 id="对照表Matlab--NumPy">对照表（Matlab → NumPy）<a class="headerlink" href="#对照表Matlab--NumPy" title="Permanent link">#</a></h3>
+<p>也就是说，4 位平方取中的<strong>最大周期只有 4</strong>，且近四分之一 trajectories 以归零告终。S&amp;M 的评语：短周期 + 快速循环是它甩不掉的病，"对更好生成器的搜寻就此开始"。它的历史地位是给出两条硬标准：<strong>状态不许塌缩</strong>（要避开 0 这类吸收态）、<strong>周期要长且可论证</strong>——这两条正好是下一节 LCG 的设计目标。</p>
+<figure>
+  <img src="../images/ch03/out-3-1.png" class="lq-img" />
+  <figcaption>图 3.1 平方取中的命运（代码实跑）：左图，三个种子的全程轨迹（对数轴）——种子 1234 在第 57 步坠向 0，种子 4353 在第 69 步进入 4 步环，种子 6100 本身就在环上；右图，10000 个种子的环长普查：2263 个进 1 环（0 或不动点），7737 个进唯一的 4 环。</figcaption>
+</figure>
+
+<h2 id="33-线性同余生成器">3.3 线性同余生成器<a class="headerlink" href="#33-线性同余生成器" title="Permanent link">#</a></h2>
+<h3 id="331-模算术三件套SM-133">3.3.1 模算术三件套（S&amp;M §1.3.3）<a class="headerlink" href="#331-模算术三件套SM-133" title="Permanent link">#</a></h3>
+<p>LCG 的一切性质都写在模算术里，先把工具备齐（以下全是整数）。称 <span class="arithmatex">\(a\)</span> 同余于 <span class="arithmatex">\(b\)</span> 模 <span class="arithmatex">\(m\)</span>，记 <span class="arithmatex">\(a\equiv b \bmod m\)</span>，如果 <span class="arithmatex">\(m \mid (a-b)\)</span>。三条基本事实：</p>
+<ul>
+<li><strong>同余是等价关系</strong>（自反、对称、传递）：传递性一行可证——<span class="arithmatex">\(a-b = pm\)</span>、<span class="arithmatex">\(b-c = qm\)</span> 相加得 <span class="arithmatex">\(a-c = (p+q)m\)</span>。</li>
+<li><strong>除法算法定理</strong>：给定整数 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(m&gt;0\)</span>，存在唯一商 <span class="arithmatex">\(q\)</span> 与余数 <span class="arithmatex">\(r\)</span> 使 <span class="arithmatex">\(a = qm + r\)</span>，<span class="arithmatex">\(0\le r &lt; m\)</span>。于是全体整数被剖分成等价类 <span class="arithmatex">\([0],[1],\dots,[m-1]\)</span>，互斥且穷尽；记 <span class="arithmatex">\(r = a \bmod m\)</span> 为该类的代表元。</li>
+<li><strong>钟算（clock arithmetic）</strong>：模 <span class="arithmatex">\(m\)</span> 的加法与乘法就是普通运算后再取余：<span class="arithmatex">\((x \bmod m \pm y \bmod m)\bmod m = (x\pm y)\bmod m\)</span>，<span class="arithmatex">\(((x\bmod m)(y\bmod m))\bmod m = (xy)\bmod m\)</span>。</li>
+</ul>
+<p>最后一条让"先取余再乘"和"先乘再取余"等价——这是后面所有推导只看余数的合法性来源。再补一条：若 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(m\)</span> 互素（除 1 外无公因数），则 <span class="arithmatex">\(a\)</span> 在模 <span class="arithmatex">\(m\)</span> 下<strong>可除</strong>：<span class="arithmatex">\(ax \equiv b \bmod m\)</span> 对任意 <span class="arithmatex">\(b\)</span> 有唯一解。</p>
+<h3 id="332-LCG-与乘同余">3.3.2 LCG 与乘同余<a class="headerlink" href="#332-LCG-与乘同余" title="Permanent link">#</a></h3>
+<p>Lehmer 1951 年提出的<strong>线性同余生成器</strong>（linear congruential generator，LCG；D&amp;S §3.1）只有一行：</p>
+<div class="arithmatex">\[
+x_{i+1}=(a x_i + c)\bmod m,\qquad i\ge 0,
+\]</div>
+<p>其中 <span class="arithmatex">\(a&gt;1\)</span> 叫<strong>乘子</strong>（multiplier），<span class="arithmatex">\(c\)</span> 叫<strong>增量</strong>（increment），<span class="arithmatex">\(m\)</span> 叫<strong>模数</strong>（modulus）。从种子 <span class="arithmatex">\(x_0\)</span> 出发，整数序列落在 <span class="arithmatex">\(0\le x_i &lt; m\)</span>，除以 <span class="arithmatex">\(m\)</span> 归一化成 <span class="arithmatex">\([0,1)\)</span> 上的</p>
+<div class="arithmatex">\[
+\rho_i=\frac{x_i}{m}.
+\]</div>
+<p>最常用的特例取 <span class="arithmatex">\(c=0\)</span>，即<strong>乘同余生成器</strong>（multiplicative congruential generator）：</p>
+<div class="arithmatex">\[
+x_{i+1}=a x_i \bmod m.
+\]</div>
+<p>模算术立刻给出两个事实。其一，<span class="arithmatex">\(x_i\)</span> 永远到不了 0（只要 <span class="arithmatex">\(x_0\not\equiv 0\)</span>）：<span class="arithmatex">\(ax_i \equiv 0 \bmod m\)</span> 要求 <span class="arithmatex">\(m \mid ax_i\)</span>，而 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(m\)</span> 互素时要求 <span class="arithmatex">\(m\mid x_i\)</span>，即 <span class="arithmatex">\(x_i = 0\)</span>——所以 <span class="arithmatex">\(\rho_i \in (0,1)\)</span> 开区间，<strong>永远不吐出恰好 0 或 1</strong>（很多模拟正需要这一点）。其二，序列的通项一行归纳即得：<span class="arithmatex">\(x_j \equiv a x_{j-1} \equiv a\cdot a^{j-1}x_0 = a^j x_0 \pmod m\)</span>，即</p>
+<div class="arithmatex">\[
+x_j = a^j x_0 \bmod m,\qquad j\ge 1,
+\]</div>
+<p>（这正是 D&amp;S 的式 (3.4)，它还意味着乘同余天然支持"跳跃"，见 §3.6）。<span class="arithmatex">\(c\ne 0\)</span> 时 0 反而可达（S&amp;M 的例子 <span class="arithmatex">\(a=5, c=1, m=8\)</span>，种子 0：<span class="arithmatex">\(0,1,6,7,4,5,2,3,0\)</span> 遍历全环），这是两族生成器性格不同的根源。</p>
+<h3 id="333-满周期三判据HullDobell-定理的完整推导">3.3.3 满周期三判据：Hull–Dobell 定理的完整推导<a class="headerlink" href="#333-满周期三判据HullDobell-定理的完整推导" title="Permanent link">#</a></h3>
+<p>周期是 LCG 的命门：状态至多 <span class="arithmatex">\(m\)</span> 个，序列一旦重复某个状态就进入死环。S&amp;M §1.3.3 引述的定理（归于 Hull–Dobell，见 Knuth）给出 <span class="arithmatex">\(c\ne 0\)</span> 情形<strong>对每个种子都取满周期 <span class="arithmatex">\(m\)</span></strong> 的充要条件。定理不跳步地证如下。</p>
+<p><strong>定理（Hull–Dobell）</strong> LCG <span class="arithmatex">\(f(x)=(ax+c)\bmod m\)</span> 对每个种子周期都为 <span class="arithmatex">\(m\)</span>，当且仅当：</p>
+<ol>
+<li><span class="arithmatex">\(\gcd(c, m)=1\)</span>；</li>
+<li>对每个整除 <span class="arithmatex">\(m\)</span> 的素数 <span class="arithmatex">\(p\)</span>，<span class="arithmatex">\(p \mid (a-1)\)</span>；</li>
+<li>若 <span class="arithmatex">\(4 \mid m\)</span>，则 <span class="arithmatex">\(4 \mid (a-1)\)</span>。</li>
+</ol>
+<p>记 <span class="arithmatex">\(b = a-1\)</span>，<span class="arithmatex">\(S_t = 1 + a + a^2 + \cdots + a^{t-1}\)</span>。</p>
+<p><strong>第一步（周期的方程）</strong>。对迭代次数归纳：</p>
+<div class="arithmatex">\[
+f^t(x) - x = S_t\,(b x + c).
+\]</div>
+<p><span class="arithmatex">\(t=1\)</span> 时左边 <span class="arithmatex">\(= ax + c - x = bx + c\)</span>，成立；若对 <span class="arithmatex">\(t\)</span> 成立，则</p>
+<div class="arithmatex">\[
+f^{t+1}(x) - x = a\big(x + S_t(bx+c)\big) + c - x
+= (bx + c) + a S_t (bx+c) = S_{t+1}(bx+c).
+\]</div>
+<p>所以种子 <span class="arithmatex">\(x\)</span> 的周期是满足 <span class="arithmatex">\(m \mid S_t(bx+c)\)</span> 的最小正整数 <span class="arithmatex">\(t\)</span>。</p>
+<p><strong>第二步（三个条件合起来消去种子）</strong>。条件 2、3 说：每个素数 <span class="arithmatex">\(p \mid m\)</span> 都有 <span class="arithmatex">\(p \mid b\)</span>（<span class="arithmatex">\(p=2\)</span> 且 <span class="arithmatex">\(4\mid m\)</span> 时更要求 <span class="arithmatex">\(4\mid b\)</span>）。于是对任意种子 <span class="arithmatex">\(x\)</span> 与任意素数 <span class="arithmatex">\(p \mid m\)</span>：</p>
+<div class="arithmatex">\[
+bx + c \equiv 0\cdot x + c \equiv c \not\equiv 0 \pmod p,
+\]</div>
+<p>（末一步用条件 1：<span class="arithmatex">\(p \nmid c\)</span>）。所以 <span class="arithmatex">\(bx + c\)</span> 与 <span class="arithmatex">\(m\)</span> 的每个素因数都不沾边，即 <span class="arithmatex">\(\gcd(bx+c,\,m)=1\)</span> <strong>对一切种子成立</strong>。这样周期方程简化为：</p>
+<div class="arithmatex">\[
+\text{周期}(x) = \min\{\, t\ge 1 : m \mid S_t \,\}\qquad\text{与种子无关}.
+\]</div>
+<p><strong>第三步（提升：<span class="arithmatex">\(p^e \mid S_t\)</span> 当且仅当 <span class="arithmatex">\(p^e \mid t\)</span>）</strong>。对每个素数幂 <span class="arithmatex">\(p^e \parallel m\)</span> 分情形。注意 <span class="arithmatex">\(a = 1+b\)</span> 且上面积攒的条件给出 <span class="arithmatex">\(p \mid b\)</span>（<span class="arithmatex">\(p\)</span> 奇），或 <span class="arithmatex">\(4 \mid b\)</span>（<span class="arithmatex">\(p=2, e\ge 2\)</span>）。</p>
+<ul>
+<li><span class="arithmatex">\(p\)</span> 奇、<span class="arithmatex">\(p\mid b\)</span>：由提升指数引理（见下方拓展框）<span class="arithmatex">\(v_p(a^t - 1) = v_p(a-1) + v_p(t)\)</span>，而 <span class="arithmatex">\(S_t = (a^t-1)/(a-1)\)</span>，所以 <span class="arithmatex">\(v_p(S_t) = v_p(t)\)</span>。于是 <span class="arithmatex">\(p^e \mid S_t \iff p^e \mid t\)</span>。</li>
+<li><span class="arithmatex">\(p=2,\ e\ge 2\)</span>（即 <span class="arithmatex">\(4 \mid m\)</span>）：<span class="arithmatex">\(a\)</span> 为奇数。<span class="arithmatex">\(t\)</span> 为奇数时，<span class="arithmatex">\(S_t\)</span> 是 <span class="arithmatex">\(t\)</span> 个奇数之和，故 <span class="arithmatex">\(S_t\)</span> 奇，<span class="arithmatex">\(v_2(S_t) = 0 = v_2(t)\)</span>。<span class="arithmatex">\(t\)</span> 为偶数时，对 <span class="arithmatex">\(4 \mid a-1\)</span> 的情形提升指数引理给 <span class="arithmatex">\(v_2(a^t - 1) = v_2(a-1) + v_2(t)\)</span>，同样得 <span class="arithmatex">\(v_2(S_t) = v_2(t)\)</span>。</li>
+<li><span class="arithmatex">\(p=2,\ e=1\)</span>（即 <span class="arithmatex">\(2 \parallel m\)</span>）：只需 <span class="arithmatex">\(2 \mid S_t \iff 2\mid t\)</span>，而 <span class="arithmatex">\(S_t\)</span> 是 <span class="arithmatex">\(t\)</span> 个奇数之和，奇偶性与 <span class="arithmatex">\(t\)</span> 相同，得证。</li>
+</ul>
+<p><strong>第四步（收尾）</strong>。三情形合并：</p>
+<div class="arithmatex">\[
+m \mid S_t \iff p^e \mid S_t\ (\forall\, p^e \parallel m) \iff p^e \mid t\ (\forall\, p^e \parallel m) \iff m \mid t.
+\]</div>
+<p>最小这样的 <span class="arithmatex">\(t\)</span> 就是 <span class="arithmatex">\(m\)</span> 本身——<strong>周期对每个种子都恰好是 <span class="arithmatex">\(m\)</span></strong>。充分性证毕。</p>
+<p><strong>必要性</strong>（三条各缺一不可，四段短证）：</p>
+<ul>
+<li>若 <span class="arithmatex">\(\gcd(a,m) &gt; 1\)</span>：仿射映射 <span class="arithmatex">\(f(x) = ax+c \bmod m\)</span> 不单射（<span class="arithmatex">\(f(x)=f(x') \iff m \mid a(x-x')\)</span>，取差为 <span class="arithmatex">\(m/\gcd(a,m)\)</span> 的倍数即可）。而周期 <span class="arithmatex">\(m\)</span> 的轨道是遍历全部 <span class="arithmatex">\(m\)</span> 个状态的单环，环上每个状态的后继必须唯一，单射是必需的——矛盾。</li>
+<li>若 <span class="arithmatex">\(d=\gcd(c,m) &gt; 1\)</span>：周期 <span class="arithmatex">\(m\)</span> 的轨道遍历所有状态，必经 0；但从 <span class="arithmatex">\(x=0\)</span> 起，<span class="arithmatex">\(f^t(0) = c\,S_t\)</span> 恒是 <span class="arithmatex">\(d\)</span> 的倍数，整条环困在 <span class="arithmatex">\(d\)</span> 的倍数里（至多 <span class="arithmatex">\(m/d &lt; m\)</span> 个状态）——矛盾。</li>
+<li>若某奇素数 <span class="arithmatex">\(p \mid m\)</span> 而 <span class="arithmatex">\(p \nmid b\)</span>：模 <span class="arithmatex">\(p\)</span> 上 <span class="arithmatex">\(a-1\)</span> 可逆，不动点方程 <span class="arithmatex">\((a-1)x^* \equiv -c \pmod p\)</span> 有解；种子取 <span class="arithmatex">\(x^*\)</span> 时整条轨道 <span class="arithmatex">\(\bmod\ p\)</span> 恒等于 <span class="arithmatex">\(x^*\)</span>，至多访问 <span class="arithmatex">\(m/p &lt; m\)</span> 个状态——矛盾。（<span class="arithmatex">\(p=2\)</span> 且 <span class="arithmatex">\(a\)</span> 偶时同理，轨道困在单一奇偶类。）</li>
+<li>若 <span class="arithmatex">\(4 \mid m\)</span> 而 <span class="arithmatex">\(4 \nmid b\)</span>：由上一条（<span class="arithmatex">\(p=2\)</span> 部分）知 <span class="arithmatex">\(2 \mid b\)</span>，故 <span class="arithmatex">\(b \equiv 2 \pmod 4\)</span>、<span class="arithmatex">\(a \equiv 3 \pmod 4\)</span>；由第一条必要性 <span class="arithmatex">\(\gcd(c,m)=1\)</span> 知 <span class="arithmatex">\(c\)</span> 奇。模 4 上 <span class="arithmatex">\(f(f(x)) = a^2 x + c(a+1) = 9x + 4c \equiv x \pmod 4\)</span>，即 <span class="arithmatex">\(f^2 = \mathrm{id}\)</span>：轨道 <span class="arithmatex">\(\bmod\ 4\)</span> 只在两个剩余类间振荡，至多访问 <span class="arithmatex">\(2 \cdot \frac m4 = \frac m2 &lt; m\)</span> 个状态——矛盾。∎</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：提升指数引理（LTE）一行证法</p>
+<p>上面第三步引用的引理：奇素数 <span class="arithmatex">\(p \mid (a-1)\)</span> 时 <span class="arithmatex">\(v_p(a^t - 1) = v_p(a-1) + v_p(t)\)</span>（<span class="arithmatex">\(v_p\)</span> 是 <span class="arithmatex">\(p\)</span> 的幂次）。证法梗概：写 <span class="arithmatex">\(a = 1 + b\)</span>、<span class="arithmatex">\(p \mid b\)</span>，二项式展开 <span class="arithmatex">\(a^t - 1 = tb + \binom{t}{2}b^2 + \cdots\)</span>，第一项含恰 <span class="arithmatex">\(v_p(t)+1\)</span> 个 <span class="arithmatex">\(p\)</span>（<span class="arithmatex">\(p\nmid b/p\)</span> 部分由归纳保证），其余项含 <span class="arithmatex">\(b^2\)</span> 的更高幂次，对 <span class="arithmatex">\(t\)</span> 归纳即得。<span class="arithmatex">\(p = 2\)</span> 且 <span class="arithmatex">\(4 \mid a-1\)</span> 时结论同形（此时 <span class="arithmatex">\(a+1 \equiv 2 \pmod 4\)</span> 恰贡献一次 2）。这是初等数论的标准引理，Knuth《半数值算法》§3.2.1.2 的定理 A 给了完整证明。</p>
+</div>
+<p><strong>验证</strong>（nb 实验 2，图 3.2）：取 <span class="arithmatex">\(m = 16\)</span>，三组参数对照——</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">lcg_period</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">seed</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">seed</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">return</span> <span class="n">t</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"满足①②③"</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"违反③（4|m 但 4 不整除 a−1）"</span><span class="p">),</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                     <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"违反①（gcd(c,m)=2）"</span><span class="p">)]:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">ps</span> <span class="o">=</span> <span class="p">{</span><span class="n">lcg_period</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, c=</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">, m=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2"> -&gt; 各种子周期 = </span><span class="si">{</span><span class="n">ps</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>a=5, c=1, m=16: 满足①②③ -&gt; 各种子周期 = {16}
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>a=3, c=1, m=16: 违反③（4|m 但 4 不整除 a−1） -&gt; 各种子周期 = {8}
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>a=5, c=2, m=16: 违反①（gcd(c,m)=2） -&gt; 各种子周期 = {8}
+</code></pre></div>
+<figure>
+  <img src="../images/ch03/out-3-2.png" class="lq-img" />
+  <figcaption>图 3.2 Hull–Dobell 三判据决定周期（代码实跑，\(m=16\)）：满足三判据的 \(a=5, c=1\) 走满 16 个状态；违反判据③或①的两组都只走 8 个状态，序列中途就开始重演。</figcaption>
+</figure>
+
+<p>S&amp;M 指出这定理的直接推论：对 <span class="arithmatex">\(m = 2^{32}\)</span>，取 <span class="arithmatex">\(c = 1\)</span>、<span class="arithmatex">\(a = 4\ell + 1\)</span>（任意整数 <span class="arithmatex">\(\ell &gt; 0\)</span>）就满足全部判据——现代语言里"自动溢出即取模"的 <span class="arithmatex">\(m = 2^w\)</span> 生成器（如 <span class="arithmatex">\(a = 6364136223846793005, c = 1442695040888963407\)</span> 的 PCG 家族内核，见 §3.7）走的都是这条路。</p>
+<h3 id="334-乘同余特例原根与满周期-m-1">3.3.4 乘同余特例：原根与满周期 <span class="arithmatex">\(m-1\)</span><a class="headerlink" href="#334-乘同余特例原根与满周期-m-1" title="Permanent link">#</a></h3>
+<p><span class="arithmatex">\(c=0\)</span> 时条件 1 必然失败（<span class="arithmatex">\(\gcd(0,m) = m\)</span>），满周期 <span class="arithmatex">\(m\)</span> 不可得；但 §3.3.2 已证 0 不可达，所以上界是 <span class="arithmatex">\(m-1\)</span>。<strong>何时达到 <span class="arithmatex">\(m-1\)</span></strong>？当 <span class="arithmatex">\(m\)</span> 为素数且 <span class="arithmatex">\(a\)</span> 是模 <span class="arithmatex">\(m\)</span> 的<strong>原根</strong>（primitive root）：即 <span class="arithmatex">\(a^k \equiv 1 \pmod m\)</span> 的最小 <span class="arithmatex">\(k\)</span> 恰为 <span class="arithmatex">\(m-1\)</span>——此时 <span class="arithmatex">\(a\)</span> 的幂把全部 <span class="arithmatex">\(m-1\)</span> 个非零剩余遍历一遍。</p>
+<p>D&amp;S 例 3.2 的完整演示（<span class="arithmatex">\(m=13\)</span>）：逐个试出最小原根 <span class="arithmatex">\(a_1 = 2\)</span>（<span class="arithmatex">\(2^k \bmod 13 = 2,4,8,3,6,12,11,9,5,10,7,1\)</span>，第 <span class="arithmatex">\(12\)</span> 位才回到 1）。分解 <span class="arithmatex">\(m-1 = 12 = 2^2\cdot 3\)</span>，与 12 互素的指数是 <span class="arithmatex">\(n = 1, 5, 7, 11\)</span>，而 <span class="arithmatex">\(a_1^n \bmod m\)</span> 都是原根（Fishman &amp; Moore 1986 的构造引理），所以原根共四个：</p>
+<div class="arithmatex">\[
+2,\qquad 2^5 \bmod 13 = 6,\qquad 2^7 \bmod 13 = 11,\qquad 2^{11} \bmod 13 = 7.
+\]</div>
+<p>对照 D&amp;S 例 3.1 的穷举表（<span class="arithmatex">\(x_{i+1} = a x_i \bmod 13\)</span>，12 个乘子逐一跑）：恰好 <span class="arithmatex">\(a = 2, 6, 7, 11\)</span> 四个乘子满周期，其余的周期只有 6、4、3 或 2——原根判据与穷举完全吻合。这构造还有个工程意义：<strong>小原根是坏乘子</strong>（<span class="arithmatex">\(x_i\)</span> 小时序列会爬一段小数字的阶梯，太不像随机），要挑 <span class="arithmatex">\(a \lesssim \sqrt m\)</span> 的大原根，就用 <span class="arithmatex">\(a = a_1^n \bmod m\)</span> 从小原根长出来。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>D&amp;S §3.5.2 说"The factors of <span class="arithmatex">\(2^{31}-1\)</span> are <span class="arithmatex">\(2, 3, 7, 11, 31, 151, 331\)</span>"——<span class="arithmatex">\(2^{31}-1 = 2\,147\,483\,647\)</span> 是梅森素数，因数只有它自己；这份清单实为 <span class="arithmatex">\(m - 1 = 2^{31}-2\)</span> 的素因数（实跑验证：<span class="arithmatex">\(2\cdot 3^2\cdot 7\cdot 11\cdot 31\cdot 151\cdot 331 = 2147483646\)</span>，与 nb 实验 2 的分解一致）。同节"Is the multiplier <span class="arithmatex">\(m = 16\,807\)</span> the optimum multiplier"把乘子写成了 <span class="arithmatex">\(m\)</span>，应为 <span class="arithmatex">\(a = 16\,807\)</span>。习题 7 的"梅森素数 <span class="arithmatex">\(m = 2^8 - 1 = 31\)</span>"应为 <span class="arithmatex">\(2^5 - 1 = 31\)</span>（<span class="arithmatex">\(2^8-1 = 255\)</span> 不是素数）。</p>
+</div>
+<h2 id="34-生成数的结构缺陷">3.4 生成数的结构缺陷<a class="headerlink" href="#34-生成数的结构缺陷" title="Permanent link">#</a></h2>
+<h3 id="341-一切-LCG-都躺在超平面上">3.4.1 一切 LCG 都躺在超平面上<a class="headerlink" href="#341-一切-LCG-都躺在超平面上" title="Permanent link">#</a></h3>
+<p>满周期 + 边际均匀只是及格线。D&amp;S §3.2 引 Marsaglia 1968 年那篇著名论文的标题——<strong>"随机数主要躺在平面上"</strong>（Random numbers fall mainly in the plane）：任何线性同余序列的 <span class="arithmatex">\(k\)</span> 元组 <span class="arithmatex">\((x_i, x_{i+1}, \dots, x_{i+k-1})\)</span> 当作 <span class="arithmatex">\(k\)</span> 维坐标画出来，<strong>不充满空间，而是落在有限张（可能很少）平行超平面上</strong>，至多 <span class="arithmatex">\(m^{1/k}\)</span> 张，且构成一个规则的 <span class="arithmatex">\(k\)</span> 维<strong>格</strong>（lattice）。</p>
+<p>原因一眼可破：整数点满足 <span class="arithmatex">\(x_{i+1} \equiv a x_i \pmod m\)</span>，即 <span class="arithmatex">\(x_{i+1} - a x_i\)</span> 只能取 <span class="arithmatex">\(m\)</span> 的整数倍——在 <span class="arithmatex">\([0,m)^2\)</span> 里这就是一族斜率 <span class="arithmatex">\(a\)</span> 的平行线 <span class="arithmatex">\(x_{i+1} = a x_i - jm\)</span>。</p>
+<p>D&amp;S 用 <span class="arithmatex">\(m = 29\)</span> 的小例子让这件事肉眼可见（图 3.3、图 3.4）：满周期乘子里，<span class="arithmatex">\(a = 3\)</span> 的 28 个点只压在 <strong>3 条斜率 3 的直线</strong>上（另一方向 10 条斜率 <span class="arithmatex">\(-2/9\)</span> 的线，相邻点距 3.16 对 9.22，覆盖极不均）；<span class="arithmatex">\(a = 8\)</span> 的点则铺得均匀得多（斜率 <span class="arithmatex">\(3/4\)</span> 的 6 条线与斜率 <span class="arithmatex">\(-5/3\)</span> 的 7 条线，点距 5.00 对 5.83，几乎等距分布）。<strong>两个都是满周期生成器，好坏天差地别</strong>——周期长短根本不是唯一的品质指标。</p>
+<figure>
+  <img src="../images/ch03/fig-3-1.png" class="lq-img" />
+  <figcaption>图 3.3 坏乘子（截自原书 D&S 图 3.1 左）：\(x_{n+1}=3x_n \bmod 29\)，满周期但 28 个点只落在 3 条斜率为 3 的平行线上，大片空白。</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch03/fig-3-2.png" class="lq-img" />
+  <figcaption>图 3.4 好乘子（截自原书 D&S 图 3.1 右）：\(x_{n+1}=8x_n \bmod 29\)，同样满周期，两个方向的线间距（5.00 与 5.83）接近，点均匀铺满正方形。</figcaption>
+</figure>
+
+<p>实跑复现（图 3.5）：数直线族的技巧是把"常数 <span class="arithmatex">\(= m\)</span> 的整数倍"里不同的倍数个数数出来，与书的数字逐一对上：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_lines</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="sd">"""直线族 p·x_{n+1} + q·x_n = 常数（常数必为 m 的倍数）的条数"""</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">w</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="n">m</span><span class="p">))</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># a=3: 斜率 3 的直线 3 条；斜率 −2/9 的直线 10 条</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># a=8: 斜率 3/4 的直线 6 条；斜率 −5/3 的直线 7 条</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch03/out-3-3.png" class="lq-img" />
+  <figcaption>图 3.5 相邻数对 \((x_n, x_{n+1})\) 的散点（代码实跑）：左，\(a=3 \bmod 29\) 的 3 条直线；中，\(a=8 \bmod 29\) 铺得均匀；右，minstd 的 2500 对相邻数——大模数下晶格细到肉眼难辨，但结构仍在（这正是要谱检验的原因）。</figcaption>
+</figure>
+
+<h3 id="342-谱检验平面数与点距DS-34">3.4.2 谱检验、平面数与点距（D&amp;S §3.4）<a class="headerlink" href="#342-谱检验平面数与点距DS-34" title="Permanent link">#</a></h3>
+<p>晶格不可避免，就退而求其次：<strong>挑让晶格最细最匀的乘子</strong>。D&amp;S §3.4 给了三把尺子（记满周期长度 <span class="arithmatex">\(t(m)\)</span>：素数模 <span class="arithmatex">\(t = m-1\)</span>；<span class="arithmatex">\(m = 2^\alpha\)</span> 时 <span class="arithmatex">\(t = m/4\)</span>）。</p>
+<p><strong>其一，谱检验</strong>（spectral test）：<span class="arithmatex">\(k\)</span> 维超平面间距 <span class="arithmatex">\(d_k(a,m)\)</span> 有下界（Cassels 1959）</p>
+<div class="arithmatex">\[
+d_k(a,m)\ \ge\ d_k^{\min} \equiv \frac{1}{[t(m)]^{1/k}}\,
+\times\begin{cases}
+(3/4)^{1/4} &amp; k = 2\\
+2^{-1/6} &amp; k = 3\\
+2^{-1/4} &amp; k = 4\\
+2^{-3/10} &amp; k = 5\\
+(3/64)^{1/12} &amp; k = 6
+\end{cases}
+\]</div>
+<p>平面越密（间距越小）覆盖越匀，所以取统计量 <span class="arithmatex">\(S_{1,k} = d_k^{\min}/d_k(a,m) \in (0,1]\)</span>，<strong>越靠近 1 越好</strong>（间距压到理论下限）。</p>
+<p><strong>其二，平面数</strong>（Marsaglia 界）：<span class="arithmatex">\(N_k(a,m) \le [k!\, t(m)]^{1/k}\)</span>，统计量 <span class="arithmatex">\(S_{2,k} = N_k / [k!\,t(m)]^{1/k}\)</span>，同样是越大越好——平面多到允许的上限。</p>
+<p><strong>其三，点距</strong>：相邻 <span class="arithmatex">\(k\)</span> 元组的欧氏距离 <span class="arithmatex">\(r_k(a,m)\)</span> 应尽量大（点与点别扎堆），Cassels 给 <span class="arithmatex">\(r_k \le 1/\big(d_k^{\min} [t(m)]^{2/k}\big)\)</span>，统计量 <span class="arithmatex">\(S_{3,k} = r_k\, d_k^{\min} [t(m)]^{2/k}\)</span>，越大越好。</p>
+<p>D&amp;S §3.4.4 再补一个 <strong>Beyer 商</strong>（Beyer quotient）：把晶格写成基向量 <span class="arithmatex">\(\mathbf v_1,\dots,\mathbf v_k\)</span>，商 <span class="arithmatex">\(q_k = \min|\mathbf v_i| / \max|\mathbf v_i|\)</span> 衡量晶格"是否各向等距"，越接近 1 越好。 Fishman [1990, 1996] 对 <span class="arithmatex">\(m = 2^{32}\)</span>、<span class="arithmatex">\(m = 2^{48}\)</span> 与 <span class="arithmatex">\(m = 2^{31}-1\)</span> 的穷举式搜索，用的就是这组统计量（结果见 §3.5）。</p>
+<h3 id="343-RANDU-的-15-张平面恒等式逐行推导">3.4.3 RANDU 的 15 张平面：恒等式逐行推导<a class="headerlink" href="#343-RANDU-的-15-张平面恒等式逐行推导" title="Permanent link">#</a></h3>
+<p>IBM 1960 年代的 <strong>RANDU</strong>（<span class="arithmatex">\(x_{n+1} = 65\,539\,x_n \bmod 2^{31}\)</span>）在二维散点图上毫无破绽，却是史上最出名的坏生成器。D&amp;S 习题 9 点破：它的所有三维三元组 <span class="arithmatex">\((x_i, x_{i+1}, x_{i+2})\)</span> 落在<strong>仅 15 张平面</strong>上。推导只要一行代数，逐行写出：</p>
+<p>关键在 <span class="arithmatex">\(65\,539 = 2^{16} + 3\)</span>。由递推关系（一切同余在 <span class="arithmatex">\(\bmod\ 2^{31}\)</span> 下进行）：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+x_{i+1} &amp;\equiv (2^{16} + 3)\,x_i = 3x_i + 2^{16} x_i,\\
+x_{i+2} &amp;\equiv (2^{16} + 3)\,x_{i+1} = 3x_{i+1} + 2^{16} x_{i+1}.
+\end{aligned}
+\]</div>
+<p>凑 <span class="arithmatex">\(x_{i+2} - 6x_{i+1} + 9x_i\)</span>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+x_{i+2} - 6x_{i+1} + 9x_i
+&amp;\equiv 3x_{i+1} + 2^{16}x_{i+1} - 6x_{i+1} + 9x_i\\
+&amp;= 2^{16}x_{i+1} - 3x_{i+1} + 9x_i\\
+&amp;= 2^{16}x_{i+1} - 3\big(3x_i + 2^{16}x_i\big) + 9x_i\\
+&amp;= 2^{16}\big(x_{i+1} - 3x_i\big)\\
+&amp;\equiv 2^{16}\cdot 2^{16} x_i = 2^{32} x_i \equiv 0 \pmod{2^{31}}.
+\end{aligned}
+\]</div>
+<p>（第三行把 <span class="arithmatex">\(x_{i+1}\)</span> 用第一条关系代换；第五行用 <span class="arithmatex">\(x_{i+1} - 3x_i \equiv 2^{16}x_i\)</span>。）于是每个整数三元组都严格满足</p>
+<div class="arithmatex">\[
+9x_i - 6x_{i+1} + x_{i+2} = c\cdot 2^{31},\qquad c\ \text{为整数}.
+\]</div>
+<p>归一化 <span class="arithmatex">\(u = x/2^{31} \in [0,1)\)</span> 后 <span class="arithmatex">\(c = 9u_i - 6u_{i+1} + u_{i+2}\)</span> 是整数，而夹逼给出 <span class="arithmatex">\(c &gt; 9\cdot 0 - 6\cdot 1 + 0 = -6\)</span> 与 <span class="arithmatex">\(c &lt; 9\cdot 1 - 0 + 1 = 10\)</span>，所以</p>
+<div class="arithmatex">\[
+c \in \{-5, -4, \dots, 8, 9\}\quad\text{共 15 个值}\quad\Longrightarrow\quad \text{15 张平行平面}.
+\]</div>
+<p>实跑实锤（图 3.6、图 3.7）：三维散点把视线转到<strong>平面内方向</strong>（与法向量 <span class="arithmatex">\((9,-6,1)\)</span> 垂直的 <span class="arithmatex">\((2,3,0)\)</span>）时，RANDU 的点云塌成 15 条"百叶窗"，minstd 则铺满；投影直方图里 RANDU 的 <span class="arithmatex">\(c\)</span> 值精确取遍 <span class="arithmatex">\(\{-5,\dots,9\}\)</span> 共 15 根尖峰（<span class="arithmatex">\(m = 2^{31}\)</span> 时浮点表示精确，尖峰位置分毫不差），minstd 是连续填充。用 Marsaglia 的平面数上界量化一下：<span class="arithmatex">\(N_3 \le (6\cdot 2^{29})^{1/3} \approx 1477\)</span>，RANDU 只用了 15 张，<span class="arithmatex">\(S_{2,3} = 15/1477 \approx 0.01\)</span>——谱检验下惨不忍睹。D&amp;S 的提醒很实际：若用这种三元组给输运计算定粒子源位置，源就被系统性欠采样了。</p>
+<figure>
+  <img src="../images/ch03/out-3-4.png" class="lq-img" />
+  <figcaption>图 3.6 三维三连点 \((x_n, x_{n+1}, x_{n+2})\)（代码实跑，各 2500 点，视线沿平面内方向）：左，minstd 铺满立方体；右，RANDU 塌成 15 条平行的"百叶窗"。</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch03/out-3-5.png" class="lq-img" />
+  <figcaption>图 3.7 平面恒等式的投影值 <span class="arithmatex">\(c = 9u_n - 6u_{n+1} + u_{n+2}\)</span>（代码实跑）：左，minstd 连续铺满；右，RANDU 精确取 15 个整数值 <span class="arithmatex">\(\{-5,\dots,9\}\)</span>——15 张平面的直接证据。</figcaption>
+</figure>
+
+<h2 id="35-实用生成器">3.5 实用生成器<a class="headerlink" href="#35-实用生成器" title="Permanent link">#</a></h2>
+<h3 id="351-模数取-2-的幂">3.5.1 模数取 2 的幂<a class="headerlink" href="#351-模数取-2-的幂" title="Permanent link">#</a></h3>
+<p>早期计算机上 <span class="arithmatex">\(m\)</span> 取 2 的幂有巨大速度红利：乘除 <span class="arithmatex">\(2^n\)</span> 就是移位，模 <span class="arithmatex">\(2^w\)</span> 干脆由字长<strong>自动完成</strong>（高位溢出丢弃，免费取模）。代价是周期上限打折：<span class="arithmatex">\(m = 2^\alpha\)</span>（<span class="arithmatex">\(\alpha \ge 3\)</span>）的乘同余最大周期只有 <span class="arithmatex">\(m/4 = 2^{\alpha-2}\)</span>（Knuth），且取到它要求 <span class="arithmatex">\(a \bmod 8 \in \{3, 5\}\)</span>（即 <span class="arithmatex">\(a \equiv 3,5 \pmod 8\)</span>）<strong>并且种子是奇数</strong>——偶种子会让低位迅速塌掉。经验上 <span class="arithmatex">\(a \equiv 5 \pmod 8\)</span> 的点分布比 <span class="arithmatex">\(a \equiv 3\)</span> 更匀。 nb 实验 2 的验证：RANDU（<span class="arithmatex">\(a = 65539 \equiv 3 \pmod 8\)</span>，奇种子）周期恰为 <span class="arithmatex">\(2^{29} = 536\,870\,912\)</span>，正好 <span class="arithmatex">\(m/4\)</span>。</p>
+<p>Fishman [1990] 用 §3.4.2 的统计量穷举出了 <span class="arithmatex">\(m = 2^{32}\)</span> 与 <span class="arithmatex">\(m = 2^{48}\)</span> 的最优乘子（都形如 <span class="arithmatex">\(5^n \bmod 2^\alpha\)</span>，且成对出现——一对互为模逆元 <span class="arithmatex">\(a^{-1}\)</span>，产出同一序列的正反两个方向）。工业级例子：粒子输运代码 MCNP 采用 <span class="arithmatex">\(m = 2^{48} \approx 2.81\times 10^{14}\)</span>、<span class="arithmatex">\(a = 5^{19} = 19\,073\,486\,328\,125\)</span>（实跑核验 <span class="arithmatex">\(5^{19} &lt; 2^{48}\)</span>），周期 <span class="arithmatex">\(2^{46} \approx 7.04\times 10^{13}\)</span>，并且给每条新粒子历史跳跃 stride <span class="arithmatex">\(= 152\,917\)</span>（见 §3.6）制造相互独立的子流。</p>
+<h3 id="352-素数模与最小标准生成器-minstd">3.5.2 素数模与"最小标准"生成器 minstd<a class="headerlink" href="#352-素数模与最小标准生成器-minstd" title="Permanent link">#</a></h3>
+<p>素数模 <span class="arithmatex">\(m\)</span> 配原根乘子可得满周期 <span class="arithmatex">\(m - 1\)</span>（§3.3.4）。最有名的选择是梅森素数 <span class="arithmatex">\(m = 2^{31}-1 = 2\,147\,483\,647\)</span>（恰好贴合 32 位字长）：最小原根是 7，于是 <span class="arithmatex">\(7^5 = 16\,807\)</span> 也是原根（构造：指数 5 与 <span class="arithmatex">\(m-1 = 2\cdot 3^2 \cdot 7 \cdot 11\cdot 31\cdot 151\cdot 331\)</span> 互素）。Lewis, Goodman &amp; Miller 1969 年为 IBM System/360 提出的</p>
+<div class="arithmatex">\[
+x_{i+1} = 16\,807\, x_i \bmod (2^{31}-1)
+\]</div>
+<p>经 Park &amp; Miller 1988 年论文《好生成器难找》（"Good Ones Are Hard to Find"）背书为<strong>最小标准</strong>（minimal standard）生成器，常称 <strong>minstd</strong>。Park–Miller 的"最小标准"是三条最低门槛：满周期；序列"随机"；能在 32 位整数算术里高效实现（§3.5.3）。他们同时强调这不是理想生成器——候选乘子的总量大得惊人：<span class="arithmatex">\(m = 2^{31}-1\)</span> 有 <span class="arithmatex">\(534\,600\,000\)</span> 个原根（满周期这一条就淘汰约 75% 的乘子）；Fishman &amp; Moore [1986] 对其余做谱检验，只有 410 个乘子在各维间距达到理论最优的 25% 以内——<strong>16 807 不在其列</strong>；再叠加"可 Schrage 编码"约束后仅 23 093 个存活，放宽到 30% 后最好的两个是 <span class="arithmatex">\(a = 48\,271\)</span> 与 <span class="arithmatex">\(a = 69\,621\)</span>。而 Fishman–Moore 的穷举冠军是 <span class="arithmatex">\(a = 62\,089\,911\)</span>（在 <span class="arithmatex">\(r &lt; q\)</span> 的可编码乘子里最佳的是 69 621）；16 807 及其他常用乘子的检验成绩明显更差。minstd 至今仍被广泛使用——<strong>作为比较基准</strong>，这是它最稳当的角色。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：怎么验证一个乘子是原根（不用跑 20 亿步）</p>
+<p>周期 <span class="arithmatex">\(m-1 = 2\,147\,483\,646\)</span> 不可能逐个迭代去数。快验法：分解 <span class="arithmatex">\(m-1\)</span> 的素因数 <span class="arithmatex">\(\{2, 3, 7, 11, 31, 151, 331\}\)</span>，对每个 <span class="arithmatex">\(p\)</span> 检查 <span class="arithmatex">\(a^{(m-1)/p} \not\equiv 1 \pmod m\)</span>（用快速幂 <code>pow(a, (m-1)//p, m)</code>，毫秒级）。全部不等于 1 ⟺ <span class="arithmatex">\(a\)</span> 的阶恰好是 <span class="arithmatex">\(m-1\)</span> ⟺ 原根。nb 实验 2 如此验证了 <span class="arithmatex">\(16\,807\)</span> 是原根（周期 <span class="arithmatex">\(= m-1 = 2\,147\,483\,646\)</span>）与 RANDU 的阶是 <span class="arithmatex">\(2^{29}\)</span>。§3.8 还会看到这个乘子的"体检报告"。</p>
+</div>
+<h3 id="353-Schrage-编码32-位整数不溢出">3.5.3 Schrage 编码：32 位整数不溢出<a class="headerlink" href="#353-Schrage-编码32-位整数不溢出" title="Permanent link">#</a></h3>
+<p>minstd 的实现有个当年很实际的坑：<span class="arithmatex">\(1 \le x_i \le m-1\)</span> 时乘积 <span class="arithmatex">\(a x_i\)</span> 高达 <span class="arithmatex">\(2.1\times 10^{13}\)</span>，<strong>超出 32 位整数</strong>。用双精度浮点当然可以（D&amp;S 给的 FORTRAN <code>DMOD</code> 版），但慢；Schrage 1979 的技巧只用 32 位整数。把模数近似分解：</p>
+<div class="arithmatex">\[
+m = aq + r,\qquad q = \left\lfloor \frac{m}{a} \right\rfloor,\quad r = m \bmod a,
+\]</div>
+<p>minstd 的参数给 <span class="arithmatex">\(q = 127\,773\)</span>、<span class="arithmatex">\(r = 2\,836\)</span>（<span class="arithmatex">\(r &lt; q\)</span>，这是可编码性的门槛）。写 <span class="arithmatex">\(x = qk + s\)</span>（<span class="arithmatex">\(k = \lfloor x/q \rfloor\)</span>，<span class="arithmatex">\(s = x \bmod q\)</span>），则</p>
+<div class="arithmatex">\[
+ax = a(qk + s) = (m - r)k + as = (as - rk) + km,
+\]</div>
+<p>所以 <span class="arithmatex">\(x_{i+1} = a(x_i \bmod q) - r k_i \pmod m\)</span>，其中 <span class="arithmatex">\(k_i = \lfloor x_i / q \rfloor\)</span>。两项都不会溢出：<span class="arithmatex">\(a s \le a(q-1) = aq - a = m - r - a &lt; m\)</span>；而 <span class="arithmatex">\(k \le a\)</span>（因 <span class="arithmatex">\((m-1)/q = a + (r-1)/q &lt; a+1\)</span>）给出 <span class="arithmatex">\(rk \le ar &lt; m\)</span>（末步用 <span class="arithmatex">\(r(a-1) &lt; aq\)</span>，即 <span class="arithmatex">\(r &lt; q\)</span>）。于是</p>
+<div class="arithmatex">\[
+x_{i+1} = a(x_i \bmod q) - r k_i,\qquad \text{若为负则} + m,
+\]</div>
+<p>每一步的两个乘积都在 32 位之内。D&amp;S 引 Press et al. [1996] 的 FORTRAN 实现并给出<strong>标准校验点</strong>：种子 <span class="arithmatex">\(x_1 = 1\)</span> 时第 10 001 个数必须是 <span class="arithmatex">\(x_{10\,001} = 1\,043\,618\,065\)</span>——实跑 <code>pow(16807, 10000, 2**31-1)</code> 恰好等于它（因为 <span class="arithmatex">\(x_{10\,001} = a^{10\,000} x_1\)</span>），一行核对编码正确性。</p>
+<h3 id="354-minstd-的缺陷">3.5.4 minstd 的缺陷<a class="headerlink" href="#354-minstd-的缺陷" title="Permanent link">#</a></h3>
+<p>Park–Miller 自己列的第三条"高效实现"是护身符也是枷锁：能 Schrage 编码要求 <span class="arithmatex">\(r &lt; q\)</span>，这排除了所有谱检验意义下的最优乘子。缺陷还不止于此（D&amp;S §3.5.5）：minstd 会<strong>约每 <span class="arithmatex">\(10^6\)</span> 个数吐出一个 <span class="arithmatex">\(&lt; 10^{-6}\)</span> 的 <span class="arithmatex">\(\rho_i\)</span></strong>，而它后面紧跟着一个小于 0.017 的数——对"极小概率事件"类模拟（比如辐射屏蔽里穿深穿透的概率），这种低阶串相关足以扭曲结果；更隐蔽的低阶串相关普遍存在于一切小乘子同余生成器里。治本的经验法则：<strong>乘子应约等于 <span class="arithmatex">\(\sqrt m\)</span></strong>（如 62 089 911 对 <span class="arithmatex">\(m = 2^{31}-1\)</span>），但这与 <span class="arithmatex">\(r &lt; q\)</span> 约束冲突。出路有两条：换更大的模数（§3.5.1 的 <span class="arithmatex">\(m = 2^{48}\)</span>），或者<strong>洗牌</strong>（§3.6）与<strong>组合</strong>（§3.7）。</p>
+<h2 id="36-改善手段洗牌与跳跃">3.6 改善手段：洗牌与跳跃<a class="headerlink" href="#36-改善手段洗牌与跳跃" title="Permanent link">#</a></h2>
+<h3 id="361-BaysDurham-洗牌">3.6.1 Bays–Durham 洗牌<a class="headerlink" href="#361-BaysDurham-洗牌" title="Permanent link">#</a></h3>
+<p>LCG 的病根在"每个值后面永远跟同一个值"。Bays &amp; Durham [1976] 的主意：<strong>用生成器自己的输出打乱自己的输出</strong>。拿一张 <span class="arithmatex">\(k\)</span> 项的表 <span class="arithmatex">\(T\)</span> 装生成器的数，输出时按上一发的输出值随机指到表里某项、把该项吐出、再用一个新的原始数补位——同一个 <span class="arithmatex">\(x\)</span> 之后跟的就不总是同一个数了。D&amp;S §3.6 的六步算法（原始数 <span class="arithmatex">\(x_i\)</span>，输出流 <span class="arithmatex">\(y_i\)</span>）：</p>
+<ol>
+<li><strong>初始化</strong>：<span class="arithmatex">\(T_j \leftarrow x_j\)</span>（<span class="arithmatex">\(j = 1,\dots,k\)</span>）；输出 <span class="arithmatex">\(y_1 = x_{k+1}\)</span>；置 <span class="arithmatex">\(i = 1\)</span>。</li>
+<li>算表指针 <span class="arithmatex">\(j = 1 + \lfloor k\, y_i / (m-1) \rfloor\)</span>。</li>
+<li><span class="arithmatex">\(i \leftarrow i + 1\)</span>。</li>
+<li>输出 <span class="arithmatex">\(y_i = T_j\)</span>。</li>
+<li>取下一个原始数 <span class="arithmatex">\(x_{k+i}\)</span>，填进 <span class="arithmatex">\(T_j\)</span>。</li>
+<li>回到第 2 步。</li>
+</ol>
+<p>效果（D&amp;S 图 3.2）：对 §3.4.1 那个只压 3 条线的坏生成器 <span class="arithmatex">\(x_{i+1} = 3x_i \bmod 29\)</span> 洗牌后，点云铺满了正方形，周期也拉长到"至少几千"——洗牌一举三得：<strong>打散原有晶格</strong>（换成一张不同的、超平面数不同的格子）、<strong>拉长周期</strong>（同一个值不再总跟同一个后继）、<strong>消灭低阶串相关</strong>。Press et al. [1996] 的 RAN2 就是 L'Ecuyer 生成器（§3.7.3）外加一道 Bays–Durham 洗牌。</p>
+<figure>
+  <img src="../images/ch03/fig-3-3.png" class="lq-img" />
+  <figcaption>图 3.8 洗牌的效果（截自原书 D&S 图 3.2 左）：坏生成器 <span class="arithmatex">\(x_{n+1}=3x_n \bmod 29\)</span> 经 Bays–Durham 洗牌后的前 101 对——3 条线的结构被彻底打散。</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch03/fig-3-4.png" class="lq-img" />
+  <figcaption>图 3.9 洗牌的效果（截自原书 D&S 图 3.2 右）：同上，前 201 对——覆盖随点数增加愈发均匀。</figcaption>
+</figure>
+
+<p>洗牌能治什么、不能治什么，nb 实验 5 给了干净的演示（图 3.10）：RANDU 的最低两位只能在 1、3 之间严格交替（奇乘子 + 奇种子的必然，§3.5.1），当硬币用永远"相邻必反"——<strong>相邻同面频率精确等于 0.0000</strong>；洗牌后变成 0.4990，交替规律消失。但注意两个卡方 <span class="arithmatex">\(V\)</span> 都是 20 000：<strong>0 和 2 这两个低两位取值洗牌前后都从不出现</strong>——洗牌重排值，不创造新值，值域缺陷（永远只出奇数）得靠换生成器治。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">bays_durham</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">97</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="sd">"""Bays–Durham 洗牌输出流 y（D&amp;S §3.6 的 6 步算法）"""</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">seed</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>                 <span class="c1"># 1. 用 x_1..x_k 填表</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">T</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>                    <span class="c1"># x_{k+1} 作为第一个输出</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">//</span> <span class="n">m</span>          <span class="c1"># 2. 表指针由上一个输出 y_{i-1} 决定</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>                    <span class="c1"># 4. 输出表项</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>                <span class="c1"># 5. 取下一个原始数补进表</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="n">T</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="k">return</span> <span class="n">y</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch03/out-3-6.png" class="lq-img" />
+  <figcaption>图 3.10 洗牌前后的低两位 \(x_n \bmod 4\)（代码实跑，前 60 步）：左，直接 RANDU 在 1、3 之间严格锯齿交替；右，洗牌后仍在 \{1,3\} 内但节奏已乱。相邻同面频率 0.0000 → 0.4990（理论 0.5）。</figcaption>
+</figure>
+
+<h3 id="362-跳跃造独立子流">3.6.2 跳跃：造独立子流<a class="headerlink" href="#362-跳跃造独立子流" title="Permanent link">#</a></h3>
+<p>并行与分块模拟需要<strong>互不重叠的独立子序列</strong>。D&amp;S §3.7 强调：<strong>别</strong>给每条流随便换个种子——不同种子的流可能大幅重叠。正确做法是在同一条序列上<strong>跳过固定距离</strong>。乘同余的通项 <span class="arithmatex">\(x_{i+k} = a^k x_i \bmod m\)</span>（§3.3.2 的一行归纳）让跳跃零成本：第 <span class="arithmatex">\(n\)</span> 条流从</p>
+<div class="arithmatex">\[
+x_{n+s} = a^{s} x_n \bmod m = b\, x_n \bmod m,\qquad b = a^{s} \bmod m
+\]</div>
+<p>开始，后续照常迭代——跳 <span class="arithmatex">\(s\)</span> 步等价于换乘子 <span class="arithmatex">\(b\)</span> 一步到位。MCNP 的 stride <span class="arithmatex">\(= 152\,917\)</span>（§3.5.1）就是这么用的：每条粒子历史从相距 152 917 个随机数的位置起跑，各条流互不重叠。</p>
+<h2 id="37-组合生成器与现代生成器">3.7 组合生成器与现代生成器<a class="headerlink" href="#37-组合生成器与现代生成器" title="Permanent link">#</a></h2>
+<h3 id="371-组合的动机与位混合">3.7.1 组合的动机与位混合<a class="headerlink" href="#371-组合的动机与位混合" title="Permanent link">#</a></h3>
+<p>单只生成器总有破绽，D&amp;S §3.8 的思路：<strong>把几只的输出合并</strong>，周期取最小公倍数、串相关互相抵消。合并方式最简单的是<strong>位混合</strong>（bit mixing）：两只生成器出 <span class="arithmatex">\(x_i, y_i\)</span>，用模 1 加减之类的二元算子合成 <span class="arithmatex">\(z_i = x_i \odot y_i\)</span>——高效易写，本质是把两组二进制位搅在一起。D&amp;S 的警告：输出在开区间 <span class="arithmatex">\((0,1)\)</span> 的生成器，组合后因机器精度<strong>可能吐出 0 或 1</strong>，编码时要专门设防（习题 10 的分析）。</p>
+<h3 id="372-WichmannHill-与-LEcuyer">3.7.2 Wichmann–Hill 与 L'Ecuyer<a class="headerlink" href="#372-WichmannHill-与-LEcuyer" title="Permanent link">#</a></h3>
+<p><strong>Wichmann–Hill [1982]</strong>：三只小 LCG 各司其职，</p>
+<div class="arithmatex">\[
+\begin{aligned}
+x_{i+1} &amp;= 171\,x_i \bmod 30\,269,\\
+y_{i+1} &amp;= 172\,y_i \bmod 30\,307,\\
+z_{i+1} &amp;= 170\,z_i \bmod 30\,323,
+\end{aligned}
+\qquad
+\rho_i = \left(\frac{x_i}{30\,269} + \frac{y_i}{30\,307} + \frac{z_i}{30\,323}\right) \bmod 1.
+\]</div>
+<p>三个模数两两互素，所以组合不可能恰好出 0；周期约 <span class="arithmatex">\(10^{12}\)</span>——实跑精确值：三个子生成器各自满周期 <span class="arithmatex">\(30\,268, 30\,306, 30\,322\)</span>，组合周期 = 最小公倍数 <span class="arithmatex">\(= 6\,953\,607\,871\,644 \approx 7\times 10^{12}\)</span>（图 3.11：10 万个数的直方图贴住均匀密度 1，均值 0.5004 对 0.5、方差 0.083 24 对 <span class="arithmatex">\(1/12 = 0.083\,33\)</span>、20 组卡方 <span class="arithmatex">\(p = 0.459\)</span>）。它能在 16 位机器上实现，长程相关性质也被研究过（De Matteis &amp; Pagnutti 1993，与其他好生成器相当）。</p>
+<figure>
+  <img src="../images/ch03/out-3-7.png" class="lq-img" />
+  <figcaption>图 3.11 Wichmann–Hill 的均匀性快查（代码实跑，10 万个数，40 组直方图）：密度贴住 1.0，均值 0.5004、方差 0.083 24（理论 \(1/12 = 0.083\,33\)）、卡方 \(p = 0.459\)。</figcaption>
+</figure>
+
+<p><strong>L'Ecuyer [1988]</strong>：两只乘同余作差，</p>
+<div class="arithmatex">\[
+x_i = 40\,001\,x_{i-1} \bmod 2\,147\,483\,563,\qquad
+y_i = 40\,692\,y_{i-1} \bmod 2\,147\,483\,399,
+\]</div>
+<div class="arithmatex">\[
+z_i = x_i - y_i\ (\text{若} &lt; 1 \text{ 则} + 2\,147\,483\,562),\qquad
+\rho_i = \frac{z_i}{2\,147\,483\,589}.
+\]</div>
+<p>两只的模几乎相同，差值依旧均匀；分母略大于分子保证 <span class="arithmatex">\(\rho = 1\)</span> 不出现。周期是两模数之差量级的最小公倍数，约 <span class="arithmatex">\(10^{18}\)</span>，且可在 32 位机编码。短板：难以跳跃，造独立子流不方便。Press et al. [1996] 在它外面再加一道 Bays–Durham 洗牌，得到周期 <span class="arithmatex">\(&gt; 2.3\times 10^{18}\)</span> 的 RAN2，并称其为"完美"生成器。</p>
+<h3 id="373-更复杂的家族DS-39">3.7.3 更复杂的家族（D&amp;S §3.9）<a class="headerlink" href="#373-更复杂的家族DS-39" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>多重递推生成器</strong>（multiple recursive, MRG）：<span class="arithmatex">\(x_i = (a_1 x_{i-1} + \cdots + a_n x_{i-n}) \bmod m\)</span>，状态从 1 个数扩到 <span class="arithmatex">\(n\)</span> 个数，周期可远超单递推（L'Ecuyer et al. 1993 给了 <span class="arithmatex">\(m = 10^{31}-1\)</span>、<span class="arithmatex">\(n=5\)</span> 的可移植实现）。</li>
+<li><strong>滞后斐波那契</strong>（lagged Fibonacci）：<span class="arithmatex">\(x_i = (x_{i-j} + x_{i-k}) \bmod m\)</span>（<span class="arithmatex">\(j &gt; k\)</span>），周期可达 <span class="arithmatex">\(m^k - 1\)</span>。Marsaglia et al. [1990] 的 <span class="arithmatex">\(j=97, k=33\)</span> 版周期 <span class="arithmatex">\(2^{144} \approx 10^{43}\)</span>，跨 32 位机器逐位一致，通过大量统计检验（理论理解仍有限）；James [1990] 的 RANMAR 实现还有一个实用绝活：每个 32 位种子对应一条长约 <span class="arithmatex">\(10^{30}\)</span> 的独立子序列，并行分发极方便。</li>
+<li><strong>进位加</strong>（add-with-carry，Marsaglia &amp; Zaman 1991）：<span class="arithmatex">\(x_i = (x_{i-j} + x_{i-k} + c_i) \bmod m\)</span>，进位 <span class="arithmatex">\(c_{i+1} = 1\)</span> 当且仅当和溢出。Tezuka &amp; L'Ecuyer 1992 证明它等价于一个<strong>超大素数模的线性同余生成器</strong>——既解释了它为何好用，也给出了大素数模 LCG 的编程法。变体 subtract-with-carry 用 <span class="arithmatex">\(j=24, k=10, m=2^{24}\)</span> 可达周期 <span class="arithmatex">\(\approx 2^{570} \approx 10^{171}\)</span>。</li>
+<li><strong>逆同余</strong>（inversive，Eichenauer &amp; Lehn 1986）：<span class="arithmatex">\(x_i = (a\,x_{i-1}^{-} + c) \bmod m\)</span>，<span class="arithmatex">\(x^{-}\)</span> 是模逆元。它<strong>没有线性同余的超平面晶格</strong>，均匀性与串相关看起来更好——但模逆元计算昂贵。</li>
+<li><strong>非线性同余</strong>（Knuth 1981）：<span class="arithmatex">\(x_i = (d\,x_{i-1}^2 + a x_{i-1} + c) \bmod m\)</span>，或更一般的 <span class="arithmatex">\(x_i = f(x_{i-1}) \bmod m\)</span>。均匀性可以很好，但性质尚不清楚，D&amp;S 判语："还没到能上正赛的程度"。</li>
+</ul>
+<h3 id="374-对照今天Mersenne-Twister-与-NumPy-的-PCG64">3.7.4 对照今天：Mersenne Twister 与 NumPy 的 PCG64<a class="headerlink" href="#374-对照今天Mersenne-Twister-与-NumPy-的-PCG64" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">拓展：你 <code>import numpy</code> 时实际在用谁</p>
+<p>S&amp;M 附录 A.2 介绍了 1997 年起成为开源软件标准（Maple、MATLAB、Python 等）的 <strong>Mersenne Twister（MT19937）</strong>：<span class="arithmatex">\(w\)</span> 位字长输出 <span class="arithmatex">\([0, 2^w-1]\)</span>，内部维护 624 个字的"状态表"（种子经 <span class="arithmatex">\(x_i = f\cdot(x_{i-1} \oplus (x_{i-1} \gg (w-2))) + i\)</span> 扩充成表，<span class="arithmatex">\(f = 1\,812\,433\,253\)</span>），每数过一遍"tempering"（回火）函数再输出，表取尽后用"twist"（捻转）整体刷新。周期是梅森素数 <span class="arithmatex">\(2^{19\,937}-1\)</span>，通过绝大多数统计检验、免专利、快。但它仍是 <span class="arithmatex">\(\mathbb F_2\)</span> 上的线性生成器：看 624 个连续输出可完全复原状态，做密码学不行。NumPy 旧接口 <code>np.random.*</code> 用的正是 MT19937；新接口 <code>default_rng()</code> 默认换成了 <strong>PCG64</strong>（O'Neill 的 permuted congruential generator）：内核是 <span class="arithmatex">\(2^{128}\)</span> 状态的线性同余，外层套一个输出置换函数把线性内核的晶格结构搅掉，周期 <span class="arithmatex">\(2^{128}\)</span>，通过 TestU01 BigCrush 全套检验。本章 nb 里所有"现代生成器"对照指的就是它。共同教训不变：<strong>没有免费午餐——线性内核 + 非线性输出层，是一个反复出现的配方</strong>。</p>
+</div>
+<h2 id="38-随机数统计检验">3.8 随机数统计检验<a class="headerlink" href="#38-随机数统计检验" title="Permanent link">#</a></h2>
+<p>生成器"好不好"最终要过统计检验。先立好两条哲学（S&amp;M 附录 A 开篇 + D&amp;S §3.3）：检验<strong>只能证明不随机，不能证明随机</strong>——通过再多检验也只是"未发现破绽"；而可能的检验无穷无尽，所以要<strong>针对已知弱点挑检验</strong>（同余生成器就重点打晶格）。</p>
+<div class="admonition note">
+<p class="admonition-title">复习：假设检验的三件套（数理统计）</p>
+<ul>
+<li><strong>原假设 <span class="arithmatex">\(H_0\)</span></strong>：这里 = "样本来自 <span class="arithmatex">\(U(0,1)\)</span> 且独立"。我们不"接受"它，只能说"没有足够证据拒绝它"。</li>
+<li><strong>检验统计量</strong>：把"样本与 <span class="arithmatex">\(H_0\)</span> 的距离"压缩成一个数（卡方的 <span class="arithmatex">\(V\)</span>、KS 的 <span class="arithmatex">\(D_N\)</span>）。</li>
+<li><strong><span class="arithmatex">\(p\)</span> 值与显著性水平 <span class="arithmatex">\(\alpha\)</span></strong>：<span class="arithmatex">\(p\)</span> 值 = 在 <span class="arithmatex">\(H_0\)</span> 成立时，统计量出现"这么极端或更极端"的概率；<span class="arithmatex">\(p &lt; \alpha\)</span>（常用 0.05）则拒绝 <span class="arithmatex">\(H_0\)</span>。对生成器检验，<span class="arithmatex">\(p\)</span> 太小是坏消息；但 <span class="arithmatex">\(p\)</span> 事事都接近 1 也可疑——那说明这串数"均匀得过分"，也有人造假的嫌疑。</li>
+</ul>
+</div>
+<p>D&amp;S §3.4.4 列了同余生成器该过的五个假设：(1) 样本独立同分布；(2) <span class="arithmatex">\(\{\rho_i\}\)</span> 在 <span class="arithmatex">\((0,1)\)</span> 均匀；(3) 相邻对 <span class="arithmatex">\((\rho_{2i-1}, \rho_{2i})\)</span> 在单位方形均匀；(4) 相邻三元组在单位立方体均匀；(5) 以上同时成立。下面两把尺子攻的是 (2)（卡方、KS），(3)(4) 的多维版本就是 §3.4 的晶格检验。</p>
+<h3 id="381-卡方拟合优度检验SM-附录-A31">3.8.1 卡方拟合优度检验（S&amp;M 附录 A.3.1）<a class="headerlink" href="#381-卡方拟合优度检验SM-附录-A31" title="Permanent link">#</a></h3>
+<p>把实验结果分成互斥的 <span class="arithmatex">\(k\)</span> 类事件 <span class="arithmatex">\(E_1,\dots,E_k\)</span>，<span class="arithmatex">\(H_0\)</span> 下第 <span class="arithmatex">\(i\)</span> 类概率 <span class="arithmatex">\(p_i\)</span>（<span class="arithmatex">\(\sum p_i = 1\)</span>）。<span class="arithmatex">\(N\)</span> 次试验中 <span class="arithmatex">\(E_i\)</span> 的期望频数是 <span class="arithmatex">\(p_i N\)</span>、实测频数 <span class="arithmatex">\(Y_i\)</span>，统计量</p>
+<div class="arithmatex">\[
+V = \sum_{i=1}^{k} \frac{(Y_i - p_i N)^2}{p_i\, N}
+\]</div>
+<p>在 <span class="arithmatex">\(H_0\)</span> 下近似服从<strong>自由度 <span class="arithmatex">\(k-1\)</span></strong> 的卡方分布（每类的偏差平方除以期望，再求和；<span class="arithmatex">\(k-1\)</span> 是因为总频数 <span class="arithmatex">\(N\)</span> 用掉一个自由度）。<span class="arithmatex">\(V\)</span> 越大越与 <span class="arithmatex">\(H_0\)</span> 矛盾；给定 <span class="arithmatex">\(\nu = k-1\)</span>，查卡方表（或 <code>scipy.stats.chi2</code>）得 <span class="arithmatex">\(p\)</span> 值。S&amp;M 的例子：抛两次硬币 20 组，四类 HH/HT/TH/TT 期望各 5 次，实测 HH 2、HT 5、TH 3、TT 10，算得 <span class="arithmatex">\(V = \frac{9 + 0 + 4 + 25}{5} = 7.6\)</span>；<span class="arithmatex">\(\nu = 3\)</span> 时 <span class="arithmatex">\(P(\chi^2_3 \ge 7.6) \approx 0.055\)</span>——90% 水平下勉强不过关、95% 水平下通过，属于"边缘但无罪推定"。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>S&amp;M 附录 A 该例的叙述频数为 2、5、3、10，但公式代入的是 4 与 1，且给出的 <span class="arithmatex">\(V = 7\)</span>、<span class="arithmatex">\(P(\le V) \approx 0.906\)</span> 与哪组频数都对不上。按叙述频数重算应为 <span class="arithmatex">\(V = 7.6\)</span>（本笔记采用重算值；<span class="arithmatex">\(\chi^2_3\)</span> 下 <span class="arithmatex">\(P(\ge 7.6) \approx 0.055\)</span>）。结论（95% 水平通过、90% 水平不通过）不受影响。</p>
+</div>
+<p>用在 RNG 上：把 <span class="arithmatex">\((0,1)\)</span> 均分 <span class="arithmatex">\(k\)</span> 组，<span class="arithmatex">\(p_i = 1/k\)</span>，数落点频数做检验。nb 实验 7 对三个生成器各取 <span class="arithmatex">\(10^4\)</span> 个数、20 组：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'生成器'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> | 卡方 p 值(20 bins, n=10^4) | KS p 值(n=10^4)"</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"PCG64"</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)),</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                <span class="p">(</span><span class="s2">"minstd"</span><span class="p">,</span> <span class="n">lcg_norm</span><span class="p">(</span><span class="mi">16807</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">)),</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>                <span class="p">(</span><span class="s2">"RANDU"</span><span class="p">,</span> <span class="n">lcg_norm</span><span class="p">(</span><span class="mi">65539</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">))]:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">cnt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">p_chi</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">p_ks</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="s2">"uniform"</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">p_chi</span><span class="si">:</span><span class="s2">^24.3f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">p_ks</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>  生成器 | 卡方 p 值(20 bins, n=10^4) | KS p 值(n=10^4)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   PCG64 |          0.242           | 0.927
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  minstd |          0.094           | 0.152
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   RANDU |          0.712           | 0.811
+</code></pre></div>
+<p>三个全部通过——<strong>包括三维塌成 15 张平面的 RANDU</strong>。这就是基本检验的天花板：一维边际均匀查不出多维晶格结构。RANDU 靠谱检验（§3.4 的谱检验）才能定罪。</p>
+<h3 id="382-KolmogorovSmirnov-检验SM-附录-A32">3.8.2 Kolmogorov–Smirnov 检验（S&amp;M 附录 A.3.2）<a class="headerlink" href="#382-KolmogorovSmirnov-检验SM-附录-A32" title="Permanent link">#</a></h3>
+<p>KS 检验直接盯<strong>整条分布</strong>。样本 <span class="arithmatex">\(x_1,\dots,x_N\)</span> 的<strong>经验累积分布函数</strong>（empirical CDF）</p>
+<div class="arithmatex">\[
+\hat F_N(t) = \frac{\#\{i : x_i \le t\}}{N},
+\]</div>
+<p>与目标分布的 CDF <span class="arithmatex">\(F\)</span> 比较，取最大竖距</p>
+<div class="arithmatex">\[
+D_N = \sup_{t}\, |\hat F_N(t) - F(t)|.
+\]</div>
+<p>Glivenko–Cantelli 定理保证真样本的 <span class="arithmatex">\(D_N \to 0\)</span>（<span class="arithmatex">\(N \to \infty\)</span>）；而在 <span class="arithmatex">\(H_0\)</span> 下 <span class="arithmatex">\(D_N\)</span> 的分布可以列表（S&amp;M 表 A.1），大样本（<span class="arithmatex">\(n &gt; 45\)</span>）时 5% 临界值是</p>
+<div class="arithmatex">\[
+D_N &gt; \frac{1.36}{\sqrt N}\quad\Longrightarrow\quad \text{拒绝}.
+\]</div>
+<p>S&amp;M 的 12 点演示（图 3.12）：数据 <span class="arithmatex">\(0.45, 0.22, 0.06, 0.93, 0.91, 0.61, 0.33, 0.80, 0.95, 0.74, 0.88, 0.21\)</span>，经验 CDF 与 <span class="arithmatex">\(F(t)=t\)</span> 的最大竖距发生在 <span class="arithmatex">\(t = 0.739\)</span>（恰在 0.74 这根阶梯的左侧，<span class="arithmatex">\(\hat F = 6/12\)</span>，<span class="arithmatex">\(F = 0.739\)</span>），<span class="arithmatex">\(D_{12} = 0.239\)</span>；查表 <span class="arithmatex">\(n=12\)</span> 的 5% 临界值是 0.38，通过。</p>
+<figure>
+  <img src="../images/ch03/fig-3-5.png" class="lq-img" />
+  <figcaption>图 3.12 KS 检验的几何（截自原书 S&M 图 A.2）：12 个数据点的经验 CDF（阶梯）对照均匀 CDF（对角线），最大竖距 \(D_{12}=0.239\) 出现在 0.74 左侧，小于 5% 临界值 0.38——通过。</figcaption>
+</figure>
+
+<p>nb 实验 7 复现 S&amp;M 的"渐进判死刑"三例：LCG <span class="arithmatex">\(x_{n+1} = 1 + 3x_n \bmod p\)</span>、种子 3、各取 1000 个数（图 3.13）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>KS 5% 临界值 = 0.0430
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>p =     11: D_1000 = 0.3455（不通过，p 值 = 4.22e-107）   ← 书中 0.3454，几乎精确复现
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>p =    229: D_1000 = 0.0904（不通过，p 值 = 1.44e-07）    ← 周期不足，1000 个数里翻圈
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>p = 104729: D_1000 = 0.0355（通过，p 值 = 1.56e-01）
+</code></pre></div>
+<p><span class="arithmatex">\(p = 11\)</span> 时周期只有 5，1000 个数把 5 个值重复 200 遍，经验 CDF 五根大台阶，<span class="arithmatex">\(D_{1000} = 0.3455\)</span> 与书中 0.3454 严丝合缝；<span class="arithmatex">\(p = 229\)</span> 周期也不够长，<span class="arithmatex">\(D = 0.09 &gt; 0.043\)</span> 仍被拒；<span class="arithmatex">\(p = 104\,729\)</span> 周期充足，<span class="arithmatex">\(D = 0.0355\)</span> 通过。（书中 <span class="arithmatex">\(p=229, 104\,729\)</span> 的参考值 0.1461 与 0.0241 与实跑略有出入——抽样细节书中未给尽，但"两个不通过、一个通过"的结论一致。）最后再压一遍主线：<strong>通过 KS（或卡方）只说明"在一维均匀性上没抓到现行"</strong>；RANDU 同样通过这两关，却在三维晶格上当场毙命。检验要成套打，尤其要打已知弱点。</p>
+<figure>
+  <img src="../images/ch03/out-3-8.png" class="lq-img" />
+  <figcaption>图 3.13 KS 检验实跑（代码实跑，\(n=1000\)）：\(p=11\) 的经验 CDF 只有 5 级大台阶（周期 5），\(D_N = 0.345 \gg 0.043\)；\(p=229\)（\(D_N = 0.090\)）仍超界；\(p=104\,729\)（\(D_N = 0.035\)）贴住对角线通过。</figcaption>
+</figure>
+
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">以为“看起来随机”就是随机</p>
+<p>平方取中前 40 步毫无破绽（图 3.1），Knuth 的 13 步复杂算法直接收敛到不动点。随机性只能由可分析的构造 + 成套统计检验背书，不能靠肉眼或复杂度。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">满周期 ≠ 好生成器</p>
+<p><span class="arithmatex">\(x_{n+1} = 3x_n \bmod 29\)</span> 满周期，但 28 个点压在 3 条线上（图 3.3）。周期只是第一道门槛，谱检验等晶格指标才是分水岭。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">用了 <span class="arithmatex">\(m=2^\alpha\)</span> 乘同余还喂偶种子</p>
+<p>偶种子会让低位迅速塌掉；满 <span class="arithmatex">\(m/4\)</span> 周期要求 <span class="arithmatex">\(a \equiv 3, 5 \pmod 8\)</span> 且种子奇。RANDU 的最低位恒为 1、最低两位只在 {1,3} 间交替——拿低位当硬币直接报废。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">给并行子流随便换种子</p>
+<p>不同种子的流可能大幅重叠。用跳跃 <span class="arithmatex">\(x_{n+s} = a^s x_n \bmod m\)</span> 划定互不重叠的起点（MCNP 的 stride 152 917 就是范例），或用天然支持独立子流的 RANMAR 类生成器。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">检验通过就宣布随机</p>
+<p>RANDU 的卡方 <span class="arithmatex">\(p = 0.712\)</span>、KS <span class="arithmatex">\(p = 0.811\)</span> 双双"清白"，三维晶格却惨不忍睹。检验只能拒绝、不能证明；要成套打、打已知弱点。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">洗牌当万能药</p>
+<p>Bays–Durham 能打散序列相关、拉长周期，但<strong>不创造新值</strong>：RANDU 洗牌后低两位依旧不出 0 和 2（图 3.10）。值域缺陷必须换生成器治。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">自己手搓“改进版”生成器</p>
+<p>minstd 的乘子 16 807 看着顺眼，谱检验成绩却是常用乘子里垫底的； Fishman–Moore 的最优乘子是 62 089 911。改参数前先跑谱检验，或干脆用久经检验的现代生成器（MT19937、PCG64）。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">组合生成器吐出 0 或 1</p>
+<p>开区间 <span class="arithmatex">\((0,1)\)</span> 的两路输出合并后，机器精度下可能恰好凑出端点（D&amp;S 习题 10）。组合方案要专门设防，如 L'Ecuyer 把分母取大一位。</p>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>计算机造不出真随机（不可复现、外设太慢）；伪随机 = 确定性算法 + 统计上像随机，种子即书签。</li>
+<li>五要求：快、可复现、可分析、长周期、对应用显得随机（D&amp;S 加一条可移植）。</li>
+<li>LCG：<span class="arithmatex">\(x_{n+1} = (ax_n + c) \bmod m\)</span>，<span class="arithmatex">\(\rho_i = x_i/m\)</span>；<span class="arithmatex">\(c=0\)</span> 为乘同余，<span class="arithmatex">\(x_j = a^j x_0 \bmod m\)</span>，0 不可达。</li>
+<li>Hull–Dobell（<span class="arithmatex">\(c \ne 0\)</span> 满周期 <span class="arithmatex">\(m\)</span>）：<span class="arithmatex">\(\gcd(c,m)=1\)</span>；每个素数 <span class="arithmatex">\(p \mid m\)</span> 有 <span class="arithmatex">\(p \mid (a-1)\)</span>；<span class="arithmatex">\(4 \mid m\)</span> 时 <span class="arithmatex">\(4 \mid (a-1)\)</span>。</li>
+<li>乘同余满周期 <span class="arithmatex">\(m-1\)</span> ⟺ <span class="arithmatex">\(m\)</span> 素且 <span class="arithmatex">\(a\)</span> 是原根；原根可由小原根 <span class="arithmatex">\(a_1^n\)</span>（<span class="arithmatex">\(\gcd(n, m-1)=1\)</span>）长出。</li>
+<li>一切 LCG 的 <span class="arithmatex">\(k\)</span> 元组躺在 <span class="arithmatex">\(\le m^{1/k}\)</span> 张超平面上；谱检验 <span class="arithmatex">\(S_{1,k}\)</span>、平面数 <span class="arithmatex">\(S_{2,k}\)</span>、点距 <span class="arithmatex">\(S_{3,k}\)</span>、Beyer 商是选乘子的标尺。</li>
+<li>RANDU 恒等式 <span class="arithmatex">\(x_{n+2} - 6x_{n+1} + 9x_n \equiv 0 \pmod{2^{31}}\)</span> ⟹ 三维 15 张平面（<span class="arithmatex">\(c \in \{-5,\dots,9\}\)</span>）。</li>
+<li><span class="arithmatex">\(m = 2^\alpha\)</span>：最大周期 <span class="arithmatex">\(m/4\)</span>，<span class="arithmatex">\(a \equiv 3,5 \pmod 8\)</span>、种子奇；素数模 <span class="arithmatex">\(2^{31}-1\)</span> 配 <span class="arithmatex">\(a = 16\,807\)</span> 是 minstd（Schrage 编码：<span class="arithmatex">\(q = 127\,773, r = 2\,836\)</span>，校验 <span class="arithmatex">\(x_{10\,001} = 1\,043\,618\,065\)</span>）；穷举最优乘子 <span class="arithmatex">\(62\,089\,911\)</span>。</li>
+<li>洗牌（Bays–Durham，<span class="arithmatex">\(k\)</span> 项表）打散低阶相关、增周期、换晶格——但不创造新值；跳跃 <span class="arithmatex">\(x_{n+s} = a^s x_n \bmod m\)</span> 造独立子流。</li>
+<li>组合与家族：Wichmann–Hill（周期 <span class="arithmatex">\(6.95\times 10^{12}\)</span>）、L'Ecuyer（<span class="arithmatex">\(\sim 10^{18}\)</span>，RAN2 加洗牌）、滞后斐波那契（RANMAR，<span class="arithmatex">\(2^{144}\)</span>）、进位加（等价于大素数模 LCG）、逆同余（无晶格）、MT19937（<span class="arithmatex">\(2^{19\,937}-1\)</span>）、NumPy 默认 PCG64。检验：卡方 <span class="arithmatex">\(V\)</span>（<span class="arithmatex">\(k-1\)</span> 自由度）与 KS <span class="arithmatex">\(D_N\)</span>（5% 临界 <span class="arithmatex">\(1.36/\sqrt N\)</span>），只能拒绝不能证明。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>任务</th>
-<th>Matlab</th>
-<th>Python / NumPy</th>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>等差序列</td>
-<td><code>1:2:9</code></td>
-<td><code>np.arange(1, 9, 2)</code>（含头不含尾）</td>
+<td>pseudorandom number generator (RNG)</td>
+<td>伪随机数生成器</td>
+<td>确定性算法产出的"统计上像随机"的数列</td>
 </tr>
 <tr>
-<td>均匀网格</td>
-<td><code>linspace(0,1,11)</code></td>
-<td><code>np.linspace(0, 1, 11)</code></td>
+<td>seed</td>
+<td>种子</td>
+<td>生成器的初始状态；相同种子重放相同序列</td>
 </tr>
 <tr>
-<td>元素平方</td>
-<td><code>A.^2</code></td>
-<td><code>A**2</code></td>
+<td>period / cycle</td>
+<td>周期 / 环</td>
+<td>序列开始重演前的不同状态个数</td>
 </tr>
 <tr>
-<td>矩阵乘法</td>
-<td><code>A*B</code></td>
-<td><code>A @ B</code>（<code>*</code> 是逐元素乘！）</td>
+<td>linear congruential generator (LCG)</td>
+<td>线性同余生成器</td>
+<td><span class="arithmatex">\(x_{n+1} = (ax_n + c) \bmod m\)</span> 的经典骨架</td>
 </tr>
 <tr>
-<td>转置</td>
-<td><code>A'</code></td>
-<td><code>A.T</code></td>
+<td>multiplier / increment / modulus</td>
+<td>乘子 / 增量 / 模数</td>
+<td>LCG 的三参数 <span class="arithmatex">\(a, c, m\)</span></td>
 </tr>
 <tr>
-<td>拼接</td>
-<td><code>[A B]</code> / <code>[A; B]</code></td>
-<td><code>np.hstack</code> / <code>np.vstack</code></td>
+<td>multiplicative congruential</td>
+<td>乘同余生成器</td>
+<td><span class="arithmatex">\(c = 0\)</span> 的特例，输出 <span class="arithmatex">\((0,1)\)</span> 开区间</td>
 </tr>
 <tr>
-<td>取元素</td>
-<td><code>A(1,2)</code>（从 1 数起）</td>
-<td><code>A[0, 1]</code>（从 0 数起）</td>
+<td>Hull–Dobell theorem</td>
+<td>Hull–Dobell 定理</td>
+<td><span class="arithmatex">\(c\ne0\)</span> 时满周期 <span class="arithmatex">\(m\)</span> 的三判据</td>
 </tr>
 <tr>
-<td>逻辑索引</td>
-<td><code>A(A&gt;0)</code></td>
-<td><code>A[A &gt; 0]</code></td>
+<td>primitive root</td>
+<td>原根</td>
+<td><span class="arithmatex">\(a^k \equiv 1\)</span> 的最小 <span class="arithmatex">\(k\)</span> 为 <span class="arithmatex">\(m-1\)</span>；乘同余满周期的钥匙</td>
 </tr>
 <tr>
-<td>按列求均值</td>
-<td><code>mean(A, 1)</code></td>
-<td><code>A.mean(axis=0)</code></td>
+<td>modular arithmetic / congruence</td>
+<td>模算术 / 同余</td>
+<td>只看除 <span class="arithmatex">\(m\)</span> 余数的算术，LCG 的母语</td>
 </tr>
 <tr>
-<td>解 <span class="arithmatex">\(A\mathbf x=\mathbf b\)</span></td>
-<td><code>A\b</code></td>
-<td><code>np.linalg.solve(A, b)</code></td>
+<td>hyperplane / lattice</td>
+<td>超平面 / 格</td>
+<td>LCG <span class="arithmatex">\(k\)</span> 元组必然躺上的平行平面与规则点阵</td>
 </tr>
 <tr>
-<td>特征值</td>
-<td><code>eig(A)</code></td>
-<td><code>np.linalg.eig(A)</code></td>
+<td>spectral test</td>
+<td>谱检验</td>
+<td>用超平面间距 <span class="arithmatex">\(d_k\)</span> 对乘子打分的方法</td>
 </tr>
 <tr>
-<td>帮助</td>
-<td><code>help plot</code></td>
-<td><code>help(plt.plot)</code> 或 <code>plt.plot?</code></td>
+<td>Beyer quotient</td>
+<td>Beyer 商</td>
+<td>晶格基向量的最长短比，衡量各向等距</td>
+</tr>
+<tr>
+<td>discrepancy</td>
+<td>偏差</td>
+<td>点列与均匀分布的偏离度量的统称</td>
+</tr>
+<tr>
+<td>serial correlation</td>
+<td>串相关</td>
+<td>相邻输出之间的统计相关（坏生成器的通病）</td>
+</tr>
+<tr>
+<td>low-order bits</td>
+<td>低位</td>
+<td><span class="arithmatex">\(m = 2^\alpha\)</span> 生成器低 <span class="arithmatex">\(k\)</span> 位周期 <span class="arithmatex">\(\le 2^k\)</span>，勿直接取用</td>
+</tr>
+<tr>
+<td>Bays–Durham shuffle</td>
+<td>Bays–Durham 洗牌</td>
+<td>用自身输出打乱自身输出，去相关、增周期</td>
+</tr>
+<tr>
+<td>stride / skip ahead</td>
+<td>跨步 / 跳跃</td>
+<td><span class="arithmatex">\(x_{n+s} = a^s x_n \bmod m\)</span> 一步跳到第 <span class="arithmatex">\(s\)</span> 个后继</td>
+</tr>
+<tr>
+<td>combined generator</td>
+<td>组合生成器</td>
+<td>多只生成器取模 1 合并，周期取最小公倍数</td>
+</tr>
+<tr>
+<td>lagged Fibonacci generator</td>
+<td>滞后斐波那契生成器</td>
+<td><span class="arithmatex">\(x_i = (x_{i-j} + x_{i-k}) \bmod m\)</span>，周期可达 <span class="arithmatex">\(m^k-1\)</span></td>
+</tr>
+<tr>
+<td>add-with-carry</td>
+<td>进位加生成器</td>
+<td>滞后斐波那契加进位位，等价于大素数模 LCG</td>
+</tr>
+<tr>
+<td>inversive congruential</td>
+<td>逆同余生成器</td>
+<td>用模逆元代替乘法，无超平面晶格但昂贵</td>
+</tr>
+<tr>
+<td>Mersenne Twister</td>
+<td>梅森旋转（MT19937）</td>
+<td>周期 <span class="arithmatex">\(2^{19\,937}-1\)</span> 的 <span class="arithmatex">\(\mathbb F_2\)</span> 线性生成器，Python 旧随机模块的内核</td>
+</tr>
+<tr>
+<td>PCG64</td>
+<td>PCG64</td>
+<td>NumPy <code>default_rng</code> 默认：线性同余内核 + 输出置换</td>
+</tr>
+<tr>
+<td>quasirandom numbers</td>
+<td>准随机数</td>
+<td>刻意求超均匀不求随机的确定性点列（第 5 章应用）</td>
+</tr>
+<tr>
+<td>chi-square test</td>
+<td>卡方检验</td>
+<td>分组频数对期望的拟合优度检验，<span class="arithmatex">\(k-1\)</span> 自由度</td>
+</tr>
+<tr>
+<td>Kolmogorov–Smirnov test</td>
+<td>KS 检验</td>
+<td>经验 CDF 与目标 CDF 最大竖距 <span class="arithmatex">\(D_N\)</span> 的检验</td>
+</tr>
+<tr>
+<td>empirical CDF</td>
+<td>经验累积分布函数</td>
+<td><span class="arithmatex">\(\hat F_N(t) = \#\{x_i \le t\}/N\)</span>，样本分布的直接画像</td>
 </tr>
 </tbody>
 </table>
-<p><code>axis</code> 的记忆法：<strong>axis 指被压缩掉的那根轴</strong>——<code>A.mean(axis=0)</code> 压掉行号，得到每列的均值，正对应 Matlab 的 <code>mean(A,1)</code>。</p>
-<h3 id="三个最常咬人的坑">三个最常咬人的坑<a class="headerlink" href="#三个最常咬人的坑" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>          <span class="c1"># 坑1：b 是同一个数组的别名，不是拷贝（Matlab 是值拷贝）</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>      <span class="c1"># 坑2：切片是视图，改 c 会动 a；要独立用 a[:2].copy()</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">A</span> <span class="o">@</span> <span class="n">A</span>          <span class="c1"># 坑3：矩阵乘用 @；A*A 是逐元素平方（对应 Matlab 的 A.*A）</span>
-</code></pre></div>
-<h3 id="向量化蒙特卡罗的第一生产力">向量化：蒙特卡罗的第一生产力<a class="headerlink" href="#向量化蒙特卡罗的第一生产力" title="Permanent link">#</a></h3>
-<p>同一个平均值法估计 <span class="arithmatex">\(\int_0^1 e^{-x^2}\mathrm dx\)</span>，两种写法：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">mean_loop</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>                 <span class="c1"># 逐条 history 循环</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">s</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="n">s</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">return</span> <span class="n">s</span> <span class="o">/</span> <span class="n">N</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">mean_vec</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>                  <span class="c1"># 整个数组一次算</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>%timeit（N = 100_000）：
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>循环版   53.4 ms ± 2.03 ms
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>向量化版  609 µs ± 74.2 µs      ← 快约 88 倍
-</code></pre></div>
-<p>两种写法答案一致（0.747 附近），耗时差近两个数量级。原因：循环每次都让 Python 解释器做一次完整调度，向量化把循环下沉到 C/Fortran 级的连续内存运算。<strong>蒙特卡罗代码的默认姿势：先想"这个试验能不能写成数组运算"，写不了再用循环。</strong></p>
-<h2 id="32-线性代数">3.2 线性代数<a class="headerlink" href="#32-线性代数" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>          <span class="c1"># 解 Ax=b：专用分解，不要用 inv(A)@b</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>           <span class="c1"># 对称矩阵用 eigh（更快更稳）</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 特征值: 0.382, 1.382, 2.618, 3.618 —— 恰为 2-2cos(kπ/5)，黄金分割数现身</span>
-</code></pre></div>
-<p>数值线性代数只取所需：解方程用 <code>solve</code>，最小二乘用 <code>lstsq</code>，对称特征问题用 <code>eigh</code>。蒙特卡罗用线性代数的地方不多但关键（第 6 章马尔可夫链的转移矩阵、平稳分布；第 8 章的权重矩阵）。</p>
-<h2 id="33-作图">3.3 作图<a class="headerlink" href="#33-作图" title="Permanent link">#</a></h2>
-<p>Matplotlib 的心智模型：<code>fig</code>（画布）+ <code>axes</code>（子图坐标系），数据进、图出。模拟中最常用四件套：<code>plot</code>（曲线/轨迹）、<code>scatter</code>（散点）、<code>hist</code>（分布）、<code>loglog/semilogx</code>（收敛与误差）。</p>
-<figure>
-  <img src="../images/ch03/out-plot-demo.png" class="lq-img" />
-  <figcaption>代码实跑：2×2 演示——曲线+带噪散点、正态直方图、loglog 误差线（\(N^{-1/2}\) 参考线）、极坐标玫瑰线（特殊坐标）。</figcaption>
-</figure>
-
-<figure>
-  <img src="../images/ch03/out-3d.png" class="lq-img" />
-  <figcaption>代码实跑：`projection="3d"` 的曲面图（二维标准正态密度），对应教材 3.3 的三维图形。</figcaption>
-</figure>
-
-<h2 id="35-符号演算">3.5 符号演算<a class="headerlink" href="#35-符号演算" title="Permanent link">#</a></h2>
-<p>教材用 Matlab 的符号工具箱做微积分与解方程；Python 生态里这是 <strong>SymPy</strong>。它在本笔记里的角色是<strong>验算器</strong>——前面手推的公式，丢给符号引擎复核一遍：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">th</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"theta L D u"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span><span class="o">/</span><span class="n">D</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>   <span class="c1"># 蒲丰积分 → 2*L/(pi*D) ✓</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">u</span><span class="p">)</span>                                   <span class="c1"># F_Y(y)=√y 求导 → 1/(2*sqrt(u)) ✓</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>                <span class="c1"># 密度归一化 → 1 ✓</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>                      <span class="c1"># 解方程 → [-3, 2]</span>
-</code></pre></div>
-<p>四条输出与 1.4 节的 <span class="arithmatex">\(P_{cut}=\frac{2L}{\pi D}\)</span>、2.5 节的 <span class="arithmatex">\(f_Y(y)=\frac{1}{2\sqrt y}\)</span> 完全一致。<strong>手推 + 符号验算 + 模拟验证</strong>三重对照，是这个笔记所有推导的标准配置。</p>
-<h2 id="随机模拟常用函数速查NumPy-Generator">随机模拟常用函数速查（NumPy Generator）<a class="headerlink" href="#随机模拟常用函数速查NumPy-Generator" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>   <span class="c1"># 一章一个种子，全章共用一个流</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>抽什么</th>
-<th>调用</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>均匀 <span class="arithmatex">\(U(0,1)\)</span></td>
-<td><code>rng.random(n)</code></td>
-<td>一切分布的原料</td>
-</tr>
-<tr>
-<td>整数</td>
-<td><code>rng.integers(low, high, size)</code></td>
-<td>掷骰子：<code>rng.integers(1, 7)</code></td>
-</tr>
-<tr>
-<td>正态</td>
-<td><code>rng.normal(mu, sigma, size)</code></td>
-<td></td>
-</tr>
-<tr>
-<td>指数</td>
-<td><code>rng.exponential(scale, size)</code></td>
-<td>scale = 均值</td>
-</tr>
-<tr>
-<td>序列抽样</td>
-<td><code>rng.choice(a, size, p=)</code></td>
-<td>可带权重 <span class="arithmatex">\(p\)</span></td>
-</tr>
-<tr>
-<td>洗牌</td>
-<td><code>rng.permutation(x)</code></td>
-<td>模拟洗牌</td>
-</tr>
-</tbody>
-</table>
-<p><code>Generator</code> 是"随机数流"对象：同一个 <code>rng</code> 顺序取数，同一种子完整重跑必得同样结果——本笔记每个 notebook 都遵守"开头定种子、全章一个流"的约定，所以页面里引用的每个数字都能复现。</p>
-<p>下一章拆开 <code>default_rng</code>：这些"均匀随机数"其实是确定性算法算出来的——<strong>伪</strong>随机数。它凭什么能当随机用？怎么判断它够不够随机？掷骰子的机器，要经得起检验。</p>
 
 
 

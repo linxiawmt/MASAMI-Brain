@@ -27,7 +27,7 @@
     
     
       
-        <title>第4章 让电脑玩掷骰子：生成随机数 - MASAMI的外置大脑</title>
+        <title>第4章 抽样、记分与精度 - MASAMI的外置大脑</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#第-4-章-让电脑玩掷骰子生成随机数" class="md-skip">
+        <a href="#第-4-章-抽样记分与精度" class="md-skip">
           跳转至
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第4章 让电脑玩掷骰子：生成随机数
+              第4章 抽样、记分与精度
             
           </span>
         </div>
@@ -4088,7 +4088,7 @@
   <span class="md-ellipsis">
     
   
-    第1章 初识随机模拟方法
+    第1章 初识蒙特卡罗方法
   
 
     
@@ -4116,7 +4116,7 @@
   <span class="md-ellipsis">
     
   
-    第2章 懂点概率论：领会描述随机性的数学语言
+    第2章 概率论基础：蒙特卡罗的两大理论支柱
   
 
     
@@ -4144,7 +4144,7 @@
   <span class="md-ellipsis">
     
   
-    第3章 善用身边的数学秘书：从 Matlab 到 Python
+    第3章 伪随机数
   
 
     
@@ -4181,7 +4181,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 让电脑玩掷骰子：生成随机数
+    第4章 抽样、记分与精度
   
 
     
@@ -4199,7 +4199,7 @@
   <span class="md-ellipsis">
     
   
-    第4章 让电脑玩掷骰子：生成随机数
+    第4章 抽样、记分与精度
   
 
     
@@ -4236,33 +4236,294 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#41-伪随机数确定性算法装出来的随机" class="md-nav__link">
+  <a href="#41-抽样从均匀到任意分布" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 伪随机数：确定性算法装出来的随机
+        4.1 抽样：从均匀到任意分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 抽样：从均匀到任意分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-连续分布的逆-CDF-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 连续分布的逆 CDF 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.1 连续分布的逆 CDF 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#概率积分变换一切的开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概率积分变换：一切的开始
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#42-线性同余生成器LCG" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#两个手算例子" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 线性同余生成器（LCG）
+        两个手算例子
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2 线性同余生成器（LCG）">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#变换法与-Cauchy-厚尾SM-253" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变换法与 Cauchy 厚尾（S&amp;M §2.5.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-离散分布的逆-CDF-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 离散分布的逆 CDF 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.2 离散分布的逆 CDF 法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#谱结构二维看着还行三维露馅" class="md-nav__link">
+  <a href="#Bernoulli-试验SM-21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        谱结构：二维看着还行，三维露馅
+        Bernoulli 试验（S&amp;M §2.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二项分布SM-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二项分布（S&amp;M §2.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#泊松分布SM-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泊松分布（S&amp;M §2.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-Walker-别名法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Walker 别名法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-舍选法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 舍选法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.4 舍选法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#基本版往包络里打点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本版：往包络里打点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#一般版proposal-密度DS-413-的-Bayes-推导" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一般版：proposal 密度（D&amp;S §4.1.3 的 Bayes 推导）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SM-的一般框架与效率-1M" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S&amp;M 的一般框架与效率 1/M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#离散热身用硬币抽出任意概率SM-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        离散热身：用硬币抽出任意概率（S&amp;M §2.8）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Beta-分布SM-281" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beta 分布（S&amp;M §2.8.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-组合法与复合分布" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 组合法与复合分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.5 组合法与复合分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#组合法compositionDS-414" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组合法（composition，D&amp;S §4.1.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#复合分布的一般理论SM-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复合分布的一般理论（S&amp;M §2.9）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Gamma-分布与-ErlangSM-291" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gamma 分布与 Erlang（S&amp;M §2.9.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#416-其他专用技术速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.6 其他专用技术速览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#417-正态分布抽样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.7 正态分布抽样
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.7 正态分布抽样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#对数正态与-Gibrat-定律SM-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对数正态与 Gibrat 定律（S&amp;M §2.7）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#418-联合分布抽样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.8 联合分布抽样
       
     </span>
   </a>
@@ -4275,10 +4536,194 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-怎么检验统计检验顺带复习假设检验" class="md-nav__link">
+  <a href="#42-记分与统计推断数理统计复习" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 怎么检验：统计检验（顺带复习假设检验）
+        4.2 记分与统计推断（数理统计复习）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 记分与统计推断（数理统计复习）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-样本均值样本方差与置信区间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 样本均值、样本方差与置信区间
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.1 样本均值、样本方差与置信区间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#复习无偏性与标准误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复习：无偏性与标准误差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#置信区间954-的来历SM-263" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        置信区间：95.4% 的来历（S&amp;M §2.6.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-successes-over-trials-记分与二项置信区间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 successes-over-trials 记分与二项置信区间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-统计检验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 统计检验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.3 统计检验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#评估结果的三个统计量DS-421" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        评估结果的三个统计量（D&amp;S §4.2.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卡方与-KS复习提纲回指第-3-章" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卡方与 KS：复习提纲（回指第 3 章）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-离散事件模拟小例MM1-排队" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.4 离散事件模拟小例：M/M/1 排队
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.4 离散事件模拟小例：M/M/1 排队">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#事件调度法SM-252" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事件调度法（S&amp;M §2.5.2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MM1-与-Little-定律" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M/M/1 与 Little 定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-精度与准确度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 精度与准确度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 精度与准确度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-影响准确度的因素" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 影响准确度的因素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-影响精度的因素" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 影响精度的因素
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
       
     </span>
   </a>
@@ -4286,10 +4731,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-现代引擎一瞥Mersenne-Twister-与-PCG64" class="md-nav__link">
+  <a href="#速览" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 现代引擎一瞥：Mersenne Twister 与 PCG64
+        速览
       
     </span>
   </a>
@@ -4297,32 +4742,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-从均匀到离散分布教材-41" class="md-nav__link">
+  <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 从均匀到离散分布（教材 4.1）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#46-连续均匀-Uab教材-42" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.6 连续均匀 U(a,b)（教材 4.2）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#47-小结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.7 小结
+        术语速查
       
     </span>
   </a>
@@ -4352,7 +4775,7 @@
   <span class="md-ellipsis">
     
   
-    第5章 掷骰子的进阶：特殊分布随机数的抽样
+    第5章 方差缩减
   
 
     
@@ -4380,7 +4803,7 @@
   <span class="md-ellipsis">
     
   
-    第6章 神奇的马尔科夫链蒙特卡罗方法
+    第6章 马尔科夫链蒙特卡罗
   
 
     
@@ -4408,7 +4831,7 @@
   <span class="md-ellipsis">
     
   
-    第7章 仿真随机服务系统
+    第7章 贝叶斯推断与 Gibbs 抽样
   
 
     
@@ -4436,7 +4859,7 @@
   <span class="md-ellipsis">
     
   
-    第8章 不落俗套：蒙特卡罗优化方法
+    第8章 随机游走
   
 
     
@@ -4464,7 +4887,7 @@
   <span class="md-ellipsis">
     
   
-    第9章 模拟醉汉行走：随机游走模拟
+    第9章 蒙特卡罗优化：模拟退火与遗传算法
   
 
     
@@ -4492,7 +4915,7 @@
   <span class="md-ellipsis">
     
   
-    第10章 化腐朽为神奇：蒙特卡罗积分法
+    第10章 逆蒙特卡罗
   
 
     
@@ -4520,7 +4943,7 @@
   <span class="md-ellipsis">
     
   
-    第11章 随机模拟无极限：探索复杂性问题的方法
+    第11章 线性算子方程
   
 
     
@@ -4650,33 +5073,294 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#41-伪随机数确定性算法装出来的随机" class="md-nav__link">
+  <a href="#41-抽样从均匀到任意分布" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 伪随机数：确定性算法装出来的随机
+        4.1 抽样：从均匀到任意分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 抽样：从均匀到任意分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-连续分布的逆-CDF-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 连续分布的逆 CDF 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.1 连续分布的逆 CDF 法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#概率积分变换一切的开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概率积分变换：一切的开始
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#42-线性同余生成器LCG" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#两个手算例子" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 线性同余生成器（LCG）
+        两个手算例子
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2 线性同余生成器（LCG）">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#变换法与-Cauchy-厚尾SM-253" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变换法与 Cauchy 厚尾（S&amp;M §2.5.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-离散分布的逆-CDF-法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 离散分布的逆 CDF 法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.2 离散分布的逆 CDF 法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#谱结构二维看着还行三维露馅" class="md-nav__link">
+  <a href="#Bernoulli-试验SM-21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        谱结构：二维看着还行，三维露馅
+        Bernoulli 试验（S&amp;M §2.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二项分布SM-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二项分布（S&amp;M §2.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#泊松分布SM-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泊松分布（S&amp;M §2.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-Walker-别名法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Walker 别名法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-舍选法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 舍选法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.4 舍选法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#基本版往包络里打点" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本版：往包络里打点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#一般版proposal-密度DS-413-的-Bayes-推导" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一般版：proposal 密度（D&amp;S §4.1.3 的 Bayes 推导）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SM-的一般框架与效率-1M" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S&amp;M 的一般框架与效率 1/M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#离散热身用硬币抽出任意概率SM-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        离散热身：用硬币抽出任意概率（S&amp;M §2.8）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Beta-分布SM-281" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beta 分布（S&amp;M §2.8.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-组合法与复合分布" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 组合法与复合分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.5 组合法与复合分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#组合法compositionDS-414" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组合法（composition，D&amp;S §4.1.4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#复合分布的一般理论SM-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复合分布的一般理论（S&amp;M §2.9）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Gamma-分布与-ErlangSM-291" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gamma 分布与 Erlang（S&amp;M §2.9.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#416-其他专用技术速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.6 其他专用技术速览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#417-正态分布抽样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.7 正态分布抽样
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.7 正态分布抽样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#对数正态与-Gibrat-定律SM-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对数正态与 Gibrat 定律（S&amp;M §2.7）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#418-联合分布抽样" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.8 联合分布抽样
       
     </span>
   </a>
@@ -4689,10 +5373,194 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-怎么检验统计检验顺带复习假设检验" class="md-nav__link">
+  <a href="#42-记分与统计推断数理统计复习" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 怎么检验：统计检验（顺带复习假设检验）
+        4.2 记分与统计推断（数理统计复习）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 记分与统计推断（数理统计复习）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-样本均值样本方差与置信区间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 样本均值、样本方差与置信区间
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.1 样本均值、样本方差与置信区间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#复习无偏性与标准误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复习：无偏性与标准误差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#置信区间954-的来历SM-263" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        置信区间：95.4% 的来历（S&amp;M §2.6.3）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-successes-over-trials-记分与二项置信区间" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 successes-over-trials 记分与二项置信区间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-统计检验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 统计检验
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.3 统计检验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#评估结果的三个统计量DS-421" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        评估结果的三个统计量（D&amp;S §4.2.1）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#卡方与-KS复习提纲回指第-3-章" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卡方与 KS：复习提纲（回指第 3 章）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-离散事件模拟小例MM1-排队" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.4 离散事件模拟小例：M/M/1 排队
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.4 离散事件模拟小例：M/M/1 排队">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#事件调度法SM-252" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事件调度法（S&amp;M §2.5.2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MM1-与-Little-定律" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M/M/1 与 Little 定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-精度与准确度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 精度与准确度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 精度与准确度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-影响准确度的因素" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 影响准确度的因素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-影响精度的因素" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 影响精度的因素
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
       
     </span>
   </a>
@@ -4700,10 +5568,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-现代引擎一瞥Mersenne-Twister-与-PCG64" class="md-nav__link">
+  <a href="#速览" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 现代引擎一瞥：Mersenne Twister 与 PCG64
+        速览
       
     </span>
   </a>
@@ -4711,32 +5579,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-从均匀到离散分布教材-41" class="md-nav__link">
+  <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 从均匀到离散分布（教材 4.1）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#46-连续均匀-Uab教材-42" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.6 连续均匀 U(a,b)（教材 4.2）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#47-小结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.7 小结
+        术语速查
       
     </span>
   </a>
@@ -4763,10 +5609,10 @@
   
 
 
-<h1 id="第-4-章-让电脑玩掷骰子生成随机数">第 4 章 让电脑玩掷骰子：生成随机数<a class="headerlink" href="#第-4-章-让电脑玩掷骰子生成随机数" title="Permanent link">#</a></h1>
+<h1 id="第-4-章-抽样记分与精度">第 4 章 抽样、记分与精度<a class="headerlink" href="#第-4-章-抽样记分与精度" title="Permanent link">#</a></h1>
 <blockquote>
-<p><strong>本章解决</strong>：拆开"造随机数的机器"——伪随机的本质与平方取中的失败（4.1）、线性同余生成器与它的周期/结构缺陷（4.2）、怎么检验一个生成器（4.3，顺带复习假设检验）、现代引擎一瞥（4.4）；然后迈出"从均匀到分布"的第一步：离散分布与泊松（4.5）、连续均匀（4.6），对应教材 4.&frac14;.2。
-<strong>承上启下</strong>：4.5 的查表法就是第 5 章逆变换法的离散版；泊松乘积法里的指数间隔是第 7 章排队模拟的原料；4.4 的 Mersenne Twister 正是第 3 章 <code>default_rng</code> 背后的老牌引擎。</p>
+<p><strong>本章解决</strong>：手里只有 <span class="arithmatex">\([0,1)\)</span> 上的均匀随机数（第 3 章的产品），怎么把它变成<strong>任意给定分布</strong>的样本——逆 CDF、别名法、舍选法、组合法、变换法、专用加速法一套工具箱；样本抽出来之后怎么<strong>记分</strong>——累加器、0/1 记分、加权记分、标准误差与置信区间（数理统计复习主场）；最后分清两个常被混用的词——<strong>精度</strong>（precision，统计涨落）与<strong>准确度</strong>（accuracy，离真值多远）。第 2 章的大数定律与中心极限定理在本章全部落地成可操作的公式。
+<strong>对照教材</strong>：Dunn &amp; Shultis《Exploring Monte Carlo Methods》§4.1–4.4（主线骨架）；Shonkwiler &amp; Mendivil《Explorations in Monte Carlo Methods》§2.1–2.10（分布家族与算法细节，并入各节时标注）。建议先读 D&amp;S §4.1 的方法框架，再按小节并入 S&amp;M 的对应算法；D&amp;S 附录 A 是常见分布抽样公式速查表，随用随翻。</p>
 </blockquote>
 <table>
 <thead>
@@ -4777,260 +5623,966 @@
 </thead>
 <tbody>
 <tr>
-<td>伪随机</td>
-<td>确定性递推 + 种子；"随机性"是统计性质，不是来源神秘</td>
+<td>逆 CDF 法</td>
+<td><span class="arithmatex">\(x_i=F^{-1}(\rho_i)\)</span>：连续、离散通用，一步到位，但要求 <span class="arithmatex">\(F^{-1}\)</span> 写得出来</td>
 </tr>
 <tr>
-<td>LCG</td>
-<td><span class="arithmatex">\(X_{k+1}=(aX_k+c)\bmod m\)</span>，周期 <span class="arithmatex">\(\le m\)</span>；满周期有判据</td>
+<td>舍选法</td>
+<td>从 proposal <span class="arithmatex">\(g\)</span> 抽候选、按 <span class="arithmatex">\(h=f/(Mg)\)</span> 概率接受；接受率 <span class="arithmatex">\(1/M\)</span>，只需 <span class="arithmatex">\(f\)</span> 的相对值</td>
 </tr>
 <tr>
-<td>谱结构</td>
-<td>输出点落在高维格子上——RANDU 三维只有 15 个平面</td>
+<td>组合法</td>
+<td><span class="arithmatex">\(f=\sum A_i f_i\)</span>：先抽分量再抽值；复杂分布拆成便宜分量</td>
 </tr>
 <tr>
-<td>统计检验</td>
-<td>卡方（均匀性）、KS（CDF 一致性）；通过 ≠ 随机</td>
+<td>别名法</td>
+<td>Walker 建表 <span class="arithmatex">\(O(n)\)</span>、抽样 <span class="arithmatex">\(O(1)\)</span> 零搜索，离散大量抽样的最快方案</td>
 </tr>
 <tr>
-<td>查表法</td>
-<td>累积概率分段落表——离散分布的通用解法</td>
+<td>标准误差</td>
+<td><span class="arithmatex">\(s(\bar z)=s(z)/\sqrt N\)</span>；<span class="arithmatex">\(N\)</span> 翻四倍精度才翻倍——治本是降 <span class="arithmatex">\(s(z)\)</span>（第 5 章）</td>
+</tr>
+<tr>
+<td>精度 vs 准确度</td>
+<td>精度看 <span class="arithmatex">\(\sigma(\bar z)\)</span>，准确度看 <span class="arithmatex">\(\bar z\)</span> 离真值多远；可以精确地错</td>
 </tr>
 </tbody>
 </table>
-<p>本章代码：<a href="../nb/ch04.ipynb">nb/ch04.ipynb</a>（NumPy 实跑，种子 2027；LCG 实验为确定性算法，不耗随机流）。</p>
+<p>本章代码：<a href="../nb/ch04.ipynb">nb/ch04.ipynb</a>（NumPy 实跑；随机种子 2024，9 张结果图编号与笔记一致；单格均可独立复跑）。</p>
 <h2 id="40-本章导图">4.0 本章导图<a class="headerlink" href="#40-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
-    <span class="brlabel root">生成随机数</span>
+    <span class="brlabel root">抽样、记分与精度</span>
     <span class="brace"></span>
     <div class="brkids">
       <div class="brrow">
-        <span class="brlabel">伪随机的本质</span>
+        <span class="brlabel">抽样第一法</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">确定性递推 + 种子</span>
-          <span class="brleaf">平方取中：陷阱与短周期</span>
-          <span class="brleaf">可复现是优点不是缺陷</span>
+          <span class="brleaf">概率积分变换：F(X) 均匀</span>
+          <span class="brleaf">连续 / 离散逆 CDF</span>
+          <span class="brleaf">指数规范法与无记忆性</span>
+          <span class="brleaf">变换法：Cauchy 厚尾</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">线性同余 LCG</span>
+        <span class="brlabel">离散大量抽样</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">X ← aX+c mod m，周期 ≤ m</span>
-          <span class="brleaf">MINSTD：a=16807，m=2³¹−1</span>
-          <span class="brleaf">格子结构与 RANDU 15 平面</span>
+          <span class="brleaf">二项 = Bernoulli 求和</span>
+          <span class="brleaf">Poisson：乘积法三兄弟</span>
+          <span class="brleaf">Walker 别名：建表 O(n) 抽样 O(1)</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">检验</span>
+        <span class="brlabel">通用兜底</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">理论检验：周期、谱</span>
-          <span class="brleaf">卡方 / KS（假设检验复习）</span>
-          <span class="brleaf">通过 ≠ 随机：RANDU 骗过基本检验</span>
+          <span class="brleaf">舍选法：接受率 1/M</span>
+          <span class="brleaf">只需 f 的相对值</span>
+          <span class="brleaf">Beta 分布例 + 无界版</span>
+          <span class="brleaf">组合法：贵分量给小概率</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">现代引擎</span>
+        <span class="brlabel">专用加速</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">Mersenne Twister：2^19937−1</span>
-          <span class="brleaf">PCG64：NumPy 现默认</span>
-          <span class="brleaf">实战只用工厂引擎</span>
+          <span class="brleaf">矩形-楔-尾：面积切三块</span>
+          <span class="brleaf">近线性 PDF 的 squeeze</span>
+          <span class="brleaf">组合-舍选、均匀比值法</span>
         </div>
       </div>
       <div class="brrow">
-        <span class="brlabel">从均匀到分布</span>
+        <span class="brlabel">正态与联合</span>
         <span class="brace"></span>
         <div class="brkids">
-          <span class="brleaf">查表法：逆 CDF 离散版</span>
-          <span class="brleaf">泊松乘积法（Knuth）</span>
-          <span class="brleaf">U(a,b) 与浮点分辨率</span>
+          <span class="brleaf">Box–Muller 含雅可比证明</span>
+          <span class="brleaf">极法：拒绝 1 − π/4</span>
+          <span class="brleaf">对数正态与 Gibrat 定律</span>
+          <span class="brleaf">联合：先边缘后条件</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">记分与推断</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">累加器 S1/S2 与标准误差</span>
+          <span class="brleaf">t 分布与 batching</span>
+          <span class="brleaf">0/1 记分与二项置信区间</span>
+          <span class="brleaf">相对误差 R 与 FOM</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">精度与准确度</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">系统误差 vs 统计误差</span>
+          <span class="brleaf">周期耗尽 → 伪收敛</span>
+          <span class="brleaf">舍入误差：累加器冻结</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<h2 id="41-伪随机数确定性算法装出来的随机">4.1 伪随机数：确定性算法装出来的随机<a class="headerlink" href="#41-伪随机数确定性算法装出来的随机" title="Permanent link">#</a></h2>
-<p>计算机是确定性机器，产不出真随机；所谓<strong>伪随机数</strong>（pseudorandom numbers），是一个确定性递推从<strong>种子</strong>（seed）出发算出的数列。它"看起来随机"靠的是统计性质，不是来源神秘。这不是妥协而是特性：同一种子重跑得到同一串数——调试、复现实验、并行分块都靠它。</p>
-<p>历史上第一个方案来自 von Neumann（曼哈顿计划 needs）：<strong>平方取中法</strong>（middle-square）——把当前数平方，取中间几位当下一个数。四位数版：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">middle_square</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">seed</span><span class="p">,</span> <span class="p">[]</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="si">:</span><span class="s2">0</span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">digits</span><span class="si">}</span><span class="s2">d</span><span class="si">}</span><span class="s2">"</span>          <span class="c1"># 平方，左侧补零到 2d 位</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">digits</span><span class="o">//</span><span class="mi">2</span> <span class="p">:</span> <span class="n">digits</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="n">digits</span><span class="p">])</span>   <span class="c1"># 取中间 d 位</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">return</span> <span class="n">out</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>种子 4353: 9486, 9841, 8452, 4363, 357, 1274, 6230, 8129, 806, 6496, 1980, 9204, ...
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>种子 1000: 0, 0, 0, 0, ...                       ← 掉进 0 永远出不来
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>种子 3792: 3792, 3792, 3792, ...                  ← 恰是不动点（3792²=14379264，中四位还是 3792）
-</code></pre></div>
-<p>死穴一目了然：状态空间只有 <span class="arithmatex">\(10^4\)</span> 个值，一旦落进陷阱（0、不动点、短环）就万劫不复。它教会我们评价生成器的第一标准——<strong>周期</strong>（period）：数列必然进入循环，循环长度越长越好。好生成器的完整清单（Dunn §3.3）：<strong>周期长、统计性质好（均匀 + 独立）、可复现、快、可移植</strong>。</p>
-<h2 id="42-线性同余生成器LCG">4.2 线性同余生成器（LCG）<a class="headerlink" href="#42-线性同余生成器LCG" title="Permanent link">#</a></h2>
-<p>用"线性函数 + 取模"造递推，一用就是七十年：</p>
+<p>拿到目标分布 <span class="arithmatex">\(f(x)\)</span> 后，选哪条抽样路线？一张决策图：</p>
+<div class="mermaid">flowchart TD
+    A["给定目标分布 f(x)"] --&gt; B{"CDF 能写出&lt;br/&gt;且逆可解？"}
+    B --&gt;|能| C["逆 CDF 法&lt;br/&gt;（首选）"]
+    B --&gt;|不能| D{"能拆成&lt;br/&gt;简单分布的加权和？"}
+    D --&gt;|能| E["组合法&lt;br/&gt;（贵分量给小概率）"]
+    D --&gt;|不能| F["舍选法&lt;br/&gt;（任意分布兜底）"]
+    C --&gt; G["离散大量抽样？&lt;br/&gt;查表换 Walker 别名"]
+    E --&gt; G
+    F --&gt; G
+    G --&gt; H["还嫌慢？&lt;br/&gt;矩形-楔-尾 / 比值法等专用加速"]</div>
+<h2 id="41-抽样从均匀到任意分布">4.1 抽样：从均匀到任意分布<a class="headerlink" href="#41-抽样从均匀到任意分布" title="Permanent link">#</a></h2>
+<p><strong>抽样</strong>（sampling）就是把某个随机变量的取值按它的分布"造"出来：造出的一大串样本，频率直方图应复现该分布。<strong>记分</strong>（scoring）则是每条 history 算出一个分数 <span class="arithmatex">\(z(x_i)\)</span>，累积平均得到估计。本章先解决抽样。</p>
+<p>D&amp;S 约定：本章所有方法都以伪随机数发生器为地基——它输出长序列 <span class="arithmatex">\(\rho_i\)</span>，均匀分布于 <span class="arithmatex">\([0,1)\)</span>（单位矩形分布 <span class="arithmatex">\(\mathcal U(0,1)\)</span>，第 3 章）。物理法（电路白噪声、放射性衰变间隔、宇宙微波背景嘶声）也能造随机数，但蒙特卡罗要的是百万乃至十亿级的可复现数列，只能靠算法。S&amp;M 把主流技法归纳为五类：<strong>cdf 反演</strong>（cdf inversion）、<strong>模拟</strong>（simulation，把底层试验直接演一遍）、<strong>组合</strong>（composition）、<strong>变换</strong>（transformation）、<strong>舍选</strong>（rejection）——本章按 D&amp;S 的框架展开，五类都会遇到。</p>
+<h3 id="411-连续分布的逆-CDF-法">4.1.1 连续分布的逆 CDF 法<a class="headerlink" href="#411-连续分布的逆-CDF-法" title="Permanent link">#</a></h3>
+<h4 id="概率积分变换一切的开始">概率积分变换：一切的开始<a class="headerlink" href="#概率积分变换一切的开始" title="Permanent link">#</a></h4>
+<p>逆 CDF 法（inverse CDF method，也叫反变换法）的全部理论是一行恒等式：<strong>CDF 是单调升函数，把任意连续分布映到均匀分布</strong>。</p>
+<p><strong>定理（S&amp;M Thm 2.1，概率积分变换）</strong>：设 <span class="arithmatex">\(X\)</span> 有连续 CDF <span class="arithmatex">\(F\)</span>，令 <span class="arithmatex">\(U=F(X)\)</span>，则 <span class="arithmatex">\(U\sim U(0,1)\)</span>。</p>
+<p><strong>证明</strong>：对 <span class="arithmatex">\(0\le u&lt;1\)</span>，因 <span class="arithmatex">\(F\)</span> 连续且严格增，<span class="arithmatex">\(F^{-1}\)</span> 存在，取 <span class="arithmatex">\(x=F^{-1}(u)\)</span>：</p>
 <div class="arithmatex">\[
-X_{k+1} = (aX_k + c) \bmod m, \qquad U_k = X_k/m \in [0,1).
+\operatorname{Pr}(U\le u)=\operatorname{Pr}(F(X)\le u)=\operatorname{Pr}\big(X\le F^{-1}(u)\big)=F\big(F^{-1}(u)\big)=u.
 \]</div>
-<p>状态 <span class="arithmatex">\(X_k\in\{0,\dots,m-1\}\)</span>，故周期 <span class="arithmatex">\(\le m\)</span>；加大 <span class="arithmatex">\(m\)</span> 是第一要务。</p>
-<p><strong>满周期判据（Hull–Dobell 定理）</strong>：混合同余（<span class="arithmatex">\(c&gt;0\)</span>）达到满周期 <span class="arithmatex">\(m\)</span>，当且仅当 ① <span class="arithmatex">\(c\)</span> 与 <span class="arithmatex">\(m\)</span> 互素；② <span class="arithmatex">\(a-1\)</span> 能被 <span class="arithmatex">\(m\)</span> 的每个素因子整除；③ 若 <span class="arithmatex">\(4\mid m\)</span>，则 <span class="arithmatex">\(4\mid a-1\)</span>。</p>
-<p><strong>乘法生成器</strong>（<span class="arithmatex">\(c=0\)</span>）因 <span class="arithmatex">\(X=0\)</span> 是不动点，周期至多 <span class="arithmatex">\(m-1\)</span>；取 <span class="arithmatex">\(m\)</span> 为素数、<span class="arithmatex">\(a\)</span> 为模 <span class="arithmatex">\(m\)</span> 的<strong>本原根</strong>（primitive root，其幂遍历全部非零剩余）即达 <span class="arithmatex">\(m-1\)</span>。最小标准生成器 <strong>MINSTD</strong>（Park–Miller 1988）取</p>
+<p>反过来用就是抽样算法：若 <span class="arithmatex">\(U\sim U(0,1)\)</span>，则 <span class="arithmatex">\(X=F^{-1}(U)\)</span> 的 CDF 恰为 <span class="arithmatex">\(F\)</span>。D&amp;S 的推导（式 4.1–4.4）同源：任何两个 CDF 之间有一一对应 <span class="arithmatex">\(F(x_i)=G(y_i)\)</span>；取 <span class="arithmatex">\(G\)</span> 为单位矩形分布的 CDF（<span class="arithmatex">\(G(y)=y\)</span>）即得 <span class="arithmatex">\(F(x_i)=\rho_i\)</span>，解出</p>
 <div class="arithmatex">\[
-a = 16807 = 7^5,\qquad m = 2^{31}-1\ (\text{素数}),
+x_i = F^{-1}(\rho_i).
 \]</div>
-<p>周期 <span class="arithmatex">\(2^{31}-2\approx 2.1\times10^9\)</span>。手写它毫无难度：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">minstd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">12345</span><span class="p">):</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">m</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16807</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">seed</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">m</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">return</span> <span class="n">out</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 10 万个数：均值 0.5000（理论 0.5），方差 0.08337（理论 1/12 = 0.08333）</span>
-</code></pre></div>
+<p><strong>验证它真的服从 <span class="arithmatex">\(f\)</span></strong>：<span class="arithmatex">\(x_i\)</span> 落在 <span class="arithmatex">\([x, x+\mathrm dx)\)</span> 的概率等于 <span class="arithmatex">\(\rho_i\)</span> 落在 <span class="arithmatex">\([F(x), F(x+\mathrm dx))\)</span> 的概率：</p>
+<div class="arithmatex">\[
+\operatorname{Pr}\{x&lt;F^{-1}(\rho_i)&lt;x+\mathrm dx\}
+=\operatorname{Pr}\{F(x)&lt;\rho_i&lt;F(x+\mathrm dx)\}
+=F(x+\mathrm dx)-F(x)=\int_x^{x+\mathrm dx}f(x')\,\mathrm dx' = f(x)\,\mathrm dx.
+\]</div>
+<p><figure>
+  <img src="../images/ch04/fig-4-1.png" class="lq-img" />
+<br />
+<figcaption>图 4.1 逆 CDF 法示意（截自原书 D&S 图 4.1）：从纵轴取 <span class="arithmatex">\(<span class="arithmatex"><span class="arithmatex"></span>)</span>，横走碰 CDF 曲线再垂下来，横坐标就是样本 <span class="arithmatex">\(x_i\)</span>。CDF 平缓处（密度小）样本稀疏，陡峭处（密度大）样本密集。</figcaption></p>
+</figure>
+<p><strong>局限性</strong>：要求 <span class="arithmatex">\(F\)</span> 能积分出来<strong>且</strong>逆可解。正态分布两样都不满足（无初等原函数），这是 §4.1.7 要专门伺候它的原因；数值求逆（解方程 <span class="arithmatex">\(\rho=F(x)\)</span>）理论上可行，但每抽一个样本解一次非线性方程，实战不划算。</p>
+<h4 id="两个手算例子">两个手算例子<a class="headerlink" href="#两个手算例子" title="Permanent link">#</a></h4>
+<p><strong>均匀分布 <span class="arithmatex">\(\mathcal U(a,b)\)</span></strong>（D&amp;S 例 4.1）：</p>
+<div class="arithmatex">\[
+\rho_i=F(x_i)=\frac{1}{b-a}\int_a^{x_i}\mathrm du=\frac{x_i-a}{b-a}
+\quad\Longrightarrow\quad
+x_i=a+\rho_i(b-a).
+\]</div>
+<p><strong>指数分布 <span class="arithmatex">\(f(x)=\alpha e^{-\alpha x}\)</span>，<span class="arithmatex">\(x\ge0\)</span></strong>（D&amp;S 例 4.2；S&amp;M §2.5.1 称之为"规范方法"）：</p>
+<div class="arithmatex">\[
+F(x)=1-e^{-\alpha x}
+\ \Longrightarrow\ 
+\rho_i=1-e^{-\alpha x_i}
+\ \Longrightarrow\ 
+x_i=-\frac{1}{\alpha}\ln(1-\rho_i).
+\]</div>
+<p>因为 <span class="arithmatex">\(1-\rho_i\)</span> 与 <span class="arithmatex">\(\rho_i\)</span> 同为 <span class="arithmatex">\(U(0,1)\)</span>，实际代码写 <span class="arithmatex">\(x_i=-\ln(\rho_i)/\alpha\)</span>，每次抽样省一次减法（D&amp;S 原话：computationally efficient）。</p>
+<div class="admonition danger">
+<p class="admonition-title">对数里喂零</p>
+<p>数学上 <span class="arithmatex">\(\rho=0\)</span> 概率为零，代码里不是：<code>rng.random()</code> 的值域是 <span class="arithmatex">\([0,1)\)</span>，<strong>含 0</strong>。<code>-np.log(0.0)</code> 直接溢出。稳妥写法 <code>-np.log1p(-u)</code>（即 <span class="arithmatex">\(-\ln(1-u)\)</span>，<span class="arithmatex">\(1-u\in(0,1]\)</span>），或抽到 0 就重抽。本笔记 notebook 全部用 <code>log1p</code> 版。</p>
+</div>
 <figure>
-  <img src="../images/ch04/out-minstd.png" class="lq-img" />
-  <figcaption>代码实跑：MINSTD 的 10 万个数，直方图平贴理论密度 1.0。</figcaption>
+  <img src="../images/ch04/out-4-1.png" class="lq-img" />
+  <figcaption>图 4.2 逆 CDF 抽指数分布（代码实跑，<span class="arithmatex"><span class="arithmatex"></span>times10^5<span class="arithmatex"><span class="arithmatex"></span>(<span class="arithmatex"><span class="arithmatex"></span>)）：左，直方图贴住密度 <span class="arithmatex"><span class="arithmatex"></span>)，样本均值 0.9968、方差 0.9967（理论均为 1）；右，半对数坐标下直方图高度落在一条直线上——"密度真是指数"最灵敏的检验，尾巴一丁点偏差都会被 log 放大。</figcaption>
 </figure>
 
-<h3 id="谱结构二维看着还行三维露馅">谱结构：二维看着还行，三维露馅<a class="headerlink" href="#谱结构二维看着还行三维露馅" title="Permanent link">#</a></h3>
-<p>一维直方图说明不了问题。把相邻输出当作坐标画散点——<span class="arithmatex">\((X_k, X_{k+1})\)</span> 落在<strong>有限条平行直线</strong>上，这是所有 LCG 的通病：模 <span class="arithmatex">\(m\)</span> 的整数格子经过线性映射投影成<strong>格子结构</strong>（lattice）。<strong>谱检验</strong>（spectral test，Dunn §3.4.1）就是量这些格子在多维下"多扁"：好参数的格子到高维仍接近各向同性，坏参数一维维露馅。</p>
-<p>臭名昭著的反例是 IBM Scientific Subroutine Library 的 <strong>RANDU</strong>（<span class="arithmatex">\(a=65539=2^{16}+3\)</span>，<span class="arithmatex">\(m=2^{31}\)</span>）。代数上两步就能拆穿它：</p>
+<p>指数分布还有三件随身行李，后面排队模拟（§4.2.4）全要用到：</p>
+<p><strong>无记忆性</strong>（S&amp;M §2.5）：等了 <span class="arithmatex">\(a\)</span> 还没等到事件，再等 <span class="arithmatex">\(b\)</span> 的分布与从头等 <span class="arithmatex">\(b\)</span> 完全一样：</p>
 <div class="arithmatex">\[
-X_{k+1}=(2^{16}+3)X_k
-\ \Longrightarrow\
-X_{k+2}=(2^{16}+3)^2X_k=(2^{32}+6\cdot2^{16}+9)X_k\equiv(3\cdot2^{17}+9)X_k \pmod{2^{31}},
+\operatorname{Pr}(W&lt;a+b\mid W\ge a)=\frac{F(a+b)-F(a)}{1-F(a)}
+=\frac{e^{-\lambda a}-e^{-\lambda a}e^{-\lambda b}}{e^{-\lambda a}}
+=1-e^{-\lambda b}=\operatorname{Pr}(W&lt;b).
 \]</div>
-<p>而 <span class="arithmatex">\(6X_{k+1}-9X_k=(3\cdot2^{17}+9)X_k\)</span>，于是恒有</p>
+<p>指数是唯一无记忆的连续分布——这既是排队系统能解析求解的原因（§4.2.4），也是它不能当"零件寿命"模型的原因（旧零件不会因为旧而更容易坏）。均值与方差：<span class="arithmatex">\(\mu=1/\lambda\)</span>、<span class="arithmatex">\(\mathrm{var}=1/\lambda^2\)</span>（两次分部积分，S&amp;M 图 2.4）。</p>
+<p><strong>独立等待时间的合成</strong>：两个独立过程 <span class="arithmatex">\(W_A\sim E(\lambda_A)\)</span>、<span class="arithmatex">\(W_B\sim E(\lambda_B)\)</span>，"谁先发生"的等待时间仍是指数，参数相加：</p>
 <div class="arithmatex">\[
-9X_k-6X_{k+1}+X_{k+2}\equiv 0 \pmod{2^{31}} .
+\operatorname{Pr}(W_A&lt;t)+\operatorname{Pr}(W_B&lt;t)-\operatorname{Pr}(\text{两者都}&lt;t)
+=1-e^{-(\lambda_A+\lambda_B)t}.
 \]</div>
-<p>三连点全部落在 <span class="arithmatex">\(9X_k-6X_{k+1}+X_{k+2}=c\cdot 2^{31}\)</span>（<span class="arithmatex">\(c=-5,\dots,9\)</span>）的 <strong>15 个平面</strong>上——三维"随机数"实际是 15 张薄纸：</p>
-<figure>
-  <img src="../images/ch04/out-lattice.png" class="lq-img" />
-  <figcaption>代码实跑：MINSTD 与 RANDU 的三连点三维散点。默认视角下 RANDU 看不出异样——**不巧的角度会掩盖结构**。</figcaption>
-</figure>
-
-<figure>
-  <img src="../images/ch04/out-lattice-proj.png" class="lq-img" />
-  <figcaption>代码实跑：把三连点代入平面方程左端。MINSTD 铺满连续区间；RANDU 只取 15 个离散值——平面结构实锤。谱检验的价值正在于此：不依赖运气角度。</figcaption>
-</figure>
-
-<h2 id="43-怎么检验统计检验顺带复习假设检验">4.3 怎么检验：统计检验（顺带复习假设检验）<a class="headerlink" href="#43-怎么检验统计检验顺带复习假设检验" title="Permanent link">#</a></h2>
-<p>理论检验（周期、谱）针对参数做数学；<strong>统计检验</strong>针对输出做"找茬"——原假设 <span class="arithmatex">\(H_0\)</span>："这串数来自 <span class="arithmatex">\(U(0,1)\)</span>"。</p>
-<p><strong>卡方拟合优度检验</strong>（均匀性）：把 <span class="arithmatex">\([0,1)\)</span> 均分 <span class="arithmatex">\(k\)</span> 组，实际频数 <span class="arithmatex">\(O_i\)</span>，期望频数 <span class="arithmatex">\(E_i=N/k\)</span>。统计量</p>
+<p><strong>尺度变换</strong>：<span class="arithmatex">\(Y\sim E(1)\)</span>，则 <span class="arithmatex">\(X=Y/\lambda\sim E(\lambda)\)</span>——这是下一小节变换法的第一个例子，也是泊松乘积法"Method 2"的依据（§4.1.2）。</p>
+<h4 id="变换法与-Cauchy-厚尾SM-253">变换法与 Cauchy 厚尾（S&amp;M §2.5.3）<a class="headerlink" href="#变换法与-Cauchy-厚尾SM-253" title="Permanent link">#</a></h4>
+<p>设 <span class="arithmatex">\(X=g(Y)\)</span>，<span class="arithmatex">\(g\)</span> 一一对应，换元 <span class="arithmatex">\(t=g(\tau)\)</span> 给出密度之间的搬运规则：</p>
 <div class="arithmatex">\[
-\chi^2=\sum_{i=1}^{k}\frac{(O_i-E_i)^2}{E_i},
+f_X(x)=f_Y\big(g^{-1}(x)\big)\,\big|\big(g^{-1}\big)'(x)\big|.
 \]</div>
-<p>大样本下近似服从<strong>自由度 <span class="arithmatex">\(k-1\)</span></strong> 的卡方分布（<span class="arithmatex">\(N\)</span> 个频数受 <span class="arithmatex">\(\sum O_i=N\)</span> 一个约束，自由度比组数少 1——方差分析里的老朋友）。p 值 = <span class="arithmatex">\(H_0\)</span> 为真时，出现"这么离谱或更离谱"的偏差的概率；<span class="arithmatex">\(p&lt;0.05\)</span> 判为与均匀性显著矛盾。</p>
-<p><strong>Kolmogorov–Smirnov 检验</strong>（CDF 一致性）：</p>
+<p>用它验证指数的尺度变换：<span class="arithmatex">\(g(\tau)=\tau/\lambda\)</span>、<span class="arithmatex">\(f_Y(\tau)=e^{-\tau}\)</span>，则 <span class="arithmatex">\(f_X(x)=e^{-\lambda x}\cdot\lambda=\lambda e^{-\lambda x}\)</span> ✓。</p>
+<p><strong>Cauchy（柯西）分布</strong>：取 <span class="arithmatex">\(Y\sim U(-\pi/2,\pi/2)\)</span>、<span class="arithmatex">\(X=\tan Y\)</span>。这里 <span class="arithmatex">\(g^{-1}(x)=\arctan x\)</span>，故</p>
 <div class="arithmatex">\[
-D_N=\sup_x\ \big|F_N(x)-F(x)\big|,
+f_X(x)=\frac1\pi\cdot\frac{1}{1+x^2},
 \qquad
-N\text{ 大时 } D_N \text{ 的 } 0.05 \text{ 临界值}\approx \frac{1.36}{\sqrt N}.
+F_X(x)=\frac12+\frac{1}{\pi}\arctan x,
+\qquad
+X=\tan\big(\pi(U-\tfrac12)\big).
 \]</div>
-<p>经验 CDF 与理论 CDF 的最大纵距，比卡方更"整体"（不依赖分组方式）。</p>
-<p>三组数同场竞技（<code>scipy.stats</code>）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">uniform_tests</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">cnt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">p_chi</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>          <span class="c1"># H0: 均匀</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">p_ks</span>  <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="s2">"uniform"</span><span class="p">)</span>    <span class="c1"># H0: U(0,1)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">: 卡方 p = </span><span class="si">{</span><span class="n">p_chi</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, KS p = </span><span class="si">{</span><span class="n">p_ks</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</code></pre></div>
+<p>柯西密度钟形、对称、看起来人畜无害，方差却是<strong>无穷</strong>：<span class="arithmatex">\(\frac1\pi\int_{-\infty}^{\infty}\frac{t^2}{1+t^2}\,\mathrm dt\)</span> 发散。后果很实际：<strong>柯西样本的均值永远不收敛</strong>——前 10 万个样本的均值和前 20 万个的可以差出一个量级（本 notebook 实跑：<span class="arithmatex">\(N=10^4\)</span> 时 <span class="arithmatex">\(+23.3\)</span>，<span class="arithmatex">\(N=2\times10^5\)</span> 时 <span class="arithmatex">\(+4.3\)</span>，毫无收敛迹象）。在高斯之前它一度被当成"误差定律"的候选，输就输在尾巴太厚：大样本里总有几个 <span class="arithmatex">\(\pm 10^3\)</span> 量级的离群点把均值拽走。蒙特卡罗记分假设二阶矩存在（§4.2.3 的尾部判据），柯西是反例教科书。</p>
+<p><figure>
+  <img src="../images/ch04/out-4-6.png" class="lq-img" />
+<br />
+<figcaption>图 4.3 柯西样本直方图（代码实跑，对数纵轴）：<span class="arithmatex">\(2<span class="arithmatex"><span class="arithmatex"></span>)</span> 个样本中 6.32% 落在 <span class="arithmatex">\(|x|>10<span class="arithmatex"><span class="arithmatex"></span>(10^{-23}<span class="arithmatex"><span class="arithmatex"></span>(N=10^4<span class="arithmatex"><span class="arithmatex"></span>(+23.3<span class="arithmatex"><span class="arithmatex"></span>(N=2<span class="arithmatex"><span class="arithmatex"></span>)</span> 时 <span class="arithmatex">\(+4.3\)</span>，永不收敛。</figcaption></p>
+</figure>
+<h3 id="412-离散分布的逆-CDF-法">4.1.2 离散分布的逆 CDF 法<a class="headerlink" href="#412-离散分布的逆-CDF-法" title="Permanent link">#</a></h3>
+<p>离散版本甚至更简单。设 <span class="arithmatex">\(x\)</span> 只取值 <span class="arithmatex">\(x_1,\dots,x_N\)</span>，概率 <span class="arithmatex">\(f_i\)</span>，即 <span class="arithmatex">\(f(x)=\sum_i f_i\,\delta(x-x_i)\)</span>，CDF 是阶梯函数 <span class="arithmatex">\(F(x)=\sum_{x_i\le x}f_i\)</span>。抽 <span class="arithmatex">\(\rho\sim U(0,1)\)</span>，找满足下式的 <span class="arithmatex">\(i\)</span>：</p>
+<div class="arithmatex">\[
+F(x_{i-1})&lt;\rho\le F(x_i)
+\qquad\Big(\text{即 } f_1+\dots+f_{i-1}&lt;\rho\le f_1+\dots+f_i\Big),
+\]</div>
+<p>则 <span class="arithmatex">\(\operatorname{Pr}(X=x_i)=F(x_i)-F(x_{i-1})=f_i\)</span>——均匀性原样搬运成分段概率。实现就是<strong>查表</strong>：累积概率落表，顺序搜索或二分（<code>np.searchsorted</code>）。</p>
+<p><strong>两个提速细节</strong>（S&amp;M §2.1.2）：其一，把节点按概率<strong>从大到小重排</strong>，期望搜索次数立降——岸鸟窝卵数分布 <span class="arithmatex">\(p=(0.15,0.20,0.60,0.05)\)</span> 顺序搜索期望循环 <span class="arithmatex">\(1(0.15)+2(0.2)+3(0.6)+4(0.05)=2.55\)</span> 次，重排后 <span class="arithmatex">\(1(0.6)+2(0.2)+3(0.15)+4(0.05)=1.65\)</span> 次；其二（D&amp;S），对 Poisson、二项、几何这类支撑在整数上的分布，相邻概率之比 <span class="arithmatex">\(R(x)=f(x+1)/f(x)\)</span> 常是简单函数（泊松是 <span class="arithmatex">\(\lambda/(x+1)\)</span>），边搜边递推 <span class="arithmatex">\(f\)</span>，不必每次从头算阶乘。概率全是两位小数时还有更土的办法：造一张 100 格的数组按概率填充、均匀下标抽（S&amp;M 的轮盘赌数组法）——它就是下一节别名法的思路前身。</p>
+<figure>
+  <img src="../images/ch04/fig-4-2.png" class="lq-img" />
+  <figcaption>图 4.4 岸鸟窝卵数的离散 CDF 逆变换（截自原书 S&M 图 2.2）：从纵轴 <span class="arithmatex">\(U\)</span> 出发右行，碰到阶梯的竖直虚线段就往下落，落在哪个"台阶"就抽哪个值；每段横台阶的长度 = 该结果的概率。</figcaption>
+</figure>
+
+<h4 id="Bernoulli-试验SM-21">Bernoulli 试验（S&amp;M §2.1）<a class="headerlink" href="#Bernoulli-试验SM-21" title="Permanent link">#</a></h4>
+<p>最简单的离散分布：一次只有成功（1）/失败（0）两种结果，成功概率 <span class="arithmatex">\(p\)</span>：</p>
+<div class="arithmatex">\[
+f(x)=p^x(1-p)^{1-x},\quad x=0,1;
+\qquad
+\mu=p,\quad \operatorname{var}=p(1-p).
+\]</div>
+<p>抽样一行：<span class="arithmatex">\(U&lt;p\)</span> 记成功。赌场轮盘赌"开红"：18 红 18 黑 2 绿，<span class="arithmatex">\(p=18/38=0.4736\)</span>，<span class="arithmatex">\(U&lt;0.4736\)</span> 即红（S&amp;M 图 2.1 的 CDF 视角：台阶只有两级）。</p>
+<h4 id="二项分布SM-23">二项分布（S&amp;M §2.3）<a class="headerlink" href="#二项分布SM-23" title="Permanent link">#</a></h4>
+<p><span class="arithmatex">\(n\)</span> 次独立 Bernoulli 试验中成功的总次数 <span class="arithmatex">\(X\)</span> 服从二项分布 <span class="arithmatex">\(b(n,p)\)</span>。<strong>计数推导</strong>：给成功编号 <span class="arithmatex">\(S_1,\dots,S_x\)</span>，安置到 <span class="arithmatex">\(n\)</span> 个位置有 <span class="arithmatex">\(n(n-1)\cdots(n-x+1)\)</span> 种放法；真实试验里成功不区分身份，除以 <span class="arithmatex">\(x\)</span> 个编号的排列数 <span class="arithmatex">\(x!\)</span>，得组合数</p>
+<div class="arithmatex">\[
+\binom{n}{x}=\frac{n(n-1)\cdots(n-x+1)}{x!}=\frac{n!}{x!\,(n-x)!}.
+\]</div>
+<p>每种"位置方案"（前 <span class="arithmatex">\(x\)</span> 个全成功、其余全失败）的概率是 <span class="arithmatex">\(p^x q^{n-x}\)</span>（独立性 ⇒ 连乘），于是</p>
+<div class="arithmatex">\[
+\operatorname{pdf}(x)=\binom{n}{x}p^x q^{n-x},\qquad x=0,1,\dots,n.
+\]</div>
+<p>对 <span class="arithmatex">\(x\)</span> 求和恰是二项式定理 <span class="arithmatex">\((p+q)^n=1\)</span>——"二项"分布由此得名。</p>
+<p><strong>均值与方差</strong>。直接算：<span class="arithmatex">\(\mu=\sum_x x\binom nx p^xq^{n-x}\)</span>，用 <span class="arithmatex">\(\binom nx=\frac nx\binom{n-1}{x-1}\)</span> 提出因子 <span class="arithmatex">\(np\)</span>，剩余求和由 <span class="arithmatex">\(y=x-1,\ m=n-1\)</span> 归结为 <span class="arithmatex">\((p+q)^{n-1}=1\)</span>，得 <span class="arithmatex">\(\mu=np\)</span>。更快的一条路：期望线性（第 2 章），二项变量是 <span class="arithmatex">\(n\)</span> 个独立 Bernoulli 之和，均值即 <span class="arithmatex">\(n\)</span> 份 <span class="arithmatex">\(p\)</span> 相加；方差同理（独立和方差相加，S&amp;M Thm 1.1）得 <span class="arithmatex">\(\operatorname{var}=npq\)</span>。</p>
+<p><strong>抽样</strong>：<span class="arithmatex">\(n\)</span> 不大时直接模拟——把 Bernoulli 试验重复 <span class="arithmatex">\(n\)</span> 遍求和（向量化即 <code>(rng.random((N,n)) &lt; p).sum(axis=1)</code>）。<span class="arithmatex">\(n\)</span> 大时（S&amp;M 的突变例子：<span class="arithmatex">\(10^6\)</span> 次细胞分裂、每次突变概率 <span class="arithmatex">\(p=10^{-7}\)</span>）逐个模拟太浪费，这就轮到泊松。</p>
+<h4 id="泊松分布SM-24">泊松分布（S&amp;M §2.4）<a class="headerlink" href="#泊松分布SM-24" title="Permanent link">#</a></h4>
+<p><strong>从二项到泊松</strong>。数"单位时间里随机发生的事件数"，四条假设：事件率 <span class="arithmatex">\(\lambda&gt;0\)</span>；不重叠区间的事件数独立；短区间 <span class="arithmatex">\(h\)</span> 内恰一个事件的概率 <span class="arithmatex">\(\approx\lambda h\)</span>；短区间内两个以上事件可忽略。把长 <span class="arithmatex">\(t\)</span> 的区间切成 <span class="arithmatex">\(n\)</span> 段，"某段有事件"是 Bernoulli 试验（成功率 <span class="arithmatex">\(\lambda t/n\)</span>），事件总数服从 <span class="arithmatex">\(b(n,\lambda t/n)\)</span>。令 <span class="arithmatex">\(n\to\infty\)</span>：</p>
+<div class="arithmatex">\[
+\binom nx\Big(\frac{\lambda t}{n}\Big)^x\Big(1-\frac{\lambda t}{n}\Big)^{n-x}
+=\underbrace{\frac{n!}{n^x(n-x)!}}_{\to\,1}
+(\lambda t)^x\,\underbrace{\Big(1-\frac{\lambda t}{n}\Big)^{n-x}}_{\to\,e^{-\lambda t}}
+\ \longrightarrow\
+\frac{(\lambda t)^x e^{-\lambda t}}{x!}.
+\]</div>
+<p>这就是泊松分布 <span class="arithmatex">\(Pois(\lambda t)\)</span>。两个细节：<span class="arithmatex">\(\lambda t\)</span> 是无量纲纯数（<span class="arithmatex">\(\lambda=1/10\)</span> 件/分钟、<span class="arithmatex">\(t=30\)</span> 分钟，则 <span class="arithmatex">\(\lambda t=3\)</span>）；它对空间同样适用（每 8 英尺木龙骨平均 2 个节疤，<span class="arithmatex">\(P(\text{无节疤})=e^{-2}=0.135\)</span>）。突变问题里 <span class="arithmatex">\(n=10^6,\ p=10^{-7}\)</span>：精确值 <span class="arithmatex">\((1-p)^n=0.904837331\)</span>，泊松近似 <span class="arithmatex">\(e^{-np}=e^{-0.1}=0.904837418\)</span>——九位小数才分得出胜负。均值与方差都是 <span class="arithmatex">\(\lambda t\)</span>（均值由级数求和立得；方差计算冗长，S&amp;M 图 2.3，此处从略）。</p>
+<p><strong>抽样：乘积法</strong>。泊松变量 = "指数等待时间序列里，累计还没到时刻 <span class="arithmatex">\(t\)</span> 的事件个数"。由 §4.1.1，<span class="arithmatex">\(W_i=-\ln U_i\sim E(1)\)</span>，于是 S&amp;M 给出三个等价方法：</p>
+<ol>
+<li><strong>Method 1</strong>：抽 <span class="arithmatex">\(W_i\sim E(\lambda)\)</span>，取满足 <span class="arithmatex">\(\sum_{i=1}^{K}W_i&lt;t\)</span> 的最大 <span class="arithmatex">\(K\)</span>；</li>
+<li><strong>Method 2</strong>：抽 <span class="arithmatex">\(Y_i\sim E(1)\)</span>，取满足 <span class="arithmatex">\(\sum_{i=1}^K Y_i&lt;\lambda t\)</span> 的最大 <span class="arithmatex">\(K\)</span>（省掉每次除 <span class="arithmatex">\(\lambda\)</span>）；</li>
+<li><strong>Method 3（乘积法）</strong>：对 Method 2 取对数。<span class="arithmatex">\(-\sum Y_i&gt;-\lambda t\iff\prod U_i&gt;e^{-\lambda t}\)</span>，所以连乘均匀数，<strong>首次跌破 <span class="arithmatex">\(e^{-\lambda t}\)</span> 之前的连乘个数</strong>就是样本：</li>
+</ol>
+<div class="arithmatex">\[
+X=\max\Big\{x:\ \prod_{i=0}^{x}U_i&gt;e^{-\lambda t}\Big\},
+\qquad U_0=1 .
+\]</div>
+<p>一条 <span class="arithmatex">\(\prod U_i&gt;e^{-\lambda t}\)</span> 同时是"间隔和还没到 <span class="arithmatex">\(\lambda t\)</span>"的翻译——指数间隔这副骨架，§4.2.4 的排队模拟还要穿。</p>
+<figure>
+  <img src="../images/ch04/out-4-2.png" class="lq-img" />
+  <figcaption>图 4.5 离散逆 CDF 实跑（代码实跑，<span class="arithmatex"><span class="arithmatex"></span>times10^5<span class="arithmatex"><span class="arithmatex"></span>(b(20,0.25)<span class="arithmatex"><span class="arithmatex"></span>(Pois(4)\)</span>（均值 4.002、方差 3.996，理论均为 4）。</figcaption>
+</figure>
+
+<h3 id="413-Walker-别名法">4.1.3 Walker 别名法<a class="headerlink" href="#413-Walker-别名法" title="Permanent link">#</a></h3>
+<p>查表法的搜索是绕不开的成本：顺序搜索 <span class="arithmatex">\(O(n)\)</span>，二分 <span class="arithmatex">\(O(\log n)\)</span>。<strong>Walker 别名法</strong>（alias method，S&amp;M §2.2）把离散抽样做到极限——建表 <span class="arithmatex">\(O(n)\)</span>，之后<strong>每次抽样 <span class="arithmatex">\(O(1)\)</span>，零搜索</strong>：两次均匀数 + 一次查表 + 一次比较，抽谁与 <span class="arithmatex">\(n\)</span> 无关。</p>
+<p><strong>轮盘赌图像</strong>。<span class="arithmatex">\(n\)</span> 个结果的概率 <span class="arithmatex">\(p_1,\dots,p_n\)</span> 相当于一张扇区角为 <span class="arithmatex">\(p_i\,2\pi\)</span> 的轮盘。别名法把每个扇区<strong>等分</strong>成 <span class="arithmatex">\(n\)</span> 份：第 <span class="arithmatex">\(i\)</span> 个扇区的一部分留给自己（份额记 <span class="arithmatex">\(Q[i]\），不足 \(1/n\)</span> 的从别处借），剩下的份额<strong>记到别人名下</strong>（别名 <span class="arithmatex">\(A[i]\)</span>）。抽样时先等可能地选一个扇区 <span class="arithmatex">\(Y\)</span>，再看扇区内位置 <span class="arithmatex">\(Z\)</span> 落在"留给自己的部分"还是"别名部分"：</p>
+<ol>
+<li>取 <span class="arithmatex">\(U\sim U(0,1)\)</span>，令 <span class="arithmatex">\(Y=\lfloor Un\rfloor\)</span>（等可能选扇区），<span class="arithmatex">\(Z=Un-Y\)</span>（扇区内位置）；</li>
+<li>若 <span class="arithmatex">\(Z&lt;Q[Y]\)</span> 返回 <span class="arithmatex">\(X=Y\)</span>，否则返回 <span class="arithmatex">\(X=A[Y]\)</span>。</li>
+</ol>
+<p><strong>为何成立</strong>：<span class="arithmatex">\(Y\)</span> 在 <span class="arithmatex">\(\{0,\dots,n-1\}\)</span> 上等可能（概率 <span class="arithmatex">\(1/n\)</span>）；<span class="arithmatex">\(Z\)</span> 与 <span class="arithmatex">\(Y\)</span> 独立且 <span class="arithmatex">\(Z\sim U(0,1)\)</span>（每个扇区的子区间结构完全一样）。于是返回 <span class="arithmatex">\(Y\)</span> 的概率是 <span class="arithmatex">\(Q[Y]/n\)</span>——只要建表时保证"扇区 <span class="arithmatex">\(i\)</span> 留给自己的份额 = <span class="arithmatex">\(n\,p_i\)</span>"，每个结果就拿回自己的概率。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>S&amp;M 印刷版算法第 2 步写作"若 <span class="arithmatex">\(Q[Y]&lt;Z\)</span> 返回 <span class="arithmatex">\(X=Y\)</span>"，但正文紧接着的解释是"该判断以概率 <span class="arithmatex">\(Q[Y]\)</span> 成立、<span class="arithmatex">\(Y\)</span> 以 <span class="arithmatex">\(Q[Y]/n\)</span> 被选中"，两者矛盾：<span class="arithmatex">\(\operatorname{Pr}(Q[Y]&lt;Z)=1-Q[Y]\)</span>。按概率解释（也是本 notebook 实现与逐位复现其数表的依据），判据应为 <span class="arithmatex">\(Z&lt;Q[Y]\)</span> 时返回 <span class="arithmatex">\(Y\)</span>。</p>
+</div>
+<p><strong>建表：归纳构造</strong>（S&amp;M Algorithm 2.4）。记均匀份额 <span class="arithmatex">\(S=1/n\)</span>。任取一个不足扇区 <span class="arithmatex">\(t\)</span>（<span class="arithmatex">\(p_t&lt;S\)</span>）与一个过剩扇区 <span class="arithmatex">\(p\)</span>（<span class="arithmatex">\(p_p&gt;S\)</span>）：让 <span class="arithmatex">\(Q[t]=p_t\)</span>（<span class="arithmatex">\(t\)</span> 的家底全留给自己），把缺口 <span class="arithmatex">\(S-p_t\)</span> 记到 <span class="arithmatex">\(p\)</span> 名下（<span class="arithmatex">\(A[t]=p\)</span>），同时把 <span class="arithmatex">\(p\)</span> 的剩余家底扣掉 <span class="arithmatex">\(S-p_t\)</span>。<span class="arithmatex">\(t\)</span> 从此定稿出局，对剩下的扇区重复。归纳不变量：<strong>未定稿扇区的（剩余家底 + 已替别人代管的份额）之和恒为 <span class="arithmatex">\(nS=1\)</span></strong>，且每个已定稿扇区"自留 + 出借"恰好凑满一份 <span class="arithmatex">\(S\)</span>。循环 <span class="arithmatex">\(n-1\)</span> 轮后只剩一个扇区，它自留一份（<span class="arithmatex">\(Q=S\)</span>）。最后把 <span class="arithmatex">\(Q\)</span> 统一乘 <span class="arithmatex">\(n\)</span>（因为扇区被选中的先验是 <span class="arithmatex">\(1/n\)</span>）。</p>
+<p>S&amp;M 的鸟窝数据（一窝 8 卵中的雌雏数，<span class="arithmatex">\(n=9\)</span>，Table 2.1）完整跑一遍：按"找第一个不足扇区 / 找第一个过剩扇区"的顺序建表，本 notebook <strong>逐位复现</strong>原书 Q/A 数表：</p>
 <table>
 <thead>
 <tr>
-<th>生成器</th>
-<th>卡方 p</th>
-<th>KS p</th>
+<th><span class="arithmatex">\(i\)</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>MINSTD</td>
-<td>0.094</td>
-<td>0.152</td>
+<td><span class="arithmatex">\(p_i\)</span></td>
+<td>0.02</td>
+<td>0.04</td>
+<td>0.08</td>
+<td>0.15</td>
+<td>0.20</td>
+<td>0.21</td>
+<td>0.16</td>
+<td>0.09</td>
+<td>0.05</td>
 </tr>
 <tr>
-<td>RANDU</td>
-<td><strong>0.712</strong></td>
-<td><strong>0.811</strong></td>
+<td><span class="arithmatex">\(Q[i]=np_i'\)</span></td>
+<td>0.18</td>
+<td>0.36</td>
+<td>0.72</td>
+<td>0.53</td>
+<td>0.88</td>
+<td>0.56</td>
+<td>1.0</td>
+<td>0.81</td>
+<td>0.45</td>
 </tr>
 <tr>
-<td>PCG64（NumPy 现默认）</td>
-<td>0.924</td>
-<td>0.573</td>
+<td><span class="arithmatex">\(A[i]\)</span>（1 基）</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+<td>–</td>
+<td>6</td>
+<td>6</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">检验通过 ≠ 随机</p>
-<p>RANDU 的 p 值漂亮得很，但它的 15 个平面就在那里。统计检验是<strong>找茬游戏</strong>：只能证伪，不能证真；单维、低维的检验尤其容易被骗。所以工程实践从不手搓生成器，只敢用被谱检验 + 大检验套件（TestU01、Practrand）拷打过的引擎。</p>
-</div>
-<h2 id="44-现代引擎一瞥Mersenne-Twister-与-PCG64">4.4 现代引擎一瞥：Mersenne Twister 与 PCG64<a class="headerlink" href="#44-现代引擎一瞥Mersenne-Twister-与-PCG64" title="Permanent link">#</a></h2>
-<ul>
-<li><strong>Mersenne Twister（MT19937）</strong>：借助 624 维状态的线性递推 + 扭曲变换，周期 <span class="arithmatex">\(2^{19937}-1\)</span>（梅森素数，得名于此）、623 维均匀分布性质。Python <code>random</code> 与旧版 NumPy 的默认引擎。弱点：状态可由 624 个输出反解（不能用于密码），高维线性结构仍在。</li>
-<li><strong>PCG64</strong>：NumPy 1.17 起的默认。小状态 + 乘法置换（LCG 变体）+ 输出打乱函数，同样的统计强度下更小更快。</li>
-<li><strong>组合与混洗</strong>（Dunn §3.6–3.8）：把多个普通生成器的输出按规则混合（Wichmann–Hill、L'Ecuyer），或用一副生成器"洗"另一副的输出——思想都是用便宜的结构换取格子缺陷的抹平。</li>
-</ul>
-<p><strong>结论一句话</strong>：理解原理，生产只用库——<code>np.random.default_rng(seed)</code>。</p>
-<h2 id="45-从均匀到离散分布教材-41">4.5 从均匀到离散分布（教材 4.1）<a class="headerlink" href="#45-从均匀到离散分布教材-41" title="Permanent link">#</a></h2>
-<p>均匀随机数是"原料"，分布是"成型"。离散情形最通用的两板斧：</p>
-<p><strong>查表法</strong>（逆 CDF 的离散版）。目标分布 <span class="arithmatex">\(p_i\)</span>，累积表 <span class="arithmatex">\(F_i=p_1+\cdots+p_i\)</span>；抽 <span class="arithmatex">\(U\sim U(0,1)\)</span>，看它落进哪一段：</p>
-<div class="arithmatex">\[
-F_{i-1}&lt;U\le F_i \ \Longrightarrow\ X=i .
-\]</div>
-<p>推导一步：<span class="arithmatex">\(P(X=i)=P(F_{i-1}&lt;U\le F_i)=F_i-F_{i-1}=p_i\)</span>——均匀性原样搬运成分段概率。演示一颗不均匀骰子 <span class="arithmatex">\(P(i)\propto i\)</span>（即 <span class="arithmatex">\(i/21\)</span>）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="mi">21</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cdf</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">60_000</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>   <span class="c1"># 二分落表</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># 6 万次：最大偏差 0.0034</span>
-</code></pre></div>
-<p><figure>
-  <img src="../images/ch04/out-discrete.png" class="lq-img" />
-<br />
-<figcaption>代码实跑：查表法模拟的不均匀骰子，频率贴住理论 \(i/21\)。大量重复抽取时还有更快的 alias 方法，第 5 章登场。</figcaption></p>
-</figure>
-<p><strong>泊松分布的乘积法（Knuth）</strong>。泊松 <span class="arithmatex">\(Pois(\lambda)\)</span> 计"单位强度下的事件数"，它和指数等待时间是一体两面。由 2.5 节，<span class="arithmatex">\(E_i=-\ln U_i\sim Exp(1)\)</span> i.i.d.。于是连乘均匀数</p>
-<div class="arithmatex">\[
-U_1U_2\cdots U_k \ \ge\ e^{-\lambda}
-\quad\Longleftrightarrow\quad
-E_1+E_2+\cdots+E_k\ \le\ \lambda ,
-\]</div>
-<p>而 <span class="arithmatex">\(N=\max\{k:\ E_1+\cdots+E_k\le\lambda\}\)</span> 正是"到时刻 <span class="arithmatex">\(\lambda\)</span> 为止发生的事件数"——泊松的定义式刻画。算法：不断连乘 <span class="arithmatex">\(U\)</span>，第一次 <span class="arithmatex">\(\le e^{-\lambda}\)</span> 时的连乘个数减一：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">poisson_knuth</span><span class="p">(</span><span class="n">lam</span><span class="p">):</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">k</span><span class="p">,</span> <span class="n">prod</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">while</span> <span class="n">prod</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">:</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">prod</span> <span class="o">*=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">return</span> <span class="n">k</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># λ=4，2 万次：均值 4.010，方差 4.023（理论均为 4）</span>
-</code></pre></div>
+<p>抽样 30 万次，频率与 <span class="arithmatex">\(p_i\)</span> 的最大偏差 0.0015（图 4.6）。S&amp;M 顺带点破：别名法本质是<strong>组合法</strong>的一次漂亮实现——原分布被拆成 <span class="arithmatex">\(f_1=Q[\cdot]/n\)</span>（支撑全集，占 <span class="arithmatex">\(\sum_i Q[i]/n=0.61\)</span> 的抽中机会）与 <span class="arithmatex">\(f_2\)</span>（支撑在 A 的值域 <span class="arithmatex">\(\{4,5,6,7\}\)</span>，占 0.39）两层，两层都便宜。注意别名表不唯一（不同的"配对顺序"给出不同的合法表），判断对错只看频率。</p>
 <figure>
-  <img src="../images/ch04/out-poisson.png" class="lq-img" />
-  <figcaption>代码实跑：Knuth 乘积法的泊松样本 vs 理论 PMF，均值方差双双对上。"间隔和 ≤ λ 就数事件"——这副骨架第 7 章排队模拟还要穿。</figcaption>
+  <img src="../images/ch04/out-4-3.png" class="lq-img" />
+  <figcaption>图 4.6 Walker 别名法 30 万次抽样（代码实跑）：频率（柱）贴住理论概率 <span class="arithmatex">\(p_i<span class="arithmatex"><span class="arithmatex"></span>(n\)</span> 无关。</figcaption>
 </figure>
 
-<h2 id="46-连续均匀-Uab教材-42">4.6 连续均匀 U(a,b)（教材 4.2）<a class="headerlink" href="#46-连续均匀-Uab教材-42" title="Permanent link">#</a></h2>
-<p>连续均匀是第 5 章一切"捏分布"的起点，它本身就是查表法的最简单特例：</p>
+<h3 id="414-舍选法">4.1.4 舍选法<a class="headerlink" href="#414-舍选法" title="Permanent link">#</a></h3>
+<p>逆 CDF 要求 <span class="arithmatex">\(F\)</span> 可积可逆；舍选法（rejection method，von Neumann 1951 提出）连 <span class="arithmatex">\(F\)</span> 都不要——<strong>只要能算 <span class="arithmatex">\(f(x)\)</span> 的值（甚至只要相对值）</strong>，就能从 <span class="arithmatex">\(f\)</span> 抽样。它是 MCMC 之外最通用的抽样方法。</p>
+<h4 id="基本版往包络里打点">基本版：往包络里打点<a class="headerlink" href="#基本版往包络里打点" title="Permanent link">#</a></h4>
+<p>设 <span class="arithmatex">\(f\)</span> 定义在 <span class="arithmatex">\([a,b]\)</span>、上界 <span class="arithmatex">\(M\)</span>。两步循环：</p>
+<ol>
+<li><span class="arithmatex">\(x_i=a+\rho_i(b-a)\)</span>（候选），另抽 <span class="arithmatex">\(\rho_j\)</span>；</li>
+<li>若 <span class="arithmatex">\(\rho_j M\le f(x_i)\)</span> 接受，否则重来。</li>
+</ol>
+<p>几何图像：向矩形 <span class="arithmatex">\([a,b]\times[0,M]\)</span> 均匀撒点，落在 <span class="arithmatex">\(f\)</span> 曲线<strong>下方</strong>的点的横坐标就是样本——第 1 章 hit-or-miss 求积的近亲。<strong>效率</strong>（接受概率）= 目标面积 / 容器面积 <span class="arithmatex">\(=\displaystyle\int_a^b f\,\mathrm dx\big/[M(b-a)]\)</span>；<span class="arithmatex">\(f\)</span> 归一时就是 <span class="arithmatex">\(1/[M(b-a)]\)</span>。<span class="arithmatex">\(M\)</span> 高估或 <span class="arithmatex">\(f\)</span> 尖峰，效率就惨。</p>
+<h4 id="一般版proposal-密度DS-413-的-Bayes-推导">一般版：proposal 密度（D&amp;S §4.1.3 的 Bayes 推导）<a class="headerlink" href="#一般版proposal-密度DS-413-的-Bayes-推导" title="Permanent link">#</a></h4>
+<p>矩形包络太笨，换一条"贴身"的 proposal：取一个容易抽样的 <span class="arithmatex">\(g(x)\)</span>（有解析 CDF <span class="arithmatex">\(G\)</span> 可逆），令比值 <span class="arithmatex">\(h(x)=f(x)/g(x)\)</span>，要求它在 <span class="arithmatex">\([a,b]\)</span> 有界，记上界 <span class="arithmatex">\(h_{\max}\)</span>。算法：</p>
+<ol>
+<li>抽 <span class="arithmatex">\(\rho_1\)</span>，候选 <span class="arithmatex">\(x_t=G^{-1}(\rho_1)\)</span>（按 <span class="arithmatex">\(g\)</span> 分布）；</li>
+<li>抽 <span class="arithmatex">\(\rho_2\)</span>；若 <span class="arithmatex">\(\rho_2&gt;h(x_t)/h_{\max}\)</span> 拒绝重来，否则接受 <span class="arithmatex">\(x_t\)</span>。</li>
+</ol>
+<p><strong>成立性推导</strong>（D&amp;S 式 4.11–4.13）：给定 <span class="arithmatex">\(x_t\)</span>，接受概率是 <span class="arithmatex">\(\operatorname{Pr}\{\rho_2&lt;h(x_t)/h_{\max}\}=h(x_t)/h_{\max}\)</span>（均匀密度下直接积分）。<span class="arithmatex">\(x_t\)</span> 与 <span class="arithmatex">\(\rho_2\)</span> 独立，联合密度 <span class="arithmatex">\(u(x_t,\rho_2)=g(x_t)\)</span>。Bayes 公式（第 2 章式 2.42）给出"接受条件下 <span class="arithmatex">\(x_t\)</span> 的分布"：</p>
 <div class="arithmatex">\[
-X = a + (b-a)\,U, \qquad U\sim U(0,1).
+\operatorname{Pr}\{x_t\mid \text{接受}\}
+=\frac{g(x_t)\,[h(x_t)/h_{\max}]}{\int_a^b g(x)\,[h(x)/h_{\max}]\,\mathrm dx}
+=\frac{g(x_t)h(x_t)}{\int_a^b f(x)\,\mathrm dx}=g(x_t)h(x_t)=f(x_t),
 \]</div>
-<p>浮点上的两个细节值得知道：NumPy 的 <code>random</code> 输出 53 位精度，<span class="arithmatex">\(U\)</span> 实际取值是 <span class="arithmatex">\(\{0, 1/2^{53}, \dots, (2^{53}-1)/2^{53}\}\)</span>，分辨率 <span class="arithmatex">\(2^{-53}\approx 1.1\times10^{-16}\)</span>——对绝大多数模拟足够，但要造"极高分辨率的离散分布"时记得它是有限网格；另外区间是左闭右开 <span class="arithmatex">\([0,1)\)</span>，<span class="arithmatex">\(\ln U\)</span>（要造指数分布）会因 <span class="arithmatex">\(U=0\)</span> 报错，惯例用 <span class="arithmatex">\(\ln(1-U)\)</span> 或先确认 <span class="arithmatex">\(U&gt;0\)</span>。</p>
-<h2 id="47-小结">4.7 小结<a class="headerlink" href="#47-小结" title="Permanent link">#</a></h2>
-<ul>
-<li><strong>伪随机 = 确定性递推 + 种子</strong>；评价三管齐下：周期（Hull–Dobell / 本原根）、谱（格子结构）、统计（卡方、KS，只能证伪）。</li>
-<li><strong>从均匀到分布的第一批桥</strong>：查表法（离散通用）、乘积法（泊松）、线性伸缩（连续均匀）。</li>
-<li>下一章解决剩下的：任意连续分布怎么捏？逆变换法给出理论最优解，舍选法兜底"CDF 不可积"的场合——Box-Muller、Gamma、Beta 全在那儿排队。</li>
-</ul>
+<p>（<span class="arithmatex">\(f\)</span> 归一时分母为 1）——正是目标密度。接受率 <span class="arithmatex">\(=\int_a^b g(x)\,\frac{h(x)}{h_{\max}}\,\mathrm dx\)</span>，换成 S&amp;M 的记号就是 <span class="arithmatex">\(1/M\)</span>，见下。</p>
+<h4 id="SM-的一般框架与效率-1M">S&amp;M 的一般框架与效率 1/M<a class="headerlink" href="#SM-的一般框架与效率-1M" title="Permanent link">#</a></h4>
+<p>S&amp;M §2.8 把同一件事写成最便于记忆的形式。目标 <span class="arithmatex">\(f\)</span>、proposal <span class="arithmatex">\(g\)</span>、常数 <span class="arithmatex">\(M\)</span> 使 <span class="arithmatex">\(f(x)\le M g(x)\)</span> 处处成立，接受判据（acceptance discipline）：</p>
+<div class="arithmatex">\[
+h(x)=\frac{f(x)}{M\,g(x)}\quad(\le 1),
+\qquad
+\text{accepted pdf}=\frac{g(x)h(x)}{\int g(z)h(z)\,\mathrm dz}
+=\frac{f(x)/M}{\int f(z)\,\mathrm dz/M}=f(x).
+\]</div>
+<p><strong>接受概率 = <span class="arithmatex">\(\int g h=1/M\)</span>，即效率 <span class="arithmatex">\(1/M\)</span></strong>——所以 <span class="arithmatex">\(M\)</span> 取"刚好够"的 <span class="arithmatex">\(\sup f/g\)</span> 最优。两个重要性质：其一，<strong>只需要 <span class="arithmatex">\(f\)</span> 的相对值</strong>，归一化常数 <span class="arithmatex">\(c\)</span> 未定时照抽不误（<span class="arithmatex">\(c\)</span> 在分子分母同时约掉）；其二，<span class="arithmatex">\(g(x)=0\)</span> 的地方不用管——那些 <span class="arithmatex">\(x\)</span> 根本抽不出来。</p>
+<p><figure>
+  <img src="../images/ch04/fig-4-3.png" class="lq-img" />
+<br />
+<figcaption>图 4.7 连续情形的舍选法（截自原书 S&M 图 2.15）：proposal <span class="arithmatex">\(g<span class="arithmatex"><span class="arithmatex"></span>(M<span class="arithmatex"><span class="arithmatex"></span>(f<span class="arithmatex"><span class="arithmatex"></span>(f<span class="arithmatex"><span class="arithmatex"></span>(M<span class="arithmatex"><span class="arithmatex"></span>(1/M\)</span> 越高。</figcaption></p>
+</figure>
+<h4 id="离散热身用硬币抽出任意概率SM-28">离散热身：用硬币抽出任意概率（S&amp;M §2.8）<a class="headerlink" href="#离散热身用硬币抽出任意概率SM-28" title="Permanent link">#</a></h4>
+<p>舍选法的精髓"<strong>接受/拒绝纪律让相对值说话</strong>"用硬币就能演示。想要成功概率 <span class="arithmatex">\(p=1/3\)</span> 的 Bernoulli 试验：掷两枚，HH 记成功，HT/TH 记失败，TT 作废重来。验证：</p>
+<div class="arithmatex">\[
+\operatorname{Pr}(\text{成功})=\frac{\operatorname{Pr}(\text{HH})}{\operatorname{Pr}(\text{非 TT})}=\frac{1/4}{3/4}=\frac13 .
+\]</div>
+<p>进阶：掷两枚硬币要从 <span class="arithmatex">\(\{1,2,3,4\}\)</span> 中以 <span class="arithmatex">\((2/5,1/5,1/5,1/5)\)</span> 选择。目标除以 <span class="arithmatex">\(M=8/5\)</span> 变成 <span class="arithmatex">\((1/4,1/8,1/8,1/8)\)</span>：HH 全收（<span class="arithmatex">\(1/4\div1/4=1\)</span>）映射到"1"；HT/TH/TT 各以 <span class="arithmatex">\(1/2\)</span> 收（用第三枚硬币定生死），分别映射到 2、3、4。接受率 <span class="arithmatex">\(1\cdot\frac14+\frac12\cdot\frac34=\frac58\)</span>；"返回 1"的条件概率 <span class="arithmatex">\(=\frac{1/4}{5/8}=\frac25\)</span> ✓。</p>
+<h4 id="Beta-分布SM-281">Beta 分布（S&amp;M §2.8.1）<a class="headerlink" href="#Beta-分布SM-281" title="Permanent link">#</a></h4>
+<p><strong>Beta 分布</strong> <span class="arithmatex">\(\mathrm{Be}(\alpha,\beta)\)</span> 定义在 <span class="arithmatex">\([0,1]\)</span>：</p>
+<div class="arithmatex">\[
+f(x)=c\,x^{\alpha-1}(1-x)^{\beta-1},
+\qquad
+c=\frac1{B(\alpha,\beta)},\quad
+B(\alpha,\beta)=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\mathrm dx=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)},
+\]</div>
+<p>均值 <span class="arithmatex">\(\frac{\alpha}{\alpha+\beta}\)</span>、方差 <span class="arithmatex">\(\frac{\alpha\beta}{(\alpha+\beta+1)(\alpha+\beta)^2}\)</span>。它天生是"比例/概率"的分布：贝叶斯推断里对成功概率 <span class="arithmatex">\(p\)</span> 的无知先验经 <span class="arithmatex">\(n\)</span> 次 <span class="arithmatex">\(k\)</span> 成功的数据更新后就是 <span class="arithmatex">\(\mathrm{Be}(k+1,n-k+1)\)</span>（第 7 章预告）；<span class="arithmatex">\(\mathrm{Be}(12,12)\)</span> 均值 0.5、方差 0.01，是正态 <span class="arithmatex">\(N(0.5,0.01)\)</span> 的<strong>有限区间替身</strong>（归一化常数 <span class="arithmatex">\(c=\frac{23!}{11!\,11!}=16\,224\,936\)</span>，尾部硬截在 <span class="arithmatex">\([0,1]\)</span>，而正态尾巴理论上无限长）。</p>
+<p><strong>舍选抽样 <span class="arithmatex">\(\mathrm{Be}(2,3)\)</span></strong>（S&amp;M 的跑数例子）：<span class="arithmatex">\(f(x)=12x(1-x)^2\)</span>，proposal <span class="arithmatex">\(g=U(0,1)\)</span>，峰值 <span class="arithmatex">\(f\le16/9\)</span> 取 <span class="arithmatex">\(M=16/9\)</span>，判据</p>
+<div class="arithmatex">\[
+h(x)=\frac{f}{Mg}=\frac{27}{4}x(1-x)^2 .
+\]</div>
+<p>跑一遍：候选 <span class="arithmatex">\(U=0.8213\)</span>，<span class="arithmatex">\(h(U)=0.0786\)</span>，side experiment 抽出 <span class="arithmatex">\(R=0.616&gt;0.0786\)</span>，拒；再抽 <span class="arithmatex">\(U=0.384\)</span>，<span class="arithmatex">\(h(U)=0.4371\)</span>，<span class="arithmatex">\(R=0.00506\le0.4371\)</span>，收。这也是 hit-or-miss 视角：把 <span class="arithmatex">\((U,\tfrac{16}{9}R)\)</span> 画进图里，落在 <span class="arithmatex">\(f\)</span> 下方就收。</p>
+<p><strong>本 notebook 实跑 Beta(2,5)</strong>：<span class="arithmatex">\(f(x)=30x(1-x)^4\)</span>，峰值 <span class="arithmatex">\(M=f(1/5)=2.4576\)</span>，理论接受率 <span class="arithmatex">\(1/M=0.4069\)</span>；40 万样本实测接受率 <strong>0.4070</strong>，样本均值 0.2856（理论 <span class="arithmatex">\(2/7=0.2857\)</span>）、方差 0.02553（理论 <span class="arithmatex">\(10/392=0.02551\)</span>）——效率、矩三线全对上（图 4.8）。</p>
+<figure>
+  <img src="../images/ch04/out-4-4.png" class="lq-img" />
+  <figcaption>图 4.8 舍选法抽 Beta(2,5)（代码实跑）：左图候选点 <span class="arithmatex">\((x, MR)<span class="arithmatex"><span class="arithmatex"></span>(f<span class="arithmatex"><span class="arithmatex"></span>(1/M=0.4069\)</span>；右图入选样本直方图贴住 Beta(2,5) 密度。</figcaption>
+</figure>
+
+<p><strong>无界 Beta（<span class="arithmatex">\(\alpha&lt;1\)</span>）一句带过</strong>：密度在端点爆炸但积分有限，矩形/均匀 proposal 罩不住。S&amp;M 的对策是组合 + 舍选：对称性只需抽 <span class="arithmatex">\([0,1/2)\)</span> 再镜像；proposal 取 <span class="arithmatex">\(g(x)=c'x^{\alpha-1}\)</span>（CDF 可逆，<span class="arithmatex">\(Y=\tfrac12U^{1/\alpha}\)</span>），舍选判据 <span class="arithmatex">\(h(x)=(2(1-x))^{\alpha-1}\)</span>，全程只用到 <span class="arithmatex">\(f\)</span> 的相对值。技巧与 §4.1.5 的 Gamma（<span class="arithmatex">\(0&lt;\alpha&lt;1\)</span>）同款。</p>
 <div class="admonition note">
-<p class="admonition-title">拓展</p>
-<p>Lazzarini 式的"好得可疑"在检验里也有对应物：p 值过分漂亮（如 0.99999）同样值得警惕——真实均匀样本的 p 值应该均匀散布在 <span class="arithmatex">\((0,1)\)</span>。批量检验时看 p 值的直方图，比看单次 p 值更能暴露猫腻。</p>
+<p class="admonition-title">拓展：圆盘均匀抽样的效率账（D&amp;S 例 4.4）</p>
+<p>向单位圆盘均匀撒点：舍选法在方块里判 <span class="arithmatex">\(x^2+y^2\le R^2\)</span>，效率 <span class="arithmatex">\(\pi/4\approx0.785\)</span>；逆 CDF 法取 <span class="arithmatex">\(r=R\sqrt\rho\)</span>（由 <span class="arithmatex">\(F(r)=r^2/R^2\)</span> 反解）、<span class="arithmatex">\(\phi=2\pi\rho'\)</span>，效率 100% 却要算 sin/cos。D&amp;S 的结论很工程：<strong>效率高不等于跑得快</strong>——三角函数比一次乘法贵得多，舍选法虽然"浪费" <span class="arithmatex">\(\pi/4\)</span>，反而常常更快。同理，旧版笔记里"半径取 <span class="arithmatex">\(\sqrt U\)</span>"的错误（半径均匀 → 中心堆积）正是忘了面积元 <span class="arithmatex">\(2\pi r\,\mathrm dr\)</span> 的权重。</p>
 </div>
+<h3 id="415-组合法与复合分布">4.1.5 组合法与复合分布<a class="headerlink" href="#415-组合法与复合分布" title="Permanent link">#</a></h3>
+<h4 id="组合法compositionDS-414">组合法（composition，D&amp;S §4.1.4）<a class="headerlink" href="#组合法compositionDS-414" title="Permanent link">#</a></h4>
+<p>有时 <span class="arithmatex">\(f\)</span> 本身难抽，却拆得开：</p>
+<div class="arithmatex">\[
+f(x)=A_1f_1(x)+A_2f_2(x),\qquad a\le x\le b,
+\]</div>
+<p>其中 <span class="arithmatex">\(f_1,f_2\)</span> 是好抽的 PDF、<span class="arithmatex">\(A_1+A_2=1\)</span>（保证 <span class="arithmatex">\(f\)</span> 归一）。抽样两步：抽 <span class="arithmatex">\(\rho_i\)</span>；<span class="arithmatex">\(\rho_i&lt;A_1\)</span> 就从 <span class="arithmatex">\(f_1\)</span> 抽，否则从 <span class="arithmatex">\(f_2\)</span> 抽。推广到任意多个分量显然。两大好处：复杂分布化简为简单分布的混合；<strong>把大概率给便宜的分量</strong>——</p>
+<p><strong>D&amp;S 例 4.5</strong>：<span class="arithmatex">\(f(x)=\frac78\big[1+(x-1)^6\big]\)</span>，<span class="arithmatex">\(0\le x\le1\)</span>。分解 <span class="arithmatex">\(f=\frac78f_1+\frac18f_2\)</span>，<span class="arithmatex">\(f_1=1\)</span>（均匀）、<span class="arithmatex">\(f_2=7(x-1)^6\)</span>。抽样方案：</p>
+<div class="arithmatex">\[
+x=\begin{cases}
+\rho_2, &amp; \rho_1\le 7/8,\\[2pt]
+1-(1-\rho_2)^{1/7}, &amp; \rho_1&gt;7/8
+\end{cases}
+\]</div>
+<p>（第二行由 <span class="arithmatex">\(F_2(x)=1-(1-x)^7=\rho_2\)</span> 反解；难抽的 <span class="arithmatex">\(f_2\)</span> 平均每 8 次才轮到 1 次。）</p>
+<h4 id="复合分布的一般理论SM-29">复合分布的一般理论（S&amp;M §2.9）<a class="headerlink" href="#复合分布的一般理论SM-29" title="Permanent link">#</a></h4>
+<p>一般地，以概率 <span class="arithmatex">\(p_i\)</span>（<span class="arithmatex">\(\sum p_i=1\)</span>）选指标 <span class="arithmatex">\(i\)</span>、再从 <span class="arithmatex">\(f_i\)</span> 抽值，所得 <span class="arithmatex">\(X\)</span> 的密度、均值、方差：</p>
+<div class="arithmatex">\[
+f(x)=\sum_{i=1}^n p_i f_i(x),\qquad
+E(X)=\sum_i p_i\mu_i,\qquad
+\operatorname{var}(X)=\sum_i p_i\operatorname{var}(X_i)+\sum_{i&lt;j}p_ip_j(\mu_i-\mu_j)^2 .
+\]</div>
+<p>方差公式值得多看一眼：除了各分量方差按权重相加，还多出一项<strong>分量均值之差</strong>的加权和——分量均值拉得越开，混合分布越"胖"。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>S&amp;M 正文式 (2.35) 的交叉项写作 <span class="arithmatex">\(\sum_{i\ne j}p_ip_j(\mu_i-\mu_j)^2\)</span>，但其图 2.18 的推导（及 <span class="arithmatex">\(n=2\)</span> 的显式结果 <span class="arithmatex">\(p_1p_2(\mu_1-\mu_2)^2\)</span>）对应的是 <span class="arithmatex">\(\sum_{i&lt;j}\)</span>——<span class="arithmatex">\(\sum_{i\ne j}\)</span> 会多出一倍因子。本笔记按推导取 <span class="arithmatex">\(\sum_{i&lt;j}\)</span>。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：Gamma 相除得 Beta 的三行推导</p>
+<p>设 <span class="arithmatex">\(X\sim Gamma(\alpha,1)\)</span>、<span class="arithmatex">\(Y\sim Gamma(\beta,1)\)</span> 独立，换元 <span class="arithmatex">\(s=x+y,\ t=x/(x+y)\)</span>（即 <span class="arithmatex">\(x=st,\ y=(1-t)s\)</span>），雅可比 <span class="arithmatex">\(|J|=s\)</span>。联合密度</p>
+<div class="arithmatex">\[
+f_{S,T}(s,t)=\frac{(st)^{\alpha-1}e^{-st}}{\Gamma(\alpha)}\cdot\frac{((1-t)s)^{\beta-1}e^{-(1-t)s}}{\Gamma(\beta)}\cdot s
+=\underbrace{\frac{s^{\alpha+\beta-1}e^{-s}}{\Gamma(\alpha+\beta)}}_{S\sim Gamma(\alpha+\beta,1)}
+\cdot\ \underbrace{\frac{t^{\alpha-1}(1-t)^{\beta-1}}{B(\alpha,\beta)}}_{T\sim\,\mathrm{Be}(\alpha,\beta)},
+\]</div>
+<p>两变量密度因子分离 ⇒ <span class="arithmatex">\(S\)</span> 与 <span class="arithmatex">\(T\)</span> 独立，<span class="arithmatex">\(T=X/(X+Y)\sim\mathrm{Be}(\alpha,\beta)\)</span>。本 notebook 用 2 + 5 个指数和复现了 Beta(2,5)，与 §4.1.4 的舍选法殊途同归（图 4.9 右）。</p>
+</div>
+<h4 id="Gamma-分布与-ErlangSM-291">Gamma 分布与 Erlang（S&amp;M §2.9.1）<a class="headerlink" href="#Gamma-分布与-ErlangSM-291" title="Permanent link">#</a></h4>
+<p>泊松过程（事件率 <span class="arithmatex">\(\beta\)</span>）里<strong>第 <span class="arithmatex">\(\alpha\)</span> 个事件的等待时间</strong> <span class="arithmatex">\(W\)</span> 服从 Gamma 分布。"到时刻 <span class="arithmatex">\(w\)</span> 已发生不少于 <span class="arithmatex">\(\alpha\)</span> 个事件"的反面就是 <span class="arithmatex">\(W&gt;w\)</span>，用泊松密度（<span class="arithmatex">\(\alpha\)</span> 整数）写出 CDF：</p>
+<div class="arithmatex">\[
+F(w)=1-\sum_{k=0}^{\alpha-1}\frac{(\beta w)^k}{k!}e^{-\beta w}.
+\]</div>
+<p>求导时裂项相消（telescoping），只剩一项：</p>
+<div class="arithmatex">\[
+f(w)=\frac{\beta}{(\alpha-1)!}(\beta w)^{\alpha-1}e^{-\beta w}
+\ \xrightarrow[\ \alpha\ \text{非整数}\ ]{}\
+\frac{\beta}{\Gamma(\alpha)}(\beta w)^{\alpha-1}e^{-\beta w},
+\qquad
+\Gamma(t)=\int_0^\infty y^{t-1}e^{-y}\,\mathrm dy .
+\]</div>
+<p><span class="arithmatex">\(\Gamma(n)=(n-1)!\)</span>（<span class="arithmatex">\(n\)</span> 正整数），<span class="arithmatex">\(\Gamma(\tfrac12)=\sqrt\pi\)</span>。<strong>再生性质</strong>（reproductive property）：<span class="arithmatex">\(W_1\sim G(\alpha_1,\beta)\)</span>、<span class="arithmatex">\(W_2\sim G(\alpha_2,\beta)\)</span> 独立，则 <span class="arithmatex">\(W_1+W_2\sim G(\alpha_1+\alpha_2,\beta)\)</span>——"等 <span class="arithmatex">\(\alpha_1+\alpha_2\)</span> 个事件"当然是"等 <span class="arithmatex">\(\alpha_1\)</span> 个"再"等 <span class="arithmatex">\(\alpha_2\)</span> 个"；积分证明对整数 <span class="arithmatex">\(\alpha_1\)</span> 反复分部积分即可（S&amp;M 图 2.19）。由它立得均值方差 <span class="arithmatex">\(\mu=\alpha/\beta\)</span>、<span class="arithmatex">\(\operatorname{var}=\alpha/\beta^2\)</span>（指数的和）。<span class="arithmatex">\(\alpha\)</span> 为整数的 Gamma 又叫 <strong>Erlang 分布</strong>。</p>
+<p><strong>抽样 <span class="arithmatex">\(G(\alpha,1)\)</span></strong>，按 <span class="arithmatex">\(\alpha\)</span> 分三档（S&amp;M §2.9.2）：</p>
+<ul>
+<li><strong><span class="arithmatex">\(\alpha=m\)</span> 正整数（Erlang）</strong>：再生性质 + 指数抽样直接卷积：<span class="arithmatex">\(Y=-\ln\prod_{i=1}^m U_i\)</span>（<span class="arithmatex">\(m\)</span> 个 <span class="arithmatex">\(E(1)\)</span> 之和）。</li>
+<li><strong><span class="arithmatex">\(0&lt;\alpha&lt;1\)</span></strong>：密度无界，用<strong>组合 + 舍选</strong>。在 <span class="arithmatex">\(x=1\)</span> 处把定义域切两半，proposal 由两条好抽的密度拼接（拼接点连续要求 <span class="arithmatex">\(p\alpha=e(1-p)\)</span>）：</li>
+</ul>
+<div class="arithmatex">\[
+g(x)=\frac{e\alpha}{e+\alpha}\Big(x^{\alpha-1}\chi_1(x)+e^{-x}\chi_2(x)\Big),
+\qquad
+M=\frac{e+\alpha}{e\alpha},
+\]</div>
+<p>其中 <span class="arithmatex">\(\chi_1\)</span>（<span class="arithmatex">\(\chi_2\)</span>）是 <span class="arithmatex">\([0,1)\)</span>（<span class="arithmatex">\([1,\infty)\)</span>）的示性函数。算法：抽 <span class="arithmatex">\(U_1,U_2\)</span>；<span class="arithmatex">\(U_1&lt;\frac{e}{e+\alpha}\)</span> 走 A 案 <span class="arithmatex">\(Y=U_2^{1/\alpha}\)</span>，否则 B 案 <span class="arithmatex">\(Y=1-\ln U_2\)</span>；side experiment <span class="arithmatex">\(R\sim U(0,1)\)</span>，A 案 <span class="arithmatex">\(R&lt;e^{-Y}\)</span> 收、B 案 <span class="arithmatex">\(R&lt;Y^{\alpha-1}\)</span> 收。效率 <span class="arithmatex">\(1/M=\dfrac{e\alpha}{e+\alpha}\)</span>。
+- <strong>任意 <span class="arithmatex">\(\alpha\)</span></strong>：<span class="arithmatex">\(m=\lfloor\alpha\rfloor\)</span> 走 Erlang、<span class="arithmatex">\(\delta=\alpha-m\in[0,1)\)</span> 走上一档，两样本相加（再生性质）。</p>
+<p><figure>
+  <img src="../images/ch04/out-4-7.png" class="lq-img" />
+<br />
+<figcaption>图 4.9 组合法与卷积（代码实跑）：左，3 个 <span class="arithmatex">\(Exp(1)<span class="arithmatex"><span class="arithmatex"></span>(Gamma(3,1)<span class="arithmatex"><span class="arithmatex"></span>(Beta(2,5)\)</span>（均值 0.2861 vs 2/7），与图 4.8 的舍选法目标同一条密度。</figcaption></p>
+</figure>
+<h3 id="416-其他专用技术速览">4.1.6 其他专用技术速览<a class="headerlink" href="#416-其他专用技术速览" title="Permanent link">#</a></h3>
+<p>这四件兵器属于"特定场景的最快解"，各一段原理 + 适用场景，推导见 D&amp;S 原文。</p>
+<p><strong>矩形-楔-尾分解</strong>（rectangle-wedge-tail，D&amp;S §4.1.5）。把 PDF 下的面积切成 <span class="arithmatex">\(k\)</span> 个矩形 + <span class="arithmatex">\(k\)</span> 个楔形 + 1 条尾巴（图 4.10）：</p>
+<div class="arithmatex">\[
+f(x)=\sum_{i=1}^{k}A_if_i(x)+\sum_{i=1}^{k}A_{k+i}f_{k+i}(x)+A_{2k+1}f_{2k+1}(x),
+\]</div>
+<p>矩形份额 <span class="arithmatex">\(A_i=f(x_i)(x_i-x_{i-1})\)</span>，楔形份额 <span class="arithmatex">\(A_{k+i}=\int_{x_{i-1}}^{x_i}f\,\mathrm dx-A_i\)</span>，尾巴 <span class="arithmatex">\(A_{2k+1}=\int_{x_k}^\infty f\,\mathrm dx\)</span>。它是组合法的特化：<strong>面积大头压进矩形</strong>（均匀抽样，最快），楔形近似线性（下一招伺候），尾巴概率刻意压到 <span class="arithmatex">\(A_{2k+1}\ll1\)</span>（最贵但极少轮到）。MacLaren–Marsaglia–Bray（1964）用它造出了当年最快的指数抽样器。</p>
+<figure>
+  <img src="../images/ch04/fig-4-4.png" class="lq-img" />
+  <figcaption>图 4.10 矩形-楔-尾分解（截自原书 D&S 图 4.5）：矩形份额 <span class="arithmatex">\(A_i<span class="arithmatex"><span class="arithmatex"></span>(A_{k+i}<span class="arithmatex"><span class="arithmatex"></span>(A_{2k+1}\)</span> 概率极小但最贵。</figcaption>
+</figure>
+
+<p><strong>近线性 PDF 抽样</strong>（D&amp;S §4.1.6）。楔形里的 PDF 近似"从 <span class="arithmatex">\(f_i(x_i)\)</span> 线性降到 0"。Knuth 的招法：抽两个均匀数，令 <span class="arithmatex">\(u=\min(\rho_1,\rho_2)\)</span>、<span class="arithmatex">\(v=\max(\rho_1,\rho_2)\)</span>、<span class="arithmatex">\(x=x_{i-1}+u\,\Delta x_i\)</span>；先查宽松判据 <span class="arithmatex">\(v\le b/a\)</span>（两条平行"挤压线"围出的三角形），再查精确判据 <span class="arithmatex">\(v\le u+f_i(x)/a\)</span>，都不满足才重来。两条挤压线把拒绝域压缩到极小，效率远高于朴素舍选。适用：任何"分块后近似线性"的密度——与矩形-楔-尾配套。</p>
+<p><strong>组合-舍选法</strong>（composition-rejection，D&amp;S §4.1.7）。把组合与舍选串起来：<span class="arithmatex">\(f(x)=\sum_{j=1}^nA_jf_j(x)g_j(x)\)</span>，其中 <span class="arithmatex">\(g_j\)</span> 是 CDF 可逆的 PDF、<span class="arithmatex">\(0\le f_j\le1\)</span>。按权重 <span class="arithmatex">\(A_j/\sum_jA_j\)</span> 选指标 <span class="arithmatex">\(j\)</span>，从 <span class="arithmatex">\(g_j\)</span> 逆变换出候选 <span class="arithmatex">\(x_t=G_j^{-1}(\rho)\)</span>，以概率 <span class="arithmatex">\(f_j(x_t)\)</span> 接受。效率 <span class="arithmatex">\(1/\sum_iA_i\)</span>。适用：密度能写成"好抽核 × 有界调制"的场合。</p>
+<p><strong>均匀比值法</strong>（ratio of uniforms，D&amp;S §4.1.8）。Kinderman–Monahan 的漂亮结果：要抽 <span class="arithmatex">\(f(z)=h(z)/\int h\)</span>，考虑平面区域 <span class="arithmatex">\(V:\ 0\le x^2\le h(y/x)\)</span>；在 <span class="arithmatex">\(V\)</span> 上均匀撒点 <span class="arithmatex">\((x,y)\)</span>，则比值 <span class="arithmatex">\(z=y/x\)</span> 的密度恰为 <span class="arithmatex">\(f\)</span>。<span class="arithmatex">\(V\)</span> 不规则，但 <span class="arithmatex">\(h\)</span> 与 <span class="arithmatex">\(x^2h\)</span> 有界时可用矩形 <span class="arithmatex">\(R:\ 0\le x\le b=\max\sqrt h\)</span>、<span class="arithmatex">\(c=\min x\sqrt h\le y\le d=\max x\sqrt h\)</span> 罩住它再做舍选：抽 <span class="arithmatex">\(\rho_1,\rho_2\)</span>，令 <span class="arithmatex">\(x=b\rho_1\)</span>、<span class="arithmatex">\(y=c+(d-c)\rho_2\)</span>、<span class="arithmatex">\(z=y/x\)</span>，接受当且仅当 <span class="arithmatex">\(x^2\le h(z)\)</span>。适用：<span class="arithmatex">\(h\)</span> 好算、CDF 无望，又想避免逐段拆分——正态（<span class="arithmatex">\(h(z)=e^{-z^2/2}\)</span>）、Gamma 等都有干净的比值实现。</p>
+<h3 id="417-正态分布抽样">4.1.7 正态分布抽样<a class="headerlink" href="#417-正态分布抽样" title="Permanent link">#</a></h3>
+<p>正态密度（S&amp;M 式 2.18）</p>
+<div class="arithmatex">\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\Big[-\frac12\Big(\frac{x-\mu}{\sigma}\Big)^2\Big]
+\]</div>
+<p>是中心极限定理的主角，却对逆 CDF 法紧闭大门：<span class="arithmatex">\(e^{-x^2}\)</span> 无初等原函数，<span class="arithmatex">\(F^{-1}\)</span> 也写不出。专用算法有三条路（S&amp;M §2.6.1），外加一个"派生分布"。</p>
+<p><strong>路线一：CLT 近似</strong>。<span class="arithmatex">\(U(0,1)\)</span> 均值 <span class="arithmatex">\(\frac12\)</span>、方差 <span class="arithmatex">\(\frac1{12}\)</span>（第 2 章），CLT 说 <span class="arithmatex">\(n\)</span> 个均匀数之和近似正态：</p>
+<div class="arithmatex">\[
+X=\frac{\sum_{i=1}^{n}U_i-\frac n2}{\sqrt{n/12}}
+\ \approx\ N(0,1),
+\qquad n=12\ \text{时省去开方与除法}.
+\]</div>
+<p>快而不准：<span class="arithmatex">\(n=12\)</span> 时尾巴远短于正态，只配当粗胚。</p>
+<p><strong>路线二：Box–Muller（精确）</strong>。抽 <span class="arithmatex">\(U_1,U_2\sim U(0,1)\)</span>，令</p>
+<div class="arithmatex">\[
+X_1=\cos(2\pi U_1)\sqrt{-2\ln U_2},
+\qquad
+X_2=\sin(2\pi U_1)\sqrt{-2\ln U_2},
+\]</div>
+<p>则 <span class="arithmatex">\(X_1,X_2\)</span> 独立同 <span class="arithmatex">\(N(0,1)\)</span>。<strong>证明（含雅可比，S&amp;M 图 2.10）</strong>：<span class="arithmatex">\((U_1,U_2)\)</span> 在单位方形均匀，密度 1。变换 <span class="arithmatex">\(\tau\)</span> 的反解：两式平方相加得 <span class="arithmatex">\(x_1^2+x_2^2=-2\ln u_2\)</span>，故 <span class="arithmatex">\(u_2=e^{-(x_1^2+x_2^2)/2}\)</span>（<span class="arithmatex">\(0&lt;u_2\le1\)</span>）；<span class="arithmatex">\(u_1\)</span> 由周期性唯一确定。二元换元公式 <span class="arithmatex">\(f_{X}(\mathbf x)=f_U(\tau^{-1}(\mathbf x))\,|\det(\tau^{-1})'|\)</span> 且 <span class="arithmatex">\(|\det(\tau^{-1})'|=1/|\det\tau'|\)</span>。算雅可比：</p>
+<div class="arithmatex">\[
+\det\tau'=
+\det\begin{pmatrix}
+-2\pi\sin(2\pi u_1)\sqrt{-2\ln u_2} &amp; -\dfrac{\cos(2\pi u_1)}{u_2\sqrt{-2\ln u_2}}\\[6pt]
+\ \ \ 2\pi\cos(2\pi u_1)\sqrt{-2\ln u_2} &amp; -\dfrac{\sin(2\pi u_1)}{u_2\sqrt{-2\ln u_2}}
+\end{pmatrix}
+=\frac{2\pi}{u_2}\big(\sin^2+\cos^2\big)=\frac{2\pi}{u_2}.
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+f_{X_1,X_2}(x_1,x_2)=\frac{1}{\det\tau'}=\frac{u_2}{2\pi}
+=\frac{1}{\sqrt{2\pi}}e^{-x_1^2/2}\cdot\frac{1}{\sqrt{2\pi}}e^{-x_2^2/2},
+\]</div>
+<p>两个标准正态密度之积 ⇒ 各自独立同 <span class="arithmatex">\(N(0,1)\)</span>。直观：极坐标下 <span class="arithmatex">\(-2\ln U_2\)</span> 给出 Rayleigh 径向、<span class="arithmatex">\(2\pi U_1\)</span> 给出均匀角度——合成圆对称高斯云（图 4.11 左的散点圆对称；KS 检验 <span class="arithmatex">\(p=0.434\)</span> 通过）。</p>
+<p><figure>
+  <img src="../images/ch04/out-4-5.png" class="lq-img" />
+<br />
+<figcaption>图 4.11 Box–Muller 实跑（代码实跑，<span class="arithmatex"><span class="arithmatex"></span>times10^5<span class="arithmatex"><span class="arithmatex"></span>((Z_1,Z_2)<span class="arithmatex"><span class="arithmatex"></span>(|<span class="arithmatex"><span class="arithmatex"></span>)；右，<span class="arithmatex"><span class="arithmatex"></span>) 直方图贴住标准正态密度，均值 −0.0023、方差 0.9944，KS 检验 <span class="arithmatex"><span class="arithmatex"></span>)。</figcaption></p>
+</figure>
+<p><strong>路线三：Marsaglia–Bray 极法（polar method，精确）</strong>。拒绝采样版 Box–Muller：</p>
+<ol>
+<li><span class="arithmatex">\(V_1=2U_1-1,\ V_2=2U_2-1,\ S=V_1^2+V_2^2\)</span>；<span class="arithmatex">\(S\ge1\)</span>（落在单位圆外）重来；</li>
+<li>返回 <span class="arithmatex">\(X_1=V_1\sqrt{-2\ln S/S}\)</span>，<span class="arithmatex">\(X_2=V_2\sqrt{-2\ln S/S}\)</span>。</li>
+</ol>
+<p>三处超越函数（BM 用 sin、cos、ln 三次）降到一次（<span class="arithmatex">\(\ln\)</span>），代价是候选点有 <span class="arithmatex">\(1-\pi/4\approx21.5\%\)</span> 被拒（S&amp;M 留作习题的那个 fraction）。当年是提速利器，如今超越函数已足够便宜，差距不再要紧；现代库（如 NumPy）用的是更快的 ziggurat 类算法——日常抽正态直接 <code>rng.normal()</code>，这些手搓版的价值在懂原理与应急。</p>
+<h4 id="对数正态与-Gibrat-定律SM-27">对数正态与 Gibrat 定律（S&amp;M §2.7）<a class="headerlink" href="#对数正态与-Gibrat-定律SM-27" title="Permanent link">#</a></h4>
+<p><strong>对数正态 <span class="arithmatex">\(LN(\alpha,\beta^2)\)</span></strong>：<span class="arithmatex">\(Y\sim N(\alpha,\beta^2)\)</span>，<span class="arithmatex">\(X=e^Y\)</span>。CDF 换元（<span class="arithmatex">\(r=\ln u\)</span>）给出密度：</p>
+<div class="arithmatex">\[
+f_X(x)=\frac{1}{x\,\beta\sqrt{2\pi}}\exp\Big[-\frac{(\ln x-\alpha)^2}{2\beta^2}\Big],\qquad x&gt;0,
+\qquad
+E(X)=e^{\alpha+\frac12\beta^2},\quad
+\operatorname{var}(X)=(e^{\beta^2}-1)e^{2\alpha+\beta^2}.
+\]</div>
+<p>抽样毫无难度：抽正态再取指数。它是"乘性世界"的正态——配方对半错、增长率相乘的量（公司规模、生物体型、投资净值）都长这副右偏厚尾的模样。</p>
+<p><strong>乘性中心极限定理（Gibrat 定律）</strong>。设 <span class="arithmatex">\(R_1,\dots,R_n\)</span> 独立同分布、取正值、方差有限，<span class="arithmatex">\(X=\prod_iR_i\)</span>。取对数化乘为加：</p>
+<div class="arithmatex">\[
+\ln X=\sum_{i=1}^n\ln R_i
+\ \xrightarrow[\ n\to\infty\ ]{\ \text{CLT}\ }\
+\ln X\approx N\big(nu,\ nv^2\big),
+\qquad u=E(\ln R),\ v^2=\operatorname{var}(\ln R),
+\]</div>
+<p>即 <span class="arithmatex">\(X\)</span> 渐近 <span class="arithmatex">\(LN(nu,nv^2)\)</span>——<strong>大量独立增长率的乘积是对数正态的</strong>，这是 Gibrat 定律（比例效应定律）。S&amp;M 的算例：<span class="arithmatex">\(R\sim U(0.2,2)\)</span>、<span class="arithmatex">\(n=10\)</span>，用 <span class="arithmatex">\(\int_0^1\ln(a+cu)\,\mathrm du=\frac1c[b(\ln b-1)-a(\ln a-1)]\)</span>（分部积分）等式子算出</p>
+<div class="arithmatex">\[
+\alpha=-0.510,\qquad \beta^2=3.220,\qquad \beta=1.794 .
+\]</div>
+<p>本 notebook 20 万次模拟：<span class="arithmatex">\(\ln X\)</span> 样本均值 <span class="arithmatex">\(-0.509\)</span>、标准差 <span class="arithmatex">\(1.861\)</span>，直方图（对数纵轴）贴住 <span class="arithmatex">\(LN(-0.510,3.220)\)</span> 密度（图 4.13；原书图 2.12 即图 4.12）。</p>
+<figure>
+  <img src="../images/ch04/fig-4-5.png" class="lq-img" />
+  <figcaption>图 4.12 乘积分布 vs 对数正态（截自原书 S&M 图 2.12）：10 个 <span class="arithmatex">\(U(0.2,2)<span class="arithmatex"><span class="arithmatex"></span>(LN(-0.510,3.220)\)</span> 密度——Gibrat 定律的视觉证据。</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch04/out-4-8.png" class="lq-img" />
+  <figcaption>图 4.13 Gibrat 定律实跑（代码实跑，<span class="arithmatex"><span class="arithmatex"></span>times10^5<span class="arithmatex"><span class="arithmatex"></span>(LN(-0.510,3.220)<span class="arithmatex"><span class="arithmatex"></span>(<span class="arithmatex"><span class="arithmatex"></span>)</span> 样本均值 <span class="arithmatex">\(-0.509<span class="arithmatex"><span class="arithmatex"></span>(<span class="arithmatex"><span class="arithmatex"></span>)</span>）、标准差 <span class="arithmatex">\(1.861<span class="arithmatex"><span class="arithmatex"></span>(<span class="arithmatex"><span class="arithmatex"></span>)</span>）。</figcaption>
+</figure>
+
+<h3 id="418-联合分布抽样">4.1.8 联合分布抽样<a class="headerlink" href="#418-联合分布抽样" title="Permanent link">#</a></h3>
+<p>联合密度 <span class="arithmatex">\(f(x,y,z)\)</span> 的标准拆法是<strong>逐级条件化</strong>（D&amp;S §4.1.9）：</p>
+<div class="arithmatex">\[
+f(x,y,z)=f(x\mid y,z)\,f(y\mid z)\,f_z(z):
+\]</div>
+<p>先从边缘 <span class="arithmatex">\(f_z\)</span> 抽 <span class="arithmatex">\(z\)</span>，再从条件 <span class="arithmatex">\(f(y\mid z)\)</span> 抽 <span class="arithmatex">\(y\)</span>，最后从 <span class="arithmatex">\(f(x\mid y,z)\)</span> 抽 <span class="arithmatex">\(x\)</span>——每一步都是一维标准抽样。MCMC（第 6 章预告）是条件分布拿不到解析时的另一条路。</p>
+<p><strong>抽样顺序决定计算量</strong>（D&amp;S 例 4.6）。联合密度 <span class="arithmatex">\(f(\theta,\phi)=\frac1K\sin\theta\)</span>（<span class="arithmatex">\(\frac\pi4\le\theta\le\frac\pi2\)</span>，<span class="arithmatex">\(0\le\phi\le\theta\)</span>，<span class="arithmatex">\(K=1+\frac{\sqrt2(\pi-4)}8\approx0.8483\)</span>，来自"对某曲面所张立体角抽样"）。边缘与条件：<span class="arithmatex">\(f_\theta(\theta)=\theta\sin\theta/K\)</span>、<span class="arithmatex">\(f_\phi(\phi)=\frac{1}{\sqrt2K}\approx0.8336\)</span>（均匀！）、<span class="arithmatex">\(f(\theta\mid\phi)=\sqrt2\sin\theta\)</span>、<span class="arithmatex">\(f(\phi\mid\theta)=1/\theta\)</span>。两条路线：</p>
+<ul>
+<li>先 <span class="arithmatex">\(\theta\)</span> 后 <span class="arithmatex">\(\phi\)</span>：<span class="arithmatex">\(\rho_i=\frac1K\int_{\pi/4}^{\theta_i}\theta\sin\theta\,\mathrm d\theta=\frac{\sin\theta_i-\theta_i\cos\theta_i-\sqrt2(4-\pi)/8}{K}\)</span> 是<strong>超越方程</strong>，得数值求解后才轮到下一步——贵。</li>
+<li>先 <span class="arithmatex">\(\phi\)</span> 后 <span class="arithmatex">\(\theta\)</span>：<span class="arithmatex">\(\phi_i=\sqrt2K\,\rho_{1i}\)</span> 直接反解；再由 <span class="arithmatex">\(\rho_{2i}=1-\sqrt2\cos\theta_i\)</span> 得 <span class="arithmatex">\(\theta_i=\arccos(\rho_{2i}/\sqrt2)\)</span>，全程解析——<strong>便宜</strong>。</li>
+</ul>
+<p>同一条联合密度，抽样顺序一换，成本天差地别；动手前把两个方向的边缘/条件都算一遍再选路。</p>
+<p><strong>三角形上的均匀分布</strong>（S&amp;M §2.10）。<span class="arithmatex">\(f(x,y)=2\)</span>（三角形面积 <span class="arithmatex">\(\frac12\)</span> 的归一），区域 <span class="arithmatex">\(x\ge0,\ y\ge0,\ y\le1-x\)</span>。边缘 <span class="arithmatex">\(f_X(x)=\int_0^{1-x}2\,\mathrm dy=2(1-x)\)</span>，CDF <span class="arithmatex">\(F_X(x)=2x-x^2\)</span>；条件 <span class="arithmatex">\(f_{Y|X}(y|x)=\frac{1}{1-x}\)</span>，CDF <span class="arithmatex">\(=\frac{y}{1-x}\)</span>。分别反解（<span class="arithmatex">\(1-U\)</span> 换成 <span class="arithmatex">\(U\)</span>）：</p>
+<div class="arithmatex">\[
+X=1-\sqrt{U_1},
+\qquad
+Y=U_2\sqrt{U_1}.
+\]</div>
+<figure>
+  <img src="../images/ch04/fig-4-6.png" class="lq-img" />
+  <figcaption>图 4.14 三角形区域均匀抽样 200 点（截自原书 S&M 图 2.20）：每点耗两个均匀数，<span class="arithmatex">\(X=1-<span class="arithmatex"><span class="arithmatex"></span>)</span> 负责边缘（左边界附近密、右顶点附近疏，正是 <span class="arithmatex">\(2(1-x)<span class="arithmatex"><span class="arithmatex"></span>(Y=U_2<span class="arithmatex"><span class="arithmatex"></span>)</span> 负责条件。</figcaption>
+</figure>
+
+<p><strong>二元正态与条件推导</strong>。两个独立标准正态的联合密度 <span class="arithmatex">\(Ce^{-(x_1^2+x_2^2)/2}\)</span> 圆对称（<span class="arithmatex">\(C=\frac1{2\pi}\)</span>，即 Box–Muller 图像）；线性变换 <span class="arithmatex">\(\mathbf Y=A\mathbf X+\boldsymbol\mu\)</span> 把圆压扁、平移成一般二元正态（S&amp;M 习题 7 的做法）。反过来看条件分布：二元正态 <span class="arithmatex">\(N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)\)</span> 在 <span class="arithmatex">\(x_1\)</span> 给定时，条件分布仍是正态——把联合密度按 <span class="arithmatex">\(x_1\)</span> 配方：</p>
+<div class="arithmatex">\[
+\mu_{2|1}=\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x_1-\mu_1),
+\qquad
+\sigma_{2|1}^2=\sigma_2^2(1-\rho^2).
+\]</div>
+<p>于是联合抽样有两条等价路线：线性变换（抽两个独立正态乘 <span class="arithmatex">\(A\)</span> 加 <span class="arithmatex">\(\mu\)</span>）或条件法（抽 <span class="arithmatex">\(x_1\)</span>，再按上式抽 <span class="arithmatex">\(x_2\mid x_1\)</span>）——相关性完全藏进了条件均值与收缩了的条件方差里。</p>
+<p><strong>多维积分的记分方式</strong>（D&amp;S §4.2.4）。要估 <span class="arithmatex">\(\langle z\rangle=\int_V z(\mathbf x)f(\mathbf x)\,\mathrm d\mathbf x\)</span>（<span class="arithmatex">\(n\)</span> 维），笨办法是 <span class="arithmatex">\(n\)</span> 层嵌套网格（式 4.33，需 <span class="arithmatex">\(\prod N_i\)</span> 次求值且覆盖失衡）；正规做法是<strong>每条 history 独立抽整个向量 <span class="arithmatex">\(\mathbf x_i\)</span>（逐级条件化），记一个分 <span class="arithmatex">\(z(\mathbf x_i)\)</span></strong>，<span class="arithmatex">\(N\)</span> 条平均（式 4.34）——样本空间覆盖均匀，这正是蒙特卡罗"维数无关"优势的记分面。</p>
+<h2 id="42-记分与统计推断数理统计复习">4.2 记分与统计推断（数理统计复习）<a class="headerlink" href="#42-记分与统计推断数理统计复习" title="Permanent link">#</a></h2>
+<p>抽样解决"样本从哪来"；<strong>记分</strong>解决"每条 history 记什么账"。D&amp;S §4.2 的记账格式：开跑前各累加器清零，每条 history 累加一次。估 <span class="arithmatex">\(\langle z\rangle=\int_a^bz(x)f(x)\,\mathrm dx\)</span>，用 <span class="arithmatex">\(S_1\)</span> 累加 <span class="arithmatex">\(z(x_i)\)</span>、<span class="arithmatex">\(S_2\)</span> 累加 <span class="arithmatex">\(z^2(x_i)\)</span>：</p>
+<div class="arithmatex">\[
+\bar z=\frac{S_1}{N}\ \approx\ \langle z\rangle,
+\qquad
+\overline{z^2}=\frac{S_2}{N}.
+\]</div>
+<h3 id="421-样本均值样本方差与置信区间">4.2.1 样本均值、样本方差与置信区间<a class="headerlink" href="#421-样本均值样本方差与置信区间" title="Permanent link">#</a></h3>
+<h4 id="复习无偏性与标准误差">复习：无偏性与标准误差<a class="headerlink" href="#复习无偏性与标准误差" title="Permanent link">#</a></h4>
+<p><strong>样本均值</strong> <span class="arithmatex">\(\bar z=\frac1N\sum_i z_i\)</span> 是 <span class="arithmatex">\(\langle z\rangle\)</span> 的<strong>无偏估计</strong>：<span class="arithmatex">\(E[\bar z]=\langle z\rangle\)</span>（第 2 章）。<strong>样本方差</strong></p>
+<div class="arithmatex">\[
+s^2(z)=\frac{N}{N-1}\big(\overline{z^2}-\bar z^{\,2}\big)
+\]</div>
+<p>里那个 <span class="arithmatex">\(N-1\)</span> 修正不是为了好看：除以 <span class="arithmatex">\(N\)</span> 的版本系统性地低估 <span class="arithmatex">\(\sigma^2\)</span>（少了一个自由度——均值已经用掉一份数据），除以 <span class="arithmatex">\(N-1\)</span> 才使 <span class="arithmatex">\(E[s^2]=\sigma^2\)</span>（无偏）。<strong>标准误差</strong>（standard error）是估计量的标准差，用两个累加器直接算（D&amp;S 式 4.25–4.26）：</p>
+<div class="arithmatex">\[
+s(\bar z)=\frac{s(z)}{\sqrt N}
+=\sqrt{\frac{\overline{z^2}-\bar z^{\,2}}{N-1}}
+=\frac{1}{N\sqrt{N-1}}\sqrt{N\mathcal S_2-\mathcal S_1^2}.
+\]</div>
+<p>它就是第 1 章 <span class="arithmatex">\(N^{-1/2}\)</span> 误差律的精确身份：<span class="arithmatex">\(N\)</span> 翻四倍，<span class="arithmatex">\(\sigma(\bar z)\)</span> 才减半。想再快，只能压 <span class="arithmatex">\(s(z)\)</span>——方差缩减，第 5 章的预告只到这里。</p>
+<h4 id="置信区间954-的来历SM-263">置信区间：95.4% 的来历（S&amp;M §2.6.3）<a class="headerlink" href="#置信区间954-的来历SM-263" title="Permanent link">#</a></h4>
+<p>设 <span class="arithmatex">\(X_1,\dots,X_n\)</span> 是独立同分布、均值 <span class="arithmatex">\(\theta\)</span>（真值）、方差 <span class="arithmatex">\(\sigma_X^2\)</span> 的估计量。CLT 说样本均值近似正态：</p>
+<div class="arithmatex">\[
+Y=\frac{\bar X-\theta}{\sqrt{\sigma_X^2/n}}\approx N(0,1),
+\qquad
+\operatorname{Pr}(-2&lt;Y&lt;2)=0.954
+\ \Longrightarrow\
+\theta\in\Big[\bar X-2\sqrt{\sigma_X^2/n},\ \bar X+2\sqrt{\sigma_X^2/n}\Big]\ \text{以概率 }0.954 .
+\]</div>
+<p>这就是"均值 ± 2 倍标准误盖住真值 95.4%"的出处（S&amp;M 的口径；更常用的 95% 区间用 1.96 代替 2，第 2 章已给）。但 S&amp;M 紧接着点了三个现实问题：其一，<span class="arithmatex">\(\sigma_X^2\)</span> 本身要靠数据估，<span class="arithmatex">\(Y\)</span> 就不再严格正态；其二，<span class="arithmatex">\(X_i\)</span> 未必同分布（模拟的<strong>启动效应</strong>：前段样本不在稳态）；其三，<span class="arithmatex">\(X_i\)</span> 可能相关（排队模拟的常态）。前两个的对策：</p>
+<p><strong>t 统计量</strong>。<span class="arithmatex">\(\sigma\)</span> 未知、用样本标准差顶替后，<span class="arithmatex">\((\hat\theta-\theta)/(s_B/\sqrt m)\)</span> 服从 <strong>Student-t 分布</strong>（自由度 <span class="arithmatex">\(\nu=m-1\)</span>；正态除以 Gamma 型变量，S&amp;M 式 2.21）。自由度小时尾巴明显比正态厚（<span class="arithmatex">\(\nu=1\)</span> 的 95% 分位是 6.31，<span class="arithmatex">\(\nu\to\infty\)</span> 衰减到 1.96）——<strong>样本越少，误差棒要越宽</strong>。95% 双侧区间查累积表 <span class="arithmatex">\(\beta=(1+0.95)/2=0.975\)</span> 列。</p>
+<p><strong>批处理（batching）</strong>。把 <span class="arithmatex">\(n\)</span> 个样本切成 <span class="arithmatex">\(m=n/J\)</span> 批、每批 <span class="arithmatex">\(J\)</span> 个，批均值</p>
+<div class="arithmatex">\[
+B_i=\frac1J\sum_{j=(i-1)J+1}^{iJ}X_j
+\]</div>
+<p>近似独立同分布（批内相关被平均掉），对 <span class="arithmatex">\(B_i\)</span> 用上面的 t 区间即可。<span class="arithmatex">\(m\)</span> 越大区间越窄，但 <span class="arithmatex">\(J\)</span> 必须大到足以切断批间相关——<span class="arithmatex">\(m\)</span> 与 <span class="arithmatex">\(J\)</span> 的拉锯是排队模拟的日常（§4.2.4 立刻用到）。</p>
+<h3 id="422-successes-over-trials-记分与二项置信区间">4.2.2 successes-over-trials 记分与二项置信区间<a class="headerlink" href="#422-successes-over-trials-记分与二项置信区间" title="Permanent link">#</a></h3>
+<p>最原始的记分：每条 history 只记成功（1）或失败（0）。此时 <span class="arithmatex">\(S_1\)</span> 就是成功次数，估计</p>
+<div class="arithmatex">\[
+\bar z=\frac{S_1}{N}\quad\text{估计成功概率 } p .
+\]</div>
+<p><strong>D&amp;S 例 4.7（掷骰子掷出 7）</strong>：两枚骰子和为 7 有 6 种组合，<span class="arithmatex">\(P_7=6/36=0.16667\)</span>。模拟记分 <span class="arithmatex">\(z=1\iff J+K=7\)</span>。原书 Table 4.1 的收敛：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(N\)</span></th>
+<th>10</th>
+<th>100</th>
+<th>1 000</th>
+<th>10 000</th>
+<th>100 000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\bar P_7\)</span></td>
+<td>0.200</td>
+<td>0.210</td>
+<td>0.156</td>
+<td>0.1626</td>
+<td>0.1652</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(s(\bar P_7)\)</span></td>
+<td>0.100</td>
+<td>0.040</td>
+<td>0.011</td>
+<td>0.0037</td>
+<td>0.0012</td>
+</tr>
+</tbody>
+</table>
+<p>严格按 <span class="arithmatex">\(1/\sqrt N\)</span> 收窄，与 <span class="arithmatex">\(\pm1\)</span> 个标准误覆盖 68%、<span class="arithmatex">\(\pm2\)</span> 个覆盖 95.4% 的解读配套。</p>
+<p><strong>二项置信区间</strong>。0/1 记分下 <span class="arithmatex">\(s^2(z)=p(1-p)\)</span>，标准误差</p>
+<div class="arithmatex">\[
+s(\bar z)=\sqrt{\frac{\bar z(1-\bar z)}{N}}
+\qquad\Longrightarrow\qquad
+p\in\Big[\hat p-1.96\sqrt{\tfrac{\hat p(1-\hat p)}{N}},\ \hat p+1.96\sqrt{\tfrac{\hat p(1-\hat p)}{N}}\Big]\ \text{(95\%)} .
+\]</div>
+<p><span class="arithmatex">\(N\)</span> 小或 <span class="arithmatex">\(p\)</span> 贴近 0/1 时正态近似失真，改用精确二项（Clopper–Pearson）区间；蒙特卡罗里通常 <span class="arithmatex">\(N\)</span> 巨大，Wald 区间够用。</p>
+<p><strong>从 0/1 到加权记分</strong>（D&amp;S §4.2.3）。很多 history 天生"低产"：蒲丰问题 <span class="arithmatex">\(D\gg L\)</span> 时，绝大多数针根本碰不到线；尖峰被积函数在均匀抽样下大量求值都在白干。蒙特卡罗的强项是<strong>偏置抽样</strong>（bias）：故意让高产 history 多发生，再用<strong>权重</strong> <span class="arithmatex">\(W_i\)</span> 把账算平——§4.1.2 的逆 CDF 视角下，把某子区间的抽样频率人为放大 10 倍，这些样本的权重就设 <span class="arithmatex">\(W_i=1/10\)</span>。无偏记账公式：</p>
+<div class="arithmatex">\[
+\bar z=\frac1N\sum_{i=1}^{N}W_i\,z(x_i)=\frac1N\sum_{i=1}^N\zeta_i,
+\qquad
+\zeta_i=W_i\,z(x_i).
+\]</div>
+<p><strong>D&amp;S 例 4.8（偏置蒲丰投针）</strong>：<span class="arithmatex">\(D/L=10^4\)</span> 时 <span class="arithmatex">\(P_{cut}=2L/(\pi D)\approx6.37\times10^{-5}\)</span>，analog 模拟几乎全记 0。偏置三连：针端只往"可能相交"的 <span class="arithmatex">\((0,L)\)</span> 区间投（权重补 <span class="arithmatex">\(L/(D/2)\)</span>）；角度只在 <span class="arithmatex">\((\pi/2,3\pi/2)\)</span> 投（频率加倍，权重减半）；判相交后按权重记分。同样的相对误差，偏置版所需 history 数少几个量级（原书图 4.7）——这正是第 5 章方差缩减的动机预演。</p>
+<h3 id="423-统计检验">4.2.3 统计检验<a class="headerlink" href="#423-统计检验" title="Permanent link">#</a></h3>
+<h4 id="评估结果的三个统计量DS-421">评估结果的三个统计量（D&amp;S §4.2.1）<a class="headerlink" href="#评估结果的三个统计量DS-421" title="Permanent link">#</a></h4>
+<p><strong>相对误差</strong> <span class="arithmatex">\(R=s(\bar z)/\bar z\)</span>。大 <span class="arithmatex">\(N\)</span> 下用累加器直接算：</p>
+<div class="arithmatex">\[
+R=\sqrt{\frac{\mathcal S_2}{\mathcal S_1^2}-\frac1N}.
+\]</div>
+<p>判读：所有 <span class="arithmatex">\(z_i\)</span> 相等则 <span class="arithmatex">\(R=0\)</span>（零方差解最省）；<span class="arithmatex">\(z_i\)</span> 同号时恒有 <span class="arithmatex">\(R&lt;1\)</span>；<strong>实务红线 <span class="arithmatex">\(R\le0.05\)</span></strong>（MCNP 的经验值）。<span class="arithmatex">\(z_i\)</span> 有正有负时 <span class="arithmatex">\(R\)</span> 可以超过 1，此时它不再是"百分之几"的直觉量。</p>
+<p><strong>品质因子</strong> <span class="arithmatex">\(FOM=1/(R^2T)\)</span>（<span class="arithmatex">\(T\)</span> 为机时）。因 <span class="arithmatex">\(R^2\propto1/N\)</span>、<span class="arithmatex">\(T\propto N\)</span>，<strong>正常运行的 FOM 应近似恒定</strong>。三个用途：FOM 忽高忽低 ⇒ 置信区间可能没盖住真值（有问题）；短跑对比不同方差缩减方案，FOM 最大者胜；预估达标机时 <span class="arithmatex">\(T\approx1/(R^2\cdot FOM)\)</span>。</p>
+<p><strong>方差的方差</strong>（VOV）。<span class="arithmatex">\(R\)</span> 自己的方差：</p>
+<div class="arithmatex">\[
+VOV=\frac{s^4(\bar z)}{s^2\big(s^2(\bar z)\big)}
+=\frac{\sum_{i=1}^N(z_i-\bar z)^4}{\Big[\sum_{i=1}^N(z_i-\bar z)^2\Big]^2}-\frac1N
+\ \xrightarrow{}\ \frac1N\ \text{速率单调下降}.
+\]</div>
+<p>需要 <span class="arithmatex">\(S_1\)</span>–<span class="arithmatex">\(S_4\)</span> 四个累加器；经验判据 <span class="arithmatex">\(VOV&lt;0.1\)</span>，否则置信区间不可信（重尾分数分布的标志）。</p>
+<p><strong>高分尾部体检</strong>。把每条 history 的分数分箱，得到未知 PDF <span class="arithmatex">\(f(z)\)</span> 的经验估计。CLT 要求 <span class="arithmatex">\(\langle z^2\rangle\)</span> 存在，所以 properly 抽样的尾巴要么有上界、要么衰减快于 <span class="arithmatex">\(1/|z|^3\)</span>；难啃的模拟里，"罕见高分事件有没有被抽够"是最难过的一关（柯西型厚尾会让一切置信区间失效，见 §4.1.1）。</p>
+<h4 id="卡方与-KS复习提纲回指第-3-章">卡方与 KS：复习提纲（回指第 3 章）<a class="headerlink" href="#卡方与-KS复习提纲回指第-3-章" title="Permanent link">#</a></h4>
+<p>对"抽样器输出是否真服从目标分布"的假设检验，第 3 章已展开，这里只留提纲：</p>
+<ul>
+<li><strong>卡方拟合优度</strong>：分箱数频数 <span class="arithmatex">\(O_i\)</span> vs 期望 <span class="arithmatex">\(E_i\)</span>，<span class="arithmatex">\(\chi^2=\sum(O_i-E_i)^2/E_i\)</span>，大样本下 <span class="arithmatex">\(\chi^2\)</span> 分布、自由度 <span class="arithmatex">\(k-1\)</span>（一个约束 <span class="arithmatex">\(\sum O_i=N\)</span>）；对离散分布/分箱数据最顺手。</li>
+<li><strong>Kolmogorov–Smirnov</strong>：<span class="arithmatex">\(D_N=\sup_x|F_N(x)-F(x)|\)</span>，连续 CDF 的整体最大偏差，大 <span class="arithmatex">\(N\)</span> 的 5% 临界值 <span class="arithmatex">\(\approx1.36/\sqrt N\)</span>；不依赖分组，但只对连续分布灵敏。</li>
+<li>纪律同前：p 值只能<strong>证伪</strong>不能证真；本 notebook 对 Box–Muller 样本的 KS 检验（<span class="arithmatex">\(p=0.434\)</span>）就是这套流程的最小应用。</li>
+</ul>
+<h3 id="424-离散事件模拟小例MM1-排队">4.2.4 离散事件模拟小例：M/M/1 排队<a class="headerlink" href="#424-离散事件模拟小例MM1-排队" title="Permanent link">#</a></h3>
+<h4 id="事件调度法SM-252">事件调度法（S&amp;M §2.5.2）<a class="headerlink" href="#事件调度法SM-252" title="Permanent link">#</a></h4>
+<p>排队论处理的系统布满随机等待时间。指数是唯一无记忆的连续分布（§4.1.1），所以只有指数等待时间的系统（M/M/1 等）能解析求解；<strong>再复杂一点就必须模拟</strong>——这个领域的蒙特卡罗叫<strong>离散事件模拟</strong>（discrete event simulation），且它允许任意等待时间分布按同一套流程替换。</p>
+<p><strong>事件调度</strong>（event scheduling）的骨架：维护一份按时间排序的<strong>事件时刻表</strong>（master schedule）；仿真执行器不断跳到<strong>下一个事件</strong>处理，处理时按相应分布抽样出新事件、插回时刻表。S&amp;M 的细胞分裂小例：1 个细胞、分裂等待 <span class="arithmatex">\(E(0.5)\)</span>（每小时）、模拟 8 小时——分裂一个变两个，各自再抽分裂时间，时刻表不断插队重排，直到所有后续事件越过 8 小时截止线。</p>
+<h4 id="MM1-与-Little-定律">M/M/1 与 Little 定律<a class="headerlink" href="#MM1-与-Little-定律" title="Permanent link">#</a></h4>
+<p>M/M/1：到达间隔 <span class="arithmatex">\(E(\lambda)\)</span>（泊松到达流），单个服务台，服务时长 <span class="arithmatex">\(E(\mu)\)</span>，先到先服务。利用率 <span class="arithmatex">\(\rho=\lambda/\mu&lt;1\)</span> 时存在稳态；生灭过程平衡给出队长分布 <span class="arithmatex">\(P_k=(1-\rho)\rho^k\)</span>，于是</p>
+<div class="arithmatex">\[
+L=\frac{\rho}{1-\rho}=\frac{\lambda}{\mu-\lambda},
+\qquad
+W=\frac{L}{\lambda}=\frac{1}{\mu-\lambda},
+\qquad
+W_q=W-\frac1\mu=\frac{\lambda}{\mu(\mu-\lambda)} ,
+\]</div>
+<p>（<span class="arithmatex">\(L\)</span>：系统中平均人数；<span class="arithmatex">\(W\)</span>：平均逗留；<span class="arithmatex">\(W_q\)</span>：平均排队等待。）其中第一步 <span class="arithmatex">\(W=L/\lambda\)</span> 就是 <strong>Little 定律</strong> <span class="arithmatex">\(L=\lambda W\)</span>——它对<strong>任何</strong>稳定排队系统成立（与分布无关），是排队模拟最方便的交叉验证。</p>
+<p><strong>模拟 vs 解析</strong>（本 notebook，<span class="arithmatex">\(\lambda=0.9,\ \mu=1\)</span>，理论 <span class="arithmatex">\(W_q=9,\ W=10,\ L=9\)</span>）：事件调度模拟器只维护"下一到达 / 下一离开"两个候补事件（比通用时刻表省，单服务台够用）；单条长跑 <span class="arithmatex">\(T=10^5\)</span> 的累计平均 <span class="arithmatex">\(W_q\)</span> 从空系统的剧烈波动（前段冲到 20+）缓慢爬向 9，印证<strong>瞬态</strong>存在；12 次重复、每条丢弃前 500 位顾客（burn-in）后：</p>
+<div class="arithmatex">\[
+W_q=9.11\pm0.34\ (\text{理论 }9),\qquad
+W=10.11\pm0.34\ (\text{理论 }10),\qquad
+L=\lambda W=9.10\ (\text{理论 }9).
+\]</div>
+<p>95% t 区间（自由度 11，<span class="arithmatex">\(t_{0.975}=2.20\)</span>）：<span class="arithmatex">\(W_q\in[8.36,\,9.86]\)</span>，盖住 9；<span class="arithmatex">\(W\in[9.36,\,10.86]\)</span>，盖住 10；Little 定律在模拟世界里成立到小数点后一位。</p>
+<p><figure>
+  <img src="../images/ch04/out-4-9.png" class="lq-img" />
+<br />
+<figcaption>图 4.15 M/M/1 离散事件模拟（代码实跑，<span class="arithmatex"><span class="arithmatex"></span>lambda=0.9,<span class="arithmatex"><span class="arithmatex"></span>mu=1<span class="arithmatex"><span class="arithmatex"></span>(W_q<span class="arithmatex"><span class="arithmatex"></span>(W_q=9.11<span class="arithmatex"><span class="arithmatex"></span>)、<span class="arithmatex"><span class="arithmatex"></span>pm0.34<span class="arithmatex"><span class="arithmatex"></span>(L=<span class="arithmatex"><span class="arithmatex"></span>)。</figcaption></p>
+</figure>
+<p>两个记账细节值得点名：其一，<strong>启动效应</strong>是真的——模拟从空系统出发，前几百位顾客的 <span class="arithmatex">\(W_q\)</span> 分布与稳态不同，必须丢弃（§4.2.1 的"非同分布"问题）；其二，顾客级样本强相关（队长一次堆积影响几十上百位顾客），<strong>不能</strong>把 <span class="arithmatex">\(N\)</span> 个 <span class="arithmatex">\(W_q\)</span> 当独立样本套 <span class="arithmatex">\(\sqrt N\)</span> 公式，要走 batching（12 次重复就是 <span class="arithmatex">\(m=12\)</span> 批）。到达间隔与服务时长全靠 <span class="arithmatex">\(-\ln U\)</span>（§4.1.1 的指数规范法）——抽样的账在这里闭环。</p>
+<h2 id="43-精度与准确度">4.3 精度与准确度<a class="headerlink" href="#43-精度与准确度" title="Permanent link">#</a></h2>
+<p>日常语言里 precision、accuracy 混着用，蒙特卡罗里必须分家：</p>
+<ul>
+<li><strong>精度</strong>（precision）：<span class="arithmatex">\(\bar z\)</span> 因统计涨落带来的不确定度，用 <span class="arithmatex">\(\sigma(\bar z)\approx s/\sqrt N\)</span> 度量。多跑 history 就能改善，但 <span class="arithmatex">\(N^{-1/2}\)</span> 的代价很硬。</li>
+<li><strong>准确度</strong>（accuracy）：<span class="arithmatex">\(\bar z\)</span> 离<strong>物理真值</strong>多远。<span class="arithmatex">\(N\to\infty\)</span> 时 <span class="arithmatex">\(\bar z\)</span> 与真值之差是<strong>系统误差</strong>（systematic error），通常未知、不会因为多跑而消失。</li>
+</ul>
+<p>打靶比喻：枪法准（弹着点散布小）是精度，瞄准点对不对是准确度——瞄具歪了，弹着再密集也是<strong>精确地打偏</strong>。三年级学生用尺子量栅栏：读数散布小是精度，尺子刻度准不准决定准确度。蒙特卡罗是"用数字做实验"，同理受实验误差学管辖；惯例是把结果连同精度一起报告，并声明"在模型假设范围内准确"。</p>
+<h3 id="431-影响准确度的因素">4.3.1 影响准确度的因素<a class="headerlink" href="#431-影响准确度的因素" title="Permanent link">#</a></h3>
+<p><strong>代码错误</strong>：物理常数错、模型过简、bug（比如偶尔给某条 history 记了个错误高分）——只能靠与测量、理论或独立计算<strong>对标</strong>（benchmarking）来抓。</p>
+<p><strong>用户错误</strong>：误用成熟代码（选项没吃透）、输入文件笔误（密度打错、几何摆错位置）——输出"看起来合理"实则离谱。对策：从简单模型出发逐步搭建复杂模型，每一步检查输出变化是否合理。</p>
+<p><strong>随机数发生器的坑</strong>：现代生成器的统计缺陷基本被消灭，但<strong>周期有限</strong>这个死穴还在。D&amp;S 给了真实的<strong>伪收敛</strong>（false convergence）案例：蒲丰模拟（<span class="arithmatex">\(D=2L\)</span>）在每次投针之间丢弃大量随机数，约 500 次投针后就耗尽了一个周期——估计值看起来收敛了，却收敛在比真值 <span class="arithmatex">\(P_{cut}\approx0.3183\)</span> <strong>低约 5%</strong> 的地方，且每个周期的重复模式清晰可辨。经验法则：<strong>一次计算消耗的随机数不要超过周期长度的 10–20%</strong>。</p>
+<figure>
+  <img src="../images/ch04/fig-4-7.png" class="lq-img" />
+  <figcaption>图 4.16 蒲丰投针的伪收敛（截自原书 D&S 图 4.8，<span class="arithmatex"><span class="arithmatex"></span>)）：随机数周期耗尽后，估计值"收敛"到比真值低约 5% 的错误平台——曲线平滑不等于正确。</figcaption>
+</figure>
+
+<h3 id="432-影响精度的因素">4.3.2 影响精度的因素<a class="headerlink" href="#432-影响精度的因素" title="Permanent link">#</a></h3>
+<p>精度的杠杆几乎都在用户手里：记分方式的选择（0/1 分数换连续分数立刻降方差，§1.4 的教训）、方差缩减技术（第 5 章预告）、利用问题对称性简化模型。最后才是硬调 <span class="arithmatex">\(N\)</span>：四倍 history 换两倍精度。</p>
+<p><strong>舍入误差</strong>是精度的天花板。数字计算机用有限比特表示实数，总存在 <span class="arithmatex">\(\epsilon\)</span> 使 <span class="arithmatex">\(1+\epsilon=1\)</span>。蒙特卡罗把每条 history 的分数累进同一个累加器 <span class="arithmatex">\(S\)</span>——<span class="arithmatex">\(S\)</span> 大到一定程度后，加小分数不再改变 <span class="arithmatex">\(S\)</span>。D&amp;S 的单精度实验（Table 4.2）触目惊心：<span class="arithmatex">\(S_1=\sum_{i=1}^N(1/N)\)</span>（真值恒为 1）在 <span class="arithmatex">\(N\le10^7\)</span> 时完美，<span class="arithmatex">\(3\times10^7\)</span> 时掉到 0.559，<span class="arithmatex">\(10^8\)</span> 时只剩 0.16777——恰是 <span class="arithmatex">\(2^{24}/10^8\)</span>：float32 只有 24 位尾数，累加器冻结在 <span class="arithmatex">\(2^{24}=16\,777\,216\)</span> 后，加 <span class="arithmatex">\(10^{-8}\)</span> 量级的分数全部丢失。<strong>症状识别</strong>：<span class="arithmatex">\(N\)</span> 增大时 <span class="arithmatex">\(s(\bar z)\)</span> 不降反升 = 舍入误差接管。对策三选：累加器用双精度（默认该做）；大小分数分开累加、最后从小到大求和（顺带得到高分尾部直方图，服务 §4.2.3 的尾部体检）；或分 <span class="arithmatex">\(M\)</span> 个独立批各自求和再平均——顺带能从批间波动直接估 <span class="arithmatex">\(s(\bar z)\)</span>（与 §4.2.1 的 batching 一石二鸟）。</p>
+<p>总结成一句话：强定律与 CLT 说"原则上要多准有多准"，实际精度被比特数封顶——所以<strong>能上双精度就上双精度</strong>，然后接受蒙特卡罗"几位有效数字"的诚实交付。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">对数里喂零</p>
+<p><code>-np.log(rng.random())</code> 会以约 <span class="arithmatex">\(2^{-53}\)</span> 的概率抽到 0 直接溢出。写 <code>-np.log1p(-u)</code>（即 <span class="arithmatex">\(-\ln(1-u)\)</span>），分布相同、绝对安全。Box–Muller 的 <span class="arithmatex">\(\ln U_2\)</span> 同理。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">舍选法的 M 失手</p>
+<p><span class="arithmatex">\(M\)</span> 取小了（峰值估错）会<strong>悄悄截尾</strong>：样本分布系统性缺峰、且没有任何报错。<span class="arithmatex">\(M\)</span> 宁大勿小；但<span class="arithmatex">\(M\)</span> 过大效率归零——先数值扫一遍 <span class="arithmatex">\(\sup f/g\)</span> 再定 <span class="arithmatex">\(M\)</span>。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">别名法判据写反</p>
+<p>返回本扇区的条件是 <span class="arithmatex">\(Z&lt;Q[Y]\)</span>（原书自己都印反了，见 §4.1.3）。建表后忘了把 <span class="arithmatex">\(Q\)</span> 乘 <span class="arithmatex">\(n\)</span>、或 A 表用了 0 基索引，都是高频翻车点。验收靠频率对照，不靠肉眼。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">把置信区间读成概率陈述</p>
+<p>“95% 置信区间”是区间构造方法的长程性质：重复实验时 95% 的区间盖住真值；<strong>不是</strong>“真值有 95% 概率落在这个具体区间里”（频率派口径下真值是常数）。报告误差棒时心里要有这条分界线。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">排队模拟不做 burn-in、不批处理</p>
+<p>从空系统起步的模拟前段不在稳态（本实验前 500 人的均值明显偏离）；顾客级样本强相关，直接套 <span class="arithmatex">\(\sqrt N\)</span> 会把误差低估几个数量级。丢弃前段 + 批处理，是离散事件模拟的标配。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">精度 ≠ 准确度</p>
+<p><span class="arithmatex">\(R\le0.05\)</span> 只证明统计涨落小。模型错、常数错、RNG 周期耗尽（伪收敛）都能让你<strong>精确地得到错误答案</strong>。精度报告永远搭配对标与 FOM 恒定性检查。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">累加器饱和不自知</p>
+<p>单精度累加上亿条分数后，<span class="arithmatex">\(s(\bar z)\)</span> 不降反升是典型症状。上双精度；分数跨度大时分箱累加；<span class="arithmatex">\(N\)</span> 巨大时分批求和再平均。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">用柯西式厚尾分布算均值</p>
+<p>无方差分布（柯西）的样本均值永不收敛，任何置信区间都是自欺。记分前先确认 <span class="arithmatex">\(\langle z^2\rangle\)</span> 存在（尾部衰减快于 <span class="arithmatex">\(1/|z|^3\)</span>）。</p>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>概率积分变换：<span class="arithmatex">\(U=F(X)\sim U(0,1)\)</span>；逆 CDF 抽样 <span class="arithmatex">\(x_i=F^{-1}(\rho_i)\)</span>，连续离散通用，代价是要求 <span class="arithmatex">\(F^{-1}\)</span> 可解。</li>
+<li>指数规范法 <span class="arithmatex">\(x=-\ln(1-\rho)/\alpha\)</span>（代码写 <span class="arithmatex">\(-\ln\rho/\alpha\)</span>，防 <span class="arithmatex">\(\rho=0\)</span> 用 <code>log1p</code>）；指数无记忆，是排队解析求解的前提。</li>
+<li>变换法 <span class="arithmatex">\(f_X(x)=f_Y(g^{-1}(x))|(g^{-1})'|\)</span>；<span class="arithmatex">\(X=\tan(\pi(U-\frac12))\)</span> 抽柯西——厚尾、无方差、均值不收敛。</li>
+<li>二项 = <span class="arithmatex">\(n\)</span> 个 Bernoulli 求和（<span class="arithmatex">\(\mu=np,\ \operatorname{var}=npq\)</span>）；泊松来自二项的 <span class="arithmatex">\(n\to\infty,\ np=\lambda t\)</span> 极限，乘积法抽样 <span class="arithmatex">\(\prod U_i&gt;e^{-\lambda t}\)</span>。</li>
+<li>Walker 别名法：建表 <span class="arithmatex">\(O(n)\)</span>、抽样 <span class="arithmatex">\(O(1)\)</span> 零搜索；<span class="arithmatex">\(Y=\lfloor Un\rfloor\)</span>、<span class="arithmatex">\(Z&lt;Q[Y]\)</span> 返回 <span class="arithmatex">\(Y\)</span> 否则 <span class="arithmatex">\(A[Y]\)</span>。</li>
+<li>舍选法：<span class="arithmatex">\(f\le Mg\)</span>，判据 <span class="arithmatex">\(h=f/(Mg)\)</span>，接受率 <span class="arithmatex">\(1/M\)</span>；只需 <span class="arithmatex">\(f\)</span> 的相对值——任意分布的通用兜底。</li>
+<li>组合法 <span class="arithmatex">\(f=\sum A_if_i\)</span>：先抽指标再抽值；Gamma 卷积（<span class="arithmatex">\(m\)</span> 个指数和）与 Gamma 相除（Beta）是两大应用。</li>
+<li>Box–Muller 精确抽正态（雅可比证明）；极法省超越函数、拒绝 <span class="arithmatex">\(1-\pi/4\)</span>；乘性 CLT（Gibrat）：独立正增长率之积 <span class="arithmatex">\(\to\)</span> 对数正态。</li>
+<li>联合分布：先边缘后条件逐级抽；抽样顺序决定计算量（D&amp;S 例 4.6 的两种走法）。</li>
+<li>记分账本：<span class="arithmatex">\(S_1,S_2\)</span> 累加器 → <span class="arithmatex">\(\bar z\)</span>、<span class="arithmatex">\(s(\bar z)=\sqrt{(\overline{z^2}-\bar z^2)/(N-1)}\)</span>；<span class="arithmatex">\(\pm2\)</span> 标准误盖 95.4%，<span class="arithmatex">\(\sigma\)</span> 未知用 t，样本相关用 batching；<span class="arithmatex">\(R\le0.05\)</span>、FOM 恒定是健康指标；精度靠降方差（第 5 章），准确度靠对标与防系统误差。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sampling</td>
+<td>抽样</td>
+<td>从给定分布产生样本值的过程</td>
+</tr>
+<tr>
+<td>scoring</td>
+<td>记分</td>
+<td>每条 history 计算分数并累加的记账过程</td>
+</tr>
+<tr>
+<td>inverse CDF method</td>
+<td>逆 CDF 法</td>
+<td><span class="arithmatex">\(x_i=F^{-1}(\rho_i)\)</span>，均匀数到目标分布的第一桥梁</td>
+</tr>
+<tr>
+<td>probability integral transform</td>
+<td>概率积分变换</td>
+<td><span class="arithmatex">\(F(X)\sim U(0,1)\)</span>：CDF 把任意分布映成均匀</td>
+</tr>
+<tr>
+<td>memoryless</td>
+<td>无记忆性</td>
+<td>指数分布"等过多久都白等"的性质，排队可解析的根源</td>
+</tr>
+<tr>
+<td>transformation method</td>
+<td>变换法</td>
+<td><span class="arithmatex">\(X=g(Y)\)</span> 的密度搬运 (f_X=f_Y(g^{-1})\,</td>
+</tr>
+<tr>
+<td>Cauchy distribution</td>
+<td>柯西分布</td>
+<td>无方差厚尾分布，样本均值永不收敛</td>
+</tr>
+<tr>
+<td>composition method</td>
+<td>组合法</td>
+<td><span class="arithmatex">\(f=\sum A_if_i\)</span>：先抽分量再抽值</td>
+</tr>
+<tr>
+<td>alias method</td>
+<td>别名法</td>
+<td>Walker 的 <span class="arithmatex">\(O(1)\)</span> 离散抽样：Q/A 双表、零搜索</td>
+</tr>
+<tr>
+<td>rejection method</td>
+<td>舍选法</td>
+<td>proposal <span class="arithmatex">\(g\)</span> + 判据 <span class="arithmatex">\(h=f/(Mg)\)</span>，接受率 <span class="arithmatex">\(1/M\)</span></td>
+</tr>
+<tr>
+<td>proposal density</td>
+<td>提议密度</td>
+<td>舍选法中实际抽样的那个"便宜"分布</td>
+</tr>
+<tr>
+<td>acceptance discipline</td>
+<td>接受判据</td>
+<td><span class="arithmatex">\(h(x)=f/(Mg)\)</span>：候选被收下的概率函数</td>
+</tr>
+<tr>
+<td>efficiency</td>
+<td>效率</td>
+<td>舍选法接受概率 <span class="arithmatex">\(1/M\)</span>，越大越省</td>
+</tr>
+<tr>
+<td>rectangle-wedge-tail</td>
+<td>矩形-楔-尾分解</td>
+<td>面积切成矩形（快）+ 楔（近线性）+ 尾（稀有）的组合特化</td>
+</tr>
+<tr>
+<td>ratio of uniforms</td>
+<td>均匀比值法</td>
+<td>在 <span class="arithmatex">\(0\le x^2\le h(y/x)\)</span> 上撒点，<span class="arithmatex">\(z=y/x\)</span> 服从 <span class="arithmatex">\(f\)</span></td>
+</tr>
+<tr>
+<td>Box–Muller</td>
+<td>Box–Muller 变换</td>
+<td>两个均匀数换两个精确正态样本，雅可比 <span class="arithmatex">\(2\pi/u_2\)</span></td>
+</tr>
+<tr>
+<td>polar method</td>
+<td>极法</td>
+<td>Marsaglia–Bray：单位圆内拒绝采样，只算一次 <span class="arithmatex">\(\ln\)</span></td>
+</tr>
+<tr>
+<td>lognormal distribution</td>
+<td>对数正态分布</td>
+<td><span class="arithmatex">\(e^{N(\alpha,\beta^2)}\)</span>，乘性世界的"正态"</td>
+</tr>
+<tr>
+<td>Gibrat's law</td>
+<td>Gibrat 定律（比例效应）</td>
+<td>独立正乘子的乘积渐近对数正态</td>
+</tr>
+<tr>
+<td>marginal / conditional PDF</td>
+<td>边缘 / 条件密度</td>
+<td>联合分布逐级拆解 (f(x</td>
+</tr>
+<tr>
+<td>standard error</td>
+<td>标准误差</td>
+<td>估计量的标准差 <span class="arithmatex">\(s(z)/\sqrt N\)</span>，误差棒的本体</td>
+</tr>
+<tr>
+<td>confidence interval</td>
+<td>置信区间</td>
+<td>区间构造的长程覆盖率（±2 标准误 → 95.4%）</td>
+</tr>
+<tr>
+<td>Student-t distribution</td>
+<td>t 分布</td>
+<td>正态 / (样本标准差归一) 的厚尾分布，自由度 <span class="arithmatex">\(m-1\)</span></td>
+</tr>
+<tr>
+<td>batching</td>
+<td>批处理</td>
+<td>切批取均值以恢复独立同分布，估算相关样本的误差</td>
+</tr>
+<tr>
+<td>relative error R</td>
+<td>相对误差</td>
+<td><span class="arithmatex">\(s(\bar z)/\bar z\)</span>，实务红线 0.05</td>
+</tr>
+<tr>
+<td>figure of merit (FOM)</td>
+<td>品质因子</td>
+<td><span class="arithmatex">\(1/(R^2T)\)</span>，正常运行应恒定的效率指标</td>
+</tr>
+<tr>
+<td>VOV</td>
+<td>方差的方差</td>
+<td><span class="arithmatex">\(R\)</span> 的方差，<span class="arithmatex">\(VOV&lt;0.1\)</span> 置信区间才可信</td>
+</tr>
+<tr>
+<td>burn-in</td>
+<td>预热期</td>
+<td>丢弃模拟启动阶段样本，避免瞬态污染</td>
+</tr>
+<tr>
+<td>discrete event simulation</td>
+<td>离散事件模拟</td>
+<td>事件时刻表驱动时间推进的排队模拟范式</td>
+</tr>
+<tr>
+<td>Little's law</td>
+<td>Little 定律</td>
+<td><span class="arithmatex">\(L=\lambda W\)</span>：对任何稳定排队系统成立</td>
+</tr>
+<tr>
+<td>false convergence</td>
+<td>伪收敛</td>
+<td>RNG 周期耗尽导致的假收敛，曲线平滑但系统偏差</td>
+</tr>
+</tbody>
+</table>
 
 
 
