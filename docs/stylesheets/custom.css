@@ -884,15 +884,17 @@ body.is-home .md-typeset > h1:first-child { display: none; }
 .md-typeset li > mjx-container[jax="CHTML"][display="true"] {
   margin: 0.6em 0 !important;
 }
-/* 长公式在窄屏下容器内横滚，不撑破页面 */
-.md-typeset .arithmatex {
-  max-width: 100%;
-}
+/* 公式排版：行内公式绝不套滚动盒（滚动盒是排版乱的主因）；
+   只有独立公式（mjx-container display=true）在窄屏下容器内横滚 */
 .md-typeset span.arithmatex {
-  display: inline-block;
-  max-width: 100%;
-  overflow-x: auto;
-  vertical-align: middle;
+  display: inline !important;
+  max-width: none !important;
+  overflow: visible !important;
+  vertical-align: baseline;
+}
+/* 行内公式与前后文字之间留呼吸感 */
+.md-typeset span.arithmatex mjx-container {
+  margin: 0 0.15em;
 }
 /* MathJax 辅助层（绝对定位的隐藏 MathML）不得参与页面滚动区 */
 .md-typeset mjx-assistive-mml {
