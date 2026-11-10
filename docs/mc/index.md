@@ -102,12 +102,4 @@ icon: material/dice-multiple
 
     [:octicons-arrow-right-24: 开始](ch11.md)
 
--   **第12章 · 中性粒子输运的蒙特卡罗模拟**
-
-    ---
-
-    辐射场描述、输运方程、自由程抽样与碰撞类型、记分估计器、非模拟方法与方差缩减。[D&S 9–10]
-
-    [:octicons-arrow-right-24: 开始](ch12.md)
-
 </div>
