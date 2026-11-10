@@ -202,16 +202,12 @@ nav:
       - 第15章 大数据与MapReduce: ml/ch15.md
   - 随机模拟方法及应用:
       - mc/index.md
-      - 第1章 初识蒙特卡罗方法: mc/ch01.md
-      - 第2章 概率论基础：蒙特卡罗的两大理论支柱: mc/ch02.md
-      - 第3章 随机数生成: mc/ch03.md
-      - 第4章 概率分布与抽样: mc/ch04.md
-      - 第5章 马尔科夫链蒙特卡罗: mc/ch05.md
-      - 第6章 随机游走: mc/ch06.md
-      - 第7章 蒙特卡罗优化：模拟退火与遗传算法: mc/ch07.md
-      - 第8章 贝叶斯推断与 Gibbs 抽样: mc/ch08.md
-      - 第9章 蒙特卡罗积分与方差缩减: mc/ch09.md
-      - 第10章 逆蒙特卡罗: mc/ch10.md
-      - 第11章 线性算子方程: mc/ch11.md
+      - 第1章 导论：随机数如何解决问题: mc/ch01.md
+      - 第2章 概率分布及其用途: mc/ch02.md
+      - 第3章 马尔可夫链蒙特卡罗: mc/ch03.md
+      - 第4章 随机游走: mc/ch04.md
+      - 第5章 蒙特卡罗优化方法: mc/ch05.md
+      - 第6章 再谈马尔可夫链蒙特卡罗: mc/ch06.md
+      - 附录 A/B 生成均匀随机数 · Perron–Frobenius: mc/appendix.md
   - 学习资源:
       - resources/index.md
