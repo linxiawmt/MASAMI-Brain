@@ -4021,6 +4021,18 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -4546,17 +4558,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#速览" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        速览
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4602,6 +4603,174 @@
     
   
     第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
   
 
     
@@ -5338,17 +5507,6 @@
     <span class="md-ellipsis">
       
         坑与陷阱
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#速览" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        速览
       
     </span>
   </a>
@@ -7279,19 +7437,6 @@ C(s) \approx \frac{R(s)}{H(s)}
 <li><strong>闭环传递函数不能叠加</strong>：<span class="arithmatex">\(\Phi(s) + \Phi_n(s)\)</span> 没有物理意义。线性系统叠加的是<strong>输出</strong> <span class="arithmatex">\(C(s) = \Phi R + \Phi_n N\)</span>，不是传递函数。四种闭环传递函数分母同为特征式 <span class="arithmatex">\(1+G_1G_2H\)</span>，分子各不相同，混写分子是常见失分点。</li>
 </ol>
 </div>
-<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
-<ol>
-<li>傅氏级数 <span class="arithmatex">\(\to\)</span>（<span class="arithmatex">\(T\to\infty\)</span>）傅氏积分 <span class="arithmatex">\(\to\)</span>（乘 <span class="arithmatex">\(\mathrm{e}^{-\sigma t}\)</span>）拉氏变换：<span class="arithmatex">\(F(s) = \int_{0^-}^{\infty}f(t)\mathrm{e}^{-st}\mathrm{d}t\)</span>，反变换 <span class="arithmatex">\(f(t) = \frac{1}{2\pi\mathrm{j}}\int F(s)\mathrm{e}^{st}\mathrm{d}s\)</span>。</li>
-<li>八大定理：线性、微分（<span class="arithmatex">\(sF - f(0)\)</span>，零初始条件下 <span class="arithmatex">\(\mathrm{d}^n/\mathrm{d}t^n \leftrightarrow s^n\)</span>）、积分（<span class="arithmatex">\(\div s\)</span>）、初值（<span class="arithmatex">\(f(0^+) = \lim sF(s)\)</span>）、终值（<span class="arithmatex">\(\lim f = \lim sF(s)\)</span>，要有终值）、位移（时延 <span class="arithmatex">\(\mathrm{e}^{-\tau s}\)</span>，<span class="arithmatex">\(s\)</span> 域平移乘 <span class="arithmatex">\(\mathrm{e}^{-\alpha t}\)</span>）、相似（<span class="arithmatex">\(f(t/a) \leftrightarrow aF(as)\)</span>）、卷积（<span class="arithmatex">\(* \leftrightarrow \times\)</span>）。</li>
-<li>反变换 = 部分分式 + 查表：单根 <span class="arithmatex">\(c_i = \lim(s-s_i)F(s) = B(s)/A'(s)\vert_{s_i}\)</span>；<span class="arithmatex">\(r\)</span> 重根 <span class="arithmatex">\(c_{r-j} = \frac{1}{j!}\lim\frac{\mathrm{d}^j}{\mathrm{d}s^j}[(s-s_1)^rF(s)]\)</span>。</li>
-<li>列微分方程三步：定输入输出 → 物理定律列方程 → 消中间变量、按降幂写标准形；齿轮系折算：转矩乘 <span class="arithmatex">\(Z_1/Z_2\)</span>，惯量摩擦乘 <span class="arithmatex">\((Z_1/Z_2)^2\)</span>。</li>
-<li>拉氏法解微分方程三步：逐项变换（带初始条件）→ 解象函数 → 反变换；解 = 零状态响应 + 零输入响应；初值终值定理可免反变换直接核头尾。</li>
-<li>传递函数 = 零初始条件下 <span class="arithmatex">\(C(s)/R(s)\)</span>；只与结构参数有关；与微分方程经 <span class="arithmatex">\(s \leftrightarrow \mathrm{d}/\mathrm{d}t\)</span> 互换；脉冲响应 <span class="arithmatex">\(g(t) = \mathscr{L}^{-1}[G(s)]\)</span>，<span class="arithmatex">\(c(t) = g*r\)</span>。极点定模态，零点定各模态比重。</li>
-<li>六个典型环节：比例 <span class="arithmatex">\(K\)</span>、惯性 <span class="arithmatex">\(\frac{K}{Ts+1}\)</span>、积分 <span class="arithmatex">\(\frac{K}{s}\)</span>、微分 <span class="arithmatex">\(Ks\)</span>、振荡 <span class="arithmatex">\(\frac{1}{T^2s^2+2\zeta Ts+1}\)</span>、延迟 <span class="arithmatex">\(\mathrm{e}^{-\tau s}\)</span>。</li>
-<li>结构图化简：串联乘、并联加减、反馈 <span class="arithmatex">\(\frac{G}{1\mp GH}\)</span>；移点必须补偿（表 2-4），"<span class="arithmatex">\(-\)</span>"号可越方框不可越比较点/引出点。</li>
-<li>梅森公式 <span class="arithmatex">\(P = \frac{1}{\Delta}\sum p_k\Delta_k\)</span>，<span class="arithmatex">\(\Delta = 1 - \sum L_a + \sum L_bL_c - \sum L_dL_eL_f + \cdots\)</span>，<span class="arithmatex">\(\Delta_k\)</span> 删去与第 <span class="arithmatex">\(k\)</span> 条通路接触的所有回路项。</li>
-<li>典型反馈系统四传递函数 <span class="arithmatex">\(\frac{G_1G_2}{1+G_1G_2H}\)</span>、<span class="arithmatex">\(\frac{G_2}{1+G_1G_2H}\)</span>、<span class="arithmatex">\(\frac{1}{1+G_1G_2H}\)</span>、<span class="arithmatex">\(\frac{-G_2H}{1+G_1G_2H}\)</span> 共用特征式；<span class="arithmatex">\(\vert G_1G_2H\vert \gg 1\)</span> 时 <span class="arithmatex">\(C \approx R/H\)</span>；叠加输出、不叠加传递函数。</li>
-</ol>
 <h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -7536,10 +7681,6 @@ C(s) \approx \frac{R(s)}{H(s)}
 <tr>
 <td>2-5 建模仿真（tf/zpk/转换/连接、例 2-22）</td>
 <td>2.5</td>
-</tr>
-<tr>
-<td>章末习题 2-1~2-15</td>
-<td>不展开（涉及知识点已分布于 2.2–2.4 节）</td>
 </tr>
 </tbody>
 </table>

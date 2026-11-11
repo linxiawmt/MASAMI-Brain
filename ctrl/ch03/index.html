@@ -16,7 +16,7 @@
         <link rel="prev" href="../ch02/">
       
       
-        <link rel="next" href="../../mc/">
+        <link rel="next" href="../ch04/">
       
       
         
@@ -4021,6 +4021,18 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -4835,17 +4847,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#速览" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        速览
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#术语速查" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4871,6 +4872,174 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -5860,17 +6029,6 @@
     <span class="md-ellipsis">
       
         坑与陷阱
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#速览" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        速览
       
     </span>
   </a>
@@ -7661,19 +7819,6 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 <li><strong>压扰动误差看位置</strong>：增大扰动作用点<strong>之后</strong>的增益对扰动稳态误差毫无作用（式 3.66 与 <span class="arithmatex">\(K_2\)</span> 无关）；对扰动的型别由扰动点之前的积分环节数 <span class="arithmatex">\(\nu_1\)</span> 加主反馈积分环节数 <span class="arithmatex">\(\nu_3\)</span> 决定（式 3.68），扰动点之后串积分环节白搭——同一个系统对输入是 I 型、对扰动可能是 0 型。</li>
 </ol>
 </div>
-<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
-<ol>
-<li>动态指标（单位阶跃）：<span class="arithmatex">\(t_r\)</span>（10%→90% 或 0→首次终值）、<span class="arithmatex">\(t_p\)</span>（第一峰）、<span class="arithmatex">\(t_s\)</span>（<span class="arithmatex">\(\pm5\%\)</span> 或 <span class="arithmatex">\(\pm2\%\)</span> 误差带）、<span class="arithmatex">\(\sigma\%=\frac{c(t_p)-c(\infty)}{c(\infty)}\times100\%\)</span>。</li>
-<li>一阶系统 <span class="arithmatex">\(1/(Ts+1)\)</span>：阶跃 <span class="arithmatex">\(1-\mathrm{e}^{-t/T}\)</span>（<span class="arithmatex">\(t=T\)</span> 处 0.632）、脉冲 <span class="arithmatex">\(\frac{1}{T}\mathrm{e}^{-t/T}\)</span>、斜坡 <span class="arithmatex">\(t-T+T\mathrm{e}^{-t/T}\)</span>（误差 <span class="arithmatex">\(T\)</span>）、加速度跟踪不了；<span class="arithmatex">\(t_r=2.2T\)</span>，<span class="arithmatex">\(t_s=3T(5\%)\)</span> 或 <span class="arithmatex">\(4T(2\%)\)</span>。输入求导/积分 ↔ 响应求导/积分。</li>
-<li>二阶标准形式 <span class="arithmatex">\(\varPhi=\dfrac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}\)</span>，特征根 <span class="arithmatex">\(s_{1,2}=-\zeta\omega_n\pm\omega_n\sqrt{\zeta^2-1}\)</span>；<span class="arithmatex">\(\zeta\)</span> 决定形态：<span class="arithmatex">\(&lt;0\)</span> 发散、<span class="arithmatex">\(=0\)</span> 等幅、<span class="arithmatex">\(&lt;1\)</span> 衰减振荡、<span class="arithmatex">\(=1\)</span> 无超调单调、<span class="arithmatex">\(&gt;1\)</span> 缓慢单调。</li>
-<li>欠阻尼指标：<span class="arithmatex">\(t_r=(\pi-\beta)/\omega_d\)</span>，<span class="arithmatex">\(t_p=\pi/\omega_d\)</span>，<span class="arithmatex">\(\sigma\%=\mathrm{e}^{-\pi\zeta/\sqrt{1-\zeta^2}}\times100\%\)</span>（只看 <span class="arithmatex">\(\zeta\)</span>），<span class="arithmatex">\(t_s=3.5/\zeta\omega_n\)</span>（5%）或 <span class="arithmatex">\(4.4/\zeta\omega_n\)</span>（2%）；<span class="arithmatex">\(\zeta=\cos\beta\)</span>，<span class="arithmatex">\(\sigma=\zeta\omega_n\)</span> 为极点到虚轴距离。</li>
-<li><span class="arithmatex">\(\zeta=1\)</span>：<span class="arithmatex">\(t_s=4.75/\omega_n\)</span>（5%）；过阻尼：<span class="arithmatex">\(t_r=(1+1.5\zeta+\zeta^2)/\omega_n\)</span>，<span class="arithmatex">\(T_1\ge 4T_2\)</span> 时按一阶近似 <span class="arithmatex">\(t_s=3T_1\)</span>；<span class="arithmatex">\(\zeta\)</span> 与 <span class="arithmatex">\(T_1/T_2\)</span> 满足 <span class="arithmatex">\(\zeta=\frac{1+T_1/T_2}{2\sqrt{T_1/T_2}}\)</span>。</li>
-<li>改善二阶性能：PD 控制 <span class="arithmatex">\(\zeta_d=\zeta+T_d\omega_n/2\)</span>（不改 <span class="arithmatex">\(\omega_n\)</span>、加闭环零点、不影响常值稳态误差）；测速反馈 <span class="arithmatex">\(\zeta_t=\zeta+K_t\omega_n/2\)</span>（同样增大阻尼但<strong>降低开环增益</strong>、不加零点）。设计取等效 <span class="arithmatex">\(\zeta=0.4\sim0.8\)</span>。</li>
-<li>高阶系统：闭环零点加快响应、增大超调（越近虚轴越强）；非主导极点减慢响应、减小超调；主导极点（离虚轴最近、附近无零点、其余极点实部模大 3 倍以上）可把系统降为二阶估算；靠得很近的零极点对（偶极子）可对消。</li>
-<li>稳定充要条件：特征根全负实部（极点全在左半平面）；必要条件：系数全正。劳斯判据：第一列全正且变号次数 = 右半平面根数；首元为零乘 <span class="arithmatex">\((s+a)\)</span> 或代 <span class="arithmatex">\(\varepsilon\)</span>，全零行用辅助方程导数系数；给定稳定度用 <span class="arithmatex">\(s=s_1-a\)</span> 代换。</li>
-<li>稳态误差（稳定系统）：<span class="arithmatex">\(e_{ss}=\lim sR(s)/(1+GH)\)</span>；型别 <span class="arithmatex">\(\nu\)</span>=开环原点极点数，<span class="arithmatex">\(K_p=\lim GH\)</span>、<span class="arithmatex">\(K_v=\lim sGH\)</span>、<span class="arithmatex">\(K_a=\lim s^2GH\)</span>；表 3-5 按"型别 × 输入"查误差；组合输入按 <span class="arithmatex">\(R_0/(1+K_p)+R_1/K_v+R_2/K_a\)</span> 叠加。</li>
-<li>扰动误差 <span class="arithmatex">\(E_n=-\frac{G_2}{1+G_1G_2H}N\)</span>；对扰动的型别 = 扰动点前积分环节数 <span class="arithmatex">\(\nu_1\)</span>+主反馈积分环节数 <span class="arithmatex">\(\nu_3\)</span>。减小误差三招：增大开环增益/扰动点前增益、串积分环节、串级控制（副回路抑制二次扰动 10～100 倍）——都以稳定为代价交换。</li>
-</ol>
 <h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -7854,10 +7999,6 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 <tr>
 <td>3-7 线性系统的时域分析仿真（roots/impulse/step/lsim/initial、综合应用）</td>
 <td>3.7</td>
-</tr>
-<tr>
-<td>习题 3-1～3-16</td>
-<td>未展开；对应小节见上表（3-&#8531;-2→3.2，3-3～3-8→3.3，3-9～3-12→3.5，3-13～3-15→3.6，3-16→3.5/3.7）</td>
 </tr>
 </tbody>
 </table>
