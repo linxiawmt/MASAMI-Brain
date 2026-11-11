@@ -5336,7 +5336,8 @@
 <p><strong>伯努利试验（Bernoulli trial）</strong>：只有两个结果的实验（失败/成功、0/1）。成功概率 <span class="arithmatex">\(p\)</span>、失败概率 <span class="arithmatex">\(q=1-p\)</span>。pdf 与 cdf（0 记失败、1 记成功）：</p>
 <div class="arithmatex">\[
 f(x)=\begin{cases}1-p,&amp;x=0\\ p,&amp;x=1\end{cases}=p^x(1-p)^{1-x},\quad x=0,1;
-\qquad
+\]</div>
+<div class="arithmatex">\[
 F(x)=\begin{cases}0,&amp;x&lt;0\\ 1-p,&amp;0\le x&lt;1\\ 1,&amp;1\le x.\end{cases}
 \]</div>
 <p>均值与方差（式 (1.15)(1.16) 直接代入）：<span class="arithmatex">\(\mu=0\cdot(1-p)+1\cdot p=p\)</span>；</p>
@@ -5351,12 +5352,7 @@ F(x)=\begin{cases}0,&amp;x&lt;0\\ 1-p,&amp;0\le x&lt;1\\ 1,&amp;1\le x.\end{case
 <p>例（轮盘赌）：38 格中 18 红 18 黑 2 绿，"红"概率 <span class="arithmatex">\(p=18/38=0.4736\dots\)</span>；生成 <span class="arithmatex">\(U\)</span>，<span class="arithmatex">\(U&lt;0.4736\dots\)</span> 即"红"。等价地用 cdf 图像读：<span class="arithmatex">\(U&lt;q\)</span> 返回 0（非红）、<span class="arithmatex">\(U\ge 1-p\)</span> 返回 1（红）——书 Fig 2.1。</p>
 <h3 id="212-多结果分布Multiple-Outcome-Distributions">2.1.2 多结果分布（Multiple-Outcome Distributions）<a class="headerlink" href="#212-多结果分布Multiple-Outcome-Distributions" title="Permanent link">#</a></h3>
 <p>多结果离散分布的 cdf 反演 = <strong>把 <span class="arithmatex">\([0,1]\)</span> 切成与概率成比例的断点区间，看 <span class="arithmatex">\(U\)</span> 落在哪段</strong>。书例（岸鸟每窝产卵数）：<span class="arithmatex">\(\Pr(X=2,3,4,5)=0.15,0.20,0.60,0.05\)</span>。从 <span class="arithmatex">\((0,U)\)</span> 出发水平右行，遇到 cdf 跳变（竖直虚线段）就下落到 <span class="arithmatex">\(x\)</span> 轴取值——"2"以 0.15 概率被选中，依此类推。这叫<strong>反转 cdf（inverting the cdf）</strong>。</p>
-<p>书 Alg 2.1（断点搜索法）：断点 <span class="arithmatex">\(\mathrm{bp}[i]=\mathrm{bp}[i-1]+\mathrm{op}[i]\)</span>，<span class="arithmatex">\(U\ge\mathrm{bp}[k]\)</span> 就推进 <span class="arithmatex">\(k\)</span>。缺点：每个样本都要走 while 循环。<strong>加速技巧：按概率降序重排结果</strong>——期望循环次数从</p>
-<div class="arithmatex">\[
-(1)(0.15)+(2)(0.2)+(3)(0.6)+(4)(0.05)=2.55
-\quad\text{降到}\quad
-(1)(0.6)+(2)(0.2)+(3)(0.15)+(4)(0.05)=1.65 .
-\]</div>
+<p>书 Alg 2.1（断点搜索法）：断点 <span class="arithmatex">\(\mathrm{bp}[i]=\mathrm{bp}[i-1]+\mathrm{op}[i]\)</span>，<span class="arithmatex">\(U\ge\mathrm{bp}[k]\)</span> 就推进 <span class="arithmatex">\(k\)</span>。缺点：每个样本都要走 while 循环。<strong>加速技巧：按概率降序重排结果</strong>——期望循环次数从 <span class="arithmatex">\((1)(0.15)+(2)(0.2)+(3)(0.6)+(4)(0.05)=2.55\)</span> 降到 <span class="arithmatex">\((1)(0.6)+(2)(0.2)+(3)(0.15)+(4)(0.05)=1.65\)</span>。</p>
 <p>两个更快变体：</p>
 <ul>
 <li><strong>轮盘赌表（roulette wheel selection，Alg 2.2）</strong>：概率是简单两位小数时，造长度 100 的数组按比例填充各结果，采样只需 <code>rv[random.randint(0,99)]</code>——一次随机数、一次下标，无循环。</li>
@@ -5685,7 +5681,9 @@ f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2}\]</div>
 <p><strong>乘法中心极限定理与 Gibrat 律</strong>：设 <span class="arithmatex">\(R_i\)</span> 独立同分布、取正值、方差有限，<span class="arithmatex">\(X=\prod_{i=1}^n R_i\)</span>。取对数化乘为加：<span class="arithmatex">\(\log X=\sum\log R_i\)</span>，n 大时用 CLT：</p>
 <div class="arithmatex">\[
 \frac{\sum\log(R_i)-n\,\mathbb E(\log R)}{\sqrt{n\operatorname{var}(\log R)}}\approx N(0,1)
-\quad\Longrightarrow\quad
+\]</div>
+<div class="arithmatex">\[
+\Longrightarrow\quad
 \log X\approx nu+\sqrt{nv^2}\,Z.\tag{2.24}
 \]</div>
 <p>其中 <span class="arithmatex">\(u=\mathbb E(\log R)\)</span>、<span class="arithmatex">\(v^2=\operatorname{var}(\log R)\)</span>。</p>
@@ -5805,10 +5803,9 @@ f(w)=\frac{\beta}{(\alpha-1)!}(\beta w)^{\alpha-1}e^{-\beta w}.\tag{2.39}
 </div>
 <p><span class="arithmatex">\(\alpha\)</span> 为整数时叫 <strong>Erlang 分布</strong>；<span class="arithmatex">\(\alpha\)</span> 推广到任意正实数需要 <strong>gamma 函数</strong>替换阶乘：</p>
 <div class="arithmatex">\[
-\Gamma(t)=\int_0^\infty y^{t-1}e^{-y}dy,\quad t&gt;0;\tag{2.40}
-\qquad
-\Gamma(n)=(n-1)!\ \text{（整数）}，\qquad \Gamma\big(\tfrac12\big)=\sqrt\pi .
+\Gamma(t)=\int_0^\infty y^{t-1}e^{-y}dy,\qquad t&gt;0.\tag{2.40}
 \]</div>
+<p>整数时 <span class="arithmatex">\(\Gamma(n)=(n-1)!\)</span>；特别地 <span class="arithmatex">\(\Gamma\big(\tfrac12\big)=\sqrt\pi\)</span>。</p>
 <p>（<span class="arithmatex">\(\Gamma(1/2)=\sqrt\pi\)</span> 正是 §2.6 极坐标积分的副产品——两处知识对上了。）</p>
 <h3 id="292-从-Galpha1-抽样Sampling-from-Gα-1">2.9.2 从 <span class="arithmatex">\(G(\alpha,1)\)</span> 抽样（Sampling from G(α, 1)）<a class="headerlink" href="#292-从-Galpha1-抽样Sampling-from-Gα-1" title="Permanent link">#</a></h3>
 <p><strong>情形一：<span class="arithmatex">\(0&lt;\alpha&lt;1\)</span>（拒绝 + 复合）</strong>。目标 <span class="arithmatex">\(f(x)=\frac{1}{\Gamma(\alpha)}x^{\alpha-1}e^{-x}\)</span>（常数可忽略）。观察：<span class="arithmatex">\(e^{-x}\)</span> 在 <span class="arithmatex">\(x=1\)</span> 处是 <span class="arithmatex">\(1/e\)</span>，而 <span class="arithmatex">\(x^{\alpha-1}\)</span> 在 <span class="arithmatex">\(x=1\)</span> 处是 1，差 <span class="arithmatex">\(e\)</span> 倍——用这个观察"缝合"两段提案：</p>
