@@ -153,7 +153,7 @@ hide:
 
     ---
 
-    胡寿松《基础教程》第五版精读，MATLAB / Python 双份代码对照写；时域、劳斯、稳态误差都在线。
+    胡寿松《基础教程》第五版全书 9 章完结：根轨迹、奈氏判据、校正、离散、非线性、状态空间；MATLAB / Python 双代码对照。
 
     [:octicons-arrow-right-24: 去看](ctrl/index.md)
 
