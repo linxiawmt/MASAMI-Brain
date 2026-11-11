@@ -4893,9 +4893,12 @@
 <li><strong>后验预测分布（posterior predictive distribution）</strong>："下一掷是正面"的概率要对 <span class="arithmatex">\(\theta\)</span> 的不确定性平均：</li>
 </ul>
 <div class="arithmatex">\[
-\Pr(\text{heads}|\text{obs})=\int_0^1\Pr(\text{heads}|\theta)\Pr(\theta|\text{obs})\,d\theta
-=\int_0^1\theta\,c\,\theta^{10-1}(1-\theta)^{6-1}d\theta
-=\frac{15!}{9!}\cdot\frac{10!\,5!}{16!}=\frac{10}{16}=0.625,\tag{6.3}
+\begin{aligned}
+\Pr(\text{heads}\mid\text{obs})
+&amp;=\int_0^1\Pr(\text{heads}\mid\theta)\Pr(\theta\mid\text{obs})\,d\theta\\
+&amp;=\int_0^1\theta\,c\,\theta^{10-1}(1-\theta)^{6-1}\,d\theta\\
+&amp;=\frac{15!}{9!}\cdot\frac{10!\,5!}{16!}=\frac{10}{16}=0.625,
+\end{aligned}\tag{6.3}
 \]</div>
 <p>比 MAP 略低——预测把"θ 也可能偏小"的概率算进去了。数理统计复习：<span class="arithmatex">\(\frac{10}{16}\)</span> 恰是 <span class="arithmatex">\(\frac{\alpha'}{\alpha'+\beta'}=\frac{10}{10+6}\)</span>（Laplace 加一规则 <span class="arithmatex">\(\frac{k+1}{n+2}\)</span> 的 beta 版）。</p>
 </div>
@@ -4992,7 +4995,11 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 \]</div>
 <p><span class="arithmatex">\(q\)</span> 是<strong>自由选择的</strong>——这是方法威力的源泉。均匀 <span class="arithmatex">\(q=\frac{1}{b-a}\)</span> 给 <span class="arithmatex">\(\hat\theta=\frac{b-a}{n}\sum f(X_i)\)</span>（式 (6.16)）。<strong>无偏</strong>（<span class="arithmatex">\(\mathbb E(\hat\theta)=\theta\)</span>），平方误差</p>
 <div class="arithmatex">\[
-\mathbb E\big((\hat\theta-\theta)^2\big)=\operatorname{var}(\hat\theta)=\frac{\sigma^2}{n},\qquad\sigma^2=\operatorname{var}\Big(\frac fq\Big).\tag{6.17}
+\begin{aligned}
+\mathbb E\big((\hat\theta-\theta)^2\big)
+&amp;=\operatorname{var}(\hat\theta)=\frac{\sigma^2}{n},\\
+\sigma^2&amp;=\operatorname{var}\Big(\frac fq\Big).
+\end{aligned}\tag{6.17}
 \]</div>
 <p>收敛 <span class="arithmatex">\(O(n^{-1/2})\)</span>，与 hit-or-miss 同阶但常数更小。<strong>推广一：广义积分</strong>——推导不要求域有限或 <span class="arithmatex">\(f\)</span> 有界：<span class="arithmatex">\(\int_0^\infty\frac{1}{(x+1)^2}dx=1\)</span> 用指数 <span class="arithmatex">\(q\)</span>；<span class="arithmatex">\(\int_0^4(-2+(x-2)^2+\frac{1}{\sqrt x})dx=\frac43\)</span> 用均匀 <span class="arithmatex">\(q\)</span>（书两例，Alg 6.5；误差 0.06%/0.01%）。<span class="arithmatex">\(q\)</span> 该在 <span class="arithmatex">\(f\)</span> 大处多采样——伏笔见重要性采样。<strong>推广二：多维</strong>——(6.15) 对 <span class="arithmatex">\(d\)</span> 维照常成立，误差仍 <span class="arithmatex">\(O(n^{-1/2})\)</span>：<strong>高维积分 MC 称王</strong>。</p>
 <p>书例（3D/4D 球体积）：第一卦限单位球体积 <span class="arithmatex">\(\int\int\int\sqrt{1-(x^2+y^2)}\,dydx\approx0.523599\)</span>（式 (6.19)，<span class="arithmatex">\(=\frac12\cdot\frac\pi6\)</span>）。采样密度 <span class="arithmatex">\(q\)</span> = 球域上的均匀分布：极坐标雅可比 <span class="arithmatex">\(r\)</span> 给出 <span class="arithmatex">\(q(r,\theta)=\frac{4r}{\pi}\)</span>，边缘 <span class="arithmatex">\(q_R=2r\)</span>（cdf <span class="arithmatex">\(r^2\)</span>，反演 <span class="arithmatex">\(R=\sqrt{U_1}\)</span>）、条件 <span class="arithmatex">\(q_{\theta|R}=\frac2\pi\)</span>（<span class="arithmatex">\(\theta=\frac\pi2U_2\)</span>）——<strong>100% 高效</strong>（对照"方形撒点丢弃法"仅 78.5%）。4D 版（式 (6.18)，值 <span class="arithmatex">\(\pi^2/32\approx0.308552\)</span>）：球坐标雅可比 <span class="arithmatex">\(\rho^2\sin\phi\)</span>，得 <span class="arithmatex">\(\rho=\sqrt[3]{U_1}\)</span>、<span class="arithmatex">\(\phi=\arccos(1-U_2)\)</span>、<span class="arithmatex">\(\theta=\frac\pi2U_3\)</span>（书 Alg 6.7，误差 0.86%）。</p>

@@ -5295,7 +5295,9 @@ x_1\le x_2\Rightarrow \operatorname{cdf}(x_1)\le \operatorname{cdf}(x_2)\ \text{
 <h3 id="123-概率密度函数The-Probability-Density-Function">1.2.3 概率密度函数（The Probability Density Function）<a class="headerlink" href="#123-概率密度函数The-Probability-Density-Function" title="Permanent link">#</a></h3>
 <p>离散情形的<strong>概率密度函数（pdf）<strong>就是 <span class="arithmatex">\(\operatorname{pdf}(x)=\Pr(X=x)\)</span>（常称</strong>概率质量函数 pmf</strong>，"pdf"留给连续型）。它与 cdf 的关系：</p>
 <div class="arithmatex">\[
-\operatorname{pdf}(x)=\lim_{\epsilon\to 0}\big(\operatorname{cdf}(x)-\operatorname{cdf}(x-\epsilon)\big),\qquad
+\operatorname{pdf}(x)=\lim_{\epsilon\to 0}\big(\operatorname{cdf}(x)-\operatorname{cdf}(x-\epsilon)\big),
+\]</div>
+<div class="arithmatex">\[
 \Pr(a&lt; X\le b)=\sum_{a&lt; x\le b}\operatorname{pdf}(x)=\operatorname{cdf}(b)-\operatorname{cdf}(a).
 \]</div>
 <p>连续情形 pdf 是 cdf 的导数，区间概率是积分：</p>
@@ -5317,7 +5319,8 @@ x_1\le x_2\Rightarrow \operatorname{cdf}(x_1)\le \operatorname{cdf}(x_2)\ \text{
 <p><strong>均匀分布（uniform distribution）</strong>——蒙特卡罗方法最重要的分布，因为其他一切分布的样本都从它派生（第 2 章）：密度在 <span class="arithmatex">\(\Omega\)</span> 上恒定。定义在 <span class="arithmatex">\([0,6]\)</span> 上：<span class="arithmatex">\(\operatorname{pdf}(x)=1/6\)</span>（区间外为 0），<span class="arithmatex">\(\operatorname{cdf}(x)=x/6\)</span>。一般地 <span class="arithmatex">\(U(a,b)\)</span> 的密度与 cdf：</p>
 <div class="arithmatex">\[
 f(x)=\begin{cases}\dfrac{1}{b-a}, &amp; a\le x\le b,\\[2pt] 0,&amp;\text{otherwise,}\end{cases}\tag{1.7}
-\qquad
+\]</div>
+<div class="arithmatex">\[
 F(x)=\int_a^x\frac{dt}{b-a}=\frac{x-a}{b-a}.\tag{1.8}
 \]</div>
 <p>记号约定：<span class="arithmatex">\(U\sim U(0,1)\)</span> 读作"<span class="arithmatex">\(U\)</span> 是从 <span class="arithmatex">\(U(0,1)\)</span> 抽取的样本"；一般地 <span class="arithmatex">\(X\sim G\)</span> 表示 <span class="arithmatex">\(X\)</span> 服从分布 <span class="arithmatex">\(G\)</span>。由于 <span class="arithmatex">\(\Pr(X=x)=\lim_{\epsilon\to0}\Pr(x-\epsilon&lt;X\le x)=0\)</span>，单点概率为 0，所以 <span class="arithmatex">\(U[a,b]\)</span>、<span class="arithmatex">\(U[a,b)\)</span>、<span class="arithmatex">\(U(a,b)\)</span> 实际无区别，统一记 <span class="arithmatex">\(U(a,b)\)</span>。</p>
@@ -5329,8 +5332,9 @@ F(x)=\int_a^x\frac{dt}{b-a}=\frac{x-a}{b-a}.\tag{1.8}
 <h3 id="124-期望值Expected-Values">1.2.4 期望值（Expected Values）<a class="headerlink" href="#124-期望值Expected-Values" title="Permanent link">#</a></h3>
 <p>设 <span class="arithmatex">\(r\)</span> 是随机变量 <span class="arithmatex">\(X\)</span> 的函数。**期望值（expected value / expectation）**按离散/连续两种口径定义：</p>
 <div class="arithmatex">\[
-\mathbb E(r(X))=\sum_{x\in\Omega} r(x)\operatorname{pdf}(x),\tag{1.9}
-\qquad
+\mathbb E(r(X))=\sum_{x\in\Omega} r(x)\operatorname{pdf}(x).\tag{1.9}
+\]</div>
+<div class="arithmatex">\[
 \mathbb E(r(X))=\int_{-\infty}^{\infty} r(x)\operatorname{pdf}(x)\,dx.\tag{1.10}
 \]</div>
 <p><strong>期望值就是"长期平均"</strong>。把样本按取值归类重排求和可看清这一点：设 <span class="arithmatex">\(X\)</span> 取值 <span class="arithmatex">\(\{x_1,\dots,x_N\}\)</span>，<span class="arithmatex">\(X_i\)</span> 为 <span class="arithmatex">\(n\)</span> 次抽样，<span class="arithmatex">\(|x_k|\)</span> 为 <span class="arithmatex">\(x_k\)</span> 出现次数，则</p>
@@ -5352,8 +5356,11 @@ F(x)=\int_a^x\frac{dt}{b-a}=\frac{x-a}{b-a}.\tag{1.8}
 </div>
 <p>两个手算例子。双硬币正面数期望 <span class="arithmatex">\(2\cdot\frac14+1\cdot\frac12+0\cdot\frac14=1\)</span>——两次投掷平均 1 个正面。<strong>几何级数技巧</strong>：单骰子掷出首个"6"的等待轮数</p>
 <div class="arithmatex">\[
-T=1\Big(\frac16\Big)+2\Big(\frac56\Big)\Big(\frac16\Big)+3\Big(\frac56\Big)^2\Big(\frac16\Big)+\cdots
-=\frac16\frac{d}{dx}\Big(\frac{1}{1-x}\Big)\Big|_{x=\frac56}=\frac16\cdot\frac{1}{(1-x)^2}\Big|_{x=\frac56}=6,\tag{1.14}
+\begin{aligned}
+T&amp;=1\Big(\frac16\Big)+2\Big(\frac56\Big)\Big(\frac16\Big)+3\Big(\frac56\Big)^2\Big(\frac16\Big)+\cdots\\
+&amp;=\frac16\frac{d}{dx}\Big(\frac{1}{1-x}\Big)\Big|_{x=\frac56}
+=\frac16\cdot\frac{1}{(1-x)^2}\Big|_{x=\frac56}=6,
+\end{aligned}\tag{1.14}
 \]</div>
 <p>与直觉一致。</p>
 <p><strong>均值与方差</strong>。均值 <span class="arithmatex">\(\mu=\mathbb E(X)\)</span>（式 (1.15)，离散求和/连续积分），**方差（variance）**定义为对均值的二阶矩：</p>
@@ -5392,7 +5399,12 @@ T=1\Big(\frac16\Big)+2\Big(\frac56\Big)\Big(\frac16\Big)+3\Big(\frac56\Big)^2\Bi
 <p><strong>标准差（standard deviation）</strong> <span class="arithmatex">\(\sigma(X)=\sqrt{\operatorname{var}(X)}\)</span>（式 (1.22)）：与 <span class="arithmatex">\(X\)</span> 同量纲（米 vs 米²），更适合描述散布。</p>
 <p>更一般地 <span class="arithmatex">\(r(X)\)</span> 的方差 <span class="arithmatex">\(\operatorname{var}(r(X))=\mathbb E\big((r(X)-\mu_r)^2\big)\)</span>，离散/连续口径见式 (1.23)、(1.24)。<strong>样本均值的方差按 <span class="arithmatex">\(1/n\)</span> 缩</strong>——由样本独立性：</p>
 <div class="arithmatex">\[
-\operatorname{var}(\overline r_n)=\operatorname{var}\Big(\frac1n\sum_{i=1}^n r(X_i)\Big)=\frac{n}{n^2}\operatorname{var}(r(X))=\frac1n\operatorname{var}(r(X)).\tag{1.25}
+\begin{aligned}
+\operatorname{var}(\overline r_n)
+&amp;=\operatorname{var}\Big(\frac1n\sum_{i=1}^n r(X_i)\Big)
+=\frac{n}{n^2}\operatorname{var}(r(X))\\
+&amp;=\frac1n\operatorname{var}(r(X)).
+\end{aligned}\tag{1.25}
 \]</div>
 <p>标准误差按 <span class="arithmatex">\(1/\sqrt n\)</span> 缩——这是"精度换算表"：<strong>多算 100 倍样本才多 1 位精度</strong>。</p>
 <div class="admonition note">
@@ -5507,8 +5519,9 @@ f(x_1,x_2)=\begin{cases}\frac28\cdot\frac27=\frac1{14}, &amp; x_1\ne x_2,\\[3pt]
 <p>连续情形：联合 cdf <span class="arithmatex">\(F_{X_1,X_2}(x_1,x_2)=\Pr(X_1\le x_1, X_2\le x_2)\)</span>，pdf 为其二阶混合偏导 <span class="arithmatex">\(f=\partial^2 F/\partial x_1\partial x_2\)</span>，区域概率 <span class="arithmatex">\(\Pr(A)=\iint_{(x,y)\in A}f\,dx\,dy\)</span>，期望 <span class="arithmatex">\(\mathbb E(r(X_1,X_2))=\sum r f\)</span>（离散）或对 <span class="arithmatex">\(f\)</span> 积分（连续）。</p>
 <p><strong>边缘分布（marginal distributions）</strong>——"把另一个变量积掉"：</p>
 <div class="arithmatex">\[
-f_1(x_1)=\sum_{x_2}f(x_1,x_2),\quad f_2(x_2)=\sum_{x_1}f(x_1,x_2)\ \text{（离散）};\tag{1.34}
-\qquad
+f_1(x_1)=\sum_{x_2}f(x_1,x_2),\quad f_2(x_2)=\sum_{x_1}f(x_1,x_2)\ \text{（离散）}.\tag{1.34}
+\]</div>
+<div class="arithmatex">\[
 f_1(x_1)=\int_{-\infty}^\infty f(x_1,x_2)\,dx_2,\ \dots\ \text{（连续）}.\tag{1.35}
 \]</div>
 <p>边缘是各变量<strong>单独看</strong>的一元密度，丢弃另一变量的全部信息。书 Fig 1.11 用 60 个样本的联合直方图演示：沿 <span class="arithmatex">\(x_1\)</span> 求和得顶部边缘、沿 <span class="arithmatex">\(x_2\)</span> 求和得右侧边缘（seaborn <code>jointplot</code>，书 Alg 1.6）。</p>
@@ -5527,8 +5540,9 @@ f_1(x_1)=\int_{-\infty}^\infty f(x_1,x_2)\,dx_2,\ \dots\ \text{（连续）}.\ta
 </div>
 <p><strong>条件分布</strong>——把贝叶斯搬到密度上。给定联合 <span class="arithmatex">\(f(x,y)\)</span> 与边缘：</p>
 <div class="arithmatex">\[
-f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)},\tag{1.36}
-\qquad
+f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}.\tag{1.36}
+\]</div>
+<div class="arithmatex">\[
 f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}.\tag{1.37}
 \]</div>
 <p>分母分别是 <span class="arithmatex">\(Y\)</span>、<span class="arithmatex">\(X\)</span> 的边缘。记号用 <span class="arithmatex">\((x|y)\)</span> 而非 <span class="arithmatex">\((x,y)\)</span>，强调"一个变量固定为给定值"。若 <span class="arithmatex">\(f(x,y)=f_X(x)f_Y(y)\)</span>（独立），则显然 <span class="arithmatex">\(f_{X|Y}(x|y)=f_X(x)\)</span>——条件退化为无条件。8 卡牌例：<span class="arithmatex">\(f_{X_1|X_2}(x_1,x_2)=\frac{1/14}{1/4}=\frac27\)</span>（<span class="arithmatex">\(x_1\ne x_2\)</span>），<span class="arithmatex">\(=\frac{1/28}{1/4}=\frac17\)</span>（<span class="arithmatex">\(x_1=x_2\)</span>）；由对称性 <span class="arithmatex">\(f_{X_2|X_1}\)</span> 相同。</p>

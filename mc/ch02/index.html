@@ -5683,9 +5683,9 @@ f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2},\qquad x&gt;0.
 <div class="arithmatex">\[
 \frac{\sum\log(R_i)-n\,\mathbb E(\log R)}{\sqrt{n\operatorname{var}(\log R)}}\approx N(0,1)
 \quad\Longrightarrow\quad
-\log X\approx nu+\sqrt{nv^2}\,Z,\quad
-u=\mathbb E(\log R),\ v^2=\operatorname{var}(\log R).\tag{2.24}
+\log X\approx nu+\sqrt{nv^2}\,Z.\tag{2.24}
 \]</div>
+<p>其中 <span class="arithmatex">\(u=\mathbb E(\log R)\)</span>、<span class="arithmatex">\(v^2=\operatorname{var}(\log R)\)</span>。</p>
 <div class="admonition note">
 <p class="admonition-title">Gibrat 定律</p>
 <p><span class="arithmatex">\(R_1,\dots,R_n\)</span> 独立取自仅取正值、方差有限的分布，则 <span class="arithmatex">\(X=\prod R_i\)</span> 趋于对数正态 <span class="arithmatex">\(LN(nu,nv^2)\)</span>。</p>
@@ -5773,8 +5773,9 @@ h(x)=\frac{f}{Mg}=\big(2(1-x)\big)^{\alpha-1}——c \text{ 消失，正如预�
 <p>形式化：<span class="arithmatex">\(X=\sum_{i=1}^nX_i\,\mathbb 1_i(M)\)</span>（<span class="arithmatex">\(M\)</span> 是轮盘赌指标选择，<span class="arithmatex">\(\mathbb 1_k\)</span> 示性函数，式 (2.32)）。</p>
 <p><strong>合成密度</strong>：<span class="arithmatex">\(f(x)=p_1f_1(x)+\cdots+p_nf_n(x)\)</span>（式 (2.33)，对事件 <span class="arithmatex">\(A\)</span> 按全概率分解 (1.28) 即证）。<strong>均值与方差</strong>：</p>
 <div class="arithmatex">\[
-\mathbb E(X)=\sum_i p_i\mu_i;\tag{2.34}
-\qquad
+\mathbb E(X)=\sum_i p_i\mu_i.\tag{2.34}
+\]</div>
+<div class="arithmatex">\[
 \operatorname{var}(X)=\sum_i p_i\operatorname{var}(X_i)+\sum_{i\ne j}p_ip_j\big(\mu_i-\mu_j\big)^2.\tag{2.35}
 \]</div>
 <p>（式 (2.36)(2.37) 给出 <span class="arithmatex">\(n=2\)</span> 全推导；书 Fig 2.18 给一般情形：<span class="arithmatex">\(\mathbb E(X^2)=\sum p_i\mathbb E(X_i^2)\)</span> 起步，交叉项凑成 <span class="arithmatex">\((\mu_i-\mu_j)^2\)</span>。<strong>方差比均值多出的那项，正是"成分间均值差异"的代价</strong>——直觉：抽到的成分本身也在随机换。）</p>
