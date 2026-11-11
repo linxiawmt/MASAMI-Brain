@@ -4732,7 +4732,7 @@
 <tbody>
 <tr>
 <td>贝叶斯更新</td>
-<td>(\Pr(\theta</td>
+<td><span class="arithmatex">\(\Pr(\theta\mid\text{obs})=\dfrac{\Pr(\text{obs}\mid\theta)\Pr(\theta)}{\Pr(\text{obs})}\)</span>（式 (6.1)）；<strong>MCMC 不需要分母</strong></td>
 </tr>
 <tr>
 <td>先验/后验共轭</td>
@@ -4740,11 +4740,11 @@
 </tr>
 <tr>
 <td>MAP</td>
-<td>后验密度最大值点；后验预测 (\Pr(\text{heads}</td>
+<td>后验密度最大值点；后验预测 <span class="arithmatex">\(\Pr(\text{heads}\mid\text{obs})=10/16\)</span>（式 (6.3)）</td>
 </tr>
 <tr>
 <td>Gibbs 抽样</td>
-<td>逐坐标按满条件分布轮抽；双正态例 (X</td>
+<td>逐坐标按满条件分布轮抽；双正态例 <span class="arithmatex">\(X\mid Y\sim N(\rho y,1-\rho^2)\)</span>（式 (6.9)）</td>
 </tr>
 <tr>
 <td>MC 求积</td>
@@ -4984,7 +4984,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <p><span class="arithmatex">\(Q\)</span> 独立估计（如用域上均匀采样比 <span class="arithmatex">\(\hat q/h_{\text{unif}}\)</span>）。书例： revisit 三角域积分 0.7627，<span class="arithmatex">\(\hat q=\sqrt2-x-y\)</span> 由 MCMC 采样（<span class="arithmatex">\(Q=2^{3/2}/6\)</span> 另估）：20 万次试验误差 1.6%（对照：精确归一斜坡采样 0.14%、均匀 0.06%）——<strong>MCMC 求积可行但常数更大</strong>，能不用就不用。</p>
 <figure>
   <img src="../images/ch06/out-6-10.png" class="lq-img" />
-  <figcaption>代码实跑（实验 10）：MCMC 求积——从 \(\hat q=\sqrt2-x-y\)（三角域）Metropolis 采样估 0.7627：收敛更慢（常数大）但**只用了非负函数、没做任何归一化/反演**——买的是通用性</figcaption>
+  <figcaption>代码实跑（实验 10）：MCMC 求积——从 \(\hat q=\sqrt2-x-y\)（三角域）Metropolis 采样估 0.7627：收敛更慢（常数大），但只用了非负函数、没做任何归一化与反演——买的是通用性</figcaption>
 </figure>
 
 <h2 id="64-舍入误差Round-off-Error">6.4 舍入误差（Round-off Error）<a class="headerlink" href="#64-舍入误差Round-off-Error" title="Permanent link">#</a></h2>
@@ -5075,7 +5075,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <tr>
 <td>likelihood function</td>
 <td>似然函数</td>
-<td>(\Pr(\text{obs}</td>
+<td><span class="arithmatex">\(\Pr(\text{obs}\mid\theta)\)</span> 视为 θ 的函数</td>
 </tr>
 <tr>
 <td>prior / posterior</td>
@@ -5110,7 +5110,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <tr>
 <td>full conditional</td>
 <td>满条件分布</td>
-<td>(f(x_i</td>
+<td><span class="arithmatex">\(f(x_i\mid\text{其余全部})\)</span></td>
 </tr>
 <tr>
 <td>BUGS / JAGS</td>

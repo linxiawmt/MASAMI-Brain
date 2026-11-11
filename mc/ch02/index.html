@@ -5336,7 +5336,9 @@ A&amp;4&amp;5&amp;5&amp;6&amp;6&amp;7&amp;-&amp;6&amp;6
 
 <h2 id="23-概率模拟例二项分布The-Binomial-Distribution">2.3 概率模拟例：二项分布（The Binomial Distribution）<a class="headerlink" href="#23-概率模拟例二项分布The-Binomial-Distribution" title="Permanent link">#</a></h2>
 <p><strong>场景</strong>：<span class="arithmatex">\(n\)</span> 次独立伯努利试验，<span class="arithmatex">\(X=\)</span> 成功次数。先解决计数：<span class="arithmatex">\(x\)</span> 次成功发生在哪 <span class="arithmatex">\(x\)</span> 次上？</p>
-<p>把 <span class="arithmatex">\(x\)</span> 个成功<strong>加以区分</strong>（记 <span class="arithmatex">\(S_1,\dots,S_x\)</span>）：<span class="arithmatex">\(S_1\)</span> 有 <span class="arithmatex">\(n\)</span> 个位置可选，<span class="arithmatex">\(S_2\)</span> 剩 <span class="arithmatex">\(n-1\)</span>，……共</p>
+<p>书先摆出商式（<span class="arithmatex">\(\binom nx\)</span> 的原始形态）：</p>
+<div class="arithmatex">\[n(n-1)\cdots(n-x+1)\,\Big/\,\big(x(x-1)\cdots2\cdot1\big).\tag{2.1}\]</div>
+<p>推导它——把 <span class="arithmatex">\(x\)</span> 个成功<strong>加以区分</strong>（记 <span class="arithmatex">\(S_1,\dots,S_x\)</span>）：<span class="arithmatex">\(S_1\)</span> 有 <span class="arithmatex">\(n\)</span> 个位置可选，<span class="arithmatex">\(S_2\)</span> 剩 <span class="arithmatex">\(n-1\)</span>，……共</p>
 <div class="arithmatex">\[
 n(n-1)\cdots(n-x+1)\tag{2.2}
 \]</div>

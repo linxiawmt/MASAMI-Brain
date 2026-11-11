@@ -5123,7 +5123,7 @@ u(x,t)=\frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}} .
 <div class="arithmatex">\[
 \frac{\partial u}{\partial t}=D\frac{\partial^2u}{\partial x^2}.\tag{4.7}
 \]</div>
-<p>（验证一代入：<span class="arithmatex">\(u_t = \frac{D}{t}(\frac{x^2}{4Dt^2}-\frac1{4Dt})u\cdot\)</span>（求导细节）与 <span class="arithmatex">\(D u_{xx}=D\cdot u\cdot(\frac{x^4}{16D^2t^4}-\frac{3x^2}{4Dt^3}+\frac1{4Dt^2})\cdot\)</span>…——直接对 (4.6) 求偏导即可核对。）扩散方程的解叫<strong>调和函数（harmonic functions）</strong>（§4.7 回归）。</p>
+<p>验证只需对 (4.6) 求对数微分：<span class="arithmatex">\(\ln u=-\tfrac12\ln(4\pi Dt)-\tfrac{x^2}{4Dt}\)</span> 给出<span class="arithmatex">\(u_t=u\big(\tfrac{x^2}{4Dt^2}-\tfrac{1}{2t}\big)\)</span> 与 <span class="arithmatex">\(u_{xx}=u\big(\tfrac{x^2}{4D^2t^2}-\tfrac{1}{2Dt}\big)\)</span>，两式立得 <span class="arithmatex">\(D\,u_{xx}=u_t\)</span>。扩散方程的解叫<strong>调和函数（harmonic functions）</strong>（§4.7 回归）。</p>
 <figure>
   <img src="../images/ch04/out-4-4.png" class="lq-img" />
   <figcaption>代码实跑（实验 4）：扩散标度坍缩——三组 \((\Delta x,\Delta t)\) 保持 \(D=\frac12\)，终点直方图坍缩到同一密度曲线 \(\frac{e^{-x^2/4Dt}}{\sqrt{4\pi Dt}}\)；\(D\) 变化则曲线按 \(\sqrt{Dt}\) 展宽</figcaption>

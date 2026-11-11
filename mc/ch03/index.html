@@ -5308,7 +5308,7 @@ h(x,y)=\min\Big(1,\ \frac{f(y)\,g_y(x)}{f(x)\,g_x(y)}\Big).\tag{3.28}
 <p>书例（股市链，Fig 3.11）：随机数 <span class="arithmatex">\(\{0.31, 0.57, 0.97, 0.85\}\)</span>。<span class="arithmatex">\(t=-1\)</span> 用 0.31：U→N、N→U、D→U——剩 {U,N} 未耦合；<span class="arithmatex">\(t=-2\)</span> 用 0.57：U→D、N→N、D→N——{N,D}；再前推：N、D 都到 U——<span class="arithmatex">\(t=0\)</span> 时<strong>全部状态坍缩到 U</strong>，报告 U。</p>
 <p><strong>两个反例告诫</strong>：</p>
 <ul>
-<li><strong>不能一耦合就停</strong>（书链 <span class="arithmatex">\(P'\)</span>，<span class="arithmatex">\(\pi=[1/5,3/5,1/5]\)</span>）：只在状态 2 可耦合；用随机数 <span class="arithmatex">\(\{0.86,0.39,\dots\}\)</span>，若 <span class="arithmatex">\(t=-1\)</span> 就停会永远返回同一值。正确流程：耦合后必须<strong>继续把预定的随机数用完</strong>（从 <span class="arithmatex">\(-2\)</span> 走到 0），本轮结果才有效（书演示：结果为状态 3）。</li>
+<li><strong>不能一耦合就停</strong>（书链 <span class="arithmatex">\(P'\)</span>，<span class="arithmatex">\(\pi=[1/5,3/5,1/5]\)</span>，书 Fig 3.12）：只在状态 2 可耦合；用随机数 <span class="arithmatex">\(\{0.86,0.39,\dots\}\)</span>，若 <span class="arithmatex">\(t=-1\)</span> 就停会永远返回同一值。正确流程：耦合后必须<strong>继续把预定的随机数用完</strong>（从 <span class="arithmatex">\(-2\)</span> 走到 0），本轮结果才有效（书演示：结果为状态 3）。</li>
 <li><strong>不能用固定步数"重开"</strong>（书链 <span class="arithmatex">\(P''\)</span>，式 (3.29) 的 7 态链）：只可能在状态 4 耦合，且耦合后至少要 3 步才到得了状态 1 或 7；固定 6 步不耦合就重启会<strong>系统性低估状态 1、7 的频率</strong>（书习题 8 让你实测这个偏差）。</li>
 </ul>
 <figure>
