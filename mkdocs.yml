@@ -208,6 +208,5 @@ nav:
       - 第4章 随机游走: mc/ch04.md
       - 第5章 蒙特卡罗优化方法: mc/ch05.md
       - 第6章 再谈马尔可夫链蒙特卡罗: mc/ch06.md
-      - 附录 A/B 生成均匀随机数 · Perron–Frobenius: mc/appendix.md
   - 学习资源:
       - resources/index.md

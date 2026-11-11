@@ -14,7 +14,9 @@
 | [第 4 章](ch04.md) | Ch 4 随机游走（pp.141–184） | 1d 游走与常返性、扩散、布朗运动、期权定价、自回避行走、赌徒破产（差分方程全解）、Kelly 准则、电网与基本矩阵、kMC | [ch04.ipynb](nb/ch04.ipynb) |
 | [第 5 章](ch05.md) | Ch 5 蒙特卡罗优化（pp.185–207） | 模拟退火（Hajek 冷却定理）、TSP 与路径部分反转、遗传算法、Shekel 函数、permanent 问题 | [ch05.ipynb](nb/ch05.ipynb) |
 | [第 6 章](ch06.md) | Ch 6 再谈 MCMC（pp.209–244） | 贝叶斯推断（MAP/后验预测）、PyMC、Gibbs 抽样、MC 积分/求积、方差缩减（控制变量、重要性采样）、MCMC 求积、舍入误差 | [ch06.ipynb](nb/ch06.ipynb) |
-| [附录 A/B](appendix.md) | App A+B（pp.245–258） | 生成均匀随机数（Fibonacci 型、有限域、Mersenne Twister、χ²/KS 检验）；Perron–Frobenius 定理证明 | — |
+
+!!! note "附录去哪了"
+    原书附录 A（生成均匀随机数）与 B（Perron–Frobenius 证明）已**内联**到 [ch01 §1.3.3](ch01.md#133-线性同余随机数发生器Linear-Congruential-RNG) 与 [ch03 §3.1.2](ch03.md#312-链的矩阵表示Matrix-Representation) 的"深入"折叠框；附录 C/D 的结论并入 [ch04](ch04.md) 对应节；附录 E（项目清单）从略。
 
 ## 状态
 
@@ -26,7 +28,6 @@
 | ch04 | 4.6 万字节 | ✅ 实跑 | ✅ 完成 |
 | ch05 | 3.1 万字节 | ✅ 实跑 | ✅ 完成 |
 | ch06 | 4.0 万字节 | ✅ 实跑 | ✅ 完成 |
-| 附录 | 0.8 万字节 | — | ✅ 完成 |
 
 !!! note "旧版去哪了"
     2026-11-10 之前本节曾有一版 11 章的主题式笔记（按肖柳青中文教材章序组织）。为配合英文教材线性学习，已整体归档到本地 `_mc_work/mc_old_archive/`，不再进站。
