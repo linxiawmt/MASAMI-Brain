@@ -4003,8 +4003,6 @@
       
         
       
-        
-      
     
     
     
@@ -4576,34 +4574,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appendix/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    附录 A/B 生成均匀随机数 · Perron–Frobenius
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -5063,6 +5033,91 @@
 </tbody>
 </table>
 <p>本章代码：<a href="../nb/ch01.ipynb">nb/ch01.ipynb</a>（NumPy 实跑，随机种子 2024，全部数字可复现）。12 个实验对应本章 12 个知识点：蒲丰投针与误差衰减、直方图 super-experiment、赌徒样本路径、骰子直方图、经验 cdf、大数定律、切比雪夫验证、贝叶斯（出租车 + 蒙提霍尔）、LCRNG 网格结构、hit-or-miss、优惠券收集、Fisher–Yates 洗牌。</p>
+<p><strong>实验索引</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>实验</th>
+<th>书节</th>
+<th>产出图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>蒲丰投针与误差衰减</td>
+<td>§1.1.1</td>
+<td>out-1-1.png</td>
+</tr>
+<tr>
+<td>2</td>
+<td>super-experiment 直方图</td>
+<td>§1.1.2</td>
+<td>out-1-2.png</td>
+</tr>
+<tr>
+<td>3</td>
+<td>赌徒样本路径</td>
+<td>§1.1.3</td>
+<td>out-1-3.png</td>
+</tr>
+<tr>
+<td>4</td>
+<td>双骰子直方图</td>
+<td>§1.1.2</td>
+<td>out-1-4.png</td>
+</tr>
+<tr>
+<td>5</td>
+<td>经验 cdf</td>
+<td>§1.2.2</td>
+<td>out-1-5.png</td>
+</tr>
+<tr>
+<td>6</td>
+<td>大数定律</td>
+<td>§1.2.4</td>
+<td>out-1-6.png</td>
+</tr>
+<tr>
+<td>7</td>
+<td>切比雪夫不等式实测</td>
+<td>§1.2.4</td>
+<td>out-1-7.png</td>
+</tr>
+<tr>
+<td>8</td>
+<td>贝叶斯：出租车 + 蒙提霍尔</td>
+<td>§1.2.6</td>
+<td>out-1-8.png</td>
+</tr>
+<tr>
+<td>9</td>
+<td>LCRNG 网格结构</td>
+<td>§1.3.3</td>
+<td>out-1-9.png</td>
+</tr>
+<tr>
+<td>10</td>
+<td>hit-or-miss 估 π</td>
+<td>§1.4</td>
+<td>out-1-10.png</td>
+</tr>
+<tr>
+<td>11</td>
+<td>优惠券收集</td>
+<td>§1.4</td>
+<td>out-1-11.png</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Fisher–Yates 洗牌</td>
+<td>§1.4</td>
+<td>out-1-12.png</td>
+</tr>
+</tbody>
+</table>
 <h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5524,7 +5579,25 @@ f(x)=(ax+c)\bmod m,\qquad x\ \text{为整数}.
 </ol>
 <p>例：<span class="arithmatex">\(m=2^{32}\)</span> 时取 <span class="arithmatex">\(c=1\)</span>、<span class="arithmatex">\(a=4\ell+1\)</span>（任意整数 <span class="arithmatex">\(\ell&gt;0\)</span>）即可。概率论复习联想：条件 2 正是"模 <span class="arithmatex">\(p\)</span> 下 <span class="arithmatex">\(a\)</span> 不退化为不动点映射"的保证，与 §1.3.2 中间平方法的快速循环形成对照。</p>
 </div>
-<p><strong>LCRNG 的天花板</strong>：周期至多 <span class="arithmatex">\(m\)</span>；真随机序列里重复值会出现而 LCRNG 里<strong>永不出现</strong>（周期内遍历不重复）；序列有可预测的结构性（习题 20 的 runs-up/runs-down 检验可抓）。单种子 LCRNG 太简单。改进路线：多变量同余型发生器、换数学基础的发生器；1997 年起 <strong>Mersenne Twister</strong> 成为 Maple/MATLAB/Python 等公开软件的标准（周期为梅森素数 <span class="arithmatex">\(2^{19937}-1\)</span>，细节在附录 A）。</p>
+<p><strong>LCRNG 的天花板</strong>：周期至多 <span class="arithmatex">\(m\)</span>；真随机序列里重复值会出现而 LCRNG 里<strong>永不出现</strong>（周期内遍历不重复）；序列有可预测的结构性（习题 20 的 runs-up/runs-down 检验可抓）。单种子 LCRNG 太简单。改进路线：多变量同余型发生器、换数学基础的发生器；1997 年起 <strong>Mersenne Twister</strong> 成为 Maple/MATLAB/Python 等公开软件的标准（周期为梅森素数 <span class="arithmatex">\(2^{19937}-1\)</span>；内部机制与更多构造见下方深入框）。\n\n???+ note "深入（原书附录 A.1）：多存储值发生器与有限域构造"</p>
+<div class="highlight"><pre><span></span><code>**Fibonacci 型**：双种子加 \(x_{n+1}=(a_1x_n+a_2x_{n-1}+c)\bmod m\)（常取 \(c=0\)）；推广成存储值表——好成绩的发生器 \(x_n=(x_{n-24}+x_{n-55})\bmod m\)（\(n\ge55\)，需预填 55 个值）。周期爆表的原因：状态不再是单个 \(x_n\) 而是**整张表**（\(m^{55}\) 个状态）。
+
+**有限域构造（周期恰 \(m^2-1\)）**：在 \(G_{25}=\{a_0+a_1x:\ a_0,a_1\in\mathbb Z_5,\ x^2=3\}\)（\(\mathbb Z_5\) 上模不可约的 \(x^2+2\)，故确为域）中找**本原元** \(\beta=2+3x\)：验证它是 \(z^2-4z-3\) 的根（\(\beta^2=4\beta+3\)），24 个幂遍历全部非零元。把"系数求和"映射回 \(\mathbb Z_5\)（如 \(4+2\beta\to1\bmod5\)），或直接写线性递推 \(y_n=(4y_{n-1}+3y_{n-2})\bmod5\)（\(y_0=4,y_1=1\)），得 24 长序列 `1 2 1 0 3 2 2 4 2 0 1 4 4 3 4 0 2 3 3 1 3 0 4 1`。书脚注习题：素模 \(m\) 下 \(x\mapsto ax+c\) 必有不动点——单种子发生器逃不掉的宿命。
+</code></pre></div>
+<details class="note">
+<summary>深入（原书附录 A.2）：Mersenne Twister 内部</summary>
+<p><span class="arithmatex">\(w\)</span> 位字长下生成 <span class="arithmatex">\([0,2^w-1]\)</span> 均匀整数；快、通过大多数统计检验、无专利、周期 = 梅森素数 <span class="arithmatex">\(2^{19937}-1\)</span>（6002 位十进制）。内部几乎全是<strong>位运算</strong>：由种子递推 624 个 <span class="arithmatex">\(w\)</span> 位整数的状态表 <span class="arithmatex">\(x_i=f\ast(x_{i-1}\oplus(x_{i-1}\gg(w-2)))+i\)</span>（<span class="arithmatex">\(\oplus\)</span> 异或、<span class="arithmatex">\(\gg\)</span> 右移、<span class="arithmatex">\(f=1812433253\)</span>）；输出前每个表值先过"tempering（回火）"函数；623 个用完后，最后一个经"twist（扭转）"生成新表。Python 用户：就是发行目录里的 <code>random.py</code>。</p>
+</details>
+<details class="note">
+<summary>深入（原书附录 A.3）：两种非随机性检验</summary>
+<p>检验只能证明序列<strong>非</strong>随机，永远不能证明它随机（[Knu81]）。</p>
+<p><strong>χ² 检验</strong>：结果分成 <span class="arithmatex">\(k\)</span> 类，假设概率 <span class="arithmatex">\(p_i\)</span>（<span class="arithmatex">\(\sum p_i=1\)</span>）；<span class="arithmatex">\(N\)</span> 次试验中类 <span class="arithmatex">\(i\)</span> 的期望 <span class="arithmatex">\(p_iN\)</span>、实际 <span class="arithmatex">\(Y_i\)</span>：</p>
+<div class="arithmatex">\[V=\sum_{i=1}^{k}\frac{(Y_i-p_iN)^2}{p_iN}\]</div>
+<p>是自由度 <span class="arithmatex">\(k-1\)</span> 的 χ² 随机变量。书例：20 次掷双硬币 HH=2, HT=5, TH=3, TT=10 → <span class="arithmatex">\(V=7\)</span>；χ² 表（<span class="arithmatex">\(\nu=3\)</span>）给 <span class="arithmatex">\(\Pr(V\le7)\approx0.906\)</span>，即 <span class="arithmatex">\(\Pr(V\ge7)=9.4\%\)</span>——90% 水平下不过关、95% 下过关。</p>
+<p><strong>Kolmogorov–Smirnov 检验</strong>：检验样本 <span class="arithmatex">\(x_1,\dots,x_N\)</span> 是否来自 cdf <span class="arithmatex">\(F\)</span>。算<strong>经验 cdf</strong> <span class="arithmatex">\(\hat F_N(t)=\#\{i:x_i\le t\}/N\)</span>；Glivenko–Cantelli 定理保证真来自 <span class="arithmatex">\(F\)</span> 时 <span class="arithmatex">\(\sup_t\lvert\hat F_N-F\rvert\to0\)</span>。统计量</p>
+<div class="arithmatex">\[D_N=\sup_t\big\lvert\hat F_N(t)-F(t)\big\rvert\]</div>
+<p>在独立性假设下分布已知、可查表（<span class="arithmatex">\(n=12\)</span>、<span class="arithmatex">\(\alpha=0.05\)</span> 的门限 0.38）。书例：12 个数据点的 <span class="arithmatex">\(D_{12}=0.239\)</span> → 过关；LCRNG <span class="arithmatex">\(x_{n+1}=1+3x_n\bmod p\)</span> 三个模数对照：<span class="arithmatex">\(p=11\)</span>（周期 5，1000 样本绕 200 圈）<span class="arithmatex">\(D=0.345\)</span> 远超门限 <span class="arithmatex">\(1.36/\sqrt{1000}=0.043\)</span>——挂；<span class="arithmatex">\(p=229\)</span>：<span class="arithmatex">\(D=0.146\)</span>——挂；<span class="arithmatex">\(p=104729\)</span>：<span class="arithmatex">\(D=0.024\)</span>——过（但只说明"不能断定它不随机"）。</p>
+</details>
 <p><strong>终极随机数：量子计算</strong>。量子粒子可处于<strong>叠加态（superposition）</strong>：量子比特（qubit）可同时是 0 和 1；著名的双缝实验中光子同时穿过两条缝。读取处于叠加态的光子偏振时，它<strong>随机</strong>坍缩到 0 或 1——无法预测的真随机比特。流程：生成 qbit → 过 Hadamard 门进入 0/1 叠加 → 读出。IBM Q Experience 等服务已可编程体验。"未来属于用随机过程的科学计算——即蒙特卡罗方法"（书原话）。</p>
 <h2 id="14-一些应用Some-Applications">1.4 一些应用（Some Applications）<a class="headerlink" href="#14-一些应用Some-Applications" title="Permanent link">#</a></h2>
 <h3 id="Hit-or-Miss打中与否">Hit-or-Miss（打中与否）<a class="headerlink" href="#Hit-or-Miss打中与否" title="Permanent link">#</a></h3>
@@ -5590,11 +5663,11 @@ f(x)=(ax+c)\bmod m,\qquad x\ \text{为整数}.
 </div>
 <div class="admonition danger">
 <p class="admonition-title">5. 独立 ⇒ 协方差 0，反向不成立</p>
-<p>8 卡牌例：边缘均匀（各 &frac14;）但 <span class="arithmatex">\(f(H,H)=1/28\neq 1/16\)</span>——<strong>边缘看不出来相依</strong>，必须看联合分布或条件分布。反之线性协方差 0 也不能推出独立。第 4 章 Kelly 资产配置（附录 C）里相关性处理错误会直接算错仓位。</p>
+<p>8 卡牌例：边缘均匀（各 &frac14;）但 <span class="arithmatex">\(f(H,H)=1/28\neq 1/16\)</span>——<strong>边缘看不出来相依</strong>，必须看联合分布或条件分布。反之线性协方差 0 也不能推出独立。第 4 章 Kelly 资产配置（ch04 §4.6.4 拓展框）里相关性处理错误会直接算错仓位。</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">6. LCRNG 参数错一个条件，周期崩塌</p>
-<p>满周期三条件（互素、素因子、4 的倍数）缺一即可能从 <span class="arithmatex">\(m\)</span> 掉到远小值，甚至掉进短循环（书例 <span class="arithmatex">\(a=5,c=1,m=8\)</span> 只有 8 个不同状态）。中间平方法更快：多数初值几步内进循环。检验 RNG 至少做：相关性散点 <span class="arithmatex">\((x_n,x_{n+1})\)</span>、runs-up/down（习题 20）、KS 检验（附录 A.3）。</p>
+<p>满周期三条件（互素、素因子、4 的倍数）缺一即可能从 <span class="arithmatex">\(m\)</span> 掉到远小值，甚至掉进短循环（书例 <span class="arithmatex">\(a=5,c=1,m=8\)</span> 只有 8 个不同状态）。中间平方法更快：多数初值几步内进循环。检验 RNG 至少做：相关性散点 <span class="arithmatex">\((x_n,x_{n+1})\)</span>、runs-up/down（习题 20）、KS 检验（本节上方深入框）。</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">7. 连续分布单点概率恒为 0</p>

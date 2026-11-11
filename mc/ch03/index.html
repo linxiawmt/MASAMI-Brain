@@ -4003,8 +4003,6 @@
       
         
       
-        
-      
     
     
     
@@ -4504,34 +4502,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appendix/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    附录 A/B 生成均匀随机数 · Perron–Frobenius
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -4935,6 +4905,91 @@
 </tbody>
 </table>
 <p>本章代码：<a href="../nb/ch03.ipynb">nb/ch03.ipynb</a>（种子 2026）。12 个实验：股市链收敛与谱隙、从链采样看直方图稳定、Metropolis 骰子（极小邻域）、提案切换（卡在 x=7 之困）、连续 Metropolis（步长效应）、细致平衡数值验证、遍历定理、Ising 2×2 精确枚举、Ising 相变扫描、Metropolis–Hastings 非对称校正、coupling from the past、图匹配计数。</p>
+<p><strong>实验索引</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>实验</th>
+<th>书节</th>
+<th>产出图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>股市链收敛 + 谱隙</td>
+<td>§3.1.2</td>
+<td>out-3-1.png</td>
+</tr>
+<tr>
+<td>2</td>
+<td>沿链采样直方图</td>
+<td>§3.1.1</td>
+<td>out-3-2.png</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Metropolis 骰子</td>
+<td>§3.2.1</td>
+<td>out-3-3.png</td>
+</tr>
+<tr>
+<td>4</td>
+<td>提案切换：卡深谷</td>
+<td>§3.2.1</td>
+<td>out-3-4.png</td>
+</tr>
+<tr>
+<td>5</td>
+<td>连续 Metropolis 步长</td>
+<td>§3.2.1</td>
+<td>out-3-5.png</td>
+</tr>
+<tr>
+<td>6</td>
+<td>细致平衡数值验证</td>
+<td>§3.2.2</td>
+<td>out-3-6.png</td>
+</tr>
+<tr>
+<td>7</td>
+<td>遍历定理</td>
+<td>§3.3</td>
+<td>out-3-7.png</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ising 2×2 精确枚举</td>
+<td>§3.5</td>
+<td>out-3-8.png</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ising 16×16 相变扫描</td>
+<td>§3.5</td>
+<td>out-3-9.png</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Metropolis–Hastings</td>
+<td>§3.6</td>
+<td>out-3-10.png</td>
+</tr>
+<tr>
+<td>11</td>
+<td>coupling from the past</td>
+<td>§3.8.2</td>
+<td>out-3-11.png</td>
+</tr>
+<tr>
+<td>12</td>
+<td>图匹配计数</td>
+<td>§3.7</td>
+<td>out-3-12.png</td>
+</tr>
+</tbody>
+</table>
 <h2 id="30-本章导图">3.0 本章导图<a class="headerlink" href="#30-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5026,7 +5081,7 @@ p_{10}=[0.330357\ 0.303571\ 0.366072].
 <div class="arithmatex">\[
 \pi P=\pi.\tag{3.6}
 \]</div>
-<p>（存在性与收敛性的证明在附录 B，Perron–Frobenius 定理。）"正则（regular）"的两个条件：</p>
+<p>（存在性与收敛性的证明——Perron–Frobenius 定理——完整放在本节末的「深入」折叠框；原书将其置于附录 B，本笔记按体例内联到对应位置。）"正则（regular）"的两个条件：</p>
 <ol>
 <li><strong>不可约（irreducible）</strong>：图中从每个顶点到每个其他顶点都有有向路径。这是混合条件——若图分裂成几个连通块，唯一的（非平凡）不变区域是整个状态空间，<span class="arithmatex">\(p_t\)</span> 的极限不会唯一。</li>
 <li><strong>非周期（aperiodic）</strong>：不存在整数 <span class="arithmatex">\(d&gt;1\)</span> 使"从任何状态返回自身的迭代次数都是 <span class="arithmatex">\(d\)</span> 的倍数"。违反则 <span class="arithmatex">\(p_t\)</span> 振荡不收敛（书 Fig 3.3 的周期链：1↔2↔3 的三态链，返回时间都是偶数）。</li>
@@ -5035,6 +5090,23 @@ p_{10}=[0.330357\ 0.303571\ 0.366072].
 <div class="arithmatex">\[
 \pi=\Big[\frac{37}{112}\ \ \frac{34}{112}\ \ \frac{41}{112}\Big]\approx[0.33035714\ \ 0.30357143\ \ 0.36607143].\tag{3.7}
 \]</div>
+<details class="note" open="open">
+<summary>深入：Perron–Frobenius 定理与完整证明（原书附录 B，内联于此）</summary>
+<blockquote>
+<p>证明的版本特化为<strong>行随机矩阵</strong>（直接适用于转移矩阵）；一般版本只要求矩阵非负。路线：振荡递缩 → 列收敛 → 特征值分离 → Jordan 形式收尾。</p>
+</blockquote>
+<p><strong>定理 B.1</strong>：设 <span class="arithmatex">\(P\)</span> 是 <span class="arithmatex">\(n\times n\)</span> 行随机矩阵且 <span class="arithmatex">\(P_{i,j}\ge\delta&gt;0\)</span> 对一切 <span class="arithmatex">\(i,j\)</span>。则：(1) <span class="arithmatex">\(P\)</span> 有特征值 1，对应<strong>规范化左特征向量 <span class="arithmatex">\(\pi^T\)</span> 严格为正</strong>；(2) 其余特征值的模严格小于 1；(3) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}P^n=\mathbb 1\pi^T\)</span>（<span class="arithmatex">\(\mathbb 1\)</span> 为全 1 列向量），从而对一切概率向量 <span class="arithmatex">\(\alpha\)</span>：<span class="arithmatex">\(\lim\alpha P^n=\pi\)</span>。<span class="arithmatex">\(\pi\)</span> 唯一——这正是 <span class="arithmatex">\(\pi P=\pi\)</span> 存在唯一、<span class="arithmatex">\(p_t=p_0P^t\to\pi\)</span> 的依据。</p>
+<p><strong>证明</strong>（书 B.1）：</p>
+<p><strong>不变子空间</strong>：<span class="arithmatex">\(P\mathbb 1=\mathbb 1\)</span>；若 <span class="arithmatex">\(\langle f,\mathbb 1\rangle=0\)</span>，则 <span class="arithmatex">\(\langle P^Tf,\mathbb 1\rangle=\langle f,P\mathbb 1\rangle=0\)</span>，故 <span class="arithmatex">\(\mathcal S=\{v:\langle v,\mathbb 1\rangle=0\}\)</span> 是 <span class="arithmatex">\(P^T\)</span> 的不变子空间。</p>
+<p><strong>振荡压缩（Prop B.2）</strong>：记 <span class="arithmatex">\(\operatorname{osc}(f)=\max f-\min f\)</span>，<span class="arithmatex">\(f_a\)</span>、<span class="arithmatex">\(f_b\)</span> 为最小/最大分量。由 <span class="arithmatex">\(P_{ij}\ge\delta\)</span>，把 <span class="arithmatex">\((Pf)_i\)</span> 拆成"<span class="arithmatex">\(\delta\)</span> 份最小值 + 其余"：</p>
+<div class="arithmatex">\[(Pf)_i\le\delta f_a+(1-\delta)f_b\quad\text{且}\quad(Pf)_i\ge(1-\delta)f_a+\delta f_b
+\quad\Longrightarrow\quad \operatorname{osc}(Pf)\le(1-2\delta)\operatorname{osc}(f).\]</div>
+<p><strong>列收敛（Prop B.3）</strong>：记 <span class="arithmatex">\(c_j^n\)</span> 为 <span class="arithmatex">\(P^n\)</span> 的第 <span class="arithmatex">\(j\)</span> 列，则 <span class="arithmatex">\(\operatorname{osc}(c_j^{n+1})\le(1-2\delta)\operatorname{osc}(c_j^n)\to0\)</span>，故 <span class="arithmatex">\(c_j^n\to\pi_j\mathbb 1\)</span>（几何速率 <span class="arithmatex">\(C(1-2\delta)^n\)</span>）；于是 <span class="arithmatex">\(P^n\to\mathbb 1\pi^T\)</span>。由 <span class="arithmatex">\((\mathbb 1\pi^T)P=\lim P^{n+1}\)</span> 得 <span class="arithmatex">\(\pi^TP=\pi^T\)</span>；<span class="arithmatex">\(P^n\)</span> 行随机保证 <span class="arithmatex">\(\pi\)</span> 是概率向量。</p>
+<p><strong>特征值分离（Prop B.4）</strong>：对 <span class="arithmatex">\(f\in\mathcal S\)</span>，<span class="arithmatex">\((\hat{P^T})^nf\to0\)</span>——限制算子的一切特征值模 <span class="arithmatex">\(&lt;1\)</span>；<span class="arithmatex">\(P^T\)</span> 的谱 = {1} ∪ 上述，故 <span class="arithmatex">\(P\)</span> 只有 1 的模为 1。</p>
+<p><strong>推论 B.5</strong>：<span class="arithmatex">\(P\)</span> 不可约且非周期（不必正）时，某幂 <span class="arithmatex">\(P^n\)</span> 是正矩阵，对它用定理即得唯一正随机行向量 <span class="arithmatex">\(\pi\)</span> 满足 <span class="arithmatex">\(\pi P=\pi\)</span>（书用 <span class="arithmatex">\(P^3\)</span> 的情形做唯一性桥接：<span class="arithmatex">\(\phi_2P=\phi_1P^2=\pi P^3=\pi\)</span> 与 <span class="arithmatex">\(\phi_2P^3=\pi\)</span> 联立）。</p>
+<p><strong>Jordan 观察（Prop B.6）</strong>：<span class="arithmatex">\(P=C^{-1}JC\)</span>，<span class="arithmatex">\(J^k\to L\)</span>（仅 (1,1) 为 1），且 <span class="arithmatex">\(C^{-1}\)</span> 的第一列恰为 <span class="arithmatex">\(\mathbb 1\)</span>（由 <span class="arithmatex">\(CC^{-1}=I\)</span> 的点积约束唯一解出），故 <span class="arithmatex">\(\lim P^k=C^{-1}LC=\mathbb 1\pi\)</span>——外积收尾。∎</p>
+<p>与本笔记的接缝：§3.2.2 Metropolis 链的正则性（自环 ⇒ 非周期、提案不可约 ⇒ 不可约）；§4.7.2 的逃逸速率 <span class="arithmatex">\(\lambda&lt;1\)</span>（Prop B.4 的瞬态版）；ch03 习题 2 的谱隙是几何速率 <span class="arithmatex">\(1-2\delta\)</span> 的精细版。</p>
+</details>
 <figure>
   <img src="../images/ch03/out-3-1.png" class="lq-img" />
   <figcaption>代码实跑（实验 1）：左——\(p_t=p_0P^t\) 三分量收敛到 \(\pi\)（虚线，式 (3.7)）；右——\(\|p_t-\pi\|\) 对数坐标直线，相邻步比值 → 次特征值 \(|\lambda_2|\approx0.166\)（习题 1/2 的谱隙验证）</figcaption>

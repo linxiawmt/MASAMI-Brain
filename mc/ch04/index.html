@@ -4003,8 +4003,6 @@
       
         
       
-        
-      
     
     
     
@@ -4543,34 +4541,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appendix/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    附录 A/B 生成均匀随机数 · Perron–Frobenius
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -5009,6 +4979,97 @@
 </tbody>
 </table>
 <p>本章代码：<a href="../nb/ch04.ipynb">nb/ch04.ipynb</a>（种子 2027）。13 个实验：30 步游走直方图、漂移游走、常返性、扩散标度坍缩、二维布朗运动、Pólya 维度对比、期权定价 vs Black–Scholes、赌徒破产双验证、倍押 vs 平押、Kelly 四档投注比、灾难损失 Kelly 扫描、电网电压三法互证、kMC 谷粒翻转。</p>
+<p><strong>实验索引</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>实验</th>
+<th>书节</th>
+<th>产出图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30 步公平游走</td>
+<td>§4.1</td>
+<td>out-4-1.png</td>
+</tr>
+<tr>
+<td>2</td>
+<td>漂移游走</td>
+<td>§4.1</td>
+<td>out-4-2.png</td>
+</tr>
+<tr>
+<td>3</td>
+<td>一维常返性</td>
+<td>§4.1</td>
+<td>out-4-3.png</td>
+</tr>
+<tr>
+<td>4</td>
+<td>扩散标度坍缩</td>
+<td>§4.2</td>
+<td>out-4-4.png</td>
+</tr>
+<tr>
+<td>5</td>
+<td>二维布朗运动</td>
+<td>§4.3</td>
+<td>out-4-5.png</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Pólya 定理维度对比</td>
+<td>§4.3</td>
+<td>out-4-6.png</td>
+</tr>
+<tr>
+<td>7</td>
+<td>期权定价 vs Black–Scholes</td>
+<td>§4.4.1</td>
+<td>out-4-7.png</td>
+</tr>
+<tr>
+<td>8</td>
+<td>赌徒破产双验证</td>
+<td>§4.5</td>
+<td>out-4-8.png</td>
+</tr>
+<tr>
+<td>9</td>
+<td>倍押 vs 平押</td>
+<td>§4.5.1</td>
+<td>out-4-9.png</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kelly 简单游戏</td>
+<td>§4.6.1</td>
+<td>out-4-10.png</td>
+</tr>
+<tr>
+<td>11</td>
+<td>灾难损失 Kelly</td>
+<td>§4.6.2</td>
+<td>out-4-11.png</td>
+</tr>
+<tr>
+<td>12</td>
+<td>电网电压三法互证</td>
+<td>§4.7</td>
+<td>out-4-12.png</td>
+</tr>
+<tr>
+<td>13</td>
+<td>kMC 谷粒翻转</td>
+<td>§4.8</td>
+<td>out-4-13.png</td>
+</tr>
+</tbody>
+</table>
 <h2 id="40-本章导图">4.0 本章导图<a class="headerlink" href="#40-本章导图" title="Permanent link">#</a></h2>
 <div class="brtree">
   <div class="brrow">
@@ -5148,7 +5209,13 @@ u(x,t)=\frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}} .
 <p class="admonition-title">定理 4.1（Pólya）</p>
 <p><span class="arithmatex">\(d\)</span> 维格点上的简单随机游走：<span class="arithmatex">\(d=1,2\)</span> <strong>常返（recurrent）</strong>；<span class="arithmatex">\(d&gt;2\)</span> 非常返（<strong>transient</strong>）——有正概率游荡到无穷永不回头。</p>
 </div>
-<p>二维布朗运动同样常返但不逐点：以概率 1 回到原点的<strong>任意邻域</strong>（不必恰回原点）。这可由 Pólya 定理 + 游走的极限导出——即 <strong>Donsker 不变原理</strong>（形式化陈述见附录 D，本笔记附录页并入）。实验 6 用模拟直接对比 <span class="arithmatex">\(d=1,2,3\)</span> 的回访比例。</p>
+<p>二维布朗运动同样常返但不逐点：以概率 1 回到原点的<strong>任意邻域</strong>（不必恰回原点）。这可由 Pólya 定理 + 游走的极限导出——即 <strong>Donsker 不变原理</strong>（完整陈述见下方深入框）。实验 6 用模拟直接对比 <span class="arithmatex">\(d=1,2,3\)</span> 的回访比例。\n\n???+ note "深入（原书附录 D）：Donsker 定理"</p>
+<div class="highlight"><pre><span></span><code>\(X_i=\pm1\) 各半等可能，\(S_k=\sum_{i\le k}X_i\)，把随机游走线性插值成连续函数：
+
+\[W(n,t)=\frac1{\sqrt n}\Big(S_{[nt]}+(nt-[nt])\,X_{[nt]+1}\Big),\qquad t\in[0,1].\tag{D.1}\]
+
+**定理（Donsker [Don51]）**：\(n\to\infty\) 时 \(W(n,\cdot)\) **弱收敛**到 Wiener 过程 \(W(t)\)——对 \(C[0,1]\) 上的一切连续泛函 \(F\)（如 \(F(f)=\int_0^1f(t)\,dt\)），有 \(\mathbb E\,F(W(n,t))\to\mathbb E\,F(W(t))\)。这是"布朗运动 = 随机游走的扩散极限"的严格化（书 Fig D.1 画了 \(n=3/12/48/192\) 的插值演化）。
+</code></pre></div>
 <figure>
   <img src="../images/ch04/out-4-6.png" class="lq-img" />
   <figcaption>代码实跑（实验 6）：Pólya 定理实证——N 步内回到原点的游走比例：d=1、2 随 N 缓慢趋于 1，d=3 卡在 ≈0.34（理论回访概率 ≈0.3405）——维度 3 是生死的分界</figcaption>
@@ -5402,7 +5469,7 @@ E_k=p_{kA}+p_{k1}(1+E_1)+p_{k2}(1+E_2)+\cdots+p_{kn}(1+E_n),\tag{4.31}
 \mathbf E=(I-\hat P)^{-1}\,\mathbb 1=N\,\mathbb 1,\tag{4.32}
 \]</div>
 <p><span class="arithmatex">\(\mathbb 1\)</span> 是全 1 列向量。<strong>只依赖瞬态（transient）状态间的转移</strong>——合理：瞬态间转移越容易，被吸收越慢。(4.32) 也能算<strong>到任意状态集合 <span class="arithmatex">\(G\)</span> 的期望命中时间</strong>：把 <span class="arithmatex">\(G\)</span> 改成吸收态即可。</p>
-<p><strong>遗传算法应用</strong>（第 5 章预告）：把优化问题的目标态设为吸收态，<span class="arithmatex">\(P\)</span> 分块后 <span class="arithmatex">\(\hat P\)</span> 是非目标态间转移阵。不变向量分块 <span class="arithmatex">\(\pi=((\alpha\ \beta))\)</span>，<span class="arithmatex">\(\beta\hat P=\beta\)</span>。由 Perron–Frobenius（附录 B），<span class="arithmatex">\(\hat P\)</span> 主特征值 <span class="arithmatex">\(\lambda&lt;1\)</span>、对应正左特征向量 <span class="arithmatex">\(\omega\)</span>（归一）满足</p>
+<p><strong>遗传算法应用</strong>（第 5 章预告）：把优化问题的目标态设为吸收态，<span class="arithmatex">\(P\)</span> 分块后 <span class="arithmatex">\(\hat P\)</span> 是非目标态间转移阵。不变向量分块 <span class="arithmatex">\(\pi=((\alpha\ \beta))\)</span>，<span class="arithmatex">\(\beta\hat P=\beta\)</span>。由 Perron–Frobenius 定理（证明见 ch03 §3.1.2 深入框），<span class="arithmatex">\(\hat P\)</span> 主特征值 <span class="arithmatex">\(\lambda&lt;1\)</span>、对应正左特征向量 <span class="arithmatex">\(\omega\)</span>（归一）满足</p>
 <div class="arithmatex">\[
 \omega\hat P=\lambda\omega.\tag{4.33}
 \]</div>
@@ -5482,7 +5549,7 @@ v_x=\sum_y\frac{C_{xy}}{C_x}v_y=\sum_yp_{xy}v_y,
 <li>1d 常返：<span class="arithmatex">\(R=\frac12\frac1{1-R/2}\Rightarrow R=1\)</span>；任何格点无穷次到达；<span class="arithmatex">\(p(m,n)=\binom nr p^rq^{n-r}\)</span>（4.5）。</li>
 <li>扩散：固定 <span class="arithmatex">\(D=\Delta x^2/2\Delta t\)</span>，极限 <span class="arithmatex">\(u=e^{-x^2/4Dt}/\sqrt{4\pi Dt}\)</span>，满足 <span class="arithmatex">\(u_t=Du_{xx}\)</span>（4.7）。</li>
 <li>Wiener 三公理（初值/独立增量/正态增量）；<span class="arithmatex">\(\alpha^{-1}W_{\alpha^2t}\)</span> 仍是 Wiener 过程。</li>
-<li>Pólya：d=1,2 常返、d≥3 非常返；BM 的 2d 常返是邻域意义；Donsker 原理连通两者（附录 D）。</li>
+<li>Pólya：d=1,2 常返、d≥3 非常返；BM 的 2d 常返是邻域意义；Donsker 原理连通两者（§4.3 深入框）。</li>
 <li>期权：几何布朗运动 (4.8)(4.9)；风险中性 <span class="arithmatex">\(\mu=r\)</span>；<span class="arithmatex">\(P=e^{-rT}\mathbb E[\max(S_T-X,0)]\)</span>（4.10）；<span class="arithmatex">\(S_T\)</span> 对数正态；Black–Scholes 闭式核对。</li>
 <li>SAW：<span class="arithmatex">\(c_n\approx2.64^n\)</span>、位移² <span class="arithmatex">\(\approx n^{3/2}\)</span>（猜想）；依赖全程历史——非马尔可夫。</li>
 <li>赌徒破产：<span class="arithmatex">\(r_x\)</span> (4.12)/(4.13)、<span class="arithmatex">\(h_x\)</span> (4.14)/(4.15)、<span class="arithmatex">\(r_x+h_x=1\)</span>；时长 <span class="arithmatex">\(T(x)=x(a-x)\)</span>（4.16）；<span class="arithmatex">\(p=0.474\)</span> 时翻盘概率 <span class="arithmatex">\(10^{-45208}\)</span> 级。</li>
