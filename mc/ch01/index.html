@@ -5506,9 +5506,8 @@ P(C_2|H_3)=\frac{P(H_3|C_2)P(C_2)}{P(H_3|C_1)P(C_1)+P(H_3|C_2)P(C_2)+P(H_3|C_3)P
 </div>
 <p><strong>联合分布</strong>是验证它的工具。离散情形联合 pdf：</p>
 <div class="arithmatex">\[
-f_{X_1,X_2}(x_1,x_2)=\Pr(X_1=x_1\ \text{and}\ X_2=x_2),
-\qquad
-\Pr(X_1,X_2\in A)=\sum_{(x_1,x_2)\in A}f_{X_1,X_2}(x_1,x_2).
+f_{X_1,X_2}(x_1,x_2)=\Pr(X_1=x_1\ \text{and}\ X_2=x_2)\]</div>
+<div class="arithmatex">\[\Pr(X_1,X_2\in A)=\sum_{(x_1,x_2)\in A}f_{X_1,X_2}(x_1,x_2).
 \]</div>
 <p>构造联合密度的第一种方式——<strong>独立则相乘</strong>：<span class="arithmatex">\(f_{XY}(x,y)=f_X(x)f_Y(y)\)</span>。掷两骰子即如此：<span class="arithmatex">\(\Pr(\text{骰}_1=i\ \text{and}\ 骰_2=j)=\Pr(\text{骰}_1=i)\Pr(\text{骰}_2=j)\)</span>。</p>
 <p>第二种方式——<strong>相依结构</strong>（书 8 卡牌例）：一副 8 张（每种花色 2 张）抽 2 张，<span class="arithmatex">\(X_1,X_2\)</span> 为两张花色：</p>
@@ -5579,7 +5578,8 @@ f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}.\tag{1.37}
 </ul>
 <p><strong>LCRNG 定义</strong>：固定参数 <span class="arithmatex">\(a,c,m\)</span>，取</p>
 <div class="arithmatex">\[
-f(x)=(ax+c)\bmod m,\qquad x\ \text{为整数}.
+f(x)=(ax+c)\bmod m\]</div>
+<div class="arithmatex">\[x\ \text{为整数}.
 \]</div>
 <p>书例 <span class="arithmatex">\(a=5,c=1,m=8\)</span>、种子 0：输出 <span class="arithmatex">\(0,1,6,7,4,5,2,3,0\)</span> 后循环。小模数下当然不随机；<span class="arithmatex">\(m,a\)</span> 取现实量级后表观随机。</p>
 <p>三个工程事实：不同返回值至多 <span class="arithmatex">\(m\)</span> 个，故实做中 <span class="arithmatex">\(m\)</span> 越大越好（如 <span class="arithmatex">\(2^{32}\)</span>）；取 <span class="arithmatex">\(m=2^w\)</span>（机器字长）时模运算<strong>免费</strong>（高位溢出自动丢弃），每次只需一乘一加；若要 <span class="arithmatex">\([0,1)\)</span> 浮点输出需再除以 <span class="arithmatex">\(m\)</span>，而取 <span class="arithmatex">\(c=0\)</span> 可省去加法——此时 <span class="arithmatex">\(x_{n+1}=ax_n\bmod m\)</span>，且必须避开 <span class="arithmatex">\(x_n=0\)</span>（否则永远 0），满周期降为 <span class="arithmatex">\(m-1\)</span>。</p>

@@ -5126,7 +5126,8 @@
 <p>格点整数线上的粒子：起点原点，每 <span class="arithmatex">\(\Delta t\)</span> 以概率 <span class="arithmatex">\(p\)</span> 右移一步、<span class="arithmatex">\(q=1-p\)</span> 左移，步长 <span class="arithmatex">\(\Delta x\)</span>。<span class="arithmatex">\(n\)</span> 个时间周期后粒子位于 <span class="arithmatex">\(-n(\Delta x)\)</span> 到 <span class="arithmatex">\(n(\Delta x)\)</span> 之间。位置 <span class="arithmatex">\(x=m\Delta x\)</span>（<span class="arithmatex">\(-n\le m\le n\)</span>）：到 <span class="arithmatex">\(\pm5\Delta x\)</span> 只有 1 种走法、到 <span class="arithmatex">\(\pm3\Delta x\)</span> 有 5 种、到 <span class="arithmatex">\(\pm\Delta x\)</span> 有 10 种——组合数 <span class="arithmatex">\(\binom50=1,\binom51=5,\binom52=10\)</span>（向右步数的选择方式数）。</p>
 <p>书 Fig 4.1：200,000 条 30 步游走终点的直方图——由 CLT 近似正态（Alg 4.1）。形式化：<span class="arithmatex">\(X_i\)</span> 取 <span class="arithmatex">\(\Delta x\)</span>（概率 <span class="arithmatex">\(p\)</span>）或 <span class="arithmatex">\(-\Delta x\)</span>（概率 <span class="arithmatex">\(q\)</span>），<span class="arithmatex">\(S_0=0\)</span>，</p>
 <div class="arithmatex">\[
-S_n=\sum_{i=1}^nX_i,\qquad n=1,2,\dots\tag{4.1}
+S_n=\sum_{i=1}^nX_i\]</div>
+<div class="arithmatex">\[n=1,2,\dots\tag{4.1}
 \]</div>
 <p>由独立性（第 1 章式 (1.18)(1.33)）：</p>
 <p>[
@@ -5157,7 +5158,8 @@ R=\frac12+\frac R2\Big[\text{从 }x=1\text{ 回原点的概率}\Big]
 <p>解 <span class="arithmatex">\(2R(1-R/2)=1\)</span> 得 <span class="arithmatex">\(R=1\)</span>。∎ 由"0 与任何格点互通（互达概率均为正）"，游走将以概率 1 到达<strong>任何</strong>预定值 <span class="arithmatex">\(M\)</span>（<span class="arithmatex">\(100\)</span>、<span class="arithmatex">\(10^6\)</span>、<span class="arithmatex">\(-9{,}192{,}129\)</span>……）且无穷多次。</p>
 <p><strong>到达 <span class="arithmatex">\(m\Delta x\)</span> 的概率</strong>：设右行 <span class="arithmatex">\(r\)</span> 步、左行 <span class="arithmatex">\(l\)</span> 步：<span class="arithmatex">\(m=r-l\)</span>、<span class="arithmatex">\(n=r+l\)</span>，故 <span class="arithmatex">\(r=\frac{n+m}2\)</span>、<span class="arithmatex">\(l=\frac{n-m}2\)</span>（<span class="arithmatex">\(n,m\)</span> 同奇偶才有定义）。这正是 <span class="arithmatex">\(n\)</span> 次抛（加权）硬币数右次数——<strong>二项分布</strong>（§2.3）：</p>
 <div class="arithmatex">\[
-p(m,n)=\Pr(r\text{ 步向右})=\binom nr p^r q^{n-r},\qquad r=\frac{n+m}{2}.\tag{4.5}
+p(m,n)=\Pr(r\text{ 步向右})=\binom nr p^r q^{n-r}\]</div>
+<div class="arithmatex">\[r=\frac{n+m}{2}.\tag{4.5}
 \]</div>
 <figure>
   <img src="../images/ch04/out-4-3.png" class="lq-img" />
@@ -5213,9 +5215,11 @@ u(x,t)=\frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}} .
 <details class="note" open="open">
 <summary>深入（原书附录 D）：Donsker 定理</summary>
 <p><span class="arithmatex">\(X_i=\pm1\)</span> 各半等可能，<span class="arithmatex">\(S_k=\sum_{i\le k}X_i\)</span>，把随机游走线性插值成连续函数：</p>
-<div class="arithmatex">\[W(n,t)=\frac1{\sqrt n}\Big(S_{[nt]}+(nt-[nt])\,X_{[nt]+1}\Big),\qquad t\in[0,1].\tag{D.1}\]</div>
-<p><strong>定理（Donsker [Don51]）</strong>：<span class="arithmatex">\(n\to\infty\)</span> 时 <span class="arithmatex">\(W(n,\cdot)\)</span> <strong>弱收敛</strong>到 Wiener 过程 <span class="arithmatex">\(W(t)\)</span>——对 <span class="arithmatex">\(C[0,1]\)</span> 上的一切连续泛函 <span class="arithmatex">\(F\)</span>（如 <span class="arithmatex">\(F(f)=\int_0^1f(t)\,dt\)</span>），有 <span class="arithmatex">\(\mathbb E\,F(W(n,t))\to\mathbb E\,F(W(t))\)</span>。这是"布朗运动 = 随机游走的扩散极限"的严格化（书 Fig D.1 画了 <span class="arithmatex">\(n=3/12/48/192\)</span> 的插值演化）。</p>
+<div class="arithmatex">\[W(n,t)=\frac1{\sqrt n}\Big(S_{[nt]}+(nt-[nt])\,X_{[nt]+1}\Big)\]</div>
 </details>
+<div class="arithmatex">\[t\in[0,1].\tag{D.1}\]</div>
+<div class="highlight"><pre><span></span><code>**定理（Donsker [Don51]）**：\(n\to\infty\) 时 \(W(n,\cdot)\) **弱收敛**到 Wiener 过程 \(W(t)\)——对 \(C[0,1]\) 上的一切连续泛函 \(F\)（如 \(F(f)=\int_0^1f(t)\,dt\)），有 \(\mathbb E\,F(W(n,t))\to\mathbb E\,F(W(t))\)。这是"布朗运动 = 随机游走的扩散极限"的严格化（书 Fig D.1 画了 \(n=3/12/48/192\) 的插值演化）。
+</code></pre></div>
 <figure>
   <img src="../images/ch04/out-4-6.png" class="lq-img" />
   <figcaption>代码实跑（实验 6）：Pólya 定理实证——N 步内回到原点的游走比例：d=1、2 随 N 缓慢趋于 1，d=3 卡在 ≈0.34（理论回访概率 ≈0.3405）——维度 3 是生死的分界</figcaption>
@@ -5236,7 +5240,8 @@ u(x,t)=\frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}} .
 <p><span class="arithmatex">\(\mathrm dW\)</span> 是布朗运动随机变量。无随机性（<span class="arithmatex">\(\mathrm dW=0\)</span>）时 <span class="arithmatex">\(\frac{dS}{dt}=\mu S\)</span>——指数增长，<span class="arithmatex">\(\mu\)</span> 是增长率；<strong>期权定价与 <span class="arithmatex">\(\mu\)</span> 无关</strong>（见下）。<span class="arithmatex">\(\sigma\)</span> 是<strong>波动率（volatility）</strong>——价格波动的剧烈程度，实为股价的标准差（可从历史估计）。</p>
 <p><strong>模拟</strong>：抽正态样本当 <span class="arithmatex">\(\mathrm dW\)</span>，逐步推进 <span class="arithmatex">\(S^{new}=S^{old}+\mathrm dS\)</span>。Itô 表明 <span class="arithmatex">\(\mathrm dW\)</span> 的方差必须取 <span class="arithmatex">\(\mathrm dt\)</span>：</p>
 <div class="arithmatex">\[
-\frac{dS}{S}=\mu\,\mathrm dt+\sigma\sqrt{\mathrm dt}\,N,\qquad N\sim N(0,1).\tag{4.9}
+\frac{dS}{S}=\mu\,\mathrm dt+\sigma\sqrt{\mathrm dt}\,N\]</div>
+<div class="arithmatex">\[N\sim N(0,1).\tag{4.9}
 \]</div>
 <p>量纲：各项无量纲；<span class="arithmatex">\(\mathrm dt\)</span> 以年计时，<span class="arithmatex">\(\mu\)</span> 每年、<span class="arithmatex">\(\sigma\)</span> 每根号年（实务统一说"每年"）。</p>
 <p><strong>风险中性估值（risk-neutral valuation）</strong>：公平性 ⟹ 无人能赚"免费"的钱。设 <span class="arithmatex">\(r\)</span>=最佳无风险利率（国债）。<strong>公平期权价要求 <span class="arithmatex">\(\mu=r\)</span></strong>——若 <span class="arithmatex">\(\mu&gt;r\)</span> 且有保证，人人买股票弃国债，<span class="arithmatex">\(\mu\)</span> 就成了无风险率；<span class="arithmatex">\(\mu&gt;r\)</span> 是风险的报酬，把它代入 (4.9) 会给出不公平的期权价（用 <span class="arithmatex">\(r\)</span> 贴现未来资金却按 <span class="arithmatex">\(\mu\)</span> 漂移，不一致）。详见 [Hul03]。</p>
@@ -5258,11 +5263,12 @@ P=e^{-rT}E.\tag{4.10}
 <p class="admonition-title">拓展：Black–Scholes 公式（书 Notes）</p>
 <p><span class="arithmatex">\(\ C=SF(d_1)-Xe^{-rT}F(d_2)\ \)</span>，其中 <span class="arithmatex">\(F\)</span> 为 <span class="arithmatex">\(N(0,1)\)</span> 的 cdf（Table 2.2）：</p>
 <div class="arithmatex">\[
-d_1=\frac{\log(S/X)+(r+\sigma^2/2)T}{\sigma\sqrt T},\qquad
-d_2=\frac{\log(S/X)+(r-\sigma^2/2)T}{\sigma\sqrt T}.
-\]</div>
-<p>实验 7 用它做基准。式 (4.8) 是<strong>随机微分方程（stochastic differential equation）</strong>，其解即此式——随机版微分方程同样"有解"。</p>
+d_1=\frac{\log(S/X)+(r+\sigma^2/2)T}{\sigma\sqrt T}\]</div>
 </div>
+<div class="arithmatex">\[d_2=\frac{\log(S/X)+(r-\sigma^2/2)T}{\sigma\sqrt T}.
+    \]</div>
+<div class="highlight"><pre><span></span><code>实验 7 用它做基准。式 (4.8) 是**随机微分方程（stochastic differential equation）**，其解即此式——随机版微分方程同样"有解"。
+</code></pre></div>
 <h3 id="442-自回避行走Self-Avoiding-Walks">4.4.2 自回避行走（Self-Avoiding Walks）<a class="headerlink" href="#442-自回避行走Self-Avoiding-Walks" title="Permanent link">#</a></h3>
 <p><strong>自回避行走（self-avoiding walk, SAW）</strong>：格点上不走回头路的游走——<strong>任何格点至多访问一次</strong>。1d 平凡；2d/3d 的最基本问题至今未解：(1) <span class="arithmatex">\(n\)</span> 步 SAW 有多少条？(2) <span class="arithmatex">\(n\)</span> 步 SAW 的平均<strong>位移</strong>（终点与起点的直线距离）是多少？</p>
 <p>二维方格直接可数：<span class="arithmatex">\(c_1=4,\ c_2=12,\ c_3=36,\ c_4=100\)</span>；猜想 <span class="arithmatex">\(c_n\approx2.64^n\)</span>；位移平方期望猜想 <span class="arithmatex">\(\mathbb E(\text{displacement}^2)\approx n^{3/2}\)</span>。</p>
@@ -5272,7 +5278,8 @@ d_2=\frac{\log(S/X)+(r-\sigma^2/2)T}{\sigma\sqrt T}.
 <p><strong>公平局是鞅（martingale）</strong>：<span class="arithmatex">\(p=\frac12\)</span> 时每局期望不变——<span class="arithmatex">\(\mathbb E(X(1))=\frac12(x+1)+\frac12(x-1)=x\)</span>，<span class="arithmatex">\(\mathbb E(X(2))=x\)</span>，……期望保持的过程叫鞅。加上"游走按 <span class="arithmatex">\(\sqrt t\)</span> 弥散"，可估计游戏时长量级。</p>
 <p>设 <span class="arithmatex">\(r_x\)</span>=本金 <span class="arithmatex">\(x\)</span> 时破产的概率、<span class="arithmatex">\(h_x\)</span>=赢光庄家的概率。若能证 <span class="arithmatex">\(r_x+h_x=1\)</span>，则游戏必在有限时间结束。<strong>对一局分解</strong>：输则同本金 <span class="arithmatex">\(x-1\)</span> 的处境、赢则同 <span class="arithmatex">\(x+1\)</span>：</p>
 <div class="arithmatex">\[
-r_x=q\,r_{x-1}+p\,r_{x+1},\qquad x=2,3,\dots,a-2.\tag{4.11}
+r_x=q\,r_{x-1}+p\,r_{x+1}\]</div>
+<div class="arithmatex">\[x=2,3,\dots,a-2.\tag{4.11}
 \]</div>
 <p>边界：<span class="arithmatex">\(x=1\)</span> 输即破产（<span class="arithmatex">\(r_1=q+pr_2\)</span>）、<span class="arithmatex">\(x=a-1\)</span> 赢则完胜（<span class="arithmatex">\(r_{a-1}=qr_{a-2}\)</span>）——统一为 <span class="arithmatex">\(r_0=1,\ r_a=0\)</span>。(4.11) 是<strong>差分方程</strong>，理论与线性常系数微分方程平行。试解 <span class="arithmatex">\(r_x=b^x\)</span>：</p>
 <div class="arithmatex">\[
@@ -5282,11 +5289,13 @@ b=\frac{1\pm\sqrt{1-4pq}}{2p}=\frac{1\pm(1-2p)}{2p}.
 \]</div>
 <p><span class="arithmatex">\(p\ne\frac12\)</span> 两根 <span class="arithmatex">\(b=1\)</span> 与 <span class="arithmatex">\(b=q/p\)</span>，通解 <span class="arithmatex">\(r_x=A+B(q/p)^x\)</span>，代入 <span class="arithmatex">\(r_0=1,r_a=0\)</span>：</p>
 <div class="arithmatex">\[
-r_x=\frac{(q/p)^a-(q/p)^x}{(q/p)^a-1},\qquad p\ne\frac12;\tag{4.12}
+r_x=\frac{(q/p)^a-(q/p)^x}{(q/p)^a-1}\]</div>
+<div class="arithmatex">\[p\ne\frac12;\tag{4.12}
 \]</div>
 <p><span class="arithmatex">\(p=q=\frac12\)</span> 重根 <span class="arithmatex">\(b=1\)</span>，两独立解 <span class="arithmatex">\(1,x\)</span>，通解 <span class="arithmatex">\(A+Bx\)</span>：</p>
 <div class="arithmatex">\[
-r_x=1-\frac xa,\qquad p=\frac12.\tag{4.13}
+r_x=1-\frac xa\]</div>
+<div class="arithmatex">\[p=\frac12.\tag{4.13}
 \]</div>
 <p>同法（边界 <span class="arithmatex">\(h_0=0,h_a=1\)</span>）：</p>
 <div class="arithmatex">\[
@@ -5304,7 +5313,8 @@ h_x=\frac xa\ (p=\tfrac12).\tag{4.15}
 <p>哪怕 <span class="arithmatex">\(p=0.4999\)</span>（万分之一的偏差），赢光庄家概率也仅 <span class="arithmatex">\(\approx1.89\times10^{-174}\)</span>。<strong>对公平最微小的偏离都有极端后果。</strong></p>
 <p><strong>期望游戏时长</strong>：设 <span class="arithmatex">\(T(x)\)</span>=从 <span class="arithmatex">\(x\)</span> 出发到吸收的期望时间（公平局）。分解一局：</p>
 <div class="arithmatex">\[
-T(x)=1+\frac12T(x+1)+\frac12T(x-1),\qquad 0&lt;x&lt;a,
+T(x)=1+\frac12T(x+1)+\frac12T(x-1)\]</div>
+<div class="arithmatex">\[0&lt;x&lt;a,
 \]</div>
 <p>即<strong>非齐次</strong>差分方程 <span class="arithmatex">\(T(x)-\frac12T(x+1)-\frac12T(x-1)=1\)</span>（<span class="arithmatex">\(T(0)=T(a)=0\)</span>）。齐次解 <span class="arithmatex">\(A+Bx\)</span>（重根 1）；特解试 <span class="arithmatex">\(Cx^2\)</span>：<span class="arithmatex">\(Cx^2-\frac C2(x+1)^2-\frac C2(x-1)^2=1\Rightarrow C=-1\)</span>。完整解 <span class="arithmatex">\(T(x)=A+Bx-x^2\)</span>，边界定出</p>
 <div class="arithmatex">\[
@@ -5397,7 +5407,8 @@ E=\frac{10}{12}(6.17)-\frac1{12}(1)-\frac1{12}(1.38)=4.943\quad\text{（这交�
 \]</div>
 <p>单投 B：二次方程最小根 <span class="arithmatex">\(f=0.625\)</span>。<strong>双投</strong>（份额 <span class="arithmatex">\(f_A,f_B\)</span>，假设两玩法独立——大概不成立，附录 C 展示相关性处理）：九种结果（Table 4.1）各带概率 <span class="arithmatex">\(p_Ap_B,\dots,r_Ar_B\)</span> 与财富乘子 <span class="arithmatex">\(1+f_A\gamma_A+f_B\gamma_B\)</span> 等；约束 <span class="arithmatex">\(\lambda_Af_A+\lambda_Bf_B&lt;1\)</span>（双双吃最大损失不得爆仓）。对 <span class="arithmatex">\(f_A,f_B\)</span> 求偏导得两组九项分式方程（书给出全式）——难解的非线性方程组！<strong>用遗传算法</strong>（第 5 章）优化期望、以解为初值精化，得</p>
 <div class="arithmatex">\[
-f_A=0.073,\qquad f_B=0.619,
+f_A=0.073\]</div>
+<div class="arithmatex">\[f_B=0.619,
 \]</div>
 <p>最大损失敞口 <span class="arithmatex">\(\lambda_Af_A+\lambda_Bf_B=1.7\times0.073+1.38\times0.619=0.978\)</span>（近乎全部本金，但发生概率 <span class="arithmatex">\(0.0133\times0.083=0.0011\)</span>）。</p>
 <div class="admonition note">
@@ -5416,7 +5427,8 @@ g=d(1,1)\log(b+\alpha_Af_A+\alpha_Bf_B)+d(1,0)\log(b+\alpha_Af_A)+d(0,1)\log(b+\
 <p>出乎意料：<strong>图上的随机游走与同一张图上的电网深度同构</strong>。标准参考 [DS84]（本节主要依据）。</p>
 <p>回忆赌徒破产：公平局赢光庄家概率 <span class="arithmatex">\(h_x\)</span> 满足</p>
 <div class="arithmatex">\[
-h_x=\frac12h_{x-1}+\frac12h_{x+1},\qquad h_0=0,\ h_a=1 .
+h_x=\frac12h_{x-1}+\frac12h_{x+1}\]</div>
+<div class="arithmatex">\[h_0=0,\ h_a=1 .
 \]</div>
 <p>现在看电路：<span class="arithmatex">\(a\)</span> 个电阻 <span class="arithmatex">\(R\)</span> 串联接 1 伏电池（书 Fig 4.7），节点 <span class="arithmatex">\(x\)</span> 的电压 <span class="arithmatex">\(v(x)\)</span>：<span class="arithmatex">\(v(0)=0,\ v(a)=1\)</span>。<strong>Kirchhoff 定律</strong>（节点无电流堆积 → 流入和为零）+ <strong>Ohm 定律</strong>（<span class="arithmatex">\(v=iR\)</span>）：</p>
 <div class="arithmatex">\[

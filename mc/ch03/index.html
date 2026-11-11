@@ -5045,7 +5045,8 @@
 <h3 id="311-图上的随机游走Random-Walk-on-a-Graph">3.1.1 图上的随机游走（Random Walk on a Graph）<a class="headerlink" href="#311-图上的随机游走Random-Walk-on-a-Graph" title="Permanent link">#</a></h3>
 <p>图表示：状态 = <strong>顶点</strong>；若一次迭代内 <span class="arithmatex">\(x\to y\)</span> 可达则连<strong>有向边</strong>；每条边带概率 <span class="arithmatex">\(p_{xy}\)</span>（当前在 <span class="arithmatex">\(x\)</span> 时下一步选该边的概率）。从 <span class="arithmatex">\(x\)</span> 一步可达的状态集就是邻域 <span class="arithmatex">\(N_x\)</span>。出边概率归一：</p>
 <div class="arithmatex">\[
-\sum_{y\in N_x}p_{xy}=1,\qquad\text{对一切 }x\in\Omega.\tag{3.1}
+\sum_{y\in N_x}p_{xy}=1\]</div>
+<div class="arithmatex">\[\text{对一切 }x\in\Omega.\tag{3.1}
 \]</div>
 <p>链从某 <span class="arithmatex">\(X_0\)</span> 出发（按**起始分布（starting distribution）**随机或直接指定），此后每步按当前状态的概率分布选边——<strong>马尔可夫链 = 图上的随机游走</strong>（第 4 章专论随机游走）。</p>
 <p>书例（股市模型，Fig 3.2）：相对昨日，今日"涨/平/跌"：</p>
@@ -5063,7 +5064,8 @@ C=\begin{bmatrix}0.3&amp;0.5&amp;1.0\\ 0.4&amp;0.6&amp;1.0\\ 0.4&amp;0.7&amp;1.0
 <h3 id="312-链的矩阵表示Matrix-Representation">3.1.2 链的矩阵表示（Matrix Representation）<a class="headerlink" href="#312-链的矩阵表示Matrix-Representation" title="Permanent link">#</a></h3>
 <p>把 <span class="arithmatex">\(p_{xy}\)</span> 排成矩阵 <span class="arithmatex">\(P=(p_{xy})\)</span>——<strong>转移矩阵（transition matrix）</strong>，每行和为 1（由 (3.1)）。矩阵不只是表格，还是<strong>计算工具</strong>：</p>
 <div class="arithmatex">\[
-p_{t+1}=p_t\,P,\qquad t=1,2,\dots\tag{3.3}
+p_{t+1}=p_t\,P\]</div>
+<div class="arithmatex">\[t=1,2,\dots\tag{3.3}
 \]</div>
 <p>股市链的转移矩阵：</p>
 <div class="arithmatex">\[
@@ -5172,8 +5174,8 @@ G=\begin{bmatrix}
 <h3 id="322-Metropolis-为什么有效Why-Does-It-Work">3.2.2 Metropolis 为什么有效？（Why Does It Work?）<a class="headerlink" href="#322-Metropolis-为什么有效Why-Does-It-Work" title="Permanent link">#</a></h3>
 <p><strong>概率质量的流入流出图像</strong>：把 1 单位"概率质量"想象成沙子，链每迭代一步，各状态的沙沿有向边流出、同时有沙流入。"流出 <span class="arithmatex">\(x\)</span>"的量 = <span class="arithmatex">\(x\)</span> 的质量 × 各边份额：</p>
 <div class="arithmatex">\[
-\text{“质量”流出 }x=\sum_{y\in\Omega}p_t(x)\,p_{xy},\qquad
-\text{“质量”流入 }x=\sum_{y\in\Omega}p_t(y)\,p_{yx}.
+\text{“质量”流出 }x=\sum_{y\in\Omega}p_t(x)\,p_{xy}\]</div>
+<div class="arithmatex">\[\text{“质量”流入 }x=\sum_{y\in\Omega}p_t(y)\,p_{yx}.
 \]</div>
 <p>不变分布要求对每个 <span class="arithmatex">\(x\)</span> 流入=流出：</p>
 <div class="arithmatex">\[
@@ -5181,7 +5183,8 @@ G=\begin{bmatrix}
 \]</div>
 <p>（这就是 <span class="arithmatex">\(\pi P=\pi\)</span> 的第 <span class="arithmatex">\(x\)</span> 列重述。）<strong>更强的逐对条件</strong>——<strong>细致平衡（detailed balance）</strong>：</p>
 <div class="arithmatex">\[
-\pi(x)\,p_{xy}=\pi(y)\,p_{yx},\qquad x,y\in\Omega.\tag{3.12}
+\pi(x)\,p_{xy}=\pi(y)\,p_{yx}\]</div>
+<div class="arithmatex">\[x,y\in\Omega.\tag{3.12}
 \]</div>
 <p>任何一对状态彼此交换的质量两两相抵，则 (3.11) 自动成立。</p>
 <p><strong>验证 Metropolis 链满足细致平衡</strong>。转移概率 = 提案 × 接受（先被提议、再被接受）：</p>
@@ -5278,8 +5281,8 @@ S_2(E-E_1)\approx S_2(E)-\frac{E_1}{T}.
 <p>因子 <span class="arithmatex">\(e^{-E_1/(k_BT)}\)</span> 就是 <strong>Boltzmann 因子</strong>：<strong>低能量构型比高能量的更可能，且精确给出了这如何依赖温度</strong>。</p>
 <p><strong>Boltzmann 分布与配分函数</strong>：微观态密度与归一化常数</p>
 <div class="arithmatex">\[
-f(x)=\frac{e^{-E(x)/k_BT}}{Z},\qquad
-Z=\sum_{x\in\Omega}e^{-E/k_BT}.\tag{3.21}{,}\ (3.22)
+f(x)=\frac{e^{-E(x)/k_BT}}{Z}\]</div>
+<div class="arithmatex">\[Z=\sum_{x\in\Omega}e^{-E/k_BT}.\tag{3.21}{,}\ (3.22)
 \]</div>
 <p><span class="arithmatex">\(Z\)</span> 叫<strong>配分函数（partition function）</strong>——远不止归一化：它是推导热力学性质的中心角色（超出本书范围）。宏观可观测量的期望（统计力学标准记号 <span class="arithmatex">\(\langle\cdot\rangle\)</span>）：</p>
 <div class="arithmatex">\[
@@ -5299,9 +5302,8 @@ E(x)=-\frac12\sum_{i\in\Lambda}\ \sum_{j\in\text{neighbors of }i}x_ix_j.\tag{3.2
 <p>相邻自旋<strong>同向使能量降低</strong>——磁化的微观根源。实现用二维规则网格 + <strong>周期边界条件（periodic boundary condition）</strong>：最后一列与第一列相邻、最后一行与第一行相邻（拓扑上把格子弯成<strong>环面 torus</strong>）。备选<strong>自由边界条件</strong>：边界点只有 3 个邻居、角点 2 个。内部点 <span class="arithmatex">\((i,j)\)</span> 的邻居：<span class="arithmatex">\((i-1,j),(i,j-1),(i,j+1),(i+1,j)\)</span>。</p>
 <p><strong>接受纪律退化成 Metropolis 原始形式</strong>：由 (3.21)，</p>
 <div class="arithmatex">\[
-\frac{f(y)}{f(x)}=\frac{e^{-E_y/k_BT}/Z}{e^{-E_x/k_BT}/Z}=e^{-(E_y-E_x)/k_BT},
-\qquad
-h=\min\big(1,\ e^{-(E_y-E_x)/k_BT}\big).\tag{3.27}
+\frac{f(y)}{f(x)}=\frac{e^{-E_y/k_BT}/Z}{e^{-E_x/k_BT}/Z}=e^{-(E_y-E_x)/k_BT}\]</div>
+<div class="arithmatex">\[h=\min\big(1,\ e^{-(E_y-E_x)/k_BT}\big).\tag{3.27}
 \]</div>
 <p><strong><span class="arithmatex">\(Z\)</span> 消失了</strong>——这就是 MCMC 能处理统计力学的全部秘密。</p>
 <p><strong>Burn-in（烧入期）</strong>：初始构型不大可能是 Boltzmann 样本；算法随运行渐近逼近 Boltzmann 分布，所以<strong>统计不能从第一步记起</strong>，要从某个点之后才开始记。烧多久没有通解，只能实验确定。</p>

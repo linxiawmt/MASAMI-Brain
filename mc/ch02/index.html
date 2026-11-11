@@ -5414,7 +5414,8 @@ C(n,x)=\binom nx=\frac{n(n-1)\cdots(n-x+1)}{x(x-1)\cdots2\cdot1}=\frac{n!}{x!\,(
 <p>对 (2.5) 关于 <span class="arithmatex">\(x\)</span> 求和恰得 <span class="arithmatex">\((p+q)^n=1\)</span>，概率归一自动成立。</p>
 <p><strong>二项分布 <span class="arithmatex">\(b(n,p)\)</span></strong> 的密度：</p>
 <div class="arithmatex">\[
-\operatorname{pdf}(x)=\Pr(X=x)=\binom nx p^x q^{n-x},\qquad x=0,1,\dots,n.\tag{2.5}
+\operatorname{pdf}(x)=\Pr(X=x)=\binom nx p^x q^{n-x}\]</div>
+<div class="arithmatex">\[x=0,1,\dots,n.\tag{2.5}
 \]</div>
 <p><strong>均值（式 (2.7)）推导</strong>——两条路都走一遍（概率论复习）：</p>
 <p>直接算：<span class="arithmatex">\(\mu=\sum_{x=0}^n x\binom nx p^xq^{n-x}=\sum_{x=1}^n \frac{n!}{(x-1)!(n-x)!}p^xq^{n-x}=np\sum_{x=1}^n\binom{n-1}{x-1}p^{x-1}q^{n-x}\)</span>。换元 <span class="arithmatex">\(y=x-1,\ m=n-1\)</span>（则 <span class="arithmatex">\(n-x=m-y\)</span>）：</p>
@@ -5459,8 +5460,8 @@ np\sum_{y=0}^{m}\binom my p^y q^{m-y}=np(p+q)^m=np.
 \]</div>
 <p><strong>泊松逼近二项</strong>：回到变异问题，<span class="arithmatex">\(n=10^6,\ p=10^{-7}\)</span>，<span class="arithmatex">\(\lambda t=np=0.1\)</span>：</p>
 <div class="arithmatex">\[
-\Pr(X=x)\approx\frac{(0.1)^xe^{-0.1}}{x!};\qquad
-x=0:\ (1-p)^n=0.904837331\ \text{vs}\ e^{-0.1}=0.904837418 .
+\Pr(X=x)\approx\frac{(0.1)^xe^{-0.1}}{x!}\]</div>
+<div class="arithmatex">\[x=0:\ (1-p)^n=0.904837331\ \text{vs}\ e^{-0.1}=0.904837418 .
 \]</div>
 <p>九位小数才见差别。大 <span class="arithmatex">\(n\)</span> 时二项、泊松还都可以用正态分布近似（§2.6）。</p>
 <h3 id="241-模拟抽泊松Sampling-the-Poisson-by-Simulation">2.4.1 模拟抽泊松（Sampling the Poisson by Simulation）<a class="headerlink" href="#241-模拟抽泊松Sampling-the-Poisson-by-Simulation" title="Permanent link">#</a></h3>
@@ -5584,8 +5585,8 @@ X=\frac{\sum_{i=1}^n U_i-n/2}{\sqrt{n/12}}.
 <p>由 CLT 近似 <span class="arithmatex">\(N(0,1)\)</span>（<span class="arithmatex">\(U(0,1)\)</span> 均值 <span class="arithmatex">\(1/2\)</span>、方差 <span class="arithmatex">\(1/12\)</span>，式 (1.20)(1.21)）。常取 <span class="arithmatex">\(n=12\)</span> 免去开方除法。</p>
 <p><strong>② Box–Muller（精确、一次出两个）</strong>：取 <span class="arithmatex">\(U_1,U_2\sim U(0,1)\)</span>：</p>
 <div class="arithmatex">\[
-X_1=\cos(2\pi U_1)\sqrt{-2\ln U_2},\qquad
-X_2=\sin(2\pi U_1)\sqrt{-2\ln U_2}.\tag{2.19}
+X_1=\cos(2\pi U_1)\sqrt{-2\ln U_2}\]</div>
+<div class="arithmatex">\[X_2=\sin(2\pi U_1)\sqrt{-2\ln U_2}.\tag{2.19}
 \]</div>
 <p>则 <span class="arithmatex">\(X_1,X_2\)</span> <strong>独立</strong>且都 <span class="arithmatex">\(N(0,1)\)</span>。看似 <span class="arithmatex">\(X_1\)</span> 会泄露 <span class="arithmatex">\(X_2\)</span> 的信息，其实不然——给定 <span class="arithmatex">\(X_1=0.7\)</span>，满足第一式的 <span class="arithmatex">\((U_1,U_2)\)</span> 轨迹与给定 <span class="arithmatex">\(X_2=2.0\)</span> 的轨迹有唯一交点（书 Fig 2.9）。</p>
 <p><strong>③ Marsaglia–Bray（精确、省超越函数）</strong>：</p>
@@ -5594,8 +5595,8 @@ X_2=\sin(2\pi U_1)\sqrt{-2\ln U_2}.\tag{2.19}
 <li>若 <span class="arithmatex">\(S\ge1\)</span> 回到 1（<strong>拒绝</strong>）；否则返回</li>
 </ol>
 <div class="arithmatex">\[
-X_1=V_1\Big(\frac{-2\ln S}{S}\Big)^{1/2},\qquad
-X_2=V_2\Big(\frac{-2\ln S}{S}\Big)^{1/2}.
+X_1=V_1\Big(\frac{-2\ln S}{S}\Big)^{1/2}\]</div>
+<div class="arithmatex">\[X_2=V_2\Big(\frac{-2\ln S}{S}\Big)^{1/2}.
 \]</div>
 <p>只用一次超越函数（Box–Muller 用三次），代价是拒绝率（书留问题：拒绝比例是 <span class="arithmatex">\(1-\pi/4\approx21.5\%\)</span>，因 <span class="arithmatex">\((V_1,V_2)\)</span> 均匀落在单位方块、接受域是内切单位圆）。今天机器速度与超越函数效率已让这点差别无足轻重。</p>
 <figure>
@@ -5638,7 +5639,8 @@ Y=\frac{\bar X-\theta}{\sqrt{\sigma_X^2/n}}\approx N(0,1)
 <p><strong>现实三难题</strong>：(1) <span class="arithmatex">\(\sigma_X^2\)</span> 未知要估计，此时 <span class="arithmatex">\(Y\)</span> 不再正态；(2) <span class="arithmatex">\(X_i\)</span> 可能不同分布（模拟有启动效应 start-up effects）；(3) <span class="arithmatex">\(X_i\)</span> 可能相关——排队模拟的常态。</p>
 <p>**Batching（分批）**对治 (2)(3)：把 <span class="arithmatex">\(n\)</span> 个试验切成 <span class="arithmatex">\(m\)</span> 批、每批 <span class="arithmatex">\(J=n/m\)</span> 个：</p>
 <div class="arithmatex">\[
-B_i=\frac1J\sum_{j=(i-1)J+1}^{iJ}X_j,\qquad i=1,\dots,m,
+B_i=\frac1J\sum_{j=(i-1)J+1}^{iJ}X_j\]</div>
+<div class="arithmatex">\[i=1,\dots,m,
 \]</div>
 <p>批均值近似独立同分布。于是 <span class="arithmatex">\(\hat\theta=\bar B=\frac1m\sum B_i\)</span> 是估计量，<span class="arithmatex">\(\frac{\hat\theta-\theta}{\sqrt{\sigma_B^2/m}}\approx N(0,1)\)</span>。<span class="arithmatex">\(\sigma_B^2\)</span> 用<strong>样本方差</strong>估：</p>
 <div class="arithmatex">\[
@@ -5662,7 +5664,8 @@ t=\frac{\hat\theta-\theta}{(s_B/\sqrt m)}.\tag{2.21}
 <h2 id="27-Gibrat-定律与对数正态分布Gibrats-Law-and-the-Lognormal-Distribution">2.7 Gibrat 定律与对数正态分布（Gibrat's Law and the Lognormal Distribution）<a class="headerlink" href="#27-Gibrat-定律与对数正态分布Gibrats-Law-and-the-Lognormal-Distribution" title="Permanent link">#</a></h2>
 <p><span class="arithmatex">\(Y\sim N(\alpha,\beta^2)\)</span>，<span class="arithmatex">\(X=e^Y\)</span>，则 <span class="arithmatex">\(X\)</span> <strong>对数正态</strong>分布，记 <span class="arithmatex">\(X\sim LN(\alpha,\beta^2)\)</span>（恒正）。密度由换元 <span class="arithmatex">\(r=\log u\)</span> 得：</p>
 <div class="arithmatex">\[
-f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2},\qquad x&gt;0.\tag{2.22}
+f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2}\]</div>
+<div class="arithmatex">\[x&gt;0.\tag{2.22}
 \]</div>
 <p><strong>均值与方差</strong>（式 (2.23)，书 Fig 2.11 完整推导——配方技巧，值得抄一遍均值部分）：换元 <span class="arithmatex">\(u=\log x,\ x=e^u,\ dx=e^u du\)</span>：</p>
 <div class="arithmatex">\[
@@ -5675,8 +5678,8 @@ f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2},\qquad x&gt;0.
 \]</div>
 <p>最后的积分是 <span class="arithmatex">\(N(\alpha+\beta^2,\beta^2)\)</span> 的密度积分 = 1。同法（对 <span class="arithmatex">\(\mathbb E(X^2)\)</span> 配方到 <span class="arithmatex">\(\alpha+2\beta^2\)</span>）：</p>
 <div class="arithmatex">\[
-\mathbb E(X)=e^{\alpha+\frac12\beta^2},\qquad
-\operatorname{var}(X)=(e^{\beta^2}-1)\,e^{2\alpha+\beta^2}.\tag{2.23}
+\mathbb E(X)=e^{\alpha+\frac12\beta^2}\]</div>
+<div class="arithmatex">\[\operatorname{var}(X)=(e^{\beta^2}-1)\,e^{2\alpha+\beta^2}.\tag{2.23}
 \]</div>
 <p><strong>采样</strong>平凡：<span class="arithmatex">\(Y\sim N(\alpha,\beta^2)\)</span>，<span class="arithmatex">\(X=e^Y\)</span>。</p>
 <p><strong>乘法中心极限定理与 Gibrat 律</strong>：设 <span class="arithmatex">\(R_i\)</span> 独立同分布、取正值、方差有限，<span class="arithmatex">\(X=\prod_{i=1}^n R_i\)</span>。取对数化乘为加：<span class="arithmatex">\(\log X=\sum\log R_i\)</span>，n 大时用 CLT：</p>
@@ -5728,7 +5731,8 @@ h(x)=\frac{f(x)}{M\,g(x)}.\tag{2.25}
 <p>即发生器<strong>效率 <span class="arithmatex">\(1/M\)</span></strong>——所以 <span class="arithmatex">\(M\)</span> 要尽量小。<span class="arithmatex">\(g(x)=0\)</span> 处无需担心：<span class="arithmatex">\(f\le Mg\Rightarrow f(x)=0\)</span>，这样的 <span class="arithmatex">\(x\)</span> 永远抽不到（书 Fig 2.15）。</p>
 <h3 id="281-beta-分布The-Beta-Distribution">2.8.1 beta 分布（The Beta Distribution）<a class="headerlink" href="#281-beta-分布The-Beta-Distribution" title="Permanent link">#</a></h3>
 <div class="arithmatex">\[
-f(x)=c\,x^{\alpha-1}(1-x)^{\beta-1},\qquad 0\le x\le1,\tag{2.26}
+f(x)=c\,x^{\alpha-1}(1-x)^{\beta-1}\]</div>
+<div class="arithmatex">\[0\le x\le1,\tag{2.26}
 \]</div>
 <p><span class="arithmatex">\(\alpha,\beta&gt;0\)</span> 任意（<span class="arithmatex">\(&lt;1\)</span> 时密度无界但积分有限）。归一化常数 <span class="arithmatex">\(c=1/B(\alpha,\beta)\)</span>（式 (2.27)），<strong>beta 函数</strong></p>
 <div class="arithmatex">\[
@@ -5817,8 +5821,8 @@ f(w)=\frac{\beta}{(\alpha-1)!}(\beta w)^{\alpha-1}e^{-\beta w}.\tag{2.39}
 </ul>
 <p><strong>情形二：任意 <span class="arithmatex">\(\alpha&gt;0\)</span>（再生性拼装）</strong>。<span class="arithmatex">\(m=\operatorname{int}[\alpha]\)</span>、<span class="arithmatex">\(\delta=\operatorname{frac}(\alpha)\)</span>：<span class="arithmatex">\(Y\sim G(m,1)\)</span> 用<strong>模拟指数和</strong>造——<span class="arithmatex">\(W=-\ln U\sim E(1)\)</span>（§2.5.1），故</p>
 <div class="arithmatex">\[
-Y=-\ln\Big(\prod_{i=1}^{m}U_i\Big)\sim G(m,1),\qquad
-X=Y+Z,\ Z\sim G(\delta,1)\ \Rightarrow\ X\sim G(\alpha,1).
+Y=-\ln\Big(\prod_{i=1}^{m}U_i\Big)\sim G(m,1)\]</div>
+<div class="arithmatex">\[X=Y+Z,\ Z\sim G(\delta,1)\ \Rightarrow\ X\sim G(\alpha,1).
 \]</div>
 <figure>
   <img src="../images/ch02/out-2-12.png" class="lq-img" />
@@ -5834,8 +5838,8 @@ X=Y+Z,\ Z\sim G(\delta,1)\ \Rightarrow\ X\sim G(\alpha,1).
 </ol>
 <p><strong>书例（三角形均匀分布）</strong>：<span class="arithmatex">\(D\)</span> 由 <span class="arithmatex">\(x=0,\ y=0,\ y=1-x\)</span> 围成（面积 &frac12;，故 <span class="arithmatex">\(f(x,y)=2\)</span>）。边缘 <span class="arithmatex">\(f_X(x)=\int_0^{1-x}2\,dy=2(1-x)\)</span>；条件 <span class="arithmatex">\(f_{Y|X}(y|x)=\frac{2}{2(1-x)}=\frac1{1-x}\)</span>。各自反演 cdf：</p>
 <div class="arithmatex">\[
-F_X(x)=\int_0^x2(1-\hat x)\,d\hat x=2x-x^2,\qquad
-F_{Y|X}(y|x)=\int_0^y\frac{d\hat y}{1-x}=\frac{y}{1-x}.
+F_X(x)=\int_0^x2(1-\hat x)\,d\hat x=2x-x^2\]</div>
+<div class="arithmatex">\[F_{Y|X}(y|x)=\int_0^y\frac{d\hat y}{1-x}=\frac{y}{1-x}.
 \]</div>
 <p>解 <span class="arithmatex">\(U_1=2X-X^2\)</span> 得 <span class="arithmatex">\(X=1-\sqrt{1-U_1}\)</span>（取负号因 <span class="arithmatex">\(X\le1\)</span>）；解 <span class="arithmatex">\(U_2=\frac{Y}{1-X}\)</span> 得 <span class="arithmatex">\(Y=U_2(1-X)\)</span>；把 <span class="arithmatex">\(1-U_1\)</span> 安全地换成 <span class="arithmatex">\(U_1\)</span>（同为 <span class="arithmatex">\(U(0,1)\)</span>）：</p>
 <div class="arithmatex">\[

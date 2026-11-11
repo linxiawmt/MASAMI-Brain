@@ -4788,18 +4788,25 @@ h=\min\big(1,\ e^{-(f(y)-f(x))/k_BT}\big).\tag{5.1}
 <p class="admonition-title">Hajek 定理 [Haj88]</p>
 <p>设 <span class="arithmatex">\(G\)</span> 为全局最小点集。在不可约且对称的提案下，若温度取</p>
 <div class="arithmatex">\[
-T_t=\frac{c}{\ln(1+t)},\qquad t=1,2,3,\dots,\tag{5.3}
-\]</div>
-<p>且常数 <span class="arithmatex">\(c\)</span> 充分大，则</p>
-<div class="arithmatex">\[
-\lim_{t\to\infty}\Pr(X_t\in G)=1 .
-\]</div>
-<p><span class="arithmatex">\(c\)</span> 应超过所有"只含局部极小的盆地"的<strong>深度</strong>的最大值（深度的精确定义繁琐、几乎总不可预知，直觉理解即可）。式 (5.3) 叫<strong>逆对数冷却（inverse log cooling）</strong>。定理的另一不足：要求 <span class="arithmatex">\(t\to\infty\)</span>——实际退火时间有限，起始温度的选择变得重要；此条件下<strong>几何冷却</strong>常更优：</p>
-<div class="arithmatex">\[
-T_t=ab^t,\qquad a&gt;0,\ 0&lt;b&lt;1.\tag{5.4}
-\]</div>
-<p><span class="arithmatex">\(a,b,c\)</span> 参数的选择往往需要预跑。此外真实退火有<strong>相变</strong>：能量在某个温度骤降、此后改善缓慢——冷却日程应把相变温度<strong>框在区间内</strong>。</p>
+T_t=\frac{c}{\ln(1+t)}\]</div>
 </div>
+<div class="arithmatex">\[t=1,2,3,\dots,\tag{5.3}
+    \]</div>
+<div class="highlight"><pre><span></span><code>且常数 \(c\) 充分大，则
+
+\[
+\lim_{t\to\infty}\Pr(X_t\in G)=1 .
+\]
+
+\(c\) 应超过所有"只含局部极小的盆地"的**深度**的最大值（深度的精确定义繁琐、几乎总不可预知，直觉理解即可）。式 (5.3) 叫**逆对数冷却（inverse log cooling）**。定理的另一不足：要求 \(t\to\infty\)——实际退火时间有限，起始温度的选择变得重要；此条件下**几何冷却**常更优：
+
+\[
+T_t=ab^t\]
+</code></pre></div>
+<div class="arithmatex">\[a&gt;0,\ 0&lt;b&lt;1.\tag{5.4}
+    \]</div>
+<div class="highlight"><pre><span></span><code>\(a,b,c\) 参数的选择往往需要预跑。此外真实退火有**相变**：能量在某个温度骤降、此后改善缓慢——冷却日程应把相变温度**框在区间内**。
+</code></pre></div>
 <p><figure>
   <img src="../images/ch05/out-5-2.png" class="lq-img" />
 <br />
@@ -4847,7 +4854,8 @@ E(x)=\sum_{k=1}^{n-1}d(C_{i_{k-1}},C_{i_k})+d(C_{i_{n-1}},C_{i_0}).
 <h2 id="54-GA-解函数最大化An-Application-of-GA-to-Function-Maximization">5.4 GA 解函数最大化（An Application of GA to Function Maximization）<a class="headerlink" href="#54-GA-解函数最大化An-Application-of-GA-to-Function-Maximization" title="Permanent link">#</a></h2>
 <p><strong>Shekel 函数</strong>：</p>
 <div class="arithmatex">\[
-f(x)=\sum_{i=1}^{n}\frac{1}{a_i(x-b_i)^2+c_i},\qquad a_ic_i&gt;0.\tag{5.5}
+f(x)=\sum_{i=1}^{n}\frac{1}{a_i(x-b_i)^2+c_i}\]</div>
+<div class="arithmatex">\[a_ic_i&gt;0.\tag{5.5}
 \]</div>
 <p><span class="arithmatex">\(f&gt;0\)</span>；第 <span class="arithmatex">\(i\)</span> 项在 <span class="arithmatex">\(x=b_i\)</span> 达峰 <span class="arithmatex">\(1/c_i\)</span>、<span class="arithmatex">\(a_i\)</span> 越大衰减越快——<span class="arithmatex">\(f\)</span> 是一列<strong>彼此干扰的峰</strong>。<span class="arithmatex">\(a_i,c_i\)</span> 全取负则峰变坑（求最小值）。二维推广 <span class="arithmatex">\(f(x,y)=\sum 1/(a_{i1}(x-b_{i1})^2+a_{i2}(y-b_{i2})^2+c_i)\)</span>。</p>
 <p>书试验场：<strong>12 项 Shekel 函数</strong>（Table 5.1 的 <span class="arithmatex">\(a,b,c\)</span> 参数）、定义域 <span class="arithmatex">\(0\le x\le10\)</span>（书 Fig 5.6：12 座峰错落）。两种编码：</p>
