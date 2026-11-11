@@ -200,6 +200,11 @@ nav:
       - 第13章 利用PCA来简化数据: ml/ch13.md
       - 第14章 利用SVD简化数据: ml/ch14.md
       - 第15章 大数据与MapReduce: ml/ch15.md
+  - 自动控制原理:
+      - ctrl/index.md
+      - 第1章 控制系统导论: ctrl/ch01.md
+      - 第2章 控制系统的数学模型: ctrl/ch02.md
+      - 第3章 线性系统的时域分析法: ctrl/ch03.md
   - 随机模拟方法及应用:
       - mc/index.md
       - 第1章 导论：随机数如何解决问题: mc/ch01.md

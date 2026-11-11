@@ -71,7 +71,7 @@ hide:
   <!-- 书架：九张等宽瓷片，3×3 对称（markdown 容器必须在顶层） -->
   <div class="sec-head reveal" style="--i:5">
     <span class="sec-kicker">PROJECTS</span>
-    <span class="sec-title">书架上现在有十样东西</span>
+    <span class="sec-title">书架上现在有十一样东西</span>
   </div>
 
 <div class="home-grid-cards" markdown>
@@ -148,6 +148,14 @@ hide:
     肖柳青教材 11 章 + Dunn/Shonkwiler 两本英文书的知识血统，11 份 Jupyter Notebook 全实跑——蒙提霍尔到 Ising 一网打尽。
 
     [:octicons-arrow-right-24: 去看](mc/index.md)
+
+-   :fontawesome-solid-cogs:{ .lg .middle } **自动控制原理**
+
+    ---
+
+    胡寿松《基础教程》第五版精读，MATLAB / Python 双份代码对照写；时域、劳斯、稳态误差都在线。
+
+    [:octicons-arrow-right-24: 去看](ctrl/index.md)
 
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
