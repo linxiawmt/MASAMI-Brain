@@ -6291,7 +6291,7 @@ t_r = 2.20T, \qquad t_s = 3T\,(\varDelta = 5\%)\ \text{或}\ 4T\,(\varDelta = 2\
 c(t) = \frac{1}{T}\mathrm{e}^{-t/T}, \qquad t\ge 0
 \tag{3.5}
 \]</div>
-<p>单调下降的指数曲线（原书图 3-4）。各处斜率：初始 <span class="arithmatex">\(-1/T^2\)</span>，<span class="arithmatex">\(t=T\)</span> 处 <span class="arithmatex">\(-0.368/T^2\)</span>，<span class="arithmatex">\(t\to\infty\)</span> 为 0。若定义曲线衰减到其初始值 5% 所需时间为脉冲响应的调节时间，则仍有 <span class="arithmatex">\(t_s = 3T\)</span>。</p>
+<p>单调下降的指数曲线，各处斜率：初始 <span class="arithmatex">\(-1/T^2\)</span>，<span class="arithmatex">\(t=T\)</span> 处 <span class="arithmatex">\(-0.368/T^2\)</span>，<span class="arithmatex">\(t\to\infty\)</span> 为 0。若定义曲线衰减到其初始值 5% 所需时间为脉冲响应的调节时间，则仍有 <span class="arithmatex">\(t_s = 3T\)</span>。</p>
 <p>初始条件为零时，闭环传递函数与脉冲响应函数包含相同的动态信息——这适用于各阶线性定常系统，所以可用单位脉冲输入测出被测系统的闭环传递函数。工程上得不到理想脉冲，常用宽度 <span class="arithmatex">\(b\)</span>、有限幅值的矩形脉动函数代替；要近似度够高，要求实际脉动函数的宽度远小于时间常数，一般规定 <span class="arithmatex">\(b &lt; 0.1T\)</span>。</p>
 <h3 id="单位斜坡响应">单位斜坡响应<a class="headerlink" href="#单位斜坡响应" title="Permanent link">#</a></h3>
 <p>输入 <span class="arithmatex">\(r(t)=t\)</span>：</p>
@@ -6378,7 +6378,9 @@ T_m\frac{d^2\theta_o(t)}{dt^2} + \frac{d\theta_o(t)}{dt} + K\theta_o(t) = K\thet
 \varPhi(s) = \frac{C(s)}{R(s)} = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}
 \tag{3.11}
 \]</div>
-<p>标准形式的二阶系统结构图见原书图 3-8：单位反馈，前向通道为 <span class="arithmatex">\(\omega_n^2/(s(s+2\zeta\omega_n))\)</span>。图中 <span class="arithmatex">\(\omega_n = \sqrt{K/T_m}\)</span> 为<strong>自然频率</strong>（无阻尼振荡频率），<span class="arithmatex">\(\zeta = \dfrac{1}{2\sqrt{T_m K}}\)</span> 为<strong>阻尼比</strong>（相对阻尼系数）。</p>
+<p>标准形式的二阶系统结构图如图 3-8：单位反馈，前向通道为 <span class="arithmatex">\(\omega_n^2/(s(s+2\zeta\omega_n))\)</span>。图中 <span class="arithmatex">\(\omega_n = \sqrt{K/T_m}\)</span> 为<strong>自然频率</strong>（无阻尼振荡频率），<span class="arithmatex">\(\zeta = \dfrac{1}{2\sqrt{T_m K}}\)</span> 为<strong>阻尼比</strong>（相对阻尼系数）。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-8.png" /></p>
+<p><em>图 3-8 标准形式的二阶系统结构图（截自原书）</em></p>
 <p>令分母多项式为零得<strong>特征方程</strong>：</p>
 <div class="arithmatex">\[
 s^2 + 2\zeta\omega_n s + \omega_n^2 = 0
@@ -6493,7 +6495,7 @@ c(t_p) = 1 + \mathrm{e}^{-\pi\zeta/\sqrt{1-\zeta^2}}
 \]</div>
 <p>超调量<strong>仅是 <span class="arithmatex">\(\zeta\)</span> 的函数</strong>，与 <span class="arithmatex">\(\omega_n\)</span> 无关。<span class="arithmatex">\(\zeta\)</span> 越大 <span class="arithmatex">\(\sigma\%\)</span> 越小，反之亦然；取 <span class="arithmatex">\(\zeta=0.4\sim 0.8\)</span> 时 <span class="arithmatex">\(\sigma\%\)</span> 为 <span class="arithmatex">\(25.4\%\sim 1.5\%\)</span>。</p>
 <h4 id="调节时间-ts">调节时间 ts<a class="headerlink" href="#调节时间-ts" title="Permanent link">#</a></h4>
-<p>式 (3.14) 的一对包络线 <span class="arithmatex">\(\pm\dfrac{\mathrm{e}^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\)</span> 对称于 <span class="arithmatex">\(c(\infty)=1\)</span>，整个响应都在包络线之内（原书图 3-13）。实际响应的收敛程度<strong>小于</strong>包络线的收敛程度，用包络线估算调节时间结果略保守。</p>
+<p>式 (3.14) 的一对包络线 <span class="arithmatex">\(\pm\dfrac{\mathrm{e}^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\)</span> 对称于 <span class="arithmatex">\(c(\infty)=1\)</span>，整个响应都在包络线之内。实际响应的收敛程度<strong>小于</strong>包络线的收敛程度，用包络线估算调节时间结果略保守。</p>
 <p>令 <span class="arithmatex">\(\varDelta\)</span> 代表实际响应与稳态输出的误差。假定 <span class="arithmatex">\(\zeta\le 0.8\)</span>，并把不等式右端分母中的 <span class="arithmatex">\(\zeta\)</span> 代入 0.8（最保守），取 <span class="arithmatex">\(\varDelta=0.05\)</span> 解得 <span class="arithmatex">\(t_s\le 3.5/(\zeta\omega_n)\)</span>，常取</p>
 <div class="arithmatex">\[
 t_s = \frac{3.5}{\zeta\omega_n} = \frac{3.5}{\sigma} \quad (\varDelta = 0.05)
@@ -6536,12 +6538,12 @@ t_s = \frac{3.5}{\zeta\omega_n} = 2.15\ \mathrm{s}\ (\varDelta=5\%)
 <h3 id="过阻尼二阶系统的动态过程分析">过阻尼二阶系统的动态过程分析<a class="headerlink" href="#过阻尼二阶系统的动态过程分析" title="Permanent link">#</a></h3>
 <p>过阻尼响应缓慢，通常不希望采用；但低增益、大惯性的<strong>温度控制系统</strong>需要过阻尼，不允许超调又要求响应较快的<strong>指示/记录仪表系统</strong>用临界阻尼；有些高阶系统的时间响应还可用过阻尼二阶系统近似——研究它有工程意义。</p>
 <p><span class="arithmatex">\(\zeta&gt;1\)</span> 时只有上升时间和调节时间有意义，式 (3.17) 是超越方程，无法按定义求准确公式，工程上用数值解法制成曲线查用，或用曲线拟合法给近似公式。</p>
-<p><strong>(1) 上升时间</strong>：无因次上升时间 <span class="arithmatex">\(\omega_n t_r\)</span> 与 <span class="arithmatex">\(\zeta\)</span> 的关系曲线（原书图 3-15a，10%→90% 定义）可近似描述为</p>
+<p><strong>(1) 上升时间</strong>：按 10%→90% 定义对式 (3.17) 数值求解，得无因次上升时间 <span class="arithmatex">\(\omega_n t_r\)</span> 与 <span class="arithmatex">\(\zeta\)</span> 的关系曲线，工程上将其近似描述为</p>
 <div class="arithmatex">\[
 t_r = \frac{1 + 1.5\zeta + \zeta^2}{\omega_n}
 \tag{3.24}
 \]</div>
-<p><strong>(2) 调节时间</strong>：由式 (3.17)，令 <span class="arithmatex">\(T_1/T_2\)</span> 为不同值可解出无因次调节时间 <span class="arithmatex">\(t_s/T_1\)</span>（原书图 3-15b）。由于</p>
+<p><strong>(2) 调节时间</strong>：由式 (3.17)，令 <span class="arithmatex">\(T_1/T_2\)</span> 为不同值可解出无因次调节时间 <span class="arithmatex">\(t_s/T_1\)</span>。由于</p>
 <div class="arithmatex">\[
 s^2 + 2\zeta\omega_n s + \omega_n^2 = (s+1/T_1)(s+1/T_2)
 \]</div>
@@ -6619,7 +6621,9 @@ t_r = \frac{1 + 1.5\zeta + \zeta^2}{\omega_n} = \frac{3.5}{5} = 0.70\,\mathrm{s}
 <p>设比例-微分控制的二阶系统如图 3-18：误差信号 <span class="arithmatex">\(E(s)\)</span> 与其微分 <span class="arithmatex">\(T_d s E(s)\)</span> 共同进入前向通道。输出同时受误差及其速率双重作用，是<strong>早期控制</strong>——在位置误差出现之前提前产生修正作用。</p>
 <p><img alt="" class="lq-img" src="../images/ch03/fig-3-18.png" /></p>
 <p><em>图 3-18 比例-微分控制结构系统图（截自原书）</em></p>
-<p>物理概念先走一遍（原书图 3-19 的波形图）：设系统超调量大、用伺服电动机执行。<span class="arithmatex">\(t\in[0,t_1)\)</span> 时误差为正但一直在减小（<span class="arithmatex">\(\dot e&lt;0\)</span>），纯比例控制产生的正向修正转矩过大，输出冲过希望值；<span class="arithmatex">\(t\in[t_1,t_3)\)</span> 误差为负，电动机反转制动，但惯性和制动转矩不够，输出回落过头；<span class="arithmatex">\(t\in[t_3,t_5)\)</span> 误差重新为正，力图阻止输出下降。若在 <span class="arithmatex">\(t\in[0,t_2)\)</span> 减小正向转矩、增大反向制动转矩，在 <span class="arithmatex">\(t\in[t_2,t_4)\)</span> 反过来，动态过程会显著改善——微分项恰好起这种作用：伺服电动机在比例-微分控制器作用下产生的转矩正比于 <span class="arithmatex">\(e(t) + T_d\dot e(t)\)</span>。对 <span class="arithmatex">\(t\in[0,t_1)\)</span>，<span class="arithmatex">\(\dot e&lt;0\)</span>，转矩 <span class="arithmatex">\(e+T_d\dot e &lt; e\)</span>，正向修正转矩减小；对 <span class="arithmatex">\(t\in[t_1,t_2)\)</span>，<span class="arithmatex">\(e&lt;0\)</span> 且 <span class="arithmatex">\(\dot e&lt;0\)</span>，反向制动转矩比纯比例时大，超调量减小；对 <span class="arithmatex">\(t\in[t_2,t_3)\)</span>，<span class="arithmatex">\(e&lt;0\)</span> 但 <span class="arithmatex">\(\dot e&gt;0\)</span>，制动转矩减小，有利于输出尽快达到稳态值。由于 <span class="arithmatex">\(\dot e\)</span> 只反映误差变化速率，稳态时 <span class="arithmatex">\(\dot e=0\)</span>，<strong>微分部分不影响常值稳态误差</strong>；它相当于增大系统阻尼，从而容许选用较大的开环增益，兼顾动态性能与稳态精度。</p>
+<p>物理概念先走一遍（图 3-19 的波形图）：设系统超调量大、用伺服电动机执行。<span class="arithmatex">\(t\in[0,t_1)\)</span> 时误差为正但一直在减小（<span class="arithmatex">\(\dot e&lt;0\)</span>），纯比例控制产生的正向修正转矩过大，输出冲过希望值；<span class="arithmatex">\(t\in[t_1,t_3)\)</span> 误差为负，电动机反转制动，但惯性和制动转矩不够，输出回落过头；<span class="arithmatex">\(t\in[t_3,t_5)\)</span> 误差重新为正，力图阻止输出下降。若在 <span class="arithmatex">\(t\in[0,t_2)\)</span> 减小正向转矩、增大反向制动转矩，在 <span class="arithmatex">\(t\in[t_2,t_4)\)</span> 反过来，动态过程会显著改善——微分项恰好起这种作用：伺服电动机在比例-微分控制器作用下产生的转矩正比于 <span class="arithmatex">\(e(t) + T_d\dot e(t)\)</span>。对 <span class="arithmatex">\(t\in[0,t_1)\)</span>，<span class="arithmatex">\(\dot e&lt;0\)</span>，转矩 <span class="arithmatex">\(e+T_d\dot e &lt; e\)</span>，正向修正转矩减小；对 <span class="arithmatex">\(t\in[t_1,t_2)\)</span>，<span class="arithmatex">\(e&lt;0\)</span> 且 <span class="arithmatex">\(\dot e&lt;0\)</span>，反向制动转矩比纯比例时大，超调量减小；对 <span class="arithmatex">\(t\in[t_2,t_3)\)</span>，<span class="arithmatex">\(e&lt;0\)</span> 但 <span class="arithmatex">\(\dot e&gt;0\)</span>，制动转矩减小，有利于输出尽快达到稳态值。由于 <span class="arithmatex">\(\dot e\)</span> 只反映误差变化速率，稳态时 <span class="arithmatex">\(\dot e=0\)</span>，<strong>微分部分不影响常值稳态误差</strong>；它相当于增大系统阻尼，从而容许选用较大的开环增益，兼顾动态性能与稳态精度。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-19.png" /></p>
+<p><em>图 3-19 比例-微分控制的波形图：(a) 单位阶跃响应；(b) 系统误差信号；&copy; 误差速率信号（截自原书）</em></p>
 <p>分析法定量：由图 3-18，开环传递函数</p>
 <div class="arithmatex">\[
 G(s) = \frac{C(s)}{E(s)} = \frac{K(1+T_d s)}{s\left(\dfrac{s}{2\zeta\omega_n}+1\right)} = \frac{\omega_n^2(T_d s+1)}{s(s+2\zeta\omega_n)}
@@ -6650,7 +6654,10 @@ r = \frac{\sqrt{z^2 - 2\zeta_d\omega_n z + \omega_n^2}}{z\sqrt{1-\zeta_d^2}}
 \psi = -\pi + \arctan\frac{\omega_n\sqrt{1-\zeta_d^2}}{z-\zeta_d\omega_n} + \arctan\frac{\sqrt{1-\zeta_d^2}}{\zeta_d}
 \tag{3.32}
 \]</div>
-<p>各项指标：上升时间 <span class="arithmatex">\(t_r\)</span> 与 <span class="arithmatex">\(\zeta_d\)</span>、<span class="arithmatex">\(\omega_n\)</span>、闭环零点值 <span class="arithmatex">\(z\)</span> 有关，查无因次曲线（原书图 3-20）。峰值时间与超调量：</p>
+<p>各项指标：上升时间 <span class="arithmatex">\(t_r\)</span> 与 <span class="arithmatex">\(\zeta_d\)</span>、<span class="arithmatex">\(\omega_n\)</span>、闭环零点值 <span class="arithmatex">\(z\)</span> 有关，查无因次曲线（图 3-20）。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-20.png" /></p>
+<p><em>图 3-20 有零点的二阶系统上升时间无因次曲线，参变量为 <span class="arithmatex">\(\zeta_d\)</span>（截自原书）</em></p>
+<p>峰值时间与超调量：</p>
 <div class="arithmatex">\[
 t_p = \frac{\beta_d - \psi}{\omega_n\sqrt{1-\zeta_d^2}}
 \tag{3.33}
@@ -6679,7 +6686,7 @@ t_r = 1.02\,\mathrm{s},\quad t_p = 1.84\,\mathrm{s},\quad \sigma\% = 57.6\%,\qua
 <div class="arithmatex">\[
 T_d = \frac{2(\zeta_d-\zeta)}{\omega_n} = \frac{2(0.5-0.173)}{1.732} = 0.38\,\mathrm{s}
 \]</div>
-<p>此时是有零点的二阶系统：查原书图 3-20 得 <span class="arithmatex">\(t_r=0.70\,\mathrm{s}\)</span>；式 (3.33)、(3.35) 及 (3.36) 算得 <span class="arithmatex">\(t_p=1.63\,\mathrm{s}\)</span>、<span class="arithmatex">\(\sigma\%=22\%\)</span>、<span class="arithmatex">\(t_s=3.49\,\mathrm{s}\)</span>（<span class="arithmatex">\(\varDelta=5\%\)</span>）。比例-微分控制改善了动态性能，又满足稳态误差要求。</p>
+<p>此时是有零点的二阶系统：查图 3-20 得 <span class="arithmatex">\(t_r=0.70\,\mathrm{s}\)</span>；式 (3.33)、(3.35) 及 (3.36) 算得 <span class="arithmatex">\(t_p=1.63\,\mathrm{s}\)</span>、<span class="arithmatex">\(\sigma\%=22\%\)</span>、<span class="arithmatex">\(t_s=3.49\,\mathrm{s}\)</span>（<span class="arithmatex">\(\varDelta=5\%\)</span>）。比例-微分控制改善了动态性能，又满足稳态误差要求。</p>
 <p>归纳：比例-微分控制<strong>增大阻尼</strong>，使阶跃响应超调量下降、调节时间缩短，且不影响常值稳态误差及自然频率；允许选较高开环增益，在保证一定动态性能条件下减小稳态误差。注意：微分器对噪声（尤其高频噪声）的放大远大于对缓慢输入的放大，输入端噪声强时不宜用 PD，可改用测速反馈。</p>
 <h4 id="测速反馈控制">测速反馈控制<a class="headerlink" href="#测速反馈控制" title="Permanent link">#</a></h4>
 <p>输出量的导数同样能改善性能。将输出的速度信号反馈到输入端与误差信号比较，效果与比例-微分相似：增大阻尼、改善动态性能。输出是机械角位移时，用<strong>测速发电机</strong>把角位移变换为正比于角速度的电压（图 3-21），<span class="arithmatex">\(K_t\)</span> 为测速反馈系数（单位：电压/单位转速）。</p>
@@ -6733,11 +6740,13 @@ e_{ss}(\infty) = 0.32\,\mathrm{rad},\quad t_r = 0.77\,\mathrm{s},\quad t_p = 1.1
 <h2 id="34-高阶系统的时域分析">3.4 高阶系统的时域分析<a class="headerlink" href="#34-高阶系统的时域分析" title="Permanent link">#</a></h2>
 <p>控制工程中几乎所有的系统都是高阶系统。对不能用一、二阶系统近似的高阶系统，动态指标的计算比较复杂——工程上用<strong>闭环主导极点</strong>概念近似分析，或直接用 MATLAB/Python 仿真。</p>
 <h3 id="高阶系统的单位阶跃响应">高阶系统的单位阶跃响应<a class="headerlink" href="#高阶系统的单位阶跃响应" title="Permanent link">#</a></h3>
-<p>研究原书图 3-23 所示系统（前向通道 <span class="arithmatex">\(G(s)\)</span>、反馈 <span class="arithmatex">\(H(s)\)</span>），闭环传递函数：</p>
+<p>研究图 3-23 所示系统（前向通道 <span class="arithmatex">\(G(s)\)</span>、反馈 <span class="arithmatex">\(H(s)\)</span>），闭环传递函数：</p>
 <div class="arithmatex">\[
 \varPhi(s) = \frac{C(s)}{R(s)} = \frac{G(s)}{1+G(s)H(s)}
 \tag{3.41}
 \]</div>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-23.png" /></p>
+<p><em>图 3-23 控制系统结构图（截自原书）</em></p>
 <p>一般情况下 <span class="arithmatex">\(G(s)\)</span>、<span class="arithmatex">\(H(s)\)</span> 都是 <span class="arithmatex">\(s\)</span> 的多项式之比：</p>
 <div class="arithmatex">\[
 \varPhi(s)=\frac{M(s)}{D(s)}=\frac{b_0 s^m+b_1 s^{m-1}+\cdots+b_{m-1}s+b_m}{a_0 s^n+a_1 s^{n-1}+\cdots+a_{n-1}s+a_n},\qquad m\le n
@@ -6835,7 +6844,7 @@ c(t)=\frac{1}{4}\left[15-\mathrm{e}^{-4t}-10\sqrt{2}\,\mathrm{e}^{-t}\cos(t+8.1^
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">sys</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mf">2.1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="o">+</span><span class="mi">0</span><span class="p">.</span>866<span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span>866<span class="nb">i</span><span class="p">],</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w">  </span><span class="c">% 原四阶系统</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">sys1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span><span class="w">        </span><span class="c">% 主导极点近似的二阶系统</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">pzmap</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span><span class="w">                       </span><span class="c">% 闭环零极点分布（书图3-25）</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="s">'b-'</span><span class="p">,</span><span class="w"> </span><span class="n">sys1</span><span class="p">,</span><span class="w"> </span><span class="s">'r:'</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 阶跃响应对比（书图3-26）</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="s">'b-'</span><span class="p">,</span><span class="w"> </span><span class="n">sys1</span><span class="p">,</span><span class="w"> </span><span class="s">'r:'</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 阶跃响应对比（见图 3-25 右）</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">stepinfo</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span><span class="w">                    </span><span class="c">% 四阶系统指标（表3-3 第2行）</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">stepinfo</span><span class="p">(</span><span class="n">sys1</span><span class="p">)</span><span class="w">                   </span><span class="c">% 近似二阶系统（表3-3 第6行）</span>
 </code></pre></div>
@@ -7166,18 +7175,20 @@ s_1^3+31.6s_1^2+7433.8s_1+(7500K_1-7466.4)=0
 <h2 id="36-线性系统的稳态误差计算">3.6 线性系统的稳态误差计算<a class="headerlink" href="#36-线性系统的稳态误差计算" title="Permanent link">#</a></h2>
 <p>稳态误差是系统控制准确度（控制精度）的度量，通常称稳态性能。系统结构、输入作用的类型（控制量或扰动量）、输入函数形式（阶跃/斜坡/加速度）不同，稳态输出不可能在任何情况下都与输入一致；摩擦、间隙、不灵敏区、零位输出等非线性因素还造成附加稳态误差。稳态误差不可避免，设计任务之一是把它压到容许值以下。<strong>只有系统稳定，研究稳态误差才有意义。<strong>阶跃输入下没有原理性稳态误差的系统称</strong>无差系统</strong>，有原理性稳态误差的称<strong>有差系统</strong>。本节讨论原理性稳态误差的计算（系统结构、输入形式和类型引起的），非线性因素引起的附加（结构性）稳态误差另算。</p>
 <h3 id="误差与稳态误差">误差与稳态误差<a class="headerlink" href="#误差与稳态误差" title="Permanent link">#</a></h3>
-<p>设控制系统结构图如原书图 3-23。当输入 <span class="arithmatex">\(R(s)\)</span> 与主反馈信号 <span class="arithmatex">\(B(s)\)</span> 不等时，比较装置输出</p>
+<p>设控制系统结构图如图 3-23。当输入 <span class="arithmatex">\(R(s)\)</span> 与主反馈信号 <span class="arithmatex">\(B(s)\)</span> 不等时，比较装置输出</p>
 <div class="arithmatex">\[
 E(s)=R(s)-H(s)C(s)
 \tag{3.50}
 \]</div>
 <p><span class="arithmatex">\(E(s)\)</span> 称<strong>误差信号</strong>（简称误差，亦称偏差），系统在 <span class="arithmatex">\(E(s)\)</span> 作用下动作，使输出趋于希望值。</p>
-<p>误差有两种定义：式 (3.50) 在<strong>输入端</strong>定义，实际系统中可量测，有物理意义；另一种从<strong>输出端</strong>定义——输出量希望值与实际值之差，常用于性能指标提法，但有时无法量测。两者有内在联系：把图 3-23 等效为单位反馈（原书图 3-29），<span class="arithmatex">\(R'(s)\)</span> 代表输出量希望值，<span class="arithmatex">\(E'(s)\)</span> 为输出端定义的误差，且有简单关系</p>
+<p>误差有两种定义：式 (3.50) 在<strong>输入端</strong>定义，实际系统中可量测，有物理意义；另一种从<strong>输出端</strong>定义——输出量希望值与实际值之差，常用于性能指标提法，但有时无法量测。两者有内在联系：把图 3-23 等效为单位反馈（图 3-29），<span class="arithmatex">\(R'(s)\)</span> 代表输出量希望值，<span class="arithmatex">\(E'(s)\)</span> 为输出端定义的误差，且有简单关系</p>
 <div class="arithmatex">\[
 E(s)=E'(s)/H(s)
 \tag{3.51}
 \]</div>
 <p>本书以下均用输入端定义的 <span class="arithmatex">\(E(s)\)</span> 计算。对单位反馈系统（<span class="arithmatex">\(H=1\)</span>），两种定义一致。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-29.png" /></p>
+<p><em>图 3-29 与图 3-23 等效的单位反馈系统结构图（截自原书）</em></p>
 <p>误差本身是时间的函数：</p>
 <div class="arithmatex">\[
 e(t)=\mathscr{L}^{-1}[E(s)]=\mathscr{L}^{-1}[\varPhi_e(s)R(s)]
@@ -7254,7 +7265,7 @@ e_{ss}(\infty)=\frac{R}{K_v},\qquad
 K_v=\lim_{s\to 0}sG(s)H(s)
 \tag{3.60, 3.61}
 \]</div>
-<p><span class="arithmatex">\(K_v\)</span> 的单位与开环增益相同（<span class="arithmatex">\(s^{-1}\)</span>）。0 型系统 <span class="arithmatex">\(K_v=0\)</span>；I 型系统 <span class="arithmatex">\(K_v=K\)</span>；II 型及以上 <span class="arithmatex">\(K_v=\infty\)</span>。I 型单位反馈系统的速度误差图示见原书图 3-30。</p>
+<p><span class="arithmatex">\(K_v\)</span> 的单位与开环增益相同（<span class="arithmatex">\(s^{-1}\)</span>）。0 型系统 <span class="arithmatex">\(K_v=0\)</span>；I 型系统 <span class="arithmatex">\(K_v=K\)</span>；II 型及以上 <span class="arithmatex">\(K_v=\infty\)</span>。</p>
 <p><strong>必须注意："速度误差"并不是指输出与输入之间存在速度上的误差</strong>，而是指系统在速度（斜坡）输入作用下，稳态输出与输入之间存在<strong>位置</strong>上的误差。式 (3.60) 表明：0 型系统稳态时不能跟踪斜坡输入；I 型单位反馈系统稳态输出速度与输入速度相同，但存在与 <span class="arithmatex">\(R\)</span> 成正比、与 <span class="arithmatex">\(K\)</span> 成反比的稳态位置误差；II 型及以上能准确跟踪，无位置误差。</p>
 <p>若系统为非单位反馈且 <span class="arithmatex">\(H(s)=K_h\)</span>（常数），输出量希望值为 <span class="arithmatex">\(R'(s)=R(s)/K_h\)</span>，输出端稳态位置误差</p>
 <div class="arithmatex">\[
@@ -7280,7 +7291,7 @@ e_{ss}(\infty)=\frac{R}{K_a},\qquad
 K_a=\lim_{s\to 0}s^2G(s)H(s)
 \tag{3.63, 3.64}
 \]</div>
-<p><span class="arithmatex">\(K_a\)</span> 的单位为 <span class="arithmatex">\(s^{-2}\)</span>。0 型及 I 型系统 <span class="arithmatex">\(K_a=0\)</span>；II 型系统 <span class="arithmatex">\(K_a=K\)</span>；III 型及以上 <span class="arithmatex">\(K_a=\infty\)</span>。"加速度误差"同样指加速度输入下稳态输出与输入之间的<strong>位置误差</strong>（II 型系统图示见原书图 3-31）。</p>
+<p><span class="arithmatex">\(K_a\)</span> 的单位为 <span class="arithmatex">\(s^{-2}\)</span>。0 型及 I 型系统 <span class="arithmatex">\(K_a=0\)</span>；II 型系统 <span class="arithmatex">\(K_a=K\)</span>；III 型及以上 <span class="arithmatex">\(K_a=\infty\)</span>。"加速度误差"同样指加速度输入下稳态输出与输入之间的<strong>位置误差</strong>。</p>
 <p>静态误差系数 <span class="arithmatex">\(K_p,K_v,K_a\)</span> 定量描述了系统跟踪不同形式输入的能力：输入形式、输出希望值与容许误差确定后，可据此选择系统型别和开环增益。对非单位反馈系统，静态误差系数没有明显的物理意义，也不便图形表示。</p>
 <p><strong>组合输入</strong>：若 <span class="arithmatex">\(r(t)=R_0\cdot 1(t)+R_1 t+\dfrac{1}{2}R_2 t^2\)</span>，由线性叠加原理：</p>
 <div class="arithmatex">\[
@@ -7342,6 +7353,8 @@ e_{ss}(\infty)=\frac{R_0}{1+K_p}+\frac{R_1}{K_v}+\frac{R_2}{K_a}
 <p>同一系统在不同输入下稳态误差不同的物理解释，用下例说明。</p>
 <p><strong>【例 3-12】位置随动系统对不同输入的稳态误差</strong></p>
 <p>具有测速发电机内反馈的位置随动系统如图 3-32，开环传递函数 <span class="arithmatex">\(G(s)=\dfrac{1}{s(s+1)}\)</span>，求 <span class="arithmatex">\(r(t)\)</span> 分别为 <span class="arithmatex">\(1(t)\)</span>、<span class="arithmatex">\(t\)</span>、<span class="arithmatex">\(t^2/2\)</span> 时的稳态误差。</p>
+<p><img alt="" class="lq-img" src="../images/ch03/fig-3-32.png" /></p>
+<p><em>图 3-32 例 3-12 具有测速发电机内反馈的位置随动系统结构图（截自原书）</em></p>
 <p><strong>解</strong>：本例 <span class="arithmatex">\(K=1\)</span> 的 I 型系统：<span class="arithmatex">\(K_p=\infty\)</span>，<span class="arithmatex">\(K_v=1\)</span>，<span class="arithmatex">\(K_a=0\)</span>。故稳态误差分别为 <span class="arithmatex">\(0\)</span>、<span class="arithmatex">\(1\)</span>、<span class="arithmatex">\(\infty\)</span>。物理解释：</p>
 <ul>
 <li>阶跃位置输入下，稳态输出是恒定位置，伺服电动机必须<strong>停止转动</strong>——加在电动机控制绕组上的电压必须为零，即输入端误差信号稳态值为零：无位置误差。</li>
@@ -7418,10 +7431,10 @@ e_{ss}(\infty)=\lim_{s\to 0}\frac{s(0.1s+1)}{0.1s^2+s+600}\cdot\frac{1}{s}=\frac
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mf">1.2</span><span class="p">;</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">          </span><span class="c">% 单位阶跃响应（书图3-36）</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.005</span><span class="p">:</span><span class="mf">0.6</span><span class="p">;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 单位斜坡响应（书图3-37）</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.005</span><span class="p">:</span><span class="mf">0.6</span><span class="p">;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 单位斜坡响应</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">sysne</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mf">1.2</span><span class="p">;</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">sysne</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">        </span><span class="c">% 单位阶跃扰动响应（书图3-38）</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mf">1.2</span><span class="p">;</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">sysne</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">        </span><span class="c">% 单位阶跃扰动响应</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">stepinfo</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span><span class="w">   </span><span class="c">% sigma%≈81.1、ts(2%)≈0.78，与书估算 81.6%/0.88 基本一致</span>
 </code></pre></div>
 </div>
@@ -7497,7 +7510,7 @@ H(s)=\frac{H_1(s)}{H_2(s)}
 \]</div>
 <p>表示。主、副调节器均用比例调节器（增益 <span class="arithmatex">\(K_{c1},K_{c2}\)</span>）时该比值为 <span class="arithmatex">\(K_{c1}K_{c2}\)</span>：主副调节器总增益越大，抑制二次扰动能力越强。副回路阶数取得低，<span class="arithmatex">\(K_{c2}\)</span> 可以很大，通常 <span class="arithmatex">\(K_{c1}K_{c2}&gt;K_{c1}\)</span>——与单回路相比，串级控制对二次扰动的抑制能力一般可提高 <strong>10～100 倍</strong>。</p>
 <p><strong>【例 3-15】PI 控制器消除阶跃扰动稳态误差</strong></p>
-<p>在例 3-13 系统中采用比例-积分控制器（图 3-42：<span class="arithmatex">\(G_c=K_1\left(1+\dfrac{1}{T_i s}\right)\)</span>，被控对象 <span class="arithmatex">\(G_2(s)=\dfrac{K_2}{s(T_2 s+1)}\)</span>），分别计算阶跃转矩扰动和斜坡转矩扰动下的稳态误差。</p>
+<p>在例 3-13 系统中采用比例-积分控制器（<span class="arithmatex">\(G_c=K_1\left(1+\dfrac{1}{T_i s}\right)\)</span>，被控对象 <span class="arithmatex">\(G_2(s)=\dfrac{K_2}{s(T_2 s+1)}\)</span>），分别计算阶跃转矩扰动和斜坡转矩扰动下的稳态误差。</p>
 <p><strong>解</strong>：扰动作用点之前的积分环节数 <span class="arithmatex">\(\nu_1=1\)</span>，<span class="arithmatex">\(\nu_3=0\)</span>——该 PI 控制系统对扰动作用为 I 型：阶跃扰动无稳态误差，斜坡扰动有常值稳态误差。由式 (3.65) 通分（分子分母同乘 <span class="arithmatex">\(T_i s\cdot s(T_2 s+1)\)</span>）：</p>
 <div class="arithmatex">\[
 E_n(s)=-\frac{K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_i s+K_1K_2}\,N(s)
@@ -7702,7 +7715,7 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 <p><em>图 3-44 例 3-16 系统单位阶跃响应（MATLAB）：<span class="arithmatex">\(\sigma\%=4.33\%\)</span>、<span class="arithmatex">\(t_r=0.537\,\mathrm{s}\)</span>、<span class="arithmatex">\(t_s=1.49\,\mathrm{s}\)</span>（<span class="arithmatex">\(\varDelta=2\%\)</span>）（截自原书）</em></p>
 <div class="admonition warning">
 <p class="admonition-title">原书笔误</p>
-<p>原书 Python 程序有两处问题：<strong>(1)</strong> <code>ctr.tf([16],[1, 8*zeta, 25])</code> 的分母常数项应为 <strong>16</strong>（MATLAB 原文就是 <code>den=[1 8*zeta 16]</code>，书图 3-44/3-45 也是 16 的响应；写 25 时 <span class="arithmatex">\(\omega_n=5\)</span>，<span class="arithmatex">\(\zeta\)</span> 变成 0.566）。<strong>(2)</strong> <code>ctr.pole(sys)</code> 在 python-control 0.10 中应为 <strong><code>ct.poles(sys)</code></strong>（复数属性名）。下面的代码已修正。</p>
+<p>原书 Python 程序有两处问题：<strong>(1)</strong> <code>ctr.tf([16],[1, 8*zeta, 25])</code> 的分母常数项应为 <strong>16</strong>（MATLAB 原文就是 <code>den=[1 8*zeta 16]</code>，书图 3-44 也是 16 的响应；写 25 时 <span class="arithmatex">\(\omega_n=5\)</span>，<span class="arithmatex">\(\zeta\)</span> 变成 0.566）。<strong>(2)</strong> <code>ctr.pole(sys)</code> 在 python-control 0.10 中应为 <strong><code>ct.poles(sys)</code></strong>（复数属性名）。下面的代码已修正。</p>
 </div>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">MATLAB</label><label for="__tabbed_7_2">Python</label></div>
 <div class="tabbed-content">
@@ -7712,9 +7725,9 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">sys</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">zeta</span><span class="w"> </span><span class="mi">16</span><span class="p">]);</span><span class="w">         </span><span class="c">% Phi(s) = 16/(s^2+8*zeta*s+16)</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span><span class="w">                        </span><span class="c">% 特征根 -2.8280±2.8289i，实部全负，稳定</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">  </span><span class="c">% 单位脉冲响应（书图3-43）</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">  </span><span class="c">% 单位脉冲响应</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">     </span><span class="c">% 单位阶跃响应（书图3-44）</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 单位斜坡响应（书图3-45）</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w">   </span><span class="c">% 单位斜坡响应</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">stepinfo</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span><span class="w">   </span><span class="c">% sigma%=4.33, tr=0.537, ts(2%)=1.49</span>
 </code></pre></div>
 </div>
@@ -7729,9 +7742,9 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">poles</span><span class="p">(</span><span class="n">sys</span><span class="p">))</span>                 <span class="c1"># 原书误写 ctr.pole(sys)</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># [-2.828+2.8289j -2.828-2.8289j]：实部全负，稳定</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">impulse_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>      <span class="c1"># 单位脉冲响应（书图3-43）</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">impulse_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>      <span class="c1"># 单位脉冲响应</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="n">t2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>         <span class="c1"># 单位阶跃响应（书图3-44）</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="n">resp</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>      <span class="c1"># 单位斜坡响应（书图3-45，u=t）</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="n">resp</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>      <span class="c1"># 单位斜坡响应（u=t）</span>
 <a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">t3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">outputs</span>
 <a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">info</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">step_info</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'sigma</span><span class="si">%%</span><span class="s1">=</span><span class="si">%.2f</span><span class="s1"> tr=</span><span class="si">%.3f</span><span class="s1"> tp=</span><span class="si">%.3f</span><span class="s1"> ts=</span><span class="si">%.2f</span><span class="s1">'</span> <span class="o">%</span>
@@ -7750,7 +7763,7 @@ e_{ssn}(\infty)=-\lim_{s\to 0}\frac{n_1 K_2 T_i s}{T_i T_2 s^3+T_i s^2+K_1K_2 T_
 </div>
 </div>
 </div>
-<p>斜坡响应的稳态误差 <span class="arithmatex">\(2\zeta/\omega_n = 1.414/4 = 0.354\)</span> 正是图 3-45 中输出与输入的平行间距——该闭环对应的开环传递函数为 <span class="arithmatex">\(\dfrac{16}{s(s+5.657)}\)</span>，是 I 型系统（<span class="arithmatex">\(K_v=2.83\)</span>），斜坡跟踪存在常值位置误差 <span class="arithmatex">\(1/K_v\)</span>。</p>
+<p>斜坡响应的稳态误差 <span class="arithmatex">\(2\zeta/\omega_n = 1.414/4 = 0.354\)</span> 正是稳态输出与输入两条平行斜线之间的间距——该闭环对应的开环传递函数为 <span class="arithmatex">\(\dfrac{16}{s(s+5.657)}\)</span>，是 I 型系统（<span class="arithmatex">\(K_v=2.83\)</span>），斜坡跟踪存在常值位置误差 <span class="arithmatex">\(1/K_v\)</span>。</p>
 <h3 id="静态误差系数与型别的计算">静态误差系数与型别的计算<a class="headerlink" href="#静态误差系数与型别的计算" title="Permanent link">#</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MATLAB</label><label for="__tabbed_8_2">Python</label></div>
 <div class="tabbed-content">

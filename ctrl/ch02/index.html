@@ -5756,7 +5756,7 @@ f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega)\mathrm{e}^{\mathrm{j}\ome
 \]</div>
 <p>式 (2.9)、(2.10) 称为<strong>傅氏变换对</strong>：<span class="arithmatex">\(F(\omega) = \mathscr{F}[f(t)]\)</span> 是 <span class="arithmatex">\(f(t)\)</span> 的傅氏变换，<span class="arithmatex">\(f(t) = \mathscr{F}^{-1}[F(\omega)]\)</span> 是反变换。非周期函数能做傅氏变换的条件仍是狄利克雷条件，只是第三条要改为 <span class="arithmatex">\(\displaystyle\int_{-\infty}^{\infty}\vert f(t)\vert\,\mathrm{d}t\)</span> 存在（绝对可积）。</p>
 <p><strong>【例 2-2】方波的傅氏变换</strong></p>
-<p>原书图 2.2 的方波（幅值 <span class="arithmatex">\(A\)</span>、半宽 <span class="arithmatex">\(a\)</span>，只在 <span class="arithmatex">\(\vert t\vert &lt; a\)</span> 内非零）不是周期函数。由式 (2.9)：</p>
+<p>设方波幅值为 <span class="arithmatex">\(A\)</span>、半宽为 <span class="arithmatex">\(a\)</span>，只在 <span class="arithmatex">\(\vert t\vert &lt; a\)</span> 内非零——它不是周期函数。由式 (2.9)：</p>
 <div class="arithmatex">\[
 F(\omega) = \int_{-a}^{a} A\mathrm{e}^{-\mathrm{j}\omega t}\,\mathrm{d}t = \left.\frac{A}{-\mathrm{j}\omega}\mathrm{e}^{-\mathrm{j}\omega t}\right|_{-a}^{a} = \frac{2A\sin a\omega}{\omega}
 \]</div>
@@ -5887,7 +5887,7 @@ f(0^+) = \lim_{t\to 0^+} f(t) = \lim_{s\to\infty} sF(s)
 <div class="arithmatex">\[
 \mathscr{L}\left[f\left(\frac{t}{a}\right)\right] = aF(as), \qquad a &gt; 0
 \]</div>
-<p>证明：令 <span class="arithmatex">\(t/a = \tau\)</span>，<span class="arithmatex">\(\dfrac{1}{a}\int_0^{\infty} f(\tau)\mathrm{e}^{-as\tau}\,\mathrm{d}\tau \cdot a = aF(as)\)</span>（换元后 <span class="arithmatex">\(\mathrm{d}t = a\,\mathrm{d}\tau\)</span>）。物理含义：时间轴比例尺改变，象函数形式类似地改变——仿真中"加快时间比例"就是它（原书图 2.4 给出 <span class="arithmatex">\(f(t)\)</span>、<span class="arithmatex">\(f(2t)\)</span>、<span class="arithmatex">\(f(t/2)\)</span> 的波形对比：时间轴压缩 <span class="arithmatex">\(a\)</span> 倍，频谱展宽 <span class="arithmatex">\(a\)</span> 倍）。</p>
+<p>证明：令 <span class="arithmatex">\(t/a = \tau\)</span>，<span class="arithmatex">\(\dfrac{1}{a}\int_0^{\infty} f(\tau)\mathrm{e}^{-as\tau}\,\mathrm{d}\tau \cdot a = aF(as)\)</span>（换元后 <span class="arithmatex">\(\mathrm{d}t = a\,\mathrm{d}\tau\)</span>）。物理含义：时间轴比例尺改变，象函数形式类似地改变——仿真中"加快时间比例"就是它（把 <span class="arithmatex">\(f(t)\)</span>、<span class="arithmatex">\(f(2t)\)</span>、<span class="arithmatex">\(f(t/2)\)</span> 的波形画在一起即可看出：时间轴压缩 <span class="arithmatex">\(a\)</span> 倍，频谱展宽 <span class="arithmatex">\(a\)</span> 倍）。</p>
 <p><strong>(8) 卷积定理</strong></p>
 <div class="arithmatex">\[
 F_1(s)F_2(s) = \mathscr{L}\left[f_1(t) * f_2(t)\right] = \mathscr{L}\left[\int_0^t f_1(t-\tau)f_2(\tau)\,\mathrm{d}\tau\right]
@@ -6717,7 +6717,7 @@ c_2(t) = 1 - 0.5\,\mathrm{e}^{-t} - 0.5\,\mathrm{e}^{-2t}
 <h3 id="234-典型元部件的传递函数">2.3.4 典型元部件的传递函数<a class="headerlink" href="#234-典型元部件的传递函数" title="Permanent link">#</a></h3>
 <p>自动控制系统由各种机械、电子、液压、光学元部件连接组成。建模先从元部件做起。</p>
 <p><strong>电位器</strong> 把线位移或角位移变换为电压的装置；单个电位器作信号变换，一对电位器可组成误差检测器。</p>
-<p>空载时输出电压与电刷角位移成正比（阶梯状误差来自绕线线径，理论分析用直线近似；原书图 2.14 给出电位器、桥式电位器、输出特性与框图四个分图）：</p>
+<p>空载时输出电压与电刷角位移成正比（阶梯状误差来自绕线线径，理论分析用直线近似）：</p>
 <div class="arithmatex">\[
 u(t) = K_1\theta(t)
 \tag{2.61}
@@ -6757,8 +6757,8 @@ G(s) = \frac{U(s)}{\Theta(s)} = K_ts
 \tag{2.66}
 \]</div>
 <p>交流测速发电机（两互相垂直的线圈：激磁绕组 + 输出绕组）的输出电压包络线同样满足式 (2.64)，传递函数与方框图同直流型。</p>
-<p><strong>电枢控制直流伺服电动机</strong> 广泛用作执行机构。由式 (2.57)、(2.58) 可画出三种输入情况下的方框图（原书图 2.18）：电压到转速 <span class="arithmatex">\(\dfrac{K_m}{T_ms+1}\)</span>、电压到角位移 <span class="arithmatex">\(\dfrac{K_m}{s(T_ms+1)}\)</span>、负载转矩到转速 <span class="arithmatex">\(\dfrac{-K_c}{T_ms+1}\)</span>。</p>
-<p><strong>两相伺服电动机</strong> 重量轻、惯性小、加速特性好的小功率交流执行机构：两互相垂直的定子线圈（一相激磁、一相控制）+ 高电阻值转子。转矩–速度特性有负斜率且非线性（原书图 2.19b 给出一组不同控制电压下的机械特性曲线）；伺服电动机一般工作在零转速附近，把低速线性段延伸到高速范围作线性化：</p>
+<p><strong>电枢控制直流伺服电动机</strong> 广泛用作执行机构。由式 (2.57)、(2.58) 可画出三种输入情况下的方框图：电压到转速 <span class="arithmatex">\(\dfrac{K_m}{T_ms+1}\)</span>、电压到角位移 <span class="arithmatex">\(\dfrac{K_m}{s(T_ms+1)}\)</span>、负载转矩到转速 <span class="arithmatex">\(\dfrac{-K_c}{T_ms+1}\)</span>。</p>
+<p><strong>两相伺服电动机</strong> 重量轻、惯性小、加速特性好的小功率交流执行机构：两互相垂直的定子线圈（一相激磁、一相控制）+ 高电阻值转子。转矩–速度特性有负斜率且非线性（不同控制电压下对应一组机械特性曲线）；伺服电动机一般工作在零转速附近，把低速线性段延伸到高速范围作线性化：</p>
 <div class="arithmatex">\[
 M_m = -C_\omega\omega_m + M_s
 \tag{2.67}
@@ -6882,7 +6882,7 @@ G(s) = \frac{H(s)}{U(s)} = \frac{K\,\mathrm{e}^{-\tau s}}{Ts + 1}
 <tr>
 <td>积分</td>
 <td><span class="arithmatex">\(\dfrac{K}{s}\)</span></td>
-<td>测速发电机以角位移为输出（式 2.66）、电动机电压到角位移（原书图 2.18 的 <span class="arithmatex">\(\dfrac{K_m}{s(T_ms+1)}\)</span> 中的 <span class="arithmatex">\(1/s\)</span> 因子）</td>
+<td>测速发电机以角位移为输出（式 2.66）、电动机电压到角位移（<span class="arithmatex">\(\dfrac{K_m}{s(T_ms+1)}\)</span> 中的 <span class="arithmatex">\(1/s\)</span> 因子）</td>
 <td>输出是输入的累积，阶跃输入下输出直线增长</td>
 </tr>
 <tr>
@@ -7050,7 +7050,9 @@ G_{23}(s) = \frac{G_2G_{34}}{1 + G_2G_{34}\cdot H_2/G_4} = \frac{G_2G_3G_4}{1 + 
 <p><em>图 2.31 例 2-17 系统结构图简化：(a) 引出点后移；(b) 化简内环一；&copy; 化简内环二（截自原书）</em></p>
 <p>等效性的道理：<span class="arithmatex">\(H_2\)</span> 原本从 <span class="arithmatex">\(G_3\)</span> 输出取信号，引出点后移后取到的是 <span class="arithmatex">\(G_4\)</span> 的输出，要乘 <span class="arithmatex">\(1/G_4\)</span> 还原；比较点从 <span class="arithmatex">\(G_2\)</span> 输入端移到输出端，<span class="arithmatex">\(G_2\)</span> 输入少了一项，就在输出补上 <span class="arithmatex">\(H_2G_2\)</span>——回路 <span class="arithmatex">\(G_2G_3H_2\)</span> 的乘积保持不变。</p>
 <p><strong>【例 2-18】交叉结构图化简</strong></p>
-<p>原书图 2.32 中 <span class="arithmatex">\(G_1\)</span> 与 <span class="arithmatex">\(G_2\)</span> 之间有交叉的比较点和引出点，不能直接方框运算，也不可简单互换位置。最简便的方法：按规则 (5) 比较点前移、按规则 (8) 引出点后移，然后按规则 (2) 合并并联支路，最后按规则 (3) 化简反馈，得</p>
+<p><img alt="" class="lq-img" src="../images/ch02/fig-2-32.png" /></p>
+<p><em>图 2.32 例 2-18 系统结构图（截自原书）</em></p>
+<p>图 2.32 中 <span class="arithmatex">\(G_1\)</span> 与 <span class="arithmatex">\(G_2\)</span> 之间有交叉的比较点和引出点，不能直接方框运算，也不可简单互换位置。最简便的方法：按规则 (5) 比较点前移、按规则 (8) 引出点后移，然后按规则 (2) 合并并联支路，最后按规则 (3) 化简反馈，得</p>
 <div class="arithmatex">\[
 \frac{C(s)}{R(s)} = \frac{G_1G_2}{1 + G_1 + G_2 + G_1G_2H}
 \]</div>
@@ -7098,7 +7100,7 @@ G_{23}(s) = \frac{G_2G_{34}}{1 + G_2G_{34}\cdot H_2/G_4} = \frac{G_2G_3G_4}{1 + 
 </div>
 </div>
 <h3 id="243-信号流图的组成及性质">2.4.3 信号流图的组成及性质<a class="headerlink" href="#243-信号流图的组成及性质" title="Permanent link">#</a></h3>
-<p>信号流图起源于梅森用图示法描述线性代数方程组：由<strong>节点</strong>和<strong>支路</strong>组成的信号传递网络。节点代表方程中的变量（小圆圈）；支路是连接两节点的定向线段，用<strong>支路增益</strong>表示两个变量的因果关系——支路相当于乘法器。原书图 2.34：两节点一条支路，<span class="arithmatex">\(U = IR\)</span>，正是欧姆定律。</p>
+<p>信号流图起源于梅森用图示法描述线性代数方程组：由<strong>节点</strong>和<strong>支路</strong>组成的信号传递网络。节点代表方程中的变量（小圆圈）；支路是连接两节点的定向线段，用<strong>支路增益</strong>表示两个变量的因果关系——支路相当于乘法器。最简单的信号流图只有两节点一条支路：<span class="arithmatex">\(U = IR\)</span>，正是欧姆定律。</p>
 <p><img alt="" class="lq-img" src="../images/ch02/fig-2-35.png" /></p>
 <p><em>图 2.35 典型的信号流图（截自原书）</em></p>
 <p>图 2.35 的五个节点 <span class="arithmatex">\(x_1, x_2, x_3, x_4, x_5\)</span>、八条支路（增益 <span class="arithmatex">\(a, b, c, d, e, f, g, 1\)</span>）对应方程组：</p>
@@ -7115,7 +7117,7 @@ x_2 = x_1 + ex_3, \qquad x_3 = ax_2 + fx_4, \qquad x_4 = bx_3, \qquad x_5 = dx_2
 <p><strong>常用术语</strong>（梅森公式的语言，务必配图 2.35 记牢）：</p>
 <ul>
 <li><strong>源节点</strong>（输入节点）：只有输出支路、没有输入支路，一般代表输入变量（图中 <span class="arithmatex">\(x_1\)</span>）；</li>
-<li><strong>阱节点</strong>（输出节点）：只有输入支路、没有输出支路，一般代表输出变量（原书图 2.34 中的 <span class="arithmatex">\(U\)</span>）；从混合节点引一条单位增益支路可把混合节点变为阱节点（图 2.35 中用单位增益支路引出的 <span class="arithmatex">\(x_5\)</span>）；</li>
+<li><strong>阱节点</strong>（输出节点）：只有输入支路、没有输出支路，一般代表输出变量（如上述 <span class="arithmatex">\(U=IR\)</span> 流图中的 <span class="arithmatex">\(U\)</span>）；从混合节点引一条单位增益支路可把混合节点变为阱节点（图 2.35 中用单位增益支路引出的 <span class="arithmatex">\(x_5\)</span>）；</li>
 <li><strong>混合节点</strong>：既有输入支路又有输出支路（图中 <span class="arithmatex">\(x_2, x_3, x_4, x_5\)</span>）；</li>
 <li><strong>前向通路</strong>：信号从输入节点到输出节点传递时，每个节点只通过一次的通路；通路上各支路增益之乘积称<strong>前向通路增益</strong>，记 <span class="arithmatex">\(p_k\)</span>。图 2.35 有两条：<span class="arithmatex">\(x_1\to x_2\to x_3\to x_4\to x_5\)</span>，<span class="arithmatex">\(p_1 = abc\)</span>；<span class="arithmatex">\(x_1\to x_2\to x_5\)</span>，<span class="arithmatex">\(p_2 = d\)</span>；</li>
 <li><strong>回路</strong>：起点与终点在同一节点、且信号通过每一节点不多于一次的闭合通路（单独回路）；回路中所有支路增益之乘积称<strong>回路增益</strong>，记 <span class="arithmatex">\(L_a\)</span>。图 2.35 有三个：<span class="arithmatex">\(x_2\to x_3\to x_2\)</span>（<span class="arithmatex">\(L_1 = ae\)</span>）、<span class="arithmatex">\(x_3\to x_4\to x_3\)</span>（<span class="arithmatex">\(L_2 = bf\)</span>）、<span class="arithmatex">\(x_5\to x_5\)</span> 自回路（<span class="arithmatex">\(L_3 = g\)</span>）；</li>
@@ -7125,15 +7127,19 @@ x_2 = x_1 + ex_3, \qquad x_3 = ax_2 + fx_4, \qquad x_4 = bx_3, \qquad x_5 = dx_2
 <p><strong>由微分方程绘制</strong>：含微分/积分的方程先拉氏变换成 <span class="arithmatex">\(s\)</span> 的代数方程；对每个变量设一个节点、按因果关系自左向右排列，用标明增益的支路正确连接。</p>
 <p><strong>由结构图绘制</strong>：结构图信号线上的信号 → 节点；方框 → 标有传递函数的支路。绘制时尽量精简节点：增益为 1 的相邻节点一般可合并（源节点和阱节点除外）；比较点之前没有引出点时，只需在比较点后设一个节点；比较点之前有引出点时，需在引出点和比较点各设一个节点，支路增益为 1。</p>
 <p><strong>【例 2-19】由结构图到信号流图</strong></p>
-<p>在结构图（原书图 2.38）信号线上标注变量名作为节点，按原顺序自左向右排列，方框换成相应增益的支路，得信号流图：</p>
+<p><img alt="" class="lq-img" src="../images/ch02/fig-2-38.png" /></p>
+<p><em>图 2.38 例 2-19 系统结构图（截自原书）</em></p>
+<p>在图 2.38 的结构图信号线上标注变量名作为节点，按原顺序自左向右排列，方框换成相应增益的支路，得信号流图：</p>
 <p><img alt="" class="lq-img" src="../images/ch02/fig-2-39.png" /></p>
 <p><em>图 2.39 例 2-19 系统的信号流图（截自原书）</em></p>
 <h3 id="245-梅森增益公式">2.4.5 梅森增益公式<a class="headerlink" href="#245-梅森增益公式" title="Permanent link">#</a></h3>
 <p>结构图等效变换繁琐。<strong>梅森增益公式</strong>直接从信号流图（也可直接用于结构图）写出源节点到阱节点的传递函数，不必简化。其来源：按克拉默（Cramer）法则解线性联立方程组时，把解的分子、分母多项式与流图（拓扑图）巧妙联系。</p>
-<p><strong>推导</strong>（原书图 2.40 的典型信号流图）：变量 <span class="arithmatex">\(U_i, U_o\)</span> 之间，节点方程为</p>
+<p><strong>推导</strong>：取变量 <span class="arithmatex">\(U_i, U_o\)</span> 之间的一个典型信号流图（图 2.40），节点方程为</p>
 <div class="arithmatex">\[
 X_1 = aU_i + fX_3, \quad X_2 = bX_1 + gX_3, \quad X_3 = cX_2 + hX_4, \quad X_4 = dX_3 + eU_i, \quad U_o = X_4
 \]</div>
+<p><img alt="" class="lq-img" src="../images/ch02/fig-2-40.png" /></p>
+<p><em>图 2.40 典型信号流图（截自原书）</em></p>
 <p>整理为齐次形式后按克拉默法则解 <span class="arithmatex">\(X_4\)</span>，系数行列式</p>
 <div class="arithmatex">\[
 \Delta = 1 - (fb + gc + dh) + fbdh
@@ -7212,8 +7218,12 @@ F\frac{l}{2}\cos\theta_2 - Mgl\sin\theta_2 = Ml^2\frac{\mathrm{d}^2\theta_2}{\ma
 <div class="arithmatex">\[
 \frac{\Theta_1(s)}{F(s)} = \frac{s^2 + a}{2Ml\left[(s^2+a)^2 - b^2\right]}
 \]</div>
-<p><strong>3) 结构图与信号流图。</strong> 按信号传递关系画出（结构图为两个积分器加反馈的对称结构，见原书图 2.43；信号流图见原书图 2.44）：</p>
-<p><strong>4) 用梅森公式求 <span class="arithmatex">\(\Theta_1(s)/F(s)\)</span>。</strong> 为便于观察，把信号流图（原书图 2.44）改画成图 2.45（节点重排、回路标号）：</p>
+<p><strong>3) 结构图与信号流图。</strong> 按信号传递关系画出（结构图为两个积分器加反馈的对称结构，见图 2.43；信号流图见图 2.44）：</p>
+<p><img alt="" class="lq-img" src="../images/ch02/fig-2-43.png" /></p>
+<p><em>图 2.43 双摆系统结构图（截自原书）</em></p>
+<p><img alt="" class="lq-img" src="../images/ch02/fig-2-44.png" /></p>
+<p><em>图 2.44 双摆系统信号流图（截自原书）</em></p>
+<p><strong>4) 用梅森公式求 <span class="arithmatex">\(\Theta_1(s)/F(s)\)</span>。</strong> 为便于观察，把信号流图（图 2.44）改画成图 2.45（节点重排、回路标号）：</p>
 <p><img alt="" class="lq-img" src="../images/ch02/fig-2-45.png" /></p>
 <p><em>图 2.45 双摆系统信号流图（改画，截自原书）</em></p>
 <ul>
@@ -7247,7 +7257,7 @@ C(s) = \Phi(s)R(s) = \frac{G_1(s)G_2(s)}{1 + G_1(s)G_2(s)H(s)}R(s)
 \tag{2.93}
 \]</div>
 <p>输出响应取决于闭环传递函数及输入信号的形式。</p>
-<p><strong>(2) 扰动作用下的闭环传递函数</strong>：令 <span class="arithmatex">\(R(s) = 0\)</span>（把结构图改画成"扰动在前"的形式，见原书图 2.47）：</p>
+<p><strong>(2) 扰动作用下的闭环传递函数</strong>：令 <span class="arithmatex">\(R(s) = 0\)</span>（把结构图改画成"扰动在前"的形式：<span class="arithmatex">\(N(s)\)</span> 作输入，<span class="arithmatex">\(G_1\)</span> 与 <span class="arithmatex">\(H\)</span> 一同挪进反馈通路）：</p>
 <div class="arithmatex">\[
 \Phi_n(s) = \frac{C(s)}{N(s)} = \frac{G_2(s)}{1 + G_1(s)G_2(s)H(s)}
 \tag{2.94}
@@ -7655,7 +7665,7 @@ C(s) \approx \frac{R(s)}{H(s)}
 <td>2.3.4</td>
 </tr>
 <tr>
-<td>2-4.1 结构图组成与绘制（图 2-24、例 2-16）</td>
+<td>2-4.1 结构图组成与绘制（四种基本单元、例 2-16）</td>
 <td>2.4.1</td>
 </tr>
 <tr>
@@ -7663,11 +7673,11 @@ C(s) \approx \frac{R(s)}{H(s)}
 <td>2.4.2</td>
 </tr>
 <tr>
-<td>2-4.3 信号流图组成与性质（图 2-34、2-35、术语全套）</td>
+<td>2-4.3 信号流图组成与性质（图 2-35、术语全套）</td>
 <td>2.4.3</td>
 </tr>
 <tr>
-<td>2-4.4 信号流图绘制（图 2-36、2-37、例 2-19）</td>
+<td>2-4.4 信号流图绘制（绘制规则、例 2-19）</td>
 <td>2.4.4</td>
 </tr>
 <tr>
@@ -7675,7 +7685,7 @@ C(s) \approx \frac{R(s)}{H(s)}
 <td>2.4.5</td>
 </tr>
 <tr>
-<td>2-4.6 闭环系统传递函数（式 2-92~2-97、图 2-46、2-47）</td>
+<td>2-4.6 闭环系统传递函数（式 2-92~2-97、图 2-46）</td>
 <td>2.4.6</td>
 </tr>
 <tr>

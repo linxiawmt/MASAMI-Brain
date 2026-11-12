@@ -5552,7 +5552,7 @@ u_i = A\sin\omega t
 \]</div>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-1.png" /></p>
 <p><em>图 5-1 RC 滤波网络（截自原书）</em></p>
-<p>记录网络的输入、输出（原书图 5-2 给出了输入 <span class="arithmatex">\(u_i\)</span> 与稳态输出 <span class="arithmatex">\(u_o\)</span> 的波形）：稳态时输出 <span class="arithmatex">\(u_o\)</span> 仍是<strong>同频率</strong>的正弦信号，只是幅值有衰减、相位有延迟。RC 网络的输入和输出的关系可由微分方程描述：</p>
+<p>记录网络的输入、输出波形：稳态时输出 <span class="arithmatex">\(u_o\)</span> 仍是<strong>同频率</strong>的正弦信号，只是幅值有衰减、相位有延迟。RC 网络的输入和输出的关系可由微分方程描述：</p>
 <div class="arithmatex">\[
 T\frac{\mathrm{d}u_o}{\mathrm{d}t} + u_o = u_i
 \tag{5.2}
@@ -5650,7 +5650,7 @@ G(\mathrm{j}\omega) = A(\omega)\,\mathrm{e}^{\mathrm{j}\varphi(\omega)}
 <p class="admonition-title">拓展：这三个定义的适用范围不一样（补充）</p>
 <p>频率特性的<strong>定义</strong>（式 5.17、5.18）对稳定和不稳定系统都成立——只要把 <span class="arithmatex">\(s=\mathrm{j}\omega\)</span> 代进 <span class="arithmatex">\(G(s)\)</span> 就能算。但<strong>实验测定</strong>只对稳定系统可行：在输入端施加不同频率的正弦信号、测稳态输出的幅值比和相位差即可；不稳定系统的稳态分量里混着由不稳定极点产生的发散或等幅振荡分量，实验测不到纯粹的稳态响应。另外，由傅氏变换的角度看，稳定系统的频率特性还等于输出与输入的傅氏变换之比 <span class="arithmatex">\(C(\mathrm{j}\omega)/R(\mathrm{j}\omega)=G(\mathrm{j}\omega)\)</span>（式 5.19），这正是"频率特性"物理意义的数学表达。</p>
 </div>
-<p>频率特性与微分方程、传递函数一样，表征系统的运动规律，是频域分析的理论依据。三种描述之间的关系如图 5-4：微分方程取拉氏变换得传递函数（<span class="arithmatex">\(s\)</span> 域），令 <span class="arithmatex">\(s=\mathrm{j}\omega\)</span> 得频率特性；传递函数令 <span class="arithmatex">\(s=p\)</span> 对应微分方程算子。知道了任何一种，就可以确定另外两种。</p>
+<p>频率特性与微分方程、传递函数一样，表征系统的运动规律，是频域分析的理论依据。三种描述之间的关系是：微分方程取拉氏变换得传递函数（<span class="arithmatex">\(s\)</span> 域），令 <span class="arithmatex">\(s=\mathrm{j}\omega\)</span> 得频率特性；传递函数令 <span class="arithmatex">\(s=p\)</span> 对应微分方程算子。知道了任何一种，就可以确定另外两种。</p>
 <h3 id="频率特性的几何表示法">频率特性的几何表示法<a class="headerlink" href="#频率特性的几何表示法" title="Permanent link">#</a></h3>
 <p>工程上把频率特性画成曲线再做图解分析。常用三种曲线。</p>
 <p><strong>(1) 幅相频率特性曲线</strong>（简称<strong>幅相曲线</strong>，又称奈奎斯特图或极坐标图）：以横轴为实轴、纵轴为虚轴构成复数平面。任一频率 <span class="arithmatex">\(\omega\)</span> 的频率特性是一个复数——实部虚部形式给出坐标点，指数形式给出向量（长度为幅值，与实轴正方向夹角为相位）。由于幅频特性是 <span class="arithmatex">\(\omega\)</span> 的偶函数、相频特性是奇函数，<span class="arithmatex">\(\omega\)</span> 从 <span class="arithmatex">\(0\to+\infty\)</span> 与 <span class="arithmatex">\(0\to-\infty\)</span> 的幅相曲线关于实轴对称，一般只绘制 <span class="arithmatex">\(\omega\)</span> 从零变化至 <span class="arithmatex">\(+\infty\)</span> 的一段，用小箭头表示 <span class="arithmatex">\(\omega\)</span> 增大方向。</p>
@@ -5711,10 +5711,10 @@ L(\omega) = 20\lg\vert G(\mathrm{j}\omega)\vert = 20\lg A(\omega)
 <p class="admonition-title">原书笔误</p>
 <p>原书表 5-1 中 <span class="arithmatex">\(\omega/\omega_0=6\)</span> 对应的 <span class="arithmatex">\(\lg(\omega/\omega_0)\)</span> 印作 <strong>0.788</strong>。按定义 <span class="arithmatex">\(\lg 6=0.778\)</span>（<span class="arithmatex">\(10^{0.778}\approx 6.00\)</span>，而 <span class="arithmatex">\(10^{0.788}\approx 6.14\)</span>），且 0.778 恰好落在 0.699（5）与 0.845（7）的等距递增序列之间，应为 <strong>0.778</strong>。上表已按修正值给出。</p>
 </div>
-<p>对数分度实现了横坐标的<strong>非线性压缩</strong>，便于在很宽的频率范围展示特性变化；<span class="arithmatex">\(20\lg A(\omega)\)</span> 把幅值的<strong>乘除运算化为加减运算</strong>，简化作图。RC 网络取 <span class="arithmatex">\(T=0.5\)</span> 的对数频率特性曲线见原书图 5-7：幅频从 0 dB 起经 <span class="arithmatex">\(\omega=1/T=2\)</span> 后以约 <span class="arithmatex">\(-20\ \mathrm{dB/dec}\)</span> 下降，相频从 <span class="arithmatex">\(0^\circ\)</span> 单调降到 <span class="arithmatex">\(-90^\circ\)</span>。</p>
-<p><strong>(3) 对数幅相曲线</strong>（又称尼科尔斯图）：纵坐标 <span class="arithmatex">\(L(\omega)\)</span>（dB）、横坐标 <span class="arithmatex">\(\varphi(\omega)\)</span>（°），均线性分度，<span class="arithmatex">\(\omega\)</span> 为参变量。RC 网络 <span class="arithmatex">\(T=0.5\)</span> 的尼科尔斯曲线见原书图 5-8，是一条从原点附近出发、随 <span class="arithmatex">\(\omega\)</span> 增大趋向 <span class="arithmatex">\((-\infty\ \mathrm{dB},-90^\circ)\)</span> 的弧线，可由对数幅频、对数相频两张曲线逐点合并得到，工程上多用于闭环特性分析与校正设计。</p>
+<p>对数分度实现了横坐标的<strong>非线性压缩</strong>，便于在很宽的频率范围展示特性变化；<span class="arithmatex">\(20\lg A(\omega)\)</span> 把幅值的<strong>乘除运算化为加减运算</strong>，简化作图。RC 网络取 <span class="arithmatex">\(T=0.5\)</span> 时，对数幅频从 0 dB 起经 <span class="arithmatex">\(\omega=1/T=2\)</span> 后以约 <span class="arithmatex">\(-20\ \mathrm{dB/dec}\)</span> 下降，相频从 <span class="arithmatex">\(0^\circ\)</span> 单调降到 <span class="arithmatex">\(-90^\circ\)</span>。</p>
+<p><strong>(3) 对数幅相曲线</strong>（又称尼科尔斯图）：纵坐标 <span class="arithmatex">\(L(\omega)\)</span>（dB）、横坐标 <span class="arithmatex">\(\varphi(\omega)\)</span>（°），均线性分度，<span class="arithmatex">\(\omega\)</span> 为参变量。RC 网络 <span class="arithmatex">\(T=0.5\)</span> 的尼科尔斯曲线是一条从原点附近出发、随 <span class="arithmatex">\(\omega\)</span> 增大趋向 <span class="arithmatex">\((-\infty\ \mathrm{dB},-90^\circ)\)</span> 的弧线，可由对数幅频、对数相频两张曲线逐点合并得到，工程上多用于闭环特性分析与校正设计。</p>
 <h2 id="52-典型环节与开环系统频率特性">5.2 典型环节与开环系统频率特性<a class="headerlink" href="#52-典型环节与开环系统频率特性" title="Permanent link">#</a></h2>
-<p>设系统结构如图 5-9（<span class="arithmatex">\(R(s)\)</span> 经 <span class="arithmatex">\(G(s)\)</span> 到输出、<span class="arithmatex">\(H(s)\)</span> 构成主反馈），开环传递函数为 <span class="arithmatex">\(G(s)H(s)\)</span>。要画开环频率特性曲线，先把开环系统拆成典型环节。</p>
+<p>设开环系统由 <span class="arithmatex">\(R(s)\)</span> 经 <span class="arithmatex">\(G(s)\)</span> 到输出、<span class="arithmatex">\(H(s)\)</span> 构成主反馈，开环传递函数为 <span class="arithmatex">\(G(s)H(s)\)</span>。要画开环频率特性曲线，先把开环系统拆成典型环节。</p>
 <h3 id="典型环节">典型环节<a class="headerlink" href="#典型环节" title="Permanent link">#</a></h3>
 <p>开环传递函数分子分母都是实系数多项式，零极点或为实数或为共轭复数；把分子分母按零极点分解成因式并分类，就得到典型环节。典型环节分两大类。<strong>最小相位环节</strong>七种：</p>
 <ol>
@@ -5831,7 +5831,7 @@ M_r = A(\omega_r) = \frac{1}{2\zeta\sqrt{1-\zeta^2}}, \qquad 0&lt;\zeta\le\frac{
 \frac{\mathrm{d}M_r}{\mathrm{d}\zeta} = -\frac{2(1-2\zeta^2)}{\left(2\zeta\sqrt{1-\zeta^2}\right)^2} &lt; 0, \qquad 0&lt;\zeta&lt;\frac{\sqrt 2}{2}
 \tag{5.38}
 \]</div>
-<p>即 <span class="arithmatex">\(\omega_r\)</span>、<span class="arithmatex">\(M_r\)</span> 都是阻尼比 <span class="arithmatex">\(\zeta\)</span> 的减函数。当 <span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 时，<span class="arithmatex">\(A(\omega)\)</span> 在 <span class="arithmatex">\(\omega\in(0,\omega_r)\)</span> 单调增、<span class="arithmatex">\(\omega\in(\omega_r,\infty)\)</span> 单调减；当 <span class="arithmatex">\(\frac{\sqrt2}{2}&lt;\zeta&lt;1\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 单调减。不同 <span class="arithmatex">\(\zeta\)</span> 下的曲线见本笔记图 5-13 与原书图 5-12（图中 <span class="arithmatex">\(u=\omega/\omega_n\)</span>）。注意 <span class="arithmatex">\(\zeta\)</span> 很小时 <span class="arithmatex">\(A(\omega_n)\approx\frac{1}{2\zeta}\)</span> 很大——渐近线在 <span class="arithmatex">\(\omega_n\)</span> 处是 0 dB，精确曲线却拱起很高，必须修正。</p>
+<p>即 <span class="arithmatex">\(\omega_r\)</span>、<span class="arithmatex">\(M_r\)</span> 都是阻尼比 <span class="arithmatex">\(\zeta\)</span> 的减函数。当 <span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 时，<span class="arithmatex">\(A(\omega)\)</span> 在 <span class="arithmatex">\(\omega\in(0,\omega_r)\)</span> 单调增、<span class="arithmatex">\(\omega\in(\omega_r,\infty)\)</span> 单调减；当 <span class="arithmatex">\(\frac{\sqrt2}{2}&lt;\zeta&lt;1\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 单调减。不同 <span class="arithmatex">\(\zeta\)</span> 下的曲线见本笔记图 5-13。注意 <span class="arithmatex">\(\zeta\)</span> 很小时 <span class="arithmatex">\(A(\omega_n)\approx\frac{1}{2\zeta}\)</span> 很大——渐近线在 <span class="arithmatex">\(\omega_n\)</span> 处是 0 dB，精确曲线却拱起很高，必须修正。</p>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-13.png" /></p>
 <p><em>图 5-13 振荡环节的对数频率特性曲线：谐振峰随 ζ 减小而升高（截自原书；其幅相曲线族见原书图 5-12）</em></p>
 <p>二阶微分环节的传递函数是振荡环节的倒数，按对称性可直接得到它的对数频率曲线，并有</p>
@@ -5839,7 +5839,7 @@ M_r = A(\omega_r) = \frac{1}{2\zeta\sqrt{1-\zeta^2}}, \qquad 0&lt;\zeta\le\frac{
 A(\omega_r) = 2\zeta\sqrt{1-\zeta^2} &lt; 1, \qquad \omega_r = \omega_n\sqrt{1-2\zeta^2} &lt; \omega_n
 \tag{5.39}
 \]</div>
-<p>当 <span class="arithmatex">\(\frac{\sqrt2}{2}&lt;\zeta&lt;1\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 从 1 单调增至 <span class="arithmatex">\(\infty\)</span>；当 <span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 且 <span class="arithmatex">\(\omega\in(0,\omega_r)\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 从 1 单调减至 <span class="arithmatex">\(A(\omega_r)\)</span>，<span class="arithmatex">\(\omega\in(\omega_r,\infty)\)</span> 单调增。概略幅相曲线如图 5-14：曲线从 <span class="arithmatex">\((1,\mathrm{j}0)\)</span> 出发，先向左凹（<span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 时凹得更深），最终趋于正虚轴无穷远处。非最小相位二阶微分环节和不稳定振荡环节的曲线按 (1) 的对称规则确定。</p>
+<p>当 <span class="arithmatex">\(\frac{\sqrt2}{2}&lt;\zeta&lt;1\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 从 1 单调增至 <span class="arithmatex">\(\infty\)</span>；当 <span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 且 <span class="arithmatex">\(\omega\in(0,\omega_r)\)</span> 时 <span class="arithmatex">\(A(\omega)\)</span> 从 1 单调减至 <span class="arithmatex">\(A(\omega_r)\)</span>，<span class="arithmatex">\(\omega\in(\omega_r,\infty)\)</span> 单调增。概略幅相曲线从 <span class="arithmatex">\((1,\mathrm{j}0)\)</span> 出发，先向左凹（<span class="arithmatex">\(0&lt;\zeta&lt;\frac{\sqrt2}{2}\)</span> 时凹得更深），最终趋于正虚轴无穷远处。非最小相位二阶微分环节和不稳定振荡环节的曲线按 (1) 的对称规则确定。</p>
 <p><strong>(4) 对数幅频渐近特性曲线</strong>。为简化作图，惯性、一阶微分、振荡、二阶微分环节的对数幅频曲线常用低频和高频<strong>渐近线</strong>近似，称为对数幅频渐近特性曲线。</p>
 <p>惯性环节的对数幅频特性：</p>
 <div class="arithmatex">\[
@@ -5866,7 +5866,7 @@ L_a(\omega) = \begin{cases} 0, &amp; \omega &lt; \dfrac{1}{T} \\[1ex] -20\lg T\o
 \Delta L(\omega) = L(\omega) - L_a(\omega)
 \tag{5.44}
 \]</div>
-<p>误差曲线如图 5-16 所示，在交接频率处误差最大，约 <span class="arithmatex">\(-3\ \mathrm{dB}\)</span>。按误差曲线修正渐近线即得准确曲线。非最小相位惯性环节的对数幅频特性与惯性环节相同，渐近特性也相同；一阶微分环节（含非最小相位）与惯性环节的对数幅频特性互为倒数，故其渐近特性曲线与惯性环节的关于 0 dB 线互为镜像。</p>
+<p>该误差在交接频率处最大，约 <span class="arithmatex">\(-3\ \mathrm{dB}\)</span>，按误差曲线修正渐近线即得准确曲线。非最小相位惯性环节的对数幅频特性与惯性环节相同，渐近特性也相同；一阶微分环节（含非最小相位）与惯性环节的对数幅频特性互为倒数，故其渐近特性曲线与惯性环节的关于 0 dB 线互为镜像。</p>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-17.png" /></p>
 <p><em>图 5-17 振荡环节的误差曲线 ΔL(ω, ζ) 为一曲线簇：ζ 越小，交接频率附近的修正量越大（截自原书）</em></p>
 <p>振荡环节的对数幅频特性：</p>
@@ -5920,7 +5920,7 @@ G(s) = \frac{K}{(T_1s+1)(T_2s+1)}, \qquad K,T_1,T_2&gt;0
 <div class="arithmatex">\[
 G(\mathrm{j}\omega) = \frac{K\left[(1-T_1T_2\omega^2) - \mathrm{j}(T_1+T_2)\omega\right]}{(1+T_1^2\omega^2)(1+T_2^2\omega^2)}
 \]</div>
-<p>令 <span class="arithmatex">\(\mathrm{Im}\,G(\mathrm{j}\omega_x)=0\)</span> 得 <span class="arithmatex">\(\omega_x=0\)</span>，即除 <span class="arithmatex">\(\omega=0\)</span> 处外曲线与实轴无交点。相角从 <span class="arithmatex">\(0^\circ\)</span> 单调减到 <span class="arithmatex">\(-180^\circ\)</span>，曲线在第Ⅳ、第Ⅲ象限变化，如原书图 5-18 实线。若 <span class="arithmatex">\(K&lt;0\)</span>，非最小相位比例环节的相角恒为 <span class="arithmatex">\(-180^\circ\)</span>，整条曲线绕原点顺时针旋转 <span class="arithmatex">\(180^\circ\)</span>（原书图 5-18 虚线）。</p>
+<p>令 <span class="arithmatex">\(\mathrm{Im}\,G(\mathrm{j}\omega_x)=0\)</span> 得 <span class="arithmatex">\(\omega_x=0\)</span>，即除 <span class="arithmatex">\(\omega=0\)</span> 处外曲线与实轴无交点。相角从 <span class="arithmatex">\(0^\circ\)</span> 单调减到 <span class="arithmatex">\(-180^\circ\)</span>，曲线在第Ⅳ、第Ⅲ象限变化。若 <span class="arithmatex">\(K&lt;0\)</span>，非最小相位比例环节的相角恒为 <span class="arithmatex">\(-180^\circ\)</span>，整条曲线绕原点顺时针旋转 <span class="arithmatex">\(180^\circ\)</span>。</p>
 <p><strong>【例 5-2】I 型系统的开环幅相曲线</strong></p>
 <p>已知系统开环传递函数</p>
 <div class="arithmatex">\[
@@ -5943,7 +5943,7 @@ G(\mathrm{j}\omega)H(\mathrm{j}\omega) = \frac{K(1-\mathrm{j}T_1\omega)(1-\mathr
 G(\mathrm{j}\omega_x)H(\mathrm{j}\omega_x) = -\frac{KT_1T_2}{T_1+T_2}
 \]</div>
 <p>由此作开环幅相曲线如图 5-19 曲线①。图中虚线为<strong>低频渐近线</strong>（过 <span class="arithmatex">\(-K(T_1+T_2)\)</span> 的竖直线）。由于用幅相曲线做分析时不需要准确知道渐近线位置，一般按 <span class="arithmatex">\(\varphi(0^+)\)</span> 取坐标轴为渐近线，得概略曲线②。</p>
-<p>本例积分环节个数 <span class="arithmatex">\(\nu=1\)</span>。若 <span class="arithmatex">\(\nu=2,3,4\)</span>，利用积分环节的相角 <span class="arithmatex">\(-\nu\times90^\circ\)</span>，把曲线①分别绕原点旋转 <span class="arithmatex">\(-90^\circ\)</span>、<span class="arithmatex">\(-180^\circ\)</span>、<span class="arithmatex">\(-270^\circ\)</span> 即得相应概略幅相曲线（原书图 5-20）。</p>
+<p>本例积分环节个数 <span class="arithmatex">\(\nu=1\)</span>。若 <span class="arithmatex">\(\nu=2,3,4\)</span>，利用积分环节的相角 <span class="arithmatex">\(-\nu\times90^\circ\)</span>，把曲线①分别绕原点旋转 <span class="arithmatex">\(-90^\circ\)</span>、<span class="arithmatex">\(-180^\circ\)</span>、<span class="arithmatex">\(-270^\circ\)</span> 即得相应概略幅相曲线。</p>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-19.png" /></p>
 <p><em>图 5-19 例 5-2 系统概略开环幅相特性曲线：曲线①含低频渐近线，曲线②为按 <span class="arithmatex">\(\varphi(0^+)\)</span> 取轴的概略曲线（截自原书；<span class="arithmatex">\(\nu=2,3,4\)</span> 时整族曲线由 <span class="arithmatex">\(\nu=1\)</span> 的曲线绕原点旋转而成，见原书图 5-20）</em></p>
 <p><strong>【例 5-3】含一阶微分环节的 I 型系统</strong></p>
@@ -5965,7 +5965,7 @@ G(\mathrm{j}\omega_x) = -\frac{K(T_1T_2 - T_1\tau - T_2\tau)}{T_1+T_2}
 <p class="admonition-title">原书笔误</p>
 <p>原书式印作 <span class="arithmatex">\(G(\mathrm{j}\omega_x)=-\dfrac{K(T_1+T_2)(T_1T_2-T_1\tau-T_2\tau+\tau^2)}{(T_1T_2-T_1\tau-T_2\tau+T_1^2)(T_1T_2-T_1\tau-T_2\tau+T_2^2)}\)</span>。由于 <span class="arithmatex">\(T_1T_2-T_1\tau-T_2\tau+T_1^2=(T_1-\tau)(T_1+T_2)\)</span>、<span class="arithmatex">\(T_1T_2-T_1\tau-T_2\tau+T_2^2=(T_2-\tau)(T_1+T_2)\)</span>，该式化简后等于 <span class="arithmatex">\(-\dfrac{K}{T_1+T_2}\)</span>——连 <span class="arithmatex">\(K\)</span> 之外的全部参数都消掉了，显然有误（分子漏印了一个因子 <span class="arithmatex">\(T_1T_2-T_1\tau-T_2\tau\)</span>）。正确结果为上式 <span class="arithmatex">\(G(\mathrm{j}\omega_x)=-\dfrac{K(T_1T_2-T_1\tau-T_2\tau)}{T_1+T_2}\)</span>：代入 <span class="arithmatex">\(T_1=1,T_2=2,\tau=0.3,K=5\)</span> 数值验证 <span class="arithmatex">\(G(\mathrm{j}\omega_x)=-1.833\)</span>，与 <span class="arithmatex">\(-\dfrac{5\times1.1}{3}=-1.833\)</span> 一致，而按原书式只能得 <span class="arithmatex">\(-1.667\)</span>。</p>
 </div>
-<p>变化范围：<span class="arithmatex">\(\tau&gt;\dfrac{T_1T_2}{T_1+T_2}\)</span> 时，开环幅相特性曲线位于第Ⅲ象限或第Ⅳ与第Ⅲ象限；<span class="arithmatex">\(\tau&lt;\dfrac{T_1T_2}{T_1+T_2}\)</span> 时，位于第Ⅲ象限与第Ⅱ象限。概略曲线如原书图 5-21。</p>
+<p>变化范围：<span class="arithmatex">\(\tau&gt;\dfrac{T_1T_2}{T_1+T_2}\)</span> 时，开环幅相特性曲线位于第Ⅲ象限或第Ⅳ与第Ⅲ象限；<span class="arithmatex">\(\tau&lt;\dfrac{T_1T_2}{T_1+T_2}\)</span> 时，位于第Ⅲ象限与第Ⅱ象限。据此可作出概略曲线。</p>
 <p><strong>【例 5-4】含非最小相位一阶微分环节的系统</strong></p>
 <p>已知系统开环传递函数</p>
 <div class="arithmatex">\[
@@ -5977,7 +5977,7 @@ G(\mathrm{j}\omega)H(\mathrm{j}\omega) = \frac{K\left[-(T+\tau)\omega - \mathrm{
 \]</div>
 <p>起点：<span class="arithmatex">\(A(0^+)=\infty\)</span>，<span class="arithmatex">\(\varphi(0^+)=-90^\circ\)</span>；终点：<span class="arithmatex">\(A(\infty)=0\)</span>，<span class="arithmatex">\(\varphi(\infty)=-270^\circ\)</span>。</p>
 <p>与实轴的交点：令虚部为零，解得 <span class="arithmatex">\(\omega_x=\dfrac{1}{\sqrt{T\tau}}\)</span>，<span class="arithmatex">\(G(\mathrm{j}\omega_x)H(\mathrm{j}\omega_x)=-K\tau\)</span>。</p>
-<p>因为 <span class="arithmatex">\(\varphi(\omega)\)</span> 从 <span class="arithmatex">\(-90^\circ\)</span> 单调减至 <span class="arithmatex">\(-270^\circ\)</span>，幅相特性曲线在第Ⅲ与第Ⅱ象限间变化，如原书图 5-22。</p>
+<p>因为 <span class="arithmatex">\(\varphi(\omega)\)</span> 从 <span class="arithmatex">\(-90^\circ\)</span> 单调减至 <span class="arithmatex">\(-270^\circ\)</span>，幅相特性曲线在第Ⅲ与第Ⅱ象限间变化。</p>
 <p>例 5-4 的系统含非最小相位一阶微分环节 <span class="arithmatex">\(1-\tau s\)</span>。称开环传递函数<strong>含有非最小相位环节</strong>的系统为<strong>非最小相位系统</strong>，开环传递函数<strong>全部由最小相位环节构成</strong>的系统为<strong>最小相位系统</strong>。比较例 5-2、5-3、5-4：非最小相位环节的存在会明显改变频率特性，分析中必须重视。</p>
 <h3 id="开环对数频率特性曲线">开环对数频率特性曲线<a class="headerlink" href="#开环对数频率特性曲线" title="Permanent link">#</a></h3>
 <p>开环传递函数作典型环节分解后，按式 (5.21)～(5.25) 先画各典型环节的对数频率特性曲线，再<strong>叠加</strong>即得开环曲线。开环对数幅频渐近特性在分析与设计中作用极大，这里重点讲它的绘制。</p>
@@ -6194,6 +6194,8 @@ F(s) = 1 + G(s)H(s) = \frac{B(s)}{A(s)} + 1 = \frac{B(s) + A(s)}{A(s)}
 <li>开环传递函数分母阶次一般不小于分子阶次，故 <span class="arithmatex">\(F(s)\)</span> 零点和极点数相同；</li>
 <li><span class="arithmatex">\(s\)</span> 沿 <span class="arithmatex">\(\Gamma\)</span> 一周产生的两条闭合曲线 <span class="arithmatex">\(\Gamma_F\)</span> 与 <span class="arithmatex">\(\Gamma_{GH}\)</span> 只差常数 1：<span class="arithmatex">\(\Gamma_F\)</span> 可由 <span class="arithmatex">\(\Gamma_{GH}\)</span> 沿实轴正方向平移一个单位长度获得。因此 <strong><span class="arithmatex">\(\Gamma_F\)</span> 包围原点的圈数等于 <span class="arithmatex">\(\Gamma_{GH}\)</span> 包围 <span class="arithmatex">\((-1,\mathrm{j}0)\)</span> 点的圈数</strong>（图 5-28）——把判定点从原点挪到了熟悉的 <span class="arithmatex">\((-1,\mathrm{j}0)\)</span>。</li>
 </ol>
+<p><img alt="" class="lq-img" src="../images/ch05/fig-5-28.png" /></p>
+<p><em>图 5-28 Γ_F 与 Γ_GH 的关系：Γ_F 由 Γ_GH 沿实轴正方向平移 1 得到，包围原点的圈数等于 Γ_GH 包围 (−1, j0) 点的圈数（截自原书）</em></p>
 <p><strong>(3) <span class="arithmatex">\(s\)</span> 平面闭合曲线 <span class="arithmatex">\(\Gamma\)</span> 的选择</strong>。闭环稳定性取决于 <span class="arithmatex">\(F(s)\)</span> 的零点（闭环极点）位置，因此取 <span class="arithmatex">\(\Gamma\)</span> 包围 <span class="arithmatex">\(s\)</span> <strong>右半平面</strong>：若 <span class="arithmatex">\(Z=0\)</span>，闭环稳定。考虑到 <span class="arithmatex">\(\Gamma\)</span> 不得通过 <span class="arithmatex">\(F(s)\)</span> 的零极点，<span class="arithmatex">\(\Gamma\)</span> 取图 5-29 两种形式。</p>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-29.png" /></p>
 <p><em>图 5-29 s 平面的闭合曲线 Γ：(a) G(s)H(s) 无虚轴极点；(b) 有虚轴极点时在原点和 ±jωₙ 附近以无穷小半圆绕开（截自原书）</em></p>
@@ -6251,10 +6253,12 @@ G(\pm\mathrm{j}\omega_n)H(\pm\mathrm{j}\omega_n) = -1
 \]</div>
 <p>即闭环特征方程有共轭纯虚根，系统可能临界稳定。计算穿越次数 <span class="arithmatex">\(N\)</span> 时，<strong>不计 <span class="arithmatex">\(\Gamma_{GH}\)</span> 穿越 <span class="arithmatex">\((-1,\mathrm{j}0)\)</span> 点本身的次数</strong>。</p>
 <p><strong>【例 5-7】确定闭环稳定时 <span class="arithmatex">\(K\)</span> 值的范围</strong></p>
-<p>已知单位反馈系统开环幅相特性曲线（<span class="arithmatex">\(K=10,P=0,\nu=1\)</span>）如原书图 5-32：曲线与负实轴有三个交点，穿越频率 <span class="arithmatex">\(\omega_1,\omega_2,\omega_3\)</span>。系统开环传递函数形如</p>
+<p>已知单位反馈系统开环幅相特性曲线（<span class="arithmatex">\(K=10,P=0,\nu=1\)</span>）如图 5-32：曲线与负实轴有三个交点，穿越频率 <span class="arithmatex">\(\omega_1,\omega_2,\omega_3\)</span>。系统开环传递函数形如</p>
 <div class="arithmatex">\[
 G(s) = \frac{K}{s}G_1(s), \qquad \lim_{s\to0}G_1(s)=1
 \]</div>
+<p><img alt="" class="lq-img" src="../images/ch05/fig-5-32.png" /></p>
+<p><em>图 5-32 例 5-7 系统开环幅相特性曲线（K=10，P=0，ν=1）：与负实轴交于 −2、−1.5、−0.5 三点（截自原书）</em></p>
 <p>于是 <span class="arithmatex">\(G(\mathrm{j}\omega_i)=\dfrac{K}{\mathrm{j}\omega_i}G_1(\mathrm{j}\omega_i)\)</span>。<span class="arithmatex">\(K=10\)</span> 时</p>
 <div class="arithmatex">\[
 G(\mathrm{j}\omega_1)=-2,\qquad G(\mathrm{j}\omega_2)=-1.5,\qquad G(\mathrm{j}\omega_3)=-0.5
@@ -6270,7 +6274,7 @@ K_1 = \frac{10}{2}=5,\qquad K_2 = \frac{10}{1.5}=\frac{20}{3},\qquad K_3 = \frac
 <li><span class="arithmatex">\(K_2&lt;K&lt;K_3\)</span>：<span class="arithmatex">\(N_+=N_-=1\)</span>，<span class="arithmatex">\(R=0\)</span>，<span class="arithmatex">\(Z=0\)</span>，闭环<strong>稳定</strong>；</li>
 <li><span class="arithmatex">\(K&gt;K_3\)</span>：<span class="arithmatex">\(N_+=1,N_-=2\)</span>，<span class="arithmatex">\(R=-2\)</span>，<span class="arithmatex">\(Z=2\)</span>，闭环<strong>不稳定</strong>。</li>
 </ul>
-<p>综上，闭环稳定时 <span class="arithmatex">\(K\in(0,5)\cup\left(\frac{20}{3},20\right)\)</span>。<span class="arithmatex">\(K=5,\frac{20}{3},20\)</span> 时 <span class="arithmatex">\(\Gamma_G\)</span> 穿过临界点 <span class="arithmatex">\((-1,\mathrm{j}0)\)</span>，在这三个值的邻域内闭环可稳定或不稳定——系统闭环<strong>临界稳定</strong>。<span class="arithmatex">\(K=10\)</span> 时的开环幅相曲线见原书图 5-32（与负实轴有三个交点）。</p>
+<p>综上，闭环稳定时 <span class="arithmatex">\(K\in(0,5)\cup\left(\frac{20}{3},20\right)\)</span>。<span class="arithmatex">\(K=5,\frac{20}{3},20\)</span> 时 <span class="arithmatex">\(\Gamma_G\)</span> 穿过临界点 <span class="arithmatex">\((-1,\mathrm{j}0)\)</span>，在这三个值的邻域内闭环可稳定或不稳定——系统闭环<strong>临界稳定</strong>。<span class="arithmatex">\(K=10\)</span> 时的开环幅相曲线见图 5-32（与负实轴有三个交点）。</p>
 <p><img alt="" class="lq-img" src="../images/ch05/fig-5-33.png" /></p>
 <p><em>图 5-33 例 5-7 系统在不同 K 值条件下的开环幅相特性曲线及 Γ_G 曲线：(a) 0&lt;K&lt;K₁；(b) K₁&lt;K&lt;K₂；&copy; K₂&lt;K<K₃；(d) K>K₃（截自原书）</em></p>
 <p><strong>【例 5-8】延迟系统的稳定延迟时间</strong></p>
@@ -6319,7 +6323,9 @@ Z = P - 2N = 0
 \]</div>
 <p>对数判据和奈氏判据本质相同，区别只在：前者在 <span class="arithmatex">\(L(\omega)&gt;0\)</span> 的频率范围内依 <span class="arithmatex">\(\Gamma_\varphi\)</span> 曲线确定穿越次数 <span class="arithmatex">\(N\)</span>。</p>
 <p><strong>【例 5-9】把幅相曲线翻译成对数曲线数穿越</strong></p>
-<p>已知某系统开环稳定，开环幅相特性曲线如原书图 5-34 所示，试用对数稳定判据判断闭环稳定性。</p>
+<p>已知某系统开环稳定，开环幅相特性曲线如图 5-34 所示，试用对数稳定判据判断闭环稳定性。</p>
+<p><img alt="" class="lq-img" src="../images/ch05/fig-5-34.png" /></p>
+<p><em>图 5-34 例 5-9 某系统开环幅相特性曲线：ν=0、起点 A 在正实轴上，其对应的对数频率特性曲线见图 5-35（截自原书）</em></p>
 <p><strong>解</strong> 系统开环对数频率特性曲线如图 5-35（相角表示不唯一，(a)(b) 是其中两种形式）。开环系统稳定，<span class="arithmatex">\(P=0\)</span>；由幅相曲线知 <span class="arithmatex">\(\nu=0\)</span>，不需补作虚直线。</p>
 <p>图(a)：<span class="arithmatex">\(L(\omega)&gt;0\)</span> 频段内 <span class="arithmatex">\(\varphi(\omega)\)</span> 曲线与 <span class="arithmatex">\(-180^\circ\)</span> 线有两个交点，依频率由小到大分别为<strong>一次负穿越</strong>和<strong>一次正穿越</strong>，故 <span class="arithmatex">\(N=N_+-N_-=0\)</span>。</p>
 <p>图(b)：<span class="arithmatex">\(L(\omega)&gt;0\)</span> 频段内 <span class="arithmatex">\(\varphi(\omega)\)</span> 曲线与 <span class="arithmatex">\(180^\circ\)</span> 线和 <span class="arithmatex">\(-180^\circ\)</span> 线有四个交点，依频率由小到大分别为<strong>半次负穿越、半次负穿越、半次正穿越、半次正穿越</strong>，故 <span class="arithmatex">\(N=0\)</span>。</p>
@@ -6445,7 +6451,7 @@ G(\mathrm{j}\omega) = \frac{K\left[(1-3\omega^2) - \mathrm{j}(3\omega-\omega^3)\
 </div>
 <p>上述由 <span class="arithmatex">\(\gamma&gt;0\)</span> 且 <span class="arithmatex">\(h&gt;1\)</span>（或 <span class="arithmatex">\(h(\mathrm{dB})&gt;0\)</span>）判断闭环稳定性的方法，可推广至半闭合曲线 <span class="arithmatex">\(\Gamma_{GH}\)</span> 分别与单位圆或负实轴<strong>至多只有一个交点</strong>（或 <span class="arithmatex">\(L(\omega)&gt;0\)</span> 时 <span class="arithmatex">\(\Gamma_\varphi\)</span> 与 <span class="arithmatex">\((2k+1)\times180^\circ\)</span> 线至多只有一个交点），且开环传递函数无 <span class="arithmatex">\(s\)</span> 右半平面极点的情况。应注意的是：<strong>非最小相位系统该结论不可靠</strong>；而且<strong>仅用相角裕度或仅用幅值裕度，都不足以反映系统的稳定程度</strong>——两者要配合使用。</p>
 <p><strong>【例 5-12】典型二阶系统的相角裕度</strong></p>
-<p>典型二阶系统如原书图 5-39（单位反馈，前向通道 <span class="arithmatex">\(\dfrac{\omega_n^2}{s(s+2\zeta\omega_n)}\)</span>），试确定系统的相角裕度。</p>
+<p>典型二阶系统为单位反馈结构，前向通道传递函数为 <span class="arithmatex">\(\dfrac{\omega_n^2}{s(s+2\zeta\omega_n)}\)</span>，试确定系统的相角裕度。</p>
 <p><strong>解</strong> 典型二阶系统的开环频率特性</p>
 <div class="arithmatex">\[
 G(\mathrm{j}\omega) = \frac{\omega_n^2}{\mathrm{j}\omega(\mathrm{j}\omega+2\zeta\omega_n)}
@@ -6484,7 +6490,7 @@ G(\mathrm{j}\omega) = \frac{\omega_n^2}{\mathrm{j}\omega(\mathrm{j}\omega+2\zeta
 20\lg\vert\varPhi(\mathrm{j}\omega_b)\vert = 20\lg\vert\varPhi(\mathrm{j}0)\vert - 3\ (\mathrm{dB})
 \tag{5.81}
 \]</div>
-<p>频率范围 <span class="arithmatex">\((0,\omega_b)\)</span> 称为系统的<strong>带宽</strong>（原书图 5-40）。带宽表明：对高于带宽频率的正弦输入信号，系统输出呈现较大衰减。对 I 型及 I 型以上开环系统，<span class="arithmatex">\(\vert\varPhi(\mathrm{j}0)\vert=1\)</span>、<span class="arithmatex">\(20\lg\vert\varPhi(\mathrm{j}0)\vert=0\)</span>，故</p>
+<p>频率范围 <span class="arithmatex">\((0,\omega_b)\)</span> 称为系统的<strong>带宽</strong>。带宽表明：对高于带宽频率的正弦输入信号，系统输出呈现较大衰减。对 I 型及 I 型以上开环系统，<span class="arithmatex">\(\vert\varPhi(\mathrm{j}0)\vert=1\)</span>、<span class="arithmatex">\(20\lg\vert\varPhi(\mathrm{j}0)\vert=0\)</span>，故</p>
 <div class="arithmatex">\[
 20\lg\vert\varPhi(\mathrm{j}\omega_b)\vert = -3\ \mathrm{dB}
 \tag{5.82}
@@ -6629,7 +6635,7 @@ t_s = \frac{3.5}{\zeta\omega_n} = 3.5\times 2T = 0.50\ \mathrm{s}\quad(\varDelta
 </div>
 </div>
 <p><strong>【例 5-14】"祝融号"火星车轮控系统的闭环频域指标</strong></p>
-<p>"祝融号"火星车于 2021 年 5 月到达火星表面执行探测任务，它有一个可以模拟尺蠖运动的<strong>主动悬挂系统</strong>：车轮陷入岩石或沙子时可助其脱困，大大提高了外星探测车的机动性和生存机会（2022 年消息显示 NASA 艾姆斯研究中心研发的 VIPER 月球车也将采用类似移动轮子方式）。其轮控系统如原书图 5-42：<span class="arithmatex">\(G_c(s)\)</span> 放大器和控制器为 <span class="arithmatex">\(\dfrac{K(s+1)}{s+5}\)</span>，<span class="arithmatex">\(G_0(s)\)</span> 执行机构为 <span class="arithmatex">\(\dfrac{1}{s(s^2+2s+10)}\)</span>，单位负反馈。</p>
+<p>"祝融号"火星车于 2021 年 5 月到达火星表面执行探测任务，它有一个可以模拟尺蠖运动的<strong>主动悬挂系统</strong>：车轮陷入岩石或沙子时可助其脱困，大大提高了外星探测车的机动性和生存机会（2022 年消息显示 NASA 艾姆斯研究中心研发的 VIPER 月球车也将采用类似移动轮子方式）。其轮控系统中，放大器和控制器为 <span class="arithmatex">\(G_c(s)=\dfrac{K(s+1)}{s+5}\)</span>，执行机构为 <span class="arithmatex">\(G_0(s)=\dfrac{1}{s(s^2+2s+10)}\)</span>，单位负反馈。</p>
 <p>要求应用 MATLAB 软件完成：1) 绘制 <span class="arithmatex">\(K=20\)</span> 时闭环系统的对数频率特性；2) 分别确定 <span class="arithmatex">\(K=20\)</span> 和 <span class="arithmatex">\(K=40\)</span> 时闭环系统的谐振峰值 <span class="arithmatex">\(M_r\)</span>、谐振频率 <span class="arithmatex">\(\omega_r\)</span> 和带宽频率 <span class="arithmatex">\(\omega_b\)</span>。</p>
 <p><strong>解</strong> 本题展示在频域中进行火星车控制系统参数设计的过程：确定不同增益取值时系统的频域特征参数，为进一步设计提供技术数据。</p>
 <p>开环传递函数</p>

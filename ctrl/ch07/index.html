@@ -5878,9 +5878,17 @@
 <h3 id="数字控制系统">数字控制系统<a class="headerlink" href="#数字控制系统" title="Permanent link">#</a></h3>
 <p><strong>数字控制系统</strong>是以数字计算机为控制器、去控制具有连续工作状态的被控对象的闭环控制系统，包括工作于离散状态下的数字计算机和工作于连续状态下的被控对象两大部分。它在军事、航空及工业过程控制中应用广泛。</p>
 <p><strong>例 7-2</strong> 图 7-5（原书）是小口径高炮高精度数字伺服系统原理图。现代高炮伺服系统已由数字系统模式取代模拟模式，获得高速、高精度、无超调特性，性能大大超过原模拟系统——美国多管火炮反导系统"密集阵""守门员"等均采用数字伺服系统。本例以 MCS-96 系列单片机为数字控制器，结合 PWM（脉宽调制）直流伺服系统构成数字控制系统，具有低速性能好、稳态精度高、快速响应性好、抗扰能力强等特点。整个系统由控制计算机、被控对象和位置反馈三部分组成：数字信号发生器给出的 16 位数字输入 <span class="arithmatex">\(\theta_i\)</span> 经两片 8255A 的口 A 进入控制计算机；输出角 <span class="arithmatex">\(\theta_0\)</span>（模拟量）经 110XFS1/32 多极双通道旋转变压器和 2×12XSZ741 A/D 变换器完成绝对式轴角编码，得到粗、精各 12 位数码，经 8255A 口 B、口 C 进入计算机，软件合并成 16 位数字输出角；主控输出口（DAC1210）给出含误差角 <span class="arithmatex">\(\theta_e=\theta_i-\theta_0\)</span> 及其一阶差分 <span class="arithmatex">\(\Delta\theta_e\)</span>、输入角一阶差分 <span class="arithmatex">\(\Delta\theta_i\)</span> 的复合控制信号，经 PWM 放大器驱动伺服电机；前馈输出口（DAC0832）把输入角二阶差分 <span class="arithmatex">\(\Delta^2\theta_i\)</span> 经数字滤波后的前馈量加入系统以提高精度；另有粗、中、精三个误差角显示口供实时观测。PWM 放大器、伺服电机 ZK-21G、减速器、负载（小口径高炮）、测速发电机 45CY003 及速度/加速度无源校正网络构成闭环连续被控对象。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-5.png" /></p>
+<p><em>图 7.5 小口径高炮高精度数字伺服系统原理图（截自原书）</em></p>
 <p>上例表明：计算机作为控制器，输入输出只能是二进制编码的数字信号（时间上、幅值上都离散），而被控对象和测量元件的信号是连续的，所以计算机控制系统中必须用 <strong>A/D（模/数）和 D/A（数/模）转换器</strong>实现两种信号的转换。计算机控制系统典型原理图如图 7-6（原书）：数字计算机每隔 T 秒进行一次控制修正，每个采样周期内完成连续信号的采样编码（A/D）和按控制律的数码运算，再由输出寄存器经解码网络把数码转换成连续信号（D/A）。<strong>A/D 与 D/A 转换器是计算机控制系统的两个特殊环节</strong>。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-6.png" /></p>
+<p><em>图 7.6 计算机控制系统典型原理图（截自原书）</em></p>
 <p><strong>(1) A/D 转换器</strong>：把连续模拟信号转换为离散数字信号，含两个过程。一是<strong>采样</strong>：每隔 T 秒对连续信号 <span class="arithmatex">\(e(t)\)</span> 采样一次得 <span class="arithmatex">\(e^*(t)\)</span>，所以计算机中信号在时间上是断续的；二是<strong>量化</strong>（也称编码）：任何数值的离散信号必须表示成最小位二进制的整数倍才能运算，<span class="arithmatex">\(e^*(t)\)</span> 经量化变成数字信号 <span class="arithmatex">\(\bar e^*(t)\)</span>，所以断续性还表现在幅值上，如图 7-7（原书）的 (a) 连续信号 → (b) 离散信号 → &copy; 数字信号。通常 A/D 有足够字长、量化单位 q 足够小，量化引起的幅值断续性可以忽略；再认为采样编码瞬时完成、用理想脉冲等效代替数字信号，则 <strong>A/D 转换器可以用每隔 T 秒瞬时闭合一次的理想采样开关 S 表示</strong>。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-7.png" /></p>
+<p><em>图 7.7 A/D 转换过程：(a) 连续信号；(b) 离散信号；&copy; 数字信号（截自原书）</em></p>
 <p><strong>(2) D/A 转换器</strong>：把离散数字信号转换为连续模拟信号，也含两个过程。一是<strong>解码</strong>：离散数字信号 → 离散模拟信号；二是<strong>复现</strong>：离散模拟信号无法直接控制连续被控对象，需经保持器复现为连续模拟信号，如图 7-8（原书）的 (a) 离散数字信号 → (b) 连续模拟信号。计算机的输出寄存器和解码网络起到了保持器作用；保持后的 <span class="arithmatex">\(u_h(t)\)</span> 是阶梯信号，采样频率足够高时趋近连续信号。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-8.png" /></p>
+<p><em>图 7.8 D/A 转换过程：(a) 离散数字信号；(b) 连续模拟信号（截自原书）</em></p>
 <p><strong>(3) 数字控制系统的典型结构图</strong>。假定 A/D 字长足够、量化可忽略、采样编码瞬时完成，则 A/D 可用周期为 T 的理想开关代替，D/A 可用传递函数为 <span class="arithmatex">\(G_h(s)\)</span> 的保持器取代。数字控制器按一定控制律把采样误差信号 <span class="arithmatex">\(e^*(t)\)</span> 加工成数字信号 <span class="arithmatex">\(u^*(t)\)</span>，实质是一个<strong>数字校正装置</strong>，在结构图中可等效为一个传递函数为 <span class="arithmatex">\(G_c(s)\)</span> 的脉冲控制器与一个周期为 T 的理想采样开关相串联。令被控对象传递函数为 <span class="arithmatex">\(G_o(s)\)</span>、测量元件传递函数为 <span class="arithmatex">\(H(s)\)</span>，得到图 7-9 所示的等效采样系统——这也是数字控制系统的常见典型结构图。</p>
 <p><img alt="" class="lq-img" src="../images/ch07/fig-7-9.png" /></p>
 <p><em>图 7.9 数字控制系统典型结构图（截自原书）</em></p>
@@ -5981,7 +5989,7 @@ E^*(s)=\frac{1}{T}\sum_{n=-\infty}^{+\infty}E(s+\mathrm{j}n\omega_s)
 E^*(\mathrm{j}\omega)=\frac{1}{T}\sum_{n=-\infty}^{+\infty}E\bigl(\mathrm{j}(\omega+n\omega_s)\bigr)
 \tag{7.11}
 \]</div>
-<p>式中 <span class="arithmatex">\(E(\mathrm{j}\omega)\)</span> 为连续信号 <span class="arithmatex">\(e(t)\)</span> 的傅氏变换。一般地，连续信号的频谱 <span class="arithmatex">\(|E(\mathrm{j}\omega)|\)</span> 是单一的连续频谱（图 7-12，原书），其中 <span class="arithmatex">\(\omega_h\)</span> 为频谱中的最大角频率；而采样信号的频谱 <span class="arithmatex">\(|E^*(\mathrm{j}\omega)|\)</span> 是以采样角频率 <span class="arithmatex">\(\omega_s\)</span> 为周期的<strong>无穷多个频谱之和</strong>，如图 7-13：n=0 的频谱称采样频谱的<strong>主分量</strong>，与连续频谱形状一致、仅幅值变化 1/T 倍；其余（<span class="arithmatex">\(n=\pm1,\pm2,\dots\)</span>）都是采样引起的<strong>高频频谱</strong>，称采样频谱的<strong>补分量</strong>。图 7-13 画的是 <span class="arithmatex">\(\omega_s&gt;2\omega_h\)</span> 的情形；加大采样周期 T 使 <span class="arithmatex">\(\omega_s&lt;2\omega_h\)</span> 时，补分量相互交叠，采样器输出发生畸变，如图 7-14——这时即使用图 7-15（原书）所示 <span class="arithmatex">\(\omega=\omega_s/2\)</span> 处突然截止的理想滤波器也无法恢复原连续信号的频谱。</p>
+<p>式中 <span class="arithmatex">\(E(\mathrm{j}\omega)\)</span> 为连续信号 <span class="arithmatex">\(e(t)\)</span> 的傅氏变换。一般地，连续信号的频谱 <span class="arithmatex">\(|E(\mathrm{j}\omega)|\)</span> 是单一的连续频谱，其中 <span class="arithmatex">\(\omega_h\)</span> 为频谱中的最大角频率；而采样信号的频谱 <span class="arithmatex">\(|E^*(\mathrm{j}\omega)|\)</span> 是以采样角频率 <span class="arithmatex">\(\omega_s\)</span> 为周期的<strong>无穷多个频谱之和</strong>，如图 7-13：n=0 的频谱称采样频谱的<strong>主分量</strong>，与连续频谱形状一致、仅幅值变化 1/T 倍；其余（<span class="arithmatex">\(n=\pm1,\pm2,\dots\)</span>）都是采样引起的<strong>高频频谱</strong>，称采样频谱的<strong>补分量</strong>。图 7-13 画的是 <span class="arithmatex">\(\omega_s&gt;2\omega_h\)</span> 的情形；加大采样周期 T 使 <span class="arithmatex">\(\omega_s&lt;2\omega_h\)</span> 时，补分量相互交叠，采样器输出发生畸变，如图 7-14——这时即使用在 <span class="arithmatex">\(\omega=\omega_s/2\)</span> 处突然截止的理想滤波器也无法恢复原连续信号的频谱。</p>
 <p><img alt="" class="lq-img" src="../images/ch07/fig-7-13.png" /></p>
 <p><em>图 7.13 采样信号频谱（ω<sub>s</sub>＞2ω<sub>h</sub>）：1 为主分量，2 为补分量（截自原书）</em></p>
 <p><img alt="" class="lq-img" src="../images/ch07/fig-7-14.png" /></p>
@@ -5999,6 +6007,8 @@ T\le\frac{2\pi}{2\omega_h}=\frac{\pi}{\omega_h}
 \tag{7.12}
 \]</div>
 <p>式 (7.12) 与 <span class="arithmatex">\(\omega_s\ge 2\omega_h\)</span> 等价。满足定理条件时，要想不失真复现输入信号，需要理想滤波器：其幅频特性 <span class="arithmatex">\(|F(\mathrm{j}\omega)|\)</span> 必须在 <span class="arithmatex">\(\omega=\omega_s/2\)</span> 处突然截止，输出端便可准确得到 <span class="arithmatex">\(|E(\mathrm{j}\omega)|/T\)</span> 的连续频谱——除幅值变化 1/T 倍外，频谱形状没有畸变。满足香农采样定理条件下理想采样器的特性如图 7-16（原书）：(a) 连续输入信号及其频谱；(b) 理想单位脉冲序列及其频谱；&copy; 输出采样信号及其频谱（主频谱幅值为 1/T 倍）。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-16.png" /></p>
+<p><em>图 7.16 满足香农采样定理时理想采样器的特性：(a) 连续输入信号及其频谱；(b) 理想单位脉冲序列及其频谱；&copy; 输出采样信号及其频谱（截自原书）</em></p>
 <p>应当指出：香农采样定理只给出选择 T 或 <span class="arithmatex">\(f_s\)</span> 的<strong>指导原则</strong>——由采样脉冲序列无失真再现原连续信号所允许的最大采样周期（最低采样频率）。工程实践中一般取 <span class="arithmatex">\(\omega_s&gt;2\omega_h\)</span>，而不取恰好 <span class="arithmatex">\(2\omega_h\)</span>。</p>
 <h3 id="采样周期的选取">采样周期的选取<a class="headerlink" href="#采样周期的选取" title="Permanent link">#</a></h3>
 <p>采样定理只给基本原则，没给具体计算公式。T 选得越小（<span class="arithmatex">\(\omega_s\)</span> 越高），控制过程的信息越多，控制效果越好；但 T 过小会增加不必要的计算负担，造成实现较复杂控制规律的困难，而且 T 小到一定程度后再减小已无实际意义。反之 T 过大，给控制过程带来较大误差、降低动态性能，甚至可能导致整个控制系统失去稳定。</p>
@@ -6789,11 +6799,15 @@ G(z)=\frac{C(z)}{R(z)}
 \tag{7.50}
 \]</div>
 <p>所谓零初始条件，是指在 <span class="arithmatex">\(t&lt;0\)</span> 时输入脉冲序列各采样值 <span class="arithmatex">\(r(-T),r(-2T),\dots\)</span> 以及输出脉冲序列各采样值 <span class="arithmatex">\(c(-T),c(-2T),\dots\)</span> 均为零。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-19.png" /></p>
+<p><em>图 7.19 开环离散系统结构图（截自原书）</em></p>
 <p>式 (7.50) 表明：已知 <span class="arithmatex">\(R(z)\)</span> 和 <span class="arithmatex">\(G(z)\)</span>，零初始条件下输出采样信号为</p>
 <div class="arithmatex">\[
 c^*(t)=\mathcal{Z}^{-1}[C(z)]=\mathcal{Z}^{-1}[G(z)R(z)]
 \]</div>
 <p>求 <span class="arithmatex">\(c^*(t)\)</span> 的关键在于求出 <span class="arithmatex">\(G(z)\)</span>。然而对大多数实际系统，输出往往是连续信号 <span class="arithmatex">\(c(t)\)</span> 而非采样信号 <span class="arithmatex">\(c^*(t)\)</span>，如图 7-20（原书）。此时可以在系统<strong>输出端虚设一个理想采样开关</strong>（图中虚线），与输入采样开关同步、同周期。若实际输出 <span class="arithmatex">\(c(t)\)</span> 比较平滑且采样频率较高，可用 <span class="arithmatex">\(c^*(t)\)</span> 近似描述 <span class="arithmatex">\(c(t)\)</span>。必须指出：虚设的采样开关并不存在，它只表明<strong>脉冲传递函数所能描述的，只是输出连续函数 <span class="arithmatex">\(c(t)\)</span> 在采样时刻上的离散值 <span class="arithmatex">\(c^*(t)\)</span></strong>。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-20.png" /></p>
+<p><em>图 7.20 开环离散系统（虚线为输出端虚设的采样开关）（截自原书）</em></p>
 <p><strong>(2) 脉冲传递函数意义</strong>。对线性定常离散系统，若输入为单位脉冲序列</p>
 <div class="arithmatex">\[
 r(nT)=\delta[(n-k)T]=\begin{cases}1, &amp; n=k\\ 0, &amp; n\ne k\end{cases}
@@ -7120,6 +7134,8 @@ D(z)=1+GH(z)=0
 <div class="arithmatex">\[
 \varPhi(z)=\frac{G_1(z)G_2(z)}{1+G_1(z)HG_2(z)}
 \]</div>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-24.png" /></p>
+<p><em>图 7.24 例 7-20 闭环离散系统结构图（截自原书）</em></p>
 <p>证明 由图 7-24 得</p>
 <div class="arithmatex">\[
 C(s)=G_2(s)E_1^*(s),\qquad E_1(s)=G_1(s)E^*(s)
@@ -7211,6 +7227,8 @@ C^*(s)=G_2^{\,*}(s)G_1^*(s)E^*(s)=\frac{G_1^*(s)G_2^{\,*}(s)R^*(s)}{1+G_1^*(s)HG
 \]</div>
 <p>否则用 z 变换法得到的系统采样输出 <span class="arithmatex">\(c^*(t)\)</span> 与实际连续输出 <span class="arithmatex">\(c(t)\)</span> 差别较大，甚至完全不符。</p>
 <p><strong>例 7-21</strong> 设 RC 积分网络如图 7-25 所示（采样器、1Ω 电阻、1F 电容），其输入 <span class="arithmatex">\(r(t)=1(t)\)</span>，采样周期 T=1s。试比较 <span class="arithmatex">\(c^*(t)\)</span> 与 <span class="arithmatex">\(c(t)\)</span>。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-25.png" /></p>
+<p><em>图 7.25 例 7-21 RC 积分网络（截自原书）</em></p>
 <p>解 网络传递函数</p>
 <div class="arithmatex">\[
 G(s)=\frac{1}{s+1}
@@ -7250,11 +7268,15 @@ z=e^{(\sigma+\mathrm{j}\omega)T}=e^{\sigma T}\,e^{\mathrm{j}\omega T}=|z|\,e^{\m
 <p><strong>(2) 等 <span class="arithmatex">\(\omega\)</span> 线映射</strong>。在特定采样周期 T 下，由式 (7.72)，s 平面上的等 <span class="arithmatex">\(\omega\)</span> 水平线映射到 z 平面上是从原点出发、相角 <span class="arithmatex">\(\angle z=\omega T\)</span> 自正实轴计量的一簇射线，如图 7-29（原书）。特别地，s 平面上 <span class="arithmatex">\(\omega=\omega_s/2\)</span> 的水平线在 z 平面上正好映射为<strong>负实轴</strong>。</p>
 <p><img alt="" class="lq-img" src="../images/ch07/fig-7-28.png" /></p>
 <p><em>图 7.28 s 平面和 z 平面上的等 σ 轨迹（截自原书）</em></p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-29.png" /></p>
+<p><em>图 7.29 s 平面和 z 平面上的等 ω 轨迹（截自原书）</em></p>
 <p>有了以上映射关系，可讨论 s 平面上周期带在 z 平面上的映射。设 s 平面上的主要带如图 7-30（原书，左半 s 平面上从 <span class="arithmatex">\(-\omega_s/2\)</span> 到 <span class="arithmatex">\(\omega_s/2\)</span> 的带域，五点编号 ①～⑤ 标出边界走向）所示，通过 <span class="arithmatex">\(z=e^{sT}\)</span> 变换，映射为 z 平面上的<strong>单位圆及单位圆内的负实轴</strong>（图 7-30(b)）。类似地，由于</p>
 <div class="arithmatex">\[
 z=e^{(s+\mathrm{j}n\omega_s)T}=e^{sT}e^{\mathrm{j}2\pi n}=e^{sT}
 \]</div>
 <p>s 平面上<strong>所有的次要带在 z 平面上均映射为相同的单位圆及单位圆内的负实轴</strong>——z 平面与 s 平面不是一一对应的。</p>
+<p><img alt="" class="lq-img" src="../images/ch07/fig-7-30.png" /></p>
+<p><em>图 7.30 s 平面主要带在 z 平面上的映射（截自原书）</em></p>
 <h3 id="离散系统稳定的充分必要条件">离散系统稳定的充分必要条件<a class="headerlink" href="#离散系统稳定的充分必要条件" title="Permanent link">#</a></h3>
 <p><strong>定义</strong>：若离散系统在有界输入序列作用下，其输出序列也是有界的，则称该离散系统是稳定的（BIBO 稳定）。</p>
 <p>线性定常连续系统稳定的充要条件是齐次微分方程的解收敛、或特征方程根均具负实部、或传递函数极点均位于左半 s 平面。连续系统在时域或 s 域描述稳定性的方法同样可推广到离散系统——线性定常离散系统的时域模型是线性定常差分方程，z 域模型是脉冲传递函数，因此充要条件可从两方面研究。</p>

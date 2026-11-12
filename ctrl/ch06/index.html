@@ -5505,14 +5505,14 @@ M_r = \frac{1}{\sin\gamma}
 <h3 id="基本控制规律">基本控制规律<a class="headerlink" href="#基本控制规律" title="Permanent link">#</a></h3>
 <p>确定校正装置的具体形式时，应先了解校正装置所需提供的<strong>控制规律</strong>，以便选择相应元件。包含校正装置在内的控制器，常采用比例、微分、积分等基本控制规律，或它们的组合——比例-微分（PD）、比例-积分（PI）、比例-积分-微分（PID）等，以实现对被控对象的有效控制。</p>
 <p><strong>(1) 比例（P）控制规律</strong></p>
-<p>具有比例控制规律的控制器称为 <strong>P 控制器</strong>，其输入 <span class="arithmatex">\(e(t)\)</span> 与输出 <span class="arithmatex">\(m(t)\)</span> 满足 <span class="arithmatex">\(m(t)=K_p e(t)\)</span>（原书图 6-4 为其框图），<span class="arithmatex">\(K_p\)</span> 称 P 控制器增益。P 控制器实质上是一个具有可调增益的放大器：在信号变换过程中只改变信号增益而<strong>不影响相位</strong>。串联校正中加大 <span class="arithmatex">\(K_p\)</span> 可提高系统开环增益、减小稳态误差、提高控制精度，但会<strong>降低相对稳定性</strong>，甚至造成闭环不稳定——因此校正设计中很少单独使用比例控制规律。</p>
+<p>具有比例控制规律的控制器称为 <strong>P 控制器</strong>，其输入 <span class="arithmatex">\(e(t)\)</span> 与输出 <span class="arithmatex">\(m(t)\)</span> 满足 <span class="arithmatex">\(m(t)=K_p e(t)\)</span>，<span class="arithmatex">\(K_p\)</span> 称 P 控制器增益。P 控制器实质上是一个具有可调增益的放大器：在信号变换过程中只改变信号增益而<strong>不影响相位</strong>。串联校正中加大 <span class="arithmatex">\(K_p\)</span> 可提高系统开环增益、减小稳态误差、提高控制精度，但会<strong>降低相对稳定性</strong>，甚至造成闭环不稳定——因此校正设计中很少单独使用比例控制规律。</p>
 <p><strong>(2) 比例-微分（PD）控制规律</strong></p>
 <p>PD 控制器的输出与输入关系：</p>
 <div class="arithmatex">\[
 m(t) = K_p\left[e(t) + \tau\frac{\mathrm{d}e(t)}{\mathrm{d}t}\right]
 \tag{6.10}
 \]</div>
-<p>式中 <span class="arithmatex">\(K_p\)</span> 为比例系数，<span class="arithmatex">\(\tau\)</span> 为微分时间常数，两者均可调（原书图 6-5 为 PD 控制器框图：<span class="arithmatex">\(E(s)\to K_p(1+\tau s)\to M(s)\)</span>）。微分控制规律能<strong>反应输入信号的变化趋势</strong>，产生有效的早期修正信号，以增加系统的阻尼程度，从而改善稳定性。串联校正时可使系统增加一个 <span class="arithmatex">\(1/\tau\)</span> 的开环零点，使相角裕度提高，有助于动态性能改善。</p>
+<p>式中 <span class="arithmatex">\(K_p\)</span> 为比例系数，<span class="arithmatex">\(\tau\)</span> 为微分时间常数，两者均可调（PD 控制器框图即 <span class="arithmatex">\(E(s)\to K_p(1+\tau s)\to M(s)\)</span>）。微分控制规律能<strong>反应输入信号的变化趋势</strong>，产生有效的早期修正信号，以增加系统的阻尼程度，从而改善稳定性。串联校正时可使系统增加一个 <span class="arithmatex">\(1/\tau\)</span> 的开环零点，使相角裕度提高，有助于动态性能改善。</p>
 <p><strong>【例 6-1】PD 控制器对系统性能的影响</strong></p>
 <p>设比例-微分控制系统如图 6-6 所示（前向通道为 <span class="arithmatex">\(K_p(1+\tau s)\)</span> 与 <span class="arithmatex">\(1/(Js^2)\)</span> 串联，单位反馈）。</p>
 <p><img alt="" class="lq-img" src="../images/ch06/fig-6-6.png" /></p>
@@ -5533,14 +5533,14 @@ Js^2 + K_p\tau s + K_p = 0
 m(t) = K_i\int_0^t e(t)\,\mathrm{d}t
 \tag{6.11}
 \]</div>
-<p><span class="arithmatex">\(K_i\)</span> 为可调比例系数（原书图 6-7 为 I 控制器框图：<span class="arithmatex">\(E(s)\to K_i/s\to M(s)\)</span>）。由于积分作用，输入 <span class="arithmatex">\(e(t)\)</span> 消失后，输出 <span class="arithmatex">\(m(t)\)</span> 有可能是一个不为零的常量。串联校正时采用 I 控制器可以<strong>提高系统型别</strong>（无差度），有利于稳态性能；但积分控制使系统增加一个位于原点的开环极点，使信号产生 90° 的相角滞后，对稳定性不利——因此通常不宜采用单一的 I 控制器。</p>
+<p><span class="arithmatex">\(K_i\)</span> 为可调比例系数（I 控制器框图即 <span class="arithmatex">\(E(s)\to K_i/s\to M(s)\)</span>）。由于积分作用，输入 <span class="arithmatex">\(e(t)\)</span> 消失后，输出 <span class="arithmatex">\(m(t)\)</span> 有可能是一个不为零的常量。串联校正时采用 I 控制器可以<strong>提高系统型别</strong>（无差度），有利于稳态性能；但积分控制使系统增加一个位于原点的开环极点，使信号产生 90° 的相角滞后，对稳定性不利——因此通常不宜采用单一的 I 控制器。</p>
 <p><strong>(4) 比例-积分（PI）控制规律</strong></p>
 <p>PI 控制器的输出同时成比例地反应输入及其积分：</p>
 <div class="arithmatex">\[
 m(t) = K_p e(t) + \frac{K_p}{T_i}\int_0^t e(t)\,\mathrm{d}t
 \tag{6.12}
 \]</div>
-<p><span class="arithmatex">\(K_p\)</span> 为可调比例系数，<span class="arithmatex">\(T_i\)</span> 为可调积分时间常数（原书图 6-8 为 PI 控制器框图：<span class="arithmatex">\(E(s)\to K_p\left(1+\frac{1}{T_i s}\right)\to M(s)\)</span>）。串联校正时，PI 控制器相当于在系统中增加了一个<strong>位于原点的开环极点</strong>（提高型别，消除或减小稳态误差）和一个<strong>位于 <span class="arithmatex">\(s\)</span> 左半平面的开环零点</strong>（减小阻尼程度的恶化，缓和该极点对稳定性及动态过程的不利影响）。只要积分时间常数 <span class="arithmatex">\(T_i\)</span> 足够大，PI 控制器对稳定性的不利影响可大为减弱。<strong>PI 控制器主要用来改善控制系统的稳态性能</strong>。</p>
+<p><span class="arithmatex">\(K_p\)</span> 为可调比例系数，<span class="arithmatex">\(T_i\)</span> 为可调积分时间常数（PI 控制器框图即 <span class="arithmatex">\(E(s)\to K_p\left(1+\frac{1}{T_i s}\right)\to M(s)\)</span>）。串联校正时，PI 控制器相当于在系统中增加了一个<strong>位于原点的开环极点</strong>（提高型别，消除或减小稳态误差）和一个<strong>位于 <span class="arithmatex">\(s\)</span> 左半平面的开环零点</strong>（减小阻尼程度的恶化，缓和该极点对稳定性及动态过程的不利影响）。只要积分时间常数 <span class="arithmatex">\(T_i\)</span> 足够大，PI 控制器对稳定性的不利影响可大为减弱。<strong>PI 控制器主要用来改善控制系统的稳态性能</strong>。</p>
 <p><strong>【例 6-2】PI 控制器对系统稳态性能的改善</strong></p>
 <p>设比例-积分控制系统如图 6-9，不可变部分的传递函数为 <span class="arithmatex">\(G_0(s)=\dfrac{K_0}{s(Ts+1)}\)</span>。</p>
 <p><img alt="" class="lq-img" src="../images/ch06/fig-6-9.png" /></p>
@@ -5562,7 +5562,7 @@ T_i T s^3 + T_i s^2 + K_0 K_p T_i s + K_0 K_p = 0
 m(t) = K_p e(t) + \frac{K_p}{T_i}\int_0^t e(t)\,\mathrm{d}t + K_p\tau\frac{\mathrm{d}e(t)}{\mathrm{d}t}
 \tag{6.13}
 \]</div>
-<p>相应的传递函数（原书图 6-10 为 PID 控制器框图：<span class="arithmatex">\(E(s)\to K_p\left(1+\dfrac{1}{T_i s}+\tau s\right)\to M(s)\)</span>）：</p>
+<p>相应的传递函数（PID 控制器框图即 <span class="arithmatex">\(E(s)\to K_p\left(1+\dfrac{1}{T_i s}+\tau s\right)\to M(s)\)</span>）：</p>
 <div class="arithmatex">\[
 G_c(s) = K_p\left(1 + \frac{1}{T_i s} + \tau s\right)
        = \frac{K_p\left(1 + T_i s + T_i\tau s^2\right)}{T_i s}
@@ -5665,7 +5665,7 @@ T = (R_1+R_2)C
 \varphi_c(\omega_c'') \approx \arctan[0.1(b-1)]
 \tag{6.25}
 \]</div>
-<p>（因为 <span class="arithmatex">\(\tan(\arctan 10 - \arctan(10/b)) = \dfrac{10(b-1)}{b+100}\approx 0.1(b-1)\)</span>，<span class="arithmatex">\(b\ll 100\)</span>。）<span class="arithmatex">\(b\)</span> 与 <span class="arithmatex">\(\varphi_c(\omega_c'')\)</span> 和 <span class="arithmatex">\(20\lg b\)</span> 的关系曲线见原书图 6-14（对数坐标系）：<span class="arithmatex">\(b=0.1\)</span> 时 <span class="arithmatex">\(20\lg b=-20\,\mathrm{dB}\)</span>、<span class="arithmatex">\(\varphi_c(\omega_c'')\approx -5.2°\)</span>。</p>
+<p>（因为 <span class="arithmatex">\(\tan(\arctan 10 - \arctan(10/b)) = \dfrac{10(b-1)}{b+100}\approx 0.1(b-1)\)</span>，<span class="arithmatex">\(b\ll 100\)</span>。）<span class="arithmatex">\(b\)</span> 与 <span class="arithmatex">\(\varphi_c(\omega_c'')\)</span> 和 <span class="arithmatex">\(20\lg b\)</span> 的关系曲线（对数坐标系）由式 (6.25) 及 <span class="arithmatex">\(20\lg b\)</span> 即可逐点绘出：<span class="arithmatex">\(b=0.1\)</span> 时 <span class="arithmatex">\(20\lg b=-20\,\mathrm{dB}\)</span>、<span class="arithmatex">\(\varphi_c(\omega_c'')\approx -5.2°\)</span>。</p>
 <h4 id="无源滞后-超前网络">无源滞后-超前网络<a class="headerlink" href="#无源滞后-超前网络" title="Permanent link">#</a></h4>
 <p>无源滞后-超前网络的电路图如图 6-15(a) 所示（输入经 <span class="arithmatex">\(R_1\)</span> 与 <span class="arithmatex">\(C_1\)</span> 的并联支路到输出节点，<span class="arithmatex">\(R_2\)</span> 与 <span class="arithmatex">\(C_2\)</span> 的串联支路接在输出节点与地之间，输出电压取自该串联支路两端），其传递函数</p>
 <div class="arithmatex">\[
@@ -6052,7 +6052,7 @@ K_1 = 2\zeta_d\omega_n = 16, \qquad K_2 = \omega_n^2 = 128
 r = \frac{\sqrt{z^2 - 2\zeta_d\omega_n z + \omega_n^2}}{z\sqrt{1-\zeta_d^2}} = 1.41, \qquad
 \psi = -\pi + \arctan\frac{\omega_n\sqrt{1-\zeta_d^2}}{z-\zeta_d\omega_n} + \arctan\frac{\sqrt{1-\zeta_d^2}}{\zeta_d} = -\frac{\pi}{4}
 \]</div>
-<p>（其中 <span class="arithmatex">\(\omega_n\sqrt{1-\zeta_d^2} = 8\)</span>，<span class="arithmatex">\(z-\zeta_d\omega_n = 0\)</span>，故 <span class="arithmatex">\(\arctan\infty = \pi/2\)</span>。）于是，无前置滤波器时系统的动态性能可由图 3-20 及式 (3-33)、(3-35) 算得</p>
+<p>（其中 <span class="arithmatex">\(\omega_n\sqrt{1-\zeta_d^2} = 8\)</span>，<span class="arithmatex">\(z-\zeta_d\omega_n = 0\)</span>，故 <span class="arithmatex">\(\arctan\infty = \pi/2\)</span>。）于是，无前置滤波器时系统的动态性能可由第 3 章有零点二阶系统的上升时间无因次曲线及式 (3-33)、(3-35) 算得</p>
 <div class="arithmatex">\[
 t_r = \frac{0.75}{\omega_n} = 0.07\,\mathrm{s}\quad\left(\frac{z}{\zeta_d\omega_n}=1,\ \omega_n t_r = 0.75\right), \qquad
 t_p = \frac{\beta_d - \psi}{\omega_n\sqrt{1-\zeta_d^2}} = \frac{\pi/2}{8} = 0.2\,\mathrm{s}

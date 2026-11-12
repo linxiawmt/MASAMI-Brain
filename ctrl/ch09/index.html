@@ -6388,6 +6388,8 @@
 <h2 id="91-线性系统的状态空间描述">9.1 线性系统的状态空间描述<a class="headerlink" href="#91-线性系统的状态空间描述" title="Permanent link">#</a></h2>
 <h3 id="系统数学描述的两种基本类型">系统数学描述的两种基本类型<a class="headerlink" href="#系统数学描述的两种基本类型" title="Permanent link">#</a></h3>
 <p>本章研究的系统假定具有若干输入端和输出端，如图 9-1 所示：方框以外是系统环境，环境对系统的作用为系统输入，系统对环境的作用为系统输出，二者分别用向量 <span class="arithmatex">\(\boldsymbol{u}=[u_1,u_2,\cdots,u_p]^{\mathrm T}\)</span> 和 <span class="arithmatex">\(\boldsymbol{y}=[y_1,y_2,\cdots,y_q]^{\mathrm T}\)</span> 表示，它们是系统的<strong>外部变量</strong>；描述系统内部每个时刻所处状况的变量为<strong>内部变量</strong>，以向量 <span class="arithmatex">\(\boldsymbol{x}=[x_1,x_2,\cdots,x_n]^{\mathrm T}\)</span> 表示。</p>
+<p><img alt="" class="lq-img" src="../images/ch09/fig-9-1.png" /></p>
+<p><em>图 9-1 系统的外部变量与内部变量（截自原书）</em></p>
 <p>系统的数学描述有两种基本类型：</p>
 <ul>
 <li><strong>外部描述</strong>（输入-输出描述）：以传递函数或传递函数矩阵表征。把系统看成一个"黑箱"，只反映输入-输出间的因果关系，不表征系统的内部结构和内部变量。<strong>外部描述通常只是对系统的一种不完全的描述</strong>——具有完全不同内部结构的两个系统可能有相同的外部特性。</li>
@@ -9217,6 +9219,8 @@ y=\begin{bmatrix} \boldsymbol{c} &amp; \boldsymbol{0} \end{bmatrix}
 <p>1) 由于系统可控，满足极点配置条件，得状态反馈增益向量 <span class="arithmatex">\(\boldsymbol{k}=[4\ \ 8.5\ \ 5.5]\)</span>。</p>
 <p>2) 由于系统可观测，满足观测器极点配置条件，得观测器输出反馈向量 <span class="arithmatex">\(\boldsymbol{h}=[35.2324\ \ -19.8169\ \ 16.2958]^{\mathrm T}\)</span>。</p>
 <p>设初始观测状态 <span class="arithmatex">\(\hat{\boldsymbol{x}}(0)=[0\ \ 0\ \ 0]^{\mathrm T}\)</span>，那么系统零输入响应的系统状态曲线、观测状态曲线和状态误差曲线分别如图 9-25～图 9-27 所示。</p>
+<p><img alt="" class="lq-img" src="../images/ch09/fig-9-25.png" /></p>
+<p><em>图 9-25 例 9-23 系统零输入时状态响应曲线（MATLAB）（截自原书）</em></p>
 <p><img alt="" class="lq-img" src="../images/ch09/fig-9-26.png" /></p>
 <p><em>图 9-26 例 9-23 系统零输入时观测器状态响应曲线（MATLAB）：<span class="arithmatex">\(\hat{\boldsymbol{x}}\)</span> 迅速跟上真实状态（截自原书）</em></p>
 <p><img alt="" class="lq-img" src="../images/ch09/fig-9-27.png" /></p>
