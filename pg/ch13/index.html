@@ -1,0 +1,7029 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/pg/ch13/">
+      
+      
+        <link rel="prev" href="../ch12/">
+      
+      
+        <link rel="next" href="../ch14/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第13章 激光音乐秀 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-13-章-激光音乐秀" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第13章 激光音乐秀
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../numana/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dl4vs/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../opencv/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/fourier/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/waveprop/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../holo/scanholo/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../heat/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ml/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ctrl/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mc/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../numana/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numana/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dl4vs/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl4vs/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../opencv/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../holo/fourier/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/fourier/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../holo/waveprop/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/waveprop/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../holo/scanholo/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../holo/scanholo/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../heat/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heat/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ml/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ctrl/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctrl/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mc/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mc/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#130-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131-用激光产生图案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 用激光产生图案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 用激光产生图案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311-电机控制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 电机控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312-快速傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 快速傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-所需模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 所需模块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 所需模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-搭建激光秀" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.1 搭建激光秀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-连接电机驱动器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.2 连接电机驱动器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-Arduino-程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Arduino 程序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 Arduino 程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331-配置-Arduino-数字输出引脚" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 配置 Arduino 数字输出引脚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-主循环" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 主循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-停止电机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 停止电机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-Python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Python 代码
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.4 Python 代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1341-选择音频设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.1 选择音频设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1342-从输入设备读取数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.2 从输入设备读取数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1343-计算数据流的-FFT" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.3 计算数据流的 FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1344-从-FFT-值提取频率信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.4 从 FFT 值提取频率信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1345-将频率转换为电机速度和方向" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.5 将频率转换为电机速度和方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1346-测试电机设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.6 测试电机设置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1347-命令行选项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.7 命令行选项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1348-手动测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.8 手动测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-完整的-Python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 完整的 Python 代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#136-运行程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 运行程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#137-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#138-实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.8 实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../resources/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#130-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131-用激光产生图案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 用激光产生图案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 用激光产生图案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311-电机控制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.1 电机控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312-快速傅里叶变换" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1.2 快速傅里叶变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-所需模块" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 所需模块
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 所需模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321-搭建激光秀" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.1 搭建激光秀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322-连接电机驱动器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2.2 连接电机驱动器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133-Arduino-程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Arduino 程序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 Arduino 程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331-配置-Arduino-数字输出引脚" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.1 配置 Arduino 数字输出引脚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-主循环" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.2 主循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-停止电机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3.3 停止电机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134-Python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Python 代码
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.4 Python 代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1341-选择音频设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.1 选择音频设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1342-从输入设备读取数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.2 从输入设备读取数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1343-计算数据流的-FFT" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.3 计算数据流的 FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1344-从-FFT-值提取频率信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.4 从 FFT 值提取频率信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1345-将频率转换为电机速度和方向" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.5 将频率转换为电机速度和方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1346-测试电机设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.6 测试电机设置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1347-命令行选项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.7 命令行选项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1348-手动测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4.8 手动测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#135-完整的-Python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 完整的 Python 代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#136-运行程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 运行程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#137-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#138-实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.8 实验
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-13-章-激光音乐秀">第 13 章 激光音乐秀<a class="headerlink" href="#第-13-章-激光音乐秀" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：如何让激光图案跟着音乐起舞——用两台直流电机各带一面小镜子反射激光束产生图案；Python 对实时音频做快速傅里叶变换（FFT），把低、中、高三个频段的能量换算成两个电机的速度与方向，经串口发给 Arduino，由 TB6612FNG 电机驱动器执行。
+<strong>承上启下</strong>：本章是第 12 章的直接续篇：Arduino 草图结构、<code>Serial.begin(9600)</code> 串口协议与 pySerial 通信全部复用，但数据方向反转——上次 Arduino 发数据、Python 收，这次 Python 发指令、Arduino 执行。算法上与第 4 章的音频项目一脉相承（乐器的音调就是多种频率的混合），这次用 numpy 的 FFT 把声音拆成频段；图案的数学则与第 2 章万花尺的内旋轮线遥相呼应。第 14 章换一块板子：用树莓派做天气监控器，为硬件篇收官。</p>
+</blockquote>
+<p>本章 Python 承担更重的任务：除了处理串口通信之外，还要基于实时音频数据做计算，并利用结果调整激光显示设备中的电机。先把激光说清楚：将激光当作一束强烈的光束——即使通过很大距离投射，它仍保持聚焦在一个微小的点上。这种聚焦之所以可能，是因为光束被组织成光波只沿一个方向行进、且彼此同相。</p>
+<p>项目的玩法：用一支便宜、容易获得的激光笔创建与音乐（或任何音频输入）同步的激光图案。硬件是激光笔加两个连接到直流电机的旋转镜；Arduino 设置电机的方向和旋转速度，Python 通过串口来控制——Python 程序读取音频输入、分析它、把它转换为电机速度和方向数据。本章将介绍的主题：</p>
+<ul>
+<li>用激光和两个旋转镜产生有趣的图案；</li>
+<li>用快速傅立叶变换从信号中获得频率信息；</li>
+<li>用 numpy 计算快速傅里叶变换；</li>
+<li>用 pyaudio 读取音频数据；</li>
+<li>在计算机和 Arduino 之间设置串口通信；</li>
+<li>用 Arduino 驱动电机。</li>
+</ul>
+<h2 id="130-本章导图">13.0 本章导图<a class="headerlink" href="#130-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">激光音乐秀</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">光学原理</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">平面镜 A：镜面垂直转轴，反射保持一个点</span>
+          <span class="brleaf">倾斜镜 B：旋转扫出椭圆轨迹</span>
+          <span class="brleaf">A→B 级联反射：双旋转合成复杂图案</span>
+          <span class="brleaf">转速够快靠视觉暂留连成形状（呼应第 2 章万花尺）</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">电机驱动</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">TB6612FNG 分线板：保护 Arduino、双通道</span>
+          <span class="brleaf">内部是 H 桥 + MOSFET 换向</span>
+          <span class="brleaf">IN 引脚定方向、01/02 供电、PWM 定速度</span>
+          <span class="brleaf">STBY 待机省电</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">FFT 算法核心</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">任何声音都可分解为成分频率（呼应第 4 章泛音）</span>
+          <span class="brleaf">DFT / FFT：时域到频域</span>
+          <span class="brleaf">样本数权衡：2048 样本 @ 44100Hz 约 0.046 秒</span>
+          <span class="brleaf">三频段均值驱动两电机的速度与方向</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">硬件搭建</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">清单：激光笔、电机、镜子、驱动板、Uno、AA 电池、乐高</span>
+          <span class="brleaf">镜子以小角度热熔胶上轴，手转测试椭圆</span>
+          <span class="brleaf">对准：A 的反射全程落在 B 圆周内，B 反射上墙</span>
+          <span class="brleaf">接线表 13-1 + 布线全图</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Arduino 程序</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">引脚映射 + pinMode 七引脚输出</span>
+          <span class="brleaf">主循环：available≥5、头字节 'H' 校验、4 字节、move/stop</span>
+          <span class="brleaf">move()：退出待机、方向电平、analogWrite PWM [0,255]</span>
+          <span class="brleaf">delay(20)/delay(250) 节流</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Python 程序与实验</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">getInputDevice 列设备、选输入</span>
+          <span class="brleaf">fftLive：read → rfft 归一化 → abs → 三频段 → 打包串口</span>
+          <span class="brleaf">autoTest / manualTest / argparse 三种模式</span>
+          <span class="brleaf">Ctrl-C 清理：停电机、关串口</span>
+          <span class="brleaf">实验：改转换方案、RMS 节奏、光隔离器控激光</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="131-用激光产生图案">13.1 用激光产生图案<a class="headerlink" href="#131-用激光产生图案" title="Permanent link">#</a></h2>
+<p>生成激光图案的思路：激光笔加两个镜子，分别连接到两个小型直流电机的轴上（图 13-1）。</p>
+<ul>
+<li><strong>平面镜 A</strong>：向平面镜（反射镜 A）表面照射激光，即使电机正在旋转，投影的反射也保持为一个点——因为镜面垂直于电机的旋转轴，镜子转起来就像根本没转一样。</li>
+<li><strong>倾斜镜 B</strong>：镜子与轴成一定角度连接时，轴旋转起来，投影点的轨迹是一个椭圆；电机旋转足够快时，观察者会感觉到移动的点是一个连续的形状（视觉暂留）。</li>
+</ul>
+<figure>
+  <img src="../images/ch13/fig-13-1.png" class="lq-img" />
+  <figcaption>图 13.1 平面镜（镜子 A）反射单个点；倾斜的镜子（镜子 B）的反射在电机旋转时产生椭圆轨迹（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么「够快」就能连成图形</p>
+<p>人眼的视觉暂留大约在十几毫秒量级（电影每秒 24 帧就骗过了眼睛）。电机每秒转几十圈，光点每圈扫出同一个椭圆若干次，视网膜上残留的像互相叠加，看到的就是一条连续亮线而不是一个跳动的点。第 4 章的 Boids 动画靠 matplotlib 定时重绘"骗"眼睛，这里靠真实旋转，原理相同。</p>
+</div>
+<p>把两面镜子串起来：让从镜子 A 反射的光投影到镜子 B 上。电机 A 和电机 B 一起旋转时，反射点的图案是两个旋转运动的组合，产生出有趣的图案（图 13-2）。图案具体长什么样取决于两个电机的旋转速度和旋转方向——它们类似于第 2 章中万花尺产生的<strong>长短辐圆内旋轮线</strong>（hypotrochoid）。</p>
+<figure>
+  <img src="../images/ch13/fig-13-2.png" class="lq-img" />
+  <figcaption>图 13.2 反射激光离开两面旋转的、倾斜的镜子，产生复杂的图案：激光笔发出的光经反射镜、电机A、电机B 两级反射投向墙面（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：第 2 章的重逢</p>
+<p>第 2 章的万花尺用"小齿轮在大齿轮内部滚动 + 笔在偏心孔里"画出内旋轮线，本质是两个周期运动（公转与自转）的叠加。本章的两个旋转镜干的是同一件事：每面镜子让光点在某个方向上做周期性摆动，两级摆动正交叠加，轨迹同属"两个周期运动的合成"这一族——数学上与利萨如（Lissajous）图形也是近亲。所以本章是第 2 章参数方程的"物理实现版"：转动了的两面镜子就是活体的参数方程。</p>
+</div>
+<h3 id="1311-电机控制">13.1.1 电机控制<a class="headerlink" href="#1311-电机控制" title="Permanent link">#</a></h3>
+<p>用 Arduino 控制电机的速度和方向。这种设置要小心：电机需要相对较高的电压和电流，<strong>Arduino 承受不了这么大的电流，直接驱动会损坏板卡</strong>。图 13-3 所示的 SparkFun TB6612FNG 外设"分线（breakout）"板可以保护 Arduino、简化设计并缩短开发时间——利用分线板可以从 Arduino 同时控制两个电机。</p>
+<figure>
+  <img src="../images/ch13/fig-13-3.png" class="lq-img" />
+  <figcaption>图 13.3 SparkFun 电机驱动器 1A 双通道 TB6612FNG：(a) 分线板正面，(b) 焊接背面——引脚名称中的 A 和 B 对应两个电机（截自原书）</figcaption>
+</figure>
+
+<p>看图 13-3（b）的焊接背面，引脚分三类（A、B 分别表示两个电机）：</p>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IN1 / IN2（如 AIN1、AIN2）</td>
+<td>控制对应电机的旋转方向</td>
+</tr>
+<tr>
+<td>01 / 02（如 A01、A02）</td>
+<td>为电机供电的输出端</td>
+</tr>
+<tr>
+<td>PWM（如 PWMA、PWMB）</td>
+<td>控制对应电机的速度</td>
+</tr>
+<tr>
+<td>STBY</td>
+<td>待机控制（两个通道共用）</td>
+</tr>
+<tr>
+<td>VCC / VM / GND</td>
+<td>逻辑电源 / 电机电源 / 地</td>
+</tr>
+</tbody>
+</table>
+<p>通过写入这些引脚，就能控制每个电机的旋转方向和速度——这正是本项目需要的。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：H 桥与 MOSFET</p>
+<p>13.2.2 节作者说想知道板卡原理就"从了解 H 桥开始"。H 桥（H-bridge）因电路形状像字母 H 得名：电机跨在 H 的横杠上，四个开关（这里用金属氧化物半导体场效应晶体管，<strong>MOSFET</strong>）摆在四条腿上；对角线上两个开关同时导通，电流就从左向右流，换另一对导通则电流反向——这就是电机的正反转原理。再用 PWM 快速通断，就能调速度。TB6612FNG 内部集成了两路这样的 H 桥（名字里"1A 双通道"指每通道约 1.2 A 的持续电流）。电机是感性负载，通断瞬间会产生反冲电压——让专门的驱动芯片扛这些，正是它"保护 Arduino"的方式。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>可以用任何你熟悉的电机控制电路替换该分线板部分，只要适当地修改 Arduino 程序即可。</p>
+</div>
+<h3 id="1312-快速傅里叶变换">13.1.2 快速傅里叶变换<a class="headerlink" href="#1312-快速傅里叶变换" title="Permanent link">#</a></h3>
+<p>项目的最终目标是基于音频输入控制电机速度，所以需要能够分析音频的频率。</p>
+<p>回顾第 4 章：来自乐器的音调是多种频率或泛音的混合。事实上，<strong>任何声音都可以用傅里叶变换分解为成分频率</strong>。将傅里叶变换应用于数字信号时，结果称为<strong>离散傅里叶变换</strong>（Discrete Fourier Transform，DFT），因为数字信号由许多离散样本组成。本项目用 Python 实现<strong>快速傅里叶变换</strong>（Fast Fourier Transform，FFT）算法来计算 DFT（本章用 FFT 同时指代算法和结果）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：DFT 与 FFT 的关系</p>
+<p>对 N 个样本 <span class="arithmatex">\(x_0,\dots,x_{N-1}\)</span>，DFT 的定义是 <span class="arithmatex">\(X_k = \sum_{n=0}^{N-1} x_n\,e^{-2\pi i kn/N}\)</span>——把信号与 N 个不同频率的复指数"比对"，得到每个频率的强度和相位。直接按定义算要 <span class="arithmatex">\(O(N^2)\)</span> 次运算；FFT 用分治法利用旋转因子的对称性，把复杂度降到 <span class="arithmatex">\(O(N\log N)\)</span>。numpy 的 <code>fft.rfft</code> 还额外利用"实数输入的频谱左右对称"这一点，只算一半频率，更快。这也是为什么 FFT 对 2 的幂长度的信号优化最好。</p>
+</div>
+<p>先看一个简单的 FFT 示例。下面这个波是两个正弦波相加：</p>
+<div class="arithmatex">\[
+y(t) = 4\sin(2\pi \cdot 10\,t) + 2.5\sin(2\pi \cdot 30\,t)
+\]</div>
+<p>第一个波里的 4 是振幅、10 是频率（Hz）；第二个波振幅 2.5、频率 30。FFT 揭示了波的分量频率及其相对振幅：峰值出现在 10 Hz 和 30 Hz，第一个峰值的强度约为第二个的 1.6 倍（书里说"约两倍"，按 4/2.5 算是 1.6 倍）。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书图文错位：正文与两幅插图对调</p>
+<p>原书正文说"图 13-4 展示了一个只包含两个正弦波的信号""图 13-5 展示了更复杂的音频信号"，但书页上实际印的内容相反：<strong>图 13-4 是从音乐中录制的音频信号及多峰 FFT，图 13-5 才是上述两个正弦波叠加信号及其 10/30 Hz 双峰 FFT</strong>。阅读时以图的实际内容为准（本笔记的图注按图上内容写）。</p>
+</div>
+<figure>
+  <img src="../images/ch13/fig-13-4.png" class="lq-img" />
+  <figcaption>图 13.4 从音乐中录制的音频信号（上）及相应的 FFT（下）：时域波形杂乱，频域里能量集中在低频的几个峰上（截自原书）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch13/fig-13-5.png" class="lq-img" />
+  <figcaption>图 13.5 两个正弦波叠加信号（上）及其 FFT（下）：频域里干净地立起 10 Hz 与 30 Hz 两个峰，高度比约等于振幅比（截自原书）</figcaption>
+</figure>
+
+<p>音频输入（信号）处在<strong>时域</strong>（time domain）中，因为振幅数据随时间变化；FFT 处在<strong>频域</strong>（frequency domain）中。图 13-5 下半部分显示的一系列峰值，就是信号中各种频率的强度。</p>
+<p>要计算 FFT，需要一组样本。<strong>样本数的选择是权衡</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>样本数</th>
+<th>太小</th>
+<th>太大</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>频率图景</td>
+<td>不能给出信号频率特征的良好图景</td>
+<td>让信号的变化平均化</td>
+</tr>
+<tr>
+<td>计算量</td>
+<td>每秒要算更多次 FFT，反而更大</td>
+<td>——</td>
+</tr>
+<tr>
+<td>实时性</td>
+<td>——</td>
+<td>得不到信号的"实时"频率响应</td>
+</tr>
+</tbody>
+</table>
+<p>对本项目采用的 44100 Hz 采样率，2048 的样本大小表示约 0.046 秒的数据（2048 / 44100 ≈ 0.0464）。</p>
+<p>拿到频谱后怎么驱动电机？把频率范围（Hz）分成 3 个频段：[0, 100]、[100, 1000] 和 [1000, 2500]，计算每个频段的平均振幅，每个值以不同方式影响电机和激光图案：</p>
+<ul>
+<li><strong>低频</strong>平均振幅的变化将影响第一个电机的速度；</li>
+<li><strong>中频</strong>平均振幅的变化将影响第二个电机的速度；</li>
+<li><strong>高频</strong>峰值高于某个阈值时，第一个电机将改变方向。</li>
+</ul>
+<p>挑低频和中频有实际含义：0–100 Hz 的低音频段大致对应歌曲中的节拍（鼓点），100–1000 Hz 的中音频段大致对应人声——节拍带转速、人声带转数的图案自然跟着音乐"呼吸"。</p>
+<h2 id="132-所需模块">13.2 所需模块<a class="headerlink" href="#132-所需模块" title="Permanent link">#</a></h2>
+<p>构建此项目所需物品的清单：</p>
+<table>
+<thead>
+<tr>
+<th>器材</th>
+<th>用途 / 规格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小激光笔</td>
+<td>图案光源</td>
+</tr>
+<tr>
+<td>直流电动机 ×2</td>
+<td>玩具用小电机即可，额定 9V</td>
+</tr>
+<tr>
+<td>小镜子 ×2</td>
+<td>直径约 2.54 cm 或更小</td>
+</tr>
+<tr>
+<td>SparkFun 电机驱动器 1A 双通道 TB6612FNG</td>
+<td>保护 Arduino、驱动两台电机</td>
+</tr>
+<tr>
+<td>Arduino Uno 或类似板卡</td>
+<td>收指令、控制驱动器</td>
+</tr>
+<tr>
+<td>连接电线</td>
+<td>单芯连接线，两端公插针好用</td>
+</tr>
+<tr>
+<td>四节 AA 电池组</td>
+<td>电机电源</td>
+</tr>
+<tr>
+<td>乐高模块</td>
+<td>垫高电机和激光笔，让镜子能自由旋转（书中用了 3 块一样的）</td>
+</tr>
+<tr>
+<td>矩形纸板或丙烯酸树脂板</td>
+<td>约 20.3 cm × 15.2 cm，安装硬件</td>
+</tr>
+<tr>
+<td>热胶枪</td>
+<td>粘接固定</td>
+</tr>
+<tr>
+<td>烙铁</td>
+<td>给电机端子焊引线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1321-搭建激光秀">13.2.1 搭建激光秀<a class="headerlink" href="#1321-搭建激光秀" title="Permanent link">#</a></h3>
+<p><strong>给电机装镜子。</strong> 反射镜必须与电机轴成一个小角度。安装方法：将镜子面朝下放在平坦表面上，在中心滴一滴热胶；小心地将电机轴浸入胶水中，与镜面保持垂直，扶住不动直到胶水硬化（图 13-6）。</p>
+<figure>
+  <img src="../images/ch13/fig-13-6.png" class="lq-img" />
+  <figcaption>图 13.6 以微小角度将反射镜连接到每个电机轴：镜面朝下，电机轴浸入中心胶滴（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">提示：小角度从哪来</p>
+<p>图 13-6 的标题写的是"以微小角度"连接，操作要点是"轴浸进胶滴时大致垂直"。胶滴有厚度，凝固后多少会给镜子留下一个小小的随机倾角——这正是需要的：倾角接近 0 时镜子转起来反射点几乎不动（退化成镜子 A），倾角太大椭圆会扫得过大。验收标准以书里的测试为准：用手旋转镜子、同时用激光笔照射，反射激光点在平面上的移动轨迹应是一个椭圆。对第二面镜子同样操作。</p>
+</div>
+<p><strong>对准镜子。</strong> 将激光笔与反射镜对准，使激光从反射镜 A 反射到 B（图 13-7）。两件事要确保：</p>
+<ol>
+<li>在反射镜 A 的整个旋转范围内，来自 A 的反射激光保持在反射镜 B 的圆周内——这需要一些尝试，可能会犯些错；测试办法是手动旋转反射镜 A。</li>
+<li>在两个反射镜的旋转范围内，反射镜 B 的位置能让它反射的光落在一个平面上（如墙上）。</li>
+</ol>
+<figure>
+  <img src="../images/ch13/fig-13-7.png" class="lq-img" />
+  <figcaption>图 13.7 激光笔和反射镜的对准：激光先打到电机 A 上的镜子，再反射进电机 B 上的镜子，最后投向墙面（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>调整时需要保持激光笔打开。如果激光笔有一个开启按钮，请用胶带让它保持打开（或者参见 13.8 节，了解更优雅的控制激光笔电源的方法）。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：激光安全</p>
+<p>调整期间激光一直开着，要养成两个习惯：光束和镜面反射的光斑都不要直视或射入他人眼睛（激光笔即使功率小于 1 mW，直射视网膜也有伤害）；对准时让光斑落在墙面或纸板上再观察。这也是后面用继电器/光隔离器远程控激光（13.8 节）的实际价值之一——人可以离光路远一点。</p>
+</div>
+<p><strong>固定到安装板。</strong> 对镜子的位置满意后，将激光笔和两个带有镜子的电机用热熔胶粘到 3 个一样的乐高模块上，把它们升起，让镜子能够自由旋转；再把模块放在安装板上，摆放满意后用铅笔描出边缘、标记每个模块的位置，然后将模块粘在板上。</p>
+<p><strong>为电机供电。</strong> 电机一般不带引线，把电线焊接到两个端子上，留出足够长度（如 15 cm）以便连接电机驱动板卡。电机由电池组中的四节 AA 电池供电，用热熔胶将电池组粘在安装板背面（图 13-8）。</p>
+<figure>
+  <img src="../images/ch13/fig-13-8.png" class="lq-img" />
+  <figcaption>图 13.8 将电池组固定在安装板背面（截自原书）</figcaption>
+</figure>
+
+<p>现在用手旋转两个镜子、同时用激光照射它们——如果转得够快，应该已经能看到一些有趣的图案，提前窥见结果的样子！</p>
+<h3 id="1322-连接电机驱动器">13.2.2 连接电机驱动器<a class="headerlink" href="#1322-连接电机驱动器" title="Permanent link">#</a></h3>
+<p>本项目用 Arduino 通过 SparkFun 电机驱动器（TB6612FNG）来控制电机。作者不详细展开板卡工作原理，但如果你好奇，可以从了解"H 桥"开始——一种常见的电路设计，用"金属氧化物半导体场效应晶体管（MOSFET）"来控制电机（见 13.1.1 节的拓展）。</p>
+<p>现在把电机连接到 SparkFun 电机驱动器和 Arduino。电线不少，如表 13-1 所示。一个电机标记为 A，另一个为 B，接线时遵守这个惯例。</p>
+<p><strong>表 13-1 SparkFun 电机驱动器到 Arduino 的接线</strong></p>
+<table>
+<thead>
+<tr>
+<th>从</th>
+<th>至</th>
+<th>这根线管什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arduino 数字引脚 12</td>
+<td>TB6612FNG BIN2</td>
+<td>电机 B 方向</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 11</td>
+<td>TB6612FNG BIN1</td>
+<td>电机 B 方向</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 10</td>
+<td>TB6612FNG STBY</td>
+<td>待机控制（两通道共用）</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 9</td>
+<td>TB6612FNG AIN1</td>
+<td>电机 A 方向</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 8</td>
+<td>TB6612FNG AIN2</td>
+<td>电机 A 方向</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 5</td>
+<td>TB6612FNG PWMB</td>
+<td>电机 B 速度（PWM）</td>
+</tr>
+<tr>
+<td>Arduino 数字引脚 3</td>
+<td>TB6612FNG PWMA</td>
+<td>电机 A 速度（PWM）</td>
+</tr>
+<tr>
+<td>Arduino 5V</td>
+<td>TB6612FNG VCC</td>
+<td>驱动器逻辑电源</td>
+</tr>
+<tr>
+<td>Arduino GND</td>
+<td>TB6612FNG GND</td>
+<td>共地</td>
+</tr>
+<tr>
+<td>Arduino GND</td>
+<td>电池组 GND（–）</td>
+<td>Arduino 与电池组共地</td>
+</tr>
+<tr>
+<td>电池组 VCC（+）</td>
+<td>TB6612FNG VM</td>
+<td>电机电源（四节 AA）</td>
+</tr>
+<tr>
+<td>电机 #1 连接头 1（极性无所谓）</td>
+<td>TB6612FNG A01</td>
+<td>电机 A</td>
+</tr>
+<tr>
+<td>电机 #1 连接头 2（极性无所谓）</td>
+<td>TB6612FNG A02</td>
+<td>电机 A</td>
+</tr>
+<tr>
+<td>电机 #2 连接头 1（极性无所谓）</td>
+<td>TB6612FNG B01</td>
+<td>电机 B</td>
+</tr>
+<tr>
+<td>电机 #2 连接头 2（极性无所谓）</td>
+<td>TB6612FNG B02</td>
+<td>电机 B</td>
+</tr>
+<tr>
+<td>Arduino USB 连接头</td>
+<td>计算机的 USB 口</td>
+<td>上传代码 + 串口通信</td>
+</tr>
+</tbody>
+</table>
+<p>图 13-9 展示了所有接线。</p>
+<figure>
+  <img src="../images/ch13/fig-13-9.png" class="lq-img" />
+  <figcaption>图 13.9 完全连好线的激光秀装置：两个带镜子的电机、激光笔、Arduino Uno 与电机驱动器，由一组接线连成整体（截自原书）</figcaption>
+</figure>
+
+<h2 id="133-Arduino-程序">13.3 Arduino 程序<a class="headerlink" href="#133-Arduino-程序" title="Permanent link">#</a></h2>
+<p>程序开始时设置 Arduino 的数字输出引脚；然后在主循环中，从串口读入数据，并把数据转换成发送给电机驱动器板卡的参数。下面还会讲清电机速度和方向控制的实现。</p>
+<h3 id="1331-配置-Arduino-数字输出引脚">13.3.1 配置 Arduino 数字输出引脚<a class="headerlink" href="#1331-配置-Arduino-数字输出引脚" title="Permanent link">#</a></h3>
+<p>首先按表 13-1 把 Arduino 数字引脚映射到电机驱动器上的引脚，并把引脚设置为输出：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// ===== 书 13.3.1 节：引脚映射与 setup() =====</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// motor A connected to A01 and A02   // 电机 A 接驱动器 A01/A02</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// motor B connected to B01 and B02   // 电机 B 接驱动器 B01/B02</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">STBY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// standby   待机</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// Motor A</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">PWMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">  </span><span class="c1">// speed control   速度控制</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">AIN1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w">  </span><span class="c1">// direction       方向</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">int</span><span class="w"> </span><span class="n">AIN2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w">  </span><span class="c1">// direction       方向</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// Motor B</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kt">int</span><span class="w"> </span><span class="n">PWMB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">  </span><span class="c1">// speed control   速度控制</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kt">int</span><span class="w"> </span><span class="n">BIN1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"> </span><span class="c1">// direction       方向</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kt">int</span><span class="w"> </span><span class="n">BIN2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"> </span><span class="c1">// direction       方向</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">(){</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">STBY</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w">   </span><span class="c1">// 7 个数字引脚全部设为输出</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">PWMA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">AIN1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">AIN2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">PWMB</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BIN1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BIN2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="c1">// initialize serial communication</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w">      </span><span class="c1">// 启动串口通信，波特率 9600（同第 12 章）</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">}</span>
+</code></pre></div>
+<p>前面的引脚映射把 Arduino 引脚名对应到电机驱动器引脚。例如 PWMA（脉冲调制 A）控制电机 A 的速度，分配给 Arduino 引脚 3。<strong>PWM</strong>（脉冲宽度调制）是为设备供电的一种方式：发送快速打开和关闭的数字脉冲，让器件"看到"连续的电压。数字脉冲接通的时间占比称为<strong>占空比</strong>（duty cycle），以百分比表示——更改这个百分比，就改变了给设备的功率水平。PWM 通常用于控制可调光 LED 和电机速度。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：占空比的直观账</p>
+<p>占空比 50% 意味着一半时间通电：电机线圈是感性的，电流来不及跟随脉冲跌落，实际"感受"到的是平均电压（约满压的一半），转速随之下降。Arduino Uno 上 <code>analogWrite()</code> 的 PWM 频率约 490 Hz（部分引脚约 976 Hz），对玩具电机来说足够平滑。这个"开关式调功"思路与第 2 章"改变参数画不同曲线"一样：不用连续地调电压，调占空比就够了。</p>
+</div>
+<p><code>setup()</code> 方法把所有 7 个数字引脚设置为输出，然后 <code>Serial.begin(9600)</code> 启动串口通信——Arduino 在这里读取计算机发来的串行数据。</p>
+<h3 id="1332-主循环">13.3.2 主循环<a class="headerlink" href="#1332-主循环" title="Permanent link">#</a></h3>
+<p>主循环等待串行数据到达，解析它以提取电机速度和方向，并用这些信息设置驱动板的数字输出。电机控制数据以 <strong>5 个字节为一组</strong>发送：头字节 <code>'H'</code> 后跟 4 个单字节数字 s1、d1、s2、d2，表示电机的速度和方向。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// ===== 书 13.3.2 节：主循环（读取 laser.py 发来的电机数据）=====</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// main loop that reads the motor data sent by laser.py</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1">// data sent is of the form 'H' (header), speed1, dir1, speed2, dir2</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// ① 攒够 5 个字节才处理</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'H'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// ② 校验头字节，确认一组数据的起点</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="c1">// read the next 4 bytes</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="kt">byte</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span><span class="w">      </span><span class="c1">// ③ 依次读 4 字节：电机 1 速度/方向、电机 2 速度/方向</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="kt">byte</span><span class="w"> </span><span class="n">d1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="kt">byte</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="kt">byte</span><span class="w"> </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="c1">// stop the motor if both speeds are 0</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">// ④ 两个速度都是 0 → 停机</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="n">stop</span><span class="p">();</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                </span><span class="c1">// set the motors' speed and direction</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">                </span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">d1</span><span class="p">);</span><span class="w">          </span><span class="c1">// ⑤ 第一对值交给 move()，电机编号 0</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">                </span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="n">d2</span><span class="p">);</span><span class="w">          </span><span class="c1">//    第二对值交给 move()，电机编号 1</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">            </span><span class="c1">// slight pause for 20 ms</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w">                    </span><span class="c1">// ⑥ 小停 20 ms，别读得太快</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">            </span><span class="c1">// if there is invalid data, stop the motors</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="n">stop</span><span class="p">();</span><span class="w">                       </span><span class="c1">// ⑦ 头字节不是 'H'：数据可能已损坏 → 停机</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="c1">// if there is no data, pause for 250 ms</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span><span class="w">                       </span><span class="c1">// ⑧ 没有数据 → 等 250 ms 再试</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p">}</span>
+</code></pre></div>
+<p>串行数据是连续流入的，所以①行先检查<strong>已收到至少 5 个字节</strong>才动手；不够就延迟 250 毫秒（⑧行），在下一个周期再读。②行检查读入的第一个字节是不是 <code>'H'</code>，确保接下来 4 个字节是一组正确控制数据的开头；如果不是，就在⑦行停止电机——数据可能因传输或连接错误而损坏。③行开始读取两个电机的速度和方向；两个速度都为零就走④行停机，否则⑤行用 <code>move()</code> 把速度和方向值分配给电机。⑥行的 20 毫秒小延迟让电机能跟上，避免读入过快。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：头字节 'H' 是同步锚点</p>
+<p>串口是没有帧结构的字节流：如果程序启动时正好从一组数据的中间开始读，s1/d1/s2/d2 就会全部错位，而且一错到底。每包都从头字节 <code>'H'</code> 开始，等于给了 Arduino 一个重新对齐的机会——对不上就宁可不动作（stop）。这种"头字节 + 定长包"是最朴素的串口协议设计，比第 12 章"发什么读什么"的裸文本协议多了一层容错。</p>
+</div>
+<p>下面是用于设置电机速度和方向的 <code>move()</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ===== 书 13.3.2 节：move()——设置电机速度与方向 =====</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// set motor speed and direction</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// motor: A -&gt; 1, B -&gt; 0      电机编号：A 对应 1，B 对应 0</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// direction: 1/0</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">motor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="c1">// disable standby</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STBY</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w">       </span><span class="c1">// ① 写 HIGH 退出待机模式</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">boolean</span><span class="w"> </span><span class="n">inPin1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w">           </span><span class="c1">// ② 默认方向电平：inPin1=LOW, inPin2=HIGH</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">boolean</span><span class="w"> </span><span class="n">inPin2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span><span class="w">             </span><span class="c1">// ③ direction 为 1 时翻转两个电平 → 换向</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">inPin1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">inPin2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">motor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span><span class="w">                 </span><span class="c1">// ④ 编号 1 → 驱动器 A 通道</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">AIN1</span><span class="p">,</span><span class="w"> </span><span class="n">inPin1</span><span class="p">);</span><span class="w"> </span><span class="c1">//    AIN1/AIN2 一高一低决定电流方向</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">AIN2</span><span class="p">,</span><span class="w"> </span><span class="n">inPin2</span><span class="p">);</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">PWMA</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="p">);</span><span class="w">   </span><span class="c1">//    PWMA 输出 PWM，speed 取值 [0,255]</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">else</span><span class="p">{</span><span class="w">                           </span><span class="c1">// ⑤ 编号 0 → 驱动器 B 通道</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">BIN1</span><span class="p">,</span><span class="w"> </span><span class="n">inPin1</span><span class="p">);</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">BIN2</span><span class="p">,</span><span class="w"> </span><span class="n">inPin2</span><span class="p">);</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">PWMB</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="p">);</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
+</code></pre></div>
+<p>电机驱动器具有<strong>待机模式</strong>，在电机关闭时节省电力。①行向待机引脚写入 HIGH，退出待机。②行定义两个布尔变量确定电机的旋转方向；③行在 <code>direction</code> 参数为 1 时翻转它们的值，从而在下面的代码里切换电机方向。④行处理电机 A：AIN1、AIN2 控制方向，用 <code>digitalWrite()</code> 把一个引脚置 HIGH（1）、另一个置 LOW（0）；PWMA 上发送 PWM 信号控制速度——<code>analogWrite()</code> 可以把 <strong>[0, 255]</strong> 范围内的值写入 Arduino 输出引脚（相比之下 <code>digitalWrite()</code> 只允许写 1 或 0）。⑤行用同样方式处理电机 B。</p>
+<h3 id="1333-停止电机">13.3.3 停止电机<a class="headerlink" href="#1333-停止电机" title="Permanent link">#</a></h3>
+<p>要停止电机，把 LOW 写入电机驱动器的待机引脚，让两个通道一起断电：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// ===== 书 13.3.3 节：stop()——回到待机 =====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">stop</span><span class="p">(){</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="c1">// enable standby</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STBY</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w">   </span><span class="c1">// 写 LOW 进入待机，电机断电</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="134-Python-代码">13.4 Python 代码<a class="headerlink" href="#134-Python-代码" title="Permanent link">#</a></h2>
+<p>现在看计算机上运行的 Python 代码。这段代码完成繁重的工作：读入音频、计算 FFT、发送串行数据到 Arduino。完整的项目代码见 13.5 节。</p>
+<div class="admonition warning">
+<p class="admonition-title">Python 3 适配：本章不实跑</p>
+<p>本章是硬件章：需要激光笔、电机与驱动板实物，且本笔记的 Anaconda 环境未装 pyaudio 和 pyserial（<code>import pyaudio</code> / <code>import serial</code> 都会报 ModuleNotFoundError），代码按原书呈现、未实跑。要跑起来先 <code>pip install pyaudio pyserial</code>（Windows 上 pyaudio 常需要预编译 wheel）。</p>
+</div>
+<h3 id="1341-选择音频设备">13.4.1 选择音频设备<a class="headerlink" href="#1341-选择音频设备" title="Permanent link">#</a></h3>
+<p>先用 pyaudio 模块读入音频数据。初始化 pyaudio：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">p</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>
+</code></pre></div>
+<p>pyaudio 提供了访问计算机音频输入设备的辅助函数。<code>getInputDevice()</code> 列出所有设备并让用户选择：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== 书 13.4.1 节：选择 pyaudio 输入设备 =====</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># get pyaudio input device</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">getInputDevice</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span>                                        <span class="c1"># ① 返回值；None 表示没找到合适的输入设备</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">nDevices</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_device_count</span><span class="p">()</span>                     <span class="c1"># ② 音频设备总数</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'Found </span><span class="si">%d</span><span class="s1"> devices. Select input device:'</span> <span class="o">%</span> <span class="n">nDevices</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="c1"># print all devices found</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nDevices</span><span class="p">):</span>                           <span class="c1"># ③ 遍历所有设备</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">deviceInfo</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_device_info_by_index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>      <span class="c1"># ④ 每个设备的特征信息字典</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">devName</span> <span class="o">=</span> <span class="n">deviceInfo</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>                    <span class="c1"># ⑤ 只取设备名称</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">devName</span><span class="p">))</span>                  <span class="c1"># ⑥ 打印"索引: 名称"</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="c1"># get user selection</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="c1"># convert to integer</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>                            <span class="c1"># ⑦ 读入用户选择并转成整数</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="k">except</span><span class="p">:</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="k">pass</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="c1"># print the name of the chosen device</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="n">devName</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_device_info_by_index</span><span class="p">(</span><span class="n">index</span><span class="p">)[</span><span class="s2">"name"</span><span class="p">]</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Input device chosen: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">devName</span><span class="p">)</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="k">return</span> <span class="n">index</span>                                        <span class="c1"># ⑧ 返回选中的索引</span>
+</code></pre></div>
+<p>①行把 <code>index</code> 设为 None——它是⑧行的返回值，返回 None 就意味着找不到合适的输入设备。②行用 <code>get_device_count()</code> 获取计算机上音频设备的数量，包括麦克风、线路输入或线路输出等所有音频硬件；然后遍历每个设备：④行的 <code>get_device_info_by_index()</code> 返回包含设备各种特征信息的字典，这里只关心名称，⑥行打印索引和名称。⑦行用 <code>input()</code> 读入用户的选择并转换成整数索引，⑧行返回它。</p>
+<h3 id="1342-从输入设备读取数据">13.4.2 从输入设备读取数据<a class="headerlink" href="#1342-从输入设备读取数据" title="Permanent link">#</a></h3>
+<p>选好输入设备后要从它读数据。先打开音频流——开流本身只做一次，打开之后读数据、算 FFT 的代码才放进 while 循环里连续执行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 13.4.2 节：打开音频输入流 =====</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># set FFT sample length</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">fftLen</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">11</span>           <span class="c1"># ① FFT 缓冲长度：2048 个样本（2 的幂，FFT 对此优化）</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># set sample rate</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">sampleRate</span> <span class="o">=</span> <span class="mi">44100</span>       <span class="c1"># ② 44.1 kHz，CD 质量录音的标准</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'opening stream...'</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">format</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">paInt16</span><span class="p">,</span>          <span class="c1"># ③ 16 位整数 PCM</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>                <span class="n">channels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>                      <span class="c1">#    单声道读取</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>                <span class="n">rate</span> <span class="o">=</span> <span class="n">sampleRate</span><span class="p">,</span>                 <span class="c1">#    采样率 44100 Hz</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>                <span class="nb">input</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>                      <span class="c1">#    输入流</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>                <span class="n">frames_per_buffer</span> <span class="o">=</span> <span class="n">fftLen</span><span class="p">,</span>        <span class="c1">#    每缓冲帧数 = FFT 长度</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                <span class="n">input_device_index</span> <span class="o">=</span> <span class="n">inputIndex</span><span class="p">)</span>   <span class="c1"># ④ 用 getInputDevice() 选的设备</span>
+</code></pre></div>
+<p>①行把 FFT 缓冲区的长度（用于计算 FFT 的音频采样数）设为 2048，即 <span class="arithmatex">\(2^{11}\)</span>——FFT 算法针对 2 的幂做了优化。②行把 pyaudio 的采样率设为 44100（44.1 kHz），CD 质量录音的标准。随后打开 pyaudio 流，选项逐个对应：<code>pyaudio.paInt16</code> 表示按 16 位整数读取数据；<code>channels=1</code> 把音频当作单个声道读取；<code>rate</code> 是采样速率；<code>input=True</code> 声明这是输入流；<code>frames_per_buffer</code> 设为 FFT 缓冲区长度；<code>input_device_index</code> 用 <code>getInputDevice()</code> 选中的设备。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：'是211'</p>
+<p>原书正文把 <span class="arithmatex">\(2^{11}\)</span> 印成了"是211"（上标丢失）。结合代码 <code>fftLen = 2**11</code> 与"FFT 算法针对 2 的幂进行了优化"一句，应读作"是 <span class="arithmatex">\(2^{11}\)</span>，即 2048"。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么是 44100</p>
+<p>44.1 kHz 是 CD 的标准采样率：人耳上限约 20 kHz，按奈奎斯特采样定理，采样率至少要是信号最高频率的 2 倍，44100 &gt; 2 × 20000 留有余量。对应地，44100 Hz 采样率的信号最高可表达 22050 Hz（奈奎斯特频率）——这个数字在后面分析 FFT 频段时会再次出现。</p>
+</div>
+<h3 id="1343-计算数据流的-FFT">13.4.3 计算数据流的 FFT<a class="headerlink" href="#1343-计算数据流的-FFT" title="Permanent link">#</a></h3>
+<p>从流中读数据并算 FFT（循环体）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 13.4.3 节：读数据并计算 FFT =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># read a chunk of data</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">data</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fftLen</span><span class="p">)</span>                               <span class="c1"># ① 读最近的 fftLen 个样本（bytes）</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># convert the data to a numpy array</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">dataArray</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>    <span class="c1"># ② 转成 16 位整数 numpy 数组</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># get FFT of data</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">fftVals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">dataArray</span><span class="p">)</span><span class="o">*</span><span class="mf">2.0</span><span class="o">/</span><span class="n">fftLen</span>           <span class="c1"># ③ rfft 计算实数信号的 FFT，再归一化</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># get absolute values of complex numbers</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">fftVals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fftVals</span><span class="p">)</span>                             <span class="c1"># ④ 复数取模 → 实数幅度谱</span>
+</code></pre></div>
+<p>①行从音频输入流读取最近的 fftLen 个样本（原始 bytes）；②行用 <code>numpy.frombuffer</code> 把它转成 16 位整数 numpy 数组。③行用 numpy fft 模块的 <code>rfft()</code> 计算这些值的 FFT——该方法接受由"实数"（如音频数据）组成的信号并计算 FFT，结果通常是一组复数；<code>*2.0/fftLen</code> 是归一化因子，把 FFT 值映射到希望的范围。④行因为 <code>rfft()</code> 返回复数，用 numpy 的 <code>abs()</code> 取这些复数的大小（模），得到实数。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：2.0/fftLen 各管一半</p>
+<p>DFT 定义自带一个 <span class="arithmatex">\(1/N\)</span> 因子，所以 <code>/fftLen</code> 把幅值还原到样本幅度量级；<code>*2.0</code> 是因为实数信号的频谱左右对称、<code>rfft</code> 只保留了非负频率的一半，能量要乘 2 才与双边谱一致。<code>abs()</code> 对复数 <span class="arithmatex">\(a+bi\)</span> 算 <span class="arithmatex">\(\sqrt{a^2+b^2}\)</span>，即该频率成分的幅度。三步合起来：<code>fftVals[k]</code> ≈ 数组中频率为 <span class="arithmatex">\(k \cdot f_s/N\)</span> 的成分的振幅。</p>
+</div>
+<h3 id="1344-从-FFT-值提取频率信息">13.4.4 从 FFT 值提取频率信息<a class="headerlink" href="#1344-从-FFT-值提取频率信息" title="Permanent link">#</a></h3>
+<p>接下来从 FFT 值中提取相关的频率信息：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 13.4.4 节：三个频段的平均振幅 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># average 3 frequency bands: 0-100 Hz, 100-1000 Hz, and 1000-2500 Hz</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fftVals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span>       <span class="c1"># 低频段：求和再除以 bin 数 → 平均</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>          <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fftVals</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">1000</span><span class="p">])</span><span class="o">/</span><span class="mi">900</span><span class="p">,</span>    <span class="c1"># 中频段</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>          <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fftVals</span><span class="p">[</span><span class="mi">1000</span><span class="p">:</span><span class="mi">2500</span><span class="p">])</span><span class="o">/</span><span class="mi">1500</span><span class="p">]</span>  <span class="c1"># 高频段</span>
+</code></pre></div>
+<p>为了分析音频信号，频率范围分为 3 个频段：0 至 100 Hz、100 至 1000 Hz、1000 至 2500 Hz（书注释口径）。最感兴趣的是低音频段（0–100 Hz）和中音频段（100–1000 Hz），分别大致对应歌曲中的节拍和人声。对每个范围用 <code>numpy.sum()</code> 计算平均 FFT 值，存进 <code>levels</code> 列表。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意：注释里的 Hz 频段与 FFT 下标并不一一对应</p>
+<p><code>rfft</code> 对 2048 个样本输出 <span class="arithmatex">\(2048/2+1=1025\)</span> 个 bin，覆盖 0 Hz 到奈奎斯特频率 22050 Hz，<strong>每个 bin 宽 <span class="arithmatex">\(44100/2048 \approx 21.5\)</span> Hz</strong>。因此 <code>fftVals[0:100]</code> 实际覆盖约 0–2.1 kHz（当然包含节拍所在的低频），<code>fftVals[100:1000]</code> 约为 2.1–21.5 kHz；而 <code>fftVals[1000:2500]</code> 已超出 1025 个 bin 的范围，numpy 切片自动截断后只剩第 1000–1024 号 bin（约 21.5–22.05 kHz、贴近奈奎斯特的部分），除以 1500 后数值通常极小。作者的方法实质是"按下标位置粗分低/中/高三段、系数靠试错调出"。想按真实 Hz 精确分频段，可以用 <code>numpy.fft.rfftfreq(fftLen, 1.0/sampleRate)</code> 生成每个 bin 对应的频率，再用布尔掩码取段——这也正是 13.8 实验 1 的改造方向之一。</p>
+</div>
+<h3 id="1345-将频率转换为电机速度和方向">13.4.5 将频率转换为电机速度和方向<a class="headerlink" href="#1345-将频率转换为电机速度和方向" title="Permanent link">#</a></h3>
+<p>现在把频率信息转换为电机速度和方向：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 书 13.4.5 节：频率信息 → 电机速度与方向 =====</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># 'H' (header), speed1, dir1, speed2, dir2</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>        <span class="c1"># ① 5 字节控制字模板；ord('H') 把字符转成整数</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># speed1</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="mi">255</span>         <span class="c1"># ② 低频段均值 ×5 → 电机 1 速度，%255 限幅</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># speed2</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">vals</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="n">levels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="mi">255</span>     <span class="c1"># ③ 中频段均值 +100 → 电机 2 速度，%255 限幅</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># dir</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">d1</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">if</span> <span class="n">levels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">:</span>                      <span class="c1"># ④ 高频段超过阈值 0.1 → 电机 1 方向翻转为 1</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">d1</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">d1</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="n">vals</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>                              <span class="c1"># ⑤ 电机 2 的方向恒为 0</span>
+</code></pre></div>
+<p>①行初始化要发送给 Arduino 的电机速度和方向值列表（5 个字节，从 'H' 开始），用内置 <code>ord()</code> 函数把字符串转成整数。②行取最低频率范围的值，放大 5 倍、转成整数，用取模运算符（%）确保落在 [0, 255] 内——该值控制第一个电机的速度。③行把中间频率值加上 100 后限幅——该值控制第二个电机的速度。④行只要最高频率范围的值超过阈值 0.1，就把方向位翻转为 1；⑤行第二个电机的方向保持为 0。</p>
+<div class="admonition note">
+<p class="admonition-title">注意（作者原话）：转换规则是自由发挥</p>
+<p>"这部分确实是自由发挥：没有特别优雅的规则来管理这些转换。这些值随着音频信号而不断变化，你提出的任何方法都可以改变电机速度，并随音乐一起影响激光模式。只需确保转换将电机速度设置在 [0,255] 范围内，并且方向总是设置为 1 或 0。我选择的方法只是基于试验和错误，我在播放各种类型的音乐时观察 FFT 值。"——通过尝试和错误，作者发现这些方法产生很好的图案变化，但他建议你改变这些值、创建自己的转换：<strong>这里没有错误的答案</strong>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">勘误：'电机 A/电机 B'与代码路径对不上</p>
+<p>按 Arduino 代码的实际路径走一遍：<code>move()</code> 的注释是 A→1、B→0，主循环调用 <code>move(0, s1, d1)</code>、<code>move(1, s2, d2)</code>——所以串口数据的<strong>第一对值（s1/d1，低频速度 + 高频阈值翻转的方向）落到电机 B，第二对值（s2/d2，中频速度 + 恒为 0 的方向）落到电机 A</strong>。而正文说"高频超过阈值就切换电机 A 方向、电机 B 方向保持为 0"，与代码正好相反。好在两台电机完全对称，哪个名字对应哪台不影响图案效果；但如果想让"高频翻转"发生在特定一台镜子上，接线时以代码路径为准。</p>
+</div>
+<h3 id="1346-测试电机设置">13.4.6 测试电机设置<a class="headerlink" href="#1346-测试电机设置" title="Permanent link">#</a></h3>
+<p>用实时音频流测试硬件之前，先检查电机设置。<code>autoTest()</code> 就是干这个的：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 13.4.6 节：autoTest——电机自动扫描 =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># automatic test for sending motor speeds</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">autoTest</span><span class="p">(</span><span class="n">ser</span><span class="p">):</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'starting automatic test...'</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>            <span class="c1"># for each direction combination</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>            <span class="k">for</span> <span class="n">dr</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]:</span>    <span class="c1"># ① 4 组方向组合</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>                <span class="c1"># for a range of speeds</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>               <span class="c1"># ② 电机 2 速度扫描</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>           <span class="c1"># ③ 电机 1 速度扫描</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>                        <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">),</span> <span class="n">i</span><span class="p">,</span> <span class="n">dr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">j</span><span class="p">,</span> <span class="n">dr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>   <span class="c1"># ④ 5 字节控制字</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>                        <span class="nb">print</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>                    <span class="c1"># ⑤ 打印速度/方向（切片去掉头字节）</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>                        <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'BBBBB'</span><span class="p">,</span> <span class="o">*</span><span class="n">vals</span><span class="p">)</span> <span class="c1"># ⑥ 打包成 5 个无符号字节</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>                        <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                    <span class="c1"># ⑦ 写串口</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>                        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>                         <span class="c1">#    每组停留 0.1 秒</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'exiting...'</span><span class="p">)</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="c1"># shut off motors</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                      <span class="c1"># ⑧ Ctrl-C 清理：速度置 0 → Arduino 停机</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>        <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'BBBBB'</span><span class="p">,</span> <span class="o">*</span><span class="n">vals</span><span class="p">)</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>        <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>        <span class="n">ser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                        <span class="c1"># ⑨ 关闭串口</span>
+</code></pre></div>
+<p>该方法通过改变每个电机的速度和方向，让两个电机在一定范围内运动。每个电机的方向可以是顺时针或逆时针，所以①行的外层循环表示 4 种组合；对每种组合，②③行的循环以不同速度运转电机。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>作者使用范围 (25, 180, 10)——速度从 25 变到 180、步长为 10（严格说 <code>range</code> 不含终点，实际止于 175）。没有用电机的完整运动范围 [0, 255]，因为电机很少转速低于 25，而 200 以上的转速真的很快。</p>
+</div>
+<p>④行生成 5 字节的电机数据值，⑤行打印它们（<code>vals[1:]</code> 切片取除第一个元素外的全部）。⑥行用 <code>struct.pack('BBBBB', *vals)</code> 把电机数据打包成字节数组——<code>B</code> 对应一个无符号字节（0–255），<code>*</code> 把列表展开成 5 个参数；⑦行写入串口。按 Ctrl-C 中断测试，⑧⑨行的异常处理负责清理：停电机并关闭串口——像你这样负责的程序员都会这么做。</p>
+<h3 id="1347-命令行选项">13.4.7 命令行选项<a class="headerlink" href="#1347-命令行选项" title="Permanent link">#</a></h3>
+<p>与以前的项目一样，用 argparse 模块解析命令行参数。串口名是必需选项，另有自动测试和手动测试两个开关（要点如下，完整清单见原书 13.5 节）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 13.4.7 节：argparse 与 main() 分发（节选） =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Analyzes audio input and '</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>                                 <span class="s1">'sends motor control information via serial port'</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--port'</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">'serial_port_name'</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 串口名，必选</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--mtest'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>     <span class="c1"># 手动测试开关</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--atest'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>     <span class="c1"># 自动测试开关</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># ……随后按开关分发：</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">strPort</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span>   <span class="c1"># pySerial 打开串口，波特率 9600 位/秒</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">mtest</span><span class="p">:</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="n">manualTest</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">atest</span><span class="p">:</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="n">autoTest</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="n">fftLive</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>                     <span class="c1"># 默认：实时音频 + FFT</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--port</td>
+<td>串口名（Arduino IDE 的 Tools ▸ Serial Port 下找；Windows 形如 COM3）</td>
+<td>无（required=True）</td>
+</tr>
+<tr>
+<td>--mtest</td>
+<td>手动测试模式（输入方向和速度）</td>
+<td>False</td>
+</tr>
+<tr>
+<td>--atest</td>
+<td>自动测试模式（扫描速度与方向）</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p><code>serial.Serial(strPort, 9600)</code> 用 pySerial 按传入的字符串打开串口，波特率 9600 位/秒（与 Arduino 端的 <code>Serial.begin(9600)</code> 配对）。不带 --mtest/--atest 时进入 <code>fftLive()</code>——音频处理和 FFT 计算都封装在里面。</p>
+<h3 id="1348-手动测试">13.4.8 手动测试<a class="headerlink" href="#1348-手动测试" title="Permanent link">#</a></h3>
+<p>手动测试让你输入特定的电机方向和速度，直接看它们对激光图案的影响：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 13.4.8 节：manualTest——手动测试（Python 3 改 input()） =====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># manual test of motor direction and speeds</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">manualTest</span><span class="p">(</span><span class="n">ser</span><span class="p">):</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'starting manual test...'</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">'enter motor control info such as &lt; 100 1 120 0 &gt;'</span><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>            <span class="n">strIn</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>                                <span class="c1"># ① 原书 raw_input()；Python 3 改用 input()</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>            <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">strIn</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="mi">4</span><span class="p">]]</span> <span class="c1"># ② 按空格切分、取前 4 个、转整数</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>            <span class="n">vals</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">))</span>                       <span class="c1"># ③ 头部插入 'H' 凑足 5 字节</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>            <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'BBBBB'</span><span class="p">,</span> <span class="o">*</span><span class="n">vals</span><span class="p">)</span>             <span class="c1"># ④ 打包</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                                <span class="c1"># ⑤ 发送</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="k">except</span><span class="p">:</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'exiting...'</span><span class="p">)</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        <span class="c1"># shut off the motors</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                      <span class="c1"># ⑥ 任何异常（含 Ctrl-C）→ 清理停机</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'BBBBB'</span><span class="p">,</span> <span class="o">*</span><span class="n">vals</span><span class="p">)</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>        <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>        <span class="n">ser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>①行等待用户在命令提示符下输入值，预期形式如 <code>100 1 120 0</code>——四个数依次是第一对电机的速度、方向和第二对电机的速度、方向（书里写作"电机 A 的速度和方向，然后是电机 B 的"，按 13.4.5 的勘误，第一对值实际落在电机 B）。②行把字符串解析为整数列表，③行在头部插入 'H' 构成完整电机数据，④⑤行打包并按预期格式经串口发送。用户用 Ctrl-C 中断（或发生任何异常）时，⑥行完成清理：正常关闭电机和串口。</p>
+<div class="admonition warning">
+<p class="admonition-title">Python 3 适配：raw_input() 已不存在</p>
+<p>原书 13.4.8 与完整代码里的 <code>raw_input()</code> 是 Python 2 残留，Python 3 下直接 NameError——改成 <code>input()</code> 即可（有趣的是同一章 13.4.1 的 <code>getInputDevice()</code> 里作者用的已经是 <code>input()</code>，只有这里漏改）。本章其余 <code>print</code> 均已是函数式写法，无需调整。另外注意这里的裸 <code>except:</code> 也会捕获输入解析错误：输错格式（如字母）不会重新提示，而是触发清理直接退出测试。</p>
+</div>
+<h2 id="135-完整的-Python-代码">13.5 完整的 Python 代码<a class="headerlink" href="#135-完整的-Python-代码" title="Permanent link">#</a></h2>
+<p>完整程序 laser.py 的组装顺序：import（sys、serial、struct、pyaudio、numpy、math、time.sleep、argparse）→ <code>manualTest()</code>（13.4.8）→ <code>autoTest()</code>（13.4.6）→ <code>getInputDevice()</code>（13.4.1）→ <code>fftLive()</code>（13.4.2–13.4.5 的碎片按序拼进 while 循环）→ <code>main()</code>（argparse + 分发）→ <code>if __name__ == '__main__'</code> 调用 main()。完整代码也可以从 GitHub 下载：<a href="https://github.com/electronut/pp/tree/master/arduino-laser/laser.py">https://github.com/electronut/pp/tree/master/arduino-laser/laser.py</a> 。</p>
+<p>13.4 节拆开讲的循环体拼起来后，fftLive() 只剩 try/except/finally 的收尾结构没展示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 13.5 节：fftLive() 的骨架与退出清理（循环体见 13.4.3–13.4.5） =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">fftLive</span><span class="p">(</span><span class="n">ser</span><span class="p">):</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>                 <span class="c1"># 初始化 pyaudio</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">inputIndex</span> <span class="o">=</span> <span class="n">getInputDevice</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>        <span class="c1"># 选择输入设备</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">fftLen</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">11</span>                        <span class="c1"># FFT 样本数</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">sampleRate</span> <span class="o">=</span> <span class="mi">44100</span>                    <span class="c1"># 采样率</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'opening stream...'</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="n">stream</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>                  <span class="c1"># 打开音频流（13.4.2 节）</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>            <span class="c1"># ……读样本、算 FFT、算三频段、填 vals、打包、写串口、sleep(0.001)……</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'stopping...'</span><span class="p">)</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    <span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'cleaning up'</span><span class="p">)</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>        <span class="n">stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                    <span class="c1"># 关音频流</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>    <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>                         <span class="c1"># 结束 pyaudio</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>    <span class="c1"># shut off motors</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>    <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'H'</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>         <span class="c1"># 速度置 0：Arduino 的 stop() 分支接管</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'BBBBB'</span><span class="p">,</span> <span class="o">*</span><span class="n">vals</span><span class="p">)</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>    <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>    <span class="c1"># close serial</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>    <span class="n">ser</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>                           <span class="c1"># 冲刷缓冲</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>    <span class="n">ser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                           <span class="c1"># 关闭串口，释放系统资源</span>
+</code></pre></div>
+<p>清理的次序值得看一眼：先关音频流、结束 pyaudio（音频资源），再向 Arduino 发"双 0 速度"让它的 <code>stop()</code> 分支停机，最后 flush + close 释放串口——与 autoTest/manualTest 的清理逻辑一致，只是多了一层 <code>finally</code> 保证异常退出也能关流。</p>
+<h2 id="136-运行程序">13.6 运行程序<a class="headerlink" href="#136-运行程序" title="Permanent link">#</a></h2>
+<p>测试流程：组装硬件 → Arduino 连接计算机 → 上传电机驱动代码（13.3 节）→ 确认电池组已连接、激光笔已打开并投射在墙壁之类的平坦表面上。</p>
+<p>作者建议先测试激光显示部分（别忘了把串口字符串改成你自己计算机的）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$ python3 laser.py --port /dev/tty.usbmodem411 --atest
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>('opening ', '/dev/tty.usbmodem1411')
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>staring automatic test...
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>[25, 0, 25, 0]
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>[35, 0, 25, 0]
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>[45, 0, 25, 0]
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>...
+</code></pre></div>
+<p>该测试通过速度和方向的各种组合运转两个电机（打印的正是 <code>vals[1:]</code>——第一对电机的速度、方向，第二对电机的速度、方向），你应该看到投射到墙上的不同激光图案。要停止程序和电机，按 Ctrl-C。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书排印：串口号前后不一致 + Python 2 输出样式</p>
+<p>命令行写的是 <code>/dev/tty.usbmodem411</code>，回显却是 <code>/dev/tty.usbmodem1411</code>——原书两处不一致，以你自己系统里的串口名为准（Windows 下形如 <code>COM3</code>）。另外 <code>('opening ', ...)</code> 这种带括号的输出是 Python 2 print 语句打印元组的样子；Python 3 下 <code>print('opening ', strPort)</code> 输出为 <code>opening  /dev/tty.usbmodem1411</code>，没有括号。</p>
+</div>
+<p>测试成功后就可以开始真正的激光秀：先在计算机上播放喜欢的音乐，然后运行程序（同样注意串口字符串）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$ python3 laser.py --port /dev/tty.usbmodem411
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>('opening ', '/dev/tty.usbmodem1411')
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Found 4 devices. Select input device:
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>0: Built-in Microph
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>1: Built-in Output
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>2: BoomDevice
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>3: AirParrot
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>0
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>Input device chosen: Built-in Microph
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>opening stream...
+</code></pre></div>
+<p>程序列出 4 个音频设备，输入 0 选择内置麦克风，随后打开音频流。此时激光秀会产生许多随音乐和时间变化的有趣图案（图 13-10）。</p>
+<figure>
+  <img src="../images/ch13/fig-13-10.png" class="lq-img" />
+  <figcaption>图 13.10 激光秀的完整布线和投影在墙上的图案：上方是电机与驱动板实物，墙面上的复杂曲线就是双旋转镜合成的图案（截自原书）</figcaption>
+</figure>
+
+<h2 id="137-小结">13.7 小结<a class="headerlink" href="#137-小结" title="Permanent link">#</a></h2>
+<p>本章通过构建一个较复杂的项目提升 Python 和 Arduino 技能：用 Python 和 Arduino 控制电机；用 numpy 获得音频数据的 FFT；控制串口通信；甚至玩转了激光。与第 12 章"传感器 → 数据"的方向相反，这次是"数据 → 执行器"：Python 分析音乐、Arduino 驱动电机，中间是同一个 9600 波特的串口。</p>
+<h2 id="138-实验">13.8 实验<a class="headerlink" href="#138-实验" title="Permanent link">#</a></h2>
+<p>三个进一步尝试的方向：</p>
+<ol>
+<li>
+<p><strong>改造 FFT 转换方案</strong>。程序采用一种自由发挥的方案把 FFT 值转换为电机速度和方向数据（见 13.4.5 的"注意"框——没有错误的答案）。请尝试修改此方案，例如使用不同的频带和标准来改变电机的方向。结合 13.4.4 的警告，一个自然的改造是：用 <code>numpy.fft.rfftfreq</code> 按真实 Hz 划分频段，再重新标定 <code>5*levels[0]</code>、<code>100+levels[1]</code>、阈值 0.1 这组"试错系数"。</p>
+</li>
+<li>
+<p><strong>按"节奏"或音量驱动电机（RMS）</strong>。目前频率信息被转换为电机速度和方向，也可以按音乐的整体"节奏"或音量来让电机运动——计算信号幅度的<strong>均方根</strong>（Root Mean Square，RMS）值。该计算类似于 FFT 计算：读入一组音频数据放入 numpy 数组 x 后，RMS 值按下式计算（与代码一行对应）：</p>
+<div class="arithmatex">\[
+x_{\mathrm{RMS}} = \sqrt{\frac{1}{N}\sum_{n=0}^{N-1} x_n^2}
+\qquad\Longleftrightarrow\qquad
+\texttt{rms = numpy.sqrt(numpy.mean(x**2))}
+\]</div>
+<p>回忆一下：项目中振幅表示为 16 位有符号整数，最大值约 32768（一个要记住的有用数字，用于标准化）。用这个 RMS 振幅与 FFT 结合，可以让激光图案产生更大的变化。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书不严谨：32767 还是 32768</p>
+<p>16 位有符号整数的<strong>最大正值是 32767</strong>，最小值是 −32768（书里说"最大值为 32768"，取的是负向满幅的绝对值）。做归一化分母时用 32768 反而是惯例（<span class="arithmatex">\(2^{15}\)</span>），代码 <code>rms/32768.0</code> 即得 [−1, 1] 量级的音量，两种说法在实际使用中没有差别。</p>
+</div>
+</li>
+<li>
+<p><strong>用光隔离器/继电器控制激光开关</strong>。项目中用胶带保持激光笔打开，能找到更好的方法吗？阅读<strong>光隔离器</strong>（optoisolator）和<strong>继电器</strong>（relay）的相关材料（What-When-How 的 "Relays and Optoisolators" 一文，原书脚注给出网址 what-when-how.com），它们是可以打开和关闭外部电路的设备。使用步骤：首先改造激光笔，让它可以通过外部开关切换——一种方法是永久地将按钮粘到 ON 位置，取出电池，并把两根引线焊接到电池触点上，这样就能用这些电线手动开关激光笔。接下来，通过继电器或光隔离器连接激光笔，用 Arduino 上的数字引脚将其打开，以数字开关替换手动方案：用<strong>光隔离器</strong>时可以直接用 Arduino 切换激光开关；用<strong>继电器</strong>时还需要一个驱动器，通常是一个简单的晶体管电路。有了这样的设置后，再加一些代码：Python 程序运行时发送一个串行命令到 Arduino，在开始之前打开激光笔。</p>
+</li>
+</ol>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>频段切片不等于注释里的 Hz 数</strong>：<code>44100/2048 ≈ 21.5 Hz/bin</code>，<code>fftVals[0:100]</code> 实际约 0–2.1 kHz；<code>fftVals[1000:2500]</code> 超出 rfft 的 1025 个 bin，只剩贴近 22 kHz 的 25 个 bin、再除以 1500 后数值极小。按 Hz 精确分频段要用 <code>numpy.fft.rfftfreq</code>（见 13.4.4）。</li>
+<li><strong>电机 A/B 的名字与代码路径相反</strong>：第一对值（低频速度 + 高频翻转方向）经 <code>move(0,...)</code> 落到电机 B，第二对值落到电机 A；正文"切换电机 A 方向"的说法别照字面接线（见 13.4.5）。</li>
+<li><strong>raw_input() 在 Python 3 已死</strong>：manualTest 里的 <code>raw_input()</code> 直接 NameError，改 <code>input()</code>；裸 <code>except:</code> 连输入格式错误也一起吞掉——输错即退出测试而不是重新提示。</li>
+<li><strong>struct.pack('B') 只收 [0, 255]</strong>：速度值超出范围或为负会抛 struct.error；书里用 <code>% 255</code> 限幅（注意这使上限是 254 而非 255），自己改造转换公式时同样要做限幅。</li>
+<li><strong>头字节 'H' 不是装饰</strong>：串口字节流没有帧边界，一旦从包中间开始读，4 个数据字节全部错位且无法自愈；'H' 提供重同步点，校验失败就 stop()，宁可不动也不要乱转。</li>
+<li><strong>两端波特率必须一致</strong>：<code>Serial.begin(9600)</code> 与 <code>serial.Serial(strPort, 9600)</code> 配对（同第 12 章）；串口一次只能被一个程序占用，Arduino IDE 的串行监视器开着时 Python 端打不开端口。</li>
+<li><strong>清理必须停电机再关串口</strong>：所有三个模式（fftLive/autoTest/manualTest）退出前都发 <code>[ord('H'), 0, 1, 0, 1]</code> 让 Arduino 走 stop() 分支——直接关串口的话，电机保持最后的速度和方向继续转。</li>
+<li><strong>激光安全与电池引线</strong>：调整光路时激光笔长开，光束与镜面反射都不可入眼；改造激光笔外接引线（13.8 实验 3）时注意电池触点绝缘，裸露引线短接会让电池发热。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>项目架构：激光笔 + 两台电机各带一面小镜子 → 图案；Arduino 执行、Python 大脑——读音频、算 FFT、按 5 字节协议发串口指令。</li>
+<li>光学原理：平面镜 A（镜面垂直转轴）反射一个点；倾斜镜 B 旋转扫出椭圆；A 的反射投给 B，两级旋转叠加出复杂图案——数学上与第 2 章万花尺的长短辐圆内旋轮线同族。</li>
+<li>TB6612FNG 分线板保护 Arduino（电机电流大）并驱动双电机；IN 引脚定方向、01/02 供电、PWM 定速度、STBY 待机；内部是 H 桥 + MOSFET。</li>
+<li>FFT：任何声音可分解为成分频率（呼应第 4 章泛音）；时域信号变频域峰值；<span class="arithmatex">\(y(t)=4\sin(2\pi\cdot10t)+2.5\sin(2\pi\cdot30t)\)</span> 的 FFT 在 10/30 Hz 立两个峰、强度比约 1.6；样本数权衡——2048 @ 44100 Hz ≈ 0.046 秒。</li>
+<li>三频段 [0,100]/[100,1000]/[1000,2500] Hz（注释口径）：低频均值 ×5 → 电机 1 速度；中频均值 +100 → 电机 2 速度；高频 &gt; 0.1 阈值 → 电机 1 方向翻转（低频≈节拍、中频≈人声）。</li>
+<li>接线（表 13-1）：D12→BIN2、D11→BIN1、D10→STBY、D9→AIN1、D8→AIN2、D5→PWMB、D3→PWMA、5V→VCC、GND↔GND 与电池负极共地、电池+→VM、电机→A01/A02/B01/B02。</li>
+<li>Arduino 协议：5 字节 'H' + s1 + d1 + s2 + d2；<code>Serial.available() &gt;= 5</code> 攒包、头字节校验失败即 stop()；双 0 速度 → stop()；<code>move(0,s1,d1)</code>/<code>move(1,s2,d2)</code>；delay(20) 节流、无数据 delay(250)。</li>
+<li>move()：STBY 写 HIGH 退出待机；inPin1/inPin2 两个电平定方向（direction==1 时翻转）；<code>analogWrite</code> 输出 [0,255] 的 PWM 占空比调速（digitalWrite 只能写 0/1）。</li>
+<li>Python 流水线：<code>getInputDevice</code> 列设备选输入 → <code>fftLen=2**11</code>、44100 Hz、paInt16 单声道开流 → <code>stream.read(fftLen)</code> → <code>numpy.frombuffer(..., int16)</code> → <code>numpy.fft.rfft(dataArray)*2.0/fftLen</code> → <code>numpy.abs</code> → 三频段 <code>numpy.sum</code> 求均值 → 填 vals → <code>struct.pack('BBBBB', *vals)</code> → <code>ser.write</code>。</li>
+<li>三种运行模式：--atest 自动扫描（4 组方向 × range(25,180,10) 双速度扫描）、--mtest 手动输入、默认 fftLive 实时音频；Ctrl-C 统一清理（停电机 + flush + close）。实验方向：改转换方案、RMS 节奏（<code>rms = numpy.sqrt(numpy.mean(x**2))</code>）、光隔离器/继电器控激光开关。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>laser pointer</td>
+<td>激光笔</td>
+<td>强烈、定向、同相的光束；本章图案光源</td>
+</tr>
+<tr>
+<td>DC motor</td>
+<td>直流电机</td>
+<td>玩具用额定 9V 小电机，轴上粘镜子</td>
+</tr>
+<tr>
+<td>breakout board</td>
+<td>分线板</td>
+<td>方便连接难焊元件的板卡；本章 TB6612FNG 分线板</td>
+</tr>
+<tr>
+<td>TB6612FNG</td>
+<td>——</td>
+<td>SparkFun 1A 双通道电机驱动器，保护 Arduino</td>
+</tr>
+<tr>
+<td>H-bridge</td>
+<td>H 桥</td>
+<td>四开关桥式电路，对角导通决定电机电流方向</td>
+</tr>
+<tr>
+<td>MOSFET</td>
+<td>金属氧化物半导体场效应晶体管</td>
+<td>H 桥里当开关用的晶体管</td>
+</tr>
+<tr>
+<td>STBY</td>
+<td>待机引脚</td>
+<td>写 LOW 两通道断电，写 HIGH 恢复工作</td>
+</tr>
+<tr>
+<td>PWM (pulse width modulation)</td>
+<td>脉冲宽度调制</td>
+<td>快速通断的数字脉冲让器件"看到"连续电压</td>
+</tr>
+<tr>
+<td>duty cycle</td>
+<td>占空比</td>
+<td>脉冲接通时间的百分比，决定功率水平</td>
+</tr>
+<tr>
+<td>analogWrite()</td>
+<td>模拟写</td>
+<td>向输出引脚写 [0,255] 的 PWM 值</td>
+</tr>
+<tr>
+<td>digitalWrite()</td>
+<td>数字写</td>
+<td>只能向输出引脚写 1（HIGH）或 0（LOW）</td>
+</tr>
+<tr>
+<td>Fourier transform</td>
+<td>傅里叶变换</td>
+<td>把任何声音分解为成分频率</td>
+</tr>
+<tr>
+<td>DFT (discrete Fourier transform)</td>
+<td>离散傅里叶变换</td>
+<td>傅里叶变换应用于离散数字信号的结果</td>
+</tr>
+<tr>
+<td>FFT (fast Fourier transform)</td>
+<td>快速傅里叶变换</td>
+<td>计算 DFT 的快速算法；本章用 numpy.fft.rfft</td>
+</tr>
+<tr>
+<td>time domain / frequency domain</td>
+<td>时域 / 频域</td>
+<td>振幅随时间变化 / 频率强度的视角</td>
+</tr>
+<tr>
+<td>rfft</td>
+<td>实数 FFT</td>
+<td>实数信号只算非负频率一半的 FFT，输出 N/2+1 个 bin</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>频率箱</td>
+<td>FFT 输出的一个频率槽，宽 <span class="arithmatex">\(f_s/N\)</span>（本章约 21.5 Hz）</td>
+</tr>
+<tr>
+<td>sample rate</td>
+<td>采样率</td>
+<td>每秒采样数；本章 44100 Hz（CD 标准）</td>
+</tr>
+<tr>
+<td>Nyquist frequency</td>
+<td>奈奎斯特频率</td>
+<td>采样率的一半（22050 Hz），可表达的最高频率</td>
+</tr>
+<tr>
+<td>pyaudio</td>
+<td>——</td>
+<td>Python 音频输入输出库，<code>p.open()</code> 开音频流</td>
+</tr>
+<tr>
+<td>pySerial</td>
+<td>——</td>
+<td>Python 串口库 <code>import serial</code>（同第 12 章）</td>
+</tr>
+<tr>
+<td>struct.pack('BBBBB')</td>
+<td>字节打包</td>
+<td>把 5 个 [0,255] 整数打包成串口字节串</td>
+</tr>
+<tr>
+<td>baud rate</td>
+<td>波特率</td>
+<td>串口速度；本章两端 9600</td>
+</tr>
+<tr>
+<td>RMS (root mean square)</td>
+<td>均方根</td>
+<td><span class="arithmatex">\(\sqrt{\mathrm{mean}(x^2)}\)</span>，信号整体幅度/音量</td>
+</tr>
+<tr>
+<td>optoisolator</td>
+<td>光隔离器</td>
+<td>用光耦合隔离并开关外部电路的器件</td>
+</tr>
+<tr>
+<td>relay</td>
+<td>继电器</td>
+<td>电磁开关外部电路；需晶体管驱动电路</td>
+</tr>
+<tr>
+<td>hypotrochoid</td>
+<td>长短辐圆内旋轮线</td>
+<td>第 2 章万花尺曲线；本章双镜图案的近亲</td>
+</tr>
+<tr>
+<td>Lissajous figure</td>
+<td>利萨如图形</td>
+<td>两个正交周期运动合成的轨迹（拓展）</td>
+</tr>
+<tr>
+<td>persistence of vision</td>
+<td>视觉暂留</td>
+<td>高转速下光点轨迹被看成连续形状（拓展）</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
