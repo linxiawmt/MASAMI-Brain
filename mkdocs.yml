@@ -219,5 +219,21 @@ nav:
       - 第4章 随机游走: mc/ch04.md
       - 第5章 蒙特卡罗优化方法: mc/ch05.md
       - 第6章 再谈马尔可夫链蒙特卡罗: mc/ch06.md
+  - Python极客项目编程:
+      - pg/index.md
+      - 第1章 解析 iTunes 播放列表: pg/ch01.md
+      - 第2章 万花尺: pg/ch02.md
+      - 第3章 Conway 生命游戏: pg/ch03.md
+      - 第4章 用 Karplus-Strong 算法产生音乐泛音: pg/ch04.md
+      - 第5章 类鸟群：仿真鸟群: pg/ch05.md
+      - 第6章 ASCII 文本图形: pg/ch06.md
+      - 第7章 照片马赛克: pg/ch07.md
+      - 第8章 三维立体画: pg/ch08.md
+      - 第9章 理解 OpenGL: pg/ch09.md
+      - 第10章 粒子系统: pg/ch10.md
+      - 第11章 体渲染: pg/ch11.md
+      - 第12章 Arduino 简介: pg/ch12.md
+      - 第13章 激光音乐秀: pg/ch13.md
+      - 第14章 基于树莓派的天气监控器: pg/ch14.md
   - 学习资源:
       - resources/index.md

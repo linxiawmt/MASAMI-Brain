@@ -41,17 +41,22 @@ hide:
         <div class="now-note">14 章完结留档，过阵子回头复习</div>
         <div class="now-bar done"><i style="--w:100%"></i></div>
       </div>
+      <div class="now-item">
+        <div class="now-name">《Python极客项目编程》</div>
+        <div class="now-note">14 章全完结，能跑的项目都亲手跑了一遍</div>
+        <div class="now-bar done"><i style="--w:100%"></i></div>
+      </div>
     </aside>
   </section>
 
   <!-- 数字瓷片：四个等宽，数字滚动 -->
   <div class="bento stat reveal" style="--i:1">
-    <div class="stat-num" data-count="9">0</div>
+    <div class="stat-num" data-count="12">0</div>
     <div class="stat-label">书架板块</div>
     <div class="stat-sub">SECTIONS</div>
   </div>
   <div class="bento stat reveal" style="--i:2">
-    <div class="stat-num" data-count="104">0</div>
+    <div class="stat-num" data-count="123">0</div>
     <div class="stat-label">章笔记在线</div>
     <div class="stat-sub">CHAPTERS</div>
   </div>
@@ -71,7 +76,7 @@ hide:
   <!-- 书架：九张等宽瓷片，3×3 对称（markdown 容器必须在顶层） -->
   <div class="sec-head reveal" style="--i:5">
     <span class="sec-kicker">PROJECTS</span>
-    <span class="sec-title">书架上现在有十一样东西</span>
+    <span class="sec-title">书架上现在有十二样东西</span>
   </div>
 
 <div class="home-grid-cards" markdown>
@@ -156,6 +161,14 @@ hide:
     胡寿松《基础教程》第五版全书 9 章完结：根轨迹、奈氏判据、校正、离散、非线性、状态空间；MATLAB / Python 双代码对照。
 
     [:octicons-arrow-right-24: 去看](ctrl/index.md)
+
+-   :fontawesome-solid-gamepad:{ .lg .middle } **Python极客项目编程**
+
+    ---
+
+    Venkitachalam 的 14 个极客项目：万花尺、生命游戏、类鸟群、体渲染、Arduino 激光秀——能实跑的我全跑了，OpenGL 那几章把着色器逻辑啃透。
+
+    [:octicons-arrow-right-24: 去看](pg/index.md)
 
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
