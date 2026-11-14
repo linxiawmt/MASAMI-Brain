@@ -7,7 +7,7 @@ icon: material/gamepad-variant
 Mahesh Venkitachalam《Python Playground》全书 **14 章**精读笔记，五个板块：热身运动（iTunes 解析、万花尺）→ 模拟生命（生命游戏、Karplus-Strong 弦音、类鸟群）→ 图片之乐（ASCII 艺术、照片马赛克、三维立体画）→ 走进三维（OpenGL、粒子烟花、体渲染）→ 玩转硬件（Arduino 光敏、激光音乐秀、树莓派气象站）。
 
 !!! note "运行环境与代码策略"
-    conda 环境 `machinelearn`（Python 3.10 + NumPy + Matplotlib + Pillow）。原书基于 Python 3.3，笔记代码已全部核对为 Python 3 可运行写法；绘图 / 模拟 / 图像类项目（第 1、3–8 章）在本机实跑出结果图（标注"代码实跑"），`turtle` 窗口类项目用 Matplotlib 复现数学曲线，OpenGL 与硬件类项目（第 9–14 章）忠实呈现代码与电路原理，概念示意图截自原书。每章的完整可运行脚本（含 2 个 Arduino sketch）在 [code/](code/) 目录，按 `chNN_书名.py` 命名，可直接下载运行。
+    conda 环境 `machinelearn`（Python 3.10 + NumPy + Matplotlib + Pillow）。原书基于 Python 3.3，笔记代码已全部核对为 Python 3 可运行写法；绘图 / 模拟 / 图像类项目（第 1、3–8 章）在本机实跑出结果图（标注"代码实跑"），`turtle` 窗口类项目用 Matplotlib 复现数学曲线，OpenGL 与硬件类项目（第 9–14 章）忠实呈现代码与电路原理，概念示意图截自原书。每章的分节代码在 [nb/](nb/) 目录（`chNN.ipynb`，含 Arduino sketch cell）；第 1、3–8 章带本机固定种子实跑输出，第 9–14 章为完整实现。
 
 <div class="grid cards" markdown>
 

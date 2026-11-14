@@ -28,7 +28,7 @@ hide:
       <div class="now-kicker">NOW · 手头在啃</div>
       <div class="now-item">
         <div class="now-name">《随机模拟方法及应用》</div>
-        <div class="now-note">11 章全完结，MCMC 到复杂系统一网打尽</div>
+        <div class="now-note">Shonkwiler 6 章 1:1 全完结，附录并入正文</div>
         <div class="now-bar done"><i style="--w:100%"></i></div>
       </div>
       <div class="now-item">
@@ -150,7 +150,7 @@ hide:
 
     ---
 
-    肖柳青教材 11 章 + Dunn/Shonkwiler 两本英文书的知识血统，11 份 Jupyter Notebook 全实跑——蒙提霍尔到 Ising 一网打尽。
+    Shonkwiler《Explorations in Monte Carlo Methods》6 章 1:1 逐节对照、附录 A/B/D 内联，Dunn 作补充框，6 份 Notebook 全实跑——蒲丰投针到 Ising 一网打尽。
 
     [:octicons-arrow-right-24: 去看](mc/index.md)
 
