@@ -5680,6 +5680,7 @@
 <p><strong>本章解决</strong>：一个真实的数据小项目——解析 iTunes 导出的播放列表 XML 文件：用字典查找重复音轨，用集合求多个播放列表的共同音轨，用 numpy 数组配合 matplotlib 画出音轨时长直方图和评分-时长散点图。
 <strong>承上启下</strong>：这是全书第一个项目，规模最小，但"读文件 → 用数据结构处理 → 出图 → 命令行分派"的骨架贯穿全书：第 2 章万花尺沿用 argparse 与 matplotlib 的套路，第 6 章起处理图像时还会反复用到 numpy 数组的向量化运算。字典、集合、元组这三种 Python 结构也将在后续项目中反复登场。</p>
 </blockquote>
+<p>📓 <strong>章代码</strong>：<a href="../nb/ch01.ipynb">nb/ch01.ipynb</a>（分节代码；ch01–08 含固定种子实跑输出，ch09–14 为完整实现待硬件环境）</p>
 <p>全书从一个小项目开始热身：<strong>playlist.py</strong>，它在 iTunes 播放列表文件中查找重复的乐曲音轨，并绘制各种统计数据（音轨长度、评分）。路线是先看 iTunes 播放列表的文件格式，再用 Python 提取文件信息，最后用 matplotlib 画图。学完本章能掌握：</p>
 <ul>
 <li>XML 和属性列表（p-list）文件；</li>

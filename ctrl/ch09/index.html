@@ -8721,9 +8721,9 @@ y=\bar{\boldsymbol{c}}\bar{\boldsymbol{x}}
 <p>其中 <span class="arithmatex">\(\bar{\boldsymbol{C}}\bar{\boldsymbol{A}}^k=\boldsymbol{C}\boldsymbol{A}^k\boldsymbol{P}\)</span>，右乘满秩阵 <span class="arithmatex">\(\boldsymbol{P}\)</span> 不改变秩。</p>
 <div class="admonition note">
 <p class="admonition-title">拓展：格拉姆矩阵判据（补充，原书未展开）</p>
-<p>除秩判据与规范形判据外，还有一类<strong>格拉姆矩阵判据</strong>：线性定常连续系统 (9.66) 在 <span class="arithmatex">\([t_0,t_1]\)</span> 完全可控的充要条件是可控性格拉姆矩阵
-[ \boldsymbol{W}<em t_0="t_0">c(t_0,t_1)=\int</em><sup _boldsymbol_A="\boldsymbol{A">{t_1}\mathrm{e}</sup>}(t_1-\tau)}\boldsymbol{B}\boldsymbol{B}^{\mathrm T}\mathrm{e<sup T="T" _mathrm="\mathrm">{\boldsymbol{A}</sup>\tau ]
-非奇异；完全可观测的充要条件是可观测性格拉姆矩阵 }(t_1-\tau)}\,\mathrm{d<span class="arithmatex">\(\boldsymbol{W}_o(t_0,t_1)=\int_{t_0}^{t_1}\mathrm{e}^{\boldsymbol{A}^{\mathrm T}(t-t_0)}\boldsymbol{C}^{\mathrm T}\boldsymbol{C}\mathrm{e}^{\boldsymbol{A}(t-t_0)}\,\mathrm{d}t\)</span> 非奇异。定常时它们与 <span class="arithmatex">\(\boldsymbol{A}\boldsymbol{W}_c+\boldsymbol{W}_c\boldsymbol{A}^{\mathrm T}+\boldsymbol{B}\boldsymbol{B}^{\mathrm T}=\boldsymbol{0}\)</span>、<span class="arithmatex">\(\boldsymbol{A}^{\mathrm T}\boldsymbol{W}_o+\boldsymbol{W}_o\boldsymbol{A}+\boldsymbol{C}^{\mathrm T}\boldsymbol{C}=\boldsymbol{0}\)</span> 的解对应，MATLAB/Python 中的 <code>gram</code> 函数即源于此（9.5 节给实现）。格拉姆判据理论价值在于对时变系统、随机系统同样好用。</p>
+<p>除秩判据与规范形判据外，还有一类<strong>格拉姆矩阵判据</strong>：线性定常连续系统 (9.66) 在 <span class="arithmatex">\([t_0,t_1]\)</span> 完全可控的充要条件是可控性格拉姆矩阵</p>
+<div class="arithmatex">\[ \boldsymbol{W}_c(t_0,t_1)=\int_{t_0}^{t_1}\mathrm{e}^{\boldsymbol{A}(t_1-\tau)}\boldsymbol{B}\boldsymbol{B}^{\mathrm T}\mathrm{e}^{\boldsymbol{A}^{\mathrm T}(t_1-\tau)}\,\mathrm{d}\tau \]</div>
+<p>非奇异；完全可观测的充要条件是可观测性格拉姆矩阵 <span class="arithmatex">\(\boldsymbol{W}_o(t_0,t_1)=\int_{t_0}^{t_1}\mathrm{e}^{\boldsymbol{A}^{\mathrm T}(t-t_0)}\boldsymbol{C}^{\mathrm T}\boldsymbol{C}\mathrm{e}^{\boldsymbol{A}(t-t_0)}\,\mathrm{d}t\)</span> 非奇异。定常时它们与 <span class="arithmatex">\(\boldsymbol{A}\boldsymbol{W}_c+\boldsymbol{W}_c\boldsymbol{A}^{\mathrm T}+\boldsymbol{B}\boldsymbol{B}^{\mathrm T}=\boldsymbol{0}\)</span>、<span class="arithmatex">\(\boldsymbol{A}^{\mathrm T}\boldsymbol{W}_o+\boldsymbol{W}_o\boldsymbol{A}+\boldsymbol{C}^{\mathrm T}\boldsymbol{C}=\boldsymbol{0}\)</span> 的解对应，MATLAB/Python 中的 <code>gram</code> 函数即源于此（9.5 节给实现）。格拉姆判据理论价值在于对时变系统、随机系统同样好用。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">拓展：零极点对消与可控可观测的关系（补充）</p>

@@ -5736,6 +5736,7 @@
 <p><strong>本章解决</strong>：为什么计算机播放一个 146.83 Hz 的正弦波听起来不像吉他——乐音由基本频率和泛音共同构成；Karplus-Strong 算法用一个环形缓冲区、一次求平均（低通滤波）和一个衰减因子同时造出两者，模拟拨弦音色，并把音符保存为 WAV 文件、随机演奏。
 <strong>承上启下</strong>：argparse 命令行解析与 matplotlib 绘图沿用第 2 章的套路，numpy 数组在第 3 章的细胞网格之后再度登场——这次装的是音频样本；collections.deque、wave、pygame 是本章新增角色。第 5 章的类鸟群会把 numpy 向量化推得更远。</p>
 </blockquote>
+<p>📓 <strong>章代码</strong>：<a href="../nb/ch04.ipynb">nb/ch04.ipynb</a>（分节代码；ch01–08 含固定种子实跑输出，ch09–14 为完整实现待硬件环境）</p>
 <p>任何乐音的主要特点是它的<strong>音调</strong>（<strong>pitch</strong>），即频率（<strong>frequency</strong>）——每秒的振动数，单位赫兹（Hz）。原声吉他第三根弦产生音符 D，频率是 146.83 Hz；在计算机上创建频率为 146.83 Hz 的正弦波，就可以模拟这种声音（图 4.1）。</p>
 <p>遗憾的是，如果在计算机上播放这个正弦波，听起来不会像吉他或钢琴。播放相同的音符时，是什么让计算机的声音与乐器如此不同？</p>
 <figure>

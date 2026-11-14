@@ -5831,7 +5831,7 @@
 </div>
 <figure>
   <img src="../images/ch06/out-6-4.png" class="lq-img" />
-  <figcaption>代码实跑（实验 4）：小麦生长 MCMC 后验——左：先验 N(0.20, 0.04²)（虚线）vs 后验直方图（均值 0.32）；右：模型直线与数据（\(\ln y=m(t-1)+0.01\)）</figcaption>
+  <figcaption>代码实跑（实验 4）：小麦生长 MCMC 后验——左：先验 N(0.20, 0.04²)（虚线）vs 后验直方图（均值 0.32）；右：模型直线与数据（<span class="arithmatex">\(\ln y=m(t-1)+0.01\)</span>）</figcaption>
 </figure>
 
 <h3 id="611-PyMCPymc3">6.1.1 PyMC（Pymc3）<a class="headerlink" href="#611-PyMCPymc3" title="Permanent link">#</a></h3>
@@ -5860,7 +5860,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <p><strong><span class="arithmatex">\(X|Y\sim N(\rho y,\ 1-\rho^2)\)</span></strong>，由对称性 <span class="arithmatex">\(Y|X\sim N(\rho x,\ 1-\rho^2)\)</span>——都是正态，直接可采！书 Fig 6.5 画出等高线上的 Gibbs 步进（水平到新 <span class="arithmatex">\(x\)</span>、竖直到新 <span class="arithmatex">\(y\)</span>）。离散双元情形的收敛证明在书 Fig 6.6（质量流入流出 + 边缘分解）。</p>
 <figure>
   <img src="../images/ch06/out-6-5.png" class="lq-img" />
-  <figcaption>代码实跑（实验 5）：Gibbs 抽样 \(\rho=0.5\) 双正态——左：等高线 + 20 步步进轨迹（水平/竖直交替，书 Fig 6.5 同款）；右：样本散点贴合联合密度、两坐标的样本均值/方差/相关系数 vs 理论（0, 1, ρ）</figcaption>
+  <figcaption>代码实跑（实验 5）：Gibbs 抽样 <span class="arithmatex">\(\rho=0.5\)</span> 双正态——左：等高线 + 20 步步进轨迹（水平/竖直交替，书 Fig 6.5 同款）；右：样本散点贴合联合密度、两坐标的样本均值/方差/相关系数 vs 理论（0, 1, ρ）</figcaption>
 </figure>
 
 <h2 id="63-蒙特卡罗积分求积Monte-Carlo-Integration-Quadrature">6.3 蒙特卡罗积分：求积（Monte Carlo Integration: Quadrature）<a class="headerlink" href="#63-蒙特卡罗积分求积Monte-Carlo-Integration-Quadrature" title="Permanent link">#</a></h2>
@@ -5896,7 +5896,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <p>书例（3D/4D 球体积）：第一卦限单位球体积 <span class="arithmatex">\(\int\int\int\sqrt{1-(x^2+y^2)}\,dydx\approx0.523599\)</span>（式 (6.19)，<span class="arithmatex">\(=\frac12\cdot\frac\pi6\)</span>）。采样密度 <span class="arithmatex">\(q\)</span> = 球域上的均匀分布：极坐标雅可比 <span class="arithmatex">\(r\)</span> 给出 <span class="arithmatex">\(q(r,\theta)=\frac{4r}{\pi}\)</span>，边缘 <span class="arithmatex">\(q_R=2r\)</span>（cdf <span class="arithmatex">\(r^2\)</span>，反演 <span class="arithmatex">\(R=\sqrt{U_1}\)</span>）、条件 <span class="arithmatex">\(q_{\theta|R}=\frac2\pi\)</span>（<span class="arithmatex">\(\theta=\frac\pi2U_2\)</span>）——<strong>100% 高效</strong>（对照"方形撒点丢弃法"仅 78.5%）。4D 版（式 (6.18)，值 <span class="arithmatex">\(\pi^2/32\approx0.308552\)</span>）：球坐标雅可比 <span class="arithmatex">\(\rho^2\sin\phi\)</span>，得 <span class="arithmatex">\(\rho=\sqrt[3]{U_1}\)</span>、<span class="arithmatex">\(\phi=\arccos(1-U_2)\)</span>、<span class="arithmatex">\(\theta=\frac\pi2U_3\)</span>（书 Alg 6.7，误差 0.86%）。</p>
 <figure>
   <img src="../images/ch06/out-6-6.png" class="lq-img" />
-  <figcaption>代码实跑（实验 6/7）：左——样本均值法估 \(\int_0^\infty\frac{dx}{(x+1)^2}=1\)，log-log 误差斜率 ≈ −0.5（式 (6.17)）；中——维数灾难：Riemann 和在 d=1,2,4 的误差 \(O(n^{-1/d})\) vs MC 恒 −1/2；右——3D/4D 球体积估计收敛到 0.5236/0.3086</figcaption>
+  <figcaption>代码实跑（实验 6/7）：左——样本均值法估 <span class="arithmatex">\(\int_0^\infty\frac{dx}{(x+1)^2}=1\)</span>，log-log 误差斜率 ≈ −0.5（式 (6.17)）；中——维数灾难：Riemann 和在 d=1,2,4 的误差 <span class="arithmatex">\(O(n^{-1/d})\)</span> vs MC 恒 −1/2；右——3D/4D 球体积估计收敛到 0.5236/0.3086</figcaption>
 </figure>
 
 <h3 id="631-方差缩减Variance-Reduction">6.3.1 方差缩减（Variance Reduction）<a class="headerlink" href="#631-方差缩减Variance-Reduction" title="Permanent link">#</a></h3>
@@ -5931,7 +5931,7 @@ f_{X|Y}(x|y)=\frac{1}{\sqrt{2\pi}\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x-\rh
 <p><span class="arithmatex">\(Q\)</span> 独立估计（如用域上均匀采样比 <span class="arithmatex">\(\hat q/h_{\text{unif}}\)</span>）。书例： revisit 三角域积分 0.7627，<span class="arithmatex">\(\hat q=\sqrt2-x-y\)</span> 由 MCMC 采样（<span class="arithmatex">\(Q=2^{3/2}/6\)</span> 另估）：20 万次试验误差 1.6%（对照：精确归一斜坡采样 0.14%、均匀 0.06%）——<strong>MCMC 求积可行但常数更大</strong>，能不用就不用。</p>
 <figure>
   <img src="../images/ch06/out-6-10.png" class="lq-img" />
-  <figcaption>代码实跑（实验 10）：MCMC 求积——从 \(\hat q=\sqrt2-x-y\)（三角域）Metropolis 采样估 0.7627：收敛更慢（常数大），但只用了非负函数、没做任何归一化与反演——买的是通用性</figcaption>
+  <figcaption>代码实跑（实验 10）：MCMC 求积——从 <span class="arithmatex">\(\hat q=\sqrt2-x-y\)</span>（三角域）Metropolis 采样估 0.7627：收敛更慢（常数大），但只用了非负函数、没做任何归一化与反演——买的是通用性</figcaption>
 </figure>
 
 <h2 id="64-舍入误差Round-off-Error">6.4 舍入误差（Round-off Error）<a class="headerlink" href="#64-舍入误差Round-off-Error" title="Permanent link">#</a></h2>

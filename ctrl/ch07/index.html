@@ -7215,24 +7215,24 @@ c(k)=r(k)+5c(k-1)-6c(k-2)
 \]</div>
 <p>输入序列 <span class="arithmatex">\(r(k)=1\)</span>，初始条件 <span class="arithmatex">\(c(0)=0\)</span>，<span class="arithmatex">\(c(1)=1\)</span>。试用迭代法求输出序列 <span class="arithmatex">\(c(k)\)</span>，<span class="arithmatex">\(k=0,1,2,\dots,6\)</span>。</p>
 <p>解 根据初始条件及递推关系：</p>
-<p>[
+<div class="arithmatex">\[
 c(0)=0,\quad c(1)=1
-]
-[
+\]</div>
+<div class="arithmatex">\[
 c(2)=r(2)+5c(1)-6c(0)=6
-]
-[
+\]</div>
+<div class="arithmatex">\[
 c(3)=r(3)+5c(2)-6c(1)=25
-]
-[
+\]</div>
+<div class="arithmatex">\[
 c(4)=r(4)+5c(3)-6c(2)=90
-]
-[
+\]</div>
+<div class="arithmatex">\[
 c(5)=r(5)+5c(4)-6c(3)=301
-]
-[
+\]</div>
+<div class="arithmatex">\[
 c(6)=r(6)+5c(5)-6c(4)=966
-]</p>
+\]</div>
 <p><strong>(2) z 变换法</strong>。对差分方程两端取 z 变换，利用实数位移定理得到以 z 为变量的代数方程；解出 <span class="arithmatex">\(C(z)\)</span> 后取 z 反变换得输出序列 <span class="arithmatex">\(c(k)\)</span>。</p>
 <p><strong>例 7-15</strong> 试用 z 变换法解下列二阶差分方程：</p>
 <div class="arithmatex">\[
@@ -7244,12 +7244,12 @@ c(k+2)+3c(k+1)+2c(k)=0
 \]</div>
 <p>设初始条件 <span class="arithmatex">\(c(0)=0\)</span>，<span class="arithmatex">\(c(1)=1\)</span>。</p>
 <p>解 对差分方程每一项取 z 变换，根据实数位移定理：</p>
-<p>[
-\mathcal{Z}[c(k+2)]=z<sup>2C(z)-z</sup>2c(0)-zc(1)=z^2C(z)-z
-]
-[
+<div class="arithmatex">\[
+\mathcal{Z}[c(k+2)]=z^2C(z)-z^2c(0)-zc(1)=z^2C(z)-z
+\]</div>
+<div class="arithmatex">\[
 \mathcal{Z}[3c(k+1)]=3zC(z)-3zc(0)=3zC(z),\qquad \mathcal{Z}[2c(k)]=2C(z)
-]</p>
+\]</div>
 <p>于是差分方程变换为 z 代数方程</p>
 <div class="arithmatex">\[
 (z^2+3z+2)C(z)=z

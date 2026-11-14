@@ -1,0 +1,35 @@
+===== 习题 1：g(x)=exp(i*pi*a^2*x^2) 的 DFT 与吸收边界预乘 =====
+    delta=0.0312 m, Nyquist=16.0 /m；f_loc = a^2*x = 16x，混叠边界 |x| = 1.00 m
+    窗在 |x|=1 m（=混叠边界）处 |w| = 0.368；|x|=2 m 处 0.00e+00
+    低频段 |f|<=8 与解析 FT 的最大偏差：无窗 DFT 0.250，加窗 DFT 0.001（振幅尺度 1/a = 0.25）
+    已保存 E:\Desktop\HOLOGRAPHY BOOK\MASAMI-Brain代码\python\waveprop\ch8\out_fig10_prob1.png
+===== 习题 2：式 (8.20) -> (8.22) 的代数填充（约束 3 与分段数无关） =====
+    起点（式 8.20）：(1+Dz1/R)*d1 - w*Dz1/D1 <= d2 <= (1+Dz1/R)*d1 + w*Dz1/D1
+    代入 d2 = (1-a2)*d1 + a2*dn、Dz1 = a2*Dz（式 8.21）：
+      (1+a2*Dz/R)*d1 - w*a2*Dz/D1 <= (1-a2)*d1 + a2*dn
+                                <= (1+a2*Dz/R)*d1 + w*a2*Dz/D1
+    左：a2*dn >= a2*d1 + a2*Dz*d1/R - w*a2*Dz/D1  （移项合并 (1-a2)d1）
+    右：a2*dn <= a2*d1 + a2*Dz*d1/R + w*a2*Dz/D1
+    两边除以 a2（a2>0）——alpha_2 严格消去：
+      (1+Dz/R)*d1 - w*Dz/D1 <= dn <= (1+Dz/R)*d1 + w*Dz/D1   （式 8.22）
+    与式 (7.53) 完全相同 —— 约束 3 对任意分段数一致；
+    数值复核见工程 1 验证 0（1000 组随机参数判定不一致 = 0 组）。
+===== 习题 3：点源 100 km -> 2 m 望远镜的采样图与单次/分段对比 =====
+    取 delta1 = delta2 = 1 cm、N = 1024（第 7 章习题 2 的选点）
+    约束 2（D1->0）：N >= D2/(2*dn) + w*Dz/(2*d1*dn) = 600
+    约束 4（单次）：N >= w*Dz/(d1*dn) = 1000  -> 主导
+    分段视角：Delta_z_max = min^2*N/lambda = 1.024e+05 m >= Dz = 1e5 m（余量仅 2% —— N=1024 正是约束 4 逼出来的）-> 单次可行；分 2 段则每段约束 4 只需 N >= 500，余量 x4
+    对照书例（delta1=66.7um, delta_n=200um, N=128, Dz=2m）：Delta_z_max = 0.57 m << 2 m -> 必须分段
+    结论：分段的收益由 min(delta1,deltan)^2*N/lambda 相对 Dz 的大小决定；点源长距场景 delta~cm 量级，约束 4 天然宽松
+    已保存 E:\Desktop\HOLOGRAPHY BOOK\MASAMI-Brain代码\python\waveprop\ch8\out_fig11_prob3.png
+===== 习题 4：环形孔径（D_out=1.5m, D_in=0.5m）聚焦 100 km =====
+    delta1 = 50.0 mm（30 点跨外径）、delta_n = 2.5 mm（Airy 半径 10.6 mm）、N = 1024
+    约束 2（ROI 0.5m）：N >= 635.0 = 2^9.31 -> N=1024 成立
+    约束 3（R=-Dz，聚焦到目标）：|1+Dz/R| = 0 < D2/D1 -> 免检（区间 [-87, 87] mm 恒含 delta_n）
+    约束 4：Delta_z_max = min^2*N/lambda = 4923 m -> 至少 21 段（22 平面）
+    取 21 段（每段 4.8 km，<= Delta_z_max）
+    仿真：21 次分段传播（收缩网格 m=0.050，网格跟随光束收缩）……
+    解析峰值辐照度 = 1.460e+02；仿真/解析峰值比 = 0.9992
+    ROI(+-0.25 m)内：|dI|/峰值 = 1.00e-02；相位残差(|U|>5%峰值) = 3.64e-04 rad
+    已保存 E:\Desktop\HOLOGRAPHY BOOK\MASAMI-Brain代码\python\waveprop\ch8\out_fig12_prob4.png
+    相位切片：二次相位系数拟合（仿真）= 2.5315e+01 /m^2，解析 = 2.4166e+01 /m^2

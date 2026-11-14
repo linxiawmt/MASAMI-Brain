@@ -6020,23 +6020,23 @@ S_n=\sum_{i=1}^nX_i\]</div>
 <div class="arithmatex">\[n=1,2,\dots\tag{4.1}
 \]</div>
 <p>由独立性（第 1 章式 (1.18)(1.33)）：</p>
-<p>[
+<div class="arithmatex">\[
 \mathbb E(S_n)=n(p-q)\,\Delta x,\tag{4.2}
-]
-[
-\operatorname{var}(X_i)=p(\Delta x)^2+q(-\Delta x)<sup>2-(p-q)</sup>2\Delta x^2=\Delta x<sup>2\big(p+q-(p-q)</sup>2\big)=4pq\,\Delta x^2
+\]</div>
+<div class="arithmatex">\[
+\operatorname{var}(X_i)=p(\Delta x)^2+q(-\Delta x)^2-(p-q)^2\Delta x^2=\Delta x^2\big(p+q-(p-q)^2\big)=4pq\,\Delta x^2
 \quad\Longrightarrow\quad
 \operatorname{var}(S_n)=4npq\,\Delta x^2.\tag{4.3}
-]</p>
+\]</div>
 <p>标准差 <span class="arithmatex">\(\sigma=2\sqrt{npq}\,\Delta x\)</span>；<span class="arithmatex">\(p=q=\frac12\)</span> 时 <span class="arithmatex">\(=\sqrt n\,\Delta x\)</span>——<strong>游走按 <span class="arithmatex">\(\sqrt n\)</span> 弥散</strong>（第 2 章 Gibrat 的乘法对应物：位移按根号长）。</p>
 <figure>
   <img src="../images/ch04/out-4-1.png" class="lq-img" />
-  <figcaption>代码实跑（实验 1）：200,000 条 30 步公平游走终点直方图叠加正态 \(N(0, n\Delta x^2)\)（书 Fig 4.1 复刻）；均值/方差实测 vs 式 (4.2)(4.3)</figcaption>
+  <figcaption>代码实跑（实验 1）：200,000 条 30 步公平游走终点直方图叠加正态 <span class="arithmatex">\(N(0, n\Delta x^2)\)</span>（书 Fig 4.1 复刻）；均值/方差实测 vs 式 (4.2)(4.3)</figcaption>
 </figure>
 
 <figure>
   <img src="../images/ch04/out-4-2.png" class="lq-img" />
-  <figcaption>代码实跑（实验 2，习题 8）：偏置游走 \(p=0.6\)、30 步——终点直方图贴合 \(N(30(0.2), 4\cdot30\cdot0.24)\)：漂移 + 方差公式双验证</figcaption>
+  <figcaption>代码实跑（实验 2，习题 8）：偏置游走 <span class="arithmatex">\(p=0.6\)</span>、30 步——终点直方图贴合 <span class="arithmatex">\(N(30(0.2), 4\cdot30\cdot0.24)\)</span>：漂移 + 方差公式双验证</figcaption>
 </figure>
 
 <p><strong>一维常返性（recurrence）</strong>：游走按 <span class="arithmatex">\(\sqrt n\)</span> 弥散，似乎会一去不返？<strong>错</strong>——1d 游走以概率 1 回到原点，且无穷多次。书 Fig 4.2 的自相似论证：设 <span class="arithmatex">\(R\)</span>=从原点出发终将回到原点的概率。首步对称，不妨设向右到 <span class="arithmatex">\(x=1\)</span>；下一步 &frac12; 概率直接回原点，否则到 <span class="arithmatex">\(x=2\)</span>——而从 <span class="arithmatex">\(x=2\)</span> 回到原点必须先回 <span class="arithmatex">\(x=1\)</span>，这条概率恰是 <span class="arithmatex">\(R\)</span>（线的无穷性保证自相似）：</p>
@@ -6079,7 +6079,7 @@ u(x,t)=\frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}} .
 <p>验证只需对 (4.6) 求对数微分：<span class="arithmatex">\(\ln u=-\tfrac12\ln(4\pi Dt)-\tfrac{x^2}{4Dt}\)</span> 给出<span class="arithmatex">\(u_t=u\big(\tfrac{x^2}{4Dt^2}-\tfrac{1}{2t}\big)\)</span> 与 <span class="arithmatex">\(u_{xx}=u\big(\tfrac{x^2}{4D^2t^2}-\tfrac{1}{2Dt}\big)\)</span>，两式立得 <span class="arithmatex">\(D\,u_{xx}=u_t\)</span>。扩散方程的解叫<strong>调和函数（harmonic functions）</strong>（§4.7 回归）。</p>
 <figure>
   <img src="../images/ch04/out-4-4.png" class="lq-img" />
-  <figcaption>代码实跑（实验 4）：扩散标度坍缩——三组 \((\Delta x,\Delta t)\) 保持 \(D=\frac12\)，终点直方图坍缩到同一密度曲线 \(\frac{e^{-x^2/4Dt}}{\sqrt{4\pi Dt}}\)；\(D\) 变化则曲线按 \(\sqrt{Dt}\) 展宽</figcaption>
+  <figcaption>代码实跑（实验 4）：扩散标度坍缩——三组 <span class="arithmatex">\((\Delta x,\Delta t)\)</span> 保持 <span class="arithmatex">\(D=\frac12\)</span>，终点直方图坍缩到同一密度曲线 <span class="arithmatex">\(\frac{e^{-x^2/4Dt}}{\sqrt{4\pi Dt}}\)</span>；<span class="arithmatex">\(D\)</span> 变化则曲线按 <span class="arithmatex">\(\sqrt{Dt}\)</span> 展宽</figcaption>
 </figure>
 
 <h2 id="43-布朗运动Brownian-Motion">4.3 布朗运动（Brownian Motion）<a class="headerlink" href="#43-布朗运动Brownian-Motion" title="Permanent link">#</a></h2>
@@ -6146,7 +6146,7 @@ P=e^{-rT}E.\tag{4.10}
 <p>书运行 6 次得 0.9388, 0.8581, 0.8943, 0.8699, 0.9085（均值 0.8898、标准差 0.0276），Black–Scholes 精确值 <strong>0.9056</strong>——0.6 个标准差之内；误差按 <span class="arithmatex">\(1/\sqrt{nTrials}\)</span> 缩。</p>
 <figure>
   <img src="../images/ch04/out-4-7.png" class="lq-img" />
-  <figcaption>代码实跑（实验 7）：左——10⁴ 条 90 天价格路径终点的对数正态直方图；右——模拟价收敛到 Black–Scholes 精确值 0.9056（\(\pm\)标准误差带），\(\mu\) 不出现——风险中性的活验证</figcaption>
+  <figcaption>代码实跑（实验 7）：左——10⁴ 条 90 天价格路径终点的对数正态直方图；右——模拟价收敛到 Black–Scholes 精确值 0.9056（<span class="arithmatex">\(\pm\)</span>标准误差带），<span class="arithmatex">\(\mu\)</span> 不出现——风险中性的活验证</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -6213,7 +6213,7 @@ T(x)=x(a-x).\tag{4.16}
 <p><figure>
   <img src="../images/ch04/out-4-8.png" class="lq-img" />
 <br />
-<figcaption>代码实跑（实验 8）：赌徒破产模拟 vs 精确解——左：破产概率 \(r_x\)（公平局式 (4.13)，偏置局式 (4.12)）模拟点贴住理论线；右：时长均值贴住 \(T(x)=x(a-x)\)（式 (4.16)）</figcaption></p>
+<figcaption>代码实跑（实验 8）：赌徒破产模拟 vs 精确解——左：破产概率 <span class="arithmatex">\(r_x\)</span>（公平局式 (4.13)，偏置局式 (4.12)）模拟点贴住理论线；右：时长均值贴住 <span class="arithmatex">\(T(x)=x(a-x)\)</span>（式 (4.16)）</figcaption></p>
 </figure>
 <h3 id="451-赌博方案Gambling-Schemes">4.5.1 赌博方案（Gambling Schemes）<a class="headerlink" href="#451-赌博方案Gambling-Schemes" title="Permanent link">#</a></h3>
 <p>赌徒带 $<span class="arithmatex">\(x\)</span> 进场、目标赢 $<span class="arithmatex">\(Q\)</span>。例：$1023 本金、目标赢 $1、每局 $1、<span class="arithmatex">\(p=0.474\)</span>。此时 <span class="arithmatex">\(a=Q+x=\$1024\)</span>，由 (4.14) 成功概率</p>
@@ -6261,7 +6261,7 @@ g=\lim_{N\to\infty}\Big[\frac WN\log(1+\gamma f)+\frac LN\log(1-f)\Big]
 <p>形式极其简洁：<strong>期望除以赔率</strong>（优势 over 赔率，edge over odds）——<strong>Kelly 准则</strong>。例：<span class="arithmatex">\(p=0.6\)</span>、<span class="arithmatex">\(\gamma=1\)</span>（even-money）→ <span class="arithmatex">\(f=0.2\)</span>。书 Fig 4.5 展示 <span class="arithmatex">\(N=300\)</span> 局、<span class="arithmatex">\(f=0.05/0.1/0.2/0.25\)</span> 的财富路径（各图 y 轴尺度不同）：<span class="arithmatex">\(f\)</span> 增大终点财富涨、波动也涨；Fig 4.6 给 <span class="arithmatex">\(N=20000\)</span> 时 <span class="arithmatex">\(f=0.2\)</span> vs <span class="arithmatex">\(0.25\)</span> 的对数财富对比。</p>
 <figure>
   <img src="../images/ch04/out-4-10.png" class="lq-img" />
-  <figcaption>代码实跑（实验 10）：60/40 游戏四档投注比的财富路径（书 Fig 4.5 复刻）+ 右图实测增长率 \(g(f)\) 曲线与理论 \(p\log(1+f)+q\log(1-f)\)——峰值在 \(f=0.2\)；\(f>0.25\) 后过度投注反而毁掉增长</figcaption>
+  <figcaption>代码实跑（实验 10）：60/40 游戏四档投注比的财富路径（书 Fig 4.5 复刻）+ 右图实测增长率 <span class="arithmatex">\(g(f)\)</span> 曲线与理论 <span class="arithmatex">\(p\log(1+f)+q\log(1-f)\)</span>——峰值在 <span class="arithmatex">\(f=0.2\)</span>；<span class="arithmatex">\(f>0.25\)</span> 后过度投注反而毁掉增长</figcaption>
 </figure>
 
 <h3 id="462-带灾难损失的简单游戏The-Simple-Game-with-Catastrophic-Loss">4.6.2 带灾难损失的简单游戏（The Simple Game with Catastrophic Loss）<a class="headerlink" href="#462-带灾难损失的简单游戏The-Simple-Game-with-Catastrophic-Loss" title="Permanent link">#</a></h3>
@@ -6280,7 +6280,7 @@ g=p_1\log(1+f\gamma_1)+p_2\log(1-f\lambda_2)+p_3\log(1-f\lambda_3).\tag{4.21}
 <p>忽略 <span class="arithmatex">\(f^2\)</span> 项（<span class="arithmatex">\(f&lt;\frac14\)</span> 时小）得近似 <span class="arithmatex">\(f=\frac{3/4}{13}=0.0577\)</span>；<strong>含二次项的精确解 <span class="arithmatex">\(f=0.0625\)</span></strong>。复杂资产配置问题的优化分数导向难解的非线性方程组——但它们是随机问题的答案，<strong>蒙特卡罗模拟总能找到</strong>（下一小节见真章）。</p>
 <figure>
   <img src="../images/ch04/out-4-11.png" class="lq-img" />
-  <figcaption>代码实跑（实验 11）：灾难损失游戏的 \(g(f)\) 扫描（模拟 vs 理论式 (4.21)）——峰值 \(f\approx0.0625\)，\(f>1/4\) 后增长率为负（迟早爆仓）</figcaption>
+  <figcaption>代码实跑（实验 11）：灾难损失游戏的 <span class="arithmatex">\(g(f)\)</span> 扫描（模拟 vs 理论式 (4.21)）——峰值 <span class="arithmatex">\(f\approx0.0625\)</span>，<span class="arithmatex">\(f>1/4\)</span> 后增长率为负（迟早爆仓）</figcaption>
 </figure>
 
 <h3 id="463-期权交易应用-IOption-Trading-Application-I">4.6.3 期权交易应用 I（Option Trading Application I）<a class="headerlink" href="#463-期权交易应用-IOption-Trading-Application-I" title="Permanent link">#</a></h3>

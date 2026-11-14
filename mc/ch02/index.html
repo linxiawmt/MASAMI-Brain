@@ -4850,10 +4850,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#292-从-Galpha1-抽样Sampling-from-Gα-1" class="md-nav__link">
+  <a href="#292-从-Gα1-抽样Sampling-from-Gα-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.9.2 从 \(G(\alpha,1)\) 抽样（Sampling from G(α, 1)）
+        2.9.2 从 G(α,1) 抽样（Sampling from G(α, 1)）
       
     </span>
   </a>
@@ -5943,10 +5943,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#292-从-Galpha1-抽样Sampling-from-Gα-1" class="md-nav__link">
+  <a href="#292-从-Gα1-抽样Sampling-from-Gα-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.9.2 从 \(G(\alpha,1)\) 抽样（Sampling from G(α, 1)）
+        2.9.2 从 G(α,1) 抽样（Sampling from G(α, 1)）
       
     </span>
   </a>
@@ -6318,7 +6318,7 @@ np\sum_{y=0}^{m}\binom my p^y q^{m-y}=np(p+q)^m=np.
 <p><span class="arithmatex">\(n\)</span> 很大时模拟不划算。书例：细胞分裂每次产生子细胞变异概率 <span class="arithmatex">\(p=10^{-7}\)</span>，100 万次分裂有多少变异？——数一百万次伯努利太笨，下一节泊松登场。</p>
 <figure>
   <img src="../images/ch02/out-2-3.png" class="lq-img" />
-  <figcaption>代码实跑（实验 3）：\(b(20,18/38)\) 的两种采样（20 次伯努利模拟 vs NumPy API）与精确 pmf 叠加；均值 20·0.474=9.47、方差 npq≈4.98</figcaption>
+  <figcaption>代码实跑（实验 3）：<span class="arithmatex">\(b(20,18/38)\)</span> 的两种采样（20 次伯努利模拟 vs NumPy API）与精确 pmf 叠加；均值 20·0.474=9.47、方差 npq≈4.98</figcaption>
 </figure>
 
 <h2 id="24-另一个模拟例泊松分布The-Poisson-Distribution">2.4 另一个模拟例：泊松分布（The Poisson Distribution）<a class="headerlink" href="#24-另一个模拟例泊松分布The-Poisson-Distribution" title="Permanent link">#</a></h2>
@@ -6358,7 +6358,7 @@ np\sum_{y=0}^{m}\binom my p^y q^{m-y}=np(p+q)^m=np.
 <p>的最大整数 <span class="arithmatex">\(x\)</span>。为什么对：连乘 <span class="arithmatex">\(&lt;e^{-\lambda t}\)</span> 等价于 <span class="arithmatex">\(\sum-\ln U_i&gt;\lambda t\)</span>，而 <span class="arithmatex">\(-\ln U_i\sim E(1)\)</span>（§2.5.1）——这正是"事件间隔时间之和超过 <span class="arithmatex">\(t\)</span>"的泊松计数语义（书 §2.5.1 的 Method 3，先记住结论）。书 Alg 2.5 即此。</p>
 <figure>
   <img src="../images/ch02/out-2-4.png" class="lq-img" />
-  <figcaption>代码实跑（实验 4）：\(\lambda t=3\) 的泊松采样（乘积法）直方图与三种二项近似 \(b(20,\cdot),b(60,\cdot),b(100,\cdot)\) 并排——\(n\) 越大越贴合泊松（书习题 13 的复刻）</figcaption>
+  <figcaption>代码实跑（实验 4）：<span class="arithmatex">\(\lambda t=3\)</span> 的泊松采样（乘积法）直方图与三种二项近似 <span class="arithmatex">\(b(20,\cdot),b(60,\cdot),b(100,\cdot)\)</span> 并排——<span class="arithmatex">\(n\)</span> 越大越贴合泊松（书习题 13 的复刻）</figcaption>
 </figure>
 
 <h2 id="25-cdf-反演连续情形指数分布The-Exponential-Distribution">2.5 cdf 反演——连续情形：指数分布（The Exponential Distribution）<a class="headerlink" href="#25-cdf-反演连续情形指数分布The-Exponential-Distribution" title="Permanent link">#</a></h2>
@@ -6442,7 +6442,7 @@ X=\tan\Big(\pi\big(U-\tfrac12\big)\Big)
 <p>即为柯西样本。</p>
 <figure>
   <img src="../images/ch02/out-2-5.png" class="lq-img" />
-  <figcaption>代码实跑（实验 5/6）：左——指数反演样本直方图 vs 密度 \(\lambda e^{-\lambda t}\)；右——柯西样本的滑动均值永不收敛（与正态对照）：方差无穷使大数定律前提失效，样本均值不收敛到 0</figcaption>
+  <figcaption>代码实跑（实验 5/6）：左——指数反演样本直方图 vs 密度 <span class="arithmatex">\(\lambda e^{-\lambda t}\)</span>；右——柯西样本的滑动均值永不收敛（与正态对照）：方差无穷使大数定律前提失效，样本均值不收敛到 0</figcaption>
 </figure>
 
 <h2 id="26-中心极限定理与正态分布The-CLT-and-the-Normal-Distribution">2.6 中心极限定理与正态分布（The CLT and the Normal Distribution）<a class="headerlink" href="#26-中心极限定理与正态分布The-CLT-and-the-Normal-Distribution" title="Permanent link">#</a></h2>
@@ -6487,7 +6487,7 @@ X_1=V_1\Big(\frac{-2\ln S}{S}\Big)^{1/2}\]</div>
 <p>只用一次超越函数（Box–Muller 用三次），代价是拒绝率（书留问题：拒绝比例是 <span class="arithmatex">\(1-\pi/4\approx21.5\%\)</span>，因 <span class="arithmatex">\((V_1,V_2)\)</span> 均匀落在单位方块、接受域是内切单位圆）。今天机器速度与超越函数效率已让这点差别无足轻重。</p>
 <figure>
   <img src="../images/ch02/out-2-7.png" class="lq-img" />
-  <figcaption>代码实跑（实验 7）：三法各 5 万样本的直方图叠加 \(N(0,1)\) 密度——CLT 法（n=12）肉眼可辨轻微误差，两精确法贴合；Marsaglia–Bray 拒绝率实测 ≈ 21.5% = \(1-\pi/4\)</figcaption>
+  <figcaption>代码实跑（实验 7）：三法各 5 万样本的直方图叠加 <span class="arithmatex">\(N(0,1)\)</span> 密度——CLT 法（n=12）肉眼可辨轻微误差，两精确法贴合；Marsaglia–Bray 拒绝率实测 ≈ 21.5% = <span class="arithmatex">\(1-\pi/4\)</span></figcaption>
 </figure>
 
 <div class="admonition note">
@@ -6589,7 +6589,7 @@ f_X(x)=\frac{1}{x\beta\sqrt{2\pi}}e^{-(\log x-\alpha)^2/2\beta^2}\]</div>
 <p>书 Fig 2.12：200 万个 10 因子乘积的直方图与精确 <span class="arithmatex">\(LN\)</span> 密度（对数 y 轴）几乎重合。</p>
 <figure>
   <img src="../images/ch02/out-2-9.png" class="lq-img" />
-  <figcaption>代码实跑（实验 9）：\(\prod_{i=1}^{10}R_i,\ R\sim U(0.2,2)\) 的直方图（对数 y 轴）叠加精确 \(LN(-0.510,1.794^2)\) 密度——乘法 CLT 的直观验证</figcaption>
+  <figcaption>代码实跑（实验 9）：<span class="arithmatex">\(\prod_{i=1}^{10}R_i,\ R\sim U(0.2,2)\)</span> 的直方图（对数 y 轴）叠加精确 <span class="arithmatex">\(LN(-0.510,1.794^2)\)</span> 密度——乘法 CLT 的直观验证</figcaption>
 </figure>
 
 <h2 id="28-拒绝采样beta-分布Rejection-Sampling-The-Beta-Distribution">2.8 拒绝采样：beta 分布（Rejection Sampling: The Beta Distribution）<a class="headerlink" href="#28-拒绝采样beta-分布Rejection-Sampling-The-Beta-Distribution" title="Permanent link">#</a></h2>
@@ -6641,7 +6641,7 @@ h(x)=\frac{f}{Mg}=\frac{27}{4}x(1-x)^2.\tag{2.30}
 <p><strong>hit-or-miss 视角</strong>：把 <span class="arithmatex">\((U,\tfrac{16}{9}R)\)</span> 画进 Fig 2.17——<span class="arithmatex">\(U\)</span> 在 <span class="arithmatex">\(f\)</span> 图形下方就接受、上方就拒绝。<strong>拒绝采样就是打中与否</strong>。</p>
 <figure>
   <img src="../images/ch02/out-2-10.png" class="lq-img" />
-  <figcaption>代码实跑（实验 10）：Be(2,3) 拒绝采样 10⁵ 样本直方图 vs 精确密度 \(12x(1-x)^2\)；实测接受率 ≈ 0.563 = 理论 \(1/M=9/16\)</figcaption>
+  <figcaption>代码实跑（实验 10）：Be(2,3) 拒绝采样 10⁵ 样本直方图 vs 精确密度 <span class="arithmatex">\(12x(1-x)^2\)</span>；实测接受率 ≈ 0.563 = 理论 <span class="arithmatex">\(1/M=9/16\)</span></figcaption>
 </figure>
 
 <h3 id="283-无界-beta-的拒绝采样Sampling-from-an-Unbounded-Beta">2.8.3 无界 beta 的拒绝采样（Sampling from an Unbounded Beta）<a class="headerlink" href="#283-无界-beta-的拒绝采样Sampling-from-an-Unbounded-Beta" title="Permanent link">#</a></h3>
@@ -6655,7 +6655,7 @@ h(x)=\frac{f}{Mg}=\big(2(1-x)\big)^{\alpha-1}——c \text{ 消失，正如预�
 <p><figure>
   <img src="../images/ch02/out-2-11.png" class="lq-img" />
 <br />
-<figcaption>代码实跑（实验 11）：无界 beta \(\alpha=\beta=0.5\)（arcsine 分布）的拒绝采样直方图 vs 密度——两端发散但样本无碍</figcaption></p>
+<figcaption>代码实跑（实验 11）：无界 beta <span class="arithmatex">\(\alpha=\beta=0.5\)</span>（arcsine 分布）的拒绝采样直方图 vs 密度——两端发散但样本无碍</figcaption></p>
 </figure>
 <h2 id="29-复合分布抽样-gamma-分布Composite-Distributions-Sampling-the-Gamma">2.9 复合分布：抽样 gamma 分布（Composite Distributions: Sampling the Gamma）<a class="headerlink" href="#29-复合分布抽样-gamma-分布Composite-Distributions-Sampling-the-Gamma" title="Permanent link">#</a></h2>
 <p><strong>复合（composition）</strong>：<span class="arithmatex">\(n\)</span> 个独立密度 <span class="arithmatex">\(f_i\)</span> 加权重 <span class="arithmatex">\(p_i&gt;0\)</span>（<span class="arithmatex">\(\sum p_i=1\)</span>），构造随机变量</p>
@@ -6697,7 +6697,7 @@ f(w)=\frac{\beta}{(\alpha-1)!}(\beta w)^{\alpha-1}e^{-\beta w}.\tag{2.39}
 \]</div>
 <p>整数时 <span class="arithmatex">\(\Gamma(n)=(n-1)!\)</span>；特别地 <span class="arithmatex">\(\Gamma\big(\tfrac12\big)=\sqrt\pi\)</span>。</p>
 <p>（<span class="arithmatex">\(\Gamma(1/2)=\sqrt\pi\)</span> 正是 §2.6 极坐标积分的副产品——两处知识对上了。）</p>
-<h3 id="292-从-Galpha1-抽样Sampling-from-Gα-1">2.9.2 从 <span class="arithmatex">\(G(\alpha,1)\)</span> 抽样（Sampling from G(α, 1)）<a class="headerlink" href="#292-从-Galpha1-抽样Sampling-from-Gα-1" title="Permanent link">#</a></h3>
+<h3 id="292-从-Gα1-抽样Sampling-from-Gα-1">2.9.2 从 G(α,1) 抽样（Sampling from G(α, 1)）<a class="headerlink" href="#292-从-Gα1-抽样Sampling-from-Gα-1" title="Permanent link">#</a></h3>
 <p><strong>情形一：<span class="arithmatex">\(0&lt;\alpha&lt;1\)</span>（拒绝 + 复合）</strong>。目标 <span class="arithmatex">\(f(x)=\frac{1}{\Gamma(\alpha)}x^{\alpha-1}e^{-x}\)</span>（常数可忽略）。观察：<span class="arithmatex">\(e^{-x}\)</span> 在 <span class="arithmatex">\(x=1\)</span> 处是 <span class="arithmatex">\(1/e\)</span>，而 <span class="arithmatex">\(x^{\alpha-1}\)</span> 在 <span class="arithmatex">\(x=1\)</span> 处是 1，差 <span class="arithmatex">\(e\)</span> 倍——用这个观察"缝合"两段提案：</p>
 <ul>
 <li><span class="arithmatex">\(f_1(x)=\alpha x^{\alpha-1}\)</span> 于 <span class="arithmatex">\([0,1)\)</span>（cdf <span class="arithmatex">\(x^\alpha\)</span>）；</li>
@@ -6713,7 +6713,7 @@ Y=-\ln\Big(\prod_{i=1}^{m}U_i\Big)\sim G(m,1)\]</div>
 \]</div>
 <figure>
   <img src="../images/ch02/out-2-12.png" class="lq-img" />
-  <figcaption>代码实跑（实验 12）：左——\(G(0.5,1)\)（复合+拒绝法）直方图 vs 精确密度；右——\(G(3,1)\)（Erlang，\(-\ln\prod U\) 法）与再生性拼装 \(\alpha=3.5\) 同图验证</figcaption>
+  <figcaption>代码实跑（实验 12）：左——<span class="arithmatex">\(G(0.5,1)\)</span>（复合+拒绝法）直方图 vs 精确密度；右——<span class="arithmatex">\(G(3,1)\)</span>（Erlang，<span class="arithmatex">\(-\ln\prod U\)</span> 法）与再生性拼装 <span class="arithmatex">\(\alpha=3.5\)</span> 同图验证</figcaption>
 </figure>
 
 <h2 id="210-从联合分布抽样Sampling-from-a-Joint-Distribution">2.10 从联合分布抽样（Sampling from a Joint Distribution）<a class="headerlink" href="#210-从联合分布抽样Sampling-from-a-Joint-Distribution" title="Permanent link">#</a></h2>
@@ -6735,7 +6735,7 @@ F_X(x)=\int_0^x2(1-\hat x)\,d\hat x=2x-x^2\]</div>
 <p>书 Alg 2.8 + Fig 2.20：200 个样本精确铺满三角形。<strong>边缘-条件两步走是联合抽样的通用模板</strong>——第 6 章 Gibbs 抽样（§6.2）是它的 MCMC 化身。</p>
 <figure>
   <img src="../images/ch02/out-2-13.png" class="lq-img" />
-  <figcaption>代码实跑（实验 13）：左——三角形上 2000 个均匀样本（书 Alg 2.8）；右——\(X\) 的直方图贴合边缘 \(2(1-x)\)、\(Y|X\) 均匀</figcaption>
+  <figcaption>代码实跑（实验 13）：左——三角形上 2000 个均匀样本（书 Alg 2.8）；右——<span class="arithmatex">\(X\)</span> 的直方图贴合边缘 <span class="arithmatex">\(2(1-x)\)</span>、<span class="arithmatex">\(Y|X\)</span> 均匀</figcaption>
 </figure>
 
 <div class="admonition note">

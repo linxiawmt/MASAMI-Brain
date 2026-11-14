@@ -6073,7 +6073,7 @@ X\le \frac{L}{2}\sin\Theta .
 \]</div>
 <figure>
   <img src="../images/ch01/fig-1-1.png" class="lq-img" />
-  <figcaption>图 1.1 落在线缝上的蒲丰针：命中条件 \(X\le \frac L2\sin\Theta\)（截自原书）</figcaption>
+  <figcaption>图 1.1 落在线缝上的蒲丰针：命中条件 <span class="arithmatex">\(X\le \frac L2\sin\Theta\)</span>（截自原书）</figcaption>
 </figure>
 
 <p>当 <span class="arithmatex">\(d\ge L\)</span> 时，命中概率就是"曲线下面积 ÷ 矩形面积"：</p>
@@ -6085,7 +6085,7 @@ X\le \frac{L}{2}\sin\Theta .
 <p>书取 <span class="arithmatex">\(d=2,\ L=1\)</span>，模拟程序只需生成 <span class="arithmatex">\(X\sim U(0,d/2)\)</span> 与 <span class="arithmatex">\(\Theta\sim U(0,\pi/2)\)</span>，命中判定 <span class="arithmatex">\(X\le\frac L2\sin\Theta\)</span>。还有一个漂亮的变体（书 Alg 1.2 <strong>Buffon Ab Initio</strong>）：模拟本身需要 <span class="arithmatex">\(\pi\)</span> 来生成 <span class="arithmatex">\(\Theta\)</span>，那就先随便假设一个 <span class="arithmatex">\(\pi_0\)</span>，把每次模拟估出的 <span class="arithmatex">\(\pi\)</span> 塞回去当下一轮的 <span class="arithmatex">\(\pi\)</span>——迭代收敛，这是**不动点迭代（fixed-point iteration）**的一个活例子。</p>
 <figure>
   <img src="../images/ch01/fig-1-2.png" class="lq-img" />
-  <figcaption>图 1.2 蒲丰投针"镖盘"：命中域 \(y< (L/2)\sin x\) 占矩形面积的比例即 \(2L/(\pi d)\)（截自原书）</figcaption>
+  <figcaption>图 1.2 蒲丰投针"镖盘"：命中域 <span class="arithmatex">\(y< (L/2)\sin x\)</span> 占矩形面积的比例即 <span class="arithmatex">\(2L/(\pi d)\)</span>（截自原书）</figcaption>
 </figure>
 
 <div class="admonition note">
@@ -6191,12 +6191,12 @@ x_1\le x_2\Rightarrow \operatorname{cdf}(x_1)\le \operatorname{cdf}(x_2)\ \text{
 \Pr(a&lt; X\le b)=\sum_{a&lt; x\le b}\operatorname{pdf}(x)=\operatorname{cdf}(b)-\operatorname{cdf}(a).
 \]</div>
 <p>连续情形 pdf 是 cdf 的导数，区间概率是积分：</p>
-<p>[
+<div class="arithmatex">\[
 \operatorname{pdf}(x)=\frac{d}{dx}\operatorname{cdf}(x),\tag{1.3}
-]
-[
+\]</div>
+<div class="arithmatex">\[
 \Pr(a&lt; X\le b)=\int_a^b \operatorname{pdf}(x)\,dx=\operatorname{cdf}(b)-\operatorname{cdf}(a).\tag{1.4}
-]</p>
+\]</div>
 <p>反过来 cdf 是 pdf 的积分：</p>
 <div class="arithmatex">\[
 \operatorname{cdf}(x)=\int_{-\infty}^{x}\operatorname{pdf}(t)\,dt.\tag{1.5}
@@ -6315,12 +6315,12 @@ T&amp;=1\Big(\frac16\Big)+2\Big(\frac56\Big)\Big(\frac16\Big)+3\Big(\frac56\Big)
 </div>
 <figure>
   <img src="../images/ch01/out-1-6.png" class="lq-img" />
-  <figcaption>代码实跑（实验 6）：单骰子样本均值 \(\bar X_n\) 随 \(n\to 10^5\) 收敛到 3.5，±2σ 带按 \(1/\sqrt n\) 收窄（式 (1.25) 的可视化）</figcaption>
+  <figcaption>代码实跑（实验 6）：单骰子样本均值 <span class="arithmatex">\(\bar X_n\)</span> 随 <span class="arithmatex">\(n\to 10^5\)</span> 收敛到 3.5，±2σ 带按 <span class="arithmatex">\(1/\sqrt n\)</span> 收窄（式 (1.25) 的可视化）</figcaption>
 </figure>
 
 <figure>
   <img src="../images/ch01/out-1-7.png" class="lq-img" />
-  <figcaption>代码实跑（实验 7）：对 \(X\sim U(0,6)\)（\(\mu=3,\sigma^2=3\)）实测尾部概率 \(\Pr(|X-\mu|\ge k\sigma)\) 与切比雪夫上界 \(1/k^2\)——上界松但永远成立；两条正态参考线显示它对重尾分布才真正收紧</figcaption>
+  <figcaption>代码实跑（实验 7）：对 <span class="arithmatex">\(X\sim U(0,6)\)</span>（<span class="arithmatex">\(\mu=3,\sigma^2=3\)</span>）实测尾部概率 <span class="arithmatex">\(\Pr(|X-\mu|\ge k\sigma)\)</span> 与切比雪夫上界 <span class="arithmatex">\(1/k^2\)</span>——上界松但永远成立；两条正态参考线显示它对重尾分布才真正收紧</figcaption>
 </figure>
 
 <h3 id="125-条件概率Conditional-Probabilities">1.2.5 条件概率（Conditional Probabilities）<a class="headerlink" href="#125-条件概率Conditional-Probabilities" title="Permanent link">#</a></h3>
@@ -6418,12 +6418,12 @@ f_1(x_1)=\int_{-\infty}^\infty f(x_1,x_2)\,dx_2,\ \dots\ \text{（连续）}.\ta
 <div class="admonition note">
 <p class="admonition-title">定理 + 证明（式 (1.33) 的验证）</p>
 <p><strong>定理</strong>：<span class="arithmatex">\(X,Y\)</span> 独立 <span class="arithmatex">\(\Rightarrow \mathbb E(XY)=\mathbb E(X)\mathbb E(Y)\)</span>。离散证明（连续同理）三行——独立性把联合拆成乘积、双重求和因式分解：</p>
-<p>[
+<div class="arithmatex">\[
 \mathbb E\big((X_1-\mu_1)(X_2-\mu_2)\big)=\sum_{x_1}\sum_{x_2}(x_1-\mu_1)(x_2-\mu_2)\Pr(X_1=x_1)\Pr(X_2=x_2)
-]
-[
+\]</div>
+<div class="arithmatex">\[
 =\Big(\sum_{x_1}(x_1-\mu_1)\Pr(X_1=x_1)\Big)\Big(\sum_{x_2}(x_2-\mu_2)\Pr(X_2=x_2)\Big)=\mathbb E(X_1-\mu_1)\,\mathbb E(X_2-\mu_2)=0.
-]</p>
+\]</div>
 <p>于是协方差为 0、式 (1.33) 成立。三个以上独立变量求和时方差同样相加。</p>
 <p>概率论复习警示（数理统计常考）：<strong>独立 ⇒ 不相关（协方差 0），反向不成立</strong>。8 卡牌例是"不独立 ⇒ 协方差非零"的正例；要构造"相关系数 0 但不独立"需非线性相依（如 <span class="arithmatex">\(Y=X^2\)</span>，对称分布时协方差可为 0）。协方差只抓线性关系。</p>
 </div>
@@ -6516,7 +6516,7 @@ f(x)=(ax+c)\bmod m\]</div>
 <p>再来一次 <span class="arithmatex">\(\pi\)</span> ab initio：第一象限单位圆 <span class="arithmatex">\(y=\sqrt{1-x^2}\)</span> 下面积 <span class="arithmatex">\(\pi/4\)</span>，容器为单位方形面积 1，故 <span class="arithmatex">\(\pi\approx 4h/n\)</span>。书 Alg 1.9 用 <span class="arithmatex">\(n=10{,}000\)</span> 得 <span class="arithmatex">\(\pi\approx 3.1316\)</span>。</p>
 <figure>
   <img src="../images/ch01/out-1-10.png" class="lq-img" />
-  <figcaption>代码实跑（实验 10）：左——hit-or-miss 几何（1/4 单位圆 + 随机点分色）；右——估计误差随 \(n\) 加倍至 \(2^{20}\) 的对数误差，最小二乘斜率 ≈ −0.5，验证误差按 \(1/\sqrt n\) 衰减（书 Fig 1.13 同款）</figcaption>
+  <figcaption>代码实跑（实验 10）：左——hit-or-miss 几何（1/4 单位圆 + 随机点分色）；右——估计误差随 <span class="arithmatex">\(n\)</span> 加倍至 <span class="arithmatex">\(2^{20}\)</span> 的对数误差，最小二乘斜率 ≈ −0.5，验证误差按 <span class="arithmatex">\(1/\sqrt n\)</span> 衰减（书 Fig 1.13 同款）</figcaption>
 </figure>
 
 <h3 id="优惠券收集Coupon-Collecting">优惠券收集（Coupon Collecting）<a class="headerlink" href="#优惠券收集Coupon-Collecting" title="Permanent link">#</a></h3>
@@ -6524,7 +6524,7 @@ f(x)=(ax+c)\bmod m\]</div>
 <p>书 Alg 1.10 模拟（10000 次）：即便字母等可能，集齐 9 个字母可能要 60+ 次购买；所需购买数的分布<strong>在约两倍最小值（9）附近达到峰值后指数衰减</strong>（书 Fig 1.14）。</p>
 <figure>
   <img src="../images/ch01/out-1-11.png" class="lq-img" />
-  <figcaption>代码实跑（实验 11）：集齐 ANGELFISH 所需购买数的直方图（10000 次），均值 ≈ 25.5 = \(9H_9\)，峰值位于 12–18 区间后指数衰减</figcaption>
+  <figcaption>代码实跑（实验 11）：集齐 ANGELFISH 所需购买数的直方图（10000 次），均值 ≈ 25.5 = <span class="arithmatex">\(9H_9\)</span>，峰值位于 12–18 区间后指数衰减</figcaption>
 </figure>
 
 <div class="admonition note">
