@@ -1,0 +1,6469 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/">
+      
+      
+        <link rel="prev" href="../ch09/">
+      
+      
+        <link rel="next" href="../ch11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第10章 利用K-均值聚类算法对未标注数据分组 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-10-章-利用K-均值聚类算法对未标注数据分组" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第10章 利用K-均值聚类算法对未标注数据分组
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-K-均值聚类算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 K-均值聚类算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-使用后处理来提高聚类性能" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 使用后处理来提高聚类性能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-二分K-均值算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 二分K-均值算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-示例对地图上的点进行聚类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 示例：对地图上的点进行聚类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 示例：对地图上的点进行聚类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-Yahoo-PlaceFinder-API" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 Yahoo! PlaceFinder API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-对地理坐标进行聚类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 对地理坐标进行聚类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-本章小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-K-均值聚类算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 K-均值聚类算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-使用后处理来提高聚类性能" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 使用后处理来提高聚类性能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-二分K-均值算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 二分K-均值算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-示例对地图上的点进行聚类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 示例：对地图上的点进行聚类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 示例：对地图上的点进行聚类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-Yahoo-PlaceFinder-API" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 Yahoo! PlaceFinder API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-对地理坐标进行聚类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 对地理坐标进行聚类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-本章小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 本章小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-10-章-利用K-均值聚类算法对未标注数据分组">第 10 章 利用K-均值聚类算法对未标注数据分组<a class="headerlink" href="#第-10-章-利用K-均值聚类算法对未标注数据分组" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：没有目标变量、连类别体系都要自己构建时，怎么把相似的对象归到一起——聚类（<strong>Clustering</strong>）。核心算法是 K-均值（<strong>K-means</strong>）：发现 k 个簇，每个簇用簇内所有点的均值（质心）描述；它可能收敛到局部最小值，因此要会用误差平方和（<strong>SSE</strong>）评价聚类质量，并借助后处理与二分K-均值（<strong>bisecting K-means</strong>）改进；最后把二分K-均值用在真实场景——对俄勒冈州波特兰的 70 个夜生活地点做地理聚类，规划一晚逛完的行程。</p>
+</blockquote>
+<p>聚类是一种无监督的学习，它将相似的对象归到同一个簇中，有点像<strong>全自动分类</strong>（连类别体系都是自动构建的——译者注）。簇内的对象越相似，聚类的效果越好；至于"相似"怎么算，取决于所选的相似度计算方法，用哪种由具体应用决定。</p>
+<p>开头先看一个真实场景。2000 年和 2004 年的美国总统大选中，候选人得票非常接近：任一候选人普选票的最大百分比为 50.7%，最小为 47.9%——如果 1% 的选民把票投给另外的候选人，选举结果就会截然不同。因此，如何在有限预算下找出并争取这部分选民，就成了关键问题，答案就是聚类：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>收集用户信息（满意与不满意的信息都要，任何对用户重要的内容都可能影响投票）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>将信息输入聚类算法
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>对聚类结果中的每一个簇（最好选择最大簇），精心构造能够吸引该簇选民的消息
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>开展竞选活动，观察做法是否有效
+</code></pre></div>
+<p>动手之前还要区分一对概念：**簇识别（cluster identification）**给出聚类结果的含义——把相似数据归到一起之后，告诉我们这些簇到底都是些什么。聚类与分类的最大不同在于，<strong>分类的目标事先已知，聚类的类别没有预先定义</strong>；由于产生的结果与分类相同，聚类有时也被称为无监督分类（<strong>unsupervised classification</strong>）。</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>事实</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算法</td>
+<td>K-均值（10.1–10.2）、二分K-均值（10.3）</td>
+</tr>
+<tr>
+<td>类型</td>
+<td>无监督学习：无目标变量，类别未预先定义</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>容易实现</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>可能收敛到局部最小值；在大规模数据集上收敛较慢</td>
+</tr>
+<tr>
+<td>适用数据类型</td>
+<td>数值型数据（标称型可映射为二值型后再算距离）</td>
+</tr>
+<tr>
+<td>质量指标</td>
+<td>SSE（误差平方和，clusterAssment 第二列之和），越小越好</td>
+</tr>
+<tr>
+<td>应用示例</td>
+<td>对地图上的地点坐标聚类，安排"夜生活热点一日游"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">运行环境</p>
+<p>本章代码从 tab 分隔的文本文件读数据，<strong>工作目录需在数据所在目录</strong>（本笔记为 <code>E:\Desktop\深度学习\_ml_data\Ch10\</code>，含 <code>testSet.txt</code>、<code>testSet2.txt</code>、<code>places.txt</code> 与地图底图 <code>Portland.png</code>）。拿不准时先 <code>print(os.getcwd())</code>。运行环境为 Python 3 + NumPy 2.x（machinelearn 环境）；原书是 Python 2，差异处均已在代码注释和 <code>!!! warning</code> 中标明。所有关键数值均已实跑复现。</p>
+</div>
+<h2 id="100-本章导图">10.0 本章导图<a class="headerlink" href="#100-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">K-均值聚类</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">聚类与簇识别</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">无监督学习：无目标变量</span>
+          <span class="brleaf">簇识别给出聚类结果的含义</span>
+          <span class="brleaf">类别未预定义，故称无监督分类</span>
+          <span class="brleaf">相似度取决于所选度量方法</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">K-均值算法</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">随机确定 k 个初始质心</span>
+          <span class="brleaf">分配：每点归到最近质心</span>
+          <span class="brleaf">更新：质心移到簇内均值</span>
+          <span class="brleaf">收敛：分配结果不再改变</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">三个支持函数</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">loadDataSet 读 tab 分隔文件</span>
+          <span class="brleaf">distEclud 欧氏距离</span>
+          <span class="brleaf">randCent 边界内随机质心</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">性能度量与后处理</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">SSE 越小聚类效果越好</span>
+          <span class="brleaf">局部最小 vs 全局最小</span>
+          <span class="brleaf">后处理：拆最大 SSE 簇</span>
+          <span class="brleaf">合并：最近质心或 SSE 增幅最小</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">二分K-均值</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">所有点先看成一个簇</span>
+          <span class="brleaf">每轮对每个簇试划分（k=2）</span>
+          <span class="brleaf">选划分后总 SSE 最小的簇</span>
+          <span class="brleaf">重复直到得到 k 个簇</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">示例：地图聚类</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">PlaceFinder 地址转经纬度</span>
+          <span class="brleaf">distSLC 球面余弦定理算距离</span>
+          <span class="brleaf">clusterClubs 聚类并画图</span>
+          <span class="brleaf">两套坐标系叠加地图底图</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="101-K-均值聚类算法">10.1 K-均值聚类算法<a class="headerlink" href="#101-K-均值聚类算法" title="Permanent link">#</a></h2>
+<blockquote>
+<p><strong>优点</strong>：容易实现。
+<strong>缺点</strong>：可能收敛到局部最小值，在大规模数据集上收敛较慢。
+<strong>适用数据类型</strong>：数值型数据。</p>
+</blockquote>
+<p>K-均值是发现给定数据集 k 个簇的算法。<strong>簇个数 k 是用户给定的</strong>，每一个簇通过其质心（<strong>centroid</strong>），即簇中所有点的中心来描述。</p>
+<p>K-均值算法的工作流程是这样的：首先，随机确定 k 个初始点作为质心；然后将数据集中的每个点分配到一个簇中——为每个点找距其最近的质心，并将其分配给该质心所对应的簇；这一步完成之后，每个簇的质心更新为该簇所有点的平均值。伪代码如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>创建k个点作为起始质心（经常是随机选择）
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>当任意一个点的簇分配结果发生改变时
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    对数据集中的每个数据点
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        对每个质心
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>            计算质心与数据点之间的距离
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        将数据点分配到距其最近的簇
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    对每一个簇，计算簇中所有点的均值并将均值作为质心
+</code></pre></div>
+<p>K-均值聚类的一般流程六步，注意第 4 步与监督学习的差别：</p>
+<div class="mermaid">flowchart LR
+    A["① 收集数据&lt;br/&gt;使用任意方法"] --&gt; B["② 准备数据&lt;br/&gt;需要数值型数据计算距离&lt;br/&gt;标称型可映射为二值型"]
+    B --&gt; C["③ 分析数据&lt;br/&gt;使用任意方法"]
+    C --&gt; D["④ 训练算法&lt;br/&gt;不适用于无监督学习&lt;br/&gt;即没有训练过程"]
+    D --&gt; E["⑤ 测试算法&lt;br/&gt;应用聚类算法、观察结果&lt;br/&gt;可用误差平方和等量化指标评价"]
+    E --&gt; F["⑥ 使用算法&lt;br/&gt;用于所希望的任何应用&lt;br/&gt;簇质心可代表整个簇做决策"]</div>
+<p>上面提到"最近"质心，意味着需要距离计算——可以使用任意喜欢的距离度量方法，数据集上 K-均值的性能会受所选距离计算方法的影响。下面开始写代码：创建 <code>kMeans.py</code> 文件，先加入三个辅助函数。</p>
+<p><strong>程序清单 10-1 K-均值聚类支持函数</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 10.1 节 程序清单10-1 K-均值支持函数 =====</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">mat</span>           <span class="c1"># numpy 1.x 自带 mat()</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">mat</span> <span class="o">=</span> <span class="n">matrix</span>  <span class="c1"># numpy 2.x 起移除了 mat 别名：matrix 类完全等价（Py3/numpy2 适配）</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">loadDataSet</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>      <span class="c1"># 通用函数：解析 tab 分隔的浮点数文件</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">dataMat</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># 每行是一组浮点数，最后返回包含许多列表的列表</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">fr</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fr</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="n">curLine</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="n">fltLine</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">curLine</span><span class="p">))</span>   <span class="c1"># Py3 适配：map() 返回迭代器，必须 list()</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="n">dataMat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fltLine</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="k">return</span> <span class="n">dataMat</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">distEclud</span><span class="p">(</span><span class="n">vecA</span><span class="p">,</span> <span class="n">vecB</span><span class="p">):</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="c1"># 计算两个向量的欧氏距离，等价于 la.norm(vecA-vecB)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="n">vecA</span> <span class="o">-</span> <span class="n">vecB</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">randCent</span><span class="p">(</span><span class="n">dataSet</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="n">n</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>                 <span class="c1"># 特征维数（列数）</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">centroids</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>        <span class="c1"># k×n 的质心矩阵</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>                    <span class="c1"># 逐维生成随机质心</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        <span class="n">minJ</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dataSet</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span>         <span class="c1"># 该维的最小值</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="n">rangeJ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">dataSet</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span> <span class="o">-</span> <span class="n">minJ</span><span class="p">)</span>   <span class="c1"># 该维的取值范围</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="n">centroids</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">minJ</span> <span class="o">+</span> <span class="n">rangeJ</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="k">return</span> <span class="n">centroids</span>
+</code></pre></div>
+<p>程序清单 10-1 包含三个辅助函数：</p>
+<ul>
+<li><code>loadDataSet()</code> 与上一章完全相同：把每行 tab 分隔的浮点数导入列表，再逐行加进 <code>dataMat</code>，返回值是一个包含许多其他列表的列表，这种格式很容易封装成矩阵；</li>
+<li><code>distEclud()</code> 计算两个向量的欧氏距离，这是本章最先使用的距离函数，也可以换成其他距离函数；</li>
+<li><code>randCent()</code> 为给定数据集构建包含 k 个随机质心的集合。<strong>随机质心必须在整个数据集的边界之内</strong>——做法是找每一维的最小值和最大值，然后生成 0 到 1.0 之间的随机数，乘以取值范围、加上最小值，确保随机点不越界。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：randCent 为什么逐维在边界内随机</p>
+<p>若直接在整个空间均匀撒点，k 个质心很可能落在数据稀疏甚至没有数据的区域，第一轮分配就"没分对几个"，收敛更慢、更容易掉进差的局部最优。<code>randCent()</code> 用"每维最小值 + 随机比例 × 每维跨度"把质心限制在数据的外接矩形内：<code>minJ + rangeJ * random.rand(k, 1)</code> 里的 <code>random.rand(k, 1)</code> 生成 k 个 0~1 的随机数，线性映射到该维的 <code>[min, max]</code> 区间。这是最朴素的初始化；更讲究的做法（k-means++）见 10.2 节的拓展。</p>
+</div>
+<p>保存 <code>kMeans.py</code>，在 Python 提示符下验证三个函数（testSet.txt 的内容在随书源码里）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&gt;&gt;&gt; import kMeans
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>&gt;&gt;&gt; from numpy import *
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&gt;&gt;&gt; datMat = mat(kMeans.loadDataSet('testSet.txt'))    # 80 个二维点 → 80×2 矩阵
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>&gt;&gt;&gt; min(datMat[:, 0]); min(datMat[:, 1])
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>-5.379713
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>-4.232586
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>&gt;&gt;&gt; max(datMat[:, 0]); max(datMat[:, 1])
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>4.838138
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>5.190400
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>&gt;&gt;&gt; kMeans.randCent(datMat, 4)        # 4 个质心都落在 [-5.38, 4.84]×[-4.23, 5.19] 内
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>matrix([[-1.11864429, -2.8497073 ],
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        [ 1.98045535, -3.36248071],
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        [-5.37854434, -2.47745864],
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        [-2.29052382, -0.97637211]])
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>&gt;&gt;&gt; kMeans.distEclud(datMat[0], datMat[1])
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>5.184632816681332
+</code></pre></div>
+<p>（代码实跑）<code>randCent()</code> 确实生成 min 到 max 之间的值，距离函数也正常返回标量——所有支持函数都能按预想的方式运行，接下来实现完整的 K-均值算法。</p>
+<p><strong>程序清单 10-2 K-均值聚类算法</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 10.1 节 程序清单10-2 K-均值聚类算法 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">kMeans</span><span class="p">(</span><span class="n">dataSet</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">distMeas</span><span class="o">=</span><span class="n">distEclud</span><span class="p">,</span> <span class="n">createCent</span><span class="o">=</span><span class="n">randCent</span><span class="p">):</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>               <span class="c1"># 数据集中数据点的总数</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="c1"># 簇分配结果矩阵：第 1 列记录簇索引值，第 2 列存储误差（点到簇质心的距离平方）</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">clusterAssment</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">centroids</span> <span class="o">=</span> <span class="n">createCent</span><span class="p">(</span><span class="n">dataSet</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>  <span class="c1"># 创建 k 个起始质心</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">clusterChanged</span> <span class="o">=</span> <span class="kc">True</span>               <span class="c1"># 标志变量：任一点的簇分配结果改变就继续迭代</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">while</span> <span class="n">clusterChanged</span><span class="p">:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="n">clusterChanged</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>              <span class="c1"># ——分配：对每个点找最近质心——</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>            <span class="n">minDist</span> <span class="o">=</span> <span class="n">inf</span><span class="p">;</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                <span class="n">distJI</span> <span class="o">=</span> <span class="n">distMeas</span><span class="p">(</span><span class="n">centroids</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dataSet</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                <span class="k">if</span> <span class="n">distJI</span> <span class="o">&lt;</span> <span class="n">minDist</span><span class="p">:</span>    <span class="c1"># 距离相等时保留编号更小的质心</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                    <span class="n">minDist</span> <span class="o">=</span> <span class="n">distJI</span><span class="p">;</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">j</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>            <span class="k">if</span> <span class="n">clusterAssment</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">minIndex</span><span class="p">:</span> <span class="n">clusterChanged</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>            <span class="n">clusterAssment</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">minIndex</span><span class="p">,</span> <span class="n">minDist</span><span class="o">**</span><span class="mi">2</span>   <span class="c1"># 记录分配结果与平方误差</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="k">for</span> <span class="n">cent</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>           <span class="c1"># ——更新：重新计算每个簇的质心——</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="c1"># 数组过滤：取出分配给第 cent 簇的所有点</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="n">ptsInClust</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">clusterAssment</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">cent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>            <span class="n">centroids</span><span class="p">[</span><span class="n">cent</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">ptsInClust</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># axis=0：沿列方向求均值</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="k">return</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">clusterAssment</span>    <span class="c1"># 返回所有质心与点分配结果</span>
+</code></pre></div>
+<p><code>kMeans()</code> 接受 4 个输入参数：只有数据集及簇数目 k 是必选参数，用来计算距离和创建初始质心的函数都是可选的。要点逐个拆解：</p>
+<ul>
+<li><strong>clusterAssment 矩阵</strong>存储每个点的簇分配结果，包含两列：第一列记录簇索引值，第二列存储误差——这里的误差是指<strong>当前点到簇质心的距离平方</strong>，后面会用它评价聚类效果（SSE）；</li>
+<li><strong>收敛判断</strong>：while 循环里先遍历所有数据点、为每点找最近质心；如果任一点的簇分配结果与上一轮不同，就更新 clusterChanged 标志、再来一轮。当所有点的分配都不再改变时算法收敛。（原书在循环内还有一句 <code>print centroids</code> 每轮打印质心，笔记略去；打印了几次就说明迭代了几轮。）</li>
+<li><strong>质心更新</strong>：通过数组过滤获得给定簇的所有点，<code>mean(ptsInClust, axis=0)</code> 对矩阵沿列方向求均值，得到该簇所有点的平均值作为新质心。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：nonzero()、.A 与数组过滤</p>
+<p><code>clusterAssment[:, 0].A</code> 把 numpy 矩阵的切片转回二维 ndarray（<code>.A</code> 即 <code>getA()</code>，matrix 专有属性）；<code>== cent</code> 得到布尔数组；<code>nonzero(...)[0]</code> 取出"值为真"的行下标；最后 <code>dataSet[行下标]</code> 一次取出该簇全部点。这套"nonzero + 布尔掩码"的数组过滤是原书反复使用的手法，后面切子数据集、取散点列时都会见到。新版 NumPy 下更常见的写法是布尔索引 <code>dataSet[clusterAssment[:, 0].A == cent]</code>，效果相同。</p>
+</div>
+<p>图 10-1 给出一个聚类结果示意：数据集在三次迭代之后收敛，形状相同的数据点被分到同样的簇中，簇中心用十字表示。</p>
+<figure>
+  <img src="../images/ch10/fig-10-1.png" class="lq-img" />
+  <figcaption>图 10.1 K-均值聚类的结果示意图：三次迭代后收敛，十字为簇中心（截自原书）</figcaption>
+</figure>
+
+<p>实际跑一遍：从图像上大概预先知道结果应该有 4 个簇，于是 k=4：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&gt;&gt;&gt; centroids, clusterAssment = kMeans.kMeans(datMat, 4)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>&gt;&gt;&gt; centroids
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>matrix([[ 2.6265299 ,  3.10868015],
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        [-3.38237045, -2.9473363 ],
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        [ 2.80293085, -2.7315146 ],
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        [-2.46154315,  2.78737555]])
+</code></pre></div>
+<p>（代码实跑）可以看到，经过 3 次迭代之后 K-均值算法收敛，4 个质心与书中的输出一致。原始数据与这次聚类的散点图如下：</p>
+<figure>
+  <img src="../images/ch10/out-10-1.png" class="lq-img" />
+  <figcaption>testSet.txt 原始散点：80 个无标签二维点（代码实跑）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch10/out-10-3.png" class="lq-img" />
+  <figcaption>k=4 一次运行的聚类结果：迭代 4 次收敛，SSE=150.63，十字为质心（代码实跑）</figcaption>
+</figure>
+
+<p>但"一切顺利"的前提是初始化运气好。同一数据、同样的 k=4，连续跑 5 次（笔记实跑，仅随机种子 0~4 不同）：</p>
+<table>
+<thead>
+<tr>
+<th>运行</th>
+<th>收敛迭代次数</th>
+<th>总 SSE</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>149.954305</td>
+<td>全局最优（与书一致）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>382.957547</td>
+<td>陷入局部最优：下左簇被拆开、上方两簇被合并</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>149.954305</td>
+<td>全局最优</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>150.626049</td>
+<td>次优：个别边界点归属不同</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7</td>
+<td>150.626049</td>
+<td>次优</td>
+</tr>
+</tbody>
+</table>
+<p>迭代次数从 3 到 7 不等，SSE 也不全相同——第 2 次运行明显差一截，这就是 10.2 节要解决的问题。另外值得观察：k 未必该是 4。让 k 取 2、3、4 各跑一次：</p>
+<figure>
+  <img src="../images/ch10/out-10-2.png" class="lq-img" />
+  <figcaption>同一数据集在 k=2、3、4 下的聚类对比，十字为质心（代码实跑）</figcaption>
+</figure>
+
+<p>k=2 把上下各并成一簇（SSE=828.7）；k=3 时右上与右下两簇被强行合并（SSE=507.6）；k=4 才与数据的真实结构对上（SSE=150.6）。k 是用户给的参数，给小了只能"错着分"——那 k 给对了就一定分得好吗？往下看。</p>
+<h2 id="102-使用后处理来提高聚类性能">10.2 使用后处理来提高聚类性能<a class="headerlink" href="#102-使用后处理来提高聚类性能" title="Permanent link">#</a></h2>
+<p>前面提到，簇的数目 k 是用户预先定义的参数，那么用户如何才能知道 k 的选择是否正确？如何才能知道生成的簇比较好呢？在包含簇分配结果的矩阵中保存着每个点的误差，即该点到簇质心的距离平方值——本节讨论利用该误差来评价聚类质量的方法。</p>
+<p>考虑图 10-2 的聚类结果：这是在一个包含三个簇的数据集上运行 K-均值算法之后的结果，但点的簇分配结果明显不对。K-均值算法收敛但聚类效果较差的原因是，<strong>K-均值算法收敛到了局部最小值，而非全局最小值</strong>（局部最小值指结果还可以但并非最好结果，全局最小值是可能的最好结果）。</p>
+<figure>
+  <img src="../images/ch10/fig-10-2.png" class="lq-img" />
+  <figcaption>图 10.2 质心随机初始化导致 K-均值效果不好的例子，需要额外的后处理来清理结果（截自原书）</figcaption>
+</figure>
+
+<p>一种用于度量聚类效果的指标是 SSE（<strong>Sum of Squared Error</strong>，误差平方和），对应程序清单 10-2 中 clusterAssment 矩阵第二列之和：</p>
+<div class="arithmatex">\[ \mathrm{SSE} = \sum_{i=1}^{m} \left\lVert x_i - \mu_{c_i} \right\rVert_2^2 \]</div>
+<p>其中 <span class="arithmatex">\(m\)</span> 为数据点数，<span class="arithmatex">\(c_i\)</span> 是点 <span class="arithmatex">\(x_i\)</span> 被分配到的簇，<span class="arithmatex">\(\mu_{c_i}\)</span> 是该簇的质心。SSE 值越小表示数据点越接近于它们的质心，聚类效果也越好。<strong>因为对误差取了平方，所以更加重视那些远离中心的点</strong>。</p>
+<p>一种肯定可以降低 SSE 值的方法是增加簇的个数（k 越大，每个点离自己的质心越近），但这违背了聚类的目标——聚类的目标是在<strong>保持簇数目不变</strong>的情况下提高簇的质量。</p>
+<p>那么如何对图 10-2 的结果进行改进？可以对生成的簇进行后处理，一种方法是将具有<strong>最大 SSE 值的簇划分成两个簇</strong>：把该簇包含的点过滤出来，在这些点上运行 K-均值算法（k 设为 2）。为了保持簇总数不变，还要将某两个簇进行合并——从图 10-2 中很明显就能看出，应该将图下部两个出错的簇质心进行合并。</p>
+<p>二维数据上的聚类可以很容易可视化，但如果遇到 40 维的数据该怎么办？有两种可以量化的合并办法：</p>
+<ol>
+<li><strong>合并最近的质心</strong>：计算所有质心之间的距离，合并距离最近的两个质心对应的簇；</li>
+<li><strong>合并两个使得 SSE 增幅最小的质心</strong>：合并两个簇后计算总 SSE 值，必须在所有可能的两个簇上重复上述过程，直到找到合并最佳的两个簇为止。</li>
+</ol>
+<p>书里没有把这两种后处理写成代码，而是直接给出把它们自动化之后的算法——二分K-均值（10.3 节）。在此之前，先实跑复现"陷入局部最小"的现象。图 10-2 的"较难"数据集是 <code>testSet2.txt</code>（60 个点、真实簇数 3）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&gt;&gt;&gt; datMat2 = mat(kMeans.loadDataSet('testSet2.txt'))
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&gt;&gt;&gt; # 连跑 10 次 kMeans(datMat2, 3)，笔记实跑时固定随机种子（100~109）便于复现，结果汇总：
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>run 1 (seed=100): 迭代 2 次, SSE=453.033490   ← 坏：上方两簇被合并成一个大簇，
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>run 6 (seed=105): 迭代 4 次, SSE=436.629503   ← 坏；且第 1 次还剩一个空簇（质心 nan）
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>其余 8 次       : 迭代 2~4 次, SSE=106.749499  ← 全局最优
+</code></pre></div>
+<p>（代码实跑）10 次里 8 次命中全局最优（SSE=106.75），2 次掉进局部最优（SSE=436.6 与 453.0，约是全局最优的 4 倍）。把最好与最坏的一次画在一起：</p>
+<figure>
+  <img src="../images/ch10/out-10-4.png" class="lq-img" />
+  <figcaption>kMeans(testSet2, 3) 十次运行中最好与最坏的一次：右图上方两簇被合并、还出现空簇（代码实跑）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：更好的初始化——k-means++</p>
+<p>原书用"随机撒 k 个质心 + 后处理补救"。2007 年提出的 k-means++ 换了思路：让初始质心尽量互相离得远——先随机选第 1 个质心，之后每选一个新质心，都以"与已有质心的距离平方成正比"的概率在剩余点中抽取。初始质心分散后，掉进局部最优的概率大幅下降，scikit-learn 的 <code>KMeans</code> 默认就用 <code>init='k-means++'</code>。思想与二分K-均值殊途同归：都是避免多个初始质心挤在同一个真实簇里。</p>
+</div>
+<h2 id="103-二分K-均值算法">10.3 二分K-均值算法<a class="headerlink" href="#103-二分K-均值算法" title="Permanent link">#</a></h2>
+<p>为克服 K-均值算法收敛于局部最小值的问题，有人提出了另一个称为二分K-均值（<strong>bisecting K-means</strong>）的算法。该算法首先将所有点作为一个簇，然后将该簇一分为二；之后选择其中一个簇继续进行划分，选择哪一个簇取决于<strong>对其划分是否可以最大程度降低 SSE 的值</strong>。上述基于 SSE 的划分过程不断重复，直到得到用户指定的簇数目为止。</p>
+<p>伪代码形式如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>将所有点看成一个簇
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>当簇数目小于 k 时
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    对于每一个簇
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        计算总误差
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        在给定的簇上面进行K-均值聚类（k=2）
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        计算将该簇一分为二之后的总误差
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    选择使得误差最小的那个簇进行划分操作
+</code></pre></div>
+<p>另一种做法是选择 SSE 最大的簇进行划分，直到簇数目达到用户指定的数目为止。下面就来看该算法的实际效果。打开 <code>kMeans.py</code> 加入下面程序清单中的代码。</p>
+<p><strong>程序清单 10-3 二分K-均值聚类算法</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 10.3 节 程序清单10-3 二分K-均值聚类算法 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">biKmeans</span><span class="p">(</span><span class="n">dataSet</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">distMeas</span><span class="o">=</span><span class="n">distEclud</span><span class="p">):</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">clusterAssment</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>             <span class="c1"># 与 kMeans 相同的簇分配结果矩阵</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">centroid0</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">dataSet</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># 整个数据集的质心</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">centList</span> <span class="o">=</span> <span class="p">[</span><span class="n">centroid0</span><span class="p">]</span>                          <span class="c1"># 质心列表：初始只有 1 个簇</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>                              <span class="c1"># 计算初始误差：每点到总质心的平方距离</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="n">clusterAssment</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">distMeas</span><span class="p">(</span><span class="n">mat</span><span class="p">(</span><span class="n">centroid0</span><span class="p">),</span> <span class="n">dataSet</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:])</span><span class="o">**</span><span class="mi">2</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="k">while</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centList</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">):</span>                      <span class="c1"># 不停划分，直到簇数目达到 k</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        <span class="n">lowestSSE</span> <span class="o">=</span> <span class="n">inf</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centList</span><span class="p">)):</span>              <span class="c1"># ——对每一个簇尝试划分——</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>            <span class="c1"># 数组过滤：取出当前第 i 簇的所有点，当作小数据集</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>            <span class="n">ptsInCurrCluster</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">clusterAssment</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>            <span class="n">centroidMat</span><span class="p">,</span> <span class="n">splitClustAss</span> <span class="o">=</span> <span class="n">kMeans</span><span class="p">(</span><span class="n">ptsInCurrCluster</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">distMeas</span><span class="p">)</span>  <span class="c1"># k=2 划分</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>            <span class="n">sseSplit</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">splitClustAss</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>     <span class="c1"># 划分出的两个簇的 SSE</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>            <span class="n">sseNotSplit</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">clusterAssment</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">clusterAssment</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"sseSplit, and notSplit: "</span><span class="p">,</span> <span class="n">sseSplit</span><span class="p">,</span> <span class="n">sseNotSplit</span><span class="p">)</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">sseSplit</span> <span class="o">+</span> <span class="n">sseNotSplit</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">lowestSSE</span><span class="p">:</span>    <span class="c1"># 划分后的总 SSE 更低 → 记为最佳</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                <span class="n">bestCentToSplit</span> <span class="o">=</span> <span class="n">i</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>                <span class="n">bestNewCents</span> <span class="o">=</span> <span class="n">centroidMat</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>                <span class="n">bestClustAss</span> <span class="o">=</span> <span class="n">splitClustAss</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>                <span class="n">lowestSSE</span> <span class="o">=</span> <span class="n">sseSplit</span> <span class="o">+</span> <span class="n">sseNotSplit</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>        <span class="c1"># 把 kMeans 给出的簇编号 0/1 重编：0 → 被划分簇的原编号，1 → 新增簇的编号</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>        <span class="n">bestClustAss</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">bestClustAss</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">centList</span><span class="p">)</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>        <span class="n">bestClustAss</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">bestClustAss</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">bestCentToSplit</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'the bestCentToSplit is: '</span><span class="p">,</span> <span class="n">bestCentToSplit</span><span class="p">)</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'the len of bestClustAss is: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bestClustAss</span><span class="p">))</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>        <span class="n">centList</span><span class="p">[</span><span class="n">bestCentToSplit</span><span class="p">]</span> <span class="o">=</span> <span class="n">bestNewCents</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># 一个质心换成两个</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>        <span class="n">centList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bestNewCents</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>        <span class="c1"># 用划分结果替换被划分簇原来的分配记录</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>        <span class="n">clusterAssment</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">clusterAssment</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">bestCentToSplit</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">bestClustAss</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>    <span class="k">return</span> <span class="n">mat</span><span class="p">(</span><span class="n">centList</span><span class="p">),</span> <span class="n">clusterAssment</span>
+</code></pre></div>
+<p>该函数与 <code>kMeans()</code> 的参数相同：给定数据集、所期望的簇数目和距离计算方法，返回聚类结果。逐块拆解：</p>
+<ul>
+<li><strong>创建初始簇</strong>：先算整个数据集的质心放进 centList，再遍历所有点计算每点到该质心的误差，这些误差后面会用到；</li>
+<li><strong>尝试划分</strong>：while 循环不停对簇进行划分，直到簇数目达标。每一轮遍历所有现有簇，对每个簇把它的点拿出来跑一次 <code>kMeans(..., 2)</code>，得到两个新质心和分配；<code>sseSplit</code> 是划分出的两个簇的 SSE，<code>sseNotSplit</code> 是<strong>其余所有簇的 SSE 之和</strong>，两者相加 = "把第 i 簇划开之后"的全局总 SSE。谁划开后总 SSE 最小，谁就是本轮要划分的簇；</li>
+<li><strong>更新分配</strong>：划分操作只改簇编号——kMeans 给出编号 0 和 1 的两个新簇，把 0 重编为被划分簇的原编号、1 重编为新加簇的编号，然后替换 clusterAssment 中对应行，新质心替换旧质心并追加新质心。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">原书表述不一致（对照 10.5 小结）</p>
+<p>本章小结里说二分K-均值"选择<strong>有最大误差</strong>的簇进行划分"，这与 10.3 节伪代码（"选择使得误差最小的那个簇进行划分"）和程序清单 10-3 的实现（<strong>尝试划分每一个簇，选划分后总 SSE 最小者</strong>）不一致。"挑 SSE 最大的簇划分"是 10.3 正文提到的另一种省计算的做法，作者代码实现的并不是它。另外注意 <code>sseNotSplit</code> 不是"该簇划分前的 SSE"，而是"除它以外所有簇的 SSE"——两个量相加才是划分后的全局总 SSE。</p>
+</div>
+<p>实跑看看效果（testSet2 就是图 10-2 那个"较难"数据集）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&gt;&gt;&gt; centList, clusterAssment = kMeans.biKmeans(datMat2, 3)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sseSplit, and notSplit:  541.2976292649145 0.0
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>the bestCentToSplit is:  0
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>the len of bestClustAss is:  60
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sseSplit, and notSplit:  67.2202000797829 39.52929868209309
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sseSplit, and notSplit:  25.535514707587865 501.7683305828214
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>the bestCentToSplit is:  0
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>the len of bestClustAss is:  40
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>&gt;&gt;&gt; centList
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>matrix([[-0.45965615, -2.7782156 ],
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        [ 2.93386365,  3.12782785],
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        [-2.94737575,  3.3263781 ]])
+</code></pre></div>
+<p>（代码实跑）逐步解读这份输出：初始只有 1 个簇（60 个点，SSE=541.30，notSplit 为 0）；第 1 轮把它一分为二；第 2 轮对两个簇分别试划分——划簇 0 得 sseSplit=67.22、notSplit=39.53，合计 106.75；划簇 1 得 25.54+501.77=527.31——选簇 0 划分，得到 3 个簇。最终总 SSE=106.749499，<strong>与 10.2 节 kMeans 十次运行中的全局最优完全一致</strong>，且每次运行都收敛到这个结果（三个簇各 20 个点）。</p>
+<figure>
+  <img src="../images/ch10/out-10-5.png" class="lq-img" />
+  <figcaption>biKmeans(testSet2, 3)：总能收敛到全局最优，三簇各 20 点（代码实跑）</figcaption>
+</figure>
+
+<p>在最早的数据集 testSet 上跑 biKmeans(datMat, 4) 同样成功（三轮依次划分簇 0 → 簇 1 → 簇 0），总 SSE=149.954305，与 kMeans 的最好结果一致：</p>
+<figure>
+  <img src="../images/ch10/out-10-6.png" class="lq-img" />
+  <figcaption>biKmeans(testSet, 4)：三轮划分后的簇分配，SSE=149.95（代码实跑）</figcaption>
+</figure>
+
+<p>所以结论是：<strong>上述函数可以运行多次，聚类会收敛到全局最小值，而原始的 kMeans() 函数偶尔会陷入局部最小值</strong>。图 10-3 给出数据集及运行 biKmeans() 后的质心示意。</p>
+<figure>
+  <img src="../images/ch10/fig-10-3.png" class="lq-img" />
+  <figcaption>图 10.3 运行二分K-均值算法后的簇分配示意图，该算法总是产生较好的聚类结果（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：用 SSE-k 曲线（肘部法）挑 k</p>
+<p>k 是用户给的，可"给多少"本身是个问题。一个常用做法（原书未展开）是把 k=1,2,3,… 依次跑一遍，画总 SSE 随 k 的曲线：k 小于真实簇数时每加一簇 SSE 大跌；过了真实簇数，继续加簇只能拆散本来完整的簇，SSE 下降骤缓——曲线出现"肘部"，肘部对应的 k 就是好选择。两个数据集的实测见下图。</p>
+</div>
+<figure>
+  <img src="../images/ch10/out-10-7.png" class="lq-img" />
+  <figcaption>SSE 随 k 变化曲线：testSet 拐点在 k=4（487.3→150.0），testSet2 拐点在 k=3（541.3→106.7），都与真实簇数一致（代码实跑）</figcaption>
+</figure>
+
+<p>前面已经运行了二分K-均值算法，下面将该算法应用于一些真实的数据集上——利用地图上的地理位置坐标进行聚类。</p>
+<h2 id="104-示例对地图上的点进行聚类">10.4 示例：对地图上的点进行聚类<a class="headerlink" href="#104-示例对地图上的点进行聚类" title="Permanent link">#</a></h2>
+<p>假如有这样一种情况：你的朋友 Drew 希望你带他去城里庆祝他的生日。由于其他一些朋友也会过来，所以需要你提供一个大家都可行的计划。Drew 给了你一些他希望去的地址，这个地址列表很长，有 70 个位置（保存在文件 portlandClubs.txt 中，与源码一起打包），这些地址都在俄勒冈州的波特兰地区。</p>
+<p>也就是说，一晚上要去 70 个地方！你要决定一个将这些地方进行聚类的最佳策略：先乘车抵达每个簇的质心，再步行到簇内的每个地址。Drew 的清单只给了地址、没给距离远近信息，因此要先把每个地址转换成纬度和经度，再对坐标聚类来安排行程。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>示例：对于地理数据应用二分K-均值算法
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>(1) 收集数据：使用Yahoo! PlaceFinder API收集数据。
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>(2) 准备数据：只保留经纬度信息。
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>(3) 分析数据：使用Matplotlib来构建一个二维数据图，其中包含簇与地图。
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>(4) 训练算法：训练不适用于无监督学习。
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>(5) 测试算法：使用10.3节中的biKmeans()函数。
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>(6) 使用算法：最后的输出是包含簇及簇中心的地图。
+</code></pre></div>
+<p>你需要一个服务来将地址转换为纬度和经度。当时幸运的是，雅虎提供了这样的服务——Yahoo! PlaceFinder API。下面介绍它的使用方法，然后对地址坐标进行聚类，最后画出所有点以及簇中心，看看聚类结果到底如何。</p>
+<h3 id="1041-Yahoo-PlaceFinder-API">10.4.1 Yahoo! PlaceFinder API<a class="headerlink" href="#1041-Yahoo-PlaceFinder-API" title="Permanent link">#</a></h3>
+<p>雅虎提供了一个免费的地址转换 API，对给定的地址返回该地址对应的纬度与经度（文档见 <code>http://developer.yahoo.com/geo/placefinder/guide/</code>）。为了使用该服务，需要在 Yahoo! 开发者网络（http://developer.yahoo.com/）注册并创建一个桌面应用，获得一个 <strong>appid</strong>——<strong>geocoder</strong>（地理编码器）接受给定地址、返回该地址对应的经纬度，而调用 geocoder 需要 appid。</p>
+<p>打开 <code>kMeans.py</code>，加入下列代码。</p>
+<p><strong>程序清单 10-4 Yahoo! PlaceFinder API</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 10.4.1 节 程序清单10-4 Yahoo! PlaceFinder API =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.parse</span>    <span class="c1"># Py3 适配：urlencode 在 urllib.parse（原书 Py2 写 urllib.urlencode）</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>  <span class="c1"># Py3 适配：urlopen 在 urllib.request（原书写 urllib.urlopen）</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">geoGrab</span><span class="p">(</span><span class="n">stAddress</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">apiStem</span> <span class="o">=</span> <span class="s1">'http://where.yahooapis.com/geocode?'</span>   <span class="c1"># geocoder 的入口 URL</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>                                       <span class="c1"># 用字典组织查询参数</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">params</span><span class="p">[</span><span class="s1">'flags'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'J'</span>                             <span class="c1"># 将返回类型设为 JSON</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">params</span><span class="p">[</span><span class="s1">'appid'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'aaa0VN6k'</span>                      <span class="c1"># 书作者注册得到的 appid（早已失效）</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="n">params</span><span class="p">[</span><span class="s1">'location'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">stAddress</span><span class="p">,</span> <span class="n">city</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">url_params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>       <span class="c1"># 字典 → 可拼进 URL 的字符串</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="n">yahooApi</span> <span class="o">=</span> <span class="n">apiStem</span> <span class="o">+</span> <span class="n">url_params</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">yahooApi</span><span class="p">)</span>                                   <span class="c1"># 打印输出的 URL，可看到具体发生了什么</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="n">c</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">yahooApi</span><span class="p">)</span>              <span class="c1"># 打开 URL 读取返回值</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>                       <span class="c1"># JSON 字符串 → Python 字典</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">massPlaceFind</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="n">fw</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'places.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>                      <span class="c1"># 结果写出到 places.txt</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="n">lineArr</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)</span>                    <span class="c1"># 取第 2、3 列：街道地址与城市</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>        <span class="n">retDict</span> <span class="o">=</span> <span class="n">geoGrab</span><span class="p">(</span><span class="n">lineArr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lineArr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>        <span class="k">if</span> <span class="n">retDict</span><span class="p">[</span><span class="s1">'ResultSet'</span><span class="p">][</span><span class="s1">'Error'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>        <span class="c1"># Error=0 才表示没有错误</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>            <span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">retDict</span><span class="p">[</span><span class="s1">'ResultSet'</span><span class="p">][</span><span class="s1">'Results'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'latitude'</span><span class="p">])</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>            <span class="n">lng</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">retDict</span><span class="p">[</span><span class="s1">'ResultSet'</span><span class="p">][</span><span class="s1">'Results'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'longitude'</span><span class="p">])</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">lineArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">))</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>            <span class="n">fw</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">))</span>   <span class="c1"># 原行信息 + 纬度 + 经度</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"error fetching"</span><span class="p">)</span>                   <span class="c1"># 有错误就不抽取纬度和经度</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                                      <span class="c1"># 每次调用后延迟 1 秒，防止请求过密被封</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>    <span class="n">fw</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>程序包含两个函数：</p>
+<ul>
+<li><strong>geoGrab()</strong> 从 Yahoo 返回一个字典。首先为 API 设置 apiStem，然后创建参数字典——<code>flags = 'J'</code> 让服务返回 JSON 格式；接着用 urllib 的 <code>urlencode()</code> 把字典转成可以通过 URL 传递的字符串；最后打开 URL 读取返回值，并用 json 模块把 JSON 解码成字典。解码成功，就完成了一次地址的地理编码。</li>
+<li><strong>massPlaceFind()</strong> 把这些封装起来：打开 tab 分隔的文本文件，取第 2、3 列输入 geoGrab()；检查输出字典有没有错误，没有错就从字典读出经纬度，添加到原来对应的行上并写到新文件 places.txt；有错误就跳过。最后调用 <code>sleep()</code> 把每次调用延迟 1 秒——<strong>短时间内过于频繁地调用 API，请求可能会被封掉</strong>。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：JSON 是什么</p>
+<p>JSON（<strong>JavaScript Object Notation</strong>）是一种用于序列化数组和字典的文件格式，写法长得很像 Python 字典。geoGrab 返回的是一部只包含键 <code>ResultSet</code> 的字典，其下又有以 <code>Locale</code>、<code>ErrorMessage</code>、<code>Results</code>、<code>version</code>、<code>Error</code>、<code>Found</code>、<code>Quality</code> 为键的内容；我们主要感兴趣的是 <code>Error</code> 与 <code>Results</code>：<code>Error</code> 是错误编码（0 意味着没有错误，其他任何值都代表没有获得要找的地址），<code>Results[0]</code> 里的 <code>latitude</code>、<code>longitude</code> 是纬度和经度——都是字符串，要用 <code>float()</code> 转成浮点数。更多信息见 www.json.org。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Yahoo! PlaceFinder API 已停服，10.4.1 无法实跑</p>
+<p>Yahoo 的地理编码 API 早已停止服务，书中打印的 URL（<code>where.yahooapis.com</code>）已不可访问，appid 机制也不复存在，因此本节代码<strong>忠实呈现但不实跑</strong>。今天要做同样的事，可以改用 OpenStreetMap 的 Nominatim（Python 库 geopy 封装了它）等开放地理编码服务；随书仓库提供了 massPlaceFind 当年跑出来的结果文件 <code>places.txt</code>，10.4.2 的聚类部分就用它实跑。</p>
+</div>
+<h3 id="1042-对地理坐标进行聚类">10.4.2 对地理坐标进行聚类<a class="headerlink" href="#1042-对地理坐标进行聚类" title="Permanent link">#</a></h3>
+<p>现在我们有了一个包含格式化地理坐标的列表，接下来对这些俱乐部进行聚类，并把俱乐部以及簇中心画在城市地图上。</p>
+<p>这个例子要聚类的俱乐部给出的信息是经度和纬度，但<strong>这些信息对于距离计算还不够</strong>：在北极附近每走几米，经度变化可能达到数十度；而在赤道附近走相同的距离，带来的经度变化可能只有零点几度。可以使用**球面余弦定理（Spherical Law of Cosines）**来计算两个经纬度之间的距离：</p>
+<div class="arithmatex">\[ d = R \cdot \arccos\bigl(\sin(lat_1)\sin(lat_2) + \cos(lat_1)\cos(lat_2)\cos(lon_2 - lon_1)\bigr) \]</div>
+<p>其中 <span class="arithmatex">\(R\)</span> 是地球半径，程序取 6371.0；两点的经纬度是角度，而 <code>sin()</code>、<code>cos()</code> 以弧度为输入，所以要"除以 180 再乘 pi"换算成弧度（pi 随 numpy 导入）。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：距离单位是公里，不是英里</p>
+<p>原书正文说"distSLC() 返回地球表面两点间的距离，<strong>单位是英里</strong>"，但代码中地球半径取 6371.0——这是<strong>公里</strong>数（地球半径约 6371 km，合 3959 英里），因此返回值单位应为公里。本笔记的实跑输出与图注均按公里表述。</p>
+</div>
+<p>为实现距离计算并把聚类后的俱乐部标识在地图上，打开 <code>kMeans.py</code> 添加下面的程序清单。</p>
+<p><strong>程序清单 10-5 球面距离计算及簇绘图函数</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 10.4.2 节 程序清单10-5 球面距离计算及簇绘图函数 =====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">distSLC</span><span class="p">(</span><span class="n">vecA</span><span class="p">,</span> <span class="n">vecB</span><span class="p">):</span>    <span class="c1"># 球面余弦定理计算地球表面两点间距离</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="c1"># vecA/vecB 均为 1×2 行向量：[经度, 纬度]，单位是角度</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">a</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">vecA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">vecB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">vecA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">vecB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> \
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>                      <span class="n">cos</span><span class="p">(</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">vecB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">vecA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="k">return</span> <span class="n">arccos</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mf">6371.0</span>     <span class="c1"># pi 随 numpy 导入；6371.0 为地球半径（公里）</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">clusterClubs</span><span class="p">(</span><span class="n">numClust</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="n">datList</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'places.txt'</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        <span class="n">lineArr</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        <span class="n">datList</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">lineArr</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lineArr</span><span class="p">[</span><span class="mi">3</span><span class="p">])])</span>  <span class="c1"># 取第 5 列经度、第 4 列纬度</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>    <span class="n">datMat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">datList</span><span class="p">)</span>     <span class="c1"># 每行 [经度, 纬度]</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="n">myCentroids</span><span class="p">,</span> <span class="n">clustAssing</span> <span class="o">=</span> <span class="n">biKmeans</span><span class="p">(</span><span class="n">datMat</span><span class="p">,</span> <span class="n">numClust</span><span class="p">,</span> <span class="n">distMeas</span><span class="o">=</span><span class="n">distSLC</span><span class="p">)</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="n">rect</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>                    <span class="c1"># 绘图区域：左下角在 (0.1,0.1)，宽高各 0.8</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>    <span class="n">scatterMarkers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="s1">'^'</span><span class="p">,</span> <span class="s1">'8'</span><span class="p">,</span> <span class="s1">'p'</span><span class="p">,</span> \
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>                      <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">,</span> <span class="s1">'h'</span><span class="p">,</span> <span class="s1">'&gt;'</span><span class="p">,</span> <span class="s1">'&lt;'</span><span class="p">]</span>     <span class="c1"># 散点标记形状池</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    <span class="n">axprops</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>           <span class="c1"># 底图坐标系不带刻度</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>    <span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'ax0'</span><span class="p">,</span> <span class="o">**</span><span class="n">axprops</span><span class="p">)</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>    <span class="n">imgP</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'Portland.png'</span><span class="p">)</span>              <span class="c1"># 基于图像创建矩阵</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>    <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgP</span><span class="p">)</span>                               <span class="c1"># 先画波特兰地图底图</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'ax1'</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># 同一区域再叠一套坐标系</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numClust</span><span class="p">):</span>                      <span class="c1"># 逐簇画散点</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>        <span class="n">ptsInCurrCluster</span> <span class="o">=</span> <span class="n">datMat</span><span class="p">[</span><span class="n">nonzero</span><span class="p">(</span><span class="n">clustAssing</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>        <span class="n">markerStyle</span> <span class="o">=</span> <span class="n">scatterMarkers</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">scatterMarkers</span><span class="p">)]</span>   <span class="c1"># 簇多时循环使用标记</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>        <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ptsInCurrCluster</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>                    <span class="n">ptsInCurrCluster</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>                    <span class="n">marker</span><span class="o">=</span><span class="n">markerStyle</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">myCentroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> \
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>                <span class="n">myCentroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'+'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>   <span class="c1"># 十字画簇中心</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>程序清单包含两个函数：</p>
+<ul>
+<li><strong>distSLC()</strong> 返回地球表面两点之间的距离。给定两个点的经纬度，用球面余弦定理计算距离；纬度、经度以角度为单位，<code>sin()</code>、<code>cos()</code> 以弧度为输入，角度要除以 180 再乘 pi 转成弧度；</li>
+<li><strong>clusterClubs()</strong> 只有一个参数——所希望得到的簇数目，它把文本文件的解析、聚类以及画图封装在一起：先创建一个空列表，打开 places.txt 获取第 4、5 列（分别对应纬度和经度），基于这些经纬度对创建矩阵；再在这些数据点上运行 biKmeans() 并使用 distSLC() 作为距离计算方法；最后将簇及簇质心画在图上。</li>
+</ul>
+<p>画图部分有个小技巧：先创建一幅图和一个矩形（rect 决定绘制图的哪一部分），用 <code>add_axes</code> 在这个矩形上建坐标系画地图；然后在<strong>同一幅图的同一矩形上再叠一套坐标系</strong>——这允许使用两套坐标系统且不做任何缩放或偏移：底图那套不显示刻度，上面那套用经纬度画散点。每个簇使用 <code>scatterMarkers</code> 列表中的标记，取标记用 <code>i % len(scatterMarkers)</code>——<strong>当簇数多于标记数时循环使用</strong>。最后用十字标记表示簇中心并在图中显示。</p>
+<p>先弄清楚 places.txt 的列结构（仓库自带文件共 69 行，每行 5 列、tab 分隔）：</p>
+<table>
+<thead>
+<tr>
+<th>列（0 起）</th>
+<th>内容</th>
+<th>首行示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>店名</td>
+<td>Dolphin II</td>
+</tr>
+<tr>
+<td>1</td>
+<td>街道地址</td>
+<td>10860 SW Beaverton-Hillsdale Hwy</td>
+</tr>
+<tr>
+<td>2</td>
+<td>城市</td>
+<td>Beaverton, OR</td>
+</tr>
+<tr>
+<td>3</td>
+<td>纬度</td>
+<td>45.486502</td>
+</tr>
+<tr>
+<td>4</td>
+<td>经度</td>
+<td>-122.788346</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">书里说 70 个地址，为什么 places.txt 只有 69 行</p>
+<p>massPlaceFind() 只把 geocoding 成功（Error=0）的行写入 places.txt，失败的行直接跳过——原书跑批时有一条地址没有转换成功，所以仓库自带的 places.txt 是 69 条。书正文说列表"有 70 个位置"，两处并不矛盾。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">运行环境说明（10.4.2）</p>
+<p>clusterClubs() 读工作目录下的 <code>places.txt</code> 和底图 <code>Portland.png</code>（均随书仓库提供），两者必须放在当前工作目录，缺 Portland.png 时 <code>plt.imread</code> 直接报错。脚本方式运行时把 <code>plt.show()</code> 换成 <code>plt.savefig(...)</code> 即可得到图片文件；本笔记实跑即如此生成下图。</p>
+</div>
+<p>实跑 <code>clusterClubs(5)</code>，得到与图 10-4 类似的图（实跑的底图是随书仓库的 Portland.png，配色与书里当年的截图不同，点位与聚类结果一致）：</p>
+<figure>
+  <img src="../images/ch10/out-10-8.png" class="lq-img" />
+  <figcaption>对俄勒冈州波特兰市 69 个夜生活地点的二分K-均值聚类（k=5，distSLC），十字为簇质心（代码实跑）</figcaption>
+</figure>
+
+<figure>
+  <img src="../images/ch10/fig-10-4.png" class="lq-img" />
+  <figcaption>图 10.4 对俄勒冈州波特兰市夜生活娱乐地点的聚类结果（截自原书）</figcaption>
+</figure>
+
+<p>实跑输出（biKmeans 的过程打印略去，只列结果）：总 SSE=1267.4（distSLC 距离的平方和，单位 km²），各簇质心与规模如下：</p>
+<table>
+<thead>
+<tr>
+<th>簇</th>
+<th>质心（经度， 纬度）</th>
+<th>地点数</th>
+<th>大致方位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>(-122.7618, 45.4664)</td>
+<td>11</td>
+<td>西南：Beaverton / Tigard 一带</td>
+</tr>
+<tr>
+<td>1</td>
+<td>(-122.4986, 45.4950)</td>
+<td>11</td>
+<td>东：Gresham / Troutdale 方向</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(-122.7207, 45.5901)</td>
+<td>7</td>
+<td>北：Vancouver, WA 一带</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(-122.6524, 45.5011)</td>
+<td>21</td>
+<td>市中心密集区</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(-122.5777, 45.5326)</td>
+<td>19</td>
+<td>东北</td>
+</tr>
+</tbody>
+</table>
+<p>出行方案就有了：车开到 5 个质心附近，每个质心周边步行逛完同簇的十几家店。可以尝试输入不同簇数目看程序运行的效果——什么数目比较好呢？读者可以思考一下这个问题。下面把 k=3 与 k=8 放在一起对比：</p>
+<figure>
+  <img src="../images/ch10/out-10-9.png" class="lq-img" />
+  <figcaption>同一个 places.txt 在 k=3 与 k=8 下的聚类对比（代码实跑）</figcaption>
+</figure>
+
+<p>k=3 时总 SSE 高达 2286.9 km²，市中心的大簇一晚上根本步行逛不完；k=8 的总 SSE 降到 741.8 km²，但开始出现只含 1 个点的簇（比如东北角那个离群的点被单独成簇），为一个人单独跑一趟并不划算。k=5 是个折中——这正是"什么数目比较好"要结合<strong>业务约束</strong>（一晚上能走多少路、愿意跑几趟车）来回答的意思，单看 SSE 或单看图都给不出唯一答案。</p>
+<h2 id="105-本章小结">10.5 本章小结<a class="headerlink" href="#105-本章小结" title="Permanent link">#</a></h2>
+<p>聚类是一种无监督的学习方法：事先并不知道要寻找的内容，即没有目标变量。聚类将数据点归到多个簇中，相似数据点处于同一簇、不相似数据点处于不同簇，相似度可以用多种不同的方法计算。</p>
+<p>K-均值算法以 k 个随机质心开始，计算每个点到质心的距离并把每个点分配到距其最近的簇质心，然后基于新分配到簇的点更新簇质心，重复直到簇质心不再改变。这个简单的算法非常有效，<strong>但也容易受到初始簇质心的影响</strong>（10.2 节实测：同样 k=3，十次运行里两次掉进局部最优、SSE 差了约 4 倍）。为获得更好的聚类效果，可以使用二分K-均值：首先将所有点作为一个簇，然后用 K-均值（k=2）对其划分，下一次迭代时选择使划分后总 SSE 最小的簇继续划分，重复直到创建出 k 个簇——二分K-均值的聚类效果要好于K-均值算法。</p>
+<p>K-均值算法以及变形的K-均值算法并非仅有的聚类算法，另外称为层次聚类（hierarchical clustering）的方法也被广泛使用。下一章将介绍在数据集中查找关联规则的 Apriori 算法。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>Py3 的 map() 返回迭代器</strong>：loadDataSet 里 <code>map(float, curLine)</code> 不加 <code>list()</code>，append 进 dataMat 的是 map 对象，后面 <code>mat()</code> 直接报错。原书是 Python 2 写法，Py3 必须改。</li>
+<li><strong>NumPy 2.x 移除了 <code>np.mat</code></strong>：报 <code>AttributeError: np.mat was removed in the NumPy 2.0 release</code>。书里所有 <code>mat()</code> 配一个垫片即可：<code>try: mat</code> / <code>except NameError: mat = matrix</code>（matrix 类完全等价）；顺带会看到"matrix 子类不推荐使用"的提示，忽略即可。</li>
+<li><strong>裸的 sum/min/max 是内建函数</strong>：书里靠 <code>from numpy import *</code> 让 numpy 的 sum/min/max 盖掉内建——<code>sum(power(a-b,2))</code> 才能归约成标量。如果只 <code>import numpy as np</code> 再照抄函数体，内建 <code>sum</code> 会对矩阵<strong>按行迭代</strong>，distEclud 返回一个向量，<code>distJI &lt; minDist</code> 直接炸出 <code>ValueError: The truth value of an array ... is ambiguous</code>（本笔记实跑真踩过）。</li>
+<li><strong>空簇与提前收敛</strong>：clusterAssment 初始为全 0，若第一轮所有点恰好都离质心 0 最近，clusterChanged 不会置 True，循环一次就退出；没分到点的簇执行 <code>mean(空矩阵)</code> 得到 NaN 质心，且不报错（只有 RuntimeWarning "Mean of empty slice"）。实跑复现：10 个相同点 + k=2，1 轮收敛、第二个质心 <code>nan nan</code>；10.2 节 testSet2 的坏运行（SSE=453.0）也自带一个 NaN 质心——NaN 到任何点的距离都是 NaN，永远选不上，簇就静默空着。</li>
+<li><strong>SSE 不能跨 k 比较，也不要只跑一次</strong>：k 越大 SSE 必然越小，拿 k=4 的 SSE 和 k=3 的比没有意义；同 k 下随机初始化也会给出不同 SSE（testSet k=4 五次运行：149.95、150.63、382.96…），要么多跑几次取最好，要么直接用二分K-均值。</li>
+<li><strong>biKmeans 的划分选择逻辑别记错</strong>：代码是"对每个簇都试一次 k=2 划分，选<strong>划分后总 SSE（sseSplit+sseNotSplit）最小</strong>的簇"，不是本章小结说的"选最大误差的簇"；<code>sseNotSplit</code> 指其余簇的 SSE，不包含被划分簇自己。</li>
+<li><strong>distSLC 的单位是公里（原书误写英里）</strong>，且入参是角度、内部要 <code>*pi/180</code> 转弧度；向量布局是 <code>[经度, 纬度]</code>——clusterClubs 里 <code>lineArr[4]</code>（经度）在前、<code>lineArr[3]</code>（纬度）在后，distSLC 里 <code>vec[0,1]</code> 才是纬度，两处顺序要对上。</li>
+<li><strong>Yahoo! PlaceFinder API 已停服</strong>：geoGrab/massPlaceFind 只能读懂不能跑（appid 已失效、域名下线）；实跑聚类用随书仓库的 places.txt + Portland.png，两者都要放在<strong>当前工作目录</strong>，缺 Portland.png 时 <code>plt.imread</code> 直接报错。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>聚类是无监督学习：无目标变量、类别未预先定义，把相似对象归到同一簇（有时称无监督分类）；簇识别给出聚类结果的含义。</li>
+<li>K-均值：k 由用户给定，随机初始 k 个质心 → 每点分配到最近质心 → 质心更新为簇内均值，重复直到分配不再改变。</li>
+<li>三个支持函数：loadDataSet（读 tab 文件）、distEclud（欧氏距离）、randCent（每维在 [min, max] 边界内随机出 k 个初始质心）。</li>
+<li>clusterAssment 两列：簇索引 + 到质心的距离平方（误差）；后者之和即 SSE，越小越好，平方会放大远离中心的点。</li>
+<li>K-均值可能收敛到局部最小值：testSet k=4 五次运行出现 SSE=382.96 的坏结果（全局最优 149.95）；testSet2 k=3 十次里两次坏（436.6 / 453.0 vs 106.7）。</li>
+<li>后处理两招：拆（最大 SSE 簇再用 k=2 聚类）、合（合并最近质心，或合并使 SSE 增幅最小的两簇）；二分K-均值把这两招自动化。</li>
+<li>二分K-均值：所有点先成一簇，每轮对每个簇试划分（k=2），选划分后总 SSE 最小者执行，直到 k 个簇；实测总能收敛到全局最优。</li>
+<li>增加簇数必降 SSE，不能用 SSE 直接挑 k；肘部法看"下降骤缓"的拐点：testSet 拐在 k=4、testSet2 拐在 k=3，都与真实簇数一致。</li>
+<li>地理聚类：地址 → 经纬度（原书用已停服的 Yahoo! PlaceFinder API）；经纬度不能直接算欧氏距离（纬度越高经度越"缩水"），用球面余弦定理 distSLC（单位公里）；clusterClubs 用两套坐标系把簇和质心画在地图底图上，标记按 <code>i % len(scatterMarkers)</code> 循环使用。</li>
+<li>Py3/NumPy2 适配三件套：<code>list(map(...))</code>、<code>mat = matrix</code> 垫片、别用裸内建 sum/min/max（<code>from numpy import *</code> 照书来反而安全）。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文 / 函数</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clustering</td>
+<td>聚类</td>
+<td>无监督地把相似对象归到同一簇，类别体系自动构建</td>
+</tr>
+<tr>
+<td>cluster identification</td>
+<td>簇识别</td>
+<td>给出聚类结果的含义：这些簇到底是什么</td>
+</tr>
+<tr>
+<td>unsupervised classification</td>
+<td>无监督分类</td>
+<td>结果与分类相同但类别未预先定义，聚类的别称</td>
+</tr>
+<tr>
+<td>centroid</td>
+<td>质心</td>
+<td>簇中所有点的中心（均值），K-均值用质心描述簇</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>K-均值</td>
+<td>发现 k 个簇的算法：分配-更新循环至收敛</td>
+</tr>
+<tr>
+<td>bisecting K-means</td>
+<td>二分K-均值</td>
+<td>先全体一簇，反复对"划分后总 SSE 最小"的簇做 k=2 划分</td>
+</tr>
+<tr>
+<td>SSE (Sum of Squared Error)</td>
+<td>误差平方和</td>
+<td>clusterAssment 第二列之和，越小聚类越紧</td>
+</tr>
+<tr>
+<td>local / global minimum</td>
+<td>局部 / 全局最小值</td>
+<td>结果还可以但非最好 / 可能的最好结果</td>
+</tr>
+<tr>
+<td>loadDataSet</td>
+<td>数据载入</td>
+<td>逐行 split('\t') 转 float，返回列表的列表</td>
+</tr>
+<tr>
+<td>distEclud</td>
+<td>欧氏距离</td>
+<td>sqrt(sum(power(a-b,2)))，可换成任意距离度量</td>
+</tr>
+<tr>
+<td>randCent</td>
+<td>随机质心</td>
+<td>逐维在数据 [min, max] 边界内随机取 k 个初始质心</td>
+</tr>
+<tr>
+<td>kMeans / biKmeans</td>
+<td>K-均值 / 二分K-均值</td>
+<td>本章两个主函数，均返回质心与簇分配矩阵</td>
+</tr>
+<tr>
+<td>clusterAssment</td>
+<td>簇分配结果矩阵</td>
+<td>m×2：簇索引 + 到质心的距离平方</td>
+</tr>
+<tr>
+<td>clusterChanged</td>
+<td>收敛标志</td>
+<td>任一点分配改变就置 True 继续迭代</td>
+</tr>
+<tr>
+<td>nonzero(…A==i)</td>
+<td>数组过滤</td>
+<td>取出第 i 簇的行下标；.A 把 matrix 切片转回 ndarray</td>
+</tr>
+<tr>
+<td>mean(axis=0)</td>
+<td>沿列求均值</td>
+<td>质心更新：簇内所有点按列取平均</td>
+</tr>
+<tr>
+<td>Spherical Law of Cosines</td>
+<td>球面余弦定理</td>
+<td>由经纬度算地球表面两点距离，distSLC 实现（公里）</td>
+</tr>
+<tr>
+<td>geocoder</td>
+<td>地理编码器</td>
+<td>地址进、经纬度出的服务</td>
+</tr>
+<tr>
+<td>appid</td>
+<td>应用标识</td>
+<td>调用 Yahoo PlaceFinder 必须携带的注册凭据（已随 API 停服失效）</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>——</td>
+<td>JavaScript Object Notation，序列化字典/数组的格式；Error=0 表示成功</td>
+</tr>
+<tr>
+<td>urlencode</td>
+<td>URL 编码</td>
+<td>把参数字典转成可拼进 URL 的字符串（Py3 在 urllib.parse）</td>
+</tr>
+<tr>
+<td>scatterMarkers</td>
+<td>散点标记池</td>
+<td>['s','o','^','8','p',…]；按簇号取模循环使用</td>
+</tr>
+<tr>
+<td>elbow method</td>
+<td>肘部法</td>
+<td>SSE-k 曲线拐点选 k（原书未展开，本笔记拓展）</td>
+</tr>
+<tr>
+<td>k-means++</td>
+<td>——</td>
+<td>让初始质心互相远离的初始化策略（原书未提及，本笔记拓展）</td>
+</tr>
+<tr>
+<td>hierarchical clustering</td>
+<td>层次聚类</td>
+<td>另一类广泛使用的聚类方法，本章末提及其存在</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

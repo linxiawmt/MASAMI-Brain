@@ -1,0 +1,6983 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ch02/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第1章 欢迎来到计算机视觉 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-1-章-欢迎来到计算机视觉" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第1章 欢迎来到计算机视觉
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-视觉系统眼--脑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 视觉系统：眼 + 脑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 视觉系统：眼 + 脑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#人与机器的视觉系统同构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人与机器的视觉系统同构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#AI-视觉系统的两个组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 视觉系统的两个组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI 视觉系统的两个组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#传感设备先定任务再选设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感设备：先定任务，再选设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#解释设备ANN-的诞生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解释设备：ANN 的诞生
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-六大应用鸟瞰" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 六大应用鸟瞰
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 六大应用鸟瞰">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#图像分类CNN-的主战场" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像分类：CNN 的主战场
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#目标检测与定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目标检测与定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#风格迁移几秒钟画完一幅梵高" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风格迁移：几秒钟画完一幅"梵高"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#GAN机器的想象力" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAN：机器的想象力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#人脸识别1N-与-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人脸识别：1:N 与 1:1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图像推荐系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像推荐系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-CV-流水线全书主线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 CV 流水线：全书主线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-图像--函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 图像 = 函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 图像 = 函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#灰度图Fx-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        灰度图：F(x, y)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#彩色图三个堆叠的矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        彩色图：三个堆叠的矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图像即函数--处理即数学运算" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像即函数 ⇒ 处理即数学运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-图像预处理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 图像预处理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 图像预处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#灰度化省算力的一刀砍前先过决策流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        灰度化：省算力的一刀，砍前先过决策流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#统一尺寸Standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        统一尺寸（Standardization）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据增强Data-Augmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据增强（Data Augmentation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#其他技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-特征提取" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 特征提取
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 特征提取">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#CV-里的特征独有--可测量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CV 里的特征：独有 + 可测量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好特征标准①可泛化Repeatability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        好特征标准①：可泛化（Repeatability）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好特征标准②有区分度Greyhound-vs-Labrador-思想实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        好特征标准②：有区分度——Greyhound vs Labrador 思想实验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#手工特征-vs-自动特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手工特征 vs 自动特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#为什么要提特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要提特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-分类器学习算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 分类器学习算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-视觉系统眼--脑" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 视觉系统：眼 + 脑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 视觉系统：眼 + 脑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#人与机器的视觉系统同构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人与机器的视觉系统同构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#AI-视觉系统的两个组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 视觉系统的两个组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI 视觉系统的两个组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#传感设备先定任务再选设备" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感设备：先定任务，再选设备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#解释设备ANN-的诞生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解释设备：ANN 的诞生
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-六大应用鸟瞰" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 六大应用鸟瞰
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 六大应用鸟瞰">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#图像分类CNN-的主战场" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像分类：CNN 的主战场
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#目标检测与定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目标检测与定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#风格迁移几秒钟画完一幅梵高" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风格迁移：几秒钟画完一幅"梵高"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#GAN机器的想象力" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAN：机器的想象力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#人脸识别1N-与-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人脸识别：1:N 与 1:1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图像推荐系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像推荐系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-CV-流水线全书主线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 CV 流水线：全书主线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-图像--函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 图像 = 函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 图像 = 函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#灰度图Fx-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        灰度图：F(x, y)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#彩色图三个堆叠的矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        彩色图：三个堆叠的矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#图像即函数--处理即数学运算" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图像即函数 ⇒ 处理即数学运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-图像预处理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 图像预处理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 图像预处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#灰度化省算力的一刀砍前先过决策流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        灰度化：省算力的一刀，砍前先过决策流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#统一尺寸Standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        统一尺寸（Standardization）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据增强Data-Augmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据增强（Data Augmentation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#其他技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其他技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-特征提取" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 特征提取
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 特征提取">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#CV-里的特征独有--可测量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CV 里的特征：独有 + 可测量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好特征标准①可泛化Repeatability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        好特征标准①：可泛化（Repeatability）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好特征标准②有区分度Greyhound-vs-Labrador-思想实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        好特征标准②：有区分度——Greyhound vs Labrador 思想实验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#手工特征-vs-自动特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手工特征 vs 自动特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#为什么要提特征" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要提特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-分类器学习算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 分类器学习算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-1-章-欢迎来到计算机视觉">第 1 章 欢迎来到计算机视觉<a class="headerlink" href="#第-1-章-欢迎来到计算机视觉" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：计算机视觉的基本问题——机器如何从像素中"看懂"世界。介绍了视觉系统的组成（图像采集与解释）、CV 的典型任务（分类、检测、分割、风格迁移、人脸识别与图像推荐），以及贯穿全学科的 CV 流水线：<span class="arithmatex">\(\text{输入} \to \text{预处理} \to \text{特征提取} \to \text{ML 模型}\)</span>。学完能理解"图像即函数"的数学本质，并分清传统手工特征方法与深度学习方法在这条流水线中的位置。</p>
+</blockquote>
+<h2 id="10-本章导图">1.0 本章导图<a class="headerlink" href="#10-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">计算机视觉</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">视觉系统</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">传感设备（眼）</span>
+          <span class="brleaf">解释设备（脑）</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">六大应用</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">图像分类 → CNN</span>
+          <span class="brleaf">目标检测 → YOLO / SSD</span>
+          <span class="brleaf">风格迁移</span>
+          <span class="brleaf">GAN 图像生成</span>
+          <span class="brleaf">人脸识别</span>
+          <span class="brleaf">以图搜图</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">CV 流水线</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">① 输入</span>
+          <span class="brleaf">② 预处理</span>
+          <span class="brleaf">③ 特征提取</span>
+          <span class="brleaf">④ ML 模型</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">图像表示</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">灰度 F(x,y) ∈ [0,255]</span>
+          <span class="brleaf">RGB (H, W, 3)</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">预处理</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">灰度化决策</span>
+          <span class="brleaf">统一尺寸</span>
+          <span class="brleaf">数据增强</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">特征</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">手工 HOG / SIFT + SVM</span>
+          <span class="brleaf">自动提特征 + 分类，端到端</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="11-视觉系统眼--脑">1.1 视觉系统：眼 + 脑<a class="headerlink" href="#11-视觉系统眼--脑" title="Permanent link">#</a></h2>
+<p>**计算机视觉（Computer Vision, CV）**研究的是 AI 系统的视觉感知问题。任何 AI 系统的核心都是两件事：<strong>感知（Perceive）环境 + 基于感知采取行动</strong>。对人类来说，视觉只是感知的一种通道——我们同时靠听觉、嗅觉、触觉理解世界；AI 系统同理，构建什么应用，就选最能捕获环境的感知通道。而 CV 关注的视觉部分，定义是：<strong>通过图像和视频感知并理解世界，为环境构建物理模型，让 AI 系统能据此做出合适的行动</strong>。</p>
+<p>关键词是 <strong>Visual Perception（视觉感知）</strong> 里的"感知"。以自动驾驶为例，视觉感知意味着：理解周围物体及其细节——行人、需要保持居中的车道——并检测交通标志、读懂标志含义。<strong>我们要的不是"拍到"环境的画面，而是"看懂"环境。</strong></p>
+<div class="admonition info">
+<p class="admonition-title">图像处理 ≠ 计算机视觉</p>
+<p>过去几十年，传统图像处理技术常被直接叫作"计算机视觉"，这不准确：一台<strong>处理</strong>图像的机器（缩放、滤波、变换）与一台<strong>理解</strong>图像内容的机器，是完全不同的两回事，而且后者绝非易事。在今天的 CV 系统里，图像处理只是更大系统中的一个零件——它的使命是理解图像内容。</p>
+</div>
+<h3 id="人与机器的视觉系统同构">人与机器的视觉系统同构<a class="headerlink" href="#人与机器的视觉系统同构" title="Permanent link">#</a></h3>
+<p>在最高层面上，人、动物、昆虫和大多数生物的视觉系统结构是一样的：一个<strong>传感器（眼）<strong>捕获图像，一个</strong>大脑</strong>处理并解释图像，最终基于从图像中提取的数据，输出对图像成分的预测。</p>
+<table>
+<thead>
+<tr>
+<th>人类</th>
+<th>机器</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>眼</td>
+<td><strong>Sensing Device</strong> 传感设备</td>
+<td>捕获环境的图像</td>
+</tr>
+<tr>
+<td>脑</td>
+<td><strong>Interpreting Device</strong> 解释设备</td>
+<td>理解图像内容、输出预测</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="../images/ch01/fig-1-1.png" width="560" class="lq-img" />
+  <figcaption>图 1.1 人类视觉系统：眼负责捕获，脑负责理解（截自原书）</figcaption>
+</figure>
+
+<p>作者用"你学会认狗"的过程，把机器学习的全部要素讲了一遍：</p>
+<ol>
+<li>第一次看到狗的图片，你不知道它是什么；有人告诉你"这是狗"。几次之后，你学会了认狗——<strong>有标签的样本 + 被告知答案</strong>，这就是 <strong>Labeled Data（带标签数据）</strong> 与 <strong>Supervised Learning（监督学习）</strong>。</li>
+<li>之后你看到一匹马，大脑开始用特征推理："四条腿、长脸、长耳朵——是狗吗？"被告知"错，这是马"之后，大脑调整内部参数，记住"腿更长的是马"。预测 → 犯错 → 纠错 → 更新参数，循环往复直到不再犯错——这是 <strong>Training by Trial and Error（试错训练）</strong>。</li>
+</ol>
+<blockquote>
+<p>"Congratulations! You just trained your brain to classify dogs and horses."（恭喜，你刚刚训练出了能分类狗和马的大脑。）——你的大脑和机器的 learning algorithm 本质上是同一套流程。</p>
+</blockquote>
+<p>唯一的差距在<strong>样本效率</strong>：人只需要几张图就能学会认大多数物体，而机器需要成千上万张，复杂任务甚至要百万级样本。训练数据量这个主题会贯穿全书（第 4 章讲"该不该收集更多数据"，第 6 章讲怎么用迁移学习绕开它）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么机器的样本效率远低于人？</p>
+<p>人脑带着数亿年进化预装好的"先验"（边缘、纹理、物体恒常性），学习新类别时只需在其上微调；而神经网络从随机初始化出发，所有层级特征都要从数据中学。**迁移学习（第 6 章）**正是把"预装先验"搬到机器上的手段：用 ImageNet 预训练替代进化预装，再用少量数据微调。</p>
+</div>
+<h3 id="AI-视觉系统的两个组件">AI 视觉系统的两个组件<a class="headerlink" href="#AI-视觉系统的两个组件" title="Permanent link">#</a></h3>
+<p>要模仿人类视觉，机器需要同样的两个组件：一个模仿眼睛功能的<strong>传感设备</strong>，一个模仿大脑功能的、能解释和分类图像内容的强大<strong>算法</strong>（图 1.2）。本节先看前者，解释设备放到后面。</p>
+<h4 id="传感设备先定任务再选设备">传感设备：先定任务，再选设备<a class="headerlink" href="#传感设备先定任务再选设备" title="Permanent link">#</a></h4>
+<p>视觉系统为特定任务而设计，设计的第一要务是<strong>为具体环境选择最好的传感设备</strong>——相机、雷达、X 光、CT、Lidar，或多种设备的组合。作者反复强调：设计端到端视觉系统的第一步，永远是<strong>明确它为哪个任务而生</strong>。</p>
+<p>以自动驾驶（AV）为例。它的视觉目标：让车理解周围环境，安全、准时地从 A 点到 B 点。为此车辆装备相机与传感器的组合，实现 360° 感知——行人、骑行者、车辆、道路施工，最远可达约三个橄榄球场的距离。三种典型设备各有所长：</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>能力</th>
+<th>短板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lidar（激光雷达）</strong></td>
+<td>发射不可见光脉冲，构建周围环境的高分辨率 <strong>3D 地图</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>相机</td>
+<td>看得懂交通标志、道路标线</td>
+<td><strong>测不了距离</strong></td>
+</tr>
+<tr>
+<td><strong>Radar（雷达）</strong></td>
+<td>测量<strong>距离与速度</strong></td>
+<td>看不清细节</td>
+</tr>
+</tbody>
+</table>
+<p>其他领域同理：医疗诊断用 <strong>X 光或 CT</strong> 作为传感设备；农业视觉系统可能用其他类型的雷达捕获地表。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：蜜蜂的复眼——传感器为任务特化</p>
+<p>蜜蜂等昆虫的复眼由多达 <strong>30,000 个小透镜</strong>组成。复眼分辨率低，识别远处物体很弱；但它<strong>对运动极其敏感</strong>——这正是高速飞行时的求生刚需。蜜蜂不需要高清照片，它的视觉系统是为"飞行中捕捉最小运动"而特化的。传感器因物种的任务而特化，视觉系统的传感设备也因应用的任务而特化。</p>
+</div>
+<h4 id="解释设备ANN-的诞生">解释设备：ANN 的诞生<a class="headerlink" href="#解释设备ANN-的诞生" title="Permanent link">#</a></h4>
+<p>解释器是视觉系统的"大脑"：接收传感设备的输出图像，学习其中的特征与模式，识别物体。作者在这里开了个玩笑："So we need to build a brain. Simple!"（所以我们需要造个大脑，简单！）。造法来自逆向工程：科学家研究中枢神经系统的工作方式，由此诞生了 <strong>ANN（Artificial Neural Network，人工神经网络）</strong>。</p>
+<figure>
+  <img src="../images/ch01/fig-1-3.png" width="540" class="lq-img" />
+  <figcaption>图 1.3 生物神经元 ↔ 人工神经元：树突接收信号 ↔ 输入 x₁…xₙ；突触输出信号 ↔ 输出 f(x)（截自原书）</figcaption>
+</figure>
+
+<p>生物与人工的对应关系是：每个神经元都有一个主处理单元，接收输入信号 <span class="arithmatex">\((x_1, x_2, \dots, x_n)\)</span> 并产生一个输出。单个神经元的行为极其简单——当足够多的输入被激活时，就向它连接的所有神经元"点火"。<strong>但当百万级这样的神经元按层堆叠、彼此全连接（每个神经元连着数千个同伴）时，系统整体涌现出学习行为</strong>。构建这种多层神经网络，就是 <strong>Deep Learning（深度学习）</strong>（图 1.4）。</p>
+<p>核心机制一句话：<strong>深度学习方法通过神经元层对数据做一序列变换（transformation），从而学习数据的表示（representations）</strong>。这句话是全书所有架构的公理。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：机器能超过人脑吗？</p>
+<p>作者自问自答：十年前他会说"不能"，但两个场景改变了答案——
+<strong>① 分类</strong>：给你一本 10,000 张按品种分类的狗图（130 个品种），你研究完再考 100 张，能对几题？而一个神经网络<strong>训练几小时就能超过 95% 的准确率</strong>。
+<strong>② 创作</strong>：神经网络研究一幅画的笔触、颜色、阴影模式，几秒钟就能把它的风格迁移到新图上，产出新作品。
+结论：在许多图像分类与目标检测任务上，机器视觉已达到<strong>超人</strong>水平，且能力范围在快速扩张。</p>
+</div>
+<h2 id="12-六大应用鸟瞰">1.2 六大应用鸟瞰<a class="headerlink" href="#12-六大应用鸟瞰" title="Permanent link">#</a></h2>
+<p>背景：算力与数据量的双重暴涨，让 AI 在图像搜索/描述、图像视频分类、目标检测等复杂视觉任务上达到超人性能；深度神经网络同样成功用于 NLP 和语音交互（VUI）。作者明确说：应用多到需要一整本书才列得完，所以只给"鸟瞰"——用最流行的 DL 算法串联不同行业的应用（自动驾驶、无人机、机器人、店内摄像头、早期肺癌筛查）。</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>任务定义</th>
+<th>代表模型</th>
+<th>原书例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图像分类</td>
+<td>整张图 → 预定义类别中的一个标签</td>
+<td><strong>CNN</strong></td>
+<td>肺癌 CT 结节早筛；交通标志识别</td>
+</tr>
+<tr>
+<td>目标检测与定位</td>
+<td>多物体：分类 + 各自位置</td>
+<td>YOLO / SSD / Faster R-CNN</td>
+<td>图中同时框出行人/自行车/云</td>
+</tr>
+<tr>
+<td>生成艺术（风格迁移）</td>
+<td>把一幅画的风格迁移到另一张图</td>
+<td>—</td>
+<td>城市照片 ×《星月夜》</td>
+</tr>
+<tr>
+<td>图像生成</td>
+<td>从数据中学出"想象力"，造全新图像</td>
+<td><strong>GAN</strong></td>
+<td>StackGAN 文字描述 → 高分辨率图像</td>
+</tr>
+<tr>
+<td>人脸识别</td>
+<td>精确识别或标记人脸</td>
+<td>—</td>
+<td>手机解锁、watchlist 比对</td>
+</tr>
+<tr>
+<td>图像推荐</td>
+<td>以图搜图</td>
+<td>—</td>
+<td>电商相似服装检索</td>
+</tr>
+</tbody>
+</table>
+<h3 id="图像分类CNN-的主战场">图像分类：CNN 的主战场<a class="headerlink" href="#图像分类CNN-的主战场" title="Permanent link">#</a></h3>
+<p><strong>Image Classification（图像分类）</strong>：给图像打上预定义类别集合中的一个标签。CNN 在这类任务上"真正大放异彩"，两个原书例子：</p>
+<ul>
+<li><strong>肺癌诊断</strong>：肺癌危险的核心原因是确诊时往往已是中晚期。医生用肉眼在 CT 图像里找小结节——6~10mm 的中大结节识别得很好，但**≤4mm 的小结节容易漏**，而几乎每例肺癌都从小结节开始，且结节形状多样、医生要多年训练才能认全。CNN 从 X 光/CT 影像中<strong>自动学习</strong>这些特征，在结节致命前早期检出（图 1.5）。</li>
+<li><strong>交通标志识别</strong>：传统 CV 方法也能做，但需要大量费时费力的人工<strong>手工设计特征</strong>；换成 DL，模型自己学习对这个 problem 最合适的特征（图 1.6）。</li>
+</ul>
+<table>
+<tr>
+<td><img src="../images/ch01/fig-1-5.png" /></td>
+<td><img src="../images/ch01/fig-1-6.png" /></td>
+</tr>
+</table>
+<p><em>图 1.5 X 光/CT 上的肿瘤检测 · 图 1.6 交通标志识别（截自原书）</em></p>
+<p>原书 NOTE 的推广结论：只要有一组带标签的图像——人或物识别、猫狗马分类、动物品种、农业用地类型……——就可以喂给 CNN，分类到任意多类。</p>
+<h3 id="目标检测与定位">目标检测与定位<a class="headerlink" href="#目标检测与定位" title="Permanent link">#</a></h3>
+<p>分类是最基础的任务设定：<strong>一张图只含一个物体</strong>，识别它即可。但要逼近人类水平，网络必须能识别<strong>多个物体及其位置</strong>——这就是目标检测。<strong>YOLO（you only look once）、SSD（single-shot detector）、Faster R-CNN</strong> 等系统把图像切成小区域，逐区域打类别标签，从而定位并标注图中任意数量的物体（图 1.7）。这是自动驾驶等自主系统的基本前置能力（细节在第 7 章）。</p>
+<h3 id="风格迁移几秒钟画完一幅梵高">风格迁移：几秒钟画完一幅"梵高"<a class="headerlink" href="#风格迁移几秒钟画完一幅梵高" title="Permanent link">#</a></h3>
+<p><strong>Neural Style Transfer（神经风格迁移）</strong>：把内容图像与风格图像分离，将后者的笔触、配色"画"到前者的结构上——城市照片 ×《星月夜》= "梵高画的这座城"（图 1.8）。作者感叹：画家完成一幅画要几天几周，它几秒出图。实现机制在第 9 章。</p>
+<h3 id="GAN机器的想象力">GAN：机器的想象力<a class="headerlink" href="#GAN机器的想象力" title="Permanent link">#</a></h3>
+<p>作者的原话："这才是真正的魔法发生的地方——<strong>创造</strong>的魔法。"2014 年 <strong>Ian Goodfellow</strong> 发明 <strong>GAN（Generative Adversarial Networks，生成对抗网络）</strong>。它的定位：<strong>GAN 是 CNN 的进化版架构</strong>——所以先吃透 CNN（第 3 章），GAN（第 8 章）会容易得多。</p>
+<p>给 GAN 一组图像，它能生成<strong>全新的、从未存在过的、以假乱真</strong>的图像。<strong>StackGAN</strong> 这类变体甚至能从一段文字描述生成匹配描述的高分辨率图像——注意这不是在图库里搜索，这些"照片"完全是想象出来的（图 1.9）。</p>
+<div class="admonition note">
+<p class="admonition-title">侧栏：GAN 创作的画作拍出 $432,500</p>
+<p>2018 年 10 月，AI 画作《The Portrait of Edmond Belamy》成交价 <strong>$432,500</strong>。画中是虚构人物 Edmond de Belamy（深色礼服、白领，像一位教士）。创作团队是三位 25 岁的法国学生：网络在 15,000 幅 14~20 世纪的肖像画上训练后自行作画，打印装裱，落款是一段 GAN 算法代码。
+作者的展望：如果机器有了画图的想象力，未来它会不会创作电影、音乐、甚至书？从文字合成图像的能力终将允许我们只用文字描述就生成各种娱乐内容。</p>
+</div>
+<h3 id="人脸识别1N-与-11">人脸识别：1:N 与 1:1<a class="headerlink" href="#人脸识别1N-与-11" title="Permanent link">#</a></h3>
+<p><strong>Face Recognition（FR）<strong>能精确识别或标记人脸（搜名人、给照片自动 tagging），本质是</strong>细粒度分类</strong>。按《Handbook of Face Recognition》（Li et al., Springer, 2011）分为两种模式：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>匹配方式</th>
+<th>回答的问题</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Face Identification</strong> 人脸辨识</td>
+<td><strong>1 : N</strong>（查询脸 vs 库中全部模板）</td>
+<td>"你是谁？"</td>
+<td>城市监控 watchlist 比对嫌疑人是"1 : few"变体</td>
+</tr>
+<tr>
+<td><strong>Face Verification</strong> 人脸验证</td>
+<td><strong>1 : 1</strong>（查询脸 vs 声称身份的模板）</td>
+<td>"你是不是你声称的那个人？"</td>
+<td>手机人脸解锁</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="../images/ch01/fig-1-10.png" width="560" class="lq-img" />
+  <figcaption>图 1.10 左：验证（是不是 Person 1）· 右：辨识（库中有没有她）（截自原书）</figcaption>
+</figure>
+
+<p>（拓展）这对概念在第 10 章会升级成"视觉嵌入"的度量学习问题：verification 用相似度阈值判断，identification 用最近邻检索。</p>
+<h3 id="图像推荐系统">图像推荐系统<a class="headerlink" href="#图像推荐系统" title="Permanent link">#</a></h3>
+<p>以图搜图：给定查询图，找出相似图像。电商是典型——用户点了一双鞋，系统展示相似款（图 1.11，服装检索，来源 Liu et al. 2016：每行最左是点击的查询图，后面是检索结果）。实现思路同样指向第 10 章：把图像映射成嵌入向量，在向量空间里做相似度检索。</p>
+<figure>
+  <img src="../images/ch01/fig-1-11.png" width="340" class="lq-img" />
+  <figcaption>图 1.11 服装检索：左列查询，右列返回相似款（截自原书）</figcaption>
+</figure>
+
+<h2 id="13-CV-流水线全书主线">1.3 CV 流水线：全书主线<a class="headerlink" href="#13-CV-流水线全书主线" title="Permanent link">#</a></h2>
+<p>应用千差万别，但典型视觉系统都遵循同一套流程——<strong>Computer Vision Pipeline（CV 流水线）</strong>，四步（图 1.13）：</p>
+<div class="mermaid">flowchart LR
+    A["① 输入&lt;br/&gt;图像 / 视频帧"] --&gt; B["② 预处理&lt;br/&gt;统一尺寸 · 颜色变换 · 去噪"]
+    B --&gt; C["③ 特征提取&lt;br/&gt;输出特征向量"]
+    C --&gt; D["④ ML 模型&lt;br/&gt;预测类别"]</div>
+<p>原书 DEFINITIONS，两个术语先钉死：</p>
+<ul>
+<li><strong>Image Classifier（图像分类器）</strong>：以图像为输入、输出标签（类别）的算法。</li>
+<li><strong>Class（类别 / Category）</strong>：机器学习中数据的输出类别。</li>
+</ul>
+<p><img alt="" class="lq-img" src="../images/ch01/fig-1-14.png" />
+<em>图 1.14 摩托车分类的概率输出（截自原书）</em></p>
+<p><strong>走一遍流水线</strong>（作者让你"扮演分类器"）。输入一张摩托车图，候选类别：摩托 / 汽车 / 狗。你逐个查看特征向量里的特征：</p>
+<ol>
+<li><strong>轮子</strong>——狗没有轮子（"正常的狗没有，机器狗除外"）→ 排除狗，剩汽车或摩托；</li>
+<li><strong>车灯</strong>——更像摩托车；</li>
+<li><strong>后挡泥板</strong>——更像摩托车；</li>
+<li><strong>只有两个轮子</strong>——基本锁定摩托车；</li>
+<li>继续看车身形状、踏板……直到得出最佳猜测。</li>
+</ol>
+<p>输出是每个类别的概率：<span class="arithmatex">\(P(\text{motorcycle}) = 0.85\)</span>、<span class="arithmatex">\(P(\text{car}) = 0.14\)</span>、<span class="arithmatex">\(P(\text{dog}) = 0.01\)</span>。模型答对了，但对汽车仍留有 14% 的"困惑"——概率输出天然携带置信度信息，这比硬标签有用得多（第 4 章的指标体系就建立在此之上）。</p>
+<p><strong>本节最重要的推论</strong>：想提升模型表现，所有手段都落在这四步之内——①采集更多训练图像；②更多预处理去噪；③提取更好的特征；④更换分类器 / 调超参数；外加更多训练时间。这张对照表值得记一辈子：</p>
+<table>
+<thead>
+<tr>
+<th>想提升模型</th>
+<th>动哪一步</th>
+<th>对应章节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多采数据</td>
+<td>①</td>
+<td>第 4 章</td>
+</tr>
+<tr>
+<td>预处理去噪、标准化</td>
+<td>②</td>
+<td>第 3、4 章</td>
+</tr>
+<tr>
+<td>更好的特征</td>
+<td>③</td>
+<td>第 3 章（CNN 自动提取）</td>
+</tr>
+<tr>
+<td>换分类器 / 调超参数 / 训练更久</td>
+<td>④</td>
+<td>第 4 章</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">拓展：'85% 准确'这句说法要小心</p>
+<p>原书说"我们知道它是摩托，所以算法 85% 准确"——严格说这是<strong>单样本置信度</strong>，不是数据集意义上的准确率。准确率要在一批样本上统计（第 4 章），而且必须区分训练集与测试集，否则会高估泛化能力。</p>
+</div>
+<h2 id="14-图像--函数">1.4 图像 = 函数<a class="headerlink" href="#14-图像--函数" title="Permanent link">#</a></h2>
+<p>CV 应用处理图像或视频；视频就是<strong>堆叠的连续图像帧</strong>，所以先把图像吃透。</p>
+<h3 id="灰度图Fx-y">灰度图：F(x, y)<a class="headerlink" href="#灰度图Fx-y" title="Permanent link">#</a></h3>
+<p><strong>Pixel（像素）<strong>是数字图像的原始构建块，网格状排布；像素值表示</strong>该位置出现的光强（intensity of light）</strong>。把图像看成二元函数 <span class="arithmatex">\(F(x, y)\)</span>——"告诉我坐标，我还你一个亮度值"：</p>
+<div class="arithmatex">\[
+\text{灰度：}\; F(x, y) \in [0, 255]
+\]</div>
+<ul>
+<li><span class="arithmatex">\(0\)</span> = 全黑，<span class="arithmatex">\(255\)</span> = 全白，中间是灰度渐变。</li>
+<li>坐标系与笛卡尔坐标系类似（二维 x-y 平面），但<strong>原点在左上角</strong>。</li>
+<li>原书 <span class="arithmatex">\(32\times16\)</span> 摩托车例（图 1.15）：宽 32 像素、高 16 像素，x 轴 <span class="arithmatex">\(0\to31\)</span>、y 轴 <span class="arithmatex">\(0\to15\)</span>，共 <span class="arithmatex">\(32\times16=512\)</span> 个像素；<span class="arithmatex">\(F(12,13)=255\)</span>（白）、<span class="arithmatex">\(F(20,7)=0\)</span>（黑）、<span class="arithmatex">\(F(18,9)=190\)</span>（灰）。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误</p>
+<p>原书正文写"<span class="arithmatex">\(32\times16\)</span> 图的 y 轴从 0 到 <strong>16</strong>"——16 像素高的图，索引是 <span class="arithmatex">\(0\sim15\)</span>（图 1.15 自己标的也是 15）。此处按图修正。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么是 0~255？</p>
+<p>每像素 8 bit，<span class="arithmatex">\(2^8=256\)</span> 个灰度级。16 bit 影像（医学影像常用）有 65,536 级——灰度级数由存储位深决定，训练时常再归一化到 <span class="arithmatex">\([0,1]\)</span> 或 <span class="arithmatex">\([-1,1]\)</span>（第 3 章的预处理会见到）。</p>
+</div>
+<figure>
+  <img src="../images/ch01/fig-1-15.png" width="560" class="lq-img" />
+  <figcaption>图 1.15 图像 = 像素网格上的函数 F(x,y)（截自原书）</figcaption>
+</figure>
+
+<h3 id="彩色图三个堆叠的矩阵">彩色图：三个堆叠的矩阵<a class="headerlink" href="#彩色图三个堆叠的矩阵" title="Permanent link">#</a></h3>
+<p>人眼看到的是物体、风景、颜色；<strong>计算机看到的只是一个二维数字矩阵</strong>——"没有上下文，只是一大堆数据"。<span class="arithmatex">\(24\times24\)</span> 的图有 <span class="arithmatex">\(576\)</span> 个像素；<span class="arithmatex">\(700\times500\)</span> 的图矩阵维度就是 <span class="arithmatex">\((700,500)\)</span>。</p>
+<p>彩色图在标准 <strong>RGB</strong> 系统下有<strong>三个通道</strong>（红、绿、蓝），即三个矩阵堆叠成 3D 矩阵：</p>
+<div class="arithmatex">\[
+\text{RGB 彩色：}\; F(x, y) = [\,red(x,y),\ green(x,y),\ blue(x,y)\,]
+\]</div>
+<ul>
+<li><span class="arithmatex">\(700\times700\)</span> 彩色图的维度是 <span class="arithmatex">\((700, 700, 3)\)</span>；每个像素三个数（各 <span class="arithmatex">\(0\sim255\)</span>）。</li>
+<li>草地左上角像素 <span class="arithmatex">\(F(0,0) = [11, 102, 35]\)</span>——三通道叠加才得到"森林绿"（图 1.18）。</li>
+<li>除 RGB 外还有 <strong>HSV、Lab</strong> 等颜色系统，表示概念相同。</li>
+</ul>
+<table>
+<tr>
+<td><img src="../images/ch01/fig-1-16.png" /></td>
+<td><img src="../images/ch01/fig-1-17.png" /></td>
+</tr>
+</table>
+<p><em>图 1.16 计算机眼里只有数字矩阵 · 图 1.17 彩色图 = R/G/B 三通道堆叠（截自原书）</em></p>
+<p><img alt="" class="lq-img" src="../images/ch01/fig-1-19.png" />
+<em>图 1.19 不同深浅的绿 = R/G/B 三通道的不同强度组合（截自原书）</em></p>
+<table>
+<thead>
+<tr>
+<th>颜色</th>
+<th>Forest</th>
+<th>Olive</th>
+<th>Jungle</th>
+<th>Mint</th>
+<th>Lime</th>
+<th>Jade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEX</td>
+<td>#0B6623</td>
+<td>#708238</td>
+<td>#29AB87</td>
+<td>#98FB98</td>
+<td>#C7EA46</td>
+<td>#00A86B</td>
+</tr>
+<tr>
+<td>RGB</td>
+<td>11,102,35</td>
+<td>112,130,56</td>
+<td>41,171,135</td>
+<td>152,251,152</td>
+<td>199,234,70</td>
+<td>0,168,107</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">拓展：什么时候用 HSV/Lab？</p>
+<p>RGB 三通道高度相关且受光照影响大；<strong>HSV</strong> 把"色调"与"明暗"分开，做颜色阈值分割（比如抠出黄色车道线）更稳。Lab 的 L 通道只含亮度，常用于不改变色彩结构的增强——第 9 章风格迁移会再遇到"把亮度与颜色分开处理"的思想。</p>
+</div>
+<h3 id="图像即函数--处理即数学运算">图像即函数 ⇒ 处理即数学运算<a class="headerlink" href="#图像即函数--处理即数学运算" title="Permanent link">#</a></h3>
+<p>把图像看成函数的最大好处：<strong>所有图像处理都是逐像素的数学运算</strong>——<span class="arithmatex">\(F\)</span> 进，<span class="arithmatex">\(G\)</span> 出。原书表 1.1（重排）：</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>变换</th>
+<th>逐条解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变暗</td>
+<td><span class="arithmatex">\(G(x,y) = 0.5 \cdot F(x,y)\)</span></td>
+<td>每个光强乘 0.5，整体变暗</td>
+</tr>
+<tr>
+<td>变亮</td>
+<td><span class="arithmatex">\(G(x,y) = 2 \cdot F(x,y)\)</span></td>
+<td>光强翻倍（超 255 需截断）</td>
+</tr>
+<tr>
+<td>物体下移 150 像素</td>
+<td><span class="arithmatex">\(G(x,y) = F(x,\ y+150)\)</span></td>
+<td>"输出位置 (x,y) 的值 = 原图更下方 (x, y+150) 的值"，画面内容向下挪</td>
+</tr>
+<tr>
+<td>去灰成黑白（阈值 130）</td>
+<td><span class="arithmatex">\(G(x,y) = 0\)</span> 若 <span class="arithmatex">\(F(x,y)&lt;130\)</span>，否则 <span class="arithmatex">\(255\)</span></td>
+<td>二值化：按阈值把灰度压成纯黑/纯白</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>                                <span class="c1"># 导入 PyTorch</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>                   <span class="c1"># 16x32 灰度图，全黑</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">img</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="mf">255.0</span>                         <span class="c1"># F(12,13)=255：白像素</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">dark</span>  <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">img</span>                           <span class="c1"># 变暗 G=0.5F</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">light</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">img</span>                           <span class="c1"># 变亮 G=2F</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">shift</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shifts</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 下移150像素（循环滚动近似）</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">bw</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">img</span> <span class="o">&lt;</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">255.0</span><span class="p">)</span>  <span class="c1"># 阈值130二值化</span>
+</code></pre></div>
+<p>配套 notebook 会把这些运算逐个跑出来并可视化。</p>
+<h2 id="15-图像预处理">1.5 图像预处理<a class="headerlink" href="#15-图像预处理" title="Permanent link">#</a></h2>
+<p>类比 ML 项目的数据清洗：建模前要花大量时间整理数据。图像同理——<strong>先洗后喂</strong>。作者给出动机：<strong>我们不可能为每一种拍摄条件写一个专属算法</strong>；数据通常杂乱、来源多样，必须标准化，才能让一个通用算法去解。预处理的目标：<strong>降低复杂度、提高精度</strong>。</p>
+<h3 id="灰度化省算力的一刀砍前先过决策流程">灰度化：省算力的一刀，砍前先过决策流程<a class="headerlink" href="#灰度化省算力的一刀砍前先过决策流程" title="Permanent link">#</a></h3>
+<p>彩色图三通道信息多、占内存；许多物体识别其实<strong>不需要颜色</strong>——亮度（明暗）模式就足以定义很多物体的形状与特征。灰度化把要处理的像素量直接砍到 &#8531;（图 1.20）。但作者立刻给了两个反例，说明这一刀不能乱砍：</p>
+<ul>
+<li><strong>皮肤癌检测</strong>依赖皮肤红色强度（红疹），去色等于抹掉关键证据；</li>
+<li><strong>车道线检测</strong>必须区分<strong>黄线与白线</strong>——交规里两者含义不同，灰度图做不到。</li>
+</ul>
+<div class="mermaid">flowchart TD
+    A["拿到图像数据集"] --&gt; B{"肉眼能从灰度图认出目标吗？"}
+    B -- 能 --&gt; C["灰度化：3通道 → 1通道&lt;br/&gt;像素量与内存直接除3"]
+    B -- 不能 --&gt; D["保留颜色"]
+    D --&gt; E["反例①：皮肤癌检测依赖红色强度"]
+    D --&gt; F["反例②：车道线必须区分黄线/白线"]
+    C --&gt; G["继续：统一尺寸 / 增强"]</div>
+<div class="admonition tip">
+<p class="admonition-title">经验法则（适用于几乎所有预处理决策）</p>
+<p><strong>用肉眼看灰度图：能认出你要找的目标，灰度就够用；认不出，就必须保留颜色（更多信息）。</strong> 这条"肉眼测试"是作者给的最实用判断器。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：灰度转换公式</p>
+<p>原书没给实现公式。工程上常用亮度加权：<span class="arithmatex">\(Gray = 0.299R + 0.587G + 0.114B\)</span>（人眼对绿色最敏感，权重最高）。notebook 第 1 章实现过它与 OpenCV 结果的误差不超过 1。</p>
+</div>
+<h3 id="统一尺寸Standardization">统一尺寸（Standardization）<a class="headerlink" href="#统一尺寸Standardization" title="Permanent link">#</a></h3>
+<p>某些 ML 算法（尤其 CNN）要求<strong>数据集中所有图像尺寸一致</strong>——必须先缩放到相同宽高再喂给学习算法（这个约束的机制在第 3 章展开）。</p>
+<h3 id="数据增强Data-Augmentation">数据增强（Data Augmentation）<a class="headerlink" href="#数据增强Data-Augmentation" title="Permanent link">#</a></h3>
+<p>用现有图像的<strong>变换版本</strong>扩充数据集：缩放、旋转、其他仿射变换。目的：让网络见识同一物体的各种形态，物体以任何形式出现时都更可能被识别（图 1.21，蝴蝶例：原图 / 去纹理 / 去色 / 边缘增强 / 显著边缘图 / 翻转旋转）。</p>
+<figure>
+  <img src="../images/ch01/fig-1-21.png" width="520" class="lq-img" />
+  <figcaption>图 1.21 一个样本变出六个变体（截自原书）</figcaption>
+</figure>
+
+<h3 id="其他技术">其他技术<a class="headerlink" href="#其他技术" title="Permanent link">#</a></h3>
+<p>去背景降噪、增亮/调暗……按数据集与问题选。你会通过整本书积累"什么问题配什么预处理"的直觉。</p>
+<div class="admonition note">
+<p class="admonition-title">No Free Lunch 定理</p>
+<p>David Wolpert 与 William Macready 在《No Free Lunch Theorems for Optimization》（IEEE Trans. on Evolutionary Computation）提出。团队里常说这句话，意思：<strong>没有一条配方适用于所有模型</strong>——选架构、调超参、做预处理，只有经验法则，没有保证成功的万能公式。</p>
+</div>
+<h2 id="16-特征提取">1.6 特征提取<a class="headerlink" href="#16-特征提取" title="Permanent link">#</a></h2>
+<p>流水线的核心组件。作者定位："整个 DL 模型都围绕提取有用特征来工作。"所以本章多花了笔墨。</p>
+<p>原书 DEFINITION：<strong>Feature（特征）</strong>= 可观测现象的一个<strong>可测量的</strong>属性/特征，是你喂给 ML 模型以产出预测的输入。房价类比：输入特征 <code>square_foot</code>、<code>number_of_rooms</code>、<code>bathrooms</code>，模型输出预测价。<strong>选到好特征，直接提升 ML 算法的预测力。</strong></p>
+<h3 id="CV-里的特征独有--可测量">CV 里的特征：独有 + 可测量<a class="headerlink" href="#CV-里的特征独有--可测量" title="Permanent link">#</a></h3>
+<p>CV 特征 = 图像中对特定物体<strong>独有</strong>的可测量数据：一种独特颜色，或线、边缘、图像块等具体形状。特征强弱是相对的：</p>
+<table>
+<thead>
+<tr>
+<th>用"轮子"判断</th>
+<th>强弱</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摩托车 vs 狗</td>
+<td>强</td>
+<td>一锤定音</td>
+</tr>
+<tr>
+<td>摩托车 vs 自行车</td>
+<td>弱</td>
+<td>需补充后视镜、车牌、脚踏等<strong>组合特征</strong>共同描述物体</td>
+</tr>
+</tbody>
+</table>
+<p>流程（图 1.22）：原始图像 → 特征提取算法（本章先当<strong>黑盒</strong>）→ <strong>Feature Vector（特征向量）</strong>——一个 1D 数组，是物体的稳健表示。</p>
+<figure>
+  <img src="../images/ch01/fig-1-22.png" width="540" class="lq-img" />
+  <figcaption>图 1.22 原始图像 → 特征提取算法 → 特征向量（截自原书）</figcaption>
+</figure>
+
+<h3 id="好特征标准①可泛化Repeatability">好特征标准①：可泛化（Repeatability）<a class="headerlink" href="#好特征标准①可泛化Repeatability" title="Permanent link">#</a></h3>
+<blockquote>
+<p>"Machine learning models are only as good as the features you provide."（模型的上限由你给的特征决定。）</p>
+</blockquote>
+<p>图 1.22 里的特征来自<strong>一辆</strong>摩托车——但特征必须能检测"一般的"摩托，而不是这一辆的局部拷贝。以轮子为例：好的轮子特征不是某个特定轮子的复制品，而是"带某种纹理的圆形"这类<strong>一般模式</strong>——特征提取器看过成千上万张摩托图后，学到的是无视位置、无视型号的轮子共性。</p>
+<h3 id="好特征标准②有区分度Greyhound-vs-Labrador-思想实验">好特征标准②：有区分度——Greyhound vs Labrador 思想实验<a class="headerlink" href="#好特征标准②有区分度Greyhound-vs-Labrador-思想实验" title="Permanent link">#</a></h3>
+<p>要区分灵缇与拉布拉多，候选特征两个：身高、眼色。</p>
+<figure>
+  <img src="../images/ch01/fig-1-23.png" width="420" class="lq-img" />
+  <figcaption>图 1.23 灵缇（瘦高）与拉布拉多（截自原书）</figcaption>
+</figure>
+
+<p><strong>身高</strong>：平均而言灵缇高几英寸，但犬类个体差异大。看身高分布直方图（图 1.24，x: 10~40 英寸）——</p>
+<ul>
+<li>身高 <span class="arithmatex">\(\le 20\)</span> 英寸：超过 <strong>80%</strong> 概率是拉布拉多；</li>
+<li>身高 <span class="arithmatex">\(\ge 30\)</span> 英寸：基本可以确定是灵缇；</li>
+<li><span class="arithmatex">\(20\sim30\)</span> 的中间带：两者分布接近，需要看其他特征。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="n">height_inch</span><span class="p">):</span>          <span class="c1"># 输入：狗的身高（英寸）</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">if</span> <span class="n">height_inch</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>           <span class="c1"># 直方图左端</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="k">return</span> <span class="s2">"Labrador（&gt;80%）"</span>   <span class="c1"># 小于20英寸：大概率拉布拉多</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">if</span> <span class="n">height_inch</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">:</span>           <span class="c1"># 直方图右端</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="k">return</span> <span class="s2">"Greyhound"</span>          <span class="c1"># 大于30英寸：基本是灵缇</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">return</span> <span class="s2">"看其他特征"</span>             <span class="c1"># 中间带：身高失效，交给别的特征</span>
+</code></pre></div>
+<p>结论：身高是<strong>有用但不充分</strong>的特征——它"增加了区分信息"，值得保留，但不能包打天下。</p>
+<p><strong>眼色</strong>（图 1.25）：蓝/棕两色在两个犬种中分布约 <strong>50/50</strong>，与犬种不相关——<strong>无用特征</strong>，直接丢弃。</p>
+<figure>
+  <img src="../images/ch01/fig-1-25.png" width="420" class="lq-img" />
+  <figcaption>图 1.25 眼色分布 50/50：无区分度（截自原书）</figcaption>
+</figure>
+
+<p>两个推论（作者原话展开）：</p>
+<ol>
+<li><strong>ML 项目里几乎不存在单特征包打天下</strong>——每个特征只捕捉一类信息，所以几乎总是需要多特征组合。</li>
+<li><strong>如果真的一个特征就够用，直接写 if-else 就行</strong>，何必费劲训练分类器——反过来说，需要训练模型，正说明问题需要多特征联合判断。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">选特征的方法：假装自己是分类器</p>
+<p>想区分两类东西，做思想实验：**你会先问什么信息？**毛长？体型？颜色？答案就是候选特征。好特征四条：<strong>可识别；易跟踪比较；跨尺度/光照/视角一致；有噪声或物体部分可见时仍可见。</strong></p>
+</div>
+<h3 id="手工特征-vs-自动特征">手工特征 vs 自动特征<a class="headerlink" href="#手工特征-vs-自动特征" title="Permanent link">#</a></h3>
+<figure>
+  <img src="../images/ch01/fig-1-26.png" width="540" class="lq-img" />
+  <figcaption>图 1.26 传统 ML：手工特征 + SVM/AdaBoost（截自原书）</figcaption>
+</figure>
+
+<p><strong>传统 ML 路线</strong>：花大量时间做手工特征选择与工程——依靠领域知识（或与领域专家合作）设计特征，再喂给 <strong>SVM</strong> 或 <strong>AdaBoost</strong> 等分类器。经典手工特征集：</p>
+<table>
+<thead>
+<tr>
+<th>特征集</th>
+<th>一句话说明（拓展）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HOG</strong>（方向梯度直方图）</td>
+<td>统计局部边缘方向分布，行人检测的经典特征</td>
+</tr>
+<tr>
+<td><strong>Haar Cascades</strong></td>
+<td>黑白矩形明暗差，实时人脸检测曾全靠它</td>
+</tr>
+<tr>
+<td><strong>SIFT</strong>（尺度不变特征变换）</td>
+<td>关键点检测 + 描述子，尺度/旋转不变</td>
+</tr>
+<tr>
+<td><strong>SURF</strong>（加速稳健特征）</td>
+<td>SIFT 的加速版</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DL 路线</strong>：不手工提特征——原始图像直接进网络，逐层自动找模式、建特征，并通过连接上的权重学习各特征对输出的重要性。<strong>神经网络 = 特征提取器 + 分类器，端到端（end-to-end）可训练</strong>；这正是它与传统 ML 的本质区别（图 1.27）。</p>
+<figure>
+  <img src="../images/ch01/fig-1-27.png" width="540" class="lq-img" />
+  <figcaption>图 1.27 输入直接流过网络：自动提特征 + 分类一步完成（截自原书）</figcaption>
+</figure>
+
+<div class="admonition warning">
+<p class="admonition-title">误区：'神经网络只学有用特征'</p>
+<p>别以为网络天生只吸收好特征——<strong>初始化时它把所有特征都捞进来，随机赋权</strong>；训练过程中不断调整权重反映重要性：出现频率最高的模式权重升得更高、被视为更有用，权重最低的特征对输出几乎没有影响。垃圾特征也会进场，这正是第 3、4 章正则化与 Dropout 存在的理由。学习过程的细节在第 2 章。</p>
+</div>
+<h3 id="为什么要提特征">为什么要提特征<a class="headerlink" href="#为什么要提特征" title="Permanent link">#</a></h3>
+<p>原始图像携带太多与分类无关的冗余。预处理之后的第一步就是<strong>简化</strong>：保留重要信息（关键颜色、图像块），丢掉非必要信息，把又大又复杂的图像数据变成更小的特征集合——分类因此更简单、更快。</p>
+<p>原书算例：10,000 张 <span class="arithmatex">\(1000\times1000\)</span> 的摩托车图（有的纯背景、有的杂乱背景）→ 特征提取后丢掉无关数据，只留浓缩的特征列表喂分类器（图 1.28）——比让分类器直接啃一亿像素的原图高效得多。</p>
+<figure>
+  <img src="../images/ch01/fig-1-28.png" width="480" class="lq-img" />
+  <figcaption>图 1.28 万张原图浓缩成一个特征向量再喂分类器（截自原书）</figcaption>
+</figure>
+
+<p>好消息（作者强调）：<strong>与手工时代相反，DL 几乎不需要预处理</strong>——重活网络自己干。</p>
+<h2 id="17-分类器学习算法">1.7 分类器学习算法<a class="headerlink" href="#17-分类器学习算法" title="Permanent link">#</a></h2>
+<p>流水线前三步的成果——图像的矩阵表示、干净的输入、浓缩的特征向量——在最后一步变现：把特征向量喂给<strong>分类器</strong>，输出类别标签（摩托 / 非摩托）。</p>
+<ul>
+<li>两条路线：传统 ML（SVM，部分问题够用）vs <strong>CNN</strong>（复杂视觉问题上的主力）。</li>
+<li>输入图像流过网络各层逐层学特征：<strong>浅层检测图案，深层检测"图案中的图案"</strong>，层层组合，直到形成特征向量。</li>
+<li>网络越深，学到的数据特征越多——这正是 <strong>Deep Learning</strong> 名字的由来。（更多层也带来 trade-off，第 2、3 章展开。）</li>
+<li><strong>最后一层通常就是分类器</strong>：看到摩托车的特征组合，点亮 motorcycle 节点；否则点亮 not motorcycle（图 1.29）。</li>
+</ul>
+<figure>
+  <img src="../images/ch01/fig-1-29.png" width="560" class="lq-img" />
+  <figcaption>图 1.29 特征提取层 + 分类层：逐层学习，末层出标签（截自原书）</figcaption>
+</figure>
+
+<div class="admonition note">
+<p class="admonition-title">拓展：'图案中的图案'在第 3 章会变成看得见的证据</p>
+<p>第 3 章可视化卷积核时会看到：第一层卷积核响应边缘/颜色块，第二层响应角点与纹理组合，更深层响应物体部件——层级特征的直觉本章先立住。</p>
+</div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">6 个容易踩的坑</p>
+<ol>
+<li><strong>图像处理 ≠ 计算机视觉</strong>：会缩放滤波不等于看懂图像；图像处理只是 CV 系统的一个零件。</li>
+<li><strong>别盲目灰度化</strong>：颜色是关键特征时（皮肤红斑、黄/白车道线）去色 = 自废武功。先做"肉眼测试"再决定。</li>
+<li><strong>特征必须可泛化</strong>：从单张图抠出的局部只是拷贝，不是特征——要的是"看过一千张图"后的一般模式。</li>
+<li><strong>"网络只学有用特征"是误区</strong>：所有特征随机赋权起步，靠训练分优劣；垃圾特征也会进场。</li>
+<li><strong>No Free Lunch</strong>：没有万能配方，只有针对问题的经验法则 + 实验。</li>
+<li><strong>先定任务再选传感器</strong>：顺序反了是端到端视觉系统设计的大忌（想想蜜蜂的复眼）。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>视觉系统 = 传感设备（眼）+ 解释设备（脑），人机同构；设计第一步永远是明确任务。</li>
+<li>CV 流水线四步：<strong>输入 → 预处理 → 特征提取 → ML 模型</strong>；一切改进手段都落在这四步之内。</li>
+<li>图像是函数：灰度 <span class="arithmatex">\(F(x,y)\in[0,255]\)</span>（2D 矩阵），RGB 彩色 <span class="arithmatex">\((H,W,3)\)</span>（3D 矩阵），<strong>原点在左上角</strong>。</li>
+<li>图像即函数 ⇒ 图像处理 = 逐像素数学运算（变暗、变亮、平移、二值化……）。</li>
+<li>预处理目标：降复杂度、提精度；灰度化先做"肉眼测试"，颜色可能是关键证据。</li>
+<li>特征 = 独有可测属性；特征向量是喂给模型的紧凑 1D 表示。</li>
+<li>好特征两标准：<strong>可泛化</strong>（Repeatability）+ <strong>有区分度</strong>（Greyhound 实验）。</li>
+<li>传统 ML = 手工特征（HOG/SIFT/…）+ SVM/AdaBoost；DL = 自动特征 + 分类，端到端训练。</li>
+<li>网络对所有特征<strong>随机赋权</strong>起步，训练按频率/重要性调整权重。</li>
+<li>浅层学图案、深层学图案中的图案——深度学习之"深"；末层通常就是分类器。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computer Vision</td>
+<td>计算机视觉</td>
+<td>通过图像/视频理解世界、构建物理模型</td>
+</tr>
+<tr>
+<td>Visual Perception</td>
+<td>视觉感知</td>
+<td>不止"看见"，而是看懂环境</td>
+</tr>
+<tr>
+<td>Sensing Device</td>
+<td>传感设备</td>
+<td>视觉系统的"眼"，按任务选型</td>
+</tr>
+<tr>
+<td>Interpreting Device</td>
+<td>解释设备</td>
+<td>视觉系统的"脑"，学习特征与模式</td>
+</tr>
+<tr>
+<td>Lidar / Radar</td>
+<td>激光雷达 / 雷达</td>
+<td>高分辨率 3D 建图 vs 测距测速</td>
+</tr>
+<tr>
+<td>ANN</td>
+<td>人工神经网络</td>
+<td>模仿生物神经元连接的计算模型</td>
+</tr>
+<tr>
+<td>Deep Learning</td>
+<td>深度学习</td>
+<td>多层神经元堆叠，逐层变换学习表示</td>
+</tr>
+<tr>
+<td>Supervised Learning / Labeled Data</td>
+<td>监督学习 / 带标签数据</td>
+<td>看带答案的样本学映射</td>
+</tr>
+<tr>
+<td>Trial and Error</td>
+<td>试错训练</td>
+<td>预测→犯错→纠错→更新参数</td>
+</tr>
+<tr>
+<td>Image Classification</td>
+<td>图像分类</td>
+<td>整图 → 一个预定义标签</td>
+</tr>
+<tr>
+<td>Object Detection</td>
+<td>目标检测</td>
+<td>分类 + 定位图中多个物体</td>
+</tr>
+<tr>
+<td>Style Transfer</td>
+<td>风格迁移</td>
+<td>把一幅画的风格套到另一张图上</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>生成对抗网络</td>
+<td>2014 年 Goodfellow 提出，可"想象"出新图</td>
+</tr>
+<tr>
+<td>StackGAN</td>
+<td>——</td>
+<td>文字描述 → 高分辨率图像</td>
+</tr>
+<tr>
+<td>Face Identification / Verification</td>
+<td>人脸辨识 / 验证</td>
+<td>1:N "你是谁" vs 1:1 "你是不是你"</td>
+</tr>
+<tr>
+<td>Image Recommendation</td>
+<td>图像推荐</td>
+<td>以图搜图（电商相似商品）</td>
+</tr>
+<tr>
+<td>CV Pipeline</td>
+<td>CV 流水线</td>
+<td>输入→预处理→特征→模型 四步</td>
+</tr>
+<tr>
+<td>Pixel / Channel</td>
+<td>像素 / 通道</td>
+<td>图像最小单元；灰度 1 通道，RGB 3 通道</td>
+</tr>
+<tr>
+<td>Image Preprocessing</td>
+<td>图像预处理</td>
+<td>标准化、灰度化、去噪等"洗数据"</td>
+</tr>
+<tr>
+<td>Data Augmentation</td>
+<td>数据增强</td>
+<td>用变换造扩充样本</td>
+</tr>
+<tr>
+<td>Feature / Feature Vector</td>
+<td>特征 / 特征向量</td>
+<td>独有可测属性 / 其 1D 紧凑表示</td>
+</tr>
+<tr>
+<td>Feature Engineering</td>
+<td>特征工程</td>
+<td>传统 ML 里靠领域知识手工设计特征</td>
+</tr>
+<tr>
+<td>HOG / SIFT / SURF / Haar</td>
+<td>——</td>
+<td>经典手工特征集</td>
+</tr>
+<tr>
+<td>SVM / AdaBoost</td>
+<td>——</td>
+<td>传统 ML 时代常用的分类器</td>
+</tr>
+<tr>
+<td>Repeatability</td>
+<td>可重复性</td>
+<td>特征对同类所有物体稳定成立</td>
+</tr>
+<tr>
+<td>No Free Lunch Theorem</td>
+<td>没有免费午餐定理</td>
+<td>不存在适用一切问题的万能配方</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,7145 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/%E4%BC%A0%E7%83%AD%E5%AD%A6/ch10/">
+      
+      
+        <link rel="prev" href="../ch09/">
+      
+      
+        <link rel="next" href="../ch11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第10章 沸腾与凝结 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-10-章-沸腾与凝结" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第10章 沸腾与凝结
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-沸腾与凝结的无量纲参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 沸腾与凝结的无量纲参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-沸腾模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 沸腾模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 池内沸腾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 池内沸腾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-沸腾曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.1 沸腾曲线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-池内沸腾的各区段" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.2 池内沸腾的各区段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-池内沸腾关联式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 池内沸腾关联式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 池内沸腾关联式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-核态池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 核态池内沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-核态池内沸腾的临界热流密度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 核态池内沸腾的临界热流密度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-最小热流密度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 最小热流密度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-膜态池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 膜态池内沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-影响池内沸腾的参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.5 影响池内沸腾的参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-强迫对流沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 强迫对流沸腾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.5 强迫对流沸腾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-外部强迫对流沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.1 外部强迫对流沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-两相流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.2 两相流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-微通道内的两相流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.3 微通道内的两相流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-凝结物理机制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 凝结：物理机制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#107-竖壁上的层流膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.7 竖壁上的层流膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#108-湍流膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.8 湍流膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#109-径向系统上的膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.9 径向系统上的膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1010-水平管内凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.10 水平管内凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1011-珠状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.11 珠状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1012-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.12 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-沸腾与凝结的无量纲参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 沸腾与凝结的无量纲参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-沸腾模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 沸腾模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 池内沸腾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 池内沸腾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-沸腾曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.1 沸腾曲线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-池内沸腾的各区段" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.2 池内沸腾的各区段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-池内沸腾关联式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 池内沸腾关联式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 池内沸腾关联式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-核态池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 核态池内沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-核态池内沸腾的临界热流密度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 核态池内沸腾的临界热流密度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-最小热流密度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 最小热流密度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-膜态池内沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 膜态池内沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-影响池内沸腾的参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.5 影响池内沸腾的参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-强迫对流沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 强迫对流沸腾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.5 强迫对流沸腾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-外部强迫对流沸腾" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.1 外部强迫对流沸腾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-两相流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.2 两相流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-微通道内的两相流" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.3 微通道内的两相流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-凝结物理机制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 凝结：物理机制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#107-竖壁上的层流膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.7 竖壁上的层流膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#108-湍流膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.8 湍流膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#109-径向系统上的膜状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.9 径向系统上的膜状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1010-水平管内凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.10 水平管内凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1011-珠状凝结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.11 珠状凝结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1012-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.12 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-10-章-沸腾与凝结">第 10 章 沸腾与凝结<a class="headerlink" href="#第-10-章-沸腾与凝结" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：相变对流是换热系数最高的一族传热过程——沸腾与凝结靠吸收、释放<strong>潜热</strong>搬运能量，流体温度几乎不变，小温差就能传走大热流，换热系数比无相变对流高出 1～2 个数量级。本章沿<strong>沸腾曲线</strong>把沸腾分成自然对流、核态、过渡、膜态四个区段，讲清临界热流密度为什么是工程设计红线，再给出 Rohsenow、Zuber 等关联式定量计算池内沸腾，以及管内流动沸腾的流型与关联式。凝结侧从 Nusselt 1916 的层流液膜解析解出发，逐条假定推导液膜厚度、当地与平均换热系数，扩展到湍流液膜、水平管、管束与肋管，最后说明珠状凝结为什么能高出一个量级。全章与第 9 章共享"浮升力驱动流动"的图像，但新增潜热 <span class="arithmatex">\(h_{fg}\)</span> 与表面张力 <span class="arithmatex">\(\sigma\)</span> 两个关键角色。</p>
+</blockquote>
+<h2 id="100-本章导图">10.0 本章导图<a class="headerlink" href="#100-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">沸腾与凝结</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">无量纲参数</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">量纲分析代替控制方程</span>
+          <span class="brleaf">雅各布数：显热与潜热之比</span>
+          <span class="brleaf">邦德数：浮升力与表面张力之比</span>
+          <span class="brleaf">类格拉晓夫数：浮升力驱动</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">沸腾曲线</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">自然对流段：过热度约五度以内</span>
+          <span class="brleaf">核态段：孤立气泡到气泡柱射流</span>
+          <span class="brleaf">过渡段：液膜与蒸膜振荡</span>
+          <span class="brleaf">膜态段：稳定蒸膜与辐射</span>
+          <span class="brleaf">临界热流密度与莱顿弗罗斯特点</span>
+          <span class="brleaf">功率控制的滞回与烧毁</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">池内沸腾关联式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">Rohsenow 核态沸腾式</span>
+          <span class="brleaf">Zuber 临界热流密度式</span>
+          <span class="brleaf">最小热流密度式</span>
+          <span class="brleaf">膜态沸腾加辐射修正</span>
+          <span class="brleaf">重力、过冷度、表面状况的影响</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">强迫对流沸腾</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">外部横掠圆柱的临界热流</span>
+          <span class="brleaf">管内两相流型序列</span>
+          <span class="brleaf">Kandlikar 饱和流动沸腾式</span>
+          <span class="brleaf">微通道的特殊流型</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">膜状凝结理论</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">Nusselt 四条假定</span>
+          <span class="brleaf">液膜厚度与当地换热系数</span>
+          <span class="brleaf">平均系数与努塞尔数</span>
+          <span class="brleaf">液膜雷诺数三分区</span>
+          <span class="brleaf">参数 P 消雷诺数法</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">工程构件与珠状凝结</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">水平管与球的凝结</span>
+          <span class="brleaf">管束排液修正</span>
+          <span class="brleaf">肋管与表面张力强化</span>
+          <span class="brleaf">水平管内凝结两种流态</span>
+          <span class="brleaf">珠状凝结高一个量级</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="101-沸腾与凝结的无量纲参数">10.1 沸腾与凝结的无量纲参数<a class="headerlink" href="#101-沸腾与凝结的无量纲参数" title="Permanent link">#</a></h2>
+<p>本章处理伴随<strong>相变</strong>（phase change）的对流过程：沸腾发生在固–液界面，热量从固体表面传给液体，把液体变成蒸气；凝结正好反过来，蒸气变回液体、把潜热交给固体表面。</p>
+<p>它们在分类上属于对流（有流体运动），但有两个独特之处：</p>
+<ol>
+<li><strong>存在相变，传热不改变流体温度</strong>——热量全部进了潜热。于是沸腾、凝结可以用很小的温差实现很大的传热速率。</li>
+<li><strong>多了两个主角</strong>：除了潜热 <span class="arithmatex">\(h_{fg}\)</span>，还有液–汽界面上的<strong>表面张力</strong>（surface tension）<span class="arithmatex">\(\sigma\)</span>，以及两相密度差诱发的<strong>浮升力</strong>（buoyancy force）——后者正比于 <span class="arithmatex">\(g(\rho_l - \rho_v)\)</span>。</li>
+</ol>
+<p>潜热与浮升力驱动的流动叠加起来，使沸腾、凝结的换热系数与传热速率远大于无相变对流。</p>
+<p>工程背景遍地都是：闭式动力循环里，锅炉把高压液体变成蒸气，汽轮机膨胀后的蒸气在冷凝器里还原成液态，泵再送回锅炉；蒸气压缩制冷循环的蒸发器与冷凝器也是一对沸腾/凝结部件；沸腾的高换热系数还让它成为先进电子设备热管理的候选方案。设计这些部件的前提，是把相变换热过程吃透。</p>
+<p>第 6 章处理边界层时，我们靠无量纲化控制方程找无量纲群。沸腾与凝结的控制方程太难建立，于是改用<strong>白金汉 π 定理</strong>（Buckingham pi theorem）。对这两种过程，换热系数可能依赖：表面与饱和温度之差 <span class="arithmatex">\(\Delta T \equiv T_s - T_{sat}\)</span>、密度差体力 <span class="arithmatex">\(g(\rho_l - \rho_v)\)</span>、潜热 <span class="arithmatex">\(h_{fg}\)</span>、表面张力 <span class="arithmatex">\(\sigma\)</span>、特征长度 <span class="arithmatex">\(L\)</span>，以及液体或蒸气的热物性 <span class="arithmatex">\(\rho, c_p, k, \mu\)</span>：</p>
+<div class="arithmatex">\[
+h = h\,[\Delta T,\ g(\rho_l - \rho_v),\ h_{fg},\ \sigma,\ L,\ \rho,\ c_p,\ k,\ \mu]
+\tag{10.1}
+\]</div>
+<p>10 个变量、5 个量纲（m, kg, s, J, K），得 <span class="arithmatex">\(10 - 5 = 5\)</span> 个 π 组，写成：</p>
+<div class="arithmatex">\[
+\frac{hL}{k} = f\left[\frac{\rho g(\rho_l - \rho_v)L^3}{\mu^2},\ \frac{c_p \Delta T}{h_{fg}},\ \frac{\mu c_p}{k},\ \frac{g(\rho_l - \rho_v)L^2}{\sigma}\right]
+\tag{10.2a}
+\]</div>
+<p>或用熟悉的记号：</p>
+<div class="arithmatex">\[
+Nu_L = f\left[\frac{\rho g(\rho_l - \rho_v)L^3}{\mu^2},\ Ja,\ Pr,\ Bo\right]
+\tag{10.2b}
+\]</div>
+<p><span class="arithmatex">\(Nu\)</span>、<span class="arithmatex">\(Pr\)</span> 是单相对流里的老朋友，新的三个：</p>
+<ul>
+<li><strong>雅各布数</strong>（Jakob number）<span class="arithmatex">\(Ja\)</span>：液体（凝结时是蒸气）在相变中吸收的<strong>最大显热</strong>与<strong>潜热</strong>之比。多数应用里显热远小于潜热，<span class="arithmatex">\(Ja\)</span> 数值很小；</li>
+<li><strong>邦德数</strong>（Bond number）<span class="arithmatex">\(Bo\)</span>：浮升力与表面张力之比；</li>
+<li>那个<strong>无名参数</strong> <span class="arithmatex">\(\rho g(\rho_l - \rho_v)L^3/\mu^2\)</span> 长得很像格拉晓夫数（回忆式 9.12 中 <span class="arithmatex">\(\beta \Delta T \sim \Delta\rho/\rho\)</span>）：它代表浮升力诱发的流动对传热的影响。</li>
+</ul>
+<p>后续各节会反复看到这些参数出场。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：Ja 很小意味着什么</p>
+<p>取 <span class="arithmatex">\(c_{p,l} = 4.2\ \mathrm{kJ/(kg \cdot K)}\)</span>、<span class="arithmatex">\(h_{fg} = 2257\ \mathrm{kJ/kg}\)</span> 的水：即使过热度/过冷度达 50 K，<span class="arithmatex">\(Ja\)</span> 也只有 0.093。这就是说显热项通常只占潜热的零头——这正是为什么凝结、沸腾计算中常用 <span class="arithmatex">\(h_{fg}\)</span> 直接把热流量换算成相变质量流量，而把显热当作一阶修正（10.7 节的 Rohsenow 修正潜热 <span class="arithmatex">\(h'_{fg}\)</span> 就是干这个的）。</p>
+</div>
+<h2 id="102-沸腾模式">10.2 沸腾模式<a class="headerlink" href="#102-沸腾模式" title="Permanent link">#</a></h2>
+<p>蒸发发生在<strong>固–液界面</strong>上就叫<strong>沸腾</strong>（boiling）。发生条件：表面温度 <span class="arithmatex">\(T_s\)</span> 超过液体压强对应的饱和温度 <span class="arithmatex">\(T_{sat}\)</span>。热从固体表面传给液体，牛顿冷却公式取如下形式：</p>
+<div class="arithmatex">\[
+q_s'' = h\,(T_s - T_{sat}) = h\,\Delta T_e
+\tag{10.3}
+\]</div>
+<p>其中 <span class="arithmatex">\(\Delta T_e \equiv T_s - T_{sat}\)</span> 叫<strong>过热度</strong>（excess temperature），也有教材译作"壁面过热度"。</p>
+<p>过程的标志性现象是<strong>蒸气泡</strong>：气泡在表面生成、长大、随后脱离。气泡的生长与动力学复杂地依赖于过热度、表面性质和流体物性（如表面张力）；反过来，气泡的生成动力学又影响近壁液体运动，从而强烈影响换热系数 <span class="arithmatex">\(h\)</span>。</p>
+<p>按外部条件，沸腾分几类：</p>
+<ul>
+<li><strong>池内沸腾</strong>（pool boiling，又称大容器沸腾）：液体大体积静止不动，近壁流动只来自自然对流和气泡生长、脱离诱发的搅拌；</li>
+<li><strong>强迫对流沸腾</strong>（forced convection boiling）：流体运动由外部手段（泵、压差）驱动，叠加自然对流与气泡搅拌；</li>
+<li><strong>过冷沸腾</strong>（subcooled boiling）：液体大部分温度低于饱和温度，壁面生成的气泡进入液体主体后可能重新凝结；</li>
+<li><strong>饱和沸腾</strong>（saturated boiling）：液体温度略超饱和温度，壁面生成的气泡被浮升力推着穿过液体，最终从自由表面逃逸。</li>
+</ul>
+<h2 id="103-池内沸腾">10.3 池内沸腾<a class="headerlink" href="#103-池内沸腾" title="Permanent link">#</a></h2>
+<p>饱和池内沸腾（图 10.1）被研究得最透：液体温度在紧贴表面的薄层内急剧上升，其余大部分液体只比饱和温度略高。液–固界面上生成的气泡上浮到液–汽界面，蒸气最终穿过界面输送出去。理解物理机制的钥匙是<strong>沸腾曲线</strong>。</p>
+<figure>
+  <img src="../images/ch10/fig-10-1.png" class="lq-img" />
+  <figcaption>图 10.1 饱和池内沸腾中的温度分布（截自原书）</figcaption>
+</figure>
+
+<h3 id="1031-沸腾曲线">10.3.1 沸腾曲线<a class="headerlink" href="#1031-沸腾曲线" title="Permanent link">#</a></h3>
+<p><strong>Nukiyama</strong>（1934）第一个识别出池内沸腾的不同区段，装置见图 10.2：一条水平镍铬丝浸在饱和水中，测电流 <span class="arithmatex">\(I\)</span> 与电压降 <span class="arithmatex">\(E\)</span> 得热流密度，再由电阻随温度的变化定出丝温。这种安排叫<strong>功率控制加热</strong>（power-controlled heating）：丝温 <span class="arithmatex">\(T_s\)</span>（即 <span class="arithmatex">\(\Delta T_e\)</span>）是因变量，功率设定（即 <span class="arithmatex">\(q_s''\)</span>）是自变量。沿图 10.3 的加热曲线看：功率一加，热流先慢后快地随过热度上升。</p>
+<figure>
+  <img src="../images/ch10/fig-10-2.png" class="lq-img" />
+  <figcaption>图 10.2 Nukiyama 的功率控制加热装置（截自原书）</figcaption>
+</figure>
+
+<p>Nukiyama 观察到：直到 <span class="arithmatex">\(\Delta T_e \approx 5^\circ\mathrm{C}\)</span> 才出现气泡（沸腾起始）；继续加功率，热流冲到很高的值；<span class="arithmatex">\(q_s''\)</span> 稍超过 <span class="arithmatex">\(q_{\max}''\)</span> 时，丝温突然跳到熔点——<strong>烧断</strong>（burnout）。但他换用熔点更高的铂丝（2045 K 对 1500 K）后，得以在 <span class="arithmatex">\(q_s'' &gt; q_{\max}''\)</span> 下继续运行；再<strong>降低</strong>功率时，<span class="arithmatex">\(\Delta T_e\)</span> 随 <span class="arithmatex">\(q_s''\)</span> 沿图 10.3 的<strong>冷却曲线</strong>变化：热流降到最低点 <span class="arithmatex">\(q_{\min}''\)</span> 后，再减功率，过热度突然掉下来，过程沿原加热曲线回到饱和点。</p>
+<figure>
+  <img src="../images/ch10/fig-10-3.png" class="lq-img" />
+  <figcaption>图 10.3 Nukiyama 的沸腾曲线（饱和水，常压）：加热与冷却路径不重合（截自原书）</figcaption>
+</figure>
+
+<p>Nukiyama 认为图 10.3 的<strong>滞回</strong>（hysteresis）是功率控制加热的产物——<span class="arithmatex">\(\Delta T_e\)</span> 沦为因变量；他猜想若能<strong>独立控制 <span class="arithmatex">\(\Delta T_e\)</span></strong>，就能补上曲线中缺失（虚线）的一段。这一猜想后来被 Drew 和 Mueller 证实：在管内凝结不同压强的蒸气以控制壁温，管外低沸点有机流体沸腾，缺段补齐。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：莱顿弗罗斯特现象的日常体验</p>
+<p>把水滴滴在温度远超沸点的锅面上（约 200°C 以上），水滴不马上蒸干，而是缩成珠在面上滚动、缓慢缩小——蒸气膜把液滴托了起来。这就是<strong>莱顿弗罗斯特现象</strong>（Leidenfrost effect，1756 年观测记载），对应沸腾曲线最低点附近的物理：表面完全被蒸气膜覆盖，液体与固体几乎不接触。厨师"泼水测温"判断锅温，用的就是这个效应。</p>
+</div>
+<h3 id="1032-池内沸腾的各区段">10.3.2 池内沸腾的各区段<a class="headerlink" href="#1032-池内沸腾的各区段" title="Permanent link">#</a></h3>
+<p>各区段标在图 10.4 的沸腾曲线上（水、1 atm；其他流体趋势类似）。由式 10.3，<span class="arithmatex">\(q_s''\)</span> 同时取决于 <span class="arithmatex">\(h\)</span> 与 <span class="arithmatex">\(\Delta T_e\)</span>，各区段按 <span class="arithmatex">\(\Delta T_e\)</span> 划分。</p>
+<figure>
+  <img src="../images/ch10/fig-10-4.png" class="lq-img" />
+  <figcaption>图 10.4 水（1 atm）的典型沸腾曲线：热流密度随过热度的变化（截自原书）</figcaption>
+</figure>
+
+<p><strong>自然对流沸腾（free convection boiling）</strong>：<span class="arithmatex">\(\Delta T_e \le \Delta T_{e,A} \approx 5^\circ\mathrm{C}\)</span>。表面温度必须略超饱和温度才能维持气泡生成；过热度渐增，气泡终会萌发，但在 A 点（<strong>核态沸腾起始点</strong>，onset of nucleate boiling，ONB）之前，流动由自然对流主导。层流时 <span class="arithmatex">\(h \propto \Delta T_e^{1/4}\)</span>、湍流时 <span class="arithmatex">\(h \propto \Delta T_e^{1/3}\)</span>，对应 <span class="arithmatex">\(q_s'' \propto \Delta T_e^{5/4}\)</span> 或 <span class="arithmatex">\(\Delta T_e^{4/3}\)</span>。大水平平板的流动是湍流，这一段沸腾曲线可用式 9.31 预测（图 10.4 中已画出）。</p>
+<p><strong>核态沸腾（nucleate boiling）</strong>：<span class="arithmatex">\(\Delta T_{e,A} &lt; \Delta T_e \le \Delta T_{e,C} \approx 30^\circ\mathrm{C}\)</span>，内含两种流态：</p>
+<ul>
+<li><strong>A–B 段（孤立气泡区）</strong>：气泡在离散的汽化核心处生成并脱离表面（即图 10.2 的情形）。气泡脱离搅动近壁液体，<span class="arithmatex">\(h\)</span> 与 <span class="arithmatex">\(q_s''\)</span> 大增。这一段的热量绝大部分<strong>直接从表面传给运动着的液体</strong>，而不是靠升离表面的气泡携带；</li>
+<li><strong>B–C 段（气泡柱与射流区）</strong>：<span class="arithmatex">\(\Delta T_e\)</span> 超过 <span class="arithmatex">\(\Delta T_{e,B}\)</span> 后更多汽化核心激活，气泡密集到互相干扰、合并，蒸气以<strong>射流或气柱</strong>形式逃逸，随后合并成<strong>汽块</strong>（图 10.5a）。密集气泡妨碍近壁液体运动。</li>
+</ul>
+<p>图 10.4 的 P 点是沸腾曲线行为转变点：P 之前曲线在双对数坐标上近似直线，即 <span class="arithmatex">\(q_s'' \propto \Delta T_e^n\)</span>；过了 P 点热流随 <span class="arithmatex">\(\Delta T_e\)</span> 的增长变慢，<span class="arithmatex">\(h = q_s''/\Delta T_e\)</span> 在 P 与 C 之间某处开始下降。热流最大值 <span class="arithmatex">\(q_{s,C}'' = q_{\max}''\)</span> 通常称为<strong>临界热流密度</strong>（critical heat flux，CHF），常压下的水超过 <span class="arithmatex">\(1\ \mathrm{MW/m^2}\)</span>。最大点处蒸气大量生成，液体越来越难持续润湿表面。</p>
+<p>核态段用很小的过热度就拿到很高的热流与换热系数（<span class="arithmatex">\(h &gt; 10^4\ \mathrm{W/(m^2 \cdot K)}\)</span>，远超无相变对流的典型值），所以多数工程设备都把运行点选在核态沸腾区。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么核态沸腾的 h 这么高</p>
+<p>三个机制叠加：气泡脱离时把过热液体从壁面"抽走"、让冷空气般的过冷液体回填（强烈的微观对流）；气泡底部微液膜蒸发直接消耗潜热；近壁温度梯度被反复重建，热边界层薄到毫米级。这也是后面 Rohsenow 关联式把沸腾类比成"气泡诱导的强迫对流"的物理依据。</p>
+</div>
+<figure>
+  <img src="../images/ch10/fig-10-5.png" class="lq-img" />
+  <figcaption>图 10.5 甲醇在水平管上沸腾：(a) 核态沸腾的气泡柱与射流区；(b) 膜态沸腾（截自原书）</figcaption>
+</figure>
+
+<p><strong>过渡沸腾（transition boiling）</strong>：<span class="arithmatex">\(\Delta T_{e,C} &lt; \Delta T_e &lt; \Delta T_{e,D} \approx 120^\circ\mathrm{C}\)</span>，又称<strong>不稳定膜态沸腾</strong>（unstable film boiling）或<strong>部分膜态沸腾</strong>（partial film boiling）。气泡生成快到开始在地表结成蒸气膜/蒸气毯；表面上任意一点都可能在与膜态之间振荡，但蒸膜覆盖的面积份额随 <span class="arithmatex">\(\Delta T_e\)</span> 增大。蒸气导热系数远小于液体，<span class="arithmatex">\(h\)</span>（连同 <span class="arithmatex">\(q_s''\)</span>）必然随 <span class="arithmatex">\(\Delta T_e\)</span> 增大而<strong>下降</strong>。</p>
+<p><strong>膜态沸腾（film boiling）</strong>：<span class="arithmatex">\(\Delta T_e \ge \Delta T_{e,D}\)</span>。D 点叫<strong>莱顿弗罗斯特点</strong>（Leidenfrost point），热流取最小值 <span class="arithmatex">\(q_{s,D}'' = q_{\min}''\)</span>，表面被蒸气毯完全覆盖，热从表面穿过蒸气膜以<strong>导热 + 辐射</strong>方式传给液体。表面温度继续升高时，穿过蒸膜的辐射越来越显著，<span class="arithmatex">\(q_s''\)</span> 重新随 <span class="arithmatex">\(\Delta T_e\)</span> 上升。图 10.5b 展示了膜态沸腾的蒸气形态与气泡动力学（甲醇在水平管上沸腾的照片）。</p>
+<p>回到<strong>功率控制</strong>的视角——核反应堆、电阻加热器等大量应用控制的是 <span class="arithmatex">\(q_s''\)</span> 而不是 <span class="arithmatex">\(T_s\)</span>。从图 10.4 的 P 点出发逐渐加大 <span class="arithmatex">\(q_s''\)</span>：<span class="arithmatex">\(\Delta T_e\)</span>（进而 <span class="arithmatex">\(T_s\)</span>）沿曲线升到 C 点；<span class="arithmatex">\(q_s''\)</span> 一旦越过 C，<span class="arithmatex">\(\Delta T_e\)</span> 从 <span class="arithmatex">\(\Delta T_{e,C}\)</span> <strong>陡跳</strong>到 <span class="arithmatex">\(\Delta T_{e,E}\)</span>（<span class="arithmatex">\(T_{s,E}\)</span> 可能超过固体熔点）——系统失效。所以 C 点又叫<strong>烧毁点</strong>（burnout point）或<strong>沸腾危机</strong>（boiling crisis），准确掌握 CHF 至关重要：我们可以把运行点贴近 CHF，但绝不越过它。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：沸腾危机的工程后果</p>
+<p>CHF 事故不是"效率变差"，而是"壁温失控"：<span class="arithmatex">\(q_s''\)</span> 越过临界值后表面被蒸膜罩住，<span class="arithmatex">\(h\)</span> 骤降一个量级以上，按式 10.3 壁温必须飙升来维持同样的热流——燃料棒熔化（核反应堆）、电热管烧断都是这条路径。因此沸腾回路的设计准则不是"不超过多少温度"，而是"热流对 CHF 留出足够裕度"。</p>
+</div>
+<h2 id="104-池内沸腾关联式">10.4 池内沸腾关联式<a class="headerlink" href="#104-池内沸腾关联式" title="Permanent link">#</a></h2>
+<p>沸腾曲线形状各异、各区段物理机制不同，自然衍生出大量关联式。<span class="arithmatex">\(\Delta T_{e,A}\)</span> 以下（图 10.4 自然对流段）直接用第 9 章的自然对流关联式即可。本节覆盖核态沸腾与膜态沸腾的常用关联式。</p>
+<h3 id="1041-核态池内沸腾">10.4.1 核态池内沸腾<a class="headerlink" href="#1041-核态池内沸腾" title="Permanent link">#</a></h3>
+<p>核态沸腾分析需要预测表面汽化核心（nucleation site）数量与每个核心上气泡的生成速率。这一区段虽被广泛研究，完整可靠的理论模型至今没有。Yamagata 等人最早指出汽化核心对热流的影响，并证明 <span class="arithmatex">\(q_s''\)</span> 近似正比于 <span class="arithmatex">\(\Delta T_e^3\)</span>——好的关联式应体现这一关系。</p>
+<p>10.3.2 节说过，A–B 段的大部分热量直接从受热表面传给液体，可以把核态沸腾看成一种<strong>液相强迫对流</strong>——"泵"是上升的气泡。强迫对流关联式的一般形式是</p>
+<div class="arithmatex">\[
+Nu_L = C_{fc}\, Re_L^{m_{fc}} Pr^{n_{fc}}
+\tag{7.1}
+\]</div>
+<p>只要给 <span class="arithmatex">\(Nu\)</span>、<span class="arithmatex">\(Re\)</span> 找到长度尺度与特征速度，就能借式 7.1 关联池内沸腾数据。因为假设气泡搅拌液体，对较大的加热面，合适的长度尺度是<strong>气泡直径</strong> <span class="arithmatex">\(D_b\)</span>。气泡脱离表面时的直径由力平衡决定：浮升力（促成脱离，正比于 <span class="arithmatex">\(D_b^3\)</span>）对表面张力（把气泡按在表面，正比于 <span class="arithmatex">\(D_b\)</span>），得</p>
+<div class="arithmatex">\[
+D_b \propto \sqrt{\frac{\sigma}{g(\rho_l - \rho_v)}}
+\tag{10.4a}
+\]</div>
+<p>比例常数取决于液体、蒸气与固体表面之间的<strong>接触角</strong>（contact angle），而接触角由具体的液体–表面组合决定。下标 <span class="arithmatex">\(l\)</span>、<span class="arithmatex">\(v\)</span> 分别指饱和液体与饱和蒸气状态，<span class="arithmatex">\(\sigma\)</span>（N/m）是表面张力。</p>
+<p>液体搅拌的特征速度：液体回填脱离气泡留下的空位（距离正比于 <span class="arithmatex">\(D_b\)</span>）所用的时间，除以相邻两次气泡脱离的时间间隔 <span class="arithmatex">\(t_b\)</span>。而 <span class="arithmatex">\(t_b\)</span> 等于"形成一个气泡所需的能量"（正比于 <span class="arithmatex">\(\rho_l h_{fg} D_b^3\)</span>）除以"固–汽接触面积上的供热速率"（正比于 <span class="arithmatex">\(q_s'' D_b^2\)</span>）：</p>
+<div class="arithmatex">\[
+V \propto \frac{D_b}{t_b} \propto \frac{D_b}{\left(\dfrac{\rho_l h_{fg} D_b^3}{q_s'' D_b^2}\right)} \propto \frac{q_s''}{\rho_l h_{fg}}
+\tag{10.4b}
+\]</div>
+<p>把式 10.4a、10.4b 代入式 7.1，把比例系数吸收进 <span class="arithmatex">\(C_{fc}\)</span>，再代入式 10.3（式 7.1 的指数 <span class="arithmatex">\(m_{fc}\)</span> 实验值为 &#8532;），得到</p>
+<div class="arithmatex">\[
+q_s'' = \mu_l h_{fg}\left[\frac{g(\rho_l - \rho_v)}{\sigma}\right]^{1/2}\left(\frac{c_{p,l}\,\Delta T_e}{C_{s,f}\, h_{fg}\, Pr_l^{\,n}}\right)^3
+\tag{10.5}
+\]</div>
+<p>这就是 <strong>Rohsenow 关联式</strong>——第一个、也是使用最广的核态沸腾关联式。除 <span class="arithmatex">\(\rho_v\)</span> 外所有物性取液体，且全部按 <span class="arithmatex">\(T_{sat}\)</span> 取值。系数 <span class="arithmatex">\(C_{s,f}\)</span> 与指数 <span class="arithmatex">\(n\)</span> 取决于<strong>表面–流体组合</strong>，代表值见表 10.1（其他组合查文献）。</p>
+<p><strong>表 10.1 不同表面–流体组合的 <span class="arithmatex">\(C_{s,f}\)</span> 与 <span class="arithmatex">\(n\)</span> 值</strong></p>
+<table>
+<thead>
+<tr>
+<th>表面–流体组合</th>
+<th>表面处理</th>
+<th><span class="arithmatex">\(C_{s,f}\)</span></th>
+<th><span class="arithmatex">\(n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>水–铜</td>
+<td>划痕（scored）</td>
+<td>0.0068</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–铜</td>
+<td>抛光（polished）</td>
+<td>0.0128</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–不锈钢</td>
+<td>化学刻蚀</td>
+<td>0.0133</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–不锈钢</td>
+<td>机械抛光</td>
+<td>0.0132</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–不锈钢</td>
+<td>研磨抛光</td>
+<td>0.0080</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–黄铜</td>
+<td>—</td>
+<td>0.0060</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–镍</td>
+<td>—</td>
+<td>0.006</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>水–铂</td>
+<td>—</td>
+<td>0.0130</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>正戊烷–铜</td>
+<td>抛光</td>
+<td>0.0154</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>正戊烷–铜</td>
+<td>研磨（lapped）</td>
+<td>0.0049</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>苯–铬</td>
+<td>—</td>
+<td>0.0101</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>乙醇–铬</td>
+<td>—</td>
+<td>0.0027</td>
+<td>1.7</td>
+</tr>
+</tbody>
+</table>
+<p>水的表面张力与汽化潜热查表 A.6，选定流体查表 A.5。水的 <span class="arithmatex">\(\sigma\)</span> 随温度升高显著下降（<span class="arithmatex">\(\sigma = 58.9 \times 10^{-3}\ \mathrm{N/m}\)</span> 在 100°C）。</p>
+<p>几点使用须知：</p>
+<ul>
+<li>Rohsenow 关联式<strong>只适用于清洁表面</strong>；用于估算热流时误差可达 ±100%。好在 <span class="arithmatex">\(\Delta T_e \propto (q_s'')^{1/3}\)</span>——反过来由 <span class="arithmatex">\(q_s''\)</span> 估 <span class="arithmatex">\(\Delta T_e\)</span> 时误差缩为三分之一；</li>
+<li>由于 <span class="arithmatex">\(q_s'' \propto h_{fg}^{-2}\)</span>（式 10.5 中 <span class="arithmatex">\(h_{fg}\)</span> 在括号外出现一次、在括号内以三次方出现在分母，合计 <span class="arithmatex">\(-2\)</span> 次幂），而 <span class="arithmatex">\(h_{fg}\)</span> 随饱和压强（温度）升高而减小，<strong>加压会提高核态沸腾热流</strong>；</li>
+<li>若把式 10.5 改写成以任意长度 <span class="arithmatex">\(L\)</span> 为基准的 <span class="arithmatex">\(Nu_L\)</span>，形式为 <span class="arithmatex">\(Nu_L \propto Ja^2 Pr^{1-3n} Bo^{1/2}\)</span>——与式 10.2b 对比，只差那一个无名参数；若以气泡直径为基准，则简化为 <span class="arithmatex">\(Nu_{D_b} \propto Ja^2 Pr^{1-3n}\)</span>。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：C_sf 为什么随表面–流体组合而变</p>
+<p><span class="arithmatex">\(C_{s,f}\)</span> 吸收了接触角与成核位点分布的影响：水对抛光铜接触角大、气泡难脱离，<span class="arithmatex">\(C_{s,f} = 0.0128\)</span>；同一块铜划出划痕后凹坑截留蒸气、成核容易，<span class="arithmatex">\(C_{s,f}\)</span> 降到 0.0068——同一种"水–铜"，<span class="arithmatex">\(C_{s,f}\)</span> 相差近一倍。所以用 Rohsenow 式时，第一件事是核对<strong>表面材质与处理状态</strong>是否与表中一致，表面老化、结垢后数值还会漂移。</p>
+</div>
+<p><strong>【例 10.1】铜锅烧水的功率、蒸发速率与临界热流密度</strong></p>
+<p><strong>已知（Known）</strong>：直径 0.3 m 的铜锅锅底由电加热器维持在 118°C。</p>
+<p><strong>求（Find）</strong>：1. 烧水所需电功率；2. 沸腾引起的蒸发速率；3. 临界热流密度。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch10/ex-10-1.png" class="lq-img" />
+  <figcaption>例 10.1 示意图：电加热铜锅内的饱和沸腾（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 水处于标准大气压 1.01 bar；3. 水温均匀，为 <span class="arithmatex">\(T_{sat} = 100^\circ\mathrm{C}\)</span>；4. 锅底为大表面、抛光铜；5. 加热器向环境散热可忽略。</p>
+<p><strong>物性（Properties）</strong>：表 A.6，饱和水，液体（100°C）：<span class="arithmatex">\(\rho_l = 1/v_f = 957.9\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(c_{p,l} = c_{p,f} = 4.217\ \mathrm{kJ/(kg \cdot K)}\)</span>，<span class="arithmatex">\(\mu_l = \mu_f = 279 \times 10^{-6}\ \mathrm{N \cdot s/m^2}\)</span>，<span class="arithmatex">\(Pr_l = Pr_f = 1.76\)</span>，<span class="arithmatex">\(h_{fg} = 2257\ \mathrm{kJ/kg}\)</span>，<span class="arithmatex">\(\sigma = 58.9 \times 10^{-3}\ \mathrm{N/m}\)</span>。表 A.6，饱和水，蒸气（100°C）：<span class="arithmatex">\(\rho_v = 1/v_g = 0.5956\ \mathrm{kg/m^3}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>由 <span class="arithmatex">\(T_{sat}\)</span> 与锅面温度 <span class="arithmatex">\(T_s\)</span> 得过热度：</li>
+</ol>
+<div class="arithmatex">\[
+\Delta T_e = T_s - T_{sat} = 118^\circ\mathrm{C} - 100^\circ\mathrm{C} = 18^\circ\mathrm{C}
+\]</div>
+<p>对照图 10.4 的沸腾曲线，这是核态池内沸腾，单位面积传热速率用式 10.5 估算。抛光铜–水组合查表 10.1：<span class="arithmatex">\(C_{s,f} = 0.0128\)</span>，<span class="arithmatex">\(n = 1.0\)</span>。代入数值：</p>
+<div class="arithmatex">\[
+q_s'' = 279 \times 10^{-6}\ \mathrm{N \cdot s/m^2} \times 2257 \times 10^3\ \mathrm{J/kg} \times \left[\frac{9.8\ \mathrm{m/s^2} \times (957.9 - 0.5956)\ \mathrm{kg/m^3}}{58.9 \times 10^{-3}\ \mathrm{N/m}}\right]^{1/2} \times \left(\frac{4.217 \times 10^3\ \mathrm{J/(kg \cdot K)} \times 18^\circ\mathrm{C}}{0.0128 \times 2257 \times 10^3\ \mathrm{J/kg} \times 1.76}\right)^3
+\]</div>
+<div class="arithmatex">\[
+q_s'' = 836\ \mathrm{kW/m^2} = 0.836\ \mathrm{MW/m^2}
+\]</div>
+<p>沸腾传热速率：</p>
+<div class="arithmatex">\[
+q_s = q_s'' \times A = q_s'' \times \frac{\pi D^2}{4} = 8.36 \times 10^5\ \mathrm{W/m^2} \times \frac{\pi \times (0.30\ \mathrm{m})^2}{4} = 59.1\ \mathrm{kW}
+\]</div>
+<ol>
+<li>稳态下加入锅中的热量全部用于蒸发水：</li>
+</ol>
+<div class="arithmatex">\[
+q_s = \dot{m}_b\, h_{fg}
+\]</div>
+<p>其中 <span class="arithmatex">\(\dot{m}_b\)</span> 是水从自由表面蒸发到房间的速率：</p>
+<div class="arithmatex">\[
+\dot{m}_b = \frac{q_s}{h_{fg}} = \frac{5.91 \times 10^4\ \mathrm{W}}{2257 \times 10^3\ \mathrm{J/kg}} = 0.0262\ \mathrm{kg/s} = 94\ \mathrm{kg/h}
+\]</div>
+<ol>
+<li>核态池内沸腾的临界热流密度用式 10.6 估算（下一小节）：</li>
+</ol>
+<div class="arithmatex">\[
+q_{\max}'' = 0.149\, h_{fg}\, \rho_v \left[\frac{\sigma g(\rho_l - \rho_v)}{\rho_v^2}\right]^{1/4}
+\]</div>
+<div class="arithmatex">\[
+q_{\max}'' = 0.149 \times 2257 \times 10^3\ \mathrm{J/kg} \times 0.5956\ \mathrm{kg/m^3} \times \left[\frac{58.9 \times 10^{-3}\ \mathrm{N/m} \times 9.8\ \mathrm{m/s^2} \times (957.9 - 0.5956)\ \mathrm{kg/m^3}}{(0.5956\ \mathrm{kg/m^3})^2}\right]^{1/4} = 1.26\ \mathrm{MW/m^2}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li><span class="arithmatex">\(q_{\max}'' = 1.26\ \mathrm{MW/m^2}\)</span> 是常压水沸腾热流的上限；加热器运行在 <span class="arithmatex">\(0.836\ \mathrm{MW/m^2}\)</span>，低于临界工况，安全。</li>
+<li>用式 10.7 算出莱顿弗罗斯特点的最小热流 <span class="arithmatex">\(q_{\min}'' = 18.9\ \mathrm{kW/m^2}\)</span>；由图 10.4，该工况对应 <span class="arithmatex">\(\Delta T_e \approx 120^\circ\mathrm{C}\)</span>。</li>
+</ol>
+<h3 id="1042-核态池内沸腾的临界热流密度">10.4.2 核态池内沸腾的临界热流密度<a class="headerlink" href="#1042-核态池内沸腾的临界热流密度" title="Permanent link">#</a></h3>
+<p>临界热流密度 <span class="arithmatex">\(q_{s,C}'' = q_{\max}''\)</span> 是沸腾曲线上的要害点：我们希望运行点贴近它，更清楚超过它的危险。Kutateladze 用量纲分析、Zuber 用流动稳定性分析，各自得到可近似写成</p>
+<div class="arithmatex">\[
+q_{\max}'' = C\, h_{fg}\, \rho_v \left[\frac{\sigma g(\rho_l - \rho_v)}{\rho_v^2}\right]^{1/4}
+\tag{10.6}
+\]</div>
+<p>的结果——<strong>与表面材料无关</strong>，只通过前导常数 <span class="arithmatex">\(C\)</span> 弱依赖于加热面几何：对大水平圆柱、球以及许多大有限加热面，取 <span class="arithmatex">\(C = \pi/24 \approx 0.131\)</span>（<strong>Zuber 常数</strong>）与实验数据的偏差在 16% 以内；对大水平平板，<span class="arithmatex">\(C = 0.149\)</span> 吻合更好。所有物性按饱和温度取值。</p>
+<p>式 10.6 要求加热面特征长度 <span class="arithmatex">\(L\)</span> 相对气泡直径 <span class="arithmatex">\(D_b\)</span> 足够大。加热面很小时（<strong>约束数</strong>（confinement number）</p>
+<div class="arithmatex">\[
+Co = \frac{\sqrt{\sigma/(g(\rho_l - \rho_v))}}{L} = Bo^{-1/2}
+\]</div>
+<p>大于约 0.2），必须对小尺寸加热面施加修正因子——Lienhard 汇总了水平板、圆柱、球、竖直与水平带状面等各种几何的修正值。</p>
+<p>CHF 强烈依赖压强——主要通过表面张力与汽化潜热随压强的变化。Cichelli 与 Bonilla 的实验表明：峰值热流随压强升高而增大，直到<strong>临界压强的三分之一</strong>；此后下降，在临界压强处归零。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：设计裕度怎么留</p>
+<p>式 10.6 给的是"干净工况 + 典型几何"的 CHF。工程上沸腾回路的设计热流通常取 CHF 的几分之一（例如核反应堆用临界热流密度比 CHFR/DNBR 这类指标把最热通道的热流压在临界值之下），再叠加"式 10.6 本身 ±16% 的离散"与"表面老化、局部流动恶化"的余量。记住方向：<strong>不确定度要往低处减 CHF、往高处加运行热流</strong>。</p>
+</div>
+<h3 id="1043-最小热流密度">10.4.3 最小热流密度<a class="headerlink" href="#1043-最小热流密度" title="Permanent link">#</a></h3>
+<p>过渡沸腾段工程上兴趣不大——它只能在<strong>控制表面温度</strong>时实现，且尚无成熟理论，只能用"液体与受热面周期性、不稳定接触"来描述。但这一段的<strong>上边界</strong>很重要：它对应稳定蒸气毯（蒸膜）的形成与<strong>最小热流</strong>工况。热流一旦跌破最小值，蒸膜瓦解、表面骤冷、核态沸腾重新建立。</p>
+<p>Zuber 用稳定性理论导出大水平平板的最小热流：</p>
+<div class="arithmatex">\[
+q_{\min}'' = C\, \rho_v\, h_{fg}' \left[\frac{g\sigma(\rho_l - \rho_v)}{(\rho_l + \rho_v)^2}\right]^{1/4}
+\tag{10.7}
+\]</div>
+<p>物性按饱和温度取值。常数 <span class="arithmatex">\(C = 0.09\)</span> 由 Berenson 实验确定；对多数流体、中等压强，结果误差约 ±50%，高压下更差。水平圆柱也有类似结果。</p>
+<h3 id="1044-膜态池内沸腾">10.4.4 膜态池内沸腾<a class="headerlink" href="#1044-膜态池内沸腾" title="Permanent link">#</a></h3>
+<p>过热度越过莱顿弗罗斯特点后，连续蒸膜覆盖表面，液体与表面不再接触。稳定蒸膜内的条件与层流膜状凝结（10.7 节）高度相似——只是把液体膜换成蒸气膜、浮升力方向倒过来——所以膜态沸腾关联式习惯上借凝结理论的结果。对直径 <span class="arithmatex">\(D\)</span> 的圆柱或球面上的膜态沸腾：</p>
+<div class="arithmatex">\[
+\overline{Nu}_D = \frac{\bar{h}_{conv} D}{k_v} = C\left[\frac{g(\rho_l - \rho_v)\, h_{fg}'\, D^3}{\nu_v k_v (T_s - T_{sat})}\right]^{1/4}
+\tag{10.8}
+\]</div>
+<p>关联常数：水平圆柱 <span class="arithmatex">\(C = 0.62\)</span>，球 <span class="arithmatex">\(C = 0.67\)</span>。<strong>修正潜热</strong>（modified latent heat）</p>
+<div class="arithmatex">\[
+h_{fg}' = h_{fg} + 0.80\, c_{p,v}(T_s - T_{sat})
+\]</div>
+<p>计入"把蒸气膜内的蒸气维持在饱和温度以上的显热"。它也可近似写成上式，实际还与蒸气普朗特数弱相关。蒸气物性按<strong>系统压强与膜温</strong> <span class="arithmatex">\(T_f = (T_s + T_{sat})/2\)</span> 取值；<span class="arithmatex">\(\rho_l\)</span> 与 <span class="arithmatex">\(h_{fg}\)</span> 按<strong>饱和温度</strong>取值。</p>
+<p>表面温度较高（<span class="arithmatex">\(T_s \gtrsim 300^\circ\mathrm{C}\)</span>）时，穿过蒸气膜的<strong>辐射</strong>显著起来。辐射会使膜变厚，所以不能把辐射与对流简单地相加。Bromley 研究水平管外膜态沸腾，建议用如下超越方程解总换热系数：</p>
+<div class="arithmatex">\[
+\bar{h}^{4/3} = \bar{h}_{conv}^{4/3} + \bar{h}_{rad}\, \bar{h}^{1/3}
+\tag{10.9}
+\]</div>
+<p>若 <span class="arithmatex">\(\bar{h}_{rad} &lt; \bar{h}_{conv}\)</span>，可用简化式：</p>
+<div class="arithmatex">\[
+\bar{h} = \bar{h}_{conv} + \frac{3}{4}\,\bar{h}_{rad}
+\tag{10.10}
+\]</div>
+<p>有效辐射换热系数为</p>
+<div class="arithmatex">\[
+\bar{h}_{rad} = \frac{\varepsilon \sigma (T_s^4 - T_{sat}^4)}{T_s - T_{sat}}
+\tag{10.11}
+\]</div>
+<p>其中 <span class="arithmatex">\(\varepsilon\)</span> 是固体发射率（表 A.11），<span class="arithmatex">\(\sigma\)</span> 是斯特藩–玻尔兹曼常数。（注意本章 <span class="arithmatex">\(\sigma\)</span> 一符两用：式 10.5—10.7、10.48 里是表面张力 N/m，式 10.11 里是斯特藩–玻尔兹曼常数。）</p>
+<p>最后提醒：<strong>膜态沸腾与膜状凝结的类比</strong>对小曲率高、尺寸小的表面不成立（两种过程的蒸气膜/液膜厚度相差悬殊）；对竖直表面同样存疑，只在有限条件下得到过满意预测。</p>
+<p><strong>【例 10.2】浸没式电热元件的膜态沸腾</strong></p>
+<p><strong>已知（Known）</strong>：直径 6 mm、发射率 <span class="arithmatex">\(\varepsilon = 1\)</span> 的金属铠装加热元件水平浸没在水槽中。稳态沸腾条件下金属表面温度 255°C。</p>
+<p><strong>求（Find）</strong>：加热器单位长度的功率耗散 <span class="arithmatex">\(q_s'\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch10/ex-10-2.png" class="lq-img" />
+  <figcaption>例 10.2 示意图：水平圆柱加热元件在水中的膜态沸腾（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态条件；2. 水处于标准大气压、温度均匀为 <span class="arithmatex">\(T_{sat}\)</span>。</p>
+<p><strong>物性（Properties）</strong>：表 A.6，饱和水，液体（100°C）：<span class="arithmatex">\(\rho_l = 1/v_f = 957.9\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(h_{fg} = 2257\ \mathrm{kJ/kg}\)</span>。表 A.4，常压水蒸气（<span class="arithmatex">\(T_f \approx 450\ \mathrm{K}\)</span>）：<span class="arithmatex">\(\rho_v = 0.4902\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(c_{p,v} = 1.980\ \mathrm{kJ/(kg \cdot K)}\)</span>，<span class="arithmatex">\(k_v = 0.0299\ \mathrm{W/(m \cdot K)}\)</span>，<span class="arithmatex">\(\mu_v = 15.25 \times 10^{-6}\ \mathrm{N \cdot s/m^2}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：过热度</p>
+<div class="arithmatex">\[
+\Delta T_e = T_s - T_{sat} = 255^\circ\mathrm{C} - 100^\circ\mathrm{C} = 155^\circ\mathrm{C}
+\]</div>
+<p>对照图 10.4，这已是<strong>膜态池内沸腾</strong>：传热同时包含对流与辐射。单位长度圆柱面的传热速率由式 10.3 写成：</p>
+<div class="arithmatex">\[
+q_s' = q_s''\, \pi D = h\, \pi D\, \Delta T_e
+\]</div>
+<p>换热系数 <span class="arithmatex">\(h\)</span> 由式 10.9 计算，其中对流、辐射分量分别来自式 10.8 与 10.11。</p>
+<p>对流分量：先算修正潜热 <span class="arithmatex">\(h_{fg}' = 2257 \times 10^3\ \mathrm{J/kg} + 0.8 \times 1.98 \times 10^3\ \mathrm{J/(kg \cdot K)} \times 155^\circ\mathrm{C} = 2.50 \times 10^6\ \mathrm{J/kg}\)</span>，再由式 10.8（改写为 <span class="arithmatex">\(h_{conv}\)</span> 的显式）：</p>
+<div class="arithmatex">\[
+h_{conv} = 0.62\left[\frac{k_v^3 \rho_v (\rho_l - \rho_v) g\, h_{fg}'}{\mu_v D\, \Delta T_e}\right]^{1/4}
+\]</div>
+<div class="arithmatex">\[
+h_{conv} = 0.62 \times \left[\frac{(0.0299\ \mathrm{W/(m \cdot K)})^3 \times 0.4902\ \mathrm{kg/m^3} \times (957.9 - 0.4902)\ \mathrm{kg/m^3} \times 9.8\ \mathrm{m/s^2} \times (2257 \times 10^3 + 0.8 \times 1.98 \times 10^3 \times 155)\ \mathrm{J/kg}}{15.25 \times 10^{-6}\ \mathrm{N \cdot s/m^2} \times 6 \times 10^{-3}\ \mathrm{m} \times 155^\circ\mathrm{C}}\right]^{1/4} = 238\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>辐射分量（<span class="arithmatex">\(\varepsilon = 1\)</span>，温度换算 <span class="arithmatex">\(T_s = 528\ \mathrm{K}\)</span>、<span class="arithmatex">\(T_{sat} = 373\ \mathrm{K}\)</span>）：</p>
+<div class="arithmatex">\[
+\bar{h}_{rad} = \frac{1 \times 5.67 \times 10^{-8}\ \mathrm{W/(m^2 \cdot K^4)} \times (528^4 - 373^4)\ \mathrm{K^4}}{(528 - 373)\ \mathrm{K}} = 21.3\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>试差求解式 10.9：</p>
+<div class="arithmatex">\[
+h^{4/3} = 238^{4/3} + 21.3\, h^{1/3}
+\]</div>
+<p>得</p>
+<div class="arithmatex">\[
+h = 254.1\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>于是单位长度功率：</p>
+<div class="arithmatex">\[
+q_s' = 254.1\ \mathrm{W/(m^2 \cdot K)} \times \pi \times 6 \times 10^{-3}\ \mathrm{m} \times 155^\circ\mathrm{C} = 742\ \mathrm{W/m}
+\]</div>
+<p><strong>点评（Comments）</strong>：本题 <span class="arithmatex">\(\bar{h}_{rad} &lt; \bar{h}_{conv}\)</span>，可用简化式 10.10 估算：<span class="arithmatex">\(\bar{h} = 238 + 0.75 \times 21.3 = 254.0\ \mathrm{W/(m^2 \cdot K)}\)</span>——与精确解几乎一致。</p>
+<h3 id="1045-影响池内沸腾的参数">10.4.5 影响池内沸腾的参数<a class="headerlink" href="#1045-影响池内沸腾的参数" title="Permanent link">#</a></h3>
+<p><strong>重力场</strong>。航天与旋转机械应用必须考虑重力对沸腾的影响——前面各式中都显含 <span class="arithmatex">\(g\)</span>。Siegel 的低重力效应综述确认：式 10.6、10.7、10.8（最大、最小热流与膜态沸腾）中的 <span class="arithmatex">\(g^{1/4}\)</span> 依赖在 <span class="arithmatex">\(g\)</span> 低至 <span class="arithmatex">\(0.10\ \mathrm{m/s^2}\)</span> 时仍然正确。但<strong>核态沸腾</strong>的热流几乎与重力无关——这与式 10.5 的 <span class="arithmatex">\(g^{1/2}\)</span> 依赖相矛盾，实验证据站在"无关"一边。超重时现象类似；ONB 附近，重力会影响气泡诱发的对流。</p>
+<p><strong>液体过冷度</strong>。若池内液体维持低于饱和温度，称液体<strong>过冷</strong>（subcooled），过冷度 <span class="arithmatex">\(\Delta T_{sub} \equiv T_{sat} - T_l\)</span>。自然对流区，热流大致按 <span class="arithmatex">\((T_s - T_l)^n\)</span> 或 <span class="arithmatex">\((\Delta T_e + \Delta T_{sub})^n\)</span> 增长，指数 <span class="arithmatex">\(5/4 \le n \le 4/3\)</span> 随加热面几何而定。核态沸腾区，过冷度的影响一般认为可忽略；但最大、最小热流 <span class="arithmatex">\(q_{\max}''\)</span>、<span class="arithmatex">\(q_{\min}''\)</span> 随 <span class="arithmatex">\(\Delta T_{sub}\)</span> <strong>线性增大</strong>。膜态沸腾的热流随 <span class="arithmatex">\(\Delta T_{sub}\)</span> 增大而<strong>强烈增大</strong>。</p>
+<p><strong>表面状况</strong>。表面粗糙度（机加工、开槽、划痕、喷砂）对最大、最小热流及膜态沸腾的影响<strong>可忽略</strong>；但对核态沸腾段，Berenson 证明粗糙度大幅提高热流——粗糙表面有大量凹坑截留蒸气（图 10.6），提供更多、更大的气泡生长位点，汽化核心密度远高于光滑表面。不过长时间沸腾后粗糙度效应逐渐减退：粗糙化造出的大位点不是稳定的蒸气截留源。</p>
+<figure>
+  <img src="../images/ch10/fig-10-6.png" class="lq-img" />
+  <figcaption>图 10.6 汽化核心的形成：(a) 无截留蒸气的润湿凹坑；(b) 截留蒸气的内凹凹坑；(c) 粗糙表面放大轮廓（截自原书）</figcaption>
+</figure>
+
+<p>能<strong>稳定强化</strong>核态沸腾的商用表面有两类（图 10.7）：(1) 烧结、钎焊、火焰喷涂、电沉积或发泡制成的多孔涂层；(2) 机加工成形的<strong>双内凹腔</strong>（double-reentrant cavity）结构，保证蒸气持续截留。这类表面让汽化核心的蒸气持续更新，强化超过一个数量级。主动强化技术（表面擦拭–旋转、表面振动、流体振动、静电场等）也被综述过，但它们让系统复杂化、往往损害可靠性，实际应用很少。</p>
+<figure>
+  <img src="../images/ch10/fig-10-7.png" class="lq-img" />
+  <figcaption>图 10.7 强化核态沸腾的典型结构表面：(a) 烧结金属涂层；(b) 机加工双内凹腔（截自原书）</figcaption>
+</figure>
+
+<h2 id="105-强迫对流沸腾">10.5 强迫对流沸腾<a class="headerlink" href="#105-强迫对流沸腾" title="Permanent link">#</a></h2>
+<p>池内沸腾的流动主要来自受热面上气泡的浮升运动；<strong>强迫对流沸腾</strong>（forced convection boiling）的流动则来自流体的定向（整体）运动，叠加浮升力效应。工况强烈依赖几何——外部流动（加热板、圆柱绕流）或内部（管道）流动。内部强迫对流沸腾常称<strong>两相流</strong>（two-phase flow），其特征是沿流向液–汽状态剧烈变化。</p>
+<h3 id="1051-外部强迫对流沸腾">10.5.1 外部强迫对流沸腾<a class="headerlink" href="#1051-外部强迫对流沸腾" title="Permanent link">#</a></h3>
+<p>加热平板的外部流动：沸腾起始前用标准强迫对流关联式估热流；板温升高后出现核态沸腾，热流增大。若蒸气生成不太多、液体过冷，Bergles 和 Rohsenow 建议把总热流分解为纯强迫对流与池内沸腾两个分量来估算。</p>
+<p>强迫对流与过冷度都会提高核态沸腾的临界热流密度 <span class="arithmatex">\(q_{\max}''\)</span>：实验值高达 <span class="arithmatex">\(35\ \mathrm{MW/m^2}\)</span>（对照：1 atm 水池内沸腾仅 <span class="arithmatex">\(1.3\ \mathrm{MW/m^2}\)</span>）。</p>
+<p>对速度 <span class="arithmatex">\(V\)</span> 的液体横掠直径 <span class="arithmatex">\(D\)</span> 圆柱，Lienhard 和 Eichhorn 给出低速、高速两个表达式（物性按饱和温度取值）：</p>
+<p>低速：</p>
+<div class="arithmatex">\[
+\frac{q_{\max}''}{\rho_v h_{fg} V} = \frac{1}{\pi}\left[1 + \left(\frac{4}{We_D}\right)^{1/3}\right]
+\tag{10.12}
+\]</div>
+<p>高速：</p>
+<div class="arithmatex">\[
+\frac{q_{\max}''}{\rho_v h_{fg} V} = \frac{(\rho_l/\rho_v)^{3/4}}{169\,\pi} + \frac{(\rho_l/\rho_v)^{1/2}}{19.2\,\pi\, We_D^{1/3}}
+\tag{10.13}
+\]</div>
+<p><strong>韦伯数</strong>（Weber number）<span class="arithmatex">\(We_D\)</span> 是惯性力与表面张力之比：</p>
+<div class="arithmatex">\[
+We_D \equiv \frac{\rho_v V^2 D}{\sigma}
+\tag{10.14}
+\]</div>
+<p>高、低速区的判据：热流参数 <span class="arithmatex">\(q_{\max}''/(\rho_v h_{fg} V)\)</span> 小于还是大于 <span class="arithmatex">\([(0.275/\pi)(\rho_l/\rho_v)^{1/2} + 1]\)</span>。多数情况下式 10.12、10.13 与 <span class="arithmatex">\(q_{\max}''\)</span> 数据的偏差在 20% 以内。</p>
+<h3 id="1052-两相流">10.5.2 两相流<a class="headerlink" href="#1052-两相流" title="Permanent link">#</a></h3>
+<p>内部强迫对流沸腾：液体流过加热管，气泡在内壁生成；气泡生长与脱离强烈受流速影响，流体力学效应与池内沸腾差别显著，并伴随多种<strong>两相流流型</strong>（flow regimes）。</p>
+<p>看图 10.8：竖管受恒定表面热流，流体自下而上。入口过冷液体的传热先是<strong>单相强迫对流</strong>（第 8 章关联式）；往下管壁温度超过液体饱和温度，进入<strong>过冷流动沸腾区</strong>（subcooled flow boiling region）——径向温度梯度大，气泡贴壁生成、管心仍是过冷液体；再往下气泡区增厚，直到管心液体也达到饱和温度：气泡可存在于任意半径位置，流体的时均蒸气质量分数（<strong>干度</strong>，quality）<span class="arithmatex">\(X\)</span> 在任意半径处都大于零——<strong>饱和流动沸腾区</strong>（saturated flow boiling region）开始。区内平均干度</p>
+<div class="arithmatex">\[
+\bar{X} = \frac{\int_{A_c} \rho\, u(r, x)\, X\, dA_c}{\dot{m}}
+\]</div>
+<p>不断增大，且因两相密度差巨大，流体平均速度 <span class="arithmatex">\(u_m\)</span> 大幅上升。</p>
+<figure>
+  <img src="../images/ch10/fig-10-8.png" class="lq-img" />
+  <figcaption>图 10.8 管内强迫对流沸腾的流型（截自原书）</figcaption>
+</figure>
+
+<p>饱和流动沸腾区的第一阶段是<strong>泡状流</strong>（bubbly flow regime）：<span class="arithmatex">\(\bar X\)</span> 继续增大，气泡合并成<strong>弹状流</strong>（slug flow regime）的蒸气弹，随后进入<strong>环状流</strong>（annular-flow regime）——液体贴壁成膜沿内壁流动，蒸气以更大速度冲过管心。环状流下游内壁出现干斑并在<strong>过渡区</strong>长大，最终整个内壁完全干涸，剩余液体全变成高速穿过管心的液滴——<strong>雾状流</strong>（mist regime）。液滴完全汽化后，流体是过热蒸气，进入<strong>第二个单相强迫对流区</strong>。从第一个到第二个单相区，蒸气份额的增大加上两相密度差，使平均流速提高几个数量级。</p>
+<p>当地换热系数沿管长 <span class="arithmatex">\(x\)</span> 剧烈变化（<span class="arithmatex">\(\bar X\)</span> 与 <span class="arithmatex">\(u_m\)</span> 均沿程增大）：过冷流动沸腾区内 <span class="arithmatex">\(h\)</span> 可增大约一个数量级；饱和流动沸腾区早期继续升高；深入该区后，<span class="arithmatex">\(h\)</span> 随 <span class="arithmatex">\(\bar X\)</span> 的变化<strong>可升可降</strong>（取决于流体与管壁材料）。最小的换热系数一般出现在第二（蒸气）单相强迫对流区——蒸气的导热系数远低于液体。</p>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：X̄ 沿程是增大不是减小</p>
+<p>原书此句印作 "<span class="arithmatex">\(\bar X\)</span> and <span class="arithmatex">\(u_m\)</span> decrease and increase, respectively"（X̄ 减小、<span class="arithmatex">\(u_m\)</span> 增大）。X̄ 沿程只增不减：本节前文明言平均干度沿程<strong>增大</strong>，恒热流下的能量平衡式 10.16 也给出 <span class="arithmatex">\(\bar X \propto x\)</span>。"decrease" 系笔误，读作 increase。</p>
+</div>
+<p>饱和流动沸腾区（光滑圆管）的关联式：</p>
+<div class="arithmatex">\[
+\frac{h}{h_{sp}} = 0.6683\left(\frac{\rho_l}{\rho_v}\right)^{0.1} \bar{X}^{0.16}(1 - \bar{X})^{0.64} f(Fr) + 1058\left(\frac{q_s''}{\dot{m}'' h_{fg}}\right)^{0.7}(1 - \bar{X})^{0.8} G_{s,f}
+\tag{10.15a}
+\]</div>
+<p>或</p>
+<div class="arithmatex">\[
+\frac{h}{h_{sp}} = 1.136\left(\frac{\rho_l}{\rho_v}\right)^{0.45} \bar{X}^{0.72}(1 - \bar{X})^{0.08} f(Fr) + 667.2\left(\frac{q_s''}{\dot{m}'' h_{fg}}\right)^{0.7}(1 - \bar{X})^{0.8} G_{s,f}
+\tag{10.15b}
+\]</div>
+<p>适用范围 <span class="arithmatex">\(0 &lt; \bar X \le 0.8\)</span>，两式<strong>取较大的 <span class="arithmatex">\(h\)</span></strong>。式中 <span class="arithmatex">\(\dot{m}'' = \dot{m}/A_c\)</span> 是单位截面积质量流量；液相<strong>弗劳德数</strong>（Froude number）<span class="arithmatex">\(Fr = (\dot{m}''/\rho_l)^2/(gD)\)</span>；系数 <span class="arithmatex">\(G_{s,f}\)</span> 取决于表面–流体组合（表 10.2）。分层参数 <span class="arithmatex">\(f(Fr)\)</span> 处理水平管中液、汽两相可能出现的分层：竖管以及 <span class="arithmatex">\(Fr \gtrsim 0.04\)</span> 的水平管取 1；<span class="arithmatex">\(Fr \lesssim 0.04\)</span> 的水平管取 <span class="arithmatex">\(f(Fr) = 2.63\, Fr^{0.3}\)</span>。所有物性按 <span class="arithmatex">\(T_{sat}\)</span> 取值。单相对流系数 <span class="arithmatex">\(h_{sp}\)</span> 对应图 10.8 的液相强迫对流区，由式 8.62 计算（物性按 <span class="arithmatex">\(T_{sat}\)</span>）；式 8.62 只适用于湍流，故液相单相对流为层流时<strong>不要</strong>使用式 10.15。式 10.15 还要求通道尺寸远大于气泡直径，即约束数 <span class="arithmatex">\(Co = \sqrt{\sigma/(g(\rho_l - \rho_v))}/D_h \lesssim 1/2\)</span>。</p>
+<p><strong>表 10.2 不同流体（商用铜管）的 <span class="arithmatex">\(G_{s,f}\)</span> 值</strong></p>
+<table>
+<thead>
+<tr>
+<th>管内流体</th>
+<th><span class="arithmatex">\(G_{s,f}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>煤油（kerosene）</td>
+<td>0.488</td>
+</tr>
+<tr>
+<td>制冷剂 R-134a</td>
+<td>1.63</td>
+</tr>
+<tr>
+<td>制冷剂 R-152a</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td>水</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<p>（不锈钢管一律取 <span class="arithmatex">\(G_{s,f} = 1\)</span>。）</p>
+<p>用式 10.15 前需知道平均干度 <span class="arithmatex">\(\bar X\)</span>。忽略流体的动能、势能变化与功时，由式 1.12d 可整理出（<span class="arithmatex">\(x = 0\)</span> 取在 <span class="arithmatex">\(\bar X\)</span> 开始大于零处；焓变化 <span class="arithmatex">\(u_t + pv\)</span> 等于 <span class="arithmatex">\(\bar X\)</span> 的变化乘汽化潜热 <span class="arithmatex">\(h_{fg}\)</span>）：</p>
+<div class="arithmatex">\[
+\bar{X}(x) = \frac{q_s''\, \pi D\, x}{\dot{m}\, h_{fg}}
+\tag{10.16}
+\]</div>
+<p>过冷流动沸腾区以及环状、雾状区的关联式可查文献。恒热流条件下，<strong>临界热流工况可能出现在过冷流动沸腾区、高干度的饱和流动沸腾区或蒸气强迫对流区</strong>，严重时导致管材熔化。流动沸腾的进一步讨论与覆盖宽工况、数以千计 CHF 实测值的数据库见文献。</p>
+<h3 id="1053-微通道内的两相流">10.5.3 微通道内的两相流<a class="headerlink" href="#1053-微通道内的两相流" title="Permanent link">#</a></h3>
+<p><strong>两相微通道</strong>（two-phase microchannels）指水力直径 10～1000 μm 的圆形或非圆形管内的强迫对流沸腾，可达到极高的传热速率。此时气泡尺寸可占管径的相当份额，约束数可以很大（<span class="arithmatex">\(Co \gtrsim 1/2\)</span>），出现气泡几乎占据整个管径的流型——换热系数 <span class="arithmatex">\(h\)</span> 可随 <span class="arithmatex">\(x\)</span> 冲到图 10.8 曲线之上的峰值，随后再像图中那样下降。式 10.15 对微通道流动沸腾<strong>连趋势都预测不对</strong>，必须求助于更精细的模型。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：微通道为什么另搞一套</p>
+<p>约束数 <span class="arithmatex">\(Co\)</span> 衡量"气泡脱离直径与通道尺寸之比"。常规管道 <span class="arithmatex">\(Co \lesssim 1/2\)</span>：气泡远小于管径，浮升力与惯性主导；微通道 <span class="arithmatex">\(Co \gtrsim 1/2\)</span>：气泡与通道同量级，表面张力接管主导权，出现拉长的蒸气塞等新流型。凡是把常规管关联式外推到微通道，都要先问一句 <span class="arithmatex">\(Co\)</span> 是否还在适用范围。</p>
+</div>
+<h2 id="106-凝结物理机制">10.6 凝结：物理机制<a class="headerlink" href="#106-凝结物理机制" title="Permanent link">#</a></h2>
+<p>蒸气温度降到饱和温度以下时发生<strong>凝结</strong>（condensation）。工业设备中最常见的形式是蒸气与冷表面接触（图 10.9a、b）：蒸气释放潜热、把热传给表面、凝结液生成。另外两种常见模式：<strong>均相凝结</strong>（homogeneous condensation，图 10.9c）——蒸气在气相中凝成悬浮液滴形成雾；<strong>直接接触凝结</strong>（direct contact condensation，图 10.9d）——蒸气与冷液体直接接触。本章只讨论<strong>表面凝结</strong>。</p>
+<figure>
+  <img src="../images/ch10/fig-10-9.png" class="lq-img" />
+  <figcaption>图 10.9 凝结的模式：(a) 膜状；(b) 表面珠状凝结；(c) 膨胀升压导致的均相凝结（成雾）；(d) 直接接触凝结（截自原书）</figcaption>
+</figure>
+
+<p>按表面状况，表面凝结分两种：</p>
+<ul>
+<li><strong>膜状凝结</strong>（film condensation）：液膜覆盖整个凝结表面，在重力作用下连续排走——干净、未污染表面的主导形式；</li>
+<li><strong>珠状凝结</strong>（dropwise condensation）：表面涂有抑制润湿的物质时可以维持——液滴在表面的裂纹、凹坑与空穴中生成，靠持续凝结长大、合并。典型情况下超过 90% 的表面被液滴覆盖，直径从几微米到肉眼可见的团块；液滴受重力作用从表面滚落。</li>
+</ul>
+<p>图 10.10 是竖直铜面上水蒸气的两种凝结实景：左半表面涂了薄层油酸铜促进珠状凝结，1 mm 直径的热电偶探针横贯画面。</p>
+<figure>
+  <img src="../images/ch10/fig-10-10.png" class="lq-img" />
+  <figcaption>图 10.10 竖直表面上的凝结：(a) 珠状；(b) 膜状（截自原书）</figcaption>
+</figure>
+
+<p>无论液膜还是液滴，凝结液都是蒸气与表面之间的<strong>热阻</strong>，且厚度沿流动方向增大、热阻随之增大——所以膜状凝结场合宜用<strong>短的竖直表面或水平圆柱</strong>。多数冷凝器因此做成水平管束：管内走液体冷却剂，管外环绕待凝蒸气。</p>
+<p>维持高凝结与传热速率方面，<strong>液滴优于液膜</strong>：珠状凝结的大部分传热通过直径小于 100 μm 的液滴完成，传热速率可比膜状凝结高一个数量级以上。所以工程上常在表面涂抑制润湿的涂层来促进珠状凝结——硅酮（silicones）、特氟龙（Teflon）、各类蜡与脂肪酸。坏消息是这些涂层会因氧化、结垢或脱落逐渐失效，最终仍回到膜状凝结。加上珠状凝结的换热系数本就比膜状高，<strong>冷凝器设计计算通常按膜状凝结做保守假设</strong>——本章其余部分聚焦膜状凝结，珠状凝结只简述结果。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：珠状凝结为什么高一个量级</p>
+<p>膜状凝结的热量必须<strong>导热穿过整层液膜</strong>（水膜 0.2 mm 就相当于一层不小的热阻），而珠状凝结时大部分表面直接裸露在蒸气里，蒸气在裸露面上直接凝结放热，热量只需穿过微小液滴——传热路径短、热阻小。这也是 10.11 节珠状凝结关联式给出的 <span class="arithmatex">\(h\)</span> 高达 <span class="arithmatex">\(10^5\ \mathrm{W/(m^2 \cdot K)}\)</span> 量级的根本原因。</p>
+</div>
+<h2 id="107-竖壁上的层流膜状凝结">10.7 竖壁上的层流膜状凝结<a class="headerlink" href="#107-竖壁上的层流膜状凝结" title="Permanent link">#</a></h2>
+<p>实际膜状凝结有若干复杂因素（图 10.11a）：液膜从板顶生成、在重力下下流；液膜厚度 <span class="arithmatex">\(\delta\)</span> 与凝结液质量流量 <span class="arithmatex">\(\dot m\)</span> 因液–汽界面（温度 <span class="arithmatex">\(T_{sat}\)</span>）上持续凝结而沿 <span class="arithmatex">\(x\)</span> 增大；热量从界面穿过液膜传给温度 <span class="arithmatex">\(T_s &lt; T_{sat}\)</span> 的表面。最一般情形下蒸气可能过热（<span class="arithmatex">\(T_{v,\infty} &gt; T_{sat}\)</span>），可能混有一种或多种<strong>不凝气体</strong>（noncondensable gases）；液–汽界面还存在有限剪切应力，使蒸气侧与液膜内都有速度梯度。</p>
+<p>尽管如此，采用 Nusselt 提出的假定即可得到有用的结果。四条假定：</p>
+<ol>
+<li>液膜为<strong>层流</strong>、物性为常数；</li>
+<li>气体是<strong>纯蒸气</strong>、温度均匀且等于 <span class="arithmatex">\(T_{sat}\)</span>——蒸气内无温度梯度，传给液–汽界面的热只能来自界面处的凝结，而不是来自蒸气的导热；</li>
+<li>液–汽界面的剪切应力可忽略，即 <span class="arithmatex">\(\partial u/\partial y\,|_{y=\delta} = 0\)</span>——于是无需考虑图 10.11a 中蒸气侧的速度、热边界层；</li>
+<li>液膜内的<strong>平流</strong>（对流动量与能量输运）可忽略——液膜速度低，合理。于是穿越液膜的传热只靠导热，液膜内温度分布为线性。</li>
+</ol>
+<p>假定下的膜内状况见图 10.11b。</p>
+<figure>
+  <img src="../images/ch10/fig-10-11.png" class="lq-img" />
+  <figcaption>图 10.11 竖直表面膜状凝结的边界层效应：(a) 不作简化；(b) Nusselt 分析假定下（板宽 <span class="arithmatex">\(b\)</span>）（截自原书）</figcaption>
+</figure>
+
+<p>液膜的 <span class="arithmatex">\(x\)</span> 动量方程可由式 9.1 得到（取 <span class="arithmatex">\(\rho = \rho_l\)</span>、<span class="arithmatex">\(\mu = \mu_l\)</span>；<span class="arithmatex">\(x\)</span> 沿重力方向，重力项变号；压强梯度由式 9.2 取 <span class="arithmatex">\(d p_\infty/dx = -\rho_v g\)</span>，因为自由流密度是蒸气密度）。由第 4 条假定略去动量平流项：</p>
+<div class="arithmatex">\[
+\mu_l \frac{\partial^2 u}{\partial y^2} = -g(\rho_l - \rho_v)
+\tag{10.17}
+\]</div>
+<p>积分两次，代入边界条件 <span class="arithmatex">\(u(0) = 0\)</span>（无滑移）与 <span class="arithmatex">\(\partial u/\partial y\,|_{y=\delta} = 0\)</span>（界面无剪切），得液膜内速度分布：</p>
+<div class="arithmatex">\[
+u(y) = \frac{g(\rho_l - \rho_v)\,\delta^2}{\mu_l}\left[\frac{y}{\delta} - \frac{1}{2}\left(\frac{y}{\delta}\right)^2\right]
+\tag{10.18}
+\]</div>
+<p>单位宽度的凝结液质量流量 <span class="arithmatex">\(\Gamma(x)\)</span> 由速度剖面积分：</p>
+<div class="arithmatex">\[
+\frac{\dot m(x)}{b} = \int_0^{\delta(x)} \rho_l\, u(y)\, dy = \Gamma(x)
+\tag{10.19}
+\]</div>
+<p>代入式 10.18：</p>
+<div class="arithmatex">\[
+\Gamma(x) = \frac{g\,\rho_l\,(\rho_l - \rho_v)\,\delta^3}{3\,\mu_l}
+\tag{10.20}
+\]</div>
+<p><span class="arithmatex">\(\delta\)</span>（进而 <span class="arithmatex">\(\Gamma\)</span>）随 <span class="arithmatex">\(x\)</span> 的具体变化规律，由图 10.11b 微元上的能量守恒确定：单位宽度、长 <span class="arithmatex">\(dx\)</span> 的界面微元上，流入液膜的热量速率 <span class="arithmatex">\(dq\)</span> 必等于界面凝结释放能量的速率：</p>
+<div class="arithmatex">\[
+dq = h_{fg}\, d\dot m
+\tag{10.21}
+\]</div>
+<p>平流被忽略，故穿过界面的传热速率也等于传给壁面的速率：</p>
+<div class="arithmatex">\[
+dq = q_s''\,(b \cdot dx)
+\tag{10.22}
+\]</div>
+<p>液膜内温度线性分布，壁面热流密度用傅里叶定律：</p>
+<div class="arithmatex">\[
+q_s'' = \frac{k_l\,(T_{sat} - T_s)}{\delta}
+\tag{10.23}
+\]</div>
+<p>联立式 10.19 与 10.21—10.23：</p>
+<div class="arithmatex">\[
+\frac{d\Gamma}{dx} = \frac{k_l\,(T_{sat} - T_s)}{\delta\, h_{fg}}
+\tag{10.24}
+\]</div>
+<p>对式 10.20 微分：</p>
+<div class="arithmatex">\[
+\frac{d\Gamma}{dx} = \frac{g\,\rho_l\,(\rho_l - \rho_v)\,\delta^2}{\mu_l}\,\frac{d\delta}{dx}
+\tag{10.25}
+\]</div>
+<p>联立式 10.24 与 10.25：</p>
+<div class="arithmatex">\[
+\delta^3\, d\delta = \frac{k_l\, \mu_l\,(T_{sat} - T_s)}{g\,\rho_l\,(\rho_l - \rho_v)\, h_{fg}}\, dx
+\]</div>
+<p>从 <span class="arithmatex">\(\delta = 0\)</span>（<span class="arithmatex">\(x = 0\)</span>）积分到位置 <span class="arithmatex">\(x\)</span>：</p>
+<div class="arithmatex">\[
+\delta(x) = \left[\frac{4\, k_l\, \mu_l\,(T_{sat} - T_s)\, x}{g\,\rho_l\,(\rho_l - \rho_v)\, h_{fg}}\right]^{1/4}
+\tag{10.26}
+\]</div>
+<p>Nusselt 与 Rohsenow 还改进了这一结果：计入热平流效应后，汽化潜热中应加一项，Rohsenow 建议采用<strong>修正潜热</strong>（modified latent heat）：</p>
+<div class="arithmatex">\[
+h_{fg}' = h_{fg} + 0.68\, c_{p,l}\,(T_{sat} - T_s) = h_{fg}\,(1 + 0.68\, Ja)
+\tag{10.27}
+\]</div>
+<p>其中 <span class="arithmatex">\(Ja = c_{p,l}(T_{sat} - T_s)/h_{fg}\)</span> 是雅各布数。Sadasivan 与 Lienhard 后来指出修正潜热还与液体普朗特数弱相关。</p>
+<p>壁面热流密度写为</p>
+<div class="arithmatex">\[
+q_s'' = h_x\,(T_{sat} - T_s)
+\tag{10.28}
+\]</div>
+<p>与式 10.23 对比得当地换热系数：</p>
+<div class="arithmatex">\[
+h_x = \frac{k_l}{\delta}
+\tag{10.29}
+\]</div>
+<p>代入式 10.26（<span class="arithmatex">\(h_{fg}\)</span> 换成 <span class="arithmatex">\(h_{fg}'\)</span>）：</p>
+<div class="arithmatex">\[
+h_x = \left[\frac{g\,\rho_l\,(\rho_l - \rho_v)\, k_l^3\, h_{fg}'}{4\, \mu_l\,(T_{sat} - T_s)\, x}\right]^{1/4}
+\tag{10.30}
+\]</div>
+<p><span class="arithmatex">\(h_x \propto x^{-1/4}\)</span>，所以全板平均换热系数为</p>
+<div class="arithmatex">\[
+\bar{h}_L = \frac{1}{L}\int_0^L h_x\, dx = \frac{4}{3}\, h_{x,L}
+\]</div>
+<p>即</p>
+<div class="arithmatex">\[
+\bar{h}_L = 0.943\left[\frac{g\,\rho_l\,(\rho_l - \rho_v)\, k_l^3\, h_{fg}'}{\mu_l\,(T_{sat} - T_s)\, L}\right]^{1/4}
+\tag{10.31}
+\]</div>
+<p>平均努塞尔数：</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L L}{k_l} = 0.943\left[\frac{\rho_l\, g\,(\rho_l - \rho_v)\, h_{fg}'\, L^3}{\mu_l\, k_l\,(T_{sat} - T_s)}\right]^{1/4}
+\tag{10.32}
+\]</div>
+<p>物性取法：使用式 10.32 与式 10.27 时，所有液体物性按<strong>膜温</strong> <span class="arithmatex">\(T_f = (T_{sat} + T_s)/2\)</span> 取值；蒸气密度 <span class="arithmatex">\(\rho_v\)</span> 与潜热 <span class="arithmatex">\(h_{fg}\)</span> 按 <strong><span class="arithmatex">\(T_{sat}\)</span></strong> 取值。</p>
+<p>Sparrow 与 Gregg 对竖壁膜状凝结做了更精细的边界层分析（Chen 证实）：<span class="arithmatex">\(Ja \le 0.1\)</span> 且 <span class="arithmatex">\(1 \le Pr \le 100\)</span> 时式 10.32 的误差小于 3%。Dhir 与 Lienhard 证明式 10.32 也可用于<strong>倾斜平板</strong>——把 <span class="arithmatex">\(g\)</span> 换成 <span class="arithmatex">\(g\cos\theta\)</span>（<span class="arithmatex">\(\theta\)</span> 为表面与竖直方向的夹角）；<span class="arithmatex">\(\theta\)</span> 很大时慎用，<span class="arithmatex">\(\theta = \pi/2\)</span>（水平板）时不适用。竖直圆管内外表面（半径 <span class="arithmatex">\(R\)</span>）只要 <span class="arithmatex">\(R \gg \delta\)</span> 就可用同一表达式。</p>
+<p>对表面的总传热量用式 10.31 配牛顿冷却公式：</p>
+<div class="arithmatex">\[
+q = \bar{h}_L A\,(T_{sat} - T_s)
+\tag{10.33}
+\]</div>
+<p>总凝结速率：</p>
+<div class="arithmatex">\[
+\dot m = \frac{q}{h_{fg}'} = \frac{\bar{h}_L A\,(T_{sat} - T_s)}{h_{fg}'}
+\tag{10.34}
+\]</div>
+<p>式 10.33、10.34 对任何表面几何都适用，只是 <span class="arithmatex">\(\bar h_L\)</span> 的形式随几何与流动状态而变。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：Nusselt 1916——四条假定各挡掉什么</p>
+<p>假定 1（层流、常物性）把问题压进抛物型速度剖面的解析世界；假定 2（纯蒸气、等温 <span class="arithmatex">\(T_{sat}\)</span>）砍掉了蒸气侧边界层——界面成了恒温边界；假定 3（界面无剪切）承认蒸气基本不动，液膜只被重力拉扯；假定 4（膜内无平流）让传热退化为纯导热、温度线性，<span class="arithmatex">\(h_x = k_l/\delta\)</span> 一步写死。四刀下去，动量方程变成可积分两次的常微分方程，能量守恒变成一个关于 <span class="arithmatex">\(\delta(x)\)</span> 的四阶多项式。一百年后它仍是凝结换热的骨架解，也是 10.4.4 节膜态沸腾公式的来源。</p>
+</div>
+<h2 id="108-湍流膜状凝结">10.8 湍流膜状凝结<a class="headerlink" href="#108-湍流膜状凝结" title="Permanent link">#</a></h2>
+<p>与此前所有对流现象一样，凝结液膜内也会出现湍流。看图 10.12a 的竖直表面，转捩判据用液膜雷诺数表达：</p>
+<div class="arithmatex">\[
+Re_\delta \equiv \frac{4\Gamma}{\mu_l}
+\tag{10.35}
+\]</div>
+<p>凝结液质量流量 <span class="arithmatex">\(\dot m = \rho_l u_m b\,\delta\)</span>（<span class="arithmatex">\(u_m\)</span> 为膜内平均速度，<span class="arithmatex">\(\delta\)</span> 为特征长度），于是</p>
+<div class="arithmatex">\[
+Re_\delta = \frac{4\dot m}{\mu_l b} = \frac{4\rho_l u_m \delta}{\mu_l}
+\tag{10.36}
+\]</div>
+<p>与单相边界层一样，<span class="arithmatex">\(Re_\delta\)</span> 指示流动状态（图 10.12b）：<span class="arithmatex">\(Re_\delta \lesssim 30\)</span> 时液膜层流、无波；<span class="arithmatex">\(Re_\delta\)</span> 增大后液膜出现波纹，<span class="arithmatex">\(Re_\delta \approx 1800\)</span> 时层流到湍流的转变完成。</p>
+<figure>
+  <img src="../images/ch10/fig-10-12.png" class="lq-img" />
+  <figcaption>图 10.12 竖直平板上的膜状凝结：(a) 板宽 <span class="arithmatex">\(b\)</span> 的凝结液流率；(b) 流动区段（截自原书）</figcaption>
+</figure>
+
+<p>无波层流区（<span class="arithmatex">\(Re_\delta \lesssim 30\)</span>）联立式 10.35 与 10.20 得</p>
+<div class="arithmatex">\[
+Re_\delta = \frac{4 g \rho_l (\rho_l - \rho_v)\, \delta^3}{3\, \mu_l^2}
+\tag{10.37}
+\]</div>
+<p>再取 <span class="arithmatex">\(\rho_l \gg \rho_v\)</span>，联立式 10.26、10.31 与 10.37，得无波层流区凝结的<strong>平均修正努塞尔数</strong>：</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = 1.47\, Re_\delta^{-1/3}
+\qquad Re_\delta \lesssim 30
+\tag{10.38}
+\]</div>
+<p>其中 <span class="arithmatex">\(\bar h_L\)</span> 对应整块板的凝结。板底流动处于<strong>波状层流区</strong>时，Kutateladze 推荐</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = \frac{Re_\delta}{1.08\, Re_\delta^{1.22} - 5.2}
+\qquad 30 \lesssim Re_\delta \lesssim 1800
+\tag{10.39}
+\]</div>
+<p>板底已进入<strong>湍流区</strong>时，Labuntsov 推荐</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = \frac{Re_\delta}{8750 + 58\, Pr_l^{-0.5}\,(Re_\delta^{0.75} - 253)}
+\qquad Re_\delta \gtrsim 1800,\ Pr_l \ge 1
+\tag{10.40}
+\]</div>
+<p>三个关联式的图像见图 10.13；Gregorig 等对水在 <span class="arithmatex">\(1 &lt; Re_\delta &lt; 7200\)</span> 范围内的实验证实了这些趋势。物性取法与层流膜状凝结相同（式 10.32 之下的说明）。</p>
+<figure>
+  <img src="../images/ch10/fig-10-13.png" class="lq-img" />
+  <figcaption>图 10.13 竖直平板凝结的修正努塞尔数（截自原书）</figcaption>
+</figure>
+
+<p>式 10.38—10.40 中的 <span class="arithmatex">\(Re_\delta\)</span> 对应凝结表面底部 <span class="arithmatex">\(x = L\)</span> 处的液膜厚度 <span class="arithmatex">\(\delta\)</span>。<span class="arithmatex">\(\delta\)</span> 未知时，更方便把方程改写成<strong>消去 <span class="arithmatex">\(Re_\delta\)</span></strong> 的形式：联立式 10.34、10.36 与平均努塞尔数定义，得</p>
+<div class="arithmatex">\[
+Re_\delta = 4P\,\overline{Nu}_L
+\tag{10.41}
+\]</div>
+<p>无量纲参数</p>
+<div class="arithmatex">\[
+P = \frac{k_l\, L\, (T_{sat} - T_s)}{\mu_l\, h_{fg}'\, (\nu_l^2/g)^{1/3}}
+\tag{10.42}
+\]</div>
+<p>把式 10.41 代入式 10.38、10.39、10.40，解出用 <span class="arithmatex">\(P\)</span> 表达的平均努塞尔数：</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = 0.943\, P^{-1/4}
+\qquad P \lesssim 15.8
+\tag{10.43}
+\]</div>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = \frac{1}{P}\,(0.68\, P + 0.89)^{0.82}
+\qquad 15.8 \lesssim P \lesssim 2530
+\tag{10.44}
+\]</div>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{\bar{h}_L (\nu_l^2/g)^{1/3}}{k_l} = \frac{1}{P}\left[(0.024\, P - 53)\, Pr_l^{1/2} + 89\right]^{4/3}
+\qquad P \gtrsim 2530,\ Pr_l \ge 1
+\tag{10.45}
+\]</div>
+<p>（式 10.43 与取 <span class="arithmatex">\(\rho_l \gg \rho_v\)</span> 的式 10.32 相同。）解题流程：先由式 10.42 算 <span class="arithmatex">\(P\)</span>，再按所在区间选式 10.43、10.44 或 10.45 得 <span class="arithmatex">\(\overline{Nu}_L\)</span> 与 <span class="arithmatex">\(\bar h_L\)</span>。</p>
+<p><strong>【例 10.3】竖管外表面的蒸气凝结</strong></p>
+<p><strong>已知（Known）</strong>：长 1 m、外径 80 mm 的竖管，外表面暴露于常压饱和蒸气，管内通冷却水把壁温维持在 50°C。</p>
+<p><strong>求（Find）</strong>：传给冷却水的传热速率，以及表面上的蒸气凝结速率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch10/ex-10-3.png" class="lq-img" />
+  <figcaption>例 10.3 示意图：竖管外表面的饱和蒸气膜状凝结（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 液膜厚度相对圆柱直径很小；2. 蒸气中不凝气体浓度可忽略。</p>
+<p><strong>物性（Properties）</strong>：表 A.6，饱和蒸气（<span class="arithmatex">\(p = 1.0133\ \mathrm{bar}\)</span>）：<span class="arithmatex">\(T_{sat} = 100^\circ\mathrm{C}\)</span>，<span class="arithmatex">\(\rho_v = 1/v_g = 0.596\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(h_{fg} = 2257\ \mathrm{kJ/kg}\)</span>。表 A.6，饱和液体（<span class="arithmatex">\(T_f = 75^\circ\mathrm{C}\)</span>）：<span class="arithmatex">\(\rho_l = 1/v_f = 975\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(\mu_l = 375 \times 10^{-6}\ \mathrm{N \cdot s/m^2}\)</span>，<span class="arithmatex">\(k_l = 0.668\ \mathrm{W/(m \cdot K)}\)</span>，<span class="arithmatex">\(c_{p,l} = 4193\ \mathrm{J/(kg \cdot K)}\)</span>，<span class="arithmatex">\(\nu_l = \mu_l/\rho_l = 385 \times 10^{-9}\ \mathrm{m^2/s}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：液膜厚度远小于管径的假设成立时，可用 10.7、10.8 节的关联式。先算雅各布数与修正潜热：</p>
+<div class="arithmatex">\[
+Ja = \frac{c_{p,l}\,(T_{sat} - T_s)}{h_{fg}} = \frac{4193\ \mathrm{J/(kg \cdot K)} \times (100 - 50)\ \mathrm{K}}{2257 \times 10^3\ \mathrm{J/kg}} = 0.0929
+\]</div>
+<div class="arithmatex">\[
+h_{fg}' = h_{fg}\,(1 + 0.68\, Ja) = 2257\ \mathrm{kJ/kg} \times 1.0632 = 2400\ \mathrm{kJ/kg}
+\]</div>
+<p>由式 10.42：</p>
+<div class="arithmatex">\[
+P = \frac{k_l\, L\, (T_{sat} - T_s)}{\mu_l\, h_{fg}'\, (\nu_l^2/g)^{1/3}} = \frac{0.668\ \mathrm{W/(m \cdot K)} \times 1\ \mathrm{m} \times (100 - 50)\ \mathrm{K}}{375 \times 10^{-6}\ \mathrm{N \cdot s/m^2} \times 2.4 \times 10^6\ \mathrm{J/kg} \times \left[\dfrac{(385 \times 10^{-9}\ \mathrm{m^2/s})^2}{9.8\ \mathrm{m/s^2}}\right]^{1/3}} = 1501
+\]</div>
+<p>落在 <span class="arithmatex">\(15.8 \lesssim P \lesssim 2530\)</span> 区间，用式 10.44：</p>
+<div class="arithmatex">\[
+\overline{Nu}_L = \frac{1}{P}\,(0.68\, P + 0.89)^{0.82} = \frac{1}{1501} \times (0.68 \times 1501 + 0.89)^{0.82} = 0.20
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\bar{h}_L = \frac{\overline{Nu}_L\, k_l}{(\nu_l^2/g)^{1/3}} = 0.20 \times \frac{0.668\ \mathrm{W/(m \cdot K)}}{\left[\dfrac{(385 \times 10^{-9}\ \mathrm{m^2/s})^2}{9.8\ \mathrm{m/s^2}}\right]^{1/3}} = 5300\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>由式 10.33、10.34：</p>
+<div class="arithmatex">\[
+q = \bar{h}_L (\pi D L)\,(T_{sat} - T_s) = 5300\ \mathrm{W/(m^2 \cdot K)} \times \pi \times 0.08\ \mathrm{m} \times 1\ \mathrm{m} \times (100 - 50)\ \mathrm{K} = 66.6\ \mathrm{kW}
+\]</div>
+<div class="arithmatex">\[
+\dot m = \frac{q}{h_{fg}'} = \frac{66.6 \times 10^3\ \mathrm{W}}{2.4 \times 10^6\ \mathrm{J/kg}} = 0.0276\ \mathrm{kg/s}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>用式 10.26（配修正潜热）按无波层流假定反推管底液膜厚度：</li>
+</ol>
+<div class="arithmatex">\[
+\delta(L) = \left[\frac{4\, k_l\, \mu_l\, (T_{sat} - T_s)\, L}{g\, \rho_l\, (\rho_l - \rho_v)\, h_{fg}'}\right]^{1/4} = \left[\frac{4 \times 0.668\ \mathrm{W/(m \cdot K)} \times 375 \times 10^{-6}\ \mathrm{N \cdot s/m^2} \times (100 - 50)\ \mathrm{K} \times 1\ \mathrm{m}}{9.8\ \mathrm{m/s^2} \times 975\ \mathrm{kg/m^3} \times (975 - 0.596)\ \mathrm{kg/m^3} \times 2.4 \times 10^6\ \mathrm{J/kg}}\right]^{1/4} = 0.218\ \mathrm{mm}
+\]</div>
+<p><span class="arithmatex">\(\delta(L) \ll D/2 = 40\ \mathrm{mm}\)</span>，对竖圆柱套用竖直平板关联式的做法得到确认。</p>
+<ol>
+<li>
+<p>加长管子可以提高凝结速率：<span class="arithmatex">\(1 \le L \le 2\ \mathrm{m}\)</span> 的计算显示 <span class="arithmatex">\(1000 \lesssim Re_\delta \lesssim 2330\)</span>（即 <span class="arithmatex">\(1500 \lesssim P \lesssim 3010\)</span>）。注意在 <span class="arithmatex">\(P = 2530\)</span>（<span class="arithmatex">\(L \approx 1.68\ \mathrm{m}\））附近两条关联式并不衔接：式 10.45 依赖 \(Pr\)</span>，式 10.44 不依赖。</p>
+</li>
+<li>
+<p>蒸气混入不凝气体（如空气）会大幅压低传热与凝结速率——多机制叠加的结果。蒸气中仅含 1% 质量份额的空气，<span class="arithmatex">\(q\)</span> 与 <span class="arithmatex">\(\dot m\)</span> 就可下降 65%。运行在亚大气压的蒸气冷凝器（如朗肯循环的凝汽器）必须精心设计以杜绝空气渗入。</p>
+</li>
+</ol>
+<h2 id="109-径向系统上的膜状凝结">10.9 径向系统上的膜状凝结<a class="headerlink" href="#109-径向系统上的膜状凝结" title="Permanent link">#</a></h2>
+<p>10.7 节的 Nusselt 分析可推广到球面或水平管外表面的层流膜状凝结（图 10.14a、b），平均努塞尔数：</p>
+<div class="arithmatex">\[
+\overline{Nu}_D = \frac{\bar{h}_D D}{k_l} = C\left[\frac{\rho_l\, g\,(\rho_l - \rho_v)\, h_{fg}'\, D^3}{\mu_l\, k_l\,(T_{sat} - T_s)}\right]^{1/4}
+\tag{10.46}
+\]</div>
+<p>常数：球 <span class="arithmatex">\(C = 0.826\)</span>，水平管 <span class="arithmatex">\(C = 0.729\)</span>。本式与下述式 10.48、10.49 的物性取法均按式 10.32 之下的说明。</p>
+<figure>
+  <img src="../images/ch10/fig-10-14.png" class="lq-img" />
+  <figcaption>图 10.14 膜状凝结：(a) 球面；(b) 单根水平管；(c) 竖直排列、凝结液连成液片的水平管排；(d) 凝结液滴落（截自原书）</figcaption>
+</figure>
+
+<p>液–汽界面弯曲时（如图 10.14 的球、管），表面张力会在界面两侧建立压差，由 <strong>Young–Laplace 方程</strong>描述（二维系统）：</p>
+<div class="arithmatex">\[
+\Delta p = p_v - p_l = \frac{\sigma}{r_c}
+\tag{10.47}
+\]</div>
+<p><span class="arithmatex">\(r_c\)</span> 是液–汽界面的局部曲率半径。若 <span class="arithmatex">\(r_c\)</span> 沿界面变化（蒸气压 <span class="arithmatex">\(p_v\)</span> 恒定），液体一侧压强不均，会影响液内速度分布与传热速率。对图 10.14b 的光管，除底部液片脱离处外，界面曲率较小（<span class="arithmatex">\(r_c \gtrsim D/2\)</span>），整个液–汽界面上 <span class="arithmatex">\(p_l \approx p_v\)</span>——表面张力不影响凝结速率。</p>
+<p><strong>肋管上的凝结</strong>（图 10.15）是另一番景象：肋片的尖锐棱角使液–汽界面曲率剧烈变化，表面张力效应重要起来。肋管上，表面张力在<strong>肋尖附近减薄液膜、提高传热</strong>，却在<strong>肋间区域持留凝结液、降低传热</strong>；正如球底或光管底部的液层更厚，水平肋管下侧也持留更多凝结液。</p>
+<figure>
+  <img src="../images/ch10/fig-10-15.png" class="lq-img" />
+  <figcaption>图 10.15 水平肋管上的凝结：肋间持留液体（截自原书）</figcaption>
+</figure>
+
+<p>肋管传热速率 <span class="arithmatex">\(q_{ft}\)</span> 与对应光管 <span class="arithmatex">\(q_{uft}\)</span> 之比叫<strong>强化比</strong>（enhancement ratio）<span class="arithmatex">\(\varepsilon_{ft} = q_{ft}/q_{uft}\)</span>。强化程度主要取决于流体、环境压强与肋几何，与管–环境温差弱相关。相对单相对流换热常用的肋片，这里的<strong>小肋</strong>造就强烈弯曲的液面，强化显著。小肋可以这样制造：从半径 <span class="arithmatex">\(r_2\)</span> 的管子上切削出肋（图 10.15），消除管–肋接触热阻；若用铜等高导热金属制造，可认为管与肋温度均匀一致。</p>
+<p>肋管的传热关联式往往繁琐、适用范围受限；设计时可用 Rose 推出的<strong>最小强化</strong>估算——最小强化出现在凝结液持满整个肋间区域时：</p>
+<div class="arithmatex">\[
+\varepsilon_{ft,\min} = \frac{q_{ft,\min}}{q_{uft}} = \frac{t\, r_2}{S\, r_1}\left[\frac{r_1}{r_2} + 1.02\, \frac{\sigma\, r_1}{(\rho_l - \rho_v)\, g\, t^3}\right]^{1/4}
+\tag{10.48}
+\]</div>
+<p>其中 <span class="arithmatex">\(S\)</span> 为肋间距、<span class="arithmatex">\(t\)</span> 为肋厚、<span class="arithmatex">\(r_1\)</span> 与 <span class="arithmatex">\(r_2\)</span> 分别为管半径与肋端半径；<span class="arithmatex">\(\rho_l\)</span>、<span class="arithmatex">\(\rho_v\)</span> 按式 10.32 之下的说明取值，<span class="arithmatex">\(\sigma\)</span> 按 <span class="arithmatex">\(T_{sat}\)</span> 取值。实际强化高于 <span class="arithmatex">\(\varepsilon_{ft,\min}\)</span>——水的实测值在 <span class="arithmatex">\(2 \le \varepsilon_{ft} \le 4\)</span>。非等温肋的传热估算方法见 Briggs 与 Rose。</p>
+<p><strong>竖直排列的管排</strong>（图 10.14c）：若凝结液连成连续液片，下方各管的液膜比顶管厚，传热速率随之下降。对竖直排列的 <span class="arithmatex">\(N\)</span> 根水平光管，全排平均换热系数：</p>
+<div class="arithmatex">\[
+\bar{h}_{D,N} = \bar{h}_D\, N^{\,n}
+\tag{10.49}
+\]</div>
+<p>其中 <span class="arithmatex">\(\bar h_D\)</span> 是顶管的换热系数（式 10.46）。把 Nusselt 分析推广到"管–管液膜增厚"可得 <span class="arithmatex">\(n = -1/4\)</span>；但实验常发现 <span class="arithmatex">\(n = -1/6\)</span> 更符合实际。</p>
+<p>解析值与经验值的偏差有几方面来源：分析假定凝结液连成<strong>连续的绝热液片</strong>横跨各管（图 10.14c），而实际上传热给液片、液片自由下落时动量增大，都会抬高总传热速率——Chen 计入了这些影响，以 <span class="arithmatex">\(Ja\)</span> 与管数 <span class="arithmatex">\(N\)</span> 表达：<span class="arithmatex">\(Ja \lesssim 0.1\)</span> 时传热强化小于 15%。实测值偏大也可能归因于<strong>凝结液滴落</strong>（图 10.14d）：液滴撞击下管时，湍动与波动传遍液膜，强化传热。对<strong>环肋管</strong>，肋片阻碍凝结液横向扩展，让下管更多表面直接暴露于蒸气，<span class="arithmatex">\(n\)</span> 落在 <span class="arithmatex">\(-1/6 \le n \le 0\)</span>。</p>
+<p>光管的长径比超过 <span class="arithmatex">\(1.8\tan\theta\)</span> 时，式 10.46、10.49 也可用于<strong>倾斜管</strong>——把 <span class="arithmatex">\(g\)</span> 换成 <span class="arithmatex">\(g\cos\theta\)</span>，<span class="arithmatex">\(\theta\)</span> 自水平方向量起。无论肋管还是光管，<strong>不凝气体的存在</strong>都会使换热系数低于上述关联式的值。</p>
+<p><strong>【例 10.4】蒸汽冷凝器管束：光管与肋管</strong></p>
+<p><strong>已知（Known）</strong>：某蒸汽冷凝器管束由 400 根管子排成方阵，管径 <span class="arithmatex">\(D = 2r_1 = 6\ \mathrm{mm}\)</span>。1. 光管水平放置，暴露于 <span class="arithmatex">\(p = 0.15\ \mathrm{bar}\)</span> 的饱和蒸气，管表面温度 <span class="arithmatex">\(T_s = 25^\circ\mathrm{C}\)</span>。2. 加上环肋：肋高 <span class="arithmatex">\(h = r_2 - r_1 = 1\ \mathrm{mm}\)</span>，肋厚 <span class="arithmatex">\(t = 1\ \mathrm{mm}\)</span>，肋距 <span class="arithmatex">\(S = 2\ \mathrm{mm}\)</span>。</p>
+<p><strong>求（Find）</strong>：1. 光管管束单位管长的凝结速率；2. 肋管的最小凝结速率（单位管长）。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch10/ex-10-4.png" class="lq-img" />
+  <figcaption>例 10.4 示意图：方阵排列的 400 根凝结管（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 圆柱与肋温度空间均匀；2. 平均换热系数沿管排按式 10.49 取 <span class="arithmatex">\(n = -1/6\)</span>；3. 蒸气中不凝气体浓度可忽略。</p>
+<p><strong>物性（Properties）</strong>：表 A.6，饱和蒸气（<span class="arithmatex">\(p = 0.15\ \mathrm{bar}\)</span>）：<span class="arithmatex">\(T_{sat} = 327\ \mathrm{K} = 54^\circ\mathrm{C}\)</span>，<span class="arithmatex">\(\rho_v = 1/v_g = 0.098\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(h_{fg} = 2373\ \mathrm{kJ/kg}\)</span>，<span class="arithmatex">\(\sigma = 0.0671\ \mathrm{N/m}\)</span>。表 A.6，饱和水（<span class="arithmatex">\(T_f = 312.5\ \mathrm{K}\)</span>）：<span class="arithmatex">\(\rho_l = 1/v_f = 992\ \mathrm{kg/m^3}\)</span>，<span class="arithmatex">\(\mu_l = 663 \times 10^{-6}\ \mathrm{N \cdot s/m^2}\)</span>，<span class="arithmatex">\(k_l = 0.631\ \mathrm{W/(m \cdot K)}\)</span>，<span class="arithmatex">\(c_{p,l} = 4178\ \mathrm{J/(kg \cdot K)}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>把式 10.46 整理成顶管（光管）换热系数：</li>
+</ol>
+<div class="arithmatex">\[
+\bar{h}_D = C\left[\frac{\rho_l\, g\,(\rho_l - \rho_v)\, k_l^3\, h_{fg}'}{\mu_l\, (T_{sat} - T_s)\, D}\right]^{1/4}
+\]</div>
+<p>水平管 <span class="arithmatex">\(C = 0.729\)</span>，先算修正潜热：</p>
+<div class="arithmatex">\[
+h_{fg}' = h_{fg}\,(1 + 0.68\, Ja) = h_{fg} + 0.68\, c_{p,l}\,(T_{sat} - T_s) = 2373 \times 10^3\ \mathrm{J/kg} + 0.68 \times 4178\ \mathrm{J/(kg \cdot K)} \times (327 - 298)\ \mathrm{K} = 2455\ \mathrm{kJ/kg}
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\bar{h}_D = 0.729 \times \left[\frac{992\ \mathrm{kg/m^3} \times 9.81\ \mathrm{m/s^2} \times (992 - 0.098)\ \mathrm{kg/m^3} \times (0.631\ \mathrm{W/(m \cdot K)})^3 \times 2455 \times 10^3\ \mathrm{J/kg}}{663 \times 10^{-6}\ \mathrm{N \cdot s/m^2} \times (327 - 298)\ \mathrm{K} \times 6 \times 10^{-3}\ \mathrm{m}}\right]^{1/4} = 11{,}120\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>由式 10.49，全阵平均换热系数（<span class="arithmatex">\(N = 20\)</span>）：</p>
+<div class="arithmatex">\[
+\bar{h}_{D,N} = \bar{h}_D\, N^{-1/6} = 11{,}120\ \mathrm{W/(m^2 \cdot K)} \times 20^{-1/6} = 6747\ \mathrm{W/(m^2 \cdot K)}
+\]</div>
+<p>由式 10.34，单位管长的凝结速率：</p>
+<div class="arithmatex">\[
+\dot m'_{uft} = N \cdot N\, \bar{h}_{D,N}\, (\pi D)\,(T_{sat} - T_s)\, /\, h_{fg}' = 20 \times 20 \times 6747\ \mathrm{W/(m^2 \cdot K)} \times \pi \times 6 \times 10^{-3}\ \mathrm{m} \times (327 - 298)\ \mathrm{K}\, /\, 2455 \times 10^3\ \mathrm{J/kg} = 0.601\ \mathrm{kg/(s \cdot m)}
+\]</div>
+<ol>
+<li>由式 10.48，环肋带来的最小强化：</li>
+</ol>
+<div class="arithmatex">\[
+\varepsilon_{ft,\min} = \frac{t\, r_2}{S\, r_1}\left[\frac{r_1}{r_2} + 1.02\, \frac{\sigma\, r_1}{(\rho_l - \rho_v)\, g\, t^3}\right]^{1/4} = \frac{1 \times 4}{2 \times 3}\left[\frac{3}{4} + 1.02\, \frac{0.0671\ \mathrm{N/m} \times 3 \times 10^{-3}\ \mathrm{m}}{(992 - 0.098)\ \mathrm{kg/m^3} \times 9.8\ \mathrm{m/s^2} \times (1 \times 10^{-3}\ \mathrm{m})^3}\right]^{1/4} = 1.44
+\]</div>
+<p>肋管的最小凝结速率：</p>
+<div class="arithmatex">\[
+\dot m'_{ft,\min} = \varepsilon_{ft,\min}\, \dot m'_{uft} = 1.44 \times 0.601\ \mathrm{kg/(s \cdot m)} = 0.866\ \mathrm{kg/(s \cdot m)}
+\]</div>
+<p><strong>点评（Comments）</strong>：式 10.49 中取了 <span class="arithmatex">\(n = -1/6\)</span>；但肋管的 <span class="arithmatex">\(n\)</span> 应介于 <span class="arithmatex">\(0\)</span> 与 <span class="arithmatex">\(-1/6\)</span> 之间。若取 <span class="arithmatex">\(n = 0\)</span>（各管换热系数相同），凝结速率为 <span class="arithmatex">\(\dot m' = 1.43\ \mathrm{kg/(s \cdot m)}\)</span>。上述结果是"凝结液持满全部肋间"的非优化工况；实际强化可达 <span class="arithmatex">\(\varepsilon_{ft,\max} \approx 4\)</span>。取 <span class="arithmatex">\(\varepsilon_{ft,\max} = 4\)</span>、<span class="arithmatex">\(n = 0\)</span>：</p>
+<div class="arithmatex">\[
+\dot m'_{ft} = 4 \times 20 \times 20 \times 11{,}120\ \mathrm{W/(m^2 \cdot K)} \times \pi \times 6 \times 10^{-3}\ \mathrm{m} \times (327 - 298)\ \mathrm{K}\, /\, 2455 \times 10^3\ \mathrm{J/kg} = 3.96\ \mathrm{kg/(s \cdot m)}
+\]</div>
+<p>即肋管可把凝结速率提高 <span class="arithmatex">\(100 \times (3.96 - 0.601)/0.601 = 560\%\)</span>。</p>
+<h2 id="1010-水平管内凝结">10.10 水平管内凝结<a class="headerlink" href="#1010-水平管内凝结" title="Permanent link">#</a></h2>
+<p>制冷与空调系统的冷凝器普遍让蒸气在水平或竖直管<strong>内</strong>凝结。管内工况强烈依赖蒸气流速、沿程递减的蒸气质量分数 <span class="arithmatex">\(X\)</span> 以及流体物性。</p>
+<p><strong>低速</strong>（图 10.16a）：上壁凝结的液体下流汇入底部液池，液池被蒸气流动的剪切力推向下游。低速判据：</p>
+<div class="arithmatex">\[
+Re_{v,i} = \left(\frac{\rho_v u_{m,v} D}{\mu_v}\right)_i &lt; 35{,}000
+\tag{10.50}
+\]</div>
+<p>（<span class="arithmatex">\(i\)</span> 指管入口。）此时传热主要靠下落的凝结液膜，Dobson 与 Chato 建议用式 10.46、取 <span class="arithmatex">\(C = 0.555\)</span>、<span class="arithmatex">\(h_{fg}' = h_{fg} + 0.375\, c_{p,l}\,(T_{sat} - T_s)\)</span>。<span class="arithmatex">\(C\)</span> 比管外凝结（0.729）小，因为液池那一侧的传热很差。物性取法按式 10.32 之下的说明。</p>
+<figure>
+  <img src="../images/ch10/fig-10-16.png" class="lq-img" />
+  <figcaption>图 10.16 水平管内的膜状凝结：(a) 低蒸气流速的横截面；(b) 高蒸气流速的纵截面；(c) 螺旋排列的微肋（截自原书）</figcaption>
+</figure>
+
+<p><strong>高速</strong>：两相流变湍流、呈环状（图 10.16b）——蒸气占据环心，环心直径随外层凝结液增厚而沿程收缩。Dobson 与 Chato 推荐当地换热系数的经验关联式：</p>
+<div class="arithmatex">\[
+Nu_D = \frac{h_D}{k_l} = 0.023\, Re_{D,l}^{0.8}\, Pr_l^{0.4}\left(1 + \frac{2.22}{X_{tt}^{0.89}}\right)
+\tag{10.51a}
+\]</div>
+<p>其中 <span class="arithmatex">\(Re_{D,l} = 4\dot m (1 - X)/(\pi D \mu_l)\)</span>，<span class="arithmatex">\(X = \dot m_v/\dot m\)</span> 是蒸气质量分数，<span class="arithmatex">\(X_{tt}\)</span> 是液、汽两相均为湍流的<strong>马蒂内利参数</strong>（Martinelli parameter）：</p>
+<div class="arithmatex">\[
+X_{tt} = \left(\frac{1 - X}{X}\right)^{0.9}\left(\frac{\rho_v}{\rho_l}\right)^{0.5}\left(\frac{\mu_l}{\mu_v}\right)^{0.1}
+\tag{10.51b}
+\]</div>
+<p>生成式 10.51 时所有物性按 <span class="arithmatex">\(T_{sat}\)</span> 取值；推荐在单位管截面积质量流量超过 <span class="arithmatex">\(500\ \mathrm{kg/(s \cdot m^2)}\)</span> 时使用。单相液相对流的极限情形（<span class="arithmatex">\(X \to 0\)</span>、<span class="arithmatex">\(X_{tt} \to \infty\)</span>、<span class="arithmatex">\(Re_{D,l} \to Re_D\)</span>）下，式 10.51a 退化为 Dittus–Boelter 关联式（式 8.60，仅普朗特数指数不同）。</p>
+<p>中等蒸气流速（或低蒸气质量分数）下的管内凝结流型复杂多样，各流型有各自的关联式，选用建议见 Dobson 与 Chato。细管内的凝结还受表面张力等效应影响。</p>
+<p><strong>加内微肋</strong>可以提高凝结速率：微肋管（microfin tube）通常为铜管，带高 0.1～0.25 mm 的三角形或梯形肋（图 10.16c）。传热强化来自铜表面积增大、肋结构诱发的湍流以及与 10.9 节肋管类似的表面张力效应。肋沿管长排成<strong>螺旋</strong>或<strong>人字形</strong>，传热速率可提高 50%～180%。</p>
+<h2 id="1011-珠状凝结">10.11 珠状凝结<a class="headerlink" href="#1011-珠状凝结" title="Permanent link">#</a></h2>
+<p>珠状凝结的换热系数通常比膜状凝结<strong>高一个数量级</strong>。事实上，在促进珠状凝结的换热器应用中，其他热阻（管壁、冷却剂侧）往往远大于凝结侧热阻——以致不需要珠状凝结的精确关联式。</p>
+<p>已研究的表面–流体组合很多，数据大多是"促进珠状的铜表面"上的蒸汽凝结（即抑制润湿的表面），可整理为：</p>
+<div class="arithmatex">\[
+\bar{h}_{dc} = 51{,}104 + 2044\, T_{sat}(^\circ\mathrm{C})
+\qquad 22^\circ\mathrm{C} \le T_{sat} \le 100^\circ\mathrm{C}
+\tag{10.52}
+\]</div>
+<div class="arithmatex">\[
+\bar{h}_{dc} = 255{,}510
+\qquad 100^\circ\mathrm{C} \lesssim T_{sat}
+\tag{10.53}
+\]</div>
+<p>其中 <span class="arithmatex">\(\bar h_{dc}\)</span> 的单位是 W/(m²·K)。传热速率与凝结速率用式 10.33、10.34 计算，<span class="arithmatex">\(h_{fg}'\)</span> 用式 10.27，物性按式 10.32 之下的说明。过冷度 <span class="arithmatex">\(T_{sat} - T_s\)</span> 对 <span class="arithmatex">\(\bar h_{dc}\)</span> 的影响小，可忽略。</p>
+<p>蒸气中<strong>不凝气体</strong>的影响非常重要（Shade 与 Mikic 专门研究过）。此外，若凝结表面材料的导热能力不如铜或银，表面自身的导热热阻会成为因素：所有热量都传给又小又散的液滴，表面材料内靠近活跃凝结区的热流线会<strong>拥挤</strong>，诱发<strong>收缩阻力</strong>（constriction resistance）（Hannemann 与 Mikic 研究过）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：不凝气体为什么是冷凝器的头号大敌</p>
+<p>蒸气夹带空气时，空气分子随蒸气一起被输运到液膜表面却不凝结，逐渐在界面处积聚成一层<strong>气垫</strong>：蒸气必须先扩散穿过这层气膜才能到达液面，界面处的蒸气分压被压低、有效"饱和温度"下降，相当于给冷凝器多串了一层大热阻。例 10.3 点评给出的数字触目惊心：蒸气里 1% 质量的空气，<span class="arithmatex">\(q\)</span> 与 <span class="arithmatex">\(\dot m\)</span> 掉 65%。这就是电站凝汽器要抽真空、装检漏系统的原因。</p>
+</div>
+<h2 id="1012-小结">10.12 小结<a class="headerlink" href="#1012-小结" title="Permanent link">#</a></h2>
+<p>本章给出沸腾与凝结过程的物理图像，以及适合工程近似计算的关联式。掌握与否可用下列问题自测：</p>
+<details class="note">
+<summary>原书章末自测问题（10.12 节复习用）</summary>
+<ol>
+<li>什么是池内沸腾？强迫对流沸腾？过冷沸腾？饱和沸腾？</li>
+<li>过热度是怎么定义的？</li>
+<li>画出沸腾曲线并标出关键区段与特征点。什么是临界热流密度？什么是莱顿弗罗斯特点？若控制表面热流，沿沸腾曲线如何行进？滞回效应的本质是什么？若控制表面温度，又如何行进？</li>
+<li>核态沸腾区内热流密度与过热度是什么关系？</li>
+<li>膜态沸腾包含哪些传热模式？</li>
+<li>液体过冷度是怎么定义的？</li>
+<li>重力场强弱、液体过冷度、表面粗糙度分别在多大程度上影响沸腾热流？</li>
+<li>微通道内的两相流动与传热，和大管道内的有什么不同？</li>
+<li>珠状凝结与膜状凝结有何不同？哪种凝结方式的传热速率更大？</li>
+<li>对竖直表面上的层流膜状凝结，当地与平均换热系数随离开前缘的距离如何变化？</li>
+<li>竖直表面膜状凝结的雷诺数怎么定义？对应的流动区段有哪些？</li>
+<li>表面张力如何影响肋管外/管内的凝结？</li>
+</ol>
+</details>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>功率控制下，过渡沸腾根本"停不住"</strong>：<span class="arithmatex">\(q_s''\)</span> 一越过 CHF，<span class="arithmatex">\(\Delta T_e\)</span> 从约 30°C 直接跳到 120°C 以上（图 10.4），这就是烧毁。凡按热流控制的设备（电加热器、反应堆燃料棒），设计准则永远是"热流对 CHF 留裕度"，而不是"壁温别超多少"。</li>
+<li><strong>Rohsenow 式的 ±100% 误差是给 <span class="arithmatex">\(q_s''\)</span> 的</strong>：反过来由 <span class="arithmatex">\(q_s''\)</span> 求 <span class="arithmatex">\(\Delta T_e\)</span>，因 <span class="arithmatex">\(\Delta T_e \propto (q_s'')^{1/3}\)</span>，误差缩为三分之一。另外 <span class="arithmatex">\(C_{s,f}\)</span> 对表面处理极敏感——水–铜抛光 0.0128、划痕 0.0068，选错值结果差近一倍。</li>
+<li><strong>物性取值温度各不相同，抄错是本章第一错因</strong>：Rohsenow 式全部按 <span class="arithmatex">\(T_{sat}\)</span>；膜态沸腾的蒸气物性按膜温 <span class="arithmatex">\(T_f = (T_s + T_{sat})/2\)</span>、<span class="arithmatex">\(\rho_l\)</span> 与 <span class="arithmatex">\(h_{fg}\)</span> 按 <span class="arithmatex">\(T_{sat}\)</span>；凝结式的 <span class="arithmatex">\(k_l, \mu_l\)</span> 按膜温、<span class="arithmatex">\(\rho_v\)</span> 与 <span class="arithmatex">\(h_{fg}\)</span> 按 <span class="arithmatex">\(T_{sat}\)</span>。</li>
+<li><strong>修正潜热别忘加</strong>：膜态沸腾 <span class="arithmatex">\(h_{fg}' = h_{fg} + 0.80\, c_{p,v}\,\Delta T_e\)</span>；膜状凝结 <span class="arithmatex">\(h_{fg}' = h_{fg}\,(1 + 0.68\, Ja)\)</span>；水平管内低速凝结又是 <span class="arithmatex">\(+0.375\, c_{p,l}\,\Delta T_e\)</span>。例 10.3 里 2400 对 2257 kJ/kg，差 6%——不是小数。</li>
+<li><strong>CHF 公式的前导常数有两个值</strong>：大水平平板用 <span class="arithmatex">\(C = 0.149\)</span>，大圆柱、球与其他大有限面用 <span class="arithmatex">\(C = \pi/24 \approx 0.131\)</span>；加热面太小（<span class="arithmatex">\(Co &gt; 0.2\)</span>）时还要再乘小尺寸修正因子。</li>
+<li><strong>平均换热系数是当地值的 4/3 倍</strong>：竖壁凝结 <span class="arithmatex">\(h_x \propto x^{-1/4}\)</span>，<span class="arithmatex">\(\bar h_L = \frac{4}{3} h_{x,L}\)</span>（系数 0.943 已含此换算）。把当地系数直接当平均用，会低估 25%。</li>
+<li><strong>管束别套用 <span class="arithmatex">\(n = -1/4\)</span></strong>：解析值 <span class="arithmatex">\(n = -1/4\)</span> 建立在"连续绝热液片"的假想图景上，经验值 <span class="arithmatex">\(n = -1/6\)</span> 才符合实测；肋管更是 <span class="arithmatex">\(n\)</span> 介于 0 与 <span class="arithmatex">\(-1/6\)</span> 之间。例 10.4 的 560% 强化正是把 <span class="arithmatex">\(n\)</span>、<span class="arithmatex">\(\varepsilon_{ft}\)</span> 组合算对的结果。</li>
+<li><strong>辐射与膜态沸腾不能简单相加</strong>：辐射使蒸膜变厚，严格算法是解式 10.9 的 <span class="arithmatex">\(h^{4/3} = h_{conv}^{4/3} + h_{rad} h^{1/3}\)</span>；只有 <span class="arithmatex">\(h_{rad} &lt; h_{conv}\)</span> 时才允许 <span class="arithmatex">\(h = h_{conv} + 0.75 h_{rad}\)</span>。<span class="arithmatex">\(T_s \lesssim 300^\circ\mathrm{C}\)</span> 时辐射可忽略。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>速率方程 <span class="arithmatex">\(q_s'' = h\,\Delta T_e\)</span>，过热度 <span class="arithmatex">\(\Delta T_e = T_s - T_{sat}\)</span>（式 10.3）；沸腾凝结的 <span class="arithmatex">\(h\)</span> 高达 <span class="arithmatex">\(10^4\)</span>～<span class="arithmatex">\(10^5\ \mathrm{W/(m^2 \cdot K)}\)</span>，根源是潜热搬运 + 气泡/液膜动力学。</li>
+<li>无量纲参数：<span class="arithmatex">\(Ja = c_p \Delta T/h_{fg}\)</span>（显热/潜热，通常很小）、<span class="arithmatex">\(Bo = g(\rho_l - \rho_v)L^2/\sigma\)</span>（浮升力/表面张力）、类 <span class="arithmatex">\(Gr\)</span> 参数（式 10.2a、b）。</li>
+<li>沸腾曲线（水，1 atm）：自然对流 <span class="arithmatex">\(\Delta T_e \lesssim 5^\circ\mathrm{C}\)</span> → 核态 <span class="arithmatex">\(5 \sim 30^\circ\mathrm{C}\)</span>（<span class="arithmatex">\(q_s'' \propto \Delta T_e^3\)</span>）→ 过渡 <span class="arithmatex">\(30 \sim 120^\circ\mathrm{C}\)</span>（<span class="arithmatex">\(q''\)</span> 下降）→ 膜态 <span class="arithmatex">\(\gtrsim 120^\circ\mathrm{C}\)</span>（<span class="arithmatex">\(q''\)</span> 回升）；C 点 CHF <span class="arithmatex">\(&gt; 1\ \mathrm{MW/m^2}\)</span>，D 点莱顿弗罗斯特点。</li>
+<li>功率控制有滞回：加热沿曲线到 CHF 后跳烧毁；降温沿曲线到 <span class="arithmatex">\(q_{\min}''\)</span> 后跳回核态；过渡段只有温度控制才能经过。</li>
+<li>Rohsenow 核态沸腾式（10.5）：<span class="arithmatex">\(q_s'' = \mu_l h_{fg}[g(\rho_l - \rho_v)/\sigma]^{1/2}[c_{p,l}\Delta T_e/(C_{s,f} h_{fg} Pr_l^n)]^3\)</span>，<span class="arithmatex">\(C_{s,f}, n\)</span> 查表 10.1，物性全按 <span class="arithmatex">\(T_{sat}\)</span>。</li>
+<li>Zuber CHF（10.6）：<span class="arithmatex">\(q_{\max}'' = C h_{fg}\rho_v[\sigma g(\rho_l - \rho_v)/\rho_v^2]^{1/4}\)</span>，<span class="arithmatex">\(C = 0.149\)</span>（大平壁）或 0.131（其他）；水 1 atm 约 1.26 MW/m²；最小热流（10.7）<span class="arithmatex">\(C = 0.09\)</span>。</li>
+<li>膜态沸腾（10.8）：<span class="arithmatex">\(\overline{Nu}_D = C[g(\rho_l - \rho_v)h_{fg}'D^3/(\nu_v k_v \Delta T_e)]^{1/4}\)</span>，<span class="arithmatex">\(C = 0.62\)</span>（圆柱）/0.67（球），<span class="arithmatex">\(h_{fg}' = h_{fg} + 0.80\, c_{p,v}\Delta T_e\)</span>；辐射用式 10.9—10.11 耦合。</li>
+<li>管内流动沸腾流型：液相对流 → 过冷流动沸腾 → 饱和流动沸腾（泡状 → 弹状 → 环状 → 雾状）→ 汽相对流；Kandlikar 式 10.15 两式取大，<span class="arithmatex">\(\bar X\)</span> 由式 10.16，干度适用 <span class="arithmatex">\(0 &lt; \bar X \le 0.8\)</span>、<span class="arithmatex">\(Co \lesssim 1/2\)</span>。</li>
+<li>Nusselt 竖壁膜状凝结：<span class="arithmatex">\(\delta \propto x^{1/4}\)</span>、<span class="arithmatex">\(h_x = k_l/\delta \propto x^{-1/4}\)</span>、<span class="arithmatex">\(\bar h_L = 0.943[\rho_l g(\rho_l - \rho_v) k_l^3 h_{fg}'/(\mu_l \Delta T L)]^{1/4}\)</span>（式 10.31、10.32），<span class="arithmatex">\(h_{fg}' = h_{fg}(1 + 0.68 Ja)\)</span>。</li>
+<li>液膜雷诺数 <span class="arithmatex">\(Re_\delta = 4\Gamma/\mu_l\)</span>：<span class="arithmatex">\(\lesssim 30\)</span> 无波层流（<span class="arithmatex">\(\overline{Nu}_L = 1.47 Re_\delta^{-1/3}\)</span>）、<span class="arithmatex">\(30 \sim 1800\)</span> 波状层流、<span class="arithmatex">\(\gtrsim 1800\)</span> 湍流；<span class="arithmatex">\(\delta\)</span> 未知时用参数 <span class="arithmatex">\(P\)</span>（式 10.42—10.45）。水平管 <span class="arithmatex">\(C = 0.729\)</span>，管束 <span class="arithmatex">\(\bar h_{D,N} = \bar h_D N^{-1/6}\)</span>，肋管最小强化按式 10.48；珠状凝结高一个量级（式 10.52、10.53）。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boiling / condensation</td>
+<td>沸腾 / 凝结</td>
+<td>固–液界面的蒸发与蒸气变液体的相变对流</td>
+</tr>
+<tr>
+<td>excess temperature</td>
+<td>过热度</td>
+<td><span class="arithmatex">\(\Delta T_e = T_s - T_{sat}\)</span>，沸腾的驱动势</td>
+</tr>
+<tr>
+<td>pool boiling</td>
+<td>池内沸腾（大容器沸腾）</td>
+<td>液体大体积静止，运动仅由自然对流与气泡搅拌引起</td>
+</tr>
+<tr>
+<td>forced convection boiling</td>
+<td>强迫对流沸腾</td>
+<td>外部驱动流动叠加气泡效应的沸腾</td>
+</tr>
+<tr>
+<td>subcooled / saturated boiling</td>
+<td>过冷沸腾 / 饱和沸腾</td>
+<td>主体液温低于/略超饱和温度的沸腾分类</td>
+</tr>
+<tr>
+<td>nucleate boiling</td>
+<td>核态沸腾</td>
+<td>气泡在汽化核心生成脱离的区段，<span class="arithmatex">\(q'' \propto \Delta T_e^3\)</span></td>
+</tr>
+<tr>
+<td>transition boiling</td>
+<td>过渡沸腾</td>
+<td>液膜与蒸膜交替振荡、<span class="arithmatex">\(q''\)</span> 随 <span class="arithmatex">\(\Delta T_e\)</span> 下降的区段</td>
+</tr>
+<tr>
+<td>film boiling</td>
+<td>膜态沸腾</td>
+<td>稳定蒸膜覆盖表面，导热与辐射穿膜传热</td>
+</tr>
+<tr>
+<td>onset of nucleate boiling (ONB)</td>
+<td>核态沸腾起始点</td>
+<td>沸腾曲线上气泡开始萌发的 A 点（约 5°C）</td>
+</tr>
+<tr>
+<td>critical heat flux (CHF)</td>
+<td>临界热流密度</td>
+<td>沸腾曲线峰值 <span class="arithmatex">\(q_{\max}''\)</span>，越过即烧毁</td>
+</tr>
+<tr>
+<td>Leidenfrost point</td>
+<td>莱顿弗罗斯特点</td>
+<td>沸腾曲线最低点 <span class="arithmatex">\(q_{\min}''\)</span>，稳定蒸膜形成</td>
+</tr>
+<tr>
+<td>burnout / boiling crisis</td>
+<td>烧毁 / 沸腾危机</td>
+<td>功率控制越过 CHF 后壁温飞升失效</td>
+</tr>
+<tr>
+<td>nucleation site</td>
+<td>汽化核心（成核位点）</td>
+<td>表面凹坑截留蒸气、气泡生长的位置</td>
+</tr>
+<tr>
+<td>contact angle</td>
+<td>接触角</td>
+<td>液–汽–固三相交线处的夹角，影响气泡脱离与 <span class="arithmatex">\(C_{s,f}\)</span></td>
+</tr>
+<tr>
+<td>Rohsenow correlation</td>
+<td>Rohsenow 关联式</td>
+<td>第一个核态沸腾关联式（式 10.5），误差可达 ±100%</td>
+</tr>
+<tr>
+<td>Jakob number</td>
+<td>雅各布数</td>
+<td><span class="arithmatex">\(Ja = c_p \Delta T / h_{fg}\)</span>，显热与潜热之比</td>
+</tr>
+<tr>
+<td>Bond number</td>
+<td>邦德数</td>
+<td><span class="arithmatex">\(Bo = g(\rho_l - \rho_v)L^2/\sigma\)</span>，浮升力与表面张力之比</td>
+</tr>
+<tr>
+<td>confinement number</td>
+<td>约束数</td>
+<td><span class="arithmatex">\(Co = Bo^{-1/2}\)</span>，气泡尺寸与通道尺寸之比，<span class="arithmatex">\(&gt; 0.2\)</span> 需修正</td>
+</tr>
+<tr>
+<td>two-phase flow</td>
+<td>两相流</td>
+<td>管内汽液共存的流动，流型沿程剧烈变化</td>
+</tr>
+<tr>
+<td>quality</td>
+<td>干度</td>
+<td>两相流中蒸气质量分数 <span class="arithmatex">\(X\)</span></td>
+</tr>
+<tr>
+<td>bubbly / slug / annular / mist flow</td>
+<td>泡状 / 弹状 / 环状 / 雾状流</td>
+<td>饱和流动沸腾区随干度增大依次出现的流型</td>
+</tr>
+<tr>
+<td>film condensation</td>
+<td>膜状凝结</td>
+<td>连续液膜覆盖表面，冷凝器设计的保守假设</td>
+</tr>
+<tr>
+<td>dropwise condensation</td>
+<td>珠状凝结</td>
+<td>液滴覆盖 &gt;90% 表面，传热比膜状高一个量级</td>
+</tr>
+<tr>
+<td>film Reynolds number</td>
+<td>液膜雷诺数</td>
+<td><span class="arithmatex">\(Re_\delta = 4\Gamma/\mu_l\)</span>，划分无波层流/波状/湍流</td>
+</tr>
+<tr>
+<td>Martinelli parameter</td>
+<td>马蒂内利参数</td>
+<td><span class="arithmatex">\(X_{tt}\)</span>，管内两相湍流的液汽阻力比参数</td>
+</tr>
+<tr>
+<td>noncondensable gas</td>
+<td>不凝气体</td>
+<td>蒸气中的空气等，界面气垫可使 <span class="arithmatex">\(q\)</span> 大跌（1% 空气 → −65%）</td>
+</tr>
+<tr>
+<td>modified latent heat</td>
+<td>修正汽化潜热</td>
+<td><span class="arithmatex">\(h_{fg}'\)</span>，计入膜内显热的潜热修正</td>
+</tr>
+<tr>
+<td>microfin tube</td>
+<td>微肋管</td>
+<td>内壁 0.1～0.25 mm 小肋铜管，凝结强化 50%～180%</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

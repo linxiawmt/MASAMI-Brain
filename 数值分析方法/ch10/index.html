@@ -1,0 +1,7375 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/">
+      
+      
+        <link rel="prev" href="../ch09/">
+      
+      
+        <link rel="next" href="../ch11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第10章 数值微分 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-10-章-数值微分" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第10章 数值微分
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-差商与差分公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 差商与差分公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.1 差商与差分公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1011-从导数定义到差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.1 从导数定义到差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1012-前向差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.2 前向差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1013-后向差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.3 后向差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1014-中心差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.4 中心差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1015-例对数函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.5 例：对数函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-一般导数近似公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 一般导数近似公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.2 一般导数近似公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1021-从插值多项式出发" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.1 从插值多项式出发
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1022-误差项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.2 误差项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1023-误差系数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.3 误差系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1024-权的计算" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.4 权的计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-三点公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 三点公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 三点公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-基函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.1 基函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-三种形式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.2 三种形式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1033-中点与端点的比较" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.3 中点与端点的比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1034-五点公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.4 五点公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1035-数值对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.5 数值对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1036-MATLAB-实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.6 MATLAB 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-高阶导数近似" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 高阶导数近似
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 高阶导数近似">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-二阶中心差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 二阶中心差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-前向二阶差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 前向二阶差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-差分表法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 差分表法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-奇数阶中心差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 奇数阶中心差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-数值例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.5 数值例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-舍入误差的影响" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 舍入误差的影响
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.5 舍入误差的影响">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-总误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.1 总误差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-最优步长" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.2 最优步长
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-一般阶公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.3 一般阶公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1054-正弦函数的例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.4 正弦函数的例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1055-不稳定性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.5 不稳定性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-Richardson-外推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Richardson 外推
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.6 Richardson 外推">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1061-误差展开" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.1 误差展开
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1062-消去一阶项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.2 消去一阶项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1063-一般递推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.3 一般递推
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1064-外推表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.4 外推表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1065-例子对数函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.5 例子：对数函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1066-MATLAB-实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.6 MATLAB 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#100-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-差商与差分公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 差商与差分公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.1 差商与差分公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1011-从导数定义到差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.1 从导数定义到差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1012-前向差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.2 前向差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1013-后向差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.3 后向差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1014-中心差商" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.4 中心差商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1015-例对数函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1.5 例：对数函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-一般导数近似公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 一般导数近似公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.2 一般导数近似公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1021-从插值多项式出发" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.1 从插值多项式出发
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1022-误差项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.2 误差项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1023-误差系数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.3 误差系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1024-权的计算" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2.4 权的计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-三点公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 三点公式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 三点公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-基函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.1 基函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-三种形式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.2 三种形式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1033-中点与端点的比较" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.3 中点与端点的比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1034-五点公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.4 五点公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1035-数值对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.5 数值对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1036-MATLAB-实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3.6 MATLAB 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-高阶导数近似" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 高阶导数近似
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.4 高阶导数近似">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-二阶中心差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.1 二阶中心差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-前向二阶差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.2 前向二阶差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-差分表法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.3 差分表法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-奇数阶中心差分" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.4 奇数阶中心差分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-数值例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4.5 数值例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-舍入误差的影响" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 舍入误差的影响
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.5 舍入误差的影响">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-总误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.1 总误差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-最优步长" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.2 最优步长
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-一般阶公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.3 一般阶公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1054-正弦函数的例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.4 正弦函数的例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1055-不稳定性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5.5 不稳定性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-Richardson-外推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Richardson 外推
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.6 Richardson 外推">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1061-误差展开" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.1 误差展开
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1062-消去一阶项" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.2 消去一阶项
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1063-一般递推" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.3 一般递推
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1064-外推表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.4 外推表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1065-例子对数函数的导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.5 例子：对数函数的导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1066-MATLAB-实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6.6 MATLAB 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-10-章-数值微分">第 10 章 数值微分<a class="headerlink" href="#第-10-章-数值微分" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：函数导数的数值近似问题——仅有离散函数值时如何估计导数。介绍了前向、后向与中心差商及一般多点公式、三点与五点公式、高阶导数近似，并分析截断误差与舍入误差的权衡（最优步长问题）与 Richardson 外推加速。学完能为给定精度选择合适的差分格式与步长。</p>
+</blockquote>
+<p>数值微分是数值积分（第 11 章）的逆问题：积分把函数值"抹平"，微分把函数值"放大"。同一个差商，步长取大了截断误差大，取小了舍入误差大——这是全书第一个真正<strong>不稳定</strong>的方法，也是理解"误差权衡"的最好例子。</p>
+<h2 id="100-本章导图">10.0 本章导图<a class="headerlink" href="#100-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">数值微分</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">差分公式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">前向差商</span>
+          <span class="brleaf">后向差商</span>
+          <span class="brleaf">中心差商</span>
+          <span class="brleaf">截断误差阶</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">一般公式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">插值多项式求导</span>
+          <span class="brleaf">多点公式</span>
+          <span class="brleaf">误差项系数</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">三点公式</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">中心三点</span>
+          <span class="brleaf">端点单侧</span>
+          <span class="brleaf">五点公式</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">高阶导数</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">二阶中心差分</span>
+          <span class="brleaf">差分表</span>
+          <span class="brleaf">噪声放大</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">舍入误差</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">总误差</span>
+          <span class="brleaf">最优步长</span>
+          <span class="brleaf">不稳定性</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">Richardson 外推</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">误差展开</span>
+          <span class="brleaf">逐列消项</span>
+          <span class="brleaf">与 Romberg 同构</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="101-差商与差分公式">10.1 差商与差分公式<a class="headerlink" href="#101-差商与差分公式" title="Permanent link">#</a></h2>
+<h3 id="1011-从导数定义到差商">10.1.1 从导数定义到差商<a class="headerlink" href="#1011-从导数定义到差商" title="Permanent link">#</a></h3>
+<p>导数定义为</p>
+<div class="arithmatex">\[
+f'(x_0)=\lim_{h\to 0}\frac{f(x_0+h)-f(x_0)}{h}.
+\]</div>
+<p>最直接的想法是"取一个很小的 <span class="arithmatex">\(h\)</span>，把极限换成除法"。但极限过程被删掉后，剩下的误差有多少、<span class="arithmatex">\(h\)</span> 该取多小，都必须定量回答。</p>
+<h3 id="1012-前向差商">10.1.2 前向差商<a class="headerlink" href="#1012-前向差商" title="Permanent link">#</a></h3>
+<p>设 <span class="arithmatex">\(x_0\in(a,b)\)</span>，<span class="arithmatex">\(f\in C^2[a,b]\)</span>，<span class="arithmatex">\(x_0+h\in[a,b]\)</span>。在 <span class="arithmatex">\(x_0\)</span> 处作一阶 Taylor 展开，余项用 Lagrange 形式：</p>
+<div class="arithmatex">\[
+f(x_0+h)=f(x_0)+f'(x_0)h+\frac{f''(\xi)}{2}h^2,\qquad \xi\in(x_0,x_0+h).
+\]</div>
+<p>整理得</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{f(x_0+h)-f(x_0)}{h}-\frac{h}{2}f''(\xi)
+\ }
+\]</div>
+<p>右端第一项就是前向差商，第二项是<strong>截断误差</strong>。若 <span class="arithmatex">\(|f''(x)|\le M\)</span> 在 <span class="arithmatex">\([x_0,x_0+h]\)</span> 上成立，则</p>
+<div class="arithmatex">\[
+\left|f'(x_0)-\frac{f(x_0+h)-f(x_0)}{h}\right|\le \frac{M|h|}{2}=O(h).
+\]</div>
+<p>所以前向差商是一阶公式：步长减半，误差约减半。</p>
+<h3 id="1013-后向差商">10.1.3 后向差商<a class="headerlink" href="#1013-后向差商" title="Permanent link">#</a></h3>
+<p>仍取 <span class="arithmatex">\(h&gt;0\)</span>，在 <span class="arithmatex">\(x_0-h\)</span> 处展开：</p>
+<div class="arithmatex">\[
+f(x_0-h)=f(x_0)-f'(x_0)h+\frac{f''(\xi)}{2}h^2,\qquad \xi\in(x_0-h,x_0).
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{f(x_0)-f(x_0-h)}{h}+\frac{h}{2}f''(\xi)
+\ }
+\]</div>
+<p>后向差商同样是一阶公式，只是误差主项符号相反。</p>
+<div class="admonition note">
+<p class="admonition-title">课件里的统一写法</p>
+<p>课件把 <span class="arithmatex">\(h\)</span> 的符号也交给公式：同一个商</p>
+<div class="arithmatex">\[
+\frac{f(x_0+h)-f(x_0)}{h}
+\]</div>
+<p>在 <span class="arithmatex">\(h&gt;0\)</span> 时叫前向差商，在 <span class="arithmatex">\(h&lt;0\)</span> 时叫后向差商。两种情形的一阶误差界都是 <span class="arithmatex">\(M|h|/2\)</span>。</p>
+</div>
+<h3 id="1014-中心差商">10.1.4 中心差商<a class="headerlink" href="#1014-中心差商" title="Permanent link">#</a></h3>
+<p>设 <span class="arithmatex">\(f\in C^3[x_0-h,x_0+h]\)</span>。把 <span class="arithmatex">\(x_0+h\)</span> 与 <span class="arithmatex">\(x_0-h\)</span> 两端的函数值都用上，可把一阶项消掉。令</p>
+<div class="arithmatex">\[
+F(h)=f(x_0+h)-f(x_0-h).
+\]</div>
+<p>则 <span class="arithmatex">\(F(0)=0\)</span>，<span class="arithmatex">\(F'(0)=2f'(x_0)\)</span>，<span class="arithmatex">\(F''(0)=0\)</span>，且</p>
+<div class="arithmatex">\[
+F'''(h)=f'''(x_0+h)+f'''(x_0-h).
+\]</div>
+<p>对 <span class="arithmatex">\(F\)</span> 在 <span class="arithmatex">\(0\)</span> 处作三阶 Taylor 展开（Lagrange 余项）：</p>
+<div class="arithmatex">\[
+F(h)=F(0)+F'(0)h+\frac{F''(0)}{2}h^2+\frac{F'''(\theta h)}{6}h^3
+=2f'(x_0)h+\frac{h^3}{6}\big[f'''(x_0+\theta h)+f'''(x_0-\theta h)\big],
+\]</div>
+<p>其中 <span class="arithmatex">\(\theta\in(0,1)\)</span>。两边除以 <span class="arithmatex">\(2h\)</span>：</p>
+<div class="arithmatex">\[
+\frac{f(x_0+h)-f(x_0-h)}{2h}
+=f'(x_0)+\frac{h^2}{12}\big[f'''(x_0+\theta h)+f'''(x_0-\theta h)\big].
+\]</div>
+<p>因为 <span class="arithmatex">\(f'''\)</span> 连续，方括号中的平均值等于区间内某点的函数值（介值定理）：存在 <span class="arithmatex">\(\xi\in(x_0-h,x_0+h)\)</span>，使</p>
+<div class="arithmatex">\[
+\frac{f'''(x_0+\theta h)+f'''(x_0-\theta h)}{2}=f'''(\xi).
+\]</div>
+<p>代回即得</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{f(x_0+h)-f(x_0-h)}{2h}-\frac{h^2}{6}f'''(\xi)
+\ }
+\]</div>
+<p>中心差商是<strong>二阶公式</strong>：步长减半，误差约降到四分之一。代价是误差项从 <span class="arithmatex">\(f''\)</span> 变成了 <span class="arithmatex">\(f'''\)</span>，对光滑性的要求提高一阶。</p>
+<div class="admonition note">
+<p class="admonition-title">为什么正好消掉一阶项</p>
+<p><span class="arithmatex">\(F(h)\)</span> 是奇函数：<span class="arithmatex">\(F(-h)=-F(h)\)</span>。奇函数的 Taylor 展开只含奇次幂，<span class="arithmatex">\(h^2\)</span> 项自动为零，所以最低的非零误差项是 <span class="arithmatex">\(h^3\)</span>，除以 <span class="arithmatex">\(2h\)</span> 后成为 <span class="arithmatex">\(h^2\)</span>。</p>
+</div>
+<h3 id="1015-例对数函数的导数">10.1.5 例：对数函数的导数<a class="headerlink" href="#1015-例对数函数的导数" title="Permanent link">#</a></h3>
+<p>用前向差商近似 <span class="arithmatex">\(f(x)=\ln x\)</span> 在 <span class="arithmatex">\(x_0=1.8\)</span> 处的导数。真值为</p>
+<div class="arithmatex">\[
+f'(1.8)=\frac{1}{1.8}=0.5555556.
+\]</div>
+<p>误差界为 <span class="arithmatex">\(|h|/(2\cdot 1.8^2)\)</span>：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(h\)</span></th>
+<th><span class="arithmatex">\(f(1.8+h)\)</span></th>
+<th>前向差商</th>
+<th>实际误差</th>
+<th>误差界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>0.64185389</td>
+<td>0.5406722</td>
+<td>0.0148834</td>
+<td>0.0154321</td>
+</tr>
+<tr>
+<td>0.05</td>
+<td>0.61518564</td>
+<td>0.5479795</td>
+<td>0.0075761</td>
+<td>0.0077160</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>0.59332685</td>
+<td>0.5540180</td>
+<td>0.0015376</td>
+<td>0.0015432</td>
+</tr>
+</tbody>
+</table>
+<p>误差界略大于实际误差，符合预期；误差随 <span class="arithmatex">\(h\)</span> 线性下降，也验证了一阶收敛。</p>
+<h2 id="102-一般导数近似公式">10.2 一般导数近似公式<a class="headerlink" href="#102-一般导数近似公式" title="Permanent link">#</a></h2>
+<h3 id="1021-从插值多项式出发">10.2.1 从插值多项式出发<a class="headerlink" href="#1021-从插值多项式出发" title="Permanent link">#</a></h3>
+<p>取 <span class="arithmatex">\(n+1\)</span> 个互异节点 <span class="arithmatex">\(x_0,\dots,x_n\)</span>，设 <span class="arithmatex">\(f\in C^{n+1}(I)\)</span>，作 Lagrange 插值多项式 <span class="arithmatex">\(P_n\)</span>。插值余项为</p>
+<div class="arithmatex">\[
+f(x)=P_n(x)+\frac{\omega(x)}{(n+1)!}f^{(n+1)}(\xi(x)),
+\qquad \omega(x)=\prod_{k=0}^{n}(x-x_k).
+\]</div>
+<p>两边求导：</p>
+<div class="arithmatex">\[
+f'(x)=P_n'(x)+\frac{\omega'(x)}{(n+1)!}f^{(n+1)}(\xi(x))
++\frac{\omega(x)}{(n+1)!}\frac{d}{dx}f^{(n+1)}(\xi(x)).
+\]</div>
+<p>在节点 <span class="arithmatex">\(x=x_j\)</span> 处，<span class="arithmatex">\(\omega(x_j)=0\)</span>，最后一项消失；又</p>
+<div class="arithmatex">\[
+P_n'(x_j)=\sum_{k=0}^{n}f(x_k)L_k'(x_j),
+\qquad
+\omega'(x_j)=\prod_{\substack{k=0\\ k\ne j}}^{n}(x_j-x_k).
+\]</div>
+<p>于是得到 <span class="arithmatex">\((n+1)\)</span> 点公式</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_j)=\sum_{k=0}^{n}f(x_k)L_k'(x_j)
++\frac{f^{(n+1)}(\xi_j)}{(n+1)!}\prod_{\substack{k=0\\ k\ne j}}^{n}(x_j-x_k)
+\ }
+\]</div>
+<p>其中 <span class="arithmatex">\(\xi_j\)</span> 位于包含这些节点的区间内。</p>
+<div class="admonition note">
+<p class="admonition-title">余项求导的严格化</p>
+<p>形式上对 <span class="arithmatex">\(f^{(n+1)}(\xi(x))\)</span> 求导需要 <span class="arithmatex">\(\xi(x)\)</span> 可导，而插值余项定理并不保证这一点。严格的做法是令</p>
+<div class="arithmatex">\[
+E(x)=f(x)-P_n(x)=\omega(x)q(x),
+\]</div>
+<p>其中 <span class="arithmatex">\(q\)</span> 在节点处用极限 <span class="arithmatex">\(q(x_j)=E'(x_j)/\omega'(x_j)\)</span> 连续延拓。由差商中值定理，</p>
+<div class="arithmatex">\[
+q(x_j)=f[x_0,\dots,x_n,x_j]=\frac{f^{(n+1)}(\xi_j)}{(n+1)!}.
+\]</div>
+<p>又 <span class="arithmatex">\(E'(x_j)=\omega'(x_j)q(x_j)\)</span>，因为 <span class="arithmatex">\(\omega(x_j)=0\)</span>。这正是上面的公式。</p>
+</div>
+<h3 id="1022-误差项">10.2.2 误差项<a class="headerlink" href="#1022-误差项" title="Permanent link">#</a></h3>
+<p>误差项为</p>
+<div class="arithmatex">\[
+E_j=\frac{f^{(n+1)}(\xi_j)}{(n+1)!}\prod_{k\ne j}(x_j-x_k).
+\]</div>
+<p>它由两部分组成：<strong>函数的光滑性</strong>（<span class="arithmatex">\(f^{(n+1)}\)</span>）和<strong>节点几何</strong>（连乘积）。节点一旦选定，连乘积就是常数，可以预先算好。</p>
+<h3 id="1023-误差系数">10.2.3 误差系数<a class="headerlink" href="#1023-误差系数" title="Permanent link">#</a></h3>
+<p>对等距节点 <span class="arithmatex">\(x_k=x_0+kh\)</span>，有 <span class="arithmatex">\(x_j-x_k=(j-k)h\)</span>，所以</p>
+<div class="arithmatex">\[
+\prod_{k\ne j}(x_j-x_k)
+=h^n\prod_{k\ne j}(j-k)
+=(-1)^{n-j}j!\,(n-j)!\,h^n.
+\]</div>
+<p>因此</p>
+<div class="arithmatex">\[
+\boxed{\
+E_j=\frac{(-1)^{n-j}j!(n-j)!}{(n+1)!}h^n f^{(n+1)}(\xi_j)
+=\frac{(-1)^{n-j}h^n}{(n+1)\binom{n}{j}}f^{(n+1)}(\xi_j)
+\ }
+\]</div>
+<p>这个公式把误差系数完全显式化了。验证两个常用情形：</p>
+<ul>
+<li><span class="arithmatex">\(n=2\)</span>：<span class="arithmatex">\(j=0,2\)</span> 时系数为 <span class="arithmatex">\(h^2/3\)</span>，<span class="arithmatex">\(j=1\)</span> 时为 <span class="arithmatex">\(-h^2/6\)</span>。</li>
+<li><span class="arithmatex">\(n=4\)</span>：<span class="arithmatex">\(j=0\)</span> 时系数为 <span class="arithmatex">\(h^4/5\)</span>，<span class="arithmatex">\(j=2\)</span> 时为 <span class="arithmatex">\(h^4/30\)</span>。</li>
+</ul>
+<p>后文三点、五点公式的误差项就是它的特例，不需要再逐项 Taylor 展开。</p>
+<h3 id="1024-权的计算">10.2.4 权的计算<a class="headerlink" href="#1024-权的计算" title="Permanent link">#</a></h3>
+<p>由 <span class="arithmatex">\(L_k\)</span> 的定义，对 <span class="arithmatex">\(k\ne j\)</span> 有</p>
+<div class="arithmatex">\[
+L_k'(x_j)=\frac{1}{x_k-x_j}
+\prod_{\substack{m=0\\ m\ne k,j}}^{n}\frac{x_j-x_m}{x_k-x_m}.
+\]</div>
+<p>对等距节点，<span class="arithmatex">\((x_j-x_m)/(x_k-x_m)=(j-m)/(k-m)\)</span>，于是</p>
+<div class="arithmatex">\[
+w_k=L_k'(x_j)=\frac{1}{h(k-j)}
+\prod_{\substack{m=0\\ m\ne k,j}}^{n}\frac{j-m}{k-m}.
+\]</div>
+<p>另外，由 <span class="arithmatex">\(\sum_k L_k(x)=1\)</span> 得 <span class="arithmatex">\(\sum_k L_k'(x)=0\)</span>，所以</p>
+<div class="arithmatex">\[
+L_j'(x_j)=-\sum_{k\ne j}L_k'(x_j).
+\]</div>
+<p>实际计算时只需算 <span class="arithmatex">\(n\)</span> 个 <span class="arithmatex">\(L_k'(x_j)\)</span>，最后一个用"权之和为零"补出，既省一次求值也自动满足一致性。</p>
+<h2 id="103-三点公式">10.3 三点公式<a class="headerlink" href="#103-三点公式" title="Permanent link">#</a></h2>
+<h3 id="1031-基函数的导数">10.3.1 基函数的导数<a class="headerlink" href="#1031-基函数的导数" title="Permanent link">#</a></h3>
+<p>取 <span class="arithmatex">\(n=2\)</span>，三个节点 <span class="arithmatex">\(x_0,x_1,x_2\)</span>。基函数为</p>
+<div class="arithmatex">\[
+L_0(x)=\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)},
+\]</div>
+<p>求导得</p>
+<div class="arithmatex">\[
+L_0'(x)=\frac{2x-x_1-x_2}{(x_0-x_1)(x_0-x_2)}.
+\]</div>
+<p>同理</p>
+<div class="arithmatex">\[
+L_1'(x)=\frac{2x-x_0-x_2}{(x_1-x_0)(x_1-x_2)},
+\qquad
+L_2'(x)=\frac{2x-x_0-x_1}{(x_2-x_0)(x_2-x_1)}.
+\]</div>
+<p>代入 <span class="arithmatex">\((n+1)\)</span> 点公式，取 <span class="arithmatex">\(n=2\)</span>：</p>
+<div class="arithmatex">\[
+f'(x_j)=\sum_{k=0}^{2}f(x_k)L_k'(x_j)
++\frac{f'''(\xi_j)}{6}\prod_{k\ne j}(x_j-x_k),
+\qquad j=0,1,2.
+\]</div>
+<p>下面取等距节点 <span class="arithmatex">\(x_1=x_0+h\)</span>，<span class="arithmatex">\(x_2=x_0+2h\)</span>，逐个算。</p>
+<h3 id="1032-三种形式">10.3.2 三种形式<a class="headerlink" href="#1032-三种形式" title="Permanent link">#</a></h3>
+<p><strong>左端点 <span class="arithmatex">\(x_j=x_0\)</span>。</strong> 三个权为</p>
+<div class="arithmatex">\[
+L_0'(x_0)=\frac{-3h}{2h^2}=-\frac{3}{2h},
+\qquad
+L_1'(x_0)=\frac{-2h}{-h^2}=\frac{2}{h},
+\qquad
+L_2'(x_0)=\frac{-h}{2h^2}=-\frac{1}{2h}.
+\]</div>
+<p>误差系数为</p>
+<div class="arithmatex">\[
+\frac{1}{6}(x_0-x_1)(x_0-x_2)=\frac{1}{6}(-h)(-2h)=\frac{h^2}{3}.
+\]</div>
+<p>所以</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{1}{2h}\big[-3f(x_0)+4f(x_0+h)-f(x_0+2h)\big]
++\frac{h^2}{3}f'''(\xi_0)
+\ }
+\]</div>
+<p><strong>中点 <span class="arithmatex">\(x_j=x_1\)</span>。</strong> 同理</p>
+<div class="arithmatex">\[
+L_0'(x_1)=-\frac{1}{2h},\qquad
+L_1'(x_1)=0,\qquad
+L_2'(x_1)=\frac{1}{2h},
+\]</div>
+<p>误差系数为 <span class="arithmatex">\((h)(-h)/6=-h^2/6\)</span>，故</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{1}{2h}\big[f(x_0+h)-f(x_0-h)\big]
+-\frac{h^2}{6}f'''(\xi_1)
+\ }
+\]</div>
+<p>这正是 10.1.4 的中心差商。</p>
+<p><strong>右端点 <span class="arithmatex">\(x_j=x_2\)</span>。</strong> 权为</p>
+<div class="arithmatex">\[
+L_0'(x_2)=\frac{1}{2h},\qquad
+L_1'(x_2)=-\frac{2}{h},\qquad
+L_2'(x_2)=\frac{3}{2h},
+\]</div>
+<p>误差系数仍为 <span class="arithmatex">\(h^2/3\)</span>，故</p>
+<div class="arithmatex">\[
+\boxed{\
+f'(x_0)=\frac{1}{2h}\big[f(x_0-2h)-4f(x_0-h)+3f(x_0)\big]
++\frac{h^2}{3}f'''(\xi_2)
+\ }
+\]</div>
+<p>右端点公式也可以由左端点公式把 <span class="arithmatex">\(h\)</span> 换成 <span class="arithmatex">\(-h\)</span> 直接得到。</p>
+<h3 id="1033-中点与端点的比较">10.3.3 中点与端点的比较<a class="headerlink" href="#1033-中点与端点的比较" title="Permanent link">#</a></h3>
+<p>三个公式都是 <span class="arithmatex">\(O(h^2)\)</span>，但误差系数不同：</p>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>用到的点</th>
+<th>误差主项</th>
+<th>函数求值次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左端点</td>
+<td><span class="arithmatex">\(x_0,\ x_0+h,\ x_0+2h\)</span></td>
+<td><span class="arithmatex">\(+\dfrac{h^2}{3}f'''(\xi)\)</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>中点</td>
+<td><span class="arithmatex">\(x_0-h,\ x_0,\ x_0+h\)</span></td>
+<td><span class="arithmatex">\(-\dfrac{h^2}{6}f'''(\xi)\)</span></td>
+<td>2</td>
+</tr>
+<tr>
+<td>右端点</td>
+<td><span class="arithmatex">\(x_0-2h,\ x_0-h,\ x_0\)</span></td>
+<td><span class="arithmatex">\(+\dfrac{h^2}{3}f'''(\xi)\)</span></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>中点的误差系数只有端点的<strong>一半</strong>，而且只需要两次函数求值（<span class="arithmatex">\(x_0\)</span> 处的值不用算）。原因是中点用了 <span class="arithmatex">\(x_0\)</span> 两侧的信息，误差主项部分抵消；端点只用单侧信息，抵消不充分。</p>
+<p>这就是"能中心差分就不要单侧差分"的定量依据。只有边界上没有两侧数据时，才被迫用端点公式。</p>
+<h3 id="1034-五点公式">10.3.4 五点公式<a class="headerlink" href="#1034-五点公式" title="Permanent link">#</a></h3>
+<p>同样由 <span class="arithmatex">\((n+1)\)</span> 点公式取 <span class="arithmatex">\(n=4\)</span>，可得两个常用五点公式。</p>
+<p><strong>五点端点公式</strong>（节点 <span class="arithmatex">\(x_0,x_0+h,\dots,x_0+4h\)</span>）：</p>
+<div class="arithmatex">\[
+f'(x_0)=\frac{1}{12h}\big[-25f(x_0)+48f(x_0+h)-36f(x_0+2h)
++16f(x_0+3h)-3f(x_0+4h)\big]
++\frac{h^4}{5}f^{(5)}(\xi)
+\]</div>
+<p><strong>五点中点公式</strong>（节点 <span class="arithmatex">\(x_0-2h,\dots,x_0+2h\)</span>）：</p>
+<div class="arithmatex">\[
+f'(x_0)=\frac{1}{12h}\big[f(x_0-2h)-8f(x_0-h)+8f(x_0+h)-f(x_0+2h)\big]
++\frac{h^4}{30}f^{(5)}(\xi)
+\]</div>
+<p>误差系数可直接用 10.2.3 的公式核对：<span class="arithmatex">\(n=4\)</span> 时，端点 <span class="arithmatex">\(j=0\)</span> 的系数是 <span class="arithmatex">\(h^4/5\)</span>，中点 <span class="arithmatex">\(j=2\)</span> 的系数是 <span class="arithmatex">\(h^4/30\)</span>——与上面完全一致。</p>
+<h3 id="1035-数值对比">10.3.5 数值对比<a class="headerlink" href="#1035-数值对比" title="Permanent link">#</a></h3>
+<p>对 <span class="arithmatex">\(f(x)=xe^x\)</span>，在 <span class="arithmatex">\(x=2.0\)</span> 处 <span class="arithmatex">\(f'(2)=3e^2=22.167168\)</span>。各公式的绝对误差：</p>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th><span class="arithmatex">\(h\)</span></th>
+<th>绝对误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>三点端点</td>
+<td>0.1</td>
+<td><span class="arithmatex">\(1.35\times10^{-1}\)</span></td>
+</tr>
+<tr>
+<td>三点端点</td>
+<td><span class="arithmatex">\(-0.1\)</span></td>
+<td><span class="arithmatex">\(1.13\times10^{-1}\)</span></td>
+</tr>
+<tr>
+<td>三点中点</td>
+<td>0.1</td>
+<td><span class="arithmatex">\(6.16\times10^{-2}\)</span></td>
+</tr>
+<tr>
+<td>三点中点</td>
+<td>0.2</td>
+<td><span class="arithmatex">\(2.47\times10^{-1}\)</span></td>
+</tr>
+<tr>
+<td>五点中点</td>
+<td>0.1</td>
+<td><span class="arithmatex">\(1.69\times10^{-4}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>三点中点比三点端点好一个量级；五点中点又把误差降了约三个量级。但五点公式每次要算四个新函数值，而且对 <span class="arithmatex">\(f^{(5)}\)</span> 有要求——精度是用求值次数和光滑性换来的。</p>
+<h3 id="1036-MATLAB-实现">10.3.6 MATLAB 实现<a class="headerlink" href="#1036-MATLAB-实现" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>d<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">three_point</span><span class="p">(</span>f, x0, h, side<span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c">% 三点公式求 f'(x0)，side 取 'mid'、'forward'、'backward'</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c">% 三者截断误差均为 O(h^2)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">switch</span><span class="w"> </span><span class="n">side</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">'mid'</span><span class="w">      </span><span class="c">% 中点公式，误差 -h^2/6 * f'''</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">'forward'</span><span class="w">  </span><span class="c">% 前向端点公式，误差 +h^2/3 * f'''</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">'backward'</span><span class="w"> </span><span class="c">% 后向端点公式，误差 +h^2/3 * f'''</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">otherwise</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s">'side 必须是 mid、forward 或 backward'</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">end</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="104-高阶导数近似">10.4 高阶导数近似<a class="headerlink" href="#104-高阶导数近似" title="Permanent link">#</a></h2>
+<h3 id="1041-二阶中心差分">10.4.1 二阶中心差分<a class="headerlink" href="#1041-二阶中心差分" title="Permanent link">#</a></h3>
+<p>设 <span class="arithmatex">\(f\in C^4[x_0-h,x_0+h]\)</span>。把 <span class="arithmatex">\(f(x_0+h)\)</span> 与 <span class="arithmatex">\(f(x_0-h)\)</span> 都在 <span class="arithmatex">\(x_0\)</span> 处展开到四阶：</p>
+<div class="arithmatex">\[
+f(x_0+h)=f(x_0)+f'(x_0)h+\frac{f''(x_0)}{2}h^2
++\frac{f'''(x_0)}{6}h^3+\frac{f^{(4)}(\xi_1)}{24}h^4,
+\]</div>
+<div class="arithmatex">\[
+f(x_0-h)=f(x_0)-f'(x_0)h+\frac{f''(x_0)}{2}h^2
+-\frac{f'''(x_0)}{6}h^3+\frac{f^{(4)}(\xi_{-1})}{24}h^4.
+\]</div>
+<p>两式相加，一阶项和三阶项抵消：</p>
+<div class="arithmatex">\[
+f(x_0+h)+f(x_0-h)=2f(x_0)+f''(x_0)h^2
++\frac{h^4}{24}\big[f^{(4)}(\xi_1)+f^{(4)}(\xi_{-1})\big].
+\]</div>
+<p>解出 <span class="arithmatex">\(f''(x_0)\)</span>：</p>
+<div class="arithmatex">\[
+f''(x_0)=\frac{f(x_0-h)-2f(x_0)+f(x_0+h)}{h^2}
+-\frac{h^2}{24}\big[f^{(4)}(\xi_1)+f^{(4)}(\xi_{-1})\big].
+\]</div>
+<p>因为 <span class="arithmatex">\(f^{(4)}\)</span> 连续，它在两点的平均值介于二者之间，由介值定理存在 <span class="arithmatex">\(\xi\in(x_0-h,x_0+h)\)</span>，使</p>
+<div class="arithmatex">\[
+f^{(4)}(\xi)=\frac{f^{(4)}(\xi_1)+f^{(4)}(\xi_{-1})}{2}.
+\]</div>
+<p>于是得到<strong>二阶导数中点公式</strong>：</p>
+<div class="arithmatex">\[
+\boxed{\
+f''(x_0)=\frac{f(x_0-h)-2f(x_0)+f(x_0+h)}{h^2}
+-\frac{h^2}{12}f^{(4)}(\xi)
+\ }
+\]</div>
+<p>误差为 <span class="arithmatex">\(O(h^2)\)</span>。注意它不是 <span class="arithmatex">\(O(h^4)\)</span>：分子中的 <span class="arithmatex">\(h^2\)</span> 被分母的 <span class="arithmatex">\(h^2\)</span> 除掉，剩下 <span class="arithmatex">\(h^2\)</span> 量级的误差。</p>
+<div class="admonition note">
+<p class="admonition-title">与第 11 章的呼应</p>
+<p>第 11 章推导 Simpson 公式的 <span class="arithmatex">\(h^5/90\)</span> 误差时，用的正是这个二阶导数中点公式（见 <a href="../ch11/">第 11 章</a> 11.3.2）。Simpson 公式"对三次多项式精确"的结论，本质上来自这里的 <span class="arithmatex">\(f^{(4)}\)</span> 余项。</p>
+</div>
+<h3 id="1042-前向二阶差分">10.4.2 前向二阶差分<a class="headerlink" href="#1042-前向二阶差分" title="Permanent link">#</a></h3>
+<p>若只有右侧数据，可用</p>
+<div class="arithmatex">\[
+f''(x_0)\approx\frac{f(x_0+2h)-2f(x_0+h)+f(x_0)}{h^2}.
+\]</div>
+<p>展开验证：</p>
+<div class="arithmatex">\[
+f(x_0+2h)-2f(x_0+h)+f(x_0)
+=f''(x_0)h^2+f'''(x_0)h^3+O(h^4),
+\]</div>
+<p>除以 <span class="arithmatex">\(h^2\)</span> 后误差为 <span class="arithmatex">\(O(h)\)</span>。单侧二阶差分只有一阶精度，比中心差分低一阶。</p>
+<h3 id="1043-差分表法">10.4.3 差分表法<a class="headerlink" href="#1043-差分表法" title="Permanent link">#</a></h3>
+<p>对等距节点 <span class="arithmatex">\(x_i=x_0+ih\)</span>，记 <span class="arithmatex">\(f_i=f(x_i)\)</span>。前向差分定义为</p>
+<div class="arithmatex">\[
+\Delta f_i=f_{i+1}-f_i,
+\qquad
+\Delta^k f_i=\Delta^{k-1}f_{i+1}-\Delta^{k-1}f_i.
+\]</div>
+<p>差分表按对角线逐层生成：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(f_i\)</span></th>
+<th><span class="arithmatex">\(\Delta f_i\)</span></th>
+<th><span class="arithmatex">\(\Delta^2 f_i\)</span></th>
+<th><span class="arithmatex">\(\Delta^3 f_i\)</span></th>
+<th><span class="arithmatex">\(\Delta^4 f_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(f_0\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f_1\)</span></td>
+<td><span class="arithmatex">\(\Delta f_0\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f_2\)</span></td>
+<td><span class="arithmatex">\(\Delta f_1\)</span></td>
+<td><span class="arithmatex">\(\Delta^2 f_0\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f_3\)</span></td>
+<td><span class="arithmatex">\(\Delta f_2\)</span></td>
+<td><span class="arithmatex">\(\Delta^2 f_1\)</span></td>
+<td><span class="arithmatex">\(\Delta^3 f_0\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f_4\)</span></td>
+<td><span class="arithmatex">\(\Delta f_3\)</span></td>
+<td><span class="arithmatex">\(\Delta^2 f_2\)</span></td>
+<td><span class="arithmatex">\(\Delta^3 f_1\)</span></td>
+<td><span class="arithmatex">\(\Delta^4 f_0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>差分与导数通过二项式展开联系：</p>
+<div class="arithmatex">\[
+\Delta^k f_i=\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}f_{i+j}.
+\]</div>
+<p>对每个 <span class="arithmatex">\(f_{i+j}\)</span> 在 <span class="arithmatex">\(x_i\)</span> 处作 Taylor 展开，按 <span class="arithmatex">\(h^m\)</span> 合并：</p>
+<div class="arithmatex">\[
+\Delta^k f_i=\sum_{m\ge 0}\frac{h^m}{m!}f^{(m)}(x_i)
+\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^m.
+\]</div>
+<p>内层和有一个标准性质：</p>
+<div class="arithmatex">\[
+\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^m=
+\begin{cases}
+0, &amp; m&lt;k,\\
+k!, &amp; m=k.
+\end{cases}
+\]</div>
+<p>（这是第二类 Stirling 数与差分的关系；也可由 <span class="arithmatex">\((e^t-1)^k\)</span> 的展开直接看出。）因此</p>
+<div class="arithmatex">\[
+\Delta^k f_i=h^k f^{(k)}(x_i)+O(h^{k+1}),
+\]</div>
+<p>从而</p>
+<div class="arithmatex">\[
+\boxed{\
+f^{(k)}(x_i)=\frac{\Delta^k f_i}{h^k}+O(h)
+\ }
+\]</div>
+<p><strong>差分表法</strong>就是：把表中第 <span class="arithmatex">\(k\)</span> 列的对角元除以 <span class="arithmatex">\(h^k\)</span>，得到 <span class="arithmatex">\(x_i\)</span> 处 <span class="arithmatex">\(k\)</span> 阶导数的近似。它只需要加减法，适合手算和等距数据；但误差只有 <span class="arithmatex">\(O(h)\)</span>。</p>
+<p>若改用中心差分</p>
+<div class="arithmatex">\[
+\delta^2 f_i=f_{i+1}-2f_i+f_{i-1},
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+\delta^2 f_i=h^2f''(x_i)+\frac{h^4}{12}f^{(4)}(x_i)+O(h^6),
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\boxed{\
+f''(x_i)=\frac{\delta^2 f_i}{h^2}+O(h^2)
+\ }
+\]</div>
+<p>中心差分把精度提高了一阶，代价是需要两侧数据。一般地，对称中心差分近似偶数阶导数都有 <span class="arithmatex">\(O(h^2)\)</span> 精度。</p>
+<h3 id="1044-奇数阶中心差分">10.4.4 奇数阶中心差分<a class="headerlink" href="#1044-奇数阶中心差分" title="Permanent link">#</a></h3>
+<p>三阶导数可用四点对称格式：</p>
+<div class="arithmatex">\[
+f'''(x_i)=\frac{f_{i+2}-2f_{i+1}+2f_{i-1}-f_{i-2}}{2h^3}+O(h^2).
+\]</div>
+<p>验证时把四个 Taylor 展开相加：常数项、<span class="arithmatex">\(h\)</span> 项、<span class="arithmatex">\(h^2\)</span> 项、<span class="arithmatex">\(h^4\)</span> 项都抵消，只剩 <span class="arithmatex">\(2h^3f'''\)</span> 和更高阶项，除以 <span class="arithmatex">\(2h^3\)</span> 即得。奇数阶中心差分的误差也是 <span class="arithmatex">\(O(h^2)\)</span>。</p>
+<h3 id="1045-数值例子">10.4.5 数值例子<a class="headerlink" href="#1045-数值例子" title="Permanent link">#</a></h3>
+<p>对 <span class="arithmatex">\(f(x)=xe^x\)</span>，已知</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(x\)</span></th>
+<th>1.8</th>
+<th>1.9</th>
+<th>2.0</th>
+<th>2.1</th>
+<th>2.2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(f(x)\)</span></td>
+<td>10.889365</td>
+<td>12.703199</td>
+<td>14.778112</td>
+<td>17.148957</td>
+<td>19.855030</td>
+</tr>
+</tbody>
+</table>
+<p>真值 <span class="arithmatex">\(f''(2)=4e^2=29.556224\)</span>。用二阶中点公式：</p>
+<div class="arithmatex">\[
+f''(2)\approx\frac{f(1.9)-2f(2.0)+f(2.1)}{0.01}=29.593200,
+\]</div>
+<p>误差为 <span class="arithmatex">\(-3.70\times10^{-2}\)</span>；取 <span class="arithmatex">\(h=0.2\)</span>：</p>
+<div class="arithmatex">\[
+f''(2)\approx\frac{f(1.8)-2f(2.0)+f(2.2)}{0.04}=29.704275,
+\]</div>
+<p>误差为 <span class="arithmatex">\(-1.48\times10^{-1}\)</span>。<span class="arithmatex">\(h\)</span> 从 0.1 增到 0.2，误差约增到四倍，符合 <span class="arithmatex">\(O(h^2)\)</span>。</p>
+<h2 id="105-舍入误差的影响">10.5 舍入误差的影响<a class="headerlink" href="#105-舍入误差的影响" title="Permanent link">#</a></h2>
+<h3 id="1051-总误差">10.5.1 总误差<a class="headerlink" href="#1051-总误差" title="Permanent link">#</a></h3>
+<p>以三点中点公式为例。设 <span class="arithmatex">\(f\in C^3\)</span>，实际计算得到的是 <span class="arithmatex">\(\tilde f(x_0\pm h)\)</span>，与真值的关系为</p>
+<div class="arithmatex">\[
+f(x_0+h)=\tilde f(x_0+h)+e(x_0+h),
+\qquad
+f(x_0-h)=\tilde f(x_0-h)+e(x_0-h).
+\]</div>
+<p>把 <span class="arithmatex">\(f=\tilde f+e\)</span> 代入中点公式：</p>
+<div class="arithmatex">\[
+\frac{\tilde f(x_0+h)-\tilde f(x_0-h)}{2h}
+=\frac{f(x_0+h)-f(x_0-h)}{2h}
+-\frac{e(x_0+h)-e(x_0-h)}{2h}.
+\]</div>
+<p>再用中点公式的截断误差式，得</p>
+<div class="arithmatex">\[
+f'(x_0)-\frac{\tilde f(x_0+h)-\tilde f(x_0-h)}{2h}
+=\frac{e(x_0+h)-e(x_0-h)}{2h}
+-\frac{h^2}{6}f'''(\xi).
+\]</div>
+<p>设 <span class="arithmatex">\(|e(x_0\pm h)|\le\varepsilon\)</span>，<span class="arithmatex">\(|f'''|\le M\)</span>，则</p>
+<div class="arithmatex">\[
+\boxed{\
+\left|f'(x_0)-\frac{\tilde f(x_0+h)-\tilde f(x_0-h)}{2h}\right|
+\le \frac{\varepsilon}{h}+\frac{Mh^2}{6}
+\ }
+\]</div>
+<p>右端第一项是<strong>舍入误差</strong>，第二项是<strong>截断误差</strong>。前者随 <span class="arithmatex">\(h\)</span> 减小而增大，后者随 <span class="arithmatex">\(h\)</span> 减小而减小。</p>
+<h3 id="1052-最优步长">10.5.2 最优步长<a class="headerlink" href="#1052-最优步长" title="Permanent link">#</a></h3>
+<p>记总误差上界为</p>
+<div class="arithmatex">\[
+e(h)=\frac{\varepsilon}{h}+\frac{Mh^2}{6}.
+\]</div>
+<p>求导：</p>
+<div class="arithmatex">\[
+e'(h)=-\frac{\varepsilon}{h^2}+\frac{Mh}{3}.
+\]</div>
+<p>令 <span class="arithmatex">\(e'(h)=0\)</span>：</p>
+<div class="arithmatex">\[
+\frac{Mh}{3}=\frac{\varepsilon}{h^2}
+\quad\Longrightarrow\quad
+h^3=\frac{3\varepsilon}{M}
+\quad\Longrightarrow\quad
+\boxed{\ h^*=\left(\frac{3\varepsilon}{M}\right)^{1/3}\ }
+\]</div>
+<p>又 <span class="arithmatex">\(e''(h)=2\varepsilon/h^3+M/3&gt;0\)</span>，故这是极小值点。</p>
+<p>把 <span class="arithmatex">\(h^*\)</span> 代回，得到该误差界下的最小总误差：</p>
+<div class="arithmatex">\[
+e(h^*)=\frac{\varepsilon}{h^*}+\frac{M(h^*)^2}{6}
+=\frac{3^{2/3}}{2}M^{1/3}\varepsilon^{2/3}
+\approx 1.04\,M^{1/3}\varepsilon^{2/3}.
+\]</div>
+<p>值得注意的是：<strong>最优也只能达到 <span class="arithmatex">\(\varepsilon^{2/3}\)</span> 量级</strong>，而不是 <span class="arithmatex">\(\varepsilon\)</span>。这就是数值微分不稳定的定量表现——再好的步长也救不回全部精度。</p>
+<h3 id="1053-一般阶公式">10.5.3 一般阶公式<a class="headerlink" href="#1053-一般阶公式" title="Permanent link">#</a></h3>
+<p>若截断误差为 <span class="arithmatex">\(Mh^p/C\)</span>，总误差为</p>
+<div class="arithmatex">\[
+e(h)=\frac{\varepsilon}{h}+\frac{Mh^p}{C}.
+\]</div>
+<p>求导并令其为零：</p>
+<div class="arithmatex">\[
+-\frac{\varepsilon}{h^2}+\frac{pMh^{p-1}}{C}=0
+\quad\Longrightarrow\quad
+h^{p+1}=\frac{C\varepsilon}{pM},
+\]</div>
+<p>即</p>
+<div class="arithmatex">\[
+\boxed{\ h^*=\left(\frac{C\varepsilon}{pM}\right)^{1/(p+1)}
+\sim \varepsilon^{1/(p+1)}\ }
+\]</div>
+<p>两个常用特例：</p>
+<ul>
+<li>前向差商 <span class="arithmatex">\(p=1\)</span>，<span class="arithmatex">\(C=2\)</span>：<span class="arithmatex">\(h^*=\sqrt{2\varepsilon/M}\sim\varepsilon^{1/2}\)</span>。</li>
+<li>中心差商 <span class="arithmatex">\(p=2\)</span>，<span class="arithmatex">\(C=6\)</span>：<span class="arithmatex">\(h^*=(3\varepsilon/M)^{1/3}\sim\varepsilon^{1/3}\)</span>。</li>
+</ul>
+<p>阶数越高，最优步长随 <span class="arithmatex">\(\varepsilon\)</span> 下降得越慢，可用的 <span class="arithmatex">\(h\)</span> 范围越大——这是高阶公式的另一个好处。</p>
+<h3 id="1054-正弦函数的例子">10.5.4 正弦函数的例子<a class="headerlink" href="#1054-正弦函数的例子" title="Permanent link">#</a></h3>
+<p>用中点公式近似 <span class="arithmatex">\(f'(0.9)\)</span>，<span class="arithmatex">\(f(x)=\sin x\)</span>，真值 <span class="arithmatex">\(\cos0.9=0.62161\)</span>。函数值只给到五位小数，取 <span class="arithmatex">\(\varepsilon=5\times10^{-6}\)</span>。在 <span class="arithmatex">\([0.8,1.0]\)</span> 上</p>
+<div class="arithmatex">\[
+M=\max|f'''|=\max|\cos x|=\cos0.8\approx0.69671.
+\]</div>
+<p>理论最优步长</p>
+<div class="arithmatex">\[
+h^*=\left(\frac{3\times5\times10^{-6}}{0.69671}\right)^{1/3}\approx0.028.
+\]</div>
+<p>实际计算结果：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(h\)</span></th>
+<th>近似值</th>
+<th>误差（近似值减真值）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.001</td>
+<td>0.62500</td>
+<td>0.00339</td>
+</tr>
+<tr>
+<td>0.002</td>
+<td>0.62250</td>
+<td>0.00089</td>
+</tr>
+<tr>
+<td>0.005</td>
+<td>0.62200</td>
+<td>0.00039</td>
+</tr>
+<tr>
+<td>0.010</td>
+<td>0.62150</td>
+<td><span class="arithmatex">\(-0.00011\)</span></td>
+</tr>
+<tr>
+<td>0.020</td>
+<td>0.62150</td>
+<td><span class="arithmatex">\(-0.00011\)</span></td>
+</tr>
+<tr>
+<td>0.050</td>
+<td>0.62140</td>
+<td><span class="arithmatex">\(-0.00021\)</span></td>
+</tr>
+<tr>
+<td>0.100</td>
+<td>0.62055</td>
+<td><span class="arithmatex">\(-0.00106\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>误差在 <span class="arithmatex">\(h=0.01\sim0.02\)</span> 附近最小，与 <span class="arithmatex">\(h^*\approx0.028\)</span> 相符。<span class="arithmatex">\(h=0.001\)</span> 时误差反而增大到 <span class="arithmatex">\(3.39\times10^{-3}\)</span>，这就是舍入误差 <span class="arithmatex">\(\varepsilon/h\)</span> 开始占主导。</p>
+<div class="admonition warning">
+<p class="admonition-title">最优步长在实践中不可直接使用</p>
+<p>公式 <span class="arithmatex">\(h^*=(3\varepsilon/M)^{1/3}\)</span> 需要知道 <span class="arithmatex">\(M=\max|f'''|\)</span>，而实际计算中往往没有这个信息。它的价值在于给出<strong>数量级</strong>：不要盲目把 <span class="arithmatex">\(h\)</span> 取到 <span class="arithmatex">\(10^{-12}\)</span>，否则结果会被舍入误差吞掉。</p>
+</div>
+<h3 id="1055-不稳定性">10.5.5 不稳定性<a class="headerlink" href="#1055-不稳定性" title="Permanent link">#</a></h3>
+<p>所有数值微分公式都要除以 <span class="arithmatex">\(h\)</span> 的某个幂：</p>
+<ul>
+<li>一阶导数除以 <span class="arithmatex">\(h\)</span>；</li>
+<li>二阶导数除以 <span class="arithmatex">\(h^2\)</span>；</li>
+<li><span class="arithmatex">\(k\)</span> 阶导数除以 <span class="arithmatex">\(h^k\)</span>。</li>
+</ul>
+<p>除以小数会放大误差。设函数值有扰动 <span class="arithmatex">\(\varepsilon\)</span>，则 <span class="arithmatex">\(k\)</span> 阶导数的舍入误差量级为 <span class="arithmatex">\(\varepsilon/h^k\)</span>。因此：</p>
+<ul>
+<li>数值微分是<strong>不稳定</strong>问题：减小 <span class="arithmatex">\(h\)</span> 降低截断误差，却同时放大舍入误差；</li>
+<li>阶数越高，放大越厉害，高阶导数的数值计算尤其困难；</li>
+<li>这也是为什么微分方程数值解中，通常避免直接对数据做数值微分，而用积分形式或弱形式。</li>
+</ul>
+<h2 id="106-Richardson-外推">10.6 Richardson 外推<a class="headerlink" href="#106-Richardson-外推" title="Permanent link">#</a></h2>
+<h3 id="1061-误差展开">10.6.1 误差展开<a class="headerlink" href="#1061-误差展开" title="Permanent link">#</a></h3>
+<p>设某个近似公式的误差可以展开成 <span class="arithmatex">\(h\)</span> 的幂级数：</p>
+<div class="arithmatex">\[
+M=N_1(h)+K_1h^{\alpha_1}+K_2h^{\alpha_2}+\cdots,
+\qquad 0&lt;\alpha_1&lt;\alpha_2&lt;\cdots
+\]</div>
+<p>其中 <span class="arithmatex">\(M\)</span> 是要求的精确值（例如某个导数值），<span class="arithmatex">\(K_i\)</span> 与 <span class="arithmatex">\(h\)</span> 无关。把 <span class="arithmatex">\(h\)</span> 换成 <span class="arithmatex">\(h/2\)</span>：</p>
+<div class="arithmatex">\[
+M=N_1(h/2)+K_1\left(\frac{h}{2}\right)^{\alpha_1}
++K_2\left(\frac{h}{2}\right)^{\alpha_2}+\cdots
+\]</div>
+<p>两式相减可以消去 <span class="arithmatex">\(M\)</span>，但要消去的是 <span class="arithmatex">\(K_1\)</span> 项。</p>
+<h3 id="1062-消去一阶项">10.6.2 消去一阶项<a class="headerlink" href="#1062-消去一阶项" title="Permanent link">#</a></h3>
+<p>先看最简单的情形 <span class="arithmatex">\(\alpha_1=1\)</span>。计算 <span class="arithmatex">\(2N_1(h/2)-N_1(h)\)</span>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+2N_1(h/2)-N_1(h)
+&amp;=2M-2K_1\frac{h}{2}-2K_2\frac{h^2}{4}-\cdots
+-M+K_1h+K_2h^2+\cdots\\
+&amp;=M+\frac{K_2}{2}h^2+\frac{3K_3}{4}h^3+\cdots
+\end{aligned}
+\]</div>
+<p>一阶项果然消掉了。定义</p>
+<div class="arithmatex">\[
+\boxed{\
+N_2(h)=2N_1(h/2)-N_1(h)
+=N_1(h/2)+\frac{N_1(h/2)-N_1(h)}{2^1-1}
+\ }
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+M=N_2(h)+O(h^2).
+\]</div>
+<p>也就是说，用两个一阶近似做一次简单的外推，就得到了二阶近似，而且没有增加新的函数求值。</p>
+<h3 id="1063-一般递推">10.6.3 一般递推<a class="headerlink" href="#1063-一般递推" title="Permanent link">#</a></h3>
+<p>设当前近似 <span class="arithmatex">\(N_{j-1}(h)\)</span> 的误差展开为</p>
+<div class="arithmatex">\[
+M=N_{j-1}(h)+K_1h^{\alpha_1}+K_2h^{\alpha_2}+\cdots
+\]</div>
+<p>其中 <span class="arithmatex">\(\alpha_1\)</span> 是当前的最低幂次。定义</p>
+<div class="arithmatex">\[
+\boxed{\
+N_j(h)=N_{j-1}(h/2)
++\frac{N_{j-1}(h/2)-N_{j-1}(h)}{2^{\alpha_1}-1}
+\ }
+\]</div>
+<p><strong>证明消项。</strong> 把展开代入：</p>
+<div class="arithmatex">\[
+N_j(h)=M-K_1\left(\frac{h}{2}\right)^{\alpha_1}
++\frac{K_1h^{\alpha_1}\left(1-2^{-\alpha_1}\right)}{2^{\alpha_1}-1}
++O(h^{\alpha_2}).
+\]</div>
+<p>利用恒等式</p>
+<div class="arithmatex">\[
+1-2^{-\alpha_1}=\frac{2^{\alpha_1}-1}{2^{\alpha_1}},
+\]</div>
+<p>第二项的系数化为 <span class="arithmatex">\(K_1h^{\alpha_1}2^{-\alpha_1}\)</span>，与第一项恰好抵消。因此</p>
+<div class="arithmatex">\[
+M=N_j(h)+O(h^{\alpha_2}),
+\]</div>
+<p>即新公式的误差阶升到下一个幂次 <span class="arithmatex">\(\alpha_2\)</span>。</p>
+<h3 id="1064-外推表">10.6.4 外推表<a class="headerlink" href="#1064-外推表" title="Permanent link">#</a></h3>
+<p>取步长序列 <span class="arithmatex">\(h_k=h_0/2^{k-1}\)</span>，把不同步长、不同外推列排成三角表。记 <span class="arithmatex">\(D_{k,1}=N_1(h_k)\)</span>，则</p>
+<div class="arithmatex">\[
+\boxed{\
+D_{k,j}=D_{k,j-1}
++\frac{D_{k,j-1}-D_{k-1,j-1}}{2^{\alpha_{j-1}}-1},
+\qquad k\ge j\ge 2
+\ }
+\]</div>
+<p>其中 <span class="arithmatex">\(\alpha_{j-1}\)</span> 是第 <span class="arithmatex">\(j-1\)</span> 列尚未消去的最低幂次。</p>
+<p>对<strong>中心差商</strong>，误差只含偶次幂：</p>
+<div class="arithmatex">\[
+\frac{f(x_0+h)-f(x_0-h)}{2h}
+=f'(x_0)+\frac{h^2}{6}f'''(x_0)
++\frac{h^4}{120}f^{(5)}(x_0)+\cdots
+\]</div>
+<p>所以 <span class="arithmatex">\(\alpha_j=2j\)</span>，分母为</p>
+<div class="arithmatex">\[
+2^{2(j-1)}-1=4^{j-1}-1.
+\]</div>
+<p>递推变成</p>
+<div class="arithmatex">\[
+D_{k,j}=D_{k,j-1}
++\frac{D_{k,j-1}-D_{k-1,j-1}}{4^{j-1}-1}.
+\]</div>
+<p>这与第 11 章 Romberg 积分的递推公式<strong>完全同构</strong>（见 <a href="../ch11/">第 11 章</a> 11.6.2）：Romberg 消的是复合梯形误差中的 <span class="arithmatex">\(h^2,h^4,\dots\)</span>，这里消的是中心差商误差中的 <span class="arithmatex">\(h^2,h^4,\dots\)</span>。两者都是 Richardson 外推，只是"原料"不同——一个是积分近似值，一个是导数近似值。</p>
+<p>对<strong>前向差商</strong>，误差含所有整数幂 <span class="arithmatex">\(h,h^2,h^3,\dots\)</span>，所以分母依次是</p>
+<div class="arithmatex">\[
+2^1-1=1,\qquad 2^2-1=3,\qquad 2^3-1=7,\qquad 2^4-1=15,\dots
+\]</div>
+<p>第一列外推的系数是 1，之后与 Romberg 的 <span class="arithmatex">\(3,15,63,\dots\)</span> 不同。</p>
+<h3 id="1065-例子对数函数的导数">10.6.5 例子：对数函数的导数<a class="headerlink" href="#1065-例子对数函数的导数" title="Permanent link">#</a></h3>
+<p>仍取 <span class="arithmatex">\(f(x)=\ln x\)</span>，<span class="arithmatex">\(x_0=1.8\)</span>。前向差商给出</p>
+<div class="arithmatex">\[
+N_1(0.1)=0.5406722,\qquad N_1(0.05)=0.5479795.
+\]</div>
+<p>做一次外推：</p>
+<div class="arithmatex">\[
+N_2(0.1)=N_1(0.05)+\frac{N_1(0.05)-N_1(0.1)}{2^1-1}
+=0.5479795+0.0073073=0.5552868.
+\]</div>
+<p>真值 <span class="arithmatex">\(f'(1.8)=0.5555556\)</span>，外推值的误差为</p>
+<div class="arithmatex">\[
+0.5555556-0.5552868=2.7\times10^{-4}.
+\]</div>
+<p>对照原始误差：<span class="arithmatex">\(h=0.1\)</span> 时约 <span class="arithmatex">\(1.5\times10^{-2}\)</span>，<span class="arithmatex">\(h=0.05\)</span> 时约 <span class="arithmatex">\(7.7\times10^{-3}\)</span>。一次外推把误差降了约 30 倍，而函数求值次数没有增加——只用了已有的两个近似值。</p>
+<h3 id="1066-MATLAB-实现">10.6.6 MATLAB 实现<a class="headerlink" href="#1066-MATLAB-实现" title="Permanent link">#</a></h3>
+<p>中心差商版 Richardson 外推：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span><span class="p">[</span>D, h<span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">richardson_central</span><span class="p">(</span>f, x0, h0, n<span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c">% 对中心差商做 Richardson 外推，返回 n×n 表 D</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c">% D(k,1) 是步长 h0/2^(k-1) 的中心差商</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c">% D(k,j) 依次消去 h^2, h^4, ...，精度为 O(h^(2j))</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h0</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="n">k</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="c">% 中心差分误差幂次为 2,4,6,...，分母为 4^(j-1)-1</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">^</span><span class="p">(</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">end</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">end</span>
+</code></pre></div>
+<p>单独的中心差商与三点公式实现：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">function</span><span class="w"> </span>d<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">central_diff</span><span class="p">(</span>f, x0, h<span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c">% 中心差商：f'(x0) ≈ [f(x0+h) - f(x0-h)] / (2h)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c">% 截断误差 O(h^2)；h 过小会被舍入误差 ε/h 淹没</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">end</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">外推不是万能的</p>
+<p>外推要求误差确实能展成 <span class="arithmatex">\(h\)</span> 的幂级数。若函数不够光滑（例如只有二阶连续导数），或者误差中含 <span class="arithmatex">\(h\log h\)</span>、非整数幂，用错 <span class="arithmatex">\(\alpha\)</span> 不仅不能消项，还可能放大误差。此外，外推表越往右，越依赖左边相邻项，舍入误差也会沿表传播。实际使用时应当比较最后两个对角元：若二者之差仍大于容差，说明尚未收敛，或者舍入误差已经占主导。</p>
+</div>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">八条</p>
+<ol>
+<li><strong>步长不是越小越好</strong>：总误差约为 <span class="arithmatex">\(\varepsilon/h+Mh^p/C\)</span>，最优步长 <span class="arithmatex">\(h^*\sim\varepsilon^{1/(p+1)}\)</span>。把 <span class="arithmatex">\(h\)</span> 取到 <span class="arithmatex">\(10^{-12}\)</span> 只会得到噪声。</li>
+<li><strong>中心差商是二阶，不是一阶</strong>：误差主项是 <span class="arithmatex">\(-h^2f'''/6\)</span>；前向、后向差商才是一阶，误差主项为 <span class="arithmatex">\(-hf''/2\)</span>。</li>
+<li><strong>端点公式的误差系数是 <span class="arithmatex">\(h^2/3\)</span>，中点是 <span class="arithmatex">\(-h^2/6\)</span></strong>：中点误差约为端点的一半，而且少算一次函数值。能用中点就不要用端点。</li>
+<li><strong>二阶中心差分的误差是 <span class="arithmatex">\(O(h^2)\)</span>，不是 <span class="arithmatex">\(O(h^4)\)</span></strong>：分子 <span class="arithmatex">\(f(x-h)-2f(x)+f(x+h)\)</span> 本身的误差是 <span class="arithmatex">\(O(h^4)\)</span>，除以 <span class="arithmatex">\(h^2\)</span> 后只剩 <span class="arithmatex">\(O(h^2)\)</span>。</li>
+<li><strong>差分表 <span class="arithmatex">\(\Delta^k f_i/h^k\)</span> 只有 <span class="arithmatex">\(O(h)\)</span></strong>：它方便手算，但不要误以为是高阶公式；要 <span class="arithmatex">\(O(h^2)\)</span> 得用中心差分。</li>
+<li><strong>高阶导数对舍入误差更敏感</strong>：误差放大约 <span class="arithmatex">\(\varepsilon/h^k\)</span>，<span class="arithmatex">\(k\)</span> 越大越不稳定。逐阶用差分表求导会累积误差。</li>
+<li><strong>外推只能消去展开式中真实存在的幂次</strong>：中心差商消 <span class="arithmatex">\(h^2,h^4,\dots\)</span>，前向差商消 <span class="arithmatex">\(h,h^2,\dots\)</span>。用错幂次会适得其反。</li>
+<li><strong>数值微分是不稳定问题</strong>：这是全书第一个不稳定方法。不要把它当作"万能求导器"，能解析求导就解析求导，能用积分形式就用积分形式。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>前向差商：<span class="arithmatex">\([f(x_0+h)-f(x_0)]/h\)</span>，误差 <span class="arithmatex">\(-hf''(\xi)/2\)</span>，一阶。</li>
+<li>后向差商：<span class="arithmatex">\([f(x_0)-f(x_0-h)]/h\)</span>，误差 <span class="arithmatex">\(+hf''(\xi)/2\)</span>，一阶。</li>
+<li>中心差商：<span class="arithmatex">\([f(x_0+h)-f(x_0-h)]/(2h)\)</span>，误差 <span class="arithmatex">\(-h^2f'''(\xi)/6\)</span>，二阶。</li>
+<li><span class="arithmatex">\((n+1)\)</span> 点公式：权为 <span class="arithmatex">\(L_k'(x_j)\)</span>，误差为 <span class="arithmatex">\(f^{(n+1)}(\xi_j)\prod_{k\ne j}(x_j-x_k)/(n+1)!\)</span>。</li>
+<li>等距误差系数：<span class="arithmatex">\(E_j=(-1)^{n-j}h^n f^{(n+1)}(\xi_j)/[(n+1)\binom{n}{j}]\)</span>。</li>
+<li>三点公式：中点 <span class="arithmatex">\([f_1-f_{-1}]/(2h)-h^2f'''/6\)</span>；端点 <span class="arithmatex">\([-3f_0+4f_1-f_2]/(2h)+h^2f'''/3\)</span>。</li>
+<li>五点公式：中点误差 <span class="arithmatex">\(h^4f^{(5)}/30\)</span>，端点误差 <span class="arithmatex">\(h^4f^{(5)}/5\)</span>。</li>
+<li>二阶中心差分：<span class="arithmatex">\([f(x-h)-2f(x)+f(x+h)]/h^2\)</span>，误差 <span class="arithmatex">\(-h^2f^{(4)}(\xi)/12\)</span>。</li>
+<li>总误差 <span class="arithmatex">\(\varepsilon/h+Mh^p/C\)</span>，最优 <span class="arithmatex">\(h^*=(C\varepsilon/(pM))^{1/(p+1)}\)</span>。</li>
+<li>Richardson：<span class="arithmatex">\(N_j(h)=N_{j-1}(h/2)+[N_{j-1}(h/2)-N_{j-1}(h)]/(2^{\alpha_{j-1}}-1)\)</span>，中心差商的分母为 <span class="arithmatex">\(4^{j-1}-1\)</span>，与 Romberg 同构。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>numerical differentiation</td>
+<td>数值微分</td>
+<td>用函数值的差商近似导数</td>
+</tr>
+<tr>
+<td>forward-difference formula</td>
+<td>前向差商公式</td>
+<td>用 <span class="arithmatex">\(x_0\)</span> 与 <span class="arithmatex">\(x_0+h\)</span> 两点，一阶</td>
+</tr>
+<tr>
+<td>backward-difference formula</td>
+<td>后向差商公式</td>
+<td>用 <span class="arithmatex">\(x_0-h\)</span> 与 <span class="arithmatex">\(x_0\)</span> 两点，一阶</td>
+</tr>
+<tr>
+<td>central-difference formula</td>
+<td>中心差商公式</td>
+<td>用 <span class="arithmatex">\(x_0\pm h\)</span> 两点，二阶</td>
+</tr>
+<tr>
+<td>three-point midpoint formula</td>
+<td>三点中点公式</td>
+<td>中心差商，误差 <span class="arithmatex">\(-h^2f'''/6\)</span></td>
+</tr>
+<tr>
+<td>three-point endpoint formula</td>
+<td>三点端点公式</td>
+<td>单侧三点，误差 <span class="arithmatex">\(h^2f'''/3\)</span></td>
+</tr>
+<tr>
+<td>five-point formula</td>
+<td>五点公式</td>
+<td>四阶精度的单侧或对称格式</td>
+</tr>
+<tr>
+<td>higher derivative</td>
+<td>高阶导数</td>
+<td>二阶及以上导数的差分近似</td>
+</tr>
+<tr>
+<td>difference table</td>
+<td>差分表</td>
+<td>逐层相减得到的差分三角表</td>
+</tr>
+<tr>
+<td>truncation error</td>
+<td>截断误差</td>
+<td>公式本身带来的误差</td>
+</tr>
+<tr>
+<td>round-off error</td>
+<td>舍入误差</td>
+<td>浮点运算带来的误差</td>
+</tr>
+<tr>
+<td>total error</td>
+<td>总误差</td>
+<td>截断误差与舍入误差之和</td>
+</tr>
+<tr>
+<td>optimal step size</td>
+<td>最优步长</td>
+<td>使总误差上界最小的 <span class="arithmatex">\(h\)</span></td>
+</tr>
+<tr>
+<td>Richardson extrapolation</td>
+<td>Richardson 外推</td>
+<td>用两种步长消去主导误差项</td>
+</tr>
+<tr>
+<td>Romberg integration</td>
+<td>Romberg 积分</td>
+<td>对复合梯形做 Richardson 外推</td>
+</tr>
+</tbody>
+</table>
+<p class="pdf-note"><a href="../lecture-slides/nm9f3c/Lec10.pdf">课程课件 · Lec10（PDF）</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

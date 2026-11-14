@@ -1,0 +1,7390 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/%E4%BC%A0%E7%83%AD%E5%AD%A6/ch14/">
+      
+      
+        <link rel="prev" href="../ch13/">
+      
+      
+        <link rel="next" href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第14章 扩散传质 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-14-章-扩散传质" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第14章 扩散传质
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#140-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-物理起源与速率方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 物理起源与速率方程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 物理起源与速率方程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-物理起源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 物理起源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-混合物的组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 混合物的组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413-菲克定律" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 菲克定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1414-质扩散率" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.4 质扩散率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-非静止介质中的传质" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 非静止介质中的传质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 非静止介质中的传质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-绝对通量与扩散通量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 绝对通量与扩散通量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-立柱中的蒸发" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 立柱中的蒸发
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-静止介质近似" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 静止介质近似
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-静止介质中的组分守恒" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 静止介质中的组分守恒
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 静止介质中的组分守恒">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441-控制体上的组分守恒" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 控制体上的组分守恒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442-质扩散方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 质扩散方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443-给定表面浓度的静止介质" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 给定表面浓度的静止介质
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-边界条件与界面处的浓度不连续" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 边界条件与界面处的浓度不连续
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 边界条件与界面处的浓度不连续">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451-蒸发与升华" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.1 蒸发与升华
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452-气体在液体与固体中的溶解度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.2 气体在液体与固体中的溶解度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453-催化表面反应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.3 催化表面反应
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146-含均匀化学反应的质扩散" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 含均匀化学反应的质扩散
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-瞬态扩散" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 瞬态扩散
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#140-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-物理起源与速率方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 物理起源与速率方程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 物理起源与速率方程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-物理起源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.1 物理起源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-混合物的组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.2 混合物的组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413-菲克定律" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.3 菲克定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1414-质扩散率" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1.4 质扩散率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-非静止介质中的传质" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 非静止介质中的传质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.2 非静止介质中的传质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-绝对通量与扩散通量" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.1 绝对通量与扩散通量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-立柱中的蒸发" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2.2 立柱中的蒸发
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-静止介质近似" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 静止介质近似
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-静止介质中的组分守恒" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 静止介质中的组分守恒
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.4 静止介质中的组分守恒">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1441-控制体上的组分守恒" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.1 控制体上的组分守恒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1442-质扩散方程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.2 质扩散方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1443-给定表面浓度的静止介质" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4.3 给定表面浓度的静止介质
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-边界条件与界面处的浓度不连续" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 边界条件与界面处的浓度不连续
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 边界条件与界面处的浓度不连续">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451-蒸发与升华" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.1 蒸发与升华
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452-气体在液体与固体中的溶解度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.2 气体在液体与固体中的溶解度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453-催化表面反应" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5.3 催化表面反应
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146-含均匀化学反应的质扩散" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 含均匀化学反应的质扩散
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-瞬态扩散" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 瞬态扩散
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-14-章-扩散传质">第 14 章 扩散传质<a class="headerlink" href="#第-14-章-扩散传质" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：混合物中只要存在组分浓度差，就必然发生传质——这一章处理它的"导热副本"：扩散传质。先给混合物浓度的一整套度量（质量浓度、摩尔浓度、质量分数、摩尔分数）与换算关系，立起与傅里叶定律同构的菲克定律，认识输运物性质扩散率；再分清扩散通量与绝对通量（平流）的分解、以及"静止介质近似"什么时候成立。然后导出与热方程逐项对应的组分守恒（质扩散）方程，把第 2～5 章的导热解法整体平移过来；最后补上导热里没有的两件难事：界面两侧浓度不连续带来的三类边界条件（拉乌尔定律、亨利定律、溶解度）与化学发挥的作用（表面催化反应、体积均匀反应），以及瞬态扩散对半无限大物体解的类比。对流那一半（对流传质系数、舍伍德数、施密特数）第 6 章已经立好，热-质类比在本章合龙。</p>
+</blockquote>
+<h2 id="140-本章导图">14.0 本章导图<a class="headerlink" href="#140-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">扩散传质</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">浓度体系</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">质量浓度与摩尔浓度</span>
+          <span class="brleaf">质量分数与摩尔分数</span>
+          <span class="brleaf">理想气体分压换算与道尔顿定律</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">菲克定律与质扩散率</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">质量形式与摩尔形式</span>
+          <span class="brleaf">质扩散率跨八个数量级</span>
+          <span class="brleaf">随温度升高、随压强降低</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">通量分解</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">绝对通量等于扩散加平流</span>
+          <span class="brleaf">质量平均速度与摩尔平均速度</span>
+          <span class="brleaf">二元混合物扩散通量互相抵消</span>
+          <span class="brleaf">静止介质近似</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">组分守恒</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">控制体组分平衡四项式</span>
+          <span class="brleaf">质扩散方程与热方程逐项对应</span>
+          <span class="brleaf">平壁、圆柱、球三种扩散阻</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">界面与边界条件</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">界面两侧浓度不连续</span>
+          <span class="brleaf">拉乌尔定律管蒸发升华</span>
+          <span class="brleaf">亨利定律与溶解度管吸收渗透</span>
+          <span class="brleaf">催化表面反应是边界条件</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">反应与瞬态</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">零级与一级均匀反应</span>
+          <span class="brleaf">反应限制与扩散限制</span>
+          <span class="brleaf">瞬态扩散全套平移第五章</span>
+          <span class="brleaf">半无限大解最常用</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="141-物理起源与速率方程">14.1 物理起源与速率方程<a class="headerlink" href="#141-物理起源与速率方程" title="Permanent link">#</a></h2>
+<p>从物理起源到速率方程，扩散传热与扩散传质是强类比关系。本章通篇盯住这条类比主线。</p>
+<h3 id="1411-物理起源">14.1.1 物理起源<a class="headerlink" href="#1411-物理起源" title="Permanent link">#</a></h3>
+<p>想象一个腔体：两种不同的气体组分 A、B，温度、压强相同，中间用隔板分开。抽掉隔板（不扰动流体），两种组分都会被输运——这就是扩散。图 14.1 是隔板抽走后不久的情形：A（浅色点）的浓度沿 <span class="arithmatex">\(x\)</span> 递减，B 的浓度沿 <span class="arithmatex">\(x\)</span> 递增。传质沿浓度降低的方向进行：A 净向右输运，B 净向左输运。</p>
+<figure>
+  <img src="../images/ch14/fig-14-1.png" class="lq-img" />
+  <figcaption>图 14.1 二元气体混合物中的扩散传质：浓度分布与分子图像（截自原书）</figcaption>
+</figure>
+
+<p>物理机制与第 1 章讲导热时一模一样：在假想平面 <span class="arithmatex">\(x_o\)</span> 处，分子运动是随机的，向左、向右穿过的概率相等。但平面左侧 A 浓度高，于是从左向右穿过平面的 A 分子更多；B 则相反。净结果就是 A 向右、B 向左的组分输运。足够长时间后，A、B 浓度均匀，净输运停止。</p>
+<p>质量扩散在气体、液体、固体中都发生。但分子间距强烈影响扩散：气体中最容易、液体次之、固体最难。三类例子：汽车尾气中的一氧化二氮在空气中的扩散（气）、水中溶解氧的扩散（液）、氦在派热克斯玻璃中的渗透（固）。</p>
+<h3 id="1412-混合物的组成">14.1.2 混合物的组成<a class="headerlink" href="#1412-混合物的组成" title="Permanent link">#</a></h3>
+<p>本章全在跟混合物打交道。先补热力学里的一套词汇：混合物由两种以上化学组分（species）构成，任一组分 <span class="arithmatex">\(i\)</span> 的量可用<strong>质量浓度</strong>（mass density，组分质量密度）<span class="arithmatex">\(\rho_i\)</span>（kg/m³）或<strong>摩尔浓度</strong>（molar concentration）<span class="arithmatex">\(C_i\)</span>（kmol/m³）量化，二者由组分分子量 <span class="arithmatex">\(\mathcal{M}_i\)</span>（kg/kmol）联系起来：</p>
+<div class="arithmatex">\[
+\rho_i = \mathcal{M}_i C_i
+\tag{14.1}
+\]</div>
+<p>把所有组分加起来，得混合物的总质量密度与总摩尔浓度：</p>
+<div class="arithmatex">\[
+\rho = \sum_i \rho_i
+\tag{14.2}
+\]</div>
+<div class="arithmatex">\[
+C = \sum_i C_i
+\tag{14.3}
+\]</div>
+<p>组分的量还可以用两个"分数"表达——<strong>质量分数</strong>（mass fraction）与<strong>摩尔分数</strong>（mole fraction）：</p>
+<div class="arithmatex">\[
+m_i \equiv \frac{\rho_i}{\rho}
+\tag{14.4}
+\]</div>
+<div class="arithmatex">\[
+x_i \equiv \frac{C_i}{C}
+\tag{14.5}
+\]</div>
+<p>由式 (14.2)、(14.3) 立刻得到归一化条件：</p>
+<div class="arithmatex">\[
+\sum_i m_i = 1
+\tag{14.6}
+\]</div>
+<div class="arithmatex">\[
+\sum_i x_i = 1
+\tag{14.7}
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">原书脚注：别把 <span class="arithmatex">\(x_i\)</span> 和坐标 <span class="arithmatex">\(x\)</span> 弄混</p>
+<p><span class="arithmatex">\(x_i\)</span> 是组分 <span class="arithmatex">\(i\)</span> 的摩尔分数，<span class="arithmatex">\(x\)</span> 是空间坐标。本书的摩尔分数永远带组分下标，看到 <span class="arithmatex">\(x\)</span> 裸写就是坐标。</p>
+</div>
+<p>对理想气体混合物，各组分的质量浓度、摩尔浓度可直接用<strong>分压</strong>（partial pressure）<span class="arithmatex">\(p_i\)</span> 表示（理想气体定律逐组分适用）：</p>
+<div class="arithmatex">\[
+\rho_i = \frac{p_i}{R_i T}
+\tag{14.8}
+\]</div>
+<div class="arithmatex">\[
+C_i = \frac{p_i}{\mathcal{R} T}
+\tag{14.9}
+\]</div>
+<p>其中 <span class="arithmatex">\(R_i\)</span> 是组分 <span class="arithmatex">\(i\)</span> 的气体常数，<span class="arithmatex">\(\mathcal{R}\)</span> 是通用气体常数。配合<strong>道尔顿分压定律</strong>（Dalton's law）：</p>
+<div class="arithmatex">\[
+p = \sum_i p_i
+\tag{14.10}
+\]</div>
+<p>立得摩尔分数与分压的换算：</p>
+<div class="arithmatex">\[
+x_i = \frac{C_i}{C} = \frac{p_i}{p}
+\tag{14.11}
+\]</div>
+<p><strong>表 14-甲 浓度度量速查（本章的"词汇表"）</strong></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>记号</th>
+<th>单位</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组分质量浓度</td>
+<td><span class="arithmatex">\(\rho_i\)</span></td>
+<td>kg/m³</td>
+<td>每立方米混合物中组分 <span class="arithmatex">\(i\)</span> 的质量</td>
+</tr>
+<tr>
+<td>组分摩尔浓度</td>
+<td><span class="arithmatex">\(C_i\)</span></td>
+<td>kmol/m³</td>
+<td>每立方米混合物中组分 <span class="arithmatex">\(i\)</span> 的千摩尔数</td>
+</tr>
+<tr>
+<td>混合物质量密度</td>
+<td><span class="arithmatex">\(\rho\)</span></td>
+<td>kg/m³</td>
+<td>所有组分质量浓度之和</td>
+</tr>
+<tr>
+<td>混合物摩尔浓度</td>
+<td><span class="arithmatex">\(C\)</span></td>
+<td>kmol/m³</td>
+<td>所有组分摩尔浓度之和</td>
+</tr>
+<tr>
+<td>质量分数</td>
+<td><span class="arithmatex">\(m_i\)</span></td>
+<td>无量纲</td>
+<td><span class="arithmatex">\(\rho_i/\rho\)</span>，全加和为 1</td>
+</tr>
+<tr>
+<td>摩尔分数</td>
+<td><span class="arithmatex">\(x_i\)</span></td>
+<td>无量纲</td>
+<td><span class="arithmatex">\(C_i/C = p_i/p\)</span>（理想气体），全加和为 1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">拓展：质量分数与摩尔分数的换算</p>
+<p>两套"分数"不能直接画等号，桥是分子量：<span class="arithmatex">\(m_i = x_i \mathcal{M}_i / \sum_j x_j \mathcal{M}_j\)</span>，反过来 <span class="arithmatex">\(x_i = (m_i/\mathcal{M}_i)/\sum_j (m_j/\mathcal{M}_j)\)</span>。拿空气练一遍：氧气摩尔分数 <span class="arithmatex">\(x_{O_2} \approx 0.21\)</span>，氮气 <span class="arithmatex">\(x_{N_2} \approx 0.78\)</span>，换质量分数得 <span class="arithmatex">\(m_{O_2} = 0.21 \times 32 / (0.21 \times 32 + 0.78 \times 28) \approx 0.23\)</span>。干空气"质量上氧占 23%、摩尔上氧占 21%"，两套口径记住哪个是哪个，后面算扩散通量时不会乱。</p>
+</div>
+<h3 id="1413-菲克定律">14.1.3 菲克定律<a class="headerlink" href="#1413-菲克定律" title="Permanent link">#</a></h3>
+<p>扩散传热与扩散传质机制相似，速率方程也同型。对 A、B 二元混合物中的组分 A，质量扩散的速率方程叫<strong>菲克定律</strong>（Fick's law），矢量形式为：</p>
+<div class="arithmatex">\[
+\mathbf{j}_A = -\rho D_{AB} \nabla m_A
+\tag{14.12}
+\]</div>
+<p>或者用摩尔口径：</p>
+<div class="arithmatex">\[
+\mathbf{J}_A^* = -C D_{AB} \nabla x_A
+\tag{14.13}
+\]</div>
+<p>跟傅里叶定律（式 2.3）摆在一起看，结构完全同构：傅里叶定律定义了导热系数，菲克定律定义了第二个重要输运物性——<strong>二元扩散系数</strong>（binary diffusion coefficient），又称<strong>质扩散率</strong>（mass diffusivity）<span class="arithmatex">\(D_{AB}\)</span>，单位 m²/s。</p>
+<p>逐项拆开：</p>
+<ul>
+<li><span class="arithmatex">\(\mathbf{j}_A\)</span>（kg/(s·m²)）：组分 A 的<strong>扩散质量通量</strong>（diffusive mass flux）——单位时间、单位垂直面积上靠扩散转移的 A 的量，正比于混合物总质量密度 <span class="arithmatex">\(\rho = \rho_A + \rho_B\)</span> 与质量分数梯度 <span class="arithmatex">\(\nabla m_A\)</span>（<span class="arithmatex">\(m_A = \rho_A/\rho\)</span>）；</li>
+<li><span class="arithmatex">\(\mathbf{J}_A^*\)</span>（kmol/(s·m²)）：组分 A 的<strong>扩散摩尔通量</strong>（diffusive molar flux），正比于混合物总摩尔浓度 <span class="arithmatex">\(C = C_A + C_B\)</span> 与摩尔分数梯度 <span class="arithmatex">\(\nabla x_A\)</span>（<span class="arithmatex">\(x_A = C_A/C\)</span>）；</li>
+<li>负号：组分沿浓度降低的方向扩散；</li>
+<li>当总质量密度 <span class="arithmatex">\(\rho\)</span>（或总摩尔浓度 <span class="arithmatex">\(C\)</span>）为常数时，两式分别简化为 <span class="arithmatex">\(j_A = -D_{AB}\nabla \rho_A\)</span>、<span class="arithmatex">\(J_A^* = -D_{AB}\nabla C_A\)</span> 的形式——梯度可以直接换成浓度梯度。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：菲克定律只是"普通扩散"</p>
+<p>式 (14.12)、(14.13) 内含一个假设：扩散仅由浓度梯度驱动。实际上温度梯度（Soret 效应/热扩散）、压强梯度、外力（电场、磁场）也能驱动组分迁移。绝大多数工程问题里这些高阶效应可以忽略，浓度梯度是唯一显著的驱动势，这种情况叫<strong>普通扩散</strong>（ordinary diffusion）。本书只处理普通扩散；热扩散等效应见 Bird 等人的传质专著。</p>
+</div>
+<h3 id="1414-质扩散率">14.1.4 质扩散率<a class="headerlink" href="#1414-质扩散率" title="Permanent link">#</a></h3>
+<p>二元气体混合物 A+B 的质扩散率可以靠分子运动论估计。设气体为理想气体，可推得：</p>
+<div class="arithmatex">\[
+D_{AB} \approx \frac{1}{3}\,\bar{c}\,\lambda_{\mathrm{mfp}} \sim p^{-1}T^{3/2}
+\tag{14.14}
+\]</div>
+<p>其中 <span class="arithmatex">\(T\)</span> 用开尔文，<span class="arithmatex">\(\bar{c}\)</span> 是分子平均速度，<span class="arithmatex">\(\lambda_{\mathrm{mfp}}\)</span> 是分子平均自由程。2.2.1 节说过：<span class="arithmatex">\(\bar{c}\)</span> 随温度升高、随分子量减小而增大；<span class="arithmatex">\(\lambda_{\mathrm{mfp}}\)</span> 与气压成反比。所以：</p>
+<ul>
+<li>温度升高 → <span class="arithmatex">\(D_{AB}\)</span> 增大（约 <span class="arithmatex">\(T^{3/2}\)</span>）；</li>
+<li>分子量越小 → <span class="arithmatex">\(D_{AB}\)</span> 越大；</li>
+<li>压强升高 → <span class="arithmatex">\(D_{AB}\)</span> 减小（约 <span class="arithmatex">\(1/p\)</span>）。</li>
+</ul>
+<p>式 (14.14) 适用于有限的温度、压强范围，但特别有用：拿 298 K 的查表值外推到别的温度（例 14.1 就这么干）。液体溶液只能全靠实验：少量溶质 A 溶于溶剂 B 时，<span class="arithmatex">\(D_{AB}\)</span> 随温度升高而增大。气体、液体、固体在固体中的扩散机制极其复杂，没有普适理论，实验数据也有限。常用数据查表 A.8。</p>
+<p>量级感（记牢，例 14.1 会展开）：气体 <span class="arithmatex">\(10^{-5} \sim 10^{-4}\ \mathrm{m^2/s}\)</span>；液体 <span class="arithmatex">\(10^{-10} \sim 10^{-9}\ \mathrm{m^2/s}\)</span>；固体 <span class="arithmatex">\(10^{-14} \sim 10^{-12}\ \mathrm{m^2/s}\)</span>——横跨八个数量级以上。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：三个扩散率是一家人</p>
+<p>动量扩散率 <span class="arithmatex">\(\nu = \mu/\rho\)</span>（运动黏度）、热扩散率 <span class="arithmatex">\(\alpha = k/(\rho c_p)\)</span>、质扩散率 <span class="arithmatex">\(D_{AB}\)</span> 单位全是 m²/s，物理图像全是"分子随机运动把各自的量（动量、能量、组分）往低处搬"。气体里三者同量级、同源（分子运动论都能推出来）；液体和固体里差异巨大——第 6 章的普朗特数 <span class="arithmatex">\(Pr = \nu/\alpha\)</span>、施密特数 <span class="arithmatex">\(Sc = \nu/D_{AB}\)</span>、路易斯数 <span class="arithmatex">\(Le = \alpha/D_{AB}\)</span> 就是在比较这三根数轴的相对位置。</p>
+</div>
+<p><strong>【例 14.1】氢在气、液、固三种介质中的扩散通量</strong></p>
+<p><strong>已知（Known）</strong>：293 K 下氢（组分 A）分别在空气、液态水、铁（组分 B）中扩散。某位置处的浓度梯度 <span class="arithmatex">\(dC_A/dx = 1\ \mathrm{kmol/(m^3 \cdot m)}\)</span>。氢的摩尔分数 <span class="arithmatex">\(x_A \ll 1\)</span>。</p>
+<p><strong>求（Find）</strong>：摩尔、质量两种口径的组分通量；三种介质中质扩散率与热扩散率的对比。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-1.png" class="lq-img" />
+  <figcaption>例 14.1 示意图：介质中的浓度梯度（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：稳态条件。</p>
+<p><strong>物性（Properties）</strong>：表 A.8，氢–空气（298 K）：<span class="arithmatex">\(D_{AB} = 0.41 \times 10^{-4}\ \mathrm{m^2/s}\)</span>；氢–水（298 K）：<span class="arithmatex">\(D_{AB} = 0.63 \times 10^{-8}\ \mathrm{m^2/s}\)</span>；氢–铁（293 K）：<span class="arithmatex">\(D_{AB} = 0.26 \times 10^{-12}\ \mathrm{m^2/s}\)</span>。表 A.4，空气（293 K）：<span class="arithmatex">\(\alpha = 21.6 \times 10^{-6}\ \mathrm{m^2/s}\)</span>。表 A.6，水（293 K）：<span class="arithmatex">\(k = 0.603\ \mathrm{W/(m \cdot K)}\)</span>、<span class="arithmatex">\(\rho = 998\ \mathrm{kg/m^3}\)</span>、<span class="arithmatex">\(c_p = 4182\ \mathrm{J/(kg \cdot K)}\)</span>。表 A.1，铁（300 K）：<span class="arithmatex">\(\alpha = 23.1 \times 10^{-6}\ \mathrm{m^2/s}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：先用式 (14.14) 把氢–空气的质扩散率从 298 K 修正到 293 K：</p>
+<div class="arithmatex">\[
+D_{AB,T} = D_{AB,298\,\mathrm{K}} \times \left(\frac{T}{298\ \mathrm{K}}\right)^{3/2} = 0.41 \times 10^{-4}\ \mathrm{m^2/s} \times \left(\frac{293}{298}\right)^{3/2} = 0.40 \times 10^{-4}\ \mathrm{m^2/s}
+\]</div>
+<p>氢是稀组分（<span class="arithmatex">\(x_A \ll 1\)</span>），介质的热物性就取主体介质（组分 B）的值。水的热扩散率：</p>
+<div class="arithmatex">\[
+\alpha = \frac{k}{\rho c_p} = \frac{0.603\ \mathrm{W/(m \cdot K)}}{998\ \mathrm{kg/m^3} \times 4182\ \mathrm{J/(kg \cdot K)}} = 0.144 \times 10^{-6}\ \mathrm{m^2/s}
+\]</div>
+<p>热扩散率与质扩散率之比就是第 6 章式 (6.50) 定义的路易斯数 <span class="arithmatex">\(Le\)</span>。</p>
+<p>摩尔通量用菲克定律（式 14.13）。A 是稀组分，总摩尔浓度近似为常数，故 <span class="arithmatex">\(J_A^* = -D_{AB}\,dC_A/dx\)</span>。氢–空气混合物中：</p>
+<div class="arithmatex">\[
+J_A^* = -D_{AB}\,\frac{dC_A}{dx} = -0.40 \times 10^{-4}\ \mathrm{m^2/s} \times 1\ \frac{\mathrm{kmol}}{\mathrm{m^3 \cdot m}} = -4 \times 10^{-5}\ \frac{\mathrm{kmol}}{\mathrm{s \cdot m^2}}
+\]</div>
+<p>质量通量：</p>
+<div class="arithmatex">\[
+j_A = \mathcal{M}_A J_A^* = 2\ \frac{\mathrm{kg}}{\mathrm{kmol}} \times \left(-4 \times 10^{-5}\ \frac{\mathrm{kmol}}{\mathrm{s \cdot m^2}}\right) = -8 \times 10^{-5}\ \frac{\mathrm{kg}}{\mathrm{s \cdot m^2}}
+\]</div>
+<p>三种介质的结果汇总：</p>
+<table>
+<thead>
+<tr>
+<th>组分 B</th>
+<th><span class="arithmatex">\(\alpha\)</span> (m²/s)</th>
+<th><span class="arithmatex">\(D_{AB}\)</span> (m²/s)</th>
+<th><span class="arithmatex">\(Le = \alpha/D_{AB}\)</span></th>
+<th><span class="arithmatex">\(j_A\)</span> 大小 (kg/(s·m²))</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空气</td>
+<td><span class="arithmatex">\(21.6 \times 10^{-6}\)</span></td>
+<td><span class="arithmatex">\(0.40 \times 10^{-4}\)</span></td>
+<td>0.54</td>
+<td><span class="arithmatex">\(8 \times 10^{-5}\)</span></td>
+</tr>
+<tr>
+<td>水</td>
+<td><span class="arithmatex">\(0.144 \times 10^{-6}\)</span></td>
+<td><span class="arithmatex">\(6.3 \times 10^{-9}\)</span></td>
+<td>23</td>
+<td><span class="arithmatex">\(1.3 \times 10^{-8}\)</span></td>
+</tr>
+<tr>
+<td>铁</td>
+<td><span class="arithmatex">\(23.1 \times 10^{-6}\)</span></td>
+<td><span class="arithmatex">\(2.6 \times 10^{-13}\)</span></td>
+<td><span class="arithmatex">\(8.9 \times 10^{7}\)</span></td>
+<td><span class="arithmatex">\(5.2 \times 10^{-13}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>（浓度梯度取正号，通量实际指向 <span class="arithmatex">\(x\)</span> 负方向，表中列大小。）</p>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>三种介质的热扩散率只差两个数量级——第 5 章讲过，这决定了瞬态导热响应快慢的差异。质扩散率却横跨 8 个数量级以上：气体最快、固体最慢。主体介质是气体、液体还是固体，组分响应传质的速率完全不同。</li>
+<li>路易斯数在气体里通常量级为 1（本例空气 0.54）：气体里同时进行的热扩散与质扩散推进速率相近。液体和固体里导热传能比组分扩散快得多（<span class="arithmatex">\(Le\)</span> 达 23 乃至 <span class="arithmatex">\(10^{7}\)</span> 量级）——热跑得快、质走得慢。</li>
+</ol>
+<h2 id="142-非静止介质中的传质">14.2 非静止介质中的传质<a class="headerlink" href="#142-非静止介质中的传质" title="Permanent link">#</a></h2>
+<blockquote>
+<p>只关心静止介质问题的读者可以直接跳到 14.3 节——这是原书脚注明说的路线。</p>
+</blockquote>
+<h3 id="1421-绝对通量与扩散通量">14.2.1 绝对通量与扩散通量<a class="headerlink" href="#1421-绝对通量与扩散通量" title="Permanent link">#</a></h3>
+<p>扩散传质类比导热，扩散通量（式 14.12、14.13）类比傅里叶定律给出的热流密度。但传质有一个导热没有的纠缠：扩散本身就是分子从一个位置挪到另一个位置，这种分子尺度的运动在很多情形下会<strong>诱发整体流动</strong>。有整体运动就有平流。本节定义包含扩散与平流两部分贡献的<strong>绝对通量</strong>（absolute flux，又称总通量）。</p>
+<p>绝对质量（或摩尔）通量以固定坐标系为参照。对二元混合物 A+B，组分 A 的绝对质量通量 <span class="arithmatex">\(\mathbf{n}_A''\)</span> 与组分 A 的绝对速度 <span class="arithmatex">\(\mathbf{v}_A\)</span> 相联系：</p>
+<div class="arithmatex">\[
+\mathbf{n}_A'' \equiv \rho_A \mathbf{v}_A
+\tag{14.15}
+\]</div>
+<p><span class="arithmatex">\(\mathbf{v}_A\)</span> 解释为混合物中某点附近小体积元内所有 A 粒子的平均速度。同样对 B 有：</p>
+<div class="arithmatex">\[
+\mathbf{n}_B'' \equiv \rho_B \mathbf{v}_B
+\tag{14.16}
+\]</div>
+<p>混合物的<strong>质量平均速度</strong>（mass-average velocity）<span class="arithmatex">\(\mathbf{v}\)</span> 由总质量通量的要求定义：</p>
+<div class="arithmatex">\[
+\rho \mathbf{v} = \mathbf{n}'' = \mathbf{n}_A'' + \mathbf{n}_B'' = \rho_A \mathbf{v}_A + \rho_B \mathbf{v}_B
+\tag{14.17}
+\]</div>
+<div class="arithmatex">\[
+\mathbf{v} = m_A \mathbf{v}_A + m_B \mathbf{v}_B
+\tag{14.18}
+\]</div>
+<p>注意 <span class="arithmatex">\(\mathbf{v}_A\)</span>、<span class="arithmatex">\(\mathbf{v}_B\)</span>、<span class="arithmatex">\(\mathbf{v}\)</span> 与各通量都是<strong>绝对量</strong>——相对固定在空间的坐标轴定义。质量平均速度 <span class="arithmatex">\(\mathbf{v}\)</span> 有两个用处：乘上总质量密度就是相对固定轴的总质量通量；更重要的是，写质量、动量、能量守恒方程（第 6 章）用的正是它。</p>
+<p>组分 A 相对混合物质量平均速度的质量通量：</p>
+<div class="arithmatex">\[
+\mathbf{j}_A \equiv \rho_A (\mathbf{v}_A - \mathbf{v})
+\tag{14.19}
+\]</div>
+<p><span class="arithmatex">\(\mathbf{n}_A''\)</span> 是组分 A 的绝对通量，<span class="arithmatex">\(\mathbf{j}_A\)</span> 是组分的相对（扩散）通量——正是菲克定律式 (14.12) 给的那个量，代表组分相对混合物平均运动的运动。由式 (14.15)、(14.19) 立得通量分解：</p>
+<div class="arithmatex">\[
+\mathbf{n}_A'' = \mathbf{j}_A + \rho_A \mathbf{v}
+\tag{14.20}
+\]</div>
+<p>一句话：<strong>绝对通量 = 扩散贡献（A 相对混合物的运动）+ 平流贡献（A 随混合物整体一起走）</strong>。代入式 (14.12)、(14.17)：</p>
+<div class="arithmatex">\[
+\mathbf{n}_A'' = -\rho D_{AB} \nabla m_A + m_A (\mathbf{n}_A'' + \mathbf{n}_B'')
+\tag{14.21}
+\]</div>
+<p>式 (14.21) 右端第二项为零时，组分 A 纯靠扩散传质——与纯导热情形完全对应。哪些特殊场合会出现，后面 14.3 节见分晓。</p>
+<p>同样的账对 B 也算一遍。B 的扩散通量：</p>
+<div class="arithmatex">\[
+\mathbf{j}_B \equiv \rho_B (\mathbf{v}_B - \mathbf{v})
+\tag{14.22}
+\]</div>
+<div class="arithmatex">\[
+\mathbf{j}_B = -\rho D_{BA} \nabla m_B
+\tag{14.23}
+\]</div>
+<p>由式 (14.17)、(14.19)、(14.22) 可知，二元混合物中两个扩散通量互相抵消：</p>
+<div class="arithmatex">\[
+\mathbf{j}_A + \mathbf{j}_B = 0
+\tag{14.24}
+\]</div>
+<p>把式 (14.12)、(14.23) 代入式 (14.24)，并注意二元混合物 <span class="arithmatex">\(m_A + m_B = 1 \Rightarrow \nabla m_A = -\nabla m_B\)</span>，得：</p>
+<div class="arithmatex">\[
+D_{BA} = D_{AB}
+\tag{14.25}
+\]</div>
+<p>二元扩散系数不分方向——A 在 B 中的扩散系数等于 B 在 A 中的扩散系数。B 的绝对通量分解式：</p>
+<div class="arithmatex">\[
+\mathbf{n}_B'' = -\rho D_{AB} \nabla m_B + m_B (\mathbf{n}_A'' + \mathbf{n}_B'')
+\tag{14.26}
+\]</div>
+<p>以上都是质量口径，换成摩尔口径完全平行。绝对摩尔通量：</p>
+<div class="arithmatex">\[
+\mathbf{N}_A'' \equiv C_A \mathbf{v}_A, \qquad \mathbf{N}_B'' \equiv C_B \mathbf{v}_B
+\tag{14.27}
+\]</div>
+<p>混合物的<strong>摩尔平均速度</strong>（molar-average velocity）<span class="arithmatex">\(\mathbf{v}^*\)</span> 定义为：</p>
+<div class="arithmatex">\[
+\mathbf{N}'' = \mathbf{N}_A'' + \mathbf{N}_B'' = C \mathbf{v}^* = C_A \mathbf{v}_A + C_B \mathbf{v}_B
+\tag{14.28}
+\]</div>
+<div class="arithmatex">\[
+\mathbf{v}^* = x_A \mathbf{v}_A + x_B \mathbf{v}_B
+\tag{14.29}
+\]</div>
+<p>注意：<strong>摩尔平均速度不等于质量平均速度</strong>，所以它不能进第 6 章那套守恒方程。它的意义在于：乘上总摩尔浓度 <span class="arithmatex">\(C\)</span> 就得到相对固定坐标的总摩尔通量 <span class="arithmatex">\(\mathbf{N}''\)</span>。组分 A 相对摩尔平均速度的扩散摩尔通量为：</p>
+<div class="arithmatex">\[
+\mathbf{J}_A^* \equiv C_A (\mathbf{v}_A - \mathbf{v}^*)
+\tag{14.30}
+\]</div>
+<p>组合式 (14.27)、(14.30) 得摩尔口径的通量分解：</p>
+<div class="arithmatex">\[
+\mathbf{N}_A'' = \mathbf{J}_A^* + C_A \mathbf{v}^*
+\tag{14.31}
+\]</div>
+<p>再由式 (14.13)、(14.28)：</p>
+<div class="arithmatex">\[
+\mathbf{N}_A'' = -C D_{AB} \nabla x_A + x_A (\mathbf{N}_A'' + \mathbf{N}_B'')
+\tag{14.32}
+\]</div>
+<p>与式 (14.21) 平行：右端第二项为零时，传质纯靠扩散。二元混合物同样有扩散摩尔通量守恒：</p>
+<div class="arithmatex">\[
+\mathbf{J}_A^* + \mathbf{J}_B^* = 0
+\tag{14.33}
+\]</div>
+<p><strong>表 14-乙 两套口径的通量词汇对照</strong></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>质量口径</th>
+<th>摩尔口径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组分绝对通量</td>
+<td><span class="arithmatex">\(\mathbf{n}_A'' = \rho_A \mathbf{v}_A\)</span></td>
+<td><span class="arithmatex">\(\mathbf{N}_A'' = C_A \mathbf{v}_A\)</span></td>
+</tr>
+<tr>
+<td>总通量</td>
+<td><span class="arithmatex">\(\mathbf{n}'' = \rho \mathbf{v}\)</span></td>
+<td><span class="arithmatex">\(\mathbf{N}'' = C \mathbf{v}^*\)</span></td>
+</tr>
+<tr>
+<td>混合平均速度</td>
+<td><span class="arithmatex">\(\mathbf{v} = m_A \mathbf{v}_A + m_B \mathbf{v}_B\)</span></td>
+<td><span class="arithmatex">\(\mathbf{v}^* = x_A \mathbf{v}_A + x_B \mathbf{v}_B\)</span></td>
+</tr>
+<tr>
+<td>扩散通量</td>
+<td><span class="arithmatex">\(\mathbf{j}_A = \rho_A(\mathbf{v}_A - \mathbf{v})\)</span></td>
+<td><span class="arithmatex">\(\mathbf{J}_A^* = C_A(\mathbf{v}_A - \mathbf{v}^*)\)</span></td>
+</tr>
+<tr>
+<td>分解式</td>
+<td><span class="arithmatex">\(\mathbf{n}_A'' = \mathbf{j}_A + \rho_A \mathbf{v}\)</span></td>
+<td><span class="arithmatex">\(\mathbf{N}_A'' = \mathbf{J}_A^* + C_A \mathbf{v}^*\)</span></td>
+</tr>
+<tr>
+<td>二元互抵</td>
+<td><span class="arithmatex">\(\mathbf{j}_A + \mathbf{j}_B = 0\)</span></td>
+<td><span class="arithmatex">\(\mathbf{J}_A^* + \mathbf{J}_B^* = 0\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">拓展：为什么守恒方程只用质量平均速度</p>
+<p>第 6 章的守恒对象是质量、动量、能量这些"按千克计"的量，它们天然以质量平均速度搬运。摩尔平均速度 <span class="arithmatex">\(v^*\)</span> 按千摩尔加权，两套加权不一样（除非所有组分分子量相等），用 <span class="arithmatex">\(v^*\)</span> 写动量方程会把力项搞乱。本书后面凡是"混合物流动"一律用 <span class="arithmatex">\(\mathbf{v}\)</span>；<span class="arithmatex">\(\mathbf{v}^*\)</span> 只在摩尔通量分解式 (14.31)、(14.32) 里出现。记住配对：<span class="arithmatex">\(\mathbf{v}\)</span> 配 <span class="arithmatex">\(\rho\)</span> 与 <span class="arithmatex">\(\mathbf{n}''\)</span>，<span class="arithmatex">\(\mathbf{v}^*\)</span> 配 <span class="arithmatex">\(C\)</span> 与 <span class="arithmatex">\(\mathbf{N}''\)</span>，别串线。</p>
+</div>
+<h3 id="1422-立柱中的蒸发">14.2.2 立柱中的蒸发<a class="headerlink" href="#1422-立柱中的蒸发" title="Permanent link">#</a></h3>
+<p>现在看一个能把平流项逼出来的经典场景（图 14.2）。竖管底部有液体 A，管内是二元气体混合物 A+B，管顶（<span class="arithmatex">\(x = L\)</span>）维持固定的组分浓度 <span class="arithmatex">\(C_{A,L}\)</span>、<span class="arithmatex">\(C_{B,L}\)</span>，系统恒温恒压。液–气界面（<span class="arithmatex">\(x = 0\)</span>）上气液两相平衡，蒸气浓度对应饱和状态。由于 <span class="arithmatex">\(C_{A,0} &gt; C_{A,L}\)</span>，A 从液面蒸发、向上扩散。</p>
+<figure>
+  <img src="../images/ch14/fig-14-2.png" class="lq-img" />
+  <figcaption>图 14.2 液体 A 向二元气体混合物 A+B 蒸发：立柱与摩尔分数分布（截自原书）</figcaption>
+</figure>
+
+<p>稳态、一维、无化学反应时，A 不能在控制体内积累，其绝对摩尔通量沿立柱不变：</p>
+<div class="arithmatex">\[
+\frac{d N_{A,x}''}{dx} = 0
+\tag{14.34}
+\]</div>
+<p>由 <span class="arithmatex">\(C = C_A + C_B\)</span> 知全柱 <span class="arithmatex">\(x_A + x_B = 1\)</span>。<span class="arithmatex">\(C_{A,0} &gt; C_{A,L}\)</span> 给出 <span class="arithmatex">\(x_{A,0} &gt; x_{A,L}\)</span>、<span class="arithmatex">\(x_{B,0} &lt; x_{B,L}\)</span>，所以 <span class="arithmatex">\(dx_B/dx &gt; 0\)</span>：气体 B 在向下扩散（从管顶向液面）。可是 B 不能溶进液体 A——稳态要维持，必须处处 <span class="arithmatex">\(N_{B,x}'' = 0\)</span>。向下扩散的 B 唯一的出路：<strong>被向上的平流精确抵消</strong>。</p>
+<p>这个结论很重要：要正确预测摩尔分数分布 <span class="arithmatex">\(x_A(x)\)</span>、<span class="arithmatex">\(x_B(x)\)</span>、浓度分布 <span class="arithmatex">\(C_A(x) = x_A(x)C\)</span>、<span class="arithmatex">\(C_B(x) = x_B(x)C\)</span> 以及液体 A 的蒸发速率，<strong>必须把立柱中气体的平流算进去</strong>。把 <span class="arithmatex">\(N_{B,x}'' = 0\)</span> 代入式 (14.32)：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = -C D_{AB} \frac{d x_A}{dx} + x_A N_{A,x}''
+\tag{14.35}
+\]</div>
+<p>或者由式 (14.28) 写成：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = -C D_{AB} \frac{d x_A}{dx} + C_A v_x^*
+\tag{14.36}
+\]</div>
+<p>式 (14.36) 说明：A 的扩散输运 <span class="arithmatex">\([-CD_{AB}(dx_A/dx)]\)</span> 被<strong>整体运动 <span class="arithmatex">\(C_A v_x^*\)</span> 加强</strong>了。整理式 (14.35)：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = -\frac{C D_{AB}}{1 - x_A}\,\frac{d x_A}{dx}
+\tag{14.37}
+\]</div>
+<p>恒温恒压下 <span class="arithmatex">\(C\)</span>、<span class="arithmatex">\(D_{AB}\)</span> 都是常数。把式 (14.37) 代入式 (14.34)：</p>
+<div class="arithmatex">\[
+\frac{d}{dx}\left(\frac{1}{1 - x_A}\,\frac{d x_A}{dx}\right) = 0
+\]</div>
+<p>积分两次：</p>
+<div class="arithmatex">\[
+-\ln(1 - x_A) = C_1 x + C_2
+\]</div>
+<p>用 <span class="arithmatex">\(x_A(0) = x_{A,0}\)</span>、<span class="arithmatex">\(x_A(L) = x_{A,L}\)</span> 定出积分常数，摩尔分数分布为<strong>指数形</strong>：</p>
+<div class="arithmatex">\[
+\frac{1 - x_A}{1 - x_{A,0}} = \left(\frac{1 - x_{A,L}}{1 - x_{A,0}}\right)^{x/L}
+\tag{14.38}
+\]</div>
+<p>由 <span class="arithmatex">\(1 - x_A = x_B\)</span>，B 的分布：</p>
+<div class="arithmatex">\[
+\frac{x_B}{x_{B,0}} = \left(\frac{x_{B,L}}{x_{B,0}}\right)^{x/L}
+\tag{14.39}
+\]</div>
+<p>求蒸发速率：先用式 (14.38) 算出梯度 <span class="arithmatex">\(dx_A/dx\)</span>，代回式 (14.37)：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = \frac{C D_{AB}}{L}\,\ln\!\left(\frac{1 - x_{A,L}}{1 - x_{A,0}}\right)
+\tag{14.40}
+\]</div>
+<p>这就是立柱蒸发的速率方程——记住它的用法（例 14.2），也记住它背后"扩散 + 平流"的结构。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：这道题在别的书里叫什么</p>
+<p>图 14.2 的场景就是经典的<strong>斯特芬问题</strong>（Stefan problem）：一种组分通过静止（不扩散）的另一组分扩散，诱发的整体流动叫<strong>斯蒂芬流</strong>（Stefan flow）。传质教材（如杨世铭、陶文铨《传热学》传质章）还常把它与<strong>等摩尔逆向扩散</strong>（equimolar counterdiffusion，<span class="arithmatex">\(N_A'' = -N_B''\)</span>，多见于精馏）并排出：等摩尔逆扩散里两组分通量大小相等、方向相反，混合物总摩尔通量为零、没有净平流，浓度分布是<strong>线性</strong>的；而本节的单向扩散（<span class="arithmatex">\(N_B'' = 0\)</span>）浓度分布是<strong>指数形</strong>（式 14.38），且扩散被平流加强，同一浓度差下蒸发速率更大。两道题用的是同一套菲克定律，区别只在 <span class="arithmatex">\(N_B''\)</span> 取零还是取负。</p>
+</div>
+<p><strong>【例 14.2】防水织物微孔中的水蒸气透过</strong></p>
+<p><strong>已知（Known）</strong>：防水织物由不透水的聚合物材料制成。为了让水蒸气透过，其微结构中布满贯穿厚度的开孔，孔径 <span class="arithmatex">\(D = 10\ \mu\mathrm{m}\)</span>，板厚 <span class="arithmatex">\(L = 100\ \mu\mathrm{m}\)</span>。小孔径挡住了液态水。板顶面有饱和水，底面是相对湿度 <span class="arithmatex">\(\phi_\infty = 50\%\)</span> 的湿空气。求 <span class="arithmatex">\(T = 298\ \mathrm{K}\)</span>、<span class="arithmatex">\(p = 1\ \mathrm{atm}\)</span> 下单个微孔的水蒸气传递速率；考察对温度的敏感性；并与"忽略混合物摩尔平均运动"的预测对比。</p>
+<p><strong>求（Find）</strong>：单个微孔的蒸发（透过）速率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-2.png" class="lq-img" />
+  <figcaption>例 14.2 示意图：防水织物微孔中的水蒸气扩散（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态、等温、一维条件；2. 无化学反应；3. 孔垂直贯穿板厚、截面为圆形；4. 体系为水蒸气（A）与空气（B）构成的二元系统。</p>
+<p><strong>物性（Properties）</strong>：表 A.6，饱和水蒸气（298 K）：<span class="arithmatex">\(p_{A,\mathrm{sat}} = 0.03165\ \mathrm{bar}\)</span>。表 A.8，水蒸气–空气（298 K）：<span class="arithmatex">\(D_{AB} = 0.26 \times 10^{-4}\ \mathrm{m^2/s}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>计及摩尔平均速度非零的影响，用式 (14.40)。单个微孔的传递速率：</li>
+</ol>
+<div class="arithmatex">\[
+N_{A,x} = A_{\mathrm{pore}} N_{A,x}'' = \frac{\pi D^2 C D_{AB}}{4L}\,\ln\!\left(\frac{1 - x_{A,L}}{1 - x_{A,0}}\right)
+\tag{1}
+\]</div>
+<p>总摩尔浓度按理想气体算：</p>
+<div class="arithmatex">\[
+C = \frac{p}{\mathcal{R} T} = \frac{1.0133\ \mathrm{bar}}{8.314 \times 10^{-2}\ \dfrac{\mathrm{m^3 \cdot bar}}{\mathrm{kmol \cdot K}} \times 298\ \mathrm{K}} = 40.9 \times 10^{-3}\ \mathrm{kmol/m^3}
+\]</div>
+<p>按 6.7.2 节的界面平衡（饱和态），<span class="arithmatex">\(x = 0\)</span> 处（顶面，饱和）：</p>
+<div class="arithmatex">\[
+x_{A,0} = \frac{p_{A,\mathrm{sat}}}{p} = \frac{0.03165\ \mathrm{bar}}{1.0133\ \mathrm{bar}} = 31.23 \times 10^{-3}
+\]</div>
+<p><span class="arithmatex">\(x = L\)</span> 处（底面，50% 相对湿度）：</p>
+<div class="arithmatex">\[
+x_{A,L} = \frac{\phi_\infty p_{A,\mathrm{sat}}}{p} = \frac{0.5 \times 0.03165\ \mathrm{bar}}{1.0133\ \mathrm{bar}} = 15.62 \times 10^{-3}
+\]</div>
+<p>代入式 (1)：</p>
+<div class="arithmatex">\[
+N_{A,x} = \frac{\pi \times (10 \times 10^{-6}\ \mathrm{m})^2 \times 40.9 \times 10^{-3}\ \mathrm{kmol/m^3} \times 0.26 \times 10^{-4}\ \mathrm{m^2/s}}{4 \times 100 \times 10^{-6}\ \mathrm{m}} \times \ln\!\left(\frac{1 - 15.62 \times 10^{-3}}{1 - 31.23 \times 10^{-3}}\right) = 13.4 \times 10^{-15}\ \mathrm{kmol/s}
+\]</div>
+<ol>
+<li>忽略摩尔平均速度的影响时，式 (14.32) 退化为 <span class="arithmatex">\(N_{A,x}'' = -C D_{AB}\,dx_A/dx\)</span>（<span class="arithmatex">\(C\)</span> 为常数、通量与 <span class="arithmatex">\(x\)</span> 无关），单孔速率：</li>
+</ol>
+<div class="arithmatex">\[
+N_{A,x} = \frac{\pi D^2 C D_{AB}}{4L}\,(x_{A,0} - x_{A,L}) = 13.0 \times 10^{-15}\ \mathrm{kmol/s}
+\]</div>
+<p>计及平流的速率略高。</p>
+<ol>
+<li>温度敏感性：质扩散率按式 (14.14) 随 <span class="arithmatex">\(D_{AB} \sim T^{3/2}\)</span> 变化，在 <span class="arithmatex">\(300 &lt; T &lt; 360\ \mathrm{K}\)</span> 范围重算，结果见图。蒸发速率对温度依赖显著——主要来源是水蒸气饱和压强 <span class="arithmatex">\(p_{A,\mathrm{sat}}\)</span> 随温度的剧烈变化（查表 A.6 可见）。</li>
+</ol>
+<figure>
+  <img src="../images/ch14/ex-14-2-graph.png" class="lq-img" />
+  <figcaption>例 14.2 单孔蒸发速率随温度的变化：实线计及平流，虚线不计（截自原书）</figcaption>
+</figure>
+
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>整块包装材料的总蒸发速率 = 单位面积孔数 × 单孔蒸发速率。</li>
+<li>推导中假设了压强恒定。摩尔平均速度非零，就必须有压强梯度克服孔壁摩擦（孔竖放还有静压差）。摩擦压降可以这样估：先由式 (14.17) 求质量平均速度 <span class="arithmatex">\(v_x = (n_{A,x}'' + n_{B,x}'')/\rho = n_{A,x}''/\rho = N_{A,x}''\mathcal{M}_A/\rho = N_{A,x}\mathcal{M}_A/(A_{\mathrm{pore}}\rho)\)</span>，再按圆管充分发展流动（式 8.14）：</li>
+</ol>
+<div class="arithmatex">\[
+\left|\frac{dp}{dx}\right| = \frac{32 \mu v_x}{D^2} = \frac{32 \nu N_{A,x} \mathcal{M}_A}{A_{\mathrm{pore}} D^2}
+\]</div>
+<p>混合物绝大部分是空气，运动黏度取空气的。取最不利的 <span class="arithmatex">\(T = 360\ \mathrm{K}\)</span>（此时 <span class="arithmatex">\(N_{A,x} = 530 \times 10^{-15}\ \mathrm{kmol/s}\)</span>）：</p>
+<div class="arithmatex">\[
+\left|\frac{dp}{dx}\right| = \frac{32 \times 22.0 \times 10^{-6}\ \mathrm{m^2/s} \times 530 \times 10^{-15}\ \mathrm{kmol/s} \times 18\ \mathrm{kg/kmol}}{\pi (10 \times 10^{-6}\ \mathrm{m})^4/4} = 860 \times 10^{3}\ \mathrm{Pa/m}
+\]</div>
+<p>摩擦压降 <span class="arithmatex">\(\Delta p_{\mathrm{friction}} = 860 \times 10^{3}\ \mathrm{Pa/m} \times 100 \times 10^{-6}\ \mathrm{m} = 86\ \mathrm{Pa}\)</span>；孔竖放时静压差 <span class="arithmatex">\(\Delta p_{\mathrm{static}} = \rho_{\mathrm{air}} g L = 0.970\ \mathrm{kg/m^3} \times 9.8\ \mathrm{m/s^2} \times 100 \times 10^{-6}\ \mathrm{m} = 0.001\ \mathrm{Pa}\)</span>。两者相对大气压都可忽略——恒压假设成立。</p>
+<ol>
+<li>温度升高 → 饱和压强与水蒸气摩尔分数升高 → 摩尔平均速度变大 → 平流效应显著。反过来，水蒸气浓度小时可以忽略摩尔平均速度。"<span class="arithmatex">\(N_{B,x}'' = 0\)</span> 且 <span class="arithmatex">\(x_A \ll 1\)</span>"这两个条件合起来叫<strong>静止介质近似</strong>（stationary medium approximation）——下一节的主角。</li>
+</ol>
+<h2 id="143-静止介质近似">14.3 静止介质近似<a class="headerlink" href="#143-静止介质近似" title="Permanent link">#</a></h2>
+<p>14.1.3 节的菲克定律给出扩散通量；14.2 节看到分子运动本身会诱发整体流动，绝对（总）通量（式 14.21 或 14.32）= 扩散分量 + 平流分量。本节圈定一个可以忽略平流贡献的适用场景。</p>
+<p>当少量组分 A 在静止的组分 B 中扩散时，传质相关的分子运动不足以诱发主体介质的显著整体运动。典型情形：稀薄气体或液体在静止液体或固体主体介质中的扩散——比如水蒸气穿过房间的固体墙壁。这时介质可视为<strong>静止</strong>，平流可以忽略。适用静止介质近似的场合：</p>
+<div class="arithmatex">\[
+n_A'' = j_A = -\rho D_{AB} \nabla m_A
+\tag{14.41}
+\]</div>
+<div class="arithmatex">\[
+N_A'' = J_A^* = -C D_{AB} \nabla x_A
+\tag{14.42}
+\]</div>
+<p>而且 A 浓度小，总密度 <span class="arithmatex">\(\rho\)</span>（或总浓度 <span class="arithmatex">\(C\)</span>）近似就是主体介质 B 的值。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：静止介质近似的确切条件</p>
+<p>原书脚注把它说全了：主体介质 B 静止（<span class="arithmatex">\(n_B'' = 0\)</span>、<span class="arithmatex">\(N_B'' = 0\)</span>），且组分 A 稀疏（<span class="arithmatex">\(m_A \ll 1\)</span>、<span class="arithmatex">\(x_A \ll 1\)</span>）。两条缺一不可——上一节的蒸发立柱里 B 同样静止（<span class="arithmatex">\(N_{B,x}'' = 0\)</span>），但 A 不是稀组分（水蒸气摩尔分数随温度升上去），平流项照样不可忽略。对照式 (14.21)、(14.32)：只有 <span class="arithmatex">\(m_A n''\)</span>、<span class="arithmatex">\(x_A N''\)</span> 这两项足够小，绝对通量才退化成纯扩散通量。</p>
+</div>
+<p>最重要的结论：静止介质近似让我们能把第 2～5 章的导热结果通过"导热 ↔ 扩散传质"类比整体搬过来。本章余下部分全部限定在这个近似内。</p>
+<h2 id="144-静止介质中的组分守恒">14.4 静止介质中的组分守恒<a class="headerlink" href="#144-静止介质中的组分守恒" title="Permanent link">#</a></h2>
+<p>能量守恒（第一定律）是传热分析的主线；组分守恒（conservation of species）在传质分析里扮演同样的角色。</p>
+<h3 id="1441-控制体上的组分守恒">14.4.1 控制体上的组分守恒<a class="headerlink" href="#1441-控制体上的组分守恒" title="Permanent link">#</a></h3>
+<p>对图 14.3 的控制体，仿照能量守恒式 (1.12c) 写组分质量守恒：任一组分 A 可因流体运动和扩散跨越控制表面进出（表面现象 <span class="arithmatex">\(\dot{M}_{A,\mathrm{in}}\)</span>、<span class="arithmatex">\(\dot{M}_{A,\mathrm{out}}\)</span>），也可在体内生成（化学反应 <span class="arithmatex">\(\dot{M}_{A,\mathrm{g}}\)</span>）、积累储存（<span class="arithmatex">\(\dot{M}_{A,\mathrm{st}}\)</span>）。速率形式：</p>
+<figure>
+  <img src="../images/ch14/fig-14-3.png" class="lq-img" />
+  <figcaption>图 14.3 控制体上的组分守恒（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+\dot{M}_{A,\mathrm{in}} + \dot{M}_{A,\mathrm{g}} - \dot{M}_{A,\mathrm{out}} = \frac{d M_A}{dt} \equiv \dot{M}_{A,\mathrm{st}}
+\tag{14.43}
+\]</div>
+<p>文字版：某组分进入控制体的速率，加上体内生成的速率，减去离开的速率，等于体内该组分储存质量的增长速率。生成项来自化学反应——例如分解反应 <span class="arithmatex">\(\mathrm{AB} \to \mathrm{A} + \mathrm{B}\)</span> 会净生成 A 和 B、净消耗 AB。</p>
+<h3 id="1442-质扩散方程">14.4.2 质扩散方程<a class="headerlink" href="#1442-质扩散方程" title="Permanent link">#</a></h3>
+<p>现在导出与第 2 章热方程类比的质量（组分）扩散方程。介质是 A+B 二元混合物，静止介质近似成立（平流可忽略、只按扩散处理）。解出浓度分布后，配菲克定律就能求介质内任意点的组分扩散速率。</p>
+<p>设 <span class="arithmatex">\(x\)</span>、<span class="arithmatex">\(y\)</span>、<span class="arithmatex">\(z\)</span> 三个方向都可能有浓度梯度，在介质内取微分控制体 <span class="arithmatex">\(dx\,dy\,dz\)</span>（图 14.4）。浓度梯度驱动 A 穿过各控制面输运；相对静止坐标，相对两表面的输运速率由泰勒展开联系：</p>
+<figure>
+  <img src="../images/ch14/fig-14-4.png" class="lq-img" />
+  <figcaption>图 14.4 笛卡尔坐标下组分扩散分析的微分控制体 dx dy dz（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+n_{A,x+dx}''\,dy\,dz = n_{A,x}''\,dy\,dz + \frac{\partial [n_{A,x}''\,dy\,dz]}{\partial x}\,dx
+\tag{14.44a}
+\]</div>
+<div class="arithmatex">\[
+n_{A,y+dy}''\,dx\,dz = n_{A,y}''\,dx\,dz + \frac{\partial [n_{A,y}''\,dx\,dz]}{\partial y}\,dy
+\tag{14.44b}
+\]</div>
+<div class="arithmatex">\[
+n_{A,z+dz}''\,dx\,dy = n_{A,z}''\,dx\,dy + \frac{\partial [n_{A,z}''\,dx\,dy]}{\partial z}\,dz
+\tag{14.44c}
+\]</div>
+<p>介质内可以有<strong>体积性的（均匀的，homogeneous）化学反应</strong>，而且可以不均匀。反应使 A 的体积生成率为 <span class="arithmatex">\(\dot{n}_A\)</span>（kg/(s·m³)，每立方米混合物中 A 质量的增长速率）：</p>
+<div class="arithmatex">\[
+\dot{M}_{A,\mathrm{g}} = \dot{n}_A\,dx\,dy\,dz
+\tag{14.45}
+\]</div>
+<p>储存质量的变化率：</p>
+<div class="arithmatex">\[
+\dot{M}_{A,\mathrm{st}} = \frac{\partial \rho_A}{\partial t}\,dx\,dy\,dz
+\tag{14.46}
+\]</div>
+<p>把流入（<span class="arithmatex">\(n_{A,x}''\)</span>、<span class="arithmatex">\(n_{A,y}''\)</span>、<span class="arithmatex">\(n_{A,z}''\)</span>）与流出（式 14.44）代入式 (14.43)：</p>
+<div class="arithmatex">\[
+-\frac{\partial n_A''}{\partial x} - \frac{\partial n_A''}{\partial y} - \frac{\partial n_A''}{\partial z} + \dot{n}_A = \frac{\partial \rho_A}{\partial t}
+\]</div>
+<p>再代入式 (14.41) 的 <span class="arithmatex">\(x\)</span>、<span class="arithmatex">\(y\)</span>、<span class="arithmatex">\(z\)</span> 分量：</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x}\!\left(\rho D_{AB}\,\frac{\partial m_A}{\partial x}\right) + \frac{\partial}{\partial y}\!\left(\rho D_{AB}\,\frac{\partial m_A}{\partial y}\right) + \frac{\partial}{\partial z}\!\left(\rho D_{AB}\,\frac{\partial m_A}{\partial z}\right) + \dot{n}_A = \frac{\partial \rho_A}{\partial t}
+\tag{14.47a}
+\]</div>
+<p>摩尔口径同样推一遍：</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial x}\right) + \frac{\partial}{\partial y}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial y}\right) + \frac{\partial}{\partial z}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial z}\right) + \dot{N}_A = \frac{\partial C_A}{\partial t}
+\tag{14.48a}
+\]</div>
+<p>后面都用简化版。若 <span class="arithmatex">\(D_{AB}\)</span> 与 <span class="arithmatex">\(\rho\)</span> 为常数，式 (14.47a) 变成：</p>
+<div class="arithmatex">\[
+\frac{\partial^2 \rho_A}{\partial x^2} + \frac{\partial^2 \rho_A}{\partial y^2} + \frac{\partial^2 \rho_A}{\partial z^2} + \frac{\dot{n}_A}{D_{AB}} = \frac{1}{D_{AB}}\,\frac{\partial \rho_A}{\partial t}
+\tag{14.47b}
+\]</div>
+<p>若 <span class="arithmatex">\(D_{AB}\)</span> 与 <span class="arithmatex">\(C\)</span> 为常数，式 (14.48a) 变成：</p>
+<div class="arithmatex">\[
+\frac{\partial^2 C_A}{\partial x^2} + \frac{\partial^2 C_A}{\partial y^2} + \frac{\partial^2 C_A}{\partial z^2} + \frac{\dot{N}_A}{D_{AB}} = \frac{1}{D_{AB}}\,\frac{\partial C_A}{\partial t}
+\tag{14.48b}
+\]</div>
+<p>式 (14.47b)、(14.48b) 与热方程（式 2.21）逐项对应：和热方程一样，每个坐标方向要两个边界条件；瞬态问题还要初始条件。<strong>边界与初始条件对应时，式 (14.47b) 的解 <span class="arithmatex">\(\rho_A(x,y,z,t)\)</span>（或式 14.48b 的 <span class="arithmatex">\(C_A(x,y,z,t)\)</span>）与式 (2.21) 的解 <span class="arithmatex">\(T(x,y,z,t)\)</span> 同型</strong>——这就是"把第 2～5 章整体搬过来"的合法性来源。</p>
+<p>柱坐标与球坐标形式可从热方程的对应式 (2.26)、(2.29) 平移过来，摩尔口径为：</p>
+<p>柱坐标：</p>
+<div class="arithmatex">\[
+\frac{1}{r}\,\frac{\partial}{\partial r}\!\left(C D_{AB} r\,\frac{\partial x_A}{\partial r}\right) + \frac{1}{r^2}\,\frac{\partial}{\partial \phi}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial \phi}\right) + \frac{\partial}{\partial z}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial z}\right) + \dot{N}_A = \frac{\partial C_A}{\partial t}
+\tag{14.49}
+\]</div>
+<p>球坐标：</p>
+<div class="arithmatex">\[
+\frac{1}{r^2}\,\frac{\partial}{\partial r}\!\left(C D_{AB} r^2\,\frac{\partial x_A}{\partial r}\right) + \frac{1}{r^2 \sin^2 \theta}\,\frac{\partial}{\partial \phi}\!\left(C D_{AB}\,\frac{\partial x_A}{\partial \phi}\right) + \frac{1}{r^2 \sin \theta}\,\frac{\partial}{\partial \theta}\!\left(C D_{AB} \sin \theta\,\frac{\partial x_A}{\partial \theta}\right) + \dot{N}_A = \frac{\partial C_A}{\partial t}
+\tag{14.50}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：热-质类比词典（本章全程有效）</p>
+<p>静止介质近似下，两套方程的字典是：温度 <span class="arithmatex">\(T\)</span> ↔ 组分摩尔浓度 <span class="arithmatex">\(C_A\)</span>（或质量口径的 <span class="arithmatex">\(\rho_A\)</span>）；导热系数 <span class="arithmatex">\(k\)</span> ↔ <span class="arithmatex">\(D_{AB}\)</span>（摩尔浓度差做驱动势时，通量 <span class="arithmatex">\(N'' = -D_{AB}\nabla C_A\)</span>）；热扩散率 <span class="arithmatex">\(\alpha\)</span> ↔ 质扩散率 <span class="arithmatex">\(D_{AB}\)</span>（瞬态方程里 <span class="arithmatex">\(1/\alpha \leftrightarrow 1/D_{AB}\)</span>）；体积热生成 <span class="arithmatex">\(\dot{q}\)</span> ↔ 体积组分生成 <span class="arithmatex">\(\dot{N}_A\)</span>；恒壁温 ↔ 恒表面浓度；绝热（零热流）↔ 不渗透（零组分通量）；对流换热边界 ↔ 对流传质边界。对照表见 14.7 节表 14.2（瞬态版）。抓牢这张表，第 2～5 章的所有解法在传质里全部复用。</p>
+</div>
+<h3 id="1443-给定表面浓度的静止介质">14.4.3 给定表面浓度的静止介质<a class="headerlink" href="#1443-给定表面浓度的静止介质" title="Permanent link">#</a></h3>
+<p>最典型的场景：组分 A 在 A+B 平板介质中一维扩散（图 14.5）。稳态、无均匀化学反应时，式 (14.48a) 退化为：</p>
+<figure>
+  <img src="../images/ch14/fig-14-5.png" class="lq-img" />
+  <figcaption>图 14.5 静止平壁介质中的传质（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+\frac{d}{dx}\!\left(C D_{AB}\,\frac{d x_A}{dx}\right) = 0
+\tag{14.51}
+\]</div>
+<p>（<span class="arithmatex">\(\dot{N}_A = \dot{n}_A = 0\)</span>。）设总摩尔浓度与扩散系数为常数，对图 14.5 的边界条件 <span class="arithmatex">\(x_{A,s1}\)</span>、<span class="arithmatex">\(x_{A,s2}\)</span> 求解：</p>
+<div class="arithmatex">\[
+x_A(x) = (x_{A,s2} - x_{A,s1})\,\frac{x}{L} + x_{A,s1}
+\tag{14.52}
+\]</div>
+<p>线性分布，和平壁导热的温度分布同款。由式 (14.42)：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = -C D_{AB}\,\frac{x_{A,s2} - x_{A,s1}}{L}
+\tag{14.53}
+\]</div>
+<p>乘面积 <span class="arithmatex">\(A\)</span>、代入 <span class="arithmatex">\(x_A = C_A/C\)</span>，摩尔传递速率：</p>
+<div class="arithmatex">\[
+N_{A,x} = \frac{D_{AB} A}{L}\,(C_{A,s1} - C_{A,s2})
+\tag{14.54}
+\]</div>
+<p>由此定义平壁介质中的<strong>组分扩散阻力</strong>（species diffusion resistance）：</p>
+<div class="arithmatex">\[
+R_{m,\mathrm{dif}} = \frac{C_{A,s1} - C_{A,s2}}{N_{A,x}} = \frac{L}{D_{AB} A}
+\tag{14.55}
+\]</div>
+<p>和 3.1 节无内热源平壁一维稳态导热的结果放在一起，类比一目了然：<span class="arithmatex">\(k \leftrightarrow D_{AB}\)</span>、<span class="arithmatex">\(\Delta T \leftrightarrow \Delta C_A\)</span>。</p>
+<p>类比延伸到圆柱与球。一维稳态、无反应时，式 (14.49)、(14.50) 分别退化为：</p>
+<div class="arithmatex">\[
+\frac{d}{dr}\!\left(r\,C D_{AB}\,\frac{d x_A}{dr}\right) = 0
+\tag{14.56}
+\]</div>
+<div class="arithmatex">\[
+\frac{d}{dr}\!\left(r^2\,C D_{AB}\,\frac{d x_A}{dr}\right) = 0
+\tag{14.57}
+\]</div>
+<p>三式 (14.51)、(14.56)、(14.57) 都意味着摩尔传递速率 <span class="arithmatex">\(N_{A,r}\)</span>（或 <span class="arithmatex">\(N_{A,x}\)</span>）沿传递方向不变。<span class="arithmatex">\(C\)</span>、<span class="arithmatex">\(D_{AB}\)</span> 为常数时，给定表面浓度下的通解与扩散阻列在<strong>表 14.1</strong>。</p>
+<p><strong>表 14.1 静止介质、给定表面浓度的组分扩散解汇总</strong>（设 <span class="arithmatex">\(C\)</span>、<span class="arithmatex">\(D_{AB}\)</span> 为常数；<span class="arithmatex">\(N_{A,x}\)</span> 或 <span class="arithmatex">\(N_{A,r} = (C_{A,s1} - C_{A,s2})/R_{m,\mathrm{dif}} = C(x_{A,s1} - x_{A,s2})/R_{m,\mathrm{dif}}\)</span>）</p>
+<table>
+<thead>
+<tr>
+<th>几何</th>
+<th>摩尔分数分布 <span class="arithmatex">\(x_A(x)\)</span> 或 <span class="arithmatex">\(x_A(r)\)</span></th>
+<th>扩散阻 <span class="arithmatex">\(R_{m,\mathrm{dif}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平壁（厚 <span class="arithmatex">\(L\)</span>，面积 <span class="arithmatex">\(A\)</span>）</td>
+<td><span class="arithmatex">\((x_{A,s2} - x_{A,s1})\,x/L + x_{A,s1}\)</span></td>
+<td><span class="arithmatex">\(L/(D_{AB} A)\)</span></td>
+</tr>
+<tr>
+<td>圆筒壁（内半径 <span class="arithmatex">\(r_1\)</span>，外半径 <span class="arithmatex">\(r_2\)</span>，长 <span class="arithmatex">\(L\)</span>）</td>
+<td><span class="arithmatex">\(\dfrac{x_{A,s1} - x_{A,s2}}{\ln (r_1/r_2)}\,\ln\!\left(\dfrac{r}{r_2}\right) + x_{A,s2}\)</span></td>
+<td><span class="arithmatex">\(\dfrac{\ln (r_2/r_1)}{2 \pi L D_{AB}}\)</span></td>
+</tr>
+<tr>
+<td>球壁（内半径 <span class="arithmatex">\(r_1\)</span>，外半径 <span class="arithmatex">\(r_2\)</span>）</td>
+<td><span class="arithmatex">\(\dfrac{x_{A,s1} - x_{A,s2}}{1/r_1 - 1/r_2}\left(\dfrac{1}{r} - \dfrac{1}{r_2}\right) + x_{A,s2}\)</span></td>
+<td><span class="arithmatex">\(\dfrac{1}{4 \pi D_{AB}}\left(\dfrac{1}{r_1} - \dfrac{1}{r_2}\right)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>注意一个要紧的限制：组分扩散阻虽然与导热阻完全类比，但<strong>跨多种材料串联扩散阻一般不合法</strong>——第 3 章导热阻串联的前提（界面温度连续）在传质里被破坏了：不同材料的界面两侧组分浓度不连续（14.5 节展开）。</p>
+<p><strong>【例 14.3】药片泡罩包装的水蒸气渗入</strong></p>
+<p><strong>已知（Known）</strong>：药品长期暴露于高温、光照、高湿会失效。对潮湿敏感的药片/胶囊（比如放在浴室药品柜里），用泡罩包装（blister packaging）把药片与湿气的直接接触隔到最后服用前。包装由平板覆盖膜（lidding sheet）与带药槽的成形膜（formed sheet）组成。成形膜为聚合物材料，厚 <span class="arithmatex">\(L = 50\ \mu\mathrm{m}\)</span>；每个药槽直径 <span class="arithmatex">\(D = 5\ \mathrm{mm}\)</span>、深 <span class="arithmatex">\(h = 3\ \mathrm{mm}\)</span>。覆盖膜是铝箔。水蒸气在聚合物中的二元扩散系数 <span class="arithmatex">\(D_{AB} = 6 \times 10^{-14}\ \mathrm{m^2/s}\)</span>；铝对水蒸气完全不透。聚合物内、外表面处水蒸气的摩尔浓度分别为 <span class="arithmatex">\(C_{A,s1} = 4.5 \times 10^{-3}\ \mathrm{kmol/m^3}\)</span>（外侧）与 <span class="arithmatex">\(C_{A,s2} = 0.5 \times 10^{-3}\ \mathrm{kmol/m^3}\)</span>（内侧）。求经槽壁传到药片的水蒸气速率。</p>
+<p><strong>求（Find）</strong>：穿过槽壁的水蒸气摩尔扩散速率。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-3.png" class="lq-img" />
+  <figcaption>例 14.3 示意图：泡罩包装与 A–A 剖面（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态、一维条件；2. 静止介质；3. 无化学反应；4. 聚合物膜相对槽尺寸很薄，扩散按平壁处理。</p>
+<p><strong>分析（Analysis）</strong>：总传递速率 = 圆筒形槽壁部分 + 底部圆形端面部分。由式 (14.54)：</p>
+<div class="arithmatex">\[
+N_{A,x} = \frac{D_{AB} A}{L}\,(C_{A,s1} - C_{A,s2}) = \frac{D_{AB}}{L}\left(\frac{\pi D^2}{4} + \pi D h\right)(C_{A,s1} - C_{A,s2})
+\]</div>
+<p>代入数值：</p>
+<div class="arithmatex">\[
+N_{A,x} = \frac{6 \times 10^{-14}\ \mathrm{m^2/s}}{50 \times 10^{-6}\ \mathrm{m}} \times \left[\frac{\pi (5 \times 10^{-3}\ \mathrm{m})^2}{4} + \pi (5 \times 10^{-3}\ \mathrm{m})(3 \times 10^{-3}\ \mathrm{m})\right] \times (4.5 \times 10^{-3} - 0.5 \times 10^{-3})\ \mathrm{kmol/m^3}
+\]</div>
+<div class="arithmatex">\[
+N_{A,x} = 0.32 \times 10^{-15}\ \mathrm{kmol/s}
+\]</div>
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>质量口径的水蒸气扩散速率 <span class="arithmatex">\(n_{A,x} = \mathcal{M}_A N_{A,x} = 18\ \mathrm{kg/kmol} \times 0.32 \times 10^{-15}\ \mathrm{kmol/s} = 5.8 \times 10^{-15}\ \mathrm{kg/s}\)</span>。</li>
+<li>药品保质期与水蒸气渗入速率成反比。加厚膜能延长保质期但推高成本。泡罩包装选材要在保质期、成本、成形性、可回收性之间权衡。</li>
+</ol>
+<h2 id="145-边界条件与界面处的浓度不连续">14.5 边界条件与界面处的浓度不连续<a class="headerlink" href="#145-边界条件与界面处的浓度不连续" title="Permanent link">#</a></h2>
+<p>上一节的传递阻靠"恒定表面浓度"边界条件建立。表面 <span class="arithmatex">\(x = 0\)</span> 处的恒定表面组分浓度条件写作：</p>
+<div class="arithmatex">\[
+C_A(0, t) = C_{A,s}
+\tag{14.58a}
+\]</div>
+<div class="arithmatex">\[
+x_A(0, t) = x_{A,s}
+\tag{14.58b}
+\]</div>
+<p>式 (14.58) 在例 14.2、14.3 里已经用过；质量分数或质量浓度表述也等价。式子简单，但<strong>怎么定 <span class="arithmatex">\(x_{A,s}\)</span>（或 <span class="arithmatex">\(C_{A,s}\)</span>）不简单</strong>——往下看。</p>
+<p>第二个与导热边界条件（表 2.2）对应的条件是表面处恒定组分通量。用菲克定律（式 14.13），表面 <span class="arithmatex">\(x = 0\)</span> 处：</p>
+<div class="arithmatex">\[
+-\left. C D_{AB}\,\frac{\partial x_A}{\partial x}\right|_{x=0} = J_{A,s}^*
+\tag{14.59}
+\]</div>
+<p>特例：静止介质中的<strong>不渗透表面</strong>（impermeable surface），<span class="arithmatex">\(\partial x_A/\partial x|_{x=0} = 0\)</span>——组分版的"绝热面"。质量口径写法同理。</p>
+<p>传质比传热多出来的那点麻烦，现在登场：<strong>温度跨界面连续，组分浓度跨界面通常不连续</strong>。拿水池晾在空气里说事：关心水蒸气向空气转移的速率，就要给出界面处空气侧的水蒸气浓度。池子里水的摩尔分数几乎为 1（忽略溶解的少量氧、氮），但把界面空气侧的水蒸气摩尔分数也取成 <span class="arithmatex">\(x_{A,s} = 1\)</span> 就错了——水在界面两侧的浓度明显不连续。一般规则：<strong>跨两种材料的界面浓度边界条件描述的是两侧浓度之间的关系</strong>，这种关系来自理论（如拉乌尔定律、亨利定律）或实验，下面介绍三种。</p>
+<figure>
+  <img src="../images/ch14/fig-14-6.png" class="lq-img" />
+  <figcaption>图 14.6 气–液或气–固界面处的组分浓度：(a) 组分 A 从液/固蒸发或升华进入气体；(b) 弱溶解组分 A 从气体进入液/固（截自原书）</figcaption>
+</figure>
+
+<h3 id="1451-蒸发与升华">14.5.1 蒸发与升华<a class="headerlink" href="#1451-蒸发与升华" title="Permanent link">#</a></h3>
+<p>常见场景：组分 A 因液面<strong>蒸发</strong>（evaporation）或固面<strong>升华</strong>（sublimation）进入气流（图 14.6a）。关心气相一侧，界面（<span class="arithmatex">\(x = 0\)</span>）处气相中 A 的浓度（或分压）用<strong>拉乌尔定律</strong>（Raoult's law）确定：</p>
+<div class="arithmatex">\[
+p_A(0) = x_A(0)\,p_{A,\mathrm{sat}}
+\tag{14.60}
+\]</div>
+<p>其中 <span class="arithmatex">\(p_A\)</span> 是气相中 A 的分压，<span class="arithmatex">\(x_A\)</span> 是液相或固相中 A 的摩尔分数，<span class="arithmatex">\(p_{A,\mathrm{sat}}\)</span> 是表面温度下 A 的饱和压强。拉乌尔定律的适用条件：气相可按理想气体处理，且液/固相中 A 浓度高。若液/固相是纯 A（<span class="arithmatex">\(x_A = 1\)</span>），式 (14.60) 简化为 <span class="arithmatex">\(p_A(0) = p_{A,\mathrm{sat}}\)</span>——界面蒸气分压就是界面温度下的饱和压强，查标准热力学表即可。例 14.2 与 6.7.2 节用的正是这个条件。</p>
+<h3 id="1452-气体在液体与固体中的溶解度">14.5.2 气体在液体与固体中的溶解度<a class="headerlink" href="#1452-气体在液体与固体中的溶解度" title="Permanent link">#</a></h3>
+<p>反过来：组分 A 从气相进入液体或固体 B（图 14.6b）。关心液/固相内部的传质，需要界面处 A 的浓度当边界条件。若 A 在液体中只有弱溶解（<span class="arithmatex">\(x_A\)</span> 小），用<strong>亨利定律</strong>（Henry's law）把液相中 A 的摩尔分数与液外气相中 A 的分压联系起来：</p>
+<div class="arithmatex">\[
+x_A(0) = \frac{p_A(0)}{H}
+\tag{14.61}
+\]</div>
+<p>系数 <span class="arithmatex">\(H\)</span> 叫<strong>亨利常数</strong>（Henry's constant），部分水溶液的值见表 A.9。<span class="arithmatex">\(H\)</span> 随温度变化；压强依赖在 <span class="arithmatex">\(p\)</span> 不超过 5 bar 时一般可忽略。</p>
+<p>气–固界面的条件：气体 A 溶解于固体 B 形成固溶体时，固体内的传质与固体结构无关、按扩散过程处理。（若固体孔隙率强烈影响气体输运，有时可按 3.1.5 节多孔介质导热的类比处理，更复杂的要靠专门教材。）把气体与固体按固溶体处理，界面处固体中气体的浓度由物性<strong>溶解度</strong>（solubility）<span class="arithmatex">\(S\)</span> 给出：</p>
+<div class="arithmatex">\[
+C_A(0) = S\,p_A(0)
+\tag{14.62}
+\]</div>
+<p><span class="arithmatex">\(p_A(0)\)</span> 是界面邻接气体的分压（bar）。<span class="arithmatex">\(C_A(0)\)</span> 的单位是每立方米固体中 A 的千摩尔数，所以 <span class="arithmatex">\(S\)</span> 的单位是 kmol/(m³·bar)（或 atm 分压）。几种气–固组合的 <span class="arithmatex">\(S\)</span> 见表 A.10。文献里溶解度常以"每立方米固体中溶解的 A 的标准状态（STP，0°C、1 atm）体积数，每 atm 分压"给出，记作 <span class="arithmatex">\(\tilde{S}\)</span>；由 STP 下 1 kmol 占 22.414 m³，换算为 <span class="arithmatex">\(S = \tilde{S}/(22.414\ \mathrm{m^3/kmol})\)</span>（bar 与 atm 之间可能还要换算）。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：膜渗材料常把 D 与 S 打包</p>
+<p>气体透过致密聚合物膜走"溶解—扩散"两步：先在膜表面按溶解度 <span class="arithmatex">\(S\)</span> 溶入，再以质扩散率 <span class="arithmatex">\(D\)</span> 穿膜。稳态通量 <span class="arithmatex">\(N'' = D(C_{A,s1} - C_{A,s2})/L = D S (p_{A,1} - p_{A,2})/L\)</span>，工程上习惯把 <span class="arithmatex">\(D S\)</span> 合成一个物性叫<strong>渗透系数</strong>（permeability）<span class="arithmatex">\(P\)</span>：<span class="arithmatex">\(N'' = P(p_{A,1} - p_{A,2})/L\)</span>。选膜材料时 <span class="arithmatex">\(D\)</span> 与 <span class="arithmatex">\(S\)</span> 缺一不可——扩散快但溶不进去（或反之）都透不多。例 14.4、14.5 就是这套算法的两个应用。</p>
+</div>
+<p><strong>【例 14.4】熔融石英球罐里氦气的泄漏速率</strong></p>
+<p><strong>已知（Known）</strong>：氦气储存在熔融石英（SiO₂）球形容器中，20°C，直径 <span class="arithmatex">\(D = 0.20\ \mathrm{m}\)</span>，壁厚 <span class="arithmatex">\(L = 2\ \mathrm{mm}\)</span>。初始充气压强 4 bar。求压强随时间下降的速率。</p>
+<p><strong>求（Find）</strong>：氦压强的变化率 <span class="arithmatex">\(dp_A/dt\)</span>。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-4.png" class="lq-img" />
+  <figcaption>例 14.4 示意图：熔融石英球罐的氦泄漏与壁内浓度（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. <span class="arithmatex">\(D \gg L\)</span>，扩散可按平壁一维处理；2. 准稳态扩散（压强变化足够慢，任一瞬间扩散都可按稳态算）；3. 静止介质，密度均匀；4. 外侧大气中氦的分压可忽略；5. 氦为理想气体。</p>
+<p><strong>物性（Properties）</strong>：表 A.8，氦–熔融石英（293 K）：<span class="arithmatex">\(D_{AB} = 0.4 \times 10^{-13}\ \mathrm{m^2/s}\)</span>。表 A.10，氦–熔融石英（293 K）：<span class="arithmatex">\(S = 0.45 \times 10^{-3}\ \mathrm{kmol/(m^3 \cdot bar)}\)</span>。</p>
+<p><strong>分析（Analysis）</strong>：对球内氦气取控制体，应用组分守恒式 (14.43)。没有流入与生成：</p>
+<div class="arithmatex">\[
+-\dot{M}_{A,\mathrm{out}} = \dot{M}_{A,\mathrm{st}}
+\]</div>
+<p>氦的流出靠穿过熔融石英的扩散：</p>
+<div class="arithmatex">\[
+\dot{M}_{A,\mathrm{out}} = n_{A,x}''\,A
+\]</div>
+<p>储存质量的变化：</p>
+<div class="arithmatex">\[
+\dot{M}_{A,\mathrm{st}} = \frac{d M_A}{dt} = \frac{d(\rho_A V)}{dt}
+\]</div>
+<p>组分平衡化为：</p>
+<div class="arithmatex">\[
+-n_{A,x}''\,A = \frac{d(\rho_A V)}{dt}
+\]</div>
+<p>利用 <span class="arithmatex">\(\rho_A = \mathcal{M}_A C_A\)</span> 与理想气体定律 <span class="arithmatex">\(C_A = p_A/(\mathcal{R} T)\)</span>：</p>
+<div class="arithmatex">\[
+\frac{d p_A}{dt} = -\frac{\mathcal{R} T}{\mathcal{M}_A V}\,A\,n_{A,x}''
+\]</div>
+<p>静止介质中穿过石英的绝对通量就是扩散通量，<span class="arithmatex">\(n_{A,x}'' = j_{A,x}\)</span>，由菲克定律（式 14.12）：</p>
+<div class="arithmatex">\[
+n_{A,x}'' = -\rho D_{AB}\,\frac{d m_A}{dx} = -D_{AB}\,\frac{d \rho_A}{dx}
+\]</div>
+<p>在本题条件下：</p>
+<div class="arithmatex">\[
+n_{A,x}'' = D_{AB}\,\frac{\rho_{A,1} - \rho_{A,2}}{L}
+\]</div>
+<p><span class="arithmatex">\(\rho_{A,1}\)</span>、<span class="arithmatex">\(\rho_{A,2}\)</span> 是石英内、外表面处的氦质量浓度，由溶解度（式 14.62）与 <span class="arithmatex">\(\rho_A = \mathcal{M}_A C_A\)</span> 计算：</p>
+<div class="arithmatex">\[
+\rho_{A,1} = \mathcal{M}_A S p_{A,1} = \mathcal{M}_A S p_A \qquad \text{且} \qquad \rho_{A,2} = \mathcal{M}_A S p_{A,o} = 0
+\]</div>
+<p>（<span class="arithmatex">\(p_{A,i}\)</span>、<span class="arithmatex">\(p_{A,o}\)</span> 为石英内、外表面处的氦分压。）于是：</p>
+<div class="arithmatex">\[
+n_{A,x}'' = \frac{D_{AB} \mathcal{M}_A S p_A}{L}
+\]</div>
+<p>代回组分平衡：</p>
+<div class="arithmatex">\[
+\frac{d p_A}{dt} = -\frac{\mathcal{R} T A D_{AB} S}{L V}\,p_A
+\]</div>
+<p>代入 <span class="arithmatex">\(A = \pi D^2\)</span>、<span class="arithmatex">\(V = \pi D^3/6\)</span>：</p>
+<div class="arithmatex">\[
+\frac{d p_A}{dt} = -\frac{6 \mathcal{R} T D_{AB} S}{L D}\,p_A
+\]</div>
+<p>代数值：</p>
+<div class="arithmatex">\[
+\frac{d p_A}{dt} = \left[-6 \times (0.08314\ \mathrm{m^3 \cdot bar/(kmol \cdot K)}) \times 293\ \mathrm{K} \times 0.4 \times 10^{-13}\ \mathrm{m^2/s} \times 0.45 \times 10^{-3}\ \mathrm{kmol/(m^3 \cdot bar)} \times 4\ \mathrm{bar}\right] \div \left[0.002\ \mathrm{m} \times 0.2\ \mathrm{m}\right]
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">原书笔误：例 14.4 结果的指数</p>
+<p>原书印的结果是 <span class="arithmatex">\(dp_A/dt = -2.63 \times 10^{-8}\ \mathrm{bar/s}\)</span>。按原书自己列的代入式逐项算：<span class="arithmatex">\(6 \times 0.08314 \times 293 = 146.2\)</span>，乘 <span class="arithmatex">\(0.4 \times 10^{-13}\)</span> 得 <span class="arithmatex">\(5.85 \times 10^{-12}\)</span>，乘 <span class="arithmatex">\(0.45 \times 10^{-3}\)</span> 得 <span class="arithmatex">\(2.63 \times 10^{-15}\)</span>，乘 <span class="arithmatex">\(4\)</span> 得 <span class="arithmatex">\(1.05 \times 10^{-14}\)</span>，除以 <span class="arithmatex">\(0.002 \times 0.2 = 4 \times 10^{-4}\)</span>，得 <span class="arithmatex">\(-2.63 \times 10^{-11}\ \mathrm{bar/s}\)</span>。正确答案的指数是 <span class="arithmatex">\(-11\)</span>，不是 <span class="arithmatex">\(-8\)</span>（差 1000 倍）。也可以独立验算一遍：界面浓度 <span class="arithmatex">\(C_A(0) = S p_A = 1.8 \times 10^{-3}\ \mathrm{kmol/m^3}\)</span>，通量 <span class="arithmatex">\(N_{A,x}'' = D_{AB} C_A(0)/L = 3.6 \times 10^{-14}\ \mathrm{kmol/(m^2 \cdot s)}\)</span>，泄漏速率 <span class="arithmatex">\(\dot{N} = 4.5 \times 10^{-15}\ \mathrm{kmol/s}\)</span>，除以罐容 <span class="arithmatex">\(V = 4.19 \times 10^{-3}\ \mathrm{m^3}\)</span>、再乘 <span class="arithmatex">\(\mathcal{R}T = 24.36\ \mathrm{m^3 \cdot bar/kmol}\)</span>，同样得 <span class="arithmatex">\(-2.63 \times 10^{-11}\ \mathrm{bar/s}\)</span>。</p>
+</div>
+<p><strong>点评（Comments）</strong>：以上是最初（最大）的泄漏速率；随着罐内压强下降（<span class="arithmatex">\(p_A\)</span> 变小），泄漏速率随之减小。</p>
+<p><strong>【例 14.5】氢气穿透塑料膜</strong></p>
+<p><strong>已知（Known）</strong>：氢气被 3 bar 与 1 bar 分隔在塑料膜两侧，膜厚 <span class="arithmatex">\(0.3\ \mathrm{mm}\)</span>，温度 25°C。氢在塑料中的二元扩散系数 <span class="arithmatex">\(8.7 \times 10^{-8}\ \mathrm{m^2/s}\)</span>，氢在膜中的溶解度 <span class="arithmatex">\(1.5 \times 10^{-3}\ \mathrm{kmol/(m^3 \cdot bar)}\)</span>。求穿过膜的氢质量扩散通量。</p>
+<p><strong>求（Find）</strong>：氢的质量扩散通量 <span class="arithmatex">\(n_{A,x}''\)</span>（kg/(s·m²)）。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-5.png" class="lq-img" />
+  <figcaption>例 14.5 示意图：氢气跨越塑料膜的扩散（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态、一维条件；2. 膜为静止、无反应、总摩尔浓度均匀的介质。</p>
+<p><strong>分析（Analysis）</strong>：本题条件下式 (14.42) 退化为式 (14.53)：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = C D_{AB}\,\frac{x_{A,s1} - x_{A,s2}}{L} = \frac{D_{AB}}{L}\,(C_{A,s1} - C_{A,s2})
+\]</div>
+<p>膜两侧表面处的氢摩尔浓度由溶解度（式 14.62）确定：</p>
+<div class="arithmatex">\[
+C_{A,s1} = 1.5 \times 10^{-3}\ \mathrm{kmol/(m^3 \cdot bar)} \times 3\ \mathrm{bar} = 4.5 \times 10^{-3}\ \mathrm{kmol/m^3}
+\]</div>
+<div class="arithmatex">\[
+C_{A,s2} = 1.5 \times 10^{-3}\ \mathrm{kmol/(m^3 \cdot bar)} \times 1\ \mathrm{bar} = 1.5 \times 10^{-3}\ \mathrm{kmol/m^3}
+\]</div>
+<p>代入：</p>
+<div class="arithmatex">\[
+N_{A,x}'' = \frac{8.7 \times 10^{-8}\ \mathrm{m^2/s}}{0.3 \times 10^{-3}\ \mathrm{m}} \times (4.5 \times 10^{-3} - 1.5 \times 10^{-3})\ \mathrm{kmol/m^3} = 8.7 \times 10^{-7}\ \mathrm{kmol/(s \cdot m^2)}
+\]</div>
+<p>换成质量口径（氢分子量 2 kg/kmol）：</p>
+<div class="arithmatex">\[
+n_{A,x}'' = N_{A,x}''\,\mathcal{M}_A = 8.7 \times 10^{-7}\ \mathrm{kmol/(s \cdot m^2)} \times 2\ \mathrm{kg/kmol} = 1.74 \times 10^{-6}\ \mathrm{kg/(s \cdot m^2)}
+\]</div>
+<p><strong>点评（Comments）</strong>：膜两侧气相中的氢摩尔浓度 <span class="arithmatex">\(C_{A,1}\)</span>、<span class="arithmatex">\(C_{A,2}\)</span> 与膜内表面浓度不是一回事，可按理想气体状态方程 <span class="arithmatex">\(C_A = p_A/(\mathcal{R} T)\)</span>（<span class="arithmatex">\(\mathcal{R} = 8.314 \times 10^{-2}\ \mathrm{m^3 \cdot bar/(kmol \cdot K)}\)</span>）计算，得 <span class="arithmatex">\(C_{A,1} = 0.121\ \mathrm{kmol/m^3}\)</span>、<span class="arithmatex">\(C_{A,2} = 0.040\ \mathrm{kmol/m^3}\)</span>。注意 <span class="arithmatex">\(C_{A,s2} &gt; C_{A,2}\)</span>，但氢照样从膜向 <span class="arithmatex">\(p_{A,2} = 1\ \mathrm{bar}\)</span> 的气体一侧传递——看似反常，其实是因为两个浓度<strong>基于不同的体积</strong>：一个按每立方米膜计，一个按每立方米气相计。所以绝不能拿 <span class="arithmatex">\(C_{A,s2}\)</span> 与 <span class="arithmatex">\(C_{A,2}\)</span> 的数值大小直接判断传质方向。</p>
+<h3 id="1453-催化表面反应">14.5.3 催化表面反应<a class="headerlink" href="#1453-催化表面反应" title="Permanent link">#</a></h3>
+<p>很多传质问题给定的是<strong>表面处的组分通量</strong>而不是浓度。典型：催化（catalysis）——用特殊表面促进<strong>非均相化学反应</strong>（heterogeneous chemical reaction，又称多相反应）。这种反应发生在材料表面，可视为表面现象、按边界条件处理（体积内发生的反应叫均匀反应/均相反应，按生成项处理，见 14.6 节）。一维扩散分析常能近似催化反应器的性能。</p>
+<p>看图 14.7：催化表面置于气流中，促进涉及组分 A 的非均相反应。设反应以速率 <span class="arithmatex">\(\dot{N}_A''\)</span>（每单位催化剂表面积、单位时间的摩尔生成率）产生 A。稳态时，从表面流出的组分速率必等于表面反应速率：</p>
+<figure>
+  <img src="../images/ch14/fig-14-7.png" class="lq-img" />
+  <figcaption>图 14.7 非均相催化作用下的一维扩散（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+N_{A,x}''(0) = \dot{N}_A''
+\tag{14.63}
+\]</div>
+<p>再设 A 从表面出发、穿过厚 <span class="arithmatex">\(L\)</span> 的薄膜一维输运，膜内无反应。<span class="arithmatex">\(x = L\)</span> 处的摩尔分数 <span class="arithmatex">\(x_{A,L}\)</span> 对应主流状态、视为已知。其余组分合并记为单一组分 B，介质按静止处理，式 (14.48a) 退化为：</p>
+<div class="arithmatex">\[
+\frac{d}{dx}\!\left(C D_{AB}\,\frac{d x_A}{dx}\right) = 0
+\tag{14.64}
+\]</div>
+<p>（<span class="arithmatex">\(D_{AB}\)</span> 是 A 在 B 中的二元扩散系数，B 可以是多组分混合物。）设 <span class="arithmatex">\(C\)</span>、<span class="arithmatex">\(D_{AB}\)</span> 为常数，配合边界条件：</p>
+<div class="arithmatex">\[
+x_A(L) = x_{A,L}
+\]</div>
+<div class="arithmatex">\[
+N_{A,x}''(0) = -\left. C D_{AB}\,\frac{d x_A}{dx}\right|_{x=0} = \dot{N}_A''
+\tag{14.65}
+\]</div>
+<p>（式 14.65 来自式 14.63 与菲克定律式 14.42。）催化表面的反应速率 <span class="arithmatex">\(\dot{N}_A''\)</span> 一般依赖表面浓度 <span class="arithmatex">\(C_A(0)\)</span>。对<strong>一级反应</strong>（first-order reaction）且反应消耗 A 的情形：</p>
+<div class="arithmatex">\[
+\dot{N}_A'' = -k_1''\,C_A(0)
+\tag{14.66}
+\]</div>
+<p>其中 <span class="arithmatex">\(k_1''\)</span>（m/s）是反应速率常数（双撇号标记表面反应，与体积反应的单撇号区分）。表面边界条件（式 14.65）随之化为：</p>
+<div class="arithmatex">\[
+-\left. D_{AB}\,\frac{d x_A}{dx}\right|_{x=0} = -k_1''\,x_A(0)
+\tag{14.67}
+\]</div>
+<p>解式 (14.64)，浓度分布为线性：</p>
+<div class="arithmatex">\[
+\frac{x_A(x)}{x_{A,L}} = \frac{1 + (x k_1''/D_{AB})}{1 + (L k_1''/D_{AB})}
+\tag{14.68}
+\]</div>
+<p>在催化表面处：</p>
+<div class="arithmatex">\[
+\frac{x_A(0)}{x_{A,L}} = \frac{1}{1 + (L k_1''/D_{AB})}
+\tag{14.69}
+\]</div>
+<p>摩尔通量：</p>
+<div class="arithmatex">\[
+N_{A,x}''(0) = -\frac{k_1'' C x_{A,L}}{1 + (L k_1''/D_{AB})}
+\tag{14.70}
+\]</div>
+<p>负号表示传质指向表面。两个极限情形特别值得关注：</p>
+<ul>
+<li><strong><span class="arithmatex">\(k_1'' \to 0\)</span></strong>：<span class="arithmatex">\(L k_1''/D_{AB} \ll 1\)</span>，式 (14.69)、(14.70) 退化为 <span class="arithmatex">\(x_{A,s} \approx x_{A,L}\)</span>、<span class="arithmatex">\(N_{A,x}''(0) \approx -k_1'' C x_{A,L}\)</span>。反应速率由反应速率常数控制，扩散的限制可忽略——过程是<strong>反应限制</strong>（reaction limited）。</li>
+<li><strong><span class="arithmatex">\(k_1'' \to \infty\)</span></strong>：<span class="arithmatex">\(L k_1''/D_{AB} \gg 1\)</span>，退化为 <span class="arithmatex">\(x_{A,s} \approx 0\)</span>、<span class="arithmatex">\(N_{A,x}''(0) \approx -C D_{AB} x_{A,L}/L\)</span>。反应速率由组分向表面的扩散速率控制——过程是<strong>扩散限制</strong>（diffusion limited）。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">拓展：反应限制还是扩散限制，工程对策完全不同</p>
+<p>判据就是无量纲数 <span class="arithmatex">\(L k_1''/D_{AB}\)</span>（传质的"达姆科勒数"角色）。反应限制时表面浓度接近主流值，想提速就换更活泼的催化剂（加大 <span class="arithmatex">\(k_1''\)</span>）；扩散限制时表面浓度已趋近零，加大 <span class="arithmatex">\(k_1''\)</span> 白搭——只能强化传质：减薄膜厚 <span class="arithmatex">\(L\)</span>、加大流速提高对流传质、用多孔/褶皱表面扩面积。燃料电池电极、汽车三元催化器、化学气相沉积都卡在这两种限制之间，先判型再动手。</p>
+</div>
+<h2 id="146-含均匀化学反应的质扩散">14.6 含均匀化学反应的质扩散<a class="headerlink" href="#146-含均匀化学反应的质扩散" title="Permanent link">#</a></h2>
+<p>导热受内热源影响，组分扩散受<strong>均匀化学反应</strong>（homogeneous chemical reaction，发生在整个体积内）影响。仍限静止介质（绝对通量 = 扩散通量，式 14.41 或 14.42），再设稳态、<span class="arithmatex">\(x\)</span> 方向一维、<span class="arithmatex">\(D_{AB}\)</span> 与 <span class="arithmatex">\(C\)</span> 为常数，式 (14.48b) 退化为：</p>
+<div class="arithmatex">\[
+D_{AB}\,\frac{d^2 C_A}{dx^2} + \dot{N}_A = 0
+\tag{14.71}
+\]</div>
+<p>体积生成率 <span class="arithmatex">\(\dot{N}_A\)</span> 常用两种形式描述：</p>
+<ul>
+<li><strong>零级反应</strong>（zero-order reaction）：<span class="arithmatex">\(\dot{N}_A = k_0\)</span>，反应以恒定速率进行，<span class="arithmatex">\(k_0\)</span> 单位 kmol/(s·m³)；</li>
+<li><strong>一级反应</strong>（first-order reaction）：<span class="arithmatex">\(\dot{N}_A = k_1 C_A\)</span>，反应速率正比于当地浓度，<span class="arithmatex">\(k_1\)</span> 单位 s⁻¹。</li>
+</ul>
+<p><span class="arithmatex">\(\dot{N}_A\)</span> 为正则净生成 A，为负则净消耗 A。很多应用里感兴趣的组分经一级反应转化为其他形式，式 (14.71) 变为：</p>
+<div class="arithmatex">\[
+D_{AB}\,\frac{d^2 C_A}{dx^2} - k_1 C_A = 0
+\tag{14.72}
+\]</div>
+<p>线性齐次常微分方程，通解为：</p>
+<div class="arithmatex">\[
+C_A(x) = C_1 e^{mx} + C_2 e^{-mx}
+\tag{14.73}
+\]</div>
+<p>其中 <span class="arithmatex">\(m = (k_1/D_{AB})^{1/2}\)</span>，<span class="arithmatex">\(C_1\)</span>、<span class="arithmatex">\(C_2\)</span> 由边界条件定。这个形式与肋片导热方程（式 3.71）完全同型——肋片那一套数学原样搬过来。</p>
+<p>看图 14.8 的场景：气体 A 可溶于液体 B，在液内一边扩散一边经历一级化学反应。溶液稀薄，界面处 A 的浓度是已知常数 <span class="arithmatex">\(C_{A,0}\)</span>。容器底部对 A 不渗透，边界条件为：</p>
+<figure>
+  <img src="../images/ch14/fig-14-8.png" class="lq-img" />
+  <figcaption>图 14.8 气体 A 在液体 B 中的扩散与均匀反应（截自原书）</figcaption>
+</figure>
+
+<div class="arithmatex">\[
+C_A(0) = C_{A,0} \qquad \text{且} \qquad \left.\frac{d C_A}{dx}\right|_{x=L} = 0
+\]</div>
+<p>这组边界条件对应表 3.4 的情形 B（肋端绝热肋）。式 (14.73) 与式 (3.71) 同型，解为：</p>
+<div class="arithmatex">\[
+C_A(x) = C_{A,0}\,\frac{\cosh m(L - x)}{\cosh m L}
+\tag{14.74}
+\]</div>
+<p>两个特别关心的量：底部浓度与跨气–液界面的通量。在 <span class="arithmatex">\(x = L\)</span> 处用式 (14.74)：</p>
+<div class="arithmatex">\[
+C_A(L) = \frac{C_{A,0}}{\cosh m L}
+\tag{14.75}
+\]</div>
+<p>界面上（<span class="arithmatex">\(x = 0\)</span>）由菲克定律：</p>
+<div class="arithmatex">\[
+N_{A,x}''(0) = -\left. D_{AB}\,\frac{d C_A}{dx}\right|_{x=0} = D_{AB} C_{A,0}\,m \tanh m L
+\tag{14.76}
+\]</div>
+<p>底部维持固定浓度、或容器无限深的情形，按表 3.4 的情形 C、情形 D 类比即得。</p>
+<p><strong>【例 14.6】抗生素能穿透多厚的生物膜</strong></p>
+<p><strong>已知（Known）</strong>：生物膜（biofilm）是黏附在活体或惰性表面上的细菌菌落，能引起各种人体感染。膜内细菌导致的感染常是慢性的，因为敷在膜表面的抗生素很难穿透膜厚。考虑一种皮肤感染相关生物膜：抗生素（组分 A）敷在生物膜（组分 B）顶层，膜上表面维持药物浓度 <span class="arithmatex">\(C_{A,0} = 4 \times 10^{-3}\ \mathrm{kmol/m^3}\)</span>。药物在膜内的扩散系数 <span class="arithmatex">\(D_{AB} = 2 \times 10^{-12}\ \mathrm{m^2/s}\)</span>。抗生素被膜内的生化反应消耗，消耗速率正比于当地浓度：<span class="arithmatex">\(\dot{N}_A = -k_1 C_A\)</span>，<span class="arithmatex">\(k_1 = 0.1\ \mathrm{s^{-1}}\)</span>。要灭菌，抗生素的消耗速率至少要达到 <span class="arithmatex">\(0.2 \times 10^{-3}\ \mathrm{kmol/(s \cdot m^3)}\)</span>（即 <span class="arithmatex">\(\dot{N}_A \le -0.2 \times 10^{-3}\ \mathrm{kmol/(s \cdot m^3)}\)</span>）——绝对消耗速率再低，细菌长回来的速度就快过被杀死的速度。求能成功治疗的生物膜最大厚度 <span class="arithmatex">\(L\)</span>。</p>
+<p><strong>求（Find）</strong>：可成功治疗的含菌生物膜最大厚度。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-6.png" class="lq-img" />
+  <figcaption>例 14.6 示意图：生物膜内抗生素的分布与消耗（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 稳态、一维条件；2. 静止、均匀介质，物性为常数；3. 生物膜底部不渗透。</p>
+<p><strong>分析（Analysis）</strong>：抗生素的绝对消耗速率在 <span class="arithmatex">\(x = L\)</span> 处最小——那里药物浓度最低。所以要求 <span class="arithmatex">\(\dot{N}_A(L) = -0.2 \times 10^{-3}\ \mathrm{kmol/(s \cdot m^3)}\)</span>。把一级反应与式 (14.74) 结合：</p>
+<div class="arithmatex">\[
+\dot{N}_A(L) = -k_1 C_A(L) = -k_1\,\frac{C_{A,0}}{\cosh m L}
+\tag{1}
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+m = (k_1/D_{AB})^{1/2} = \left(\frac{0.1\ \mathrm{s^{-1}}}{2 \times 10^{-12}\ \mathrm{m^2/s}}\right)^{1/2} = 2.24 \times 10^{5}\ \mathrm{m^{-1}}
+\]</div>
+<p>由式 (1) 解出最大允许厚度：</p>
+<div class="arithmatex">\[
+L = m^{-1} \cosh^{-1}\!\left[\frac{-k_1 C_{A,0}}{\dot{N}_A(L)}\right]
+\tag{2}
+\]</div>
+<p>代数值：</p>
+<div class="arithmatex">\[
+L = (2.24 \times 10^{5}\ \mathrm{m^{-1}})^{-1} \times \cosh^{-1}\!\left[\frac{-0.1\ \mathrm{s^{-1}} \times 4 \times 10^{-3}\ \mathrm{kmol/m^3}}{-0.2 \times 10^{-3}\ \mathrm{kmol/(s \cdot m^3)}}\right] = 5.9 \times 10^{-6}\ \mathrm{m} = 5.9\ \mu\mathrm{m}
+\]</div>
+<p><strong>点评（Comments）</strong>：更厚的生物膜治不了——药物消耗速率太高、而它穿过生物膜复杂聚合物基质的扩散速率太慢。把抗生素分子做小可以减小扩散阻力、穿透得更深，这是纳米医学的活跃研究方向。</p>
+<h2 id="147-瞬态扩散">14.7 瞬态扩散<a class="headerlink" href="#147-瞬态扩散" title="Permanent link">#</a></h2>
+<p>静止介质中稀组分 A 的瞬态扩散，可以直接类比第 5 章。设无均匀反应、<span class="arithmatex">\(D_{AB}\)</span> 与 <span class="arithmatex">\(C\)</span> 为常数、<span class="arithmatex">\(x\)</span> 方向一维，式 (14.48b) 退化为：</p>
+<div class="arithmatex">\[
+\frac{\partial^2 C_A}{\partial x^2} = \frac{1}{D_{AB}}\,\frac{\partial C_A}{\partial t}
+\tag{14.77}
+\]</div>
+<p>初始浓度均匀：</p>
+<div class="arithmatex">\[
+C_A(x, 0) = C_{A,i}
+\tag{14.78}
+\]</div>
+<p>边界条件按几何与表面条件配。例如厚 <span class="arithmatex">\(2L\)</span> 的平壁、两侧表面受同样的对流条件：<span class="arithmatex">\(x = 0\)</span> 为中平面，对称条件</p>
+<div class="arithmatex">\[
+\left.\frac{\partial C_A}{\partial x}\right|_{x=0} = 0
+\tag{14.79}
+\]</div>
+<p>表面浓度条件</p>
+<div class="arithmatex">\[
+C_A(L, t) = C_{A,s}
+\tag{14.80}
+\]</div>
+<p>式 (14.79) 是中平面对称要求。式 (14.80) 在<strong>传质毕渥数</strong> <span class="arithmatex">\(Bi_m = h_m L/D_{AB} \gg 1\)</span> 时成立：介质内扩散阻力远大于表面对流传质阻力时，流体中组分浓度近乎均匀（等于自由流浓度），表面浓度 <span class="arithmatex">\(C_{A,s}\)</span> 由式 (14.60) 或 (14.61) 按自由流分压 <span class="arithmatex">\(p_A\)</span> 算出。</p>
+<p>把方程无量纲化，类比一目了然。定义无量纲浓度与无量纲时间：</p>
+<div class="arithmatex">\[
+\gamma^* \equiv \frac{\gamma}{\gamma_i} = \frac{C_A - C_{A,s}}{C_{A,i} - C_{A,s}}
+\tag{14.81}
+\]</div>
+<div class="arithmatex">\[
+t_m^* \equiv \frac{D_{AB} t}{L^2} \equiv Fo_m
+\tag{14.82}
+\]</div>
+<p>代入式 (14.77)（<span class="arithmatex">\(x^* = x/L\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{\partial^2 \gamma^*}{\partial x^{*2}} = \frac{\partial \gamma^*}{\partial Fo_m}
+\tag{14.83}
+\]</div>
+<p>初始与边界条件：</p>
+<div class="arithmatex">\[
+\gamma^*(x^*, 0) = 1
+\tag{14.84}
+\]</div>
+<div class="arithmatex">\[
+\left.\frac{\partial \gamma^*}{\partial x^*}\right|_{x^*=0} = 0
+\tag{14.85}
+\]</div>
+<div class="arithmatex">\[
+\gamma^*(1, t_m^*) = 0
+\tag{14.86}
+\]</div>
+<p>拿式 (14.83)–(14.86) 与第 5 章式 (5.37)–(5.40)（<span class="arithmatex">\(Bi \to \infty\)</span> 情形，式 5.40 退化为 <span class="arithmatex">\(\theta^*(1, t^*) = 0\)</span>，正对应式 14.86）逐一对照：方程组完全等价，解也必然等价。瞬态传热与传质变量的对应关系汇总在<strong>表 14.2</strong>——照表替换变量，第 5 章的结果就能解瞬态传质问题。例如把 <span class="arithmatex">\(\theta_o^*\)</span>、<span class="arithmatex">\(Fo\)</span> 换成 <span class="arithmatex">\(\gamma_o^*\)</span>、<span class="arithmatex">\(Fo_m\)</span>，式 (5.44) 就能算中平面浓度 <span class="arithmatex">\(C_{A,o}\)</span>（<span class="arithmatex">\(Bi \to \infty\)</span>：<span class="arithmatex">\(\zeta_1 = 1.5708\)</span>，<span class="arithmatex">\(C_1 = 1.2733\)</span>）。</p>
+<p><strong>表 14.2 瞬态扩散中传热与传质变量的对应</strong></p>
+<table>
+<thead>
+<tr>
+<th>传热</th>
+<th>传质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\theta^* = (T - T_\infty)/(T_i - T_\infty)\)</span></td>
+<td><span class="arithmatex">\(\gamma^* = (C_A - C_{A,s})/(C_{A,i} - C_{A,s})\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(1 - \theta^* = (T - T_i)/(T_\infty - T_i)\)</span></td>
+<td><span class="arithmatex">\(1 - \gamma^* = (C_A - C_{A,i})/(C_{A,s} - C_{A,i})\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Fo = \alpha t / L^2\)</span></td>
+<td><span class="arithmatex">\(Fo_m = D_{AB} t / L^2\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Bi = h L / k\)</span></td>
+<td><span class="arithmatex">\(Bi_m = h_m L / D_{AB}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x/(2\sqrt{\alpha t})\)</span></td>
+<td><span class="arithmatex">\(x/(2\sqrt{D_{AB}\,t})\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>5.5、5.6 节的结果用时当心（例 14.1 与表 A.8 已经示警）：很多液体、固体主体介质的质扩散率比热扩散率小得太多，<strong>传质傅里叶数 <span class="arithmatex">\(Fo_m\)</span> 通常比热傅里叶数 <span class="arithmatex">\(Fo\)</span> 小许多个数量级</strong>。所以：</p>
+<ul>
+<li>5.5.2 与 5.6.2 的近似解（单项近似）只在 <span class="arithmatex">\(Fo_m &gt; 0.2\)</span> 成立——静止介质传质里常常够不着，基本没价值；</li>
+<li>5.5.1 与 5.6.1 的精确级数解（式 5.42、5.50、5.51）可能要算很多项才收敛；</li>
+<li><strong>5.7 节的半无限大物体解反而最常用</strong>——质扩散慢，边界条件信息"渗入"主体介质的深度极小，半无限大假设很容易满足；</li>
+<li>5.8 节的 Heisler 图表类结果全傅里叶数范围可用。</li>
+</ul>
+<p>半无限大介质的误差函数解平移到传质就是：表面浓度突变为 <span class="arithmatex">\(C_{A,s}\)</span> 时，</p>
+<div class="arithmatex">\[
+\frac{C_A(x, t) - C_{A,s}}{C_{A,i} - C_{A,s}} = \mathrm{erf}\!\left(\frac{x}{2\sqrt{D_{AB} t}}\right)
+\]</div>
+<p><strong>组分渗透深度</strong>（species penetration depth）按 <span class="arithmatex">\(\sqrt{D_{AB} t}\)</span> 增长，与热渗透深度 <span class="arithmatex">\(\delta_p = 2.3\sqrt{\alpha t}\)</span>（90% 判据）同款、只是把 <span class="arithmatex">\(\alpha\)</span> 换成 <span class="arithmatex">\(D_{AB}\)</span>。</p>
+<p><strong>【例 14.7】经皮药物贴片的剂量</strong></p>
+<p><strong>已知（Known）</strong>：经皮给药（transdermal drug delivery）是药物以可控的时间释放经皮肤进入血液，通常靠贴在身上的贴片（patch）。优点：给药速率平稳温和、对系统的冲击小（不像静脉推注）；能给药给恶心或昏迷的病人（口服不行）；用着方便。贴片为方形，长宽 <span class="arithmatex">\(L = 50\ \mathrm{mm}\)</span>，内部载体介质（host medium）初始药物质量浓度均匀：<span class="arithmatex">\(\rho_{A,p,i} = 100\ \mathrm{kg/m^3}\)</span>。贴到皮肤上，皮肤初始药物浓度 <span class="arithmatex">\(\rho_{A,s,i} = 0\)</span>。在贴片–皮肤界面（<span class="arithmatex">\(x = 0\)</span>）处，贴片侧药物密度与患者侧药物密度之比由<strong>分配系数</strong>（partition coefficient）描述：<span class="arithmatex">\(K = 0.5\)</span>。</p>
+<ol>
+<li>求一周治疗期内输送给患者的总药量（剂量）。药物在贴片与皮肤内的扩散系数标称值分别为 <span class="arithmatex">\(D_{Ap} = 0.1 \times 10^{-12}\ \mathrm{m^2/s}\)</span>、<span class="arithmatex">\(D_{As} = 0.2 \times 10^{-12}\ \mathrm{m^2/s}\)</span>。</li>
+<li>考察剂量对贴片质扩散率 <span class="arithmatex">\(D_{Ap}\)</span> 与皮肤质扩散率 <span class="arithmatex">\(D_{As}\)</span> 的敏感性。</li>
+</ol>
+<p><strong>求（Find）</strong>：一周内输送的总剂量；剂量对 <span class="arithmatex">\(D_{Ap}\)</span>、<span class="arithmatex">\(D_{As}\)</span> 的敏感性。</p>
+<p><strong>示意图（Schematic）</strong>：</p>
+<figure>
+  <img src="../images/ch14/ex-14-7.png" class="lq-img" />
+  <figcaption>例 14.7 示意图：贴片与皮肤中的药物浓度分布（截自原书）</figcaption>
+</figure>
+
+<p><strong>假设（Assumptions）</strong>：1. 一维条件、物性为常数；2. 贴片与皮肤均为半无限大介质；3. 无化学反应；4. 静止介质。</p>
+<p><strong>分析（Analysis）</strong>：</p>
+<ol>
+<li>组分守恒方程对贴片与皮肤都适用。在上述假设下式 (14.47b) 变为：</li>
+</ol>
+<div class="arithmatex">\[
+\frac{\partial^2 \rho_A}{\partial x^2} = \frac{1}{D_{AB}}\,\frac{\partial \rho_A}{\partial t}
+\]</div>
+<p>与式 (5.29) 类比。初始条件：<span class="arithmatex">\(x &lt; 0\)</span> 一侧（贴片，坐标 <span class="arithmatex">\(x'\)</span>）<span class="arithmatex">\(\rho_A(x &lt; 0, t = 0) = \rho_{A,p,i}\)</span>；<span class="arithmatex">\(x &gt; 0\)</span> 一侧（皮肤）<span class="arithmatex">\(\rho_A(x &gt; 0, t = 0) = \rho_{A,s,i}\)</span>。边界条件：</p>
+<div class="arithmatex">\[
+\rho_{A,p}(x \to -\infty) = \rho_{A,p,i}; \qquad \rho_{A,s}(x \to +\infty) = \rho_{A,s,i}
+\tag{1a}
+\]</div>
+<p>界面条件：两侧通量连续，</p>
+<div class="arithmatex">\[
+n_{A,x,p}''(x = 0) = n_{A,x,s}''(x = 0)
+\tag{1b}
+\]</div>
+<p>与图 5.9、式 (5.64)"两块半无限大固体贴合"的情形类比。额外要考虑组分的分配：</p>
+<div class="arithmatex">\[
+\rho_{A,s}(x = 0) = K \cdot \rho_{A,p}(x = 0)
+\tag{1c}
+\]</div>
+<p>类比式 (5.65)（两半无限大物体接触的界面条件）：</p>
+<div class="arithmatex">\[
+\frac{-D_{Ap}\left(\rho_{A,p}(x=0) - \rho_{A,p,i}\right)}{\sqrt{\pi D_{Ap} t}} = \frac{D_{As}\left(\rho_{A,s}(x=0) - \rho_{A,s,i}\right)}{\sqrt{\pi D_{As} t}}
+\]</div>
+<p>代入式 (1c)、注意 <span class="arithmatex">\(\rho_{A,s,i} = 0\)</span>，解出皮肤侧界面浓度：</p>
+<div class="arithmatex">\[
+\rho_{A,s}(x = 0) = \rho_{A,p,i}\left(\frac{\sqrt{D_{Ap}}}{\sqrt{D_{As}} + \sqrt{D_{Ap}}/K}\right)
+\tag{2}
+\]</div>
+<p>患者得到的瞬时药物通量类比式 (5.61)：</p>
+<div class="arithmatex">\[
+n_A''(x = 0, t) = \frac{D_{As}\,\rho_{A,s}(x = 0)}{\sqrt{\pi D_{As} t}}
+\tag{3}
+\]</div>
+<p>式 (2) 代入式 (3)：</p>
+<div class="arithmatex">\[
+n_A''(x = 0, t) = \frac{\rho_{A,p,i}}{\sqrt{\pi}} \cdot \frac{\sqrt{D_{As} D_{Ap}}}{\sqrt{D_{As}} + \sqrt{D_{Ap}}/K} \cdot t^{-1/2}
+\]</div>
+<p>剂量 <span class="arithmatex">\(D\)</span>（<span class="arithmatex">\(t = 0\)</span> 到治疗时长 <span class="arithmatex">\(t_t\)</span> 之间输送给患者的总药量）：</p>
+<div class="arithmatex">\[
+D = L^2 \int_0^{t_t} n_A''(x = 0, t)\,dt = \frac{\rho_{A,p,i} L^2}{\sqrt{\pi}} \cdot \frac{\sqrt{D_{As} D_{Ap}}}{\sqrt{D_{As}} + \sqrt{D_{Ap}}/K} \cdot \int_0^{t_t} t^{-1/2}\,dt
+\]</div>
+<div class="arithmatex">\[
+D = \frac{2 \rho_{A,p,i} L^2}{\sqrt{\pi}} \cdot \frac{\sqrt{D_{As} D_{Ap}}}{\sqrt{D_{As}} + \sqrt{D_{Ap}}/K} \cdot \sqrt{t_t}
+\tag{4}
+\]</div>
+<p>治疗时长 <span class="arithmatex">\(t_t = 7\ \mathrm{天} \times 24\ \mathrm{h/天} \times 3600\ \mathrm{s/h} = 605 \times 10^{3}\ \mathrm{s}\)</span>，剂量为：</p>
+<div class="arithmatex">\[
+D = \frac{2 \times 100\ \mathrm{kg/m^3} \times (50 \times 10^{-3}\ \mathrm{m})^2}{\sqrt{\pi}} \times \frac{\sqrt{0.2 \times 10^{-12}\ \mathrm{m^2/s} \times 0.1 \times 10^{-12}\ \mathrm{m^2/s}}}{\sqrt{0.2 \times 10^{-12}\ \mathrm{m^2/s}} + \sqrt{0.1 \times 10^{-12}\ \mathrm{m^2/s}}/0.5} \times \sqrt{605 \times 10^{3}\ \mathrm{s}} = 29 \times 10^{-6}\ \mathrm{kg} = 29\ \mathrm{mg}
+\]</div>
+<ol>
+<li>剂量对贴片与皮肤质扩散率的敏感性：对不同的 <span class="arithmatex">\(D_{Ap}\)</span>、<span class="arithmatex">\(D_{As}\)</span> 组合解式 (4)。下图给出 <span class="arithmatex">\(D_{Ap} = 0.1 \times 10^{-12}\ \mathrm{m^2/s}\)</span> 与 <span class="arithmatex">\(0.01 \times 10^{-12}\ \mathrm{m^2/s}\)</span> 两档、<span class="arithmatex">\(D_{As} = 0.1 \times 10^{-12}\ \mathrm{m^2/s}\)</span>、<span class="arithmatex">\(0.2 \times 10^{-12}\ \mathrm{m^2/s}\)</span>、<span class="arithmatex">\(0.4 \times 10^{-12}\ \mathrm{m^2/s}\)</span> 三档的结果：任一质扩散率增大，剂量都增大。</li>
+</ol>
+<figure>
+  <img src="../images/ch14/ex-14-7-graph.png" class="lq-img" />
+  <figcaption>例 14.7 剂量随治疗天数的变化：左图 <span class="arithmatex">\(D_{Ap} = 0.1 \times 10^{-12}\ \mathrm{m^2/s}\)</span>，右图 <span class="arithmatex">\(D_{Ap} = 0.01 \times 10^{-12}\ \mathrm{m^2/s}\)</span>（截自原书）</figcaption>
+</figure>
+
+<p><strong>点评（Comments）</strong>：</p>
+<ol>
+<li>皮肤外层（表皮，epidermis）的职责是抵御外界污染。经皮给药只对"分子极小、能穿过几乎不可穿透的表皮"的药物可行——传质考虑直接限制了可用药物的数量。</li>
+<li>皮肤质扩散率因人而异，剂量最好对它不敏感。所以贴片载体介质（vehicle）要设计成控制剂量的限速环节：降低载体内的质扩散率 <span class="arithmatex">\(D_{Ap}\)</span>，剂量对 <span class="arithmatex">\(D_{As}\)</span> 的敏感性就下降（对比第 2 问两组图）。一般设计原则：<span class="arithmatex">\(D_{Ap}/D_{As} \ll 1\)</span>。</li>
+<li>贴片按半无限大介质设计。该假设有效所需的贴片厚度可这样估：算出治疗期内载体中药物密度被消耗掉 5%（即降至 <span class="arithmatex">\(\rho_{A,p,i}\)</span> 与 <span class="arithmatex">\(\rho_{A,p}(x=0)\)</span> 之差的 95% 位置）的深度。类比式 (5.60)，与 5% 消耗对应的组分渗透深度 <span class="arithmatex">\(\delta_{p,c}\)</span> 由下式确定：</li>
+</ol>
+<div class="arithmatex">\[
+\frac{\rho_{A,p}(x') - \rho_{A,p}(x' = 0)}{\rho_{A,p,i} - \rho_{A,p}(x' = 0)} = 0.95 = \mathrm{erf}\!\left(\frac{\delta_{p,c}}{\sqrt{4 D_{Ap} t_t}}\right)
+\]</div>
+<p>求出 <span class="arithmatex">\(\delta_{p,c} = 690 \times 10^{-6}\ \mathrm{m} = 0.69\ \mathrm{mm}\)</span>。载体厚度大于 0.69 mm，半无限大假设就成立。
+4. 若载体比这个渗透深度薄得多，实际剂量在一周治疗期结束前就会低于预期。贴片设计要权衡：(a) 装够药量保证半无限大行为；(b) 控制成本。实际上治疗期结束后载体里还剩 95% 以上的药物——用完的贴片要妥善处置。</p>
+<h2 id="148-小结">14.8 小结<a class="headerlink" href="#148-小结" title="Permanent link">#</a></h2>
+<p>本章聚焦静止介质中的扩散传质。传递速率通常不大（液体、固体里尤其小），但过程对很多技术以及环境、生命科学都是命门。以下自测问题检验你是不是真懂了。</p>
+<details class="note">
+<summary>原书章末自测问题（14.8 节复习用）</summary>
+<ol>
+<li>把方糖放进咖啡：糖在咖啡中分散的驱动势是什么？咖啡静止时分散的物理机制是什么？搅拌后呢？（浓度梯度；分子扩散；对流混合）</li>
+<li>混合物中某组分的摩尔浓度与质量密度是什么关系？（<span class="arithmatex">\(\rho_i = \mathcal{M}_i C_i\)</span>）</li>
+<li>混合物的质量密度怎么定义？摩尔浓度呢？（各组分求和）</li>
+<li>用菲克定律求混合物中组分的质量/摩尔通量时，具体求出的是什么？（相对混合物平均运动的扩散通量）</li>
+<li>什么条件下组分扩散通量等于该组分输运的绝对通量？（静止介质近似：B 静止且 A 稀薄）</li>
+<li>静止介质近似是什么？</li>
+<li>静止介质内既有扩散又有均匀化学反应生成（或消耗）时，组分通量 <span class="arithmatex">\(N_A''\)</span> 与位置无关吗？（一维稳态时与位置无关，与无反应情形一样；无反应时它才严格不变）</li>
+<li>什么条件下可用扩散阻由介质内、外表面浓度求组分通量？（单种静止介质、<span class="arithmatex">\(C\)</span> 与 <span class="arithmatex">\(D_{AB}\)</span> 常数、给定表面浓度、无界面浓度跳变问题）</li>
+<li>传热里界面两侧温度相等（平衡要求）；气相与液相（或固相）中同一化学组分的浓度也相等吗？（不——浓度跨界面不连续）</li>
+<li>拉乌尔定律是什么？气相组分的分压与相邻液/固相中同一组分的摩尔分数什么关系？</li>
+<li>亨利常数是什么？气体在液体中的浓度随气相分压怎么变？随液温怎么变？（线性增；温度升高溶解度下降，即 H 增大）</li>
+<li>均相反应与非均相反应的区别？（体积生成项 vs 表面边界条件）</li>
+<li>催化过程说是 reaction limited（反应限制）意味着什么？diffusion limited（扩散限制）呢？（前者反应速率常数控制、表面浓度接近主流；后者扩散控制、表面浓度趋近零）</li>
+</ol>
+</details>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">8 个容易踩的坑</p>
+<ol>
+<li><strong>浓度跨界面不连续，数值大小不能拿来比方向</strong>：例 14.5 里膜内表面浓度 <span class="arithmatex">\(C_{A,s2} = 1.5 \times 10^{-3}\)</span> 比气相浓度 <span class="arithmatex">\(C_{A,2} = 0.040\)</span> 小，但氢照样从膜流向气相——两个浓度按不同体积定义，没有可比性。判断方向永远看化学势（分压、活度），本题就是看两侧的分压与溶解度。</li>
+<li><strong>B 不动不等于静止介质近似成立</strong>：蒸发立柱里 <span class="arithmatex">\(N_{B,x}'' = 0\)</span>（B 净通量为零），但摩尔平均速度非零、A 的平流项 <span class="arithmatex">\(x_A N_{A,x}''\)</span> 必须保留。静止介质近似 = B 静止 <strong>且</strong> A 稀薄（<span class="arithmatex">\(m_A \ll 1\)</span>、<span class="arithmatex">\(x_A \ll 1\)</span>），两条同时满足才能把绝对通量当扩散通量（式 14.41、14.42）。</li>
+<li><strong>质量平均速度与摩尔平均速度是两个量</strong>：<span class="arithmatex">\(\mathbf{v} = m_A\mathbf{v}_A + m_B\mathbf{v}_B\)</span>（式 14.18），<span class="arithmatex">\(\mathbf{v}^* = x_A\mathbf{v}_A + x_B\mathbf{v}_B\)</span>（式 14.29），一般不相等。守恒方程（第 6 章那套）只用 <span class="arithmatex">\(\mathbf{v}\)</span>；<span class="arithmatex">\(\mathbf{v}^*\)</span> 只配摩尔通量分解用。配对关系：<span class="arithmatex">\(\rho\)</span>–<span class="arithmatex">\(\mathbf{v}\)</span>–<span class="arithmatex">\(\mathbf{n}''\)</span>，<span class="arithmatex">\(C\)</span>–<span class="arithmatex">\(\mathbf{v}^*\)</span>–<span class="arithmatex">\(\mathbf{N}''\)</span>。</li>
+<li><strong>扩散阻不能像导热阻那样跨材料串联</strong>：表 14.1 的扩散阻只在单一介质内有效。第 3 章串联热阻的前提是界面温度连续，而传质的界面两侧浓度天然不连续（拉乌尔、亨利、溶解度各管一种跳变），多层复合介质的传质必须逐层列边界条件，不能抄热阻网络。</li>
+<li><strong>菲克定律的梯度是"分数"的梯度</strong>：式 (14.12)、(14.13) 里是 <span class="arithmatex">\(\nabla m_A\)</span>、<span class="arithmatex">\(\nabla x_A\)</span>。想直接对 <span class="arithmatex">\(\nabla C_A\)</span> 用 <span class="arithmatex">\(-D_{AB}\nabla C_A\)</span>，前提是 <span class="arithmatex">\(C\)</span>（或 <span class="arithmatex">\(\rho\)</span>）为常数——否则梯度里还藏着 <span class="arithmatex">\(C(x)\)</span> 的变化，直接替换会错。例 14.1 能换、是因为 <span class="arithmatex">\(x_A \ll 1\)</span>。</li>
+<li><strong>第 5 章的近似解在传质里基本失效</strong>：单项近似（5.5.2、5.6.2）要求 <span class="arithmatex">\(Fo_m &gt; 0.2\)</span>，而液固介质的 <span class="arithmatex">\(D_{AB}\)</span> 小到 <span class="arithmatex">\(Fo_m\)</span> 几乎不可能超过 0.2。要用第 5 章工具时先算 <span class="arithmatex">\(Fo_m\)</span>：够不着就上半无限大误差函数解（它反而最常用），或者老实算精确级数。</li>
+<li><strong>拉乌尔定律与亨利定律各管一头</strong>：拉乌尔管"液/固相里 A 是主体"（<span class="arithmatex">\(x_A \to 1\)</span>，蒸气压按纯组分饱和压强打折）；亨利管"A 在液相里只是微溶"（<span class="arithmatex">\(x_A\)</span> 小，浓度按 <span class="arithmatex">\(p_A/H\)</span> 线性给）。用反了边界条件，表面浓度差一个数量级都正常。气–固走溶解度 <span class="arithmatex">\(S\)</span>：<span class="arithmatex">\(C_A(0) = S\,p_A(0)\)</span>。</li>
+<li><strong><span class="arithmatex">\(D_{AB}\)</span> 随温度、压强跑得厉害</strong>：气体按 <span class="arithmatex">\(\sim T^{3/2}/p\)</span>（式 14.14），液体随温度升高而增大，查表值不在目标温度就先修再算（例 14.1 的 293 K 修正）。蒸发类问题的温度敏感性主要不是来自 <span class="arithmatex">\(D_{AB}\)</span>，而是来自饱和压强 <span class="arithmatex">\(p_{A,\mathrm{sat}}(T)\)</span> 的指数式暴涨（例 14.2 的图线）。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>浓度度量：<span class="arithmatex">\(\rho_i = \mathcal{M}_i C_i\)</span>（式 14.1）、<span class="arithmatex">\(m_i = \rho_i/\rho\)</span>、<span class="arithmatex">\(x_i = C_i/C = p_i/p\)</span>（理想气体，式 14.11），各自归一化（式 14.6、14.7）。</li>
+<li>菲克定律：<span class="arithmatex">\(\mathbf{j}_A = -\rho D_{AB}\nabla m_A\)</span>（式 14.12）、<span class="arithmatex">\(\mathbf{J}_A^* = -C D_{AB}\nabla x_A\)</span>（式 14.13）；负号 = 沿浓度降低方向扩散。</li>
+<li>质扩散率 <span class="arithmatex">\(D_{AB}\)</span>：气体 <span class="arithmatex">\(10^{-5} \sim 10^{-4}\)</span>、液体 <span class="arithmatex">\(10^{-10} \sim 10^{-9}\)</span>、固体 <span class="arithmatex">\(10^{-14} \sim 10^{-12}\ \mathrm{m^2/s}\)</span>；理想气体 <span class="arithmatex">\(\sim p^{-1}T^{3/2}\)</span>（式 14.14），二元互逆 <span class="arithmatex">\(D_{BA} = D_{AB}\)</span>（式 14.25）。</li>
+<li>通量分解：绝对通量 = 扩散 + 平流，<span class="arithmatex">\(\mathbf{n}_A'' = \mathbf{j}_A + \rho_A\mathbf{v}\)</span>（式 14.20）、<span class="arithmatex">\(\mathbf{N}_A'' = \mathbf{J}_A^* + C_A\mathbf{v}^*\)</span>（式 14.31）；二元扩散通量互抵 <span class="arithmatex">\(\mathbf{j}_A + \mathbf{j}_B = 0\)</span>（式 14.24）。</li>
+<li>立柱蒸发（斯特芬问题）：<span class="arithmatex">\(N_B'' = 0\)</span> 但平流不可略，浓度分布指数形（式 14.38、14.39），速率 <span class="arithmatex">\(N_{A,x}'' = (C D_{AB}/L)\ln[(1 - x_{A,L})/(1 - x_{A,0})]\)</span>（式 14.40）。</li>
+<li>静止介质近似（B 静止 + A 稀薄）下：<span class="arithmatex">\(n_A'' = j_A\)</span>、<span class="arithmatex">\(N_A'' = J_A^*\)</span>，第 2～5 章导热解法整体平移；质扩散方程 <span class="arithmatex">\(\nabla^2 C_A + \dot{N}_A/D_{AB} = (1/D_{AB})\partial C_A/\partial t\)</span>（式 14.48b）对应热方程，<span class="arithmatex">\(\alpha \leftrightarrow D_{AB}\)</span>。</li>
+<li>三种几何的扩散阻（表 14.1）：平壁 <span class="arithmatex">\(L/(D_{AB}A)\)</span>、圆筒 <span class="arithmatex">\(\ln(r_2/r_1)/(2\pi L D_{AB})\)</span>、球 <span class="arithmatex">\((1/4\pi D_{AB})(1/r_1 - 1/r_2)\)</span>；跨材料不可串联（界面浓度不连续）。</li>
+<li>界面边界条件：恒表面浓度（式 14.58）、恒通量（式 14.59，零通量 = 不渗透）；蒸发/升华用拉乌尔定律 <span class="arithmatex">\(p_A(0) = x_A(0)p_{A,\mathrm{sat}}\)</span>（式 14.60）；弱溶解用亨利定律 <span class="arithmatex">\(x_A(0) = p_A(0)/H\)</span>（式 14.61）；气–固用溶解度 <span class="arithmatex">\(C_A(0) = S p_A(0)\)</span>（式 14.62）。</li>
+<li>催化表面反应：<span class="arithmatex">\(N_{A,x}''(0) = -k_1'' C x_{A,L}/[1 + (L k_1''/D_{AB})]\)</span>（式 14.70）；<span class="arithmatex">\(L k_1''/D_{AB}\)</span> 小 = 反应限制（<span class="arithmatex">\(x_{A,s} \approx x_{A,L}\)</span>），大 = 扩散限制（<span class="arithmatex">\(x_{A,s} \approx 0\)</span>、通量 <span class="arithmatex">\(= -C D_{AB} x_{A,L}/L\)</span>）。均匀反应：一级反应解 <span class="arithmatex">\(\cosh\)</span> 形（式 14.74–14.76），对应肋片（表 3.4 情形 B）。</li>
+<li>瞬态扩散：变量替换 <span class="arithmatex">\(T \to C_A\)</span>、<span class="arithmatex">\(\alpha \to D_{AB}\)</span>、<span class="arithmatex">\(Bi \to Bi_m = h_m L/D_{AB}\)</span>、<span class="arithmatex">\(Fo \to Fo_m = D_{AB}t/L^2\)</span>（表 14.2）；<span class="arithmatex">\(Fo_m\)</span> 通常太小，单项近似基本没用，半无限大误差函数解 <span class="arithmatex">\(C_A(x,t) = C_{A,s} + (C_{A,i} - C_{A,s})\,\mathrm{erf}(x/2\sqrt{D_{AB}t})\)</span> 最常用。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mass transfer</td>
+<td>传质</td>
+<td>混合物中因组分浓度差而发生的质量迁移（不含宏观流动本身）</td>
+</tr>
+<tr>
+<td>species</td>
+<td>组分</td>
+<td>可被扩散、平流输运或经反应转化的可辨识分子（如 CO₂）</td>
+</tr>
+<tr>
+<td>mass density (of a species)</td>
+<td>组分质量浓度（密度）</td>
+<td><span class="arithmatex">\(\rho_i\)</span>，每立方米混合物中组分 <span class="arithmatex">\(i\)</span> 的质量，kg/m³</td>
+</tr>
+<tr>
+<td>molar concentration</td>
+<td>摩尔浓度</td>
+<td><span class="arithmatex">\(C_i\)</span>，每立方米混合物中组分 <span class="arithmatex">\(i\)</span> 的千摩尔数，kmol/m³</td>
+</tr>
+<tr>
+<td>mass fraction</td>
+<td>质量分数</td>
+<td><span class="arithmatex">\(m_i = \rho_i/\rho\)</span>，全套加和为 1</td>
+</tr>
+<tr>
+<td>mole fraction</td>
+<td>摩尔分数</td>
+<td><span class="arithmatex">\(x_i = C_i/C = p_i/p\)</span>（理想气体），全套加和为 1</td>
+</tr>
+<tr>
+<td>partial pressure</td>
+<td>分压</td>
+<td>理想气体混合物中组分单独贡献的压强 <span class="arithmatex">\(p_i\)</span>，道尔顿定律求和</td>
+</tr>
+<tr>
+<td>Fick's law</td>
+<td>菲克定律</td>
+<td>扩散速率方程 <span class="arithmatex">\(j_A = -\rho D_{AB}\nabla m_A\)</span>（式 14.12）</td>
+</tr>
+<tr>
+<td>binary diffusion coefficient / mass diffusivity</td>
+<td>二元扩散系数 / 质扩散率</td>
+<td><span class="arithmatex">\(D_{AB}\)</span>，m²/s，菲克定律的输运物性，跨八个数量级</td>
+</tr>
+<tr>
+<td>diffusive mass flux</td>
+<td>扩散质量通量</td>
+<td><span class="arithmatex">\(j_A\)</span>，kg/(s·m²)，相对混合物质量平均运动的通量</td>
+</tr>
+<tr>
+<td>diffusive molar flux</td>
+<td>扩散摩尔通量</td>
+<td><span class="arithmatex">\(J_A^*\)</span>，kmol/(s·m²)，相对摩尔平均运动的通量</td>
+</tr>
+<tr>
+<td>absolute (total) flux</td>
+<td>绝对通量（总通量）</td>
+<td><span class="arithmatex">\(n_A''\)</span> 或 <span class="arithmatex">\(N_A''\)</span>，相对固定坐标的总通量 = 扩散 + 平流</td>
+</tr>
+<tr>
+<td>mass-average velocity</td>
+<td>质量平均速度</td>
+<td><span class="arithmatex">\(\mathbf{v}\)</span>（式 14.18），守恒方程专用；乘 <span class="arithmatex">\(\rho\)</span> 得总质量通量</td>
+</tr>
+<tr>
+<td>molar-average velocity</td>
+<td>摩尔平均速度</td>
+<td><span class="arithmatex">\(\mathbf{v}^*\)</span>（式 14.29），乘 <span class="arithmatex">\(C\)</span> 得总摩尔通量；不能进守恒方程</td>
+</tr>
+<tr>
+<td>advection</td>
+<td>平流</td>
+<td>组分随混合物整体运动被携带的输运</td>
+</tr>
+<tr>
+<td>evaporation / sublimation</td>
+<td>蒸发 / 升华</td>
+<td>液→气 / 固→气的相变传质，界面条件由拉乌尔定律给出</td>
+</tr>
+<tr>
+<td>stationary medium approximation</td>
+<td>静止介质近似</td>
+<td>B 静止且 A 稀薄，平流可略，绝对通量 = 扩散通量（式 14.41、14.42）</td>
+</tr>
+<tr>
+<td>conservation of species</td>
+<td>组分守恒</td>
+<td>进 + 生成 − 出 = 储存（式 14.43），传质版第一定律</td>
+</tr>
+<tr>
+<td>mass (species) diffusion equation</td>
+<td>质扩散方程</td>
+<td><span class="arithmatex">\(\nabla^2 C_A + \dot{N}_A/D_{AB} = (1/D_{AB})\partial C_A/\partial t\)</span>（式 14.48b），热方程的传质副本</td>
+</tr>
+<tr>
+<td>species diffusion resistance</td>
+<td>组分扩散阻力</td>
+<td><span class="arithmatex">\(R_{m,\mathrm{dif}} = \Delta C_A/N_A\)</span>（式 14.55），平壁 <span class="arithmatex">\(L/(D_{AB}A)\)</span></td>
+</tr>
+<tr>
+<td>Raoult's law</td>
+<td>拉乌尔定律</td>
+<td><span class="arithmatex">\(p_A(0) = x_A(0)p_{A,\mathrm{sat}}\)</span>（式 14.60），蒸发/升华的界面条件</td>
+</tr>
+<tr>
+<td>Henry's law / Henry's constant</td>
+<td>亨利定律 / 亨利常数</td>
+<td><span class="arithmatex">\(x_A(0) = p_A(0)/H\)</span>（式 14.61），弱溶解气体的界面条件</td>
+</tr>
+<tr>
+<td>solubility</td>
+<td>溶解度</td>
+<td><span class="arithmatex">\(S\)</span>，kmol/(m³·bar)，气–固界面 <span class="arithmatex">\(C_A(0) = S p_A(0)\)</span>（式 14.62）</td>
+</tr>
+<tr>
+<td>heterogeneous / homogeneous reaction</td>
+<td>非均相 / 均相反应</td>
+<td>表面反应（边界条件）/ 体积反应（生成项）</td>
+</tr>
+<tr>
+<td>reaction rate constant</td>
+<td>反应速率常数</td>
+<td>表面反应 <span class="arithmatex">\(k_1''\)</span>（m/s，式 14.66）；体积反应 <span class="arithmatex">\(k_1\)</span>（s⁻¹）、<span class="arithmatex">\(k_0\)</span>（kmol/(s·m³)）</td>
+</tr>
+<tr>
+<td>reaction limited / diffusion limited</td>
+<td>反应限制 / 扩散限制</td>
+<td><span class="arithmatex">\(L k_1''/D_{AB} \ll 1\)</span> 时反应常数控速 / <span class="arithmatex">\(\gg 1\)</span> 时扩散控速</td>
+</tr>
+<tr>
+<td>mass transfer Biot number</td>
+<td>传质毕渥数</td>
+<td><span class="arithmatex">\(Bi_m = h_m L/D_{AB}\)</span>，介质内扩散阻与表面对流传质阻之比</td>
+</tr>
+<tr>
+<td>mass transfer Fourier number</td>
+<td>传质傅里叶数</td>
+<td><span class="arithmatex">\(Fo_m = D_{AB}t/L^2\)</span>，无量纲时间（式 14.82）</td>
+</tr>
+<tr>
+<td>species penetration depth</td>
+<td>组分渗透深度</td>
+<td><span class="arithmatex">\(\delta_{p,c} \sim \sqrt{D_{AB} t}\)</span>，边界信息渗入介质的深度</td>
+</tr>
+<tr>
+<td>partition coefficient</td>
+<td>分配系数</td>
+<td><span class="arithmatex">\(K\)</span>，界面两侧浓度（密度）之比（例 14.7）</td>
+</tr>
+<tr>
+<td>transdermal drug delivery</td>
+<td>经皮给药</td>
+<td>药物经贴片穿过皮肤进入血液，例 14.7 的应用</td>
+</tr>
+</tbody>
+</table>
+<details class="note">
+<summary>原书脚注补记</summary>
+<ol>
+<li>14.1.1 节脚注："组分（species）"指可经扩散、平流输运或经化学反应转化的可辨识分子——单个原子到复杂多原子分子都行，把混合物（如空气）整体当一个"组分"也可以。</li>
+<li>14.2 节脚注：只关心静止介质问题的读者可从 14.3 节直接读起；14.3 节脚注 5 给出了静止介质近似的完整条件（B 静止 + A 稀薄）。</li>
+<li>14.5.3 节脚注：式 (14.47)–(14.50) 中的生成项来自体积内发生的化学反应——即均匀（均相）化学反应，14.6 节专门处理；表面催化反应属于非均相反应，按边界条件处理。</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
