@@ -4,8 +4,8 @@ hide:
   - navigation
 ---
 
-<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jpg')">
-  <video class="home-bg-video" autoplay muted loop playsinline preload="metadata" poster="images/bg/miku-poster.jpg">
+<div class="home-bg-fixed" style="background-image:url('images/bg/ellen.jPython极客项目编程')">
+  <video class="home-bg-video" autoplay muted loop playsinline preload="metadata" poster="images/bg/miku-poster.jPython极客项目编程">
     <source src="images/bg/miku-loop.mp4" type="video/mp4">
   </video>
 </div>
@@ -20,7 +20,7 @@ hide:
       <div class="home-title">MASAMI 的外置大脑</div>
       <div class="home-sub">啃过的书、推导过的公式、跑通过的代码都堆在这里——先给自己回头翻，顺手让同路的人少踩几个坑。</div>
       <div class="home-btns">
-        <a class="gbtn" href="ml/">去翻最新一本</a>
+        <a class="gbtn" href="机器学习实战/">去翻最新一本</a>
         <a class="gbtn ghost" href="https://github.com/linxiawmt/MASAMI-Brain" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
@@ -88,7 +88,7 @@ hide:
 
     Elgendy 那本 10 章啃完，Keras 示例全翻成了 PyTorch——能跑的我都自己跑过。
 
-    [:octicons-arrow-right-24: 去看](dl4vs/index.md)
+    [:octicons-arrow-right-24: 去看](深度学习视觉系统/index.md)
 
 -   :fontawesome-solid-calculator:{ .lg .middle } **数值分析方法**
 
@@ -96,7 +96,7 @@ hide:
 
     13 章理论为主，推导不跳步，MATLAB 例程直接内联在页面上。期末复习靠它续命。
 
-    [:octicons-arrow-right-24: 去看](numana/index.md)
+    [:octicons-arrow-right-24: 去看](数值分析方法/index.md)
 
 -   :fontawesome-solid-wave-square:{ .lg .middle } **计算傅里叶光学**
 
@@ -104,7 +104,7 @@ hide:
 
     Voelz (SPIE TT89) 9 章，衍射、透镜、成像仿真，MATLAB 和 Python 双份代码对照写。
 
-    [:octicons-arrow-right-24: 去看](holo/fourier/index.md)
+    [:octicons-arrow-right-24: 去看](光学/计算傅里叶光学/index.md)
 
 -   :fontawesome-solid-wind:{ .lg .middle } **光波传播数值模拟**
 
@@ -112,7 +112,7 @@ hide:
 
     Schmidt (SPIE PM199)，采样判据、相位屏这些硬骨头都在；书缺的第 3 章留了占位。
 
-    [:octicons-arrow-right-24: 去看](holo/waveprop/index.md)
+    [:octicons-arrow-right-24: 去看](光学/光波传播数值模拟/index.md)
 
 -   :fontawesome-solid-camera-retro:{ .lg .middle } **光学扫描全息**
 
@@ -120,7 +120,7 @@ hide:
 
     Poon (Springer) 5 章，OSH 从原理到进展，公式全推了一遍。
 
-    [:octicons-arrow-right-24: 去看](holo/scanholo/index.md)
+    [:octicons-arrow-right-24: 去看](光学/光学扫描全息/index.md)
 
 -   :fontawesome-solid-images:{ .lg .middle } **OpenCV 轻松入门**
 
@@ -128,7 +128,7 @@ hide:
 
     李立宗那本 19 章，例子里能跑的全实跑过——页面截图是我机器上跑出来的，不是翻拍。
 
-    [:octicons-arrow-right-24: 去看](opencv/index.md)
+    [:octicons-arrow-right-24: 去看](OpenCV轻松入门/index.md)
 
 -   :fontawesome-solid-fire:{ .lg .middle } **传热学**
 
@@ -136,7 +136,7 @@ hide:
 
     Incropera 圣经 14 章，例题按"已知 → 求 → 分析 → 点评"完整拆解。
 
-    [:octicons-arrow-right-24: 去看](heat/index.md)
+    [:octicons-arrow-right-24: 去看](传热学/index.md)
 
 -   :fontawesome-solid-robot:{ .lg .middle } **机器学习实战**
 
@@ -144,7 +144,7 @@ hide:
 
     Harrington 的 MLIA 15 章全完结，代码全从 Python 2 改成了能直接跑的 Python 3。
 
-    [:octicons-arrow-right-24: 去看](ml/index.md)
+    [:octicons-arrow-right-24: 去看](机器学习实战/index.md)
 
 -   :fontawesome-solid-dice:{ .lg .middle } **随机模拟方法及应用**
 
@@ -152,7 +152,7 @@ hide:
 
     Shonkwiler《Explorations in Monte Carlo Methods》6 章 1:1 逐节对照、附录 A/B/D 内联，Dunn 作补充框，6 份 Notebook 全实跑——蒲丰投针到 Ising 一网打尽。
 
-    [:octicons-arrow-right-24: 去看](mc/index.md)
+    [:octicons-arrow-right-24: 去看](随机模拟方法及应用/index.md)
 
 -   :fontawesome-solid-cogs:{ .lg .middle } **自动控制原理**
 
@@ -160,7 +160,7 @@ hide:
 
     胡寿松《基础教程》第五版全书 9 章完结：根轨迹、奈氏判据、校正、离散、非线性、状态空间；MATLAB / Python 双代码对照。
 
-    [:octicons-arrow-right-24: 去看](ctrl/index.md)
+    [:octicons-arrow-right-24: 去看](自动控制原理/index.md)
 
 -   :fontawesome-solid-gamepad:{ .lg .middle } **Python极客项目编程**
 
@@ -168,7 +168,7 @@ hide:
 
     Venkitachalam 的 14 个极客项目：万花尺、生命游戏、类鸟群、体渲染、Arduino 激光秀——能实跑的我全跑了，OpenGL 那几章把着色器逻辑啃透。
 
-    [:octicons-arrow-right-24: 去看](pg/index.md)
+    [:octicons-arrow-right-24: 去看](Python极客项目编程/index.md)
 
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
@@ -176,7 +176,7 @@ hide:
 
     顺手收藏的 GitHub 好东西：浙大专属、CS 自学、AI……和课程笔记分开放。
 
-    [:octicons-arrow-right-24: 去看](resources/index.md)
+    [:octicons-arrow-right-24: 去看](学习资源/index.md)
 
 </div>
 </div>

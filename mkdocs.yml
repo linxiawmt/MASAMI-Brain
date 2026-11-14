@@ -83,157 +83,159 @@ extra_javascript:
   - javascripts/mermaid.min.js
   - javascripts/mermaid-init.js
   - javascripts/gallery.js
+  - javascripts/site-toc.js
   - javascripts/mathjax/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/custom.css
+  - stylesheets/site-toc.css
 
 nav:
   - 首页: index.md
   - 数值分析方法:
-      - numana/index.md
-      - 第1章 引言：误差与算法: numana/ch01.md
-      - 第2章 单变量方程求根: numana/ch02.md
-      - 第3章 非线性方程组: numana/ch03.md
-      - 第4章 线性方程组直接法: numana/ch04.md
-      - 第5章 线性方程组迭代法: numana/ch05.md
-      - 第6章 特征值的数值近似: numana/ch06.md
-      - 第7章 插值与多项式逼近: numana/ch07.md
-      - 第8章 差商、Hermite 与样条: numana/ch08.md
-      - 第9章 函数逼近: numana/ch09.md
-      - 第10章 数值微分: numana/ch10.md
-      - 第11章 数值积分: numana/ch11.md
-      - 第12章 微分方程初值问题: numana/ch12.md
-      - 第13章 微分方程边值问题与偏微分方程: numana/ch13.md
+      - 数值分析方法/index.md
+      - 第1章 引言：误差与算法: 数值分析方法/ch01.md
+      - 第2章 单变量方程求根: 数值分析方法/ch02.md
+      - 第3章 非线性方程组: 数值分析方法/ch03.md
+      - 第4章 线性方程组直接法: 数值分析方法/ch04.md
+      - 第5章 线性方程组迭代法: 数值分析方法/ch05.md
+      - 第6章 特征值的数值近似: 数值分析方法/ch06.md
+      - 第7章 插值与多项式逼近: 数值分析方法/ch07.md
+      - 第8章 差商、Hermite 与样条: 数值分析方法/ch08.md
+      - 第9章 函数逼近: 数值分析方法/ch09.md
+      - 第10章 数值微分: 数值分析方法/ch10.md
+      - 第11章 数值积分: 数值分析方法/ch11.md
+      - 第12章 微分方程初值问题: 数值分析方法/ch12.md
+      - 第13章 微分方程边值问题与偏微分方程: 数值分析方法/ch13.md
   - 深度学习视觉系统:
-      - dl4vs/index.md
-      - 第1章 欢迎来到计算机视觉: dl4vs/ch01.md
-      - 第2章 深度学习与神经网络: dl4vs/ch02.md
-      - 第3章 卷积神经网络: dl4vs/ch03.md
-      - 第4章 项目构建与超参数调优: dl4vs/ch04.md
-      - 第5章 经典CNN架构演进: dl4vs/ch05.md
-      - 第6章 迁移学习: dl4vs/ch06.md
-      - 第7章 目标检测从R-CNN到YOLO: dl4vs/ch07.md
-      - 第8章 生成对抗网络GAN: dl4vs/ch08.md
-      - 第9章 DeepDream与神经风格迁移: dl4vs/ch09.md
-      - 第10章 视觉嵌入: dl4vs/ch10.md
+      - 深度学习视觉系统/index.md
+      - 第1章 欢迎来到计算机视觉: 深度学习视觉系统/ch01.md
+      - 第2章 深度学习与神经网络: 深度学习视觉系统/ch02.md
+      - 第3章 卷积神经网络: 深度学习视觉系统/ch03.md
+      - 第4章 项目构建与超参数调优: 深度学习视觉系统/ch04.md
+      - 第5章 经典CNN架构演进: 深度学习视觉系统/ch05.md
+      - 第6章 迁移学习: 深度学习视觉系统/ch06.md
+      - 第7章 目标检测从R-CNN到YOLO: 深度学习视觉系统/ch07.md
+      - 第8章 生成对抗网络GAN: 深度学习视觉系统/ch08.md
+      - 第9章 DeepDream与神经风格迁移: 深度学习视觉系统/ch09.md
+      - 第10章 视觉嵌入: 深度学习视觉系统/ch10.md
   - OpenCV轻松入门:
-      - opencv/index.md
-      - 第1章 OpenCV入门: opencv/ch01.md
-      - 第2章 图像处理基础: opencv/ch02.md
-      - 第3章 图像运算: opencv/ch03.md
-      - 第4章 色彩空间类型转换: opencv/ch04.md
-      - 第5章 几何变换: opencv/ch05.md
-      - 第6章 阈值处理: opencv/ch06.md
-      - 第7章 图像平滑处理: opencv/ch07.md
-      - 第8章 形态学操作: opencv/ch08.md
-      - 第9章 图像梯度: opencv/ch09.md
-      - 第10章 Canny边缘检测: opencv/ch10.md
-      - 第11章 图像金字塔: opencv/ch11.md
-      - 第12章 图像轮廓: opencv/ch12.md
-      - 第13章 直方图处理: opencv/ch13.md
-      - 第14章 傅里叶变换: opencv/ch14.md
-      - 第15章 模板匹配: opencv/ch15.md
-      - 第16章 霍夫变换: opencv/ch16.md
-      - 第17章 图像分割与提取: opencv/ch17.md
-      - 第18章 视频处理: opencv/ch18.md
-      - 第19章 绘图及交互: opencv/ch19.md
+      - OpenCV轻松入门/index.md
+      - 第1章 OpenCV入门: OpenCV轻松入门/ch01.md
+      - 第2章 图像处理基础: OpenCV轻松入门/ch02.md
+      - 第3章 图像运算: OpenCV轻松入门/ch03.md
+      - 第4章 色彩空间类型转换: OpenCV轻松入门/ch04.md
+      - 第5章 几何变换: OpenCV轻松入门/ch05.md
+      - 第6章 阈值处理: OpenCV轻松入门/ch06.md
+      - 第7章 图像平滑处理: OpenCV轻松入门/ch07.md
+      - 第8章 形态学操作: OpenCV轻松入门/ch08.md
+      - 第9章 图像梯度: OpenCV轻松入门/ch09.md
+      - 第10章 Canny边缘检测: OpenCV轻松入门/ch10.md
+      - 第11章 图像金字塔: OpenCV轻松入门/ch11.md
+      - 第12章 图像轮廓: OpenCV轻松入门/ch12.md
+      - 第13章 直方图处理: OpenCV轻松入门/ch13.md
+      - 第14章 傅里叶变换: OpenCV轻松入门/ch14.md
+      - 第15章 模板匹配: OpenCV轻松入门/ch15.md
+      - 第16章 霍夫变换: OpenCV轻松入门/ch16.md
+      - 第17章 图像分割与提取: OpenCV轻松入门/ch17.md
+      - 第18章 视频处理: OpenCV轻松入门/ch18.md
+      - 第19章 绘图及交互: OpenCV轻松入门/ch19.md
   - 计算傅里叶光学:
-      - holo/fourier/index.md
-      - holo/fourier/ch1.md
-      - holo/fourier/ch2.md
-      - holo/fourier/ch3.md
-      - holo/fourier/ch4.md
-      - holo/fourier/ch5.md
-      - holo/fourier/ch6.md
-      - holo/fourier/ch7.md
-      - holo/fourier/ch8.md
-      - holo/fourier/ch9.md
+      - 光学/计算傅里叶光学/index.md
+      - 光学/计算傅里叶光学/ch1.md
+      - 光学/计算傅里叶光学/ch2.md
+      - 光学/计算傅里叶光学/ch3.md
+      - 光学/计算傅里叶光学/ch4.md
+      - 光学/计算傅里叶光学/ch5.md
+      - 光学/计算傅里叶光学/ch6.md
+      - 光学/计算傅里叶光学/ch7.md
+      - 光学/计算傅里叶光学/ch8.md
+      - 光学/计算傅里叶光学/ch9.md
   - 光波传播数值模拟:
-      - holo/waveprop/index.md
-      - holo/waveprop/ch1.md
-      - holo/waveprop/ch2.md
-      - holo/waveprop/ch3.md
-      - holo/waveprop/ch4.md
-      - holo/waveprop/ch5.md
-      - holo/waveprop/ch6.md
-      - holo/waveprop/ch7.md
-      - holo/waveprop/ch8.md
-      - holo/waveprop/ch9.md
+      - 光学/光波传播数值模拟/index.md
+      - 光学/光波传播数值模拟/ch1.md
+      - 光学/光波传播数值模拟/ch2.md
+      - 光学/光波传播数值模拟/ch3.md
+      - 光学/光波传播数值模拟/ch4.md
+      - 光学/光波传播数值模拟/ch5.md
+      - 光学/光波传播数值模拟/ch6.md
+      - 光学/光波传播数值模拟/ch7.md
+      - 光学/光波传播数值模拟/ch8.md
+      - 光学/光波传播数值模拟/ch9.md
   - 光学扫描全息:
-      - holo/scanholo/index.md
-      - holo/scanholo/ch1.md
-      - holo/scanholo/ch2.md
-      - holo/scanholo/ch3.md
-      - holo/scanholo/ch4.md
-      - holo/scanholo/ch5.md
+      - 光学/光学扫描全息/index.md
+      - 光学/光学扫描全息/ch1.md
+      - 光学/光学扫描全息/ch2.md
+      - 光学/光学扫描全息/ch3.md
+      - 光学/光学扫描全息/ch4.md
+      - 光学/光学扫描全息/ch5.md
   - 传热学:
-      - heat/index.md
-      - 第1章 引言: heat/ch01.md
-      - 第2章 导热引论: heat/ch02.md
-      - 第3章 一维稳态导热: heat/ch03.md
-      - 第4章 二维稳态导热: heat/ch04.md
-      - 第5章 瞬态导热: heat/ch05.md
-      - 第6章 对流引论: heat/ch06.md
-      - 第7章 外部流动: heat/ch07.md
-      - 第8章 内部流动: heat/ch08.md
-      - 第9章 自然对流: heat/ch09.md
-      - 第10章 沸腾与凝结: heat/ch10.md
-      - 第11章 换热器: heat/ch11.md
-      - 第12章 辐射：过程与性质: heat/ch12.md
-      - 第13章 表面间的辐射换热: heat/ch13.md
-      - 第14章 扩散传质: heat/ch14.md
+      - 传热学/index.md
+      - 第1章 引言: 传热学/ch01.md
+      - 第2章 导热引论: 传热学/ch02.md
+      - 第3章 一维稳态导热: 传热学/ch03.md
+      - 第4章 二维稳态导热: 传热学/ch04.md
+      - 第5章 瞬态导热: 传热学/ch05.md
+      - 第6章 对流引论: 传热学/ch06.md
+      - 第7章 外部流动: 传热学/ch07.md
+      - 第8章 内部流动: 传热学/ch08.md
+      - 第9章 自然对流: 传热学/ch09.md
+      - 第10章 沸腾与凝结: 传热学/ch10.md
+      - 第11章 换热器: 传热学/ch11.md
+      - 第12章 辐射：过程与性质: 传热学/ch12.md
+      - 第13章 表面间的辐射换热: 传热学/ch13.md
+      - 第14章 扩散传质: 传热学/ch14.md
   - 机器学习实战:
-      - ml/index.md
-      - 第1章 机器学习基础: ml/ch01.md
-      - 第2章 k-近邻算法: ml/ch02.md
-      - 第3章 决策树: ml/ch03.md
-      - 第4章 基于概率论的分类方法：朴素贝叶斯: ml/ch04.md
-      - 第5章 Logistic回归: ml/ch05.md
-      - 第6章 支持向量机: ml/ch06.md
-      - 第7章 利用AdaBoost元算法提高分类性能: ml/ch07.md
-      - 第8章 预测数值型数据：回归: ml/ch08.md
-      - 第9章 树回归: ml/ch09.md
-      - 第10章 利用K-均值聚类算法对未标注数据分组: ml/ch10.md
-      - 第11章 使用Apriori算法进行关联分析: ml/ch11.md
-      - 第12章 使用FP-growth算法来高效发现频繁项集: ml/ch12.md
-      - 第13章 利用PCA来简化数据: ml/ch13.md
-      - 第14章 利用SVD简化数据: ml/ch14.md
-      - 第15章 大数据与MapReduce: ml/ch15.md
+      - 机器学习实战/index.md
+      - 第1章 机器学习基础: 机器学习实战/ch01.md
+      - 第2章 k-近邻算法: 机器学习实战/ch02.md
+      - 第3章 决策树: 机器学习实战/ch03.md
+      - 第4章 基于概率论的分类方法：朴素贝叶斯: 机器学习实战/ch04.md
+      - 第5章 Logistic回归: 机器学习实战/ch05.md
+      - 第6章 支持向量机: 机器学习实战/ch06.md
+      - 第7章 利用AdaBoost元算法提高分类性能: 机器学习实战/ch07.md
+      - 第8章 预测数值型数据：回归: 机器学习实战/ch08.md
+      - 第9章 树回归: 机器学习实战/ch09.md
+      - 第10章 利用K-均值聚类算法对未标注数据分组: 机器学习实战/ch10.md
+      - 第11章 使用Apriori算法进行关联分析: 机器学习实战/ch11.md
+      - 第12章 使用FP-growth算法来高效发现频繁项集: 机器学习实战/ch12.md
+      - 第13章 利用PCA来简化数据: 机器学习实战/ch13.md
+      - 第14章 利用SVD简化数据: 机器学习实战/ch14.md
+      - 第15章 大数据与MapReduce: 机器学习实战/ch15.md
   - 自动控制原理:
-      - ctrl/index.md
-      - 第1章 控制系统导论: ctrl/ch01.md
-      - 第2章 控制系统的数学模型: ctrl/ch02.md
-      - 第3章 线性系统的时域分析法: ctrl/ch03.md
-      - 第4章 线性系统的根轨迹法: ctrl/ch04.md
-      - 第5章 线性系统的频域分析法: ctrl/ch05.md
-      - 第6章 线性系统的校正方法: ctrl/ch06.md
-      - 第7章 线性离散系统的分析: ctrl/ch07.md
-      - 第8章 非线性控制系统分析: ctrl/ch08.md
-      - 第9章 线性系统的状态空间分析与综合: ctrl/ch09.md
+      - 自动控制原理/index.md
+      - 第1章 控制系统导论: 自动控制原理/ch01.md
+      - 第2章 控制系统的数学模型: 自动控制原理/ch02.md
+      - 第3章 线性系统的时域分析法: 自动控制原理/ch03.md
+      - 第4章 线性系统的根轨迹法: 自动控制原理/ch04.md
+      - 第5章 线性系统的频域分析法: 自动控制原理/ch05.md
+      - 第6章 线性系统的校正方法: 自动控制原理/ch06.md
+      - 第7章 线性离散系统的分析: 自动控制原理/ch07.md
+      - 第8章 非线性控制系统分析: 自动控制原理/ch08.md
+      - 第9章 线性系统的状态空间分析与综合: 自动控制原理/ch09.md
   - 随机模拟方法及应用:
-      - mc/index.md
-      - 第1章 导论：随机数如何解决问题: mc/ch01.md
-      - 第2章 概率分布及其用途: mc/ch02.md
-      - 第3章 马尔可夫链蒙特卡罗: mc/ch03.md
-      - 第4章 随机游走: mc/ch04.md
-      - 第5章 蒙特卡罗优化方法: mc/ch05.md
-      - 第6章 再谈马尔可夫链蒙特卡罗: mc/ch06.md
+      - 随机模拟方法及应用/index.md
+      - 第1章 导论：随机数如何解决问题: 随机模拟方法及应用/ch01.md
+      - 第2章 概率分布及其用途: 随机模拟方法及应用/ch02.md
+      - 第3章 马尔可夫链蒙特卡罗: 随机模拟方法及应用/ch03.md
+      - 第4章 随机游走: 随机模拟方法及应用/ch04.md
+      - 第5章 蒙特卡罗优化方法: 随机模拟方法及应用/ch05.md
+      - 第6章 再谈马尔可夫链蒙特卡罗: 随机模拟方法及应用/ch06.md
   - Python极客项目编程:
-      - pg/index.md
-      - 第1章 解析 iTunes 播放列表: pg/ch01.md
-      - 第2章 万花尺: pg/ch02.md
-      - 第3章 Conway 生命游戏: pg/ch03.md
-      - 第4章 用 Karplus-Strong 算法产生音乐泛音: pg/ch04.md
-      - 第5章 类鸟群：仿真鸟群: pg/ch05.md
-      - 第6章 ASCII 文本图形: pg/ch06.md
-      - 第7章 照片马赛克: pg/ch07.md
-      - 第8章 三维立体画: pg/ch08.md
-      - 第9章 理解 OpenGL: pg/ch09.md
-      - 第10章 粒子系统: pg/ch10.md
-      - 第11章 体渲染: pg/ch11.md
-      - 第12章 Arduino 简介: pg/ch12.md
-      - 第13章 激光音乐秀: pg/ch13.md
-      - 第14章 基于树莓派的天气监控器: pg/ch14.md
+      - Python极客项目编程/index.md
+      - 第1章 解析 iTunes 播放列表: Python极客项目编程/ch01.md
+      - 第2章 万花尺: Python极客项目编程/ch02.md
+      - 第3章 Conway 生命游戏: Python极客项目编程/ch03.md
+      - 第4章 用 Karplus-Strong 算法产生音乐泛音: Python极客项目编程/ch04.md
+      - 第5章 类鸟群：仿真鸟群: Python极客项目编程/ch05.md
+      - 第6章 ASCII 文本图形: Python极客项目编程/ch06.md
+      - 第7章 照片马赛克: Python极客项目编程/ch07.md
+      - 第8章 三维立体画: Python极客项目编程/ch08.md
+      - 第9章 理解 OpenGL: Python极客项目编程/ch09.md
+      - 第10章 粒子系统: Python极客项目编程/ch10.md
+      - 第11章 体渲染: Python极客项目编程/ch11.md
+      - 第12章 Arduino 简介: Python极客项目编程/ch12.md
+      - 第13章 激光音乐秀: Python极客项目编程/ch13.md
+      - 第14章 基于树莓派的天气监控器: Python极客项目编程/ch14.md
   - 学习资源:
-      - resources/index.md
+      - 学习资源/index.md
