@@ -6012,6 +6012,7 @@
 <p><strong>本章解决</strong>：机器学习应用很少是"一个算法跑到底"——缩放、特征提取、特征选择、模型训练要<strong>链在一起</strong>执行。怎么把这条链封装成一个 scikit-learn 估计器？用 <strong>Pipeline 类（管道）</strong>。本章先看一个反例：预处理放在交叉验证之外做，会"泄漏"验证部分的信息，把随机数据上的回归吹出 R²=0.91（管道纠正后是 -0.25）；然后学管道的创建、fit/predict 链、<code>步骤名__参数名</code> 的网格搜索语法，直到"连用哪个模型都交给网格搜索选"。
 这一章没有新算法，全是<strong>流程规范与工程接口</strong>，但它决定第 2~5 章所有实验的结论是否可信。学完本章，scikit-learn 提供的通用工具与算法就全部齐了，下一章进入需要专门处理的文本数据。</p>
 </blockquote>
+<p>📓 <strong>章代码</strong>：<a href="../nb/ch06.ipynb">nb/ch06.ipynb</a>（分节跟随代码，固定种子实跑输出；旧 API 适配处见代码内“版本适配”注释）</p>
 <p>对于许多机器学习算法，你提供的特定<strong>数据表示（data representation）<strong>非常重要——第 4 章整章都在讲这个。第 3 章也讲过：先对数据缩放，再手工合并特征，再用无监督学习学习特征。所以大多数机器学习应用不仅需要应用单个算法，还需要</strong>将许多不同的处理步骤和机器学习模型链接在一起</strong>。本章介绍如何用 Pipeline 类简化"变换 + 模型"链的构建，重点是 <strong>Pipeline 与 GridSearchCV 结合</strong>，从而同时搜索所有处理步骤中的参数。</p>
 <p>先用一个具体例子感受"模型链"。我们已经知道：用 MinMaxScaler 预处理可以大大提高核 SVM 在 cancer 数据集上的性能（第 3 章 0.63 → 0.97 那次）。划分数据、计算最小值最大值、缩放数据、训练 SVM，代码是这样的：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书第 6 章开篇：划分数据 → 缩放 → 训练 SVM =====</span>

@@ -6489,6 +6489,7 @@
 <blockquote>
 <p><strong>本章解决</strong>：怎么科学地给监督模型"打分"，并把这个分数用对地方。前三章我们一直用 train_test_split + score 这把"单次划分的尺子"，本章先把它换成更稳的<strong>交叉验证</strong>，再解决"调参把测试集用坏"的问题——网格搜索、验证集、嵌套交叉验证；最后补齐指标本身：精度之外还有 F1、准确率-召回率曲线、ROC/AUC、多分类平均策略与回归 <span class="arithmatex">\(R^2\)</span>。这一章的工具和第 2、3 章的算法一起构成机器学习从业者的日常装备；下一章的 Pipeline 会把"预处理 + 模型"串成链，让网格搜索与交叉验证能覆盖整条流水线。</p>
 </blockquote>
+<p>📓 <strong>章代码</strong>：<a href="../nb/ch05.ipynb">nb/ch05.ipynb</a>（分节跟随代码，固定种子实跑输出；旧 API 适配处见代码内“版本适配”注释）</p>
 <p>前面讨论了监督学习和无监督学习的基本原理，并探索了多种机器学习算法，本章我们深入学习模型评估与参数选择。重点放在监督方法（回归与分类）上，因为在无监督学习中，模型评估与选择通常是一个非常定性的过程（第 3 章你已经体会过了）。</p>
 <p>到目前为止，我们评估监督模型的方式是：用 train_test_split 划分训练集和测试集，在训练集上调用 fit 构建模型，在测试集上用 score 评估——对分类问题而言，就是正确分类样本所占的比例。先复习一下这套老流程：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书第 5 章开篇：复习 train_test_split + score 的老流程 =====</span>

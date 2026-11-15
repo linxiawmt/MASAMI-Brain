@@ -5581,6 +5581,7 @@
 <div class="admonition note">
 <p class="admonition-title">运行环境</p>
 <p>原书基于 Python 3.6 + scikit-learn 0.19，示例大量使用作者自己的绘图库 <code>mglearn</code>（<code>pip install mglearn</code>）。笔记中的代码按原书忠实呈现，<strong>scikit-learn 1.x 下的 API 变化在正文用"版本差异"标注</strong>（如 <code>load_boston</code> 在 1.2 起移除）。插图均截自原书。</p>
+<p><strong>每章配 <code>nb/chNN.ipynb</code> 跟随代码 notebook</strong>（分节代码 + 固定种子实跑输出）。实跑环境 conda <code>machinelearn</code>（Python 3.10 / scikit-learn 1.7 / pandas 2.3）；本机 mglearn 打了三个补丁：boston 离线加载、书兼容 <code>make_blobs</code>（旧版支持元组 <code>n_samples</code>）、<code>heatmap</code> numpy 2 兼容。UCI adult、IMDb aclImdb 数据存于 <code>E:\Desktop\深度学习\_ml_data\</code>（notebook 用环境变量 <code>ADULT_DIR</code> / <code>IMDB_DIR</code> 定位）；LFW 人脸由镜像数据重建，个数与尺寸和书印略有出入。</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">怎么读这本书</p>
