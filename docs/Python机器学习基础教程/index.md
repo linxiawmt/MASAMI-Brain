@@ -9,6 +9,8 @@ Andreas C. Müller & Sarah Guido《Introduction to Machine Learning with Python�
 !!! note "运行环境"
     原书基于 Python 3.6 + scikit-learn 0.19，示例大量使用作者自己的绘图库 `mglearn`（`pip install mglearn`）。笔记中的代码按原书忠实呈现，**scikit-learn 1.x 下的 API 变化在正文用"版本差异"标注**（如 `load_boston` 在 1.2 起移除）。插图均截自原书。
 
+    **每章配 `nb/chNN.ipynb` 跟随代码 notebook**（分节代码 + 固定种子实跑输出）。实跑环境 conda `machinelearn`（Python 3.10 / scikit-learn 1.7 / pandas 2.3）；本机 mglearn 打了三个补丁：boston 离线加载、书兼容 `make_blobs`（旧版支持元组 `n_samples`）、`heatmap` numpy 2 兼容。UCI adult、IMDb aclImdb 数据存于 `E:\Desktop\深度学习\_ml_data\`（notebook 用环境变量 `ADULT_DIR` / `IMDB_DIR` 定位）；LFW 人脸由镜像数据重建，个数与尺寸和书印略有出入。
+
 !!! tip "怎么读这本书"
     和《机器学习实战》那种"从零手写算法"的路线不同，本书教的是**调用现成工具并把流程做规范**：训练/测试集划分 → fit/predict → 评估 → 调参 → 流水线。两本书正好互补，术语写法两边保持一致。
 
