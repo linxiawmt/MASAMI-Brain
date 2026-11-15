@@ -1,0 +1,6796 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人学习笔记站：深度学习、计算机视觉等">
+      
+      
+      
+        <link rel="canonical" href="https://linxiawmt.github.io/MASAMI-Brain/Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/ch06/">
+      
+      
+        <link rel="prev" href="../ch05/">
+      
+      
+        <link rel="next" href="../ch07/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>第6章 算法链与管道 - MASAMI的外置大脑</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/site-toc.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#第-6-章-算法链与管道" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MASAMI的外置大脑" class="md-header__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MASAMI的外置大脑
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第6章 算法链与管道
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+    
+  
+  数值分析方法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  深度学习视觉系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+    
+  
+  OpenCV轻松入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+    
+  
+  计算傅里叶光学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+    
+  
+  光波传播数值模拟
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+    
+  
+  光学扫描全息
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+    
+  
+  传热学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+    
+  
+  机器学习实战
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+    
+  
+  自动控制原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  随机模拟方法及应用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+    
+  
+  Python极客项目编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.82 17 13 19.28V22H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v8.54l-1.5-.82zM24 17l-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+    
+  
+  Python机器学习基础教程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+    
+  
+  学习资源
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MASAMI的外置大脑" class="md-nav__button md-logo" aria-label="MASAMI的外置大脑" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MASAMI的外置大脑
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/linxiawmt/MASAMI-Brain" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    linxiawmt/MASAMI-Brain
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 2v4h10V4zm0 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    数值分析方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数值分析方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言：误差与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 单变量方程求根
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 非线性方程组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性方程组直接法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性方程组迭代法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 特征值的数值近似
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 插值与多项式逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 差商、Hermite 与样条
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 函数逼近
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 数值微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 数值积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 微分方程初值问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 微分方程边值问题与偏微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习视觉系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    深度学习视觉系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 欢迎来到计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 深度学习与神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 卷积神经网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 项目构建与超参数调优
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 经典CNN架构演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 迁移学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 目标检测从R-CNN到YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 生成对抗网络GAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 DeepDream与神经风格迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 视觉嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-5.04 9.29-2.75 3.54-1.96-2.36L6.5 17h11z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV轻松入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenCV轻松入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 OpenCV入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 图像处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 图像运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 色彩空间类型转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 几何变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 阈值处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 图像平滑处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 形态学操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 图像梯度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 Canny边缘检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 图像金字塔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 图像轮廓
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 直方图处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 模板匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第16章 霍夫变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第17章 图像分割与提取
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第18章 视频处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenCV%E8%BD%BB%E6%9D%BE%E5%85%A5%E9%97%A8/ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第19章 绘图及交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22 12-2 1-1 1-1-1-1 3-1-3-1 8-1-8-1 2-1-2-1 4-1-4-1 9-1-9-1 6-1-6-1 1-1-1-2-1 2-1 1-1 1 1 1-6 1 6 1-9 1 9 1-4 1 4 1-2 1 2 1-8 1 8 1-3 1 3 1-1 1 1z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    计算傅里叶光学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算傅里叶光学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 解析傅里叶理论复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 采样函数与离散傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 MATLAB 编程：函数、向量、数组与傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 标量衍射与传播解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 传播仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 透过率函数、透镜与光栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 成像与衍射限成像仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 波前像差(Wavefront Aberrations)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E8%AE%A1%E7%AE%97%E5%82%85%E9%87%8C%E5%8F%B6%E5%85%89%E5%AD%A6/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 部分相干仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 10a1 1 0 0 1-1-1 1 1 0 0 1 1-1h8a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59a.973.973 0 0 1-1.42 0c-.39-.39-.39-1.03 0-1.42C9.9 2.45 10.9 2 12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4zm15 2a1 1 0 0 0 1-1 1 1 0 0 0-1-1c-.28 0-.53.11-.71.29a.996.996 0 0 1-1.41 0c-.38-.39-.38-1.02 0-1.41C17.42 8.34 18.17 8 19 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3H5a1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-1 6H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h14a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-.83 0-1.58-.34-2.12-.88-.38-.39-.38-1.02 0-1.41a.996.996 0 0 1 1.41 0c.18.18.43.29.71.29a1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光波传播数值模拟
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光波传播数值模拟
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 标量衍射理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 数字傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 （原书 PDF 缺失）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 夫琅禾费衍射与透镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 成像系统与像差
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 章 真空中的菲涅耳衍射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7 章 菲涅耳衍射的采样要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 8 章 用部分传播放宽采样约束
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E6%B3%A2%E4%BC%A0%E6%92%AD%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 9 章 大气湍流仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 14H4V6h4.05l1.83-2h4.24l1.83 2H20zM12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    光学扫描全息
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    光学扫描全息
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 数学背景与线性系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 波动光学与全息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 光学扫描全息：原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 光学扫描全息：应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%89%E5%AD%A6/%E5%85%89%E5%AD%A6%E6%89%AB%E6%8F%8F%E5%85%A8%E6%81%AF/ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 光学扫描全息：进展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    传热学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    传热学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 导热引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 一维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 二维稳态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 瞬态导热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 对流引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 外部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 内部流动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 自然对流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 沸腾与凝结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 换热器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 辐射：过程与性质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 表面间的辐射换热
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BC%A0%E7%83%AD%E5%AD%A6/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 扩散传质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习实战
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习实战
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 基于概率论的分类方法：朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 Logistic回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 支持向量机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 利用AdaBoost元算法提高分类性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 预测数值型数据：回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 树回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 利用K-均值聚类算法对未标注数据分组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 使用Apriori算法进行关联分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 使用FP-growth算法来高效发现频繁项集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 利用PCA来简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 利用SVD简化数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15章 大数据与MapReduce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    自动控制原理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动控制原理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 控制系统导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 控制系统的数学模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 线性系统的时域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 线性系统的根轨迹法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 线性系统的频域分析法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 线性系统的校正方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 线性离散系统的分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 非线性控制系统分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 线性系统的状态空间分析与综合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机模拟方法及应用
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随机模拟方法及应用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 导论：随机数如何解决问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 概率分布及其用途
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 蒙特卡罗优化方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BA%94%E7%94%A8/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 再谈马尔可夫链蒙特卡罗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python极客项目编程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python极客项目编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 解析 iTunes 播放列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 万花尺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 Conway 生命游戏
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 用 Karplus-Strong 算法产生音乐泛音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 类鸟群：仿真鸟群
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 ASCII 文本图形
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 照片马赛克
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 三维立体画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章 理解 OpenGL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章 粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章 体渲染
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章 Arduino 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13章 激光音乐秀
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E6%9E%81%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B/ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14章 基于树莓派的天气监控器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.82 17 13 19.28V22H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v8.54l-1.5-.82zM24 17l-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Python机器学习基础教程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python机器学习基础教程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章 引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章 监督学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章 无监督学习与预处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章 数据表示与特征工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章 模型评估与改进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 算法链与管道
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章 算法链与管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#60-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-用预处理进行参数选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 用预处理进行参数选择
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-构建管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 构建管道
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-在网格搜索中使用管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 在网格搜索中使用管道
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 在网格搜索中使用管道">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#举例说明信息泄露" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        举例说明信息泄露
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-通用的管道接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 通用的管道接口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 通用的管道接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-用-make_pipeline-方便地创建管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 用 make_pipeline 方便地创建管道
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-访问步骤属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 访问步骤属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-访问网格搜索管道中的属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 访问网格搜索管道中的属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-网格搜索预处理步骤与模型参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 网格搜索预处理步骤与模型参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-网格搜索选择使用哪个模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 网格搜索选择使用哪个模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-小结与展望" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 小结与展望
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 处理文本数据
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 全书总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17 3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9.9.9 0 0 0 .9.9.9.9 0 0 0 .9-.9.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    学习资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#60-本章导图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0 本章导图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-用预处理进行参数选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 用预处理进行参数选择
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-构建管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 构建管道
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-在网格搜索中使用管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 在网格搜索中使用管道
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 在网格搜索中使用管道">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#举例说明信息泄露" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        举例说明信息泄露
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-通用的管道接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 通用的管道接口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 通用的管道接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-用-make_pipeline-方便地创建管道" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.1 用 make_pipeline 方便地创建管道
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-访问步骤属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.2 访问步骤属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-访问网格搜索管道中的属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4.3 访问网格搜索管道中的属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-网格搜索预处理步骤与模型参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 网格搜索预处理步骤与模型参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-网格搜索选择使用哪个模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 网格搜索选择使用哪个模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-小结与展望" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 小结与展望
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#坑与陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#速览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        速览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语速查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        术语速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#覆盖自查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖自查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="第-6-章-算法链与管道">第 6 章 算法链与管道<a class="headerlink" href="#第-6-章-算法链与管道" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>本章解决</strong>：机器学习应用很少是"一个算法跑到底"——缩放、特征提取、特征选择、模型训练要<strong>链在一起</strong>执行。怎么把这条链封装成一个 scikit-learn 估计器？用 <strong>Pipeline 类（管道）</strong>。本章先看一个反例：预处理放在交叉验证之外做，会"泄漏"验证部分的信息，把随机数据上的回归吹出 R²=0.91（管道纠正后是 -0.25）；然后学管道的创建、fit/predict 链、<code>步骤名__参数名</code> 的网格搜索语法，直到"连用哪个模型都交给网格搜索选"。
+这一章没有新算法，全是<strong>流程规范与工程接口</strong>，但它决定第 2~5 章所有实验的结论是否可信。学完本章，scikit-learn 提供的通用工具与算法就全部齐了，下一章进入需要专门处理的文本数据。</p>
+</blockquote>
+<p>对于许多机器学习算法，你提供的特定<strong>数据表示（data representation）<strong>非常重要——第 4 章整章都在讲这个。第 3 章也讲过：先对数据缩放，再手工合并特征，再用无监督学习学习特征。所以大多数机器学习应用不仅需要应用单个算法，还需要</strong>将许多不同的处理步骤和机器学习模型链接在一起</strong>。本章介绍如何用 Pipeline 类简化"变换 + 模型"链的构建，重点是 <strong>Pipeline 与 GridSearchCV 结合</strong>，从而同时搜索所有处理步骤中的参数。</p>
+<p>先用一个具体例子感受"模型链"。我们已经知道：用 MinMaxScaler 预处理可以大大提高核 SVM 在 cancer 数据集上的性能（第 3 章 0.63 → 0.97 那次）。划分数据、计算最小值最大值、缩放数据、训练 SVM，代码是这样的：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ===== 书第 6 章开篇：划分数据 → 缩放 → 训练 SVM =====</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 加载并划分数据</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 计算训练数据的最小值和最大值（fit 只碰训练集——第 3 章立下的铁律）</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># 对训练数据进行缩放，然后在缩放后的训练数据上学习 SVM</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># 对测试数据用同一个缩放器变换，再打分</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Test score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># → Test score: 0.95</span>
+</code></pre></div>
+<p>四个对象（<code>train_test_split</code> 的四份输出、scaler、svm）、五次方法调用，全靠你手工保证顺序：<strong>fit 两次、transform 两次、谁先谁后不能错</strong>。步骤一多，出错只是时间问题。本章的 Pipeline 就把这条链变成一个对象、一次调用。</p>
+<h2 id="60-本章导图">6.0 本章导图<a class="headerlink" href="#60-本章导图" title="Permanent link">#</a></h2>
+<div class="brtree">
+  <div class="brrow">
+    <span class="brlabel root">算法链与管道</span>
+    <span class="brace"></span>
+    <div class="brkids">
+      <div class="brrow">
+        <span class="brlabel">泄漏问题</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">预处理在 CV 外 → 验证部分信息泄漏</span>
+          <span class="brleaf">评估虚高、可能选出次优参数</span>
+          <span class="brleaf">缩放泄漏影响小，特征选择泄漏致命</span>
+          <span class="brleaf">随机数据：R² 0.91（假）→ -0.25（真）</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">构建管道</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">(名称, 估计器) 元组列表，名称禁含 __</span>
+          <span class="brleaf">fit：前步 fit+transform，末步 fit</span>
+          <span class="brleaf">predict：前步 transform，末步 predict</span>
+          <span class="brleaf">score：先变换测试数据再打分</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">管道 + 网格搜索</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">步骤名__参数名：svm__C / svm__gamma</span>
+          <span class="brleaf">每折内部重新拟合缩放器</span>
+          <span class="brleaf">交叉验证位于处理过程最外层</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">通用接口与访问</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">任意步数；末步可用回归 / 聚类 / 变换器</span>
+          <span class="brleaf">make_pipeline 自动命名（同类加 -1/-2）</span>
+          <span class="brleaf">steps / named_steps 取步骤</span>
+          <span class="brleaf">best_estimator_ 链一路挖到 coef_</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">搜索预处理 + 模型</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">boston：polynomialfeatures__degree + ridge__alpha</span>
+          <span class="brleaf">cv_results_ 热图：二次项有用</span>
+          <span class="brleaf">测试分数 0.77 vs 无多项式 0.63</span>
+          <span class="brleaf">组合数随参数指数增长</span>
+        </div>
+      </div>
+      <div class="brrow">
+        <span class="brlabel">搜索"用哪个模型"</span>
+        <span class="brace"></span>
+        <div class="brkids">
+          <span class="brleaf">参数网格列表（5.2.3 非网格空间）</span>
+          <span class="brleaf">classifier: [SVC(), RF] 替换步骤</span>
+          <span class="brleaf">preprocessing: [None] 跳过步骤</span>
+          <span class="brleaf">cancer 胜者：SVC + StandardScaler，C=10 γ=0.01</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="61-用预处理进行参数选择">6.1 用预处理进行参数选择<a class="headerlink" href="#61-用预处理进行参数选择" title="Permanent link">#</a></h2>
+<p>现在假设我们想用 GridSearchCV 给 SVC 找更好的参数（正如第 5 章做过的那样）。一种"看起来很自然"的写法是：<strong>先缩放好数据，再在缩放后的数据上跑网格搜索</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ===== 书 6.1 节：在"缩放好的数据"上做网格搜索（反例，不要模仿） =====</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 只是为了便于说明，不要在实践中使用这些代码！</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>              <span class="s1">'gamma'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>          <span class="c1"># 注意：喂的是已经缩放过的 X_train_scaled</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best cross-validation accuracy: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best set score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best parameters: "</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># → Best cross-validation accuracy: 0.98</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># → Best set score: 0.97</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># → Best parameters:  {'gamma': 1, 'C': 1}</span>
+</code></pre></div>
+<p>数字看起来一切正常。但这段代码里有一个<strong>不易察觉的陷阱</strong>，把书里的推理一步一步摆出来：</p>
+<ol>
+<li>缩放时，我们用了<strong>训练集中的所有数据</strong>来 fit MinMaxScaler（找出 min/max）。</li>
+<li>然后在缩放后的训练数据上跑带交叉验证的网格搜索。</li>
+<li>交叉验证的每次划分，会把训练集再切成<strong>训练部分</strong>和<strong>测试部分</strong>（也叫验证部分）：测试部分用来度量"训练部分上学到的模型在新数据上的表现"。</li>
+<li>问题来了：<strong>这个"测试部分"在缩放时已经被用过了</strong>——它参与了 min/max 的计算。请记住，交叉验证每次划分的测试部分都是训练集的一部分，而我们用整个训练集的信息找出了缩放参数。</li>
+<li>于是对模型来说，"验证部分"和真正的新数据长得不一样：真正的新数据（比如测试集）<strong>没有</strong>参与缩放，它的 min/max 可能与训练数据不同。交叉验证的划分无法正确反映新数据的特征。</li>
+</ol>
+<p>我们<strong>把这部分数据的信息泄露（leak）给了建模过程</strong>。后果：交叉验证分数过于乐观，并<strong>可能导致选出次优的参数</strong>。下面的图把"交叉验证"与"最终评估"两个过程里的数据使用情况画了出来：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ===== 书 6.1 节：画出"预处理在交叉验证之外"的数据使用图 =====</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_improper_processing</span><span class="p">()</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch06/fig-6-1.png" class="lq-img" />
+  <figcaption>图 6-1 在交叉验证循环之外进行预处理时的数据使用情况（截自原书）</figcaption>
+</figure>
+
+<p>看图的姿势：上下两条时间轴。<strong>上条</strong>是交叉验证内部——SVC 拟合、SVC 预测都只发生在训练部分/验证部分上，规规矩矩；<strong>下条</strong>是 scaler 拟合——它的横杆却横跨了整个训练集（训练部分 + 验证部分），也就是说验证部分的信息经由缩放器这个"旁门"流进了建模过程；测试集的预测用的也是这个看过验证部分的缩放器。</p>
+<p>解决原则一句话：<strong>在交叉验证的过程中，应该在进行任何预处理之前完成数据集的划分</strong>。任何从数据集中提取信息的处理过程，都只能应用于数据集的训练部分——所以<strong>任何交叉验证都应该位于处理过程的"最外层循环"</strong>。</p>
+<p>在 scikit-learn 里，想让 <code>cross_val_score</code> 和 GridSearchCV 做到这一点，用的就是 <strong>Pipeline 类</strong>：它可以把多个处理步骤**合并（glue，粘合）**成单个 scikit-learn 估计器。Pipeline 本身具有 <code>fit</code>、<code>predict</code>、<code>score</code> 方法，行为与其他模型完全相同。最常见的用例：**预处理步骤（缩放）+ 监督模型（分类器）**链接在一起。</p>
+<h2 id="62-构建管道">6.2 构建管道<a class="headerlink" href="#62-构建管道" title="Permanent link">#</a></h2>
+<p>用 Pipeline 表示"先用 MinMaxScaler 缩放数据、再训练 SVM"这条工作流（暂时不用网格搜索）。第一步，构建一个由<strong>步骤列表</strong>组成的管道对象。每个步骤是一个元组，包含一个名称（你选定的任意字符串）和一个估计器的实例：</p>
+<blockquote>
+<p>原书脚注 1：名称只有一个例外——<strong>不能包含双下划线 <code>__</code></strong>。这个符号被保留给"步骤名__参数名"语法（6.3 节就要用）。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ===== 书 6.2 节：创建两步管道 =====</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"scaler"</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">"svm"</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</code></pre></div>
+<p>两个步骤：第一个叫 <code>"scaler"</code>，是 MinMaxScaler 的实例；第二个叫 <code>"svm"</code>，是 SVC 的实例。现在可以像任何其他 scikit-learn 估计器一样拟合这个管道：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ===== 书 6.2 节：像普通估计器一样使用管道 =====</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>      <span class="c1"># 一行顶开头的五次手工调用</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Test score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># → Test score: 0.95</span>
+</code></pre></div>
+<p><code>pipe.fit</code> 内部按顺序做了三件事：</p>
+<ol>
+<li>对第一个步骤（缩放器）调用 <code>fit</code>；</li>
+<li>用拟合好的缩放器**变换（transform）**训练数据；</li>
+<li>用缩放后的数据拟合 SVM。</li>
+</ol>
+<p>对管道调用 <code>score</code> 时也一样是链式的：先用缩放器变换测试数据，再对 SVM 调用 <code>score</code>。结果 0.95 与本章开头手工逐步变换的代码完全相同——<strong>管道没有改变任何计算，只是把流程封装了起来</strong>。好处立竿见影："预处理 + 分类"需要的代码量变少了；但使用管道的<strong>主要优点</strong>在于：现在可以把 <code>pipe</code> 这个估计器直接丢进 <code>cross_val_score</code> 或 GridSearchCV——这正是下一节要做的。</p>
+<h2 id="63-在网格搜索中使用管道">6.3 在网格搜索中使用管道<a class="headerlink" href="#63-在网格搜索中使用管道" title="Permanent link">#</a></h2>
+<p>在网格搜索中使用管道，与使用任何其他估计器一样。唯一的细微变化在参数网格上：<strong>要为每个参数指定它属于管道中的哪一步</strong>。要调的 C 和 gamma 都是 SVC（第二个步骤，名字叫 <code>"svm"</code>）的参数。语法：<strong>步骤名称 + <code>__</code>（双下划线）+ 参数名称</strong>。所以搜索 SVC 的 C 参数要写 <code>"svm__C"</code>，gamma 同理：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ===== 书 6.3 节：管道内网格搜索 =====</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'svm__C'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>              <span class="s1">'svm__gamma'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>        <span class="c1"># 注意：这次喂的是未缩放的原始 X_train</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best cross-validation accuracy: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Test set score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best parameters: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># → Best cross-validation accuracy: 0.98</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># → Test set score: 0.97</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># → Best parameters: {'svm__C': 1, 'svm__gamma': 1}</span>
+</code></pre></div>
+<p>与 6.1 节的网格搜索不同，现在<strong>对于交叉验证的每次划分，只使用该划分的训练部分来拟合 MinMaxScaler</strong>——测试部分的信息没有泄露到参数搜索中。把图 6-2 与图 6-1 对比：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ===== 书 6.3 节：画出"预处理在交叉验证之内"的数据使用图 =====</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_proper_processing</span><span class="p">()</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch06/fig-6-2.png" class="lq-img" />
+  <figcaption>图 6-2 使用管道在交叉验证循环内部进行预处理时的数据使用情况（截自原书）</figcaption>
+</figure>
+
+<p>图 6-2 的关键差别：<strong>scaler 拟合的横杆只搭在每次划分的训练部分上</strong>，上下两行的"预处理"与"建模"都封闭在交叉验证循环内部，验证部分不再为缩放"提供参考"。交叉验证内部每一折的完整流程如下：</p>
+<div class="mermaid">flowchart TB
+    A["GridSearchCV：取一组候选参数&lt;br/&gt;（如 svm__C=1, svm__gamma=1）"] --&gt; B["第 k 折：把训练集切成&lt;br/&gt;训练部分 + 验证部分"]
+    B --&gt; C["MinMaxScaler.fit(训练部分)&lt;br/&gt;再 transform 训练部分与验证部分"]
+    C --&gt; D["SVC.fit(缩放后的训练部分)"]
+    D --&gt; E["SVC.score(缩放后的验证部分)"]
+    E --&gt; F{"5 折跑完了吗？"}
+    F -- 没有，换下一折 --&gt; B
+    F -- 跑完 --&gt; G["5 折平均分 =&lt;br/&gt;该参数组合的 CV 分数"]
+    G --&gt; H{"参数组合都试完了吗？"}
+    H -- 没有，换下一组 --&gt; A
+    H -- 试完 --&gt; I["best_params_ → 全训练集重训管道&lt;br/&gt;→ best_estimator_ 在测试集上打分"]</div>
+<p>对照这张流程图再回看 6.1 节的错误写法：错误写法把 C 这一步整个提到了循环外面、只做一次——这就是全部问题的根源。</p>
+<p>在交叉验证中，<strong>信息泄露的影响大小取决于预处理步骤的性质</strong>：用测试部分来估计数据的范围（缩放），通常不会产生可怕的影响；但在<strong>特征提取和特征选择</strong>中使用测试部分，会导致结果的显著差异。书里用《统计学习基础》（Hastie、Tibshirani 与 Friedman 合著）中的例子（做了修改）把这个差异演给你看。</p>
+<h3 id="举例说明信息泄露">举例说明信息泄露<a class="headerlink" href="#举例说明信息泄露" title="Permanent link">#</a></h3>
+<p>考虑一个假想的回归任务：从高斯分布独立采样 100 个样本、10 000 个特征，响应（目标）也从高斯分布采样——<strong>X 与 y 毫无关系，理论上不可能从这个数据集学到任何东西</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ===== 书 6.3 节（泄漏实验）：纯随机数据 =====</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">rnd</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>     <span class="c1"># 100 个样本、10000 个纯噪声特征</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">rnd</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>           <span class="c1"># 目标也是纯噪声</span>
+</code></pre></div>
+<p>现在先从 10 000 个特征中用 SelectPercentile 选出"信息量最大"的 5%，再用交叉验证评估 Ridge 回归——<strong>特征选择在交叉验证之外</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ===== 书 6.3 节（泄漏实验）：错误做法——特征选择在交叉验证之外 =====</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectPercentile</span><span class="p">,</span> <span class="n">f_regression</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">select</span> <span class="o">=</span> <span class="n">SelectPercentile</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">X_selected</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>      <span class="c1"># 在全部 100 个样本上选特征！</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"X_selected.shape: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_selected</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># → X_selected.shape: (100, 500)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Cross-validation accuracy (cv only on ridge): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>      <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">Ridge</span><span class="p">(),</span> <span class="n">X_selected</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))))</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1"># → Cross-validation accuracy (cv only on ridge): 0.91</span>
+</code></pre></div>
+<p>交叉验证得到的平均 <span class="arithmatex">\(R^2\)</span> 是 <strong>0.91</strong>——"非常好的模型"。这显然不对，因为数据是完全随机的。原因：10 000 个纯随机特征里总有几百个"碰巧"与目标相关，SelectPercentile 把它们挑了出来；由于特征选择是在<strong>交叉验证之外</strong>拟合的，它能找到<strong>在训练部分和测试部分都碰巧相关</strong>的特征——测试部分泄露出去的信息量太大，结果完全不切实际。</p>
+<p>换成正确的交叉验证（用管道把特征选择包进去）对比：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ===== 书 6.3 节（泄漏实验）：正确做法——特征选择进管道 =====</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"select"</span><span class="p">,</span> <span class="n">SelectPercentile</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_regression</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                                             <span class="n">percentile</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                 <span class="p">(</span><span class="s2">"ridge"</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">())])</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Cross-validation accuracy (pipeline): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>      <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))))</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># → Cross-validation accuracy (pipeline): -0.25</span>
+</code></pre></div>
+<p>这次得到<strong>负的 <span class="arithmatex">\(R^2\)</span></strong>，表示模型很差。管道让特征选择位于交叉验证循环内部：<strong>仅用数据的训练部分选择特征</strong>。选出的特征在训练部分碰巧与目标相关，但数据是完全随机的，这些特征<strong>在测试部分并不相关</strong>——分数自然崩了。修正泄漏问题之后，结论从"模型表现很好"变成了"模型根本没有效果"。这才是诚实的数据给出的答案。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：R² 与"负 R²"到底在说什么</p>
+<p><span class="arithmatex">\(R^2\)</span>（决定系数，回归模型的默认分数）的严格定义是：</p>
+<div class="arithmatex">\[
+R^2 = 1 - \frac{\sum_i (y_i - \hat y_i)^2}{\sum_i (y_i - \bar y)^2}
+\]</div>
+<p>人话版：分母是"无脑输出均值 <span class="arithmatex">\(\bar y\)</span> 会错多远"，分子是"模型错多远"。所以 <span class="arithmatex">\(R^2=1\)</span> 是完美预测；<span class="arithmatex">\(R^2=0\)</span> 等价于"预测恒等于均值"；<strong>负数说明模型比无脑输出均值还差</strong>。在完全随机的数据上，任何模型的真值就是 0 附近——-0.25 是诚实答案，0.91 是泄漏吹出来的。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：SelectPercentile / f_regression 与多重比较</p>
+<p><code>f_regression</code> 对每个特征单独算一个 F 检验，本质是"这个特征与目标的相关性有多强"；<code>SelectPercentile(percentile=5)</code> 保留得分最高的前 5% 特征（10 000 × 5% = 500 个）。特征一多，纯随机也会冒出一批高分特征——这是统计学里经典的<strong>多重比较问题（multiple comparisons）</strong>：检验的次数越多，越容易"碰巧显著"。在 CV 外拟合特征选择，等于让这些"碰巧"同时为训练部分和测试部分服务。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：泄漏的"剂量"——缩放泄漏 vs 选择泄漏</p>
+<p>同样是泄漏，剂量差很大。缩放只用了 min/max 这类<strong>稳健统计量</strong>，训练部分和验证部分的 min/max 通常相差无几，泄漏进来的"参考答案"噪声大、影响小——所以 6.1 节的错误写法得到的参数（C=1, gamma=1）与分数（0.97）和正确写法几乎一样，纯属侥幸。而特征选择相当于把验证部分的"哪些特征像答案"直接喂给了建模，剂量大到结论反转（0.91 → -0.25）。原则不变：<strong>不赌剂量，预处理一律放进管道、放进交叉验证最外层</strong>。</p>
+</div>
+<h2 id="64-通用的管道接口">6.4 通用的管道接口<a class="headerlink" href="#64-通用的管道接口" title="Permanent link">#</a></h2>
+<p>Pipeline 不只能用于"预处理 + 分类"，实际上可以把<strong>任意数量的估计器</strong>连接在一起。例如构建一个包含<strong>特征提取、特征选择、缩放、分类</strong>的管道，总共 4 个步骤。最后一步也可以换成回归或聚类。</p>
+<p>对管道中估计器的唯一要求：<strong>除最后一步之外的所有步骤都需要具有 transform 方法</strong>——它们要生成新的数据表示，供下一步使用。</p>
+<p>调用 <code>Pipeline.fit</code> 时，管道内部<strong>依次对每个步骤调用 fit 和 transform</strong>（原书注 2：或仅调用 fit_transform），每一步的输入是上一步 transform 的输出；对最后一步则只调用 fit。忽略细枝末节，其实现如下。记住 <code>pipeline.steps</code> 是由元组组成的列表：<code>pipeline.steps[0][1]</code> 是第一个估计器，<code>pipeline.steps[1][1]</code> 是第二个，以此类推：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ===== 书 6.4 节：Pipeline.fit 的等价实现（示意，忽略细节） =====</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">X_transformed</span> <span class="o">=</span> <span class="n">X</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="c1"># 遍历除最后一步之外的所有步骤</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="c1"># 对数据进行拟合和变换</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="n">X_transformed</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="c1"># 对最后一步进行拟合</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div>
+<p>用管道做预测时，同样先用除最后一步之外的所有步骤对数据做 transform，再对最后一步调用 predict：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ===== 书 6.4 节：Pipeline.predict 的等价实现（示意） =====</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">X_transformed</span> <span class="o">=</span> <span class="n">X</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        <span class="c1"># 遍历除最后一步之外的所有步骤</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="c1"># 对数据进行变换</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        <span class="n">X_transformed</span> <span class="o">=</span> <span class="n">step</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="c1"># 利用最后一步进行预测</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
+</code></pre></div>
+<p>整个过程如图 6-3 所示，其中包含两个变换器 T1、T2 和一个分类器：</p>
+<figure>
+  <img src="../images/ch06/fig-6-3.png" class="lq-img" />
+  <figcaption>图 6-3 管道的训练和预测过程概述（截自原书）</figcaption>
+</figure>
+
+<p>对着图读一遍：训练时 <span class="arithmatex">\(X \xrightarrow{\text{T1.fit/transform}} X'1 \xrightarrow{\text{T2.fit/transform}} X'2 \xrightarrow{\text{Classifier.fit}} y\)</span>；预测时 <span class="arithmatex">\(X \xrightarrow{\text{T1.transform}} X'1 \xrightarrow{\text{T2.transform}} X'2 \xrightarrow{\text{Classifier.predict}} y'\)</span>。<strong>变换器只管变换，最后的估计器只负责学习/预测</strong>，两段各司其职。</p>
+<p>管道实际上比上图更通用：<strong>最后一步不需要具有 predict 方法</strong>。比如可以创建一个只含缩放器和 PCA 的管道——最后一步（PCA）具有 transform 方法，所以可以对整个管道调用 <code>transform</code>，得到"PCA 作用在前一步处理过的数据上"的输出。一句话：<strong>管道的最后一步只需要具有 fit 方法</strong>；它有没有 predict 决定管道能不能 predict，有没有 transform 决定管道能不能 transform。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：重复计算太多？给管道加 memory 缓存</p>
+<p>网格搜索中，同一个预处理步骤会被不同折、不同参数组合反复拟合。较新版本的 Pipeline 支持构造参数 <code>memory</code>（如 <code>Pipeline(steps, memory="cache_dir")</code>）：变换器的拟合结果会被缓存到目录，参数组合只变了最后一步时，前面的变换直接复用。对特征提取开销大的管道提速明显。scikit-learn 0.19 时代没有这个参数，书中未提。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">拓展：真实数据的"列级"预处理——ColumnTransformer</p>
+<p>Pipeline 沿"整张表"套变换，而真实表格数据常需要"数值列缩放、类别列独热"这种<strong>按列</strong>的差异化处理。scikit-learn 的 <code>ColumnTransformer</code> 就是干这个的，而且它本身是一个变换器，可以直接塞进 Pipeline 当一步（<code>make_pipeline(ColumnTransformer([...]), LogisticRegression())</code>）。本书时代没有这个工具（0.20 引入），但它与本章的"链条封装 + 网格搜索"哲学完全一致，工程中几乎总是两者配合使用。</p>
+</div>
+<h3 id="641-用-make_pipeline-方便地创建管道">6.4.1 用 make_pipeline 方便地创建管道<a class="headerlink" href="#641-用-make_pipeline-方便地创建管道" title="Permanent link">#</a></h3>
+<p>上面的语法有时有点麻烦——通常并不需要为每个步骤提供自定义名称。便捷函数 <strong>make_pipeline</strong> 可以创建管道并<strong>根据每个步骤所属的类自动命名</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ===== 书 6.4.1 节：两种创建管道的写法 =====</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># 标准语法</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">pipe_long</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"scaler"</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">"svm"</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">))])</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># 缩写语法</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">pipe_short</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+<p><code>pipe_long</code> 和 <code>pipe_short</code> 作用完全相同，只是 <code>pipe_short</code> 的步骤名是自动起的。通过 <code>steps</code> 属性查看：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># ===== 书 6.4.1 节：查看自动生成的步骤名 =====</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Pipeline steps:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pipe_short</span><span class="o">.</span><span class="n">steps</span><span class="p">))</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># → [('minmaxscaler', MinMaxScaler(copy=True, feature_range=(0, 1))),</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">#    ('svc', SVC(C=100, ...))]        ← 书印为完整参数列表，此处省略</span>
+</code></pre></div>
+<p>两个步骤被命名为 <code>minmaxscaler</code> 和 <code>svc</code>。<strong>一般规则：步骤名称就是类名称的小写版本</strong>。如果多个步骤属于同一个类，则附加一个数字：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># ===== 书 6.4.1 节：同类步骤自动加序号 =====</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Pipeline steps:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">steps</span><span class="p">))</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># → [('standardscaler-1', StandardScaler(...)),</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">#    ('pca', PCA(n_components=2, ...)),</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1">#    ('standardscaler-2', StandardScaler(...))]</span>
+</code></pre></div>
+<p>第一个 StandardScaler 叫 <code>standardscaler-1</code>，第二个叫 <code>standardscaler-2</code>。但这种情况下，用显式名称的 Pipeline 构建更好——能为每个步骤提供更有语义的名字（比如"先标准化、再 PCA、再标准化"各有含义时）。</p>
+<div class="admonition note">
+<p class="admonition-title">版本差异：书印 repr 里的默认值是 0.19 时代的</p>
+<p>书印输出里 <code>SVC(..., gamma='auto', ...)</code>、<code>LogisticRegression(..., solver='liblinear', multi_class='ovr', n_jobs=1, ...)</code> 都是 scikit-learn 0.19 的默认值。后续版本变化：<strong>0.22 起 SVC 默认 <code>gamma='scale'</code></strong>（影响数值结果，复跑分数可能有零点几个百分点的出入）；<strong>0.22 起 LogisticRegression 默认 <code>solver='lbfgs'</code></strong>（系数与书印略有不同），<code>multi_class</code> 参数自 1.5 起弃用，<code>n_jobs</code> 默认 None。这些 repr 差异只影响打印外观，不影响本章 API 用法。</p>
+</div>
+<h3 id="642-访问步骤属性">6.4.2 访问步骤属性<a class="headerlink" href="#642-访问步骤属性" title="Permanent link">#</a></h3>
+<p>通常你希望检查管道中某一步的属性——比如线性模型的系数，或 PCA 提取的成分。访问管道步骤最简单的方法是 <strong><code>named_steps</code> 属性</strong>：它是一个字典，把步骤名称映射为估计器：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># ===== 书 6.4.2 节：named_steps 访问步骤属性 =====</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># 用上面定义的管道对 cancer 数据集进行拟合</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># 从"pca"步骤中提取前两个主成分</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">components</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"pca"</span><span class="p">]</span><span class="o">.</span><span class="n">components_</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"components.shape: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># → components.shape: (2, 30)</span>
+</code></pre></div>
+<p><code>named_steps["pca"]</code> 拿到的就是那个拟合好的 PCA 对象，后面想取 <code>.components_</code>、<code>.mean_</code> 任意属性都可以。</p>
+<h3 id="643-访问网格搜索管道中的属性">6.4.3 访问网格搜索管道中的属性<a class="headerlink" href="#643-访问网格搜索管道中的属性" title="Permanent link">#</a></h3>
+<p>使用管道的主要原因之一就是网格搜索，而常见任务是在网格搜索<strong>内部</strong>访问管道某一步的属性。场景：对 cancer 数据集上的 LogisticRegression 做网格搜索，在数据传入分类器之前先用 Pipeline 和 StandardScaler 缩放。先用 make_pipeline 创建管道：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ===== 书 6.4.3 节：网格搜索管道 =====</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+</code></pre></div>
+<p>第 2 章说过，LogisticRegression 需要调节的正则化参数是 <strong>C</strong>。对它使用对数网格，在 0.01 和 100 之间搜索。因为用了 make_pipeline，LogisticRegression 步骤的名字是自动生成的<strong>小写类名</strong> <code>logisticregression</code>——所以调节 C 必须写 <code>logisticregression__C</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># ===== 书 6.4.3 节：参数网格与搜索 =====</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'logisticregression__C'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+<p>那么如何访问 GridSearchCV 找到的最佳 LogisticRegression 模型的系数？第 5 章说过，GridSearchCV 找到的最佳模型（在所有训练数据上重新训练得到的模型）保存在 <strong><code>grid.best_estimator_</code></strong> 中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># ===== 书 6.4.3 节：从 GridSearchCV 里"挖出"最佳模型 =====</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best estimator:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># → Pipeline(steps=[('standardscaler', StandardScaler(...)),</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">#                   ('logisticregression', LogisticRegression(C=0.1, ...))])</span>
+</code></pre></div>
+<p><code>best_estimator_</code> 是一个<strong>管道</strong>，包含 standardscaler 和 logisticregression 两步。照旧用 named_steps 访问 logisticregression 步骤：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># ===== 书 6.4.3 节：取最佳模型、读系数 =====</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Logistic regression step:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>      <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"logisticregression"</span><span class="p">]))</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># → LogisticRegression(C=0.1, ...)</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Logistic regression coefficients:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>      <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"logisticregression"</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="c1"># → Logistic regression coefficients:</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1">#   [[-0.389 -0.375 -0.376 -0.396 -0.115  0.017 -0.355 -0.39  -0.058  0.209</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1">#     -0.495 -0.004 -0.371 -0.383 -0.045  0.198  0.004 -0.049  0.21   0.224</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1">#     -0.547 -0.525 -0.499 -0.515 -0.393 -0.123 -0.388 -0.417 -0.325 -0.139]]</span>
+</code></pre></div>
+<p>这条"寻宝链"值得背下来：<strong><code>grid.best_estimator_</code>（最佳管道）→ <code>.named_steps["logisticregression"]</code>（最佳模型）→ <code>.coef_</code>（模型属性）</strong>。系数列表可能有点长，但通常有助于理解你的模型。补充一点解读（cancer 的类 0 是恶性、类 1 是良性）：系数大多为负，意思是这些特征取值越大，模型越把样本往"恶性"（类 0）推——与"肿瘤测量值越大越危险"的直觉一致。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：__ 语法是全库通用的"参数路径"</p>
+<p><code>步骤名__参数名</code> 不只是 GridSearchCV 字典键的写法：scikit-learn 所有估计器的 <code>get_params()</code> / <code>set_params()</code> 都用同一套嵌套语法，例如 <code>pipe.set_params(svm__C=10)</code> 可以在不重建管道的情况下改参数；GridSearchCV 内部正是用它把参数"写进"管道深处。链条再深一层就再接一个 <code>__</code>（比如管道套管道时 <code>pipeline__svm__C</code>）。一句话：<strong>双下划线就是 scikit-learn 的"成员访问点号"</strong>——这也解释了为什么步骤名里不允许出现 <code>__</code>。</p>
+</div>
+<h2 id="65-网格搜索预处理步骤与模型参数">6.5 网格搜索预处理步骤与模型参数<a class="headerlink" href="#65-网格搜索预处理步骤与模型参数" title="Permanent link">#</a></h2>
+<p>用管道可以把机器学习工作流中的<strong>所有处理步骤</strong>封装成一个 scikit-learn 估计器。这么做的另一个好处：<strong>可以用监督任务（回归/分类）的输出来调节预处理参数</strong>——预处理不再凭经验拍脑袋，而是被交叉验证选中。</p>
+<p>第 4 章在应用岭回归之前，用 boston 数据集构造过多项式特征。现在用管道重复这个建模过程，管道包含 3 个步骤：缩放数据、计算多项式特征、岭回归：</p>
+<div class="admonition note">
+<p class="admonition-title">版本差异：load_boston 已在 scikit-learn 1.2 被移除</p>
+<p>boston 房价数据集因含一个涉及种族的敏感变量（B），自 scikit-learn 1.2 起被官方移除，<code>load_boston</code> 会直接报 ImportError。替代方案：</p>
+<ol>
+<li><code>fetch_california_housing()</code>——回归任务结构相同、接口相同，但数据完全不同（20640 个样本、8 个特征），书印数字无法逐位复现，方法论演示足够；</li>
+<li><code>fetch_openml(name="boston_house_prices", version=1)</code>——还是原数据，但返回 DataFrame 且含类别列，需要转成 float 才能喂给 sklearn；</li>
+<li>旧版 mglearn 的扩展 boston（<code>mglearn.datasets.load_extended_boston()</code>，第 2 章用过）内部同样依赖 load_boston，在 1.2+ 环境会连带报错，需改用上面两种来源。</li>
+</ol>
+<p>本节的方法论（搜索预处理参数）与数据集无关，换哪个数据集都能照做，只是分数不同。</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># ===== 书 6.5 节：缩放 + 多项式特征 + 岭回归，三步管道 =====</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_boston</span>      <span class="c1"># sklearn 1.2 起已移除，见上方"版本差异"</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">boston</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">StandardScaler</span><span class="p">(),</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="n">PolynomialFeatures</span><span class="p">(),</span>     <span class="c1"># 默认 degree=2</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="n">Ridge</span><span class="p">())</span>
+</code></pre></div>
+<p>怎么知道该选几次多项式？要不要交互项？理想情况下，我们希望<strong>根据回归结果来选择 degree 参数</strong>。用管道就能搜索 degree 和 Ridge 的 alpha——给两个参数都加上步骤名前缀：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># ===== 书 6.5 节：同时搜索预处理参数与模型参数 =====</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'polynomialfeatures__degree'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>              <span class="s1">'ridge__alpha'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+<p>3 种 degree × 6 种 alpha = 18 个参数组合，每个组合 5 折交叉验证——共 90 次拟合。像第 5 章那样，把交叉验证结果画成热图：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># ===== 书 6.5 节：交叉验证分数热图 =====</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">'mean_test_score'</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"viridis"</span><span class="p">)</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"ridge__alpha"</span><span class="p">)</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"polynomialfeatures__degree"</span><span class="p">)</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_grid</span><span class="p">[</span><span class="s1">'ridge__alpha'</span><span class="p">])),</span> <span class="n">param_grid</span><span class="p">[</span><span class="s1">'ridge__alpha'</span><span class="p">])</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_grid</span><span class="p">[</span><span class="s1">'polynomialfeatures__degree'</span><span class="p">])),</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>           <span class="n">param_grid</span><span class="p">[</span><span class="s1">'polynomialfeatures__degree'</span><span class="p">])</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</code></pre></div>
+<figure>
+  <img src="../images/ch06/fig-6-4.png" class="lq-img" />
+  <figcaption>图 6-4 以多项式特征的次数和岭回归的 alpha 参数为坐标轴，绘制交叉验证平均分数的热图（截自原书）</figcaption>
+</figure>
+
+<p>热图的读法：第二行（degree=2）整行都亮，说明<strong>二次多项式很有用</strong>；第三行（degree=3）明显发暗，效果比一次、二次都差很多——三次多项式把噪声也拟合了。从最佳参数中也能看出这一点：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># ===== 书 6.5 节：最佳参数与测试分数 =====</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best parameters: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># → Best parameters: {'polynomialfeatures__degree': 2, 'ridge__alpha': 10}</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Test-set score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># → Test-set score: 0.77</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="c1"># 对比：运行一个没有多项式特征的网格搜索</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'ridge__alpha'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">Ridge</span><span class="p">())</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Score without poly features: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="c1"># → Score without poly features: 0.63</span>
+</code></pre></div>
+<p>正与图 6-4 预料的一样，不使用多项式特征得到了明显更差的结果（0.63 vs 0.77）。<strong>同时搜索预处理参数与模型参数是一个非常强大的策略</strong>。但要记住：GridSearchCV 会尝试指定参数的<strong>所有可能组合</strong>，向网格中添加更多参数，需要构建的模型数量将呈<strong>指数增长</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">拓展：指数增长的应对——粗到细 / 随机搜索</p>
+<p>组合数是各参数取值数的<strong>乘积</strong>：上例 3×6=18 组 × 5 折 = 90 次拟合，6.6 节的例子会到 75 组 × 5 折。参数一多（比如 6 个参数各 10 个取值）就是百万量级。实用对策：(1) <strong>粗到细</strong>——先用对数粗网格锁定量级，再在最佳值附近加密；(2) 每个参数少取几个值，但覆盖对数范围；(3) 超过 3~4 个连续参数时换 <strong>RandomizedSearchCV</strong>（随机采样参数空间，固定预算内覆盖更广）；(4) <code>n_jobs=-1</code> 并行只省时间、不省组合数，别指望它救指数爆炸。</p>
+</div>
+<h2 id="66-网格搜索选择使用哪个模型">6.6 网格搜索选择使用哪个模型<a class="headerlink" href="#66-网格搜索选择使用哪个模型" title="Permanent link">#</a></h2>
+<p>还可以更进一步：把 GridSearchCV 和 Pipeline 结合起来，<strong>搜索管道中正在执行的实际步骤</strong>——比如用 StandardScaler 还是用 MinMaxScaler，甚至分类器用 SVC 还是随机森林。这会导致更大的搜索空间，应当仔细考虑；<strong>尝试所有可能的解决方案，通常并不是一种可行的机器学习策略</strong>。但作为一个例子，我们比较 RandomForestClassifier 和 SVC：</p>
+<blockquote>
+<p><strong>原书笔误：正文说 iris，代码用的是 cancer</strong>
+原书正文写"在 iris 数据集上比较 RandomForestClassifier 和 SVC"，但随后的代码与输出全部是 <strong>cancer 数据集</strong>（<code>train_test_split(cancer.data, cancer.target, random_state=0)</code>，测试分数 0.98 与 cancer 的量级吻合）。英文原版即如此印刷，属文码不一致：阅读时以代码为准；两种分类器、两种预处理方案的比较方法本身在哪个数据集上都成立。</p>
+</blockquote>
+<p>我们知道 SVC 可能需要缩放数据，所以还要搜索"用 StandardScaler 还是不用预处理"；RandomForestClassifier 不需要预处理。先定义管道，这里<strong>显式命名步骤</strong>——两个步骤：一个预处理、一个分类器，用 StandardScaler 和 SVC 实例化：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># ===== 书 6.6 节：显式命名的两步管道 =====</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'preprocessing'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">'classifier'</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</code></pre></div>
+<p>现在定义要搜索的参数网格。我们希望 classifier 是 RandomForestClassifier 或 SVC——两种分类器要调的参数不同、需要的预处理也不同，所以用 5.2.3 节"在非网格的空间中搜索"讲的<strong>参数网格列表</strong>。把一个估计器<strong>分配</strong>给一个步骤的办法：用步骤名称作为参数名称（<code>'classifier': [SVC()]</code>）。想跳过管道中的某个步骤（例如 RandomForest 不需要预处理），就把该步骤设为 <strong>None</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># ===== 书 6.6 节：参数网格列表——连"用哪个模型"都交给搜索 =====</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="p">{</span><span class="s1">'classifier'</span><span class="p">:</span> <span class="p">[</span><span class="n">SVC</span><span class="p">()],</span> <span class="s1">'preprocessing'</span><span class="p">:</span> <span class="p">[</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="kc">None</span><span class="p">],</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>     <span class="s1">'classifier__gamma'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>     <span class="s1">'classifier__C'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]},</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="p">{</span><span class="s1">'classifier'</span><span class="p">:</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)],</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>     <span class="s1">'preprocessing'</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="s1">'classifier__max_features'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}]</span>
+</code></pre></div>
+<p>读懂这个网格列表的两种键：</p>
+<ul>
+<li><strong>不带 <code>__</code> 的键</strong>（<code>classifier</code>、<code>preprocessing</code>）：值是<strong>估计器实例的列表</strong>，表示"这一步换成哪个对象"——第一个字典里 preprocessing 有 StandardScaler 和 None 两种选择，None 就是"跳过这一步"；</li>
+<li><strong>带 <code>__</code> 的键</strong>（<code>classifier__C</code> 等）：值是参数取值列表，属于普通调参。</li>
+</ul>
+<p>两个字典按 5.2.3 节的规则<strong>分别展开再取并集</strong>：SVC 分支 1 × 2 × 6 × 6 = 72 个组合，随机森林分支 1 × 1 × 3 = 3 个组合，合计 75 组 × 5 折 = 375 次拟合。</p>
+<p>像前面一样实例化网格搜索，在 cancer 数据集上运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># ===== 书 6.6 节：在 cancer 上运行"选模型"网格搜索 =====</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best params:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Best cross-validation score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Test-set score: </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="c1"># → Best params:</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="c1"># → {'classifier': SVC(C=10, gamma=0.01, ...),</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="c1"># →  'preprocessing': StandardScaler(...),</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="c1"># →  'classifier__C': 10, 'classifier__gamma': 0.01}</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="c1"># → Best cross-validation score: 0.99</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="c1"># → Test-set score: 0.98</span>
+</code></pre></div>
+<p>网格搜索的结果是 <strong>SVC + StandardScaler 预处理，在 C=10、gamma=0.01 时给出最佳结果</strong>。注意 <code>best_params_</code> 里连"选了哪个模型、哪种预处理"都一并返回——这一套写法把"模型选择"也变成了搜索空间的一部分。</p>
+<div class="admonition note">
+<p class="admonition-title">版本差异：SVC 的 gamma 默认值变了</p>
+<p>书印输出里 <code>SVC(C=10, gamma=0.01, ...)</code> 是搜索选出来的参数，不受默认值影响；但管道定义 <code>('classifier', SVC())</code> 中的 SVC 在搜索前用的是 0.19 的默认 <code>gamma='auto'</code>，新版默认 <code>gamma='scale'</code>。对本节结论（胜者是 SVC）没有影响，只是复跑时中间过程可能略有不同。</p>
+</div>
+<h2 id="67-小结与展望">6.7 小结与展望<a class="headerlink" href="#67-小结与展望" title="Permanent link">#</a></h2>
+<p>本章介绍了 <strong>Pipeline 类</strong>——一种通用工具，可以把机器学习工作流中的多个处理步骤链接在一起。现实世界的机器学习应用很少只单独使用一个模型，而是一系列处理步骤。使用管道可以把多个步骤封装成<strong>单个 Python 对象</strong>，它具有我们熟悉的 scikit-learn 接口：<code>fit</code>、<code>predict</code> 和 <code>transform</code>。</p>
+<p>最重要的结论：<strong>用交叉验证评估模型、用网格搜索选择参数时，用 Pipeline 类把所有处理步骤都包进来，对正确的评估至关重要</strong>——否则预处理泄露验证部分的信息，交叉验证分数失真（随机数据上 0.91 → -0.25 的教训）。</p>
+<p>管道还能让代码更简洁，减少不用管道时可能犯的错误——比如<strong>忘记把所有变换器应用于测试集</strong>，或者<strong>应用顺序错误</strong>。选择特征提取、预处理和模型的正确组合，某种程度上是一门艺术，通常需要试错；有了管道，"尝试"多个不同处理步骤变得非常简单。试验时注意两点：不要把处理过程复杂化；<strong>一定要评估模型中的每个组件是否必要</strong>（就像图 6-4 告诉我们 degree=3 不必要那样）。</p>
+<p>学完本章，你已经学完了 scikit-learn 提供的所有通用工具与算法，掌握了在实践中应用机器学习的必要机制。下一章将深入一种实践中常见的数据类型——<strong>文本数据</strong>，它需要一些专门的知识才能正确处理。</p>
+<h2 id="坑与陷阱">坑与陷阱<a class="headerlink" href="#坑与陷阱" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">本章最容易栽的 8 个地方</p>
+<ol>
+<li><strong>在缩放好的数据上直接跑 GridSearchCV</strong>（6.1 反例）：交叉验证每一折的验证部分都参与了缩放器的 fit，评估虚高、可能选出次优参数。预处理必须进管道、进交叉验证最外层——<code>grid.fit(X_train)</code> 喂的永远是原始数据。</li>
+<li><strong>在交叉验证之外做特征选择 / 特征提取</strong>：泄漏剂量远大于缩放。书里的随机数据实验：CV 外 SelectPercentile 吹出 R²=0.91，管道内正确做法是 -0.25。只要"这一步会从数据里提取信息"，它就必须在 CV 循环内部。</li>
+<li><strong>步骤名里用了双下划线</strong>：Pipeline 步骤名可以随便起，唯独不能含 <code>__</code>——那是"步骤名__参数名"语法的前缀，撞了它 GridSearchCV 的参数解析直接错乱。</li>
+<li><strong>给非最后一步用了没有 transform 的模型</strong>：Pipeline.fit 会对除最后一步外的每步调用 fit_transform，t-SNE 这类只有 fit_transform、无独立 transform 语义的模型放中间会出问题；同理管道想调 <code>pipe.predict</code>，最后一步就得有 predict。</li>
+<li><strong>make_pipeline 自动命名后写错参数键</strong>：自动名是小写类名（同类多步加 <code>-1</code>/<code>-2</code>），写 param_grid 前先 <code>print(pipe.steps)</code> 确认。<code>LogisticRegression__C</code>、<code>logreg__C</code> 都会报"参数不存在"。</li>
+<li><strong>参数组合指数爆炸</strong>：GridSearchCV 穷举所有组合，每加一个参数组合数就相乘（6.5 节 3×6=18 组 × 5 折；6.6 节 75 组 × 5 折）。先粗网格再细化，参数多时换 RandomizedSearchCV，<code>n_jobs=-1</code> 只是并行不省总量。</li>
+<li><strong>混淆"步骤赋值"与"参数调优"两种写法</strong>：<code>'classifier': [SVC(), RandomForestClassifier()]</code> 是替换步骤实例（值是估计器列表、键不带 <code>__</code>），<code>'classifier__C': [...]</code> 才是调参数。6.6 节的网格列表里两种键混用，写之前想清楚每个键的角色。</li>
+<li><strong>新版复跑数字对不上就慌</strong>：书中所有分数绑定旧版默认超参（SVC gamma='auto'、LogisticRegression solver='liblinear'）与特定 random_state。先对照"版本差异"note，再看自己代码；方法论正确、分数差零点几个百分点属正常。load_boston 在 1.2+ 直接 ImportError，换 fetch_california_housing。</li>
+</ol>
+</div>
+<h2 id="速览">速览<a class="headerlink" href="#速览" title="Permanent link">#</a></h2>
+<ol>
+<li>本章核心问题：预处理若发生在交叉验证之外，验证部分的信息会泄漏进建模过程，交叉验证分数虚高、可能选出次优参数。</li>
+<li>Pipeline 把多个步骤（<code>(名称, 估计器)</code> 元组列表）粘合成单个估计器，自带 fit/predict/score/transform；名称任意，唯独不能含双下划线 <code>__</code>。</li>
+<li>fit 链：除最后一步外各步 fit+transform，最后一步 fit；predict 链：各步 transform，最后一步 predict；最后一步只需有 fit。</li>
+<li>泄漏实验：100×10000 纯随机数据，CV 外做 SelectPercentile + Ridge 得 R²=0.91；特征选择进管道后 R²=-0.25——结论从"很好"变"无效"。</li>
+<li>泄漏剂量：缩放泄漏通常影响小（min/max 是稳健统计量），特征选择/提取泄漏影响大——原则是不赌剂量，一律管道化。</li>
+<li>管道内网格搜索：参数键 = <code>步骤名__参数名</code>（svm__C、svm__gamma、ridge__alpha、logisticregression__C），grid.fit 喂原始数据。</li>
+<li>访问接口：make_pipeline 按小写类名自动命名（同类加 -1/-2）；<code>pipe.named_steps["名称"]</code> 取步骤；<code>grid.best_estimator_.named_steps[...]</code> 挖最佳模型属性（如 coef_）。</li>
+<li>搜索预处理参数：boston 三步管道搜索 polynomialfeatures__degree 与 ridge__alpha，选出 degree=2、alpha=10，测试分数 0.77（无多项式只有 0.63）；组合数指数增长。</li>
+<li>搜索"用哪个模型"：参数网格列表 + <code>'classifier': [SVC(), RandomForestClassifier()]</code> 步骤赋值 + <code>preprocessing: [None]</code> 跳过步骤；cancer 上胜出的是 SVC + StandardScaler（C=10, gamma=0.01），CV 0.99 / 测试 0.98。</li>
+<li>学完本章，scikit-learn 的通用工具与算法全部学完；下一章进入文本数据。</li>
+</ol>
+<h2 id="术语速查">术语速查<a class="headerlink" href="#术语速查" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pipeline</td>
+<td>管道</td>
+<td>把多个处理步骤粘合（glue）成单个 scikit-learn 估计器</td>
+</tr>
+<tr>
+<td>make_pipeline</td>
+<td>管道快捷构造函数</td>
+<td>按小写类名自动命名步骤，同类加 -1/-2</td>
+</tr>
+<tr>
+<td>step / steps</td>
+<td>步骤 / 步骤列表</td>
+<td>(名称, 估计器) 元组；steps[0][1] 取出第一个估计器</td>
+</tr>
+<tr>
+<td>named_steps</td>
+<td>具名步骤字典</td>
+<td>步骤名 → 拟合好的估计器实例</td>
+</tr>
+<tr>
+<td>双下划线语法（__）</td>
+<td>嵌套参数路径</td>
+<td>svm__C 表示 svm 步骤的 C 参数；get_params/set_params 同款</td>
+</tr>
+<tr>
+<td>data leakage</td>
+<td>数据泄露</td>
+<td>预处理提前使用了验证/测试部分的信息，评估虚高</td>
+</tr>
+<tr>
+<td>transformer</td>
+<td>变换器</td>
+<td>有 transform 方法的估计器；管道非末步必须是变换器</td>
+</tr>
+<tr>
+<td>estimator</td>
+<td>估计器</td>
+<td>scikit-learn 所有算法类的统称，都有 fit</td>
+</tr>
+<tr>
+<td>cross_val_score</td>
+<td>交叉验证分数函数</td>
+<td>对任意估计器手动做 CV 并返回各折分数</td>
+</tr>
+<tr>
+<td>GridSearchCV</td>
+<td>网格搜索交叉验证</td>
+<td>穷举参数网格 × 交叉验证，选出 best_params_</td>
+</tr>
+<tr>
+<td>param_grid</td>
+<td>参数网格</td>
+<td>字典或字典列表定义搜索空间；列表支持"换模型"分支</td>
+</tr>
+<tr>
+<td>best_score_ / best_params_ / best_estimator_</td>
+<td>网格搜索三大属性</td>
+<td>最佳 CV 分数 / 最佳参数 / 全训练集重训的最佳模型</td>
+</tr>
+<tr>
+<td>cv_results_</td>
+<td>交叉验证结果字典</td>
+<td>mean_test_score 可 reshape 成热图</td>
+</tr>
+<tr>
+<td>SelectPercentile</td>
+<td>百分比特征选择</td>
+<td>保留得分最高的前 percentile% 个特征</td>
+</tr>
+<tr>
+<td>f_regression</td>
+<td>回归 F 检验</td>
+<td>单特征与目标的线性相关打分，供 SelectPercentile 用</td>
+</tr>
+<tr>
+<td>R² (coefficient of determination)</td>
+<td>决定系数</td>
+<td>回归默认分数；0 ≈ 输出均值，负数比均值还差</td>
+</tr>
+<tr>
+<td>PolynomialFeatures</td>
+<td>多项式特征</td>
+<td>生成 degree 次多项式与交互特征，可被搜索的预处理参数</td>
+</tr>
+<tr>
+<td>Ridge</td>
+<td>岭回归</td>
+<td>L2 正则线性回归，要调 alpha</td>
+</tr>
+<tr>
+<td>RandomForestClassifier</td>
+<td>随机森林分类器</td>
+<td>不需要缩放的树模型，调 max_features</td>
+</tr>
+<tr>
+<td>MinMaxScaler / StandardScaler</td>
+<td>两种缩放器</td>
+<td>第 3 章的老朋友，本章作为管道步骤出场</td>
+</tr>
+<tr>
+<td>preprocessing: None</td>
+<td>跳过步骤</td>
+<td>参数网格里把某一步设为 None 即禁用它</td>
+</tr>
+<tr>
+<td>boston 数据集</td>
+<td>波士顿房价数据</td>
+<td>本章回归示例数据；sklearn 1.2 起已移除，见版本差异</td>
+</tr>
+</tbody>
+</table>
+<h2 id="覆盖自查">覆盖自查<a class="headerlink" href="#覆盖自查" title="Permanent link">#</a></h2>
+<details class="note">
+<summary>原书小节 → 笔记位置对照</summary>
+<table>
+<thead>
+<tr>
+<th>原书小节 / 内容</th>
+<th>笔记位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>章首引子（数据链的重要性、缩放 + SVM 0.95 的手工流程）</td>
+<td>章首 + 开篇代码</td>
+</tr>
+<tr>
+<td>6.1 用预处理进行参数选择（naive 网格搜索、泄漏原理、图 6-1）</td>
+<td>6.1 节 + 图 6-1</td>
+</tr>
+<tr>
+<td>6.2 构建管道（创建、fit 链、score、脚注 1 禁 __）</td>
+<td>6.2 节</td>
+</tr>
+<tr>
+<td>6.3 在网格搜索中使用管道（svm__C 语法、图 6-2、泄漏影响大小讨论）</td>
+<td>6.3 节 + 图 6-2 + mermaid 流程图</td>
+</tr>
+<tr>
+<td>6.3 举例说明信息泄露（随机数据、SelectPercentile、0.91 vs -0.25）</td>
+<td>6.3 节泄漏实验 + 拓展 R² / f_regression / 泄漏剂量</td>
+</tr>
+<tr>
+<td>6.4 通用的管道接口（fit/predict 等价实现、图 6-3、末步只要求 fit）</td>
+<td>6.4 节 + 图 6-3 + 拓展 memory / ColumnTransformer</td>
+</tr>
+<tr>
+<td>6.4.1 用 make_pipeline 方便地创建管道（自动命名、同类序号）</td>
+<td>6.4.1 节 + 版本差异（repr/默认值）</td>
+</tr>
+<tr>
+<td>6.4.2 访问步骤属性（named_steps、components_）</td>
+<td>6.4.2 节</td>
+</tr>
+<tr>
+<td>6.4.3 访问网格搜索管道中的属性（best_estimator_ → named_steps → coef_）</td>
+<td>6.4.3 节 + 拓展 __ 参数路径</td>
+</tr>
+<tr>
+<td>6.5 网格搜索预处理步骤与模型参数（boston 三步管道、图 6-4、0.77 vs 0.63、指数增长）</td>
+<td>6.5 节 + 图 6-4 + 拓展粗到细/随机搜索</td>
+</tr>
+<tr>
+<td>6.5 开头的 load_boston（新版不可用）</td>
+<td>6.5 节版本差异 note</td>
+</tr>
+<tr>
+<td>6.6 网格搜索选择使用哪个模型（参数网格列表、步骤赋值、None 跳步、SVC+StandardScaler 胜出）</td>
+<td>6.6 节（iris/cancer 文码不一致已标注）+ 版本差异 gamma</td>
+</tr>
+<tr>
+<td>6.7 小结与展望</td>
+<td>6.7 节</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-init.js"></script>
+      
+        <script src="../../javascripts/gallery.js"></script>
+      
+        <script src="../../javascripts/site-toc.js"></script>
+      
+        <script src="../../javascripts/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
