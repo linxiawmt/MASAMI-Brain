@@ -237,5 +237,15 @@ nav:
       - 第12章 Arduino 简介: Python极客项目编程/ch12.md
       - 第13章 激光音乐秀: Python极客项目编程/ch13.md
       - 第14章 基于树莓派的天气监控器: Python极客项目编程/ch14.md
+  - Python机器学习基础教程:
+      - Python机器学习基础教程/index.md
+      - 第1章 引言: Python机器学习基础教程/ch01.md
+      - 第2章 监督学习: Python机器学习基础教程/ch02.md
+      - 第3章 无监督学习与预处理: Python机器学习基础教程/ch03.md
+      - 第4章 数据表示与特征工程: Python机器学习基础教程/ch04.md
+      - 第5章 模型评估与改进: Python机器学习基础教程/ch05.md
+      - 第6章 算法链与管道: Python机器学习基础教程/ch06.md
+      - 第7章 处理文本数据: Python机器学习基础教程/ch07.md
+      - 第8章 全书总结: Python机器学习基础教程/ch08.md
   - 学习资源:
       - 学习资源/index.md

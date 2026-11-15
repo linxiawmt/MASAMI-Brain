@@ -76,7 +76,7 @@ hide:
   <!-- 书架：九张等宽瓷片，3×3 对称（markdown 容器必须在顶层） -->
   <div class="sec-head reveal" style="--i:5">
     <span class="sec-kicker">PROJECTS</span>
-    <span class="sec-title">书架上现在有十二样东西</span>
+    <span class="sec-title">书架上现在有十三样东西</span>
   </div>
 
 <div class="home-grid-cards" markdown>
@@ -169,6 +169,14 @@ hide:
     Venkitachalam 的 14 个极客项目：万花尺、生命游戏、类鸟群、体渲染、Arduino 激光秀——能实跑的我全跑了，OpenGL 那几章把着色器逻辑啃透。
 
     [:octicons-arrow-right-24: 去看](Python极客项目编程/index.md)
+
+-   :fontawesome-solid-diagram-project:{ .lg .middle } **Python机器学习基础教程**
+
+    ---
+
+    Müller & Guido 的 scikit-learn 入门 8 章：监督/无监督算法、特征工程、交叉验证、Pipeline、文本数据——工具流派的正统入门。
+
+    [:octicons-arrow-right-24: 去看](Python机器学习基础教程/index.md)
 
 -   :fontawesome-solid-compass:{ .lg .middle } **学习资源导航**
 
